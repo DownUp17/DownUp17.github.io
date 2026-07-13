@@ -25,18 +25,18 @@
       "color": "#00E0B0"
     },
     {
-      "key": "LCP",
-      "name": "LCP",
-      "country": "아시아·태평양",
-      "score": 1107,
-      "color": "#F08040"
-    },
-    {
       "key": "LCS",
       "name": "LCS",
       "country": "북미",
       "score": 1242,
       "color": "#0EA5E9"
+    },
+    {
+      "key": "LCP",
+      "name": "LCP",
+      "country": "아시아·태평양",
+      "score": 1107,
+      "color": "#F08040"
     },
     {
       "key": "CBLOL",

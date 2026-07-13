@@ -775,173 +775,6 @@
       "finalResult": null
     },
     {
-      "key": "lcp",
-      "name": "2026 LCP",
-      "scope": "region",
-      "color": "#F08040",
-      "status": "ongoing",
-      "ready": true,
-      "stage": "정규시즌 + 플레이오프 (시즌 전체)",
-      "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
-      "iterations": 100000,
-      "generatedAt": "2026-07-12T12:57:07.614Z",
-      "teams": [
-        {
-          "name": "CTBC Flying Oyster",
-          "short": "CFO",
-          "rating": 1326
-        },
-        {
-          "name": "Team Secret Whales",
-          "short": "TSW",
-          "rating": 1332
-        },
-        {
-          "name": "Relove Deep Cross Gaming",
-          "short": "DCG",
-          "rating": 1267
-        },
-        {
-          "name": "GAM Esports",
-          "short": "GAM",
-          "rating": 1276
-        },
-        {
-          "name": "MVK Esports",
-          "short": "MVK",
-          "rating": 1243
-        },
-        {
-          "name": "Fukuoka SoftBank HAWKS",
-          "short": "SHG",
-          "rating": 1188
-        },
-        {
-          "name": "Ground Zero Gaming",
-          "short": "GZ",
-          "rating": 1135
-        },
-        {
-          "name": "DetonatioN FocusMe",
-          "short": "DFM",
-          "rating": 1097
-        }
-      ],
-      "matches": [
-        {
-          "a": "GAM",
-          "b": "SHG",
-          "pA": 72,
-          "winner": "GAM"
-        },
-        {
-          "a": "DCG",
-          "b": "MVK",
-          "pA": 56,
-          "winner": "DCG"
-        },
-        {
-          "a": "TSW",
-          "b": "CFO",
-          "pA": 52,
-          "winner": "TSW"
-        }
-      ],
-      "standings": [
-        {
-          "team": "TSW",
-          "name": "Team Secret Whales",
-          "rating": 1332,
-          "avgRank": 2.51817,
-          "champ": 35.75,
-          "advance": 98.3,
-          "rank1": 32.54
-        },
-        {
-          "team": "CFO",
-          "name": "CTBC Flying Oyster",
-          "rating": 1326,
-          "avgRank": 2.63715,
-          "champ": 32.49,
-          "advance": 97.81,
-          "rank1": 31.31
-        },
-        {
-          "team": "GAM",
-          "name": "GAM Esports",
-          "rating": 1276,
-          "avgRank": 3.62752,
-          "champ": 13.18,
-          "advance": 93.04,
-          "rank1": 14.03
-        },
-        {
-          "team": "DCG",
-          "name": "Relove Deep Cross Gaming",
-          "rating": 1267,
-          "avgRank": 3.82785,
-          "champ": 10.92,
-          "advance": 91.55,
-          "rank1": 12.5
-        },
-        {
-          "team": "MVK",
-          "name": "MVK Esports",
-          "rating": 1243,
-          "avgRank": 4.34927,
-          "champ": 6.2,
-          "advance": 86.55,
-          "rank1": 7.15
-        },
-        {
-          "team": "SHG",
-          "name": "Fukuoka SoftBank HAWKS",
-          "rating": 1188,
-          "avgRank": 5.53571,
-          "champ": 1.24,
-          "advance": 66.88,
-          "rank1": 1.89
-        },
-        {
-          "team": "GZ",
-          "name": "Ground Zero Gaming",
-          "rating": 1135,
-          "avgRank": 6.49309,
-          "champ": 0.18,
-          "advance": 39.9,
-          "rank1": 0.46
-        },
-        {
-          "team": "DFM",
-          "name": "DetonatioN FocusMe",
-          "rating": 1097,
-          "avgRank": 7.01124,
-          "champ": 0.04,
-          "advance": 25.97,
-          "rank1": 0.13
-        }
-      ],
-      "situations": [
-        {
-          "label": "TSW 정규시즌 1위",
-          "prob": 32.54
-        },
-        {
-          "label": "TSW 우승",
-          "prob": 35.75
-        },
-        {
-          "label": "CFO 우승",
-          "prob": 32.49
-        },
-        {
-          "label": "DFM 플레이오프 진출",
-          "prob": 25.97
-        }
-      ],
-      "finalResult": null
-    },
-    {
       "key": "lcs",
       "name": "2026 LCS",
       "scope": "region",
@@ -1104,6 +937,173 @@
         {
           "label": "DIG 플레이오프 진출",
           "prob": 34.05
+        }
+      ],
+      "finalResult": null
+    },
+    {
+      "key": "lcp",
+      "name": "2026 LCP",
+      "scope": "region",
+      "color": "#F08040",
+      "status": "ongoing",
+      "ready": true,
+      "stage": "정규시즌 + 플레이오프 (시즌 전체)",
+      "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
+      "iterations": 100000,
+      "generatedAt": "2026-07-12T12:57:07.614Z",
+      "teams": [
+        {
+          "name": "CTBC Flying Oyster",
+          "short": "CFO",
+          "rating": 1326
+        },
+        {
+          "name": "Team Secret Whales",
+          "short": "TSW",
+          "rating": 1332
+        },
+        {
+          "name": "Relove Deep Cross Gaming",
+          "short": "DCG",
+          "rating": 1267
+        },
+        {
+          "name": "GAM Esports",
+          "short": "GAM",
+          "rating": 1276
+        },
+        {
+          "name": "MVK Esports",
+          "short": "MVK",
+          "rating": 1243
+        },
+        {
+          "name": "Fukuoka SoftBank HAWKS",
+          "short": "SHG",
+          "rating": 1188
+        },
+        {
+          "name": "Ground Zero Gaming",
+          "short": "GZ",
+          "rating": 1135
+        },
+        {
+          "name": "DetonatioN FocusMe",
+          "short": "DFM",
+          "rating": 1097
+        }
+      ],
+      "matches": [
+        {
+          "a": "GAM",
+          "b": "SHG",
+          "pA": 72,
+          "winner": "GAM"
+        },
+        {
+          "a": "DCG",
+          "b": "MVK",
+          "pA": 56,
+          "winner": "DCG"
+        },
+        {
+          "a": "TSW",
+          "b": "CFO",
+          "pA": 52,
+          "winner": "TSW"
+        }
+      ],
+      "standings": [
+        {
+          "team": "TSW",
+          "name": "Team Secret Whales",
+          "rating": 1332,
+          "avgRank": 2.51817,
+          "champ": 35.75,
+          "advance": 98.3,
+          "rank1": 32.54
+        },
+        {
+          "team": "CFO",
+          "name": "CTBC Flying Oyster",
+          "rating": 1326,
+          "avgRank": 2.63715,
+          "champ": 32.49,
+          "advance": 97.81,
+          "rank1": 31.31
+        },
+        {
+          "team": "GAM",
+          "name": "GAM Esports",
+          "rating": 1276,
+          "avgRank": 3.62752,
+          "champ": 13.18,
+          "advance": 93.04,
+          "rank1": 14.03
+        },
+        {
+          "team": "DCG",
+          "name": "Relove Deep Cross Gaming",
+          "rating": 1267,
+          "avgRank": 3.82785,
+          "champ": 10.92,
+          "advance": 91.55,
+          "rank1": 12.5
+        },
+        {
+          "team": "MVK",
+          "name": "MVK Esports",
+          "rating": 1243,
+          "avgRank": 4.34927,
+          "champ": 6.2,
+          "advance": 86.55,
+          "rank1": 7.15
+        },
+        {
+          "team": "SHG",
+          "name": "Fukuoka SoftBank HAWKS",
+          "rating": 1188,
+          "avgRank": 5.53571,
+          "champ": 1.24,
+          "advance": 66.88,
+          "rank1": 1.89
+        },
+        {
+          "team": "GZ",
+          "name": "Ground Zero Gaming",
+          "rating": 1135,
+          "avgRank": 6.49309,
+          "champ": 0.18,
+          "advance": 39.9,
+          "rank1": 0.46
+        },
+        {
+          "team": "DFM",
+          "name": "DetonatioN FocusMe",
+          "rating": 1097,
+          "avgRank": 7.01124,
+          "champ": 0.04,
+          "advance": 25.97,
+          "rank1": 0.13
+        }
+      ],
+      "situations": [
+        {
+          "label": "TSW 정규시즌 1위",
+          "prob": 32.54
+        },
+        {
+          "label": "TSW 우승",
+          "prob": 35.75
+        },
+        {
+          "label": "CFO 우승",
+          "prob": 32.49
+        },
+        {
+          "label": "DFM 플레이오프 진출",
+          "prob": 25.97
         }
       ],
       "finalResult": null
