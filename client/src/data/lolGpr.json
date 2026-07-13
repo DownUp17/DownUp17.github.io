@@ -1,13 +1,49 @@
 {
   "season": "2026 Current",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "fetchedAt": "2026-06-11",
+  "fetchedAt": "2026-07-13",
   "regions": [
-    { "key": "LCK", "name": "LCK", "country": "대한민국", "score": 1425, "color": "#1565C0" },
-    { "key": "LPL", "name": "LPL", "country": "중국", "score": 1419, "color": "#D32F2F" },
-    { "key": "LEC", "name": "LEC", "country": "유럽", "score": 1297, "color": "#00E0B0" },
-    { "key": "LCP", "name": "LCP", "country": "아시아·태평양", "score": 1123, "color": "#F08040" },
-    { "key": "LCS", "name": "LCS", "country": "북미", "score": 1081, "color": "#0EA5E9" },
-    { "key": "CBLOL", "name": "CBLOL", "country": "브라질", "score": 855, "color": "#43A047" }
+    {
+      "key": "LCK",
+      "name": "LCK",
+      "country": "대한민국",
+      "score": 1389,
+      "color": "#1565C0"
+    },
+    {
+      "key": "LPL",
+      "name": "LPL",
+      "country": "중국",
+      "score": 1362,
+      "color": "#D32F2F"
+    },
+    {
+      "key": "LEC",
+      "name": "LEC",
+      "country": "유럽",
+      "score": 1265,
+      "color": "#00E0B0"
+    },
+    {
+      "key": "LCP",
+      "name": "LCP",
+      "country": "아시아·태평양",
+      "score": 1107,
+      "color": "#F08040"
+    },
+    {
+      "key": "LCS",
+      "name": "LCS",
+      "country": "북미",
+      "score": 1242,
+      "color": "#0EA5E9"
+    },
+    {
+      "key": "CBLOL",
+      "name": "CBLOL",
+      "country": "브라질",
+      "score": 835,
+      "color": "#43A047"
+    }
   ]
 }

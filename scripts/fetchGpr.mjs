@@ -10,7 +10,10 @@ import { execFileSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const file = path.join(__dirname, '..', 'client', 'src', 'data', 'gprTeams.json');
+const gprFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolGpr.json');
 const URL = 'https://lolesports.com/ko-KR/gpr/2026/current';
+// GPR 페이지 slug → lolGpr.json key 매핑
+const SLUG_TO_KEY = { lck: 'LCK', lpl: 'LPL', lec: 'LEC', lcp: 'LCP', lcs: 'LCS', 'cblol-brazil': 'CBLOL' };
 
 // gprTeams.json 의 short 는 GPR 사이트 코드를 그대로 사용 → 별칭 불필요
 const ALIAS = {};
@@ -73,6 +76,30 @@ if (missing.length) console.warn(`주의: GPR에서 못 찾은 팀 → ${missing
 data.updatedAt = new Date().toISOString().slice(0, 10);
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 console.log(`gprTeams.json 갱신: ${updated}팀 변경(점수 변화 ${scoreChanged}팀), updatedAt=${data.updatedAt}`);
+
+// 지역별 GPR 점수(leagueElo) 추출 후 lolGpr.json 갱신
+const leagueEloRe = /"slug":"([^"]+)"\},"leagueElo":(\d+)/g;
+const leagueElo = {};
+let em;
+while ((em = leagueEloRe.exec(html)) !== null) {
+  const key = SLUG_TO_KEY[em[1]];
+  if (key) leagueElo[key] = Number(em[2]);
+}
+if (Object.keys(leagueElo).length >= 6) {
+  const gprData = JSON.parse(fs.readFileSync(gprFile, 'utf8'));
+  let regionUpdated = 0;
+  for (const region of gprData.regions) {
+    if (leagueElo[region.key] != null && region.score !== leagueElo[region.key]) {
+      region.score = leagueElo[region.key];
+      regionUpdated++;
+    }
+  }
+  gprData.fetchedAt = new Date().toISOString().slice(0, 10);
+  fs.writeFileSync(gprFile, JSON.stringify(gprData, null, 2) + '\n');
+  console.log(`lolGpr.json 갱신: ${regionUpdated}개 지역 점수 변경 (${Object.entries(leagueElo).map(([k,v]) => `${k}:${v}`).join(', ')})`);
+} else {
+  console.warn(`지역 GPR 추출 실패(${Object.keys(leagueElo).length}개) — lolGpr.json 유지`);
+}
 
 // MSI 플레이-인 경기 결과만 바뀐 경우(GPR 점수는 그대로)에도 시뮬을 재실행해야
 // 참가팀 확률이 갱신된다. lolStandings 의 플레이-인 브래킷과 lolSim 의 저장 시그니처를 비교.
