@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-13T05:59:02.631Z",
+  "updatedAt": "2026-07-13T07:55:08.855Z",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
   "iterationsDefault": 20000,
   "competitions": [
@@ -13,7 +13,7 @@
       "stage": "",
       "format": "정규시즌 1-2R (Bo3) → 그룹분할 → 정규시즌 3-4R (Bo3) → 플레이인 (Bo5) → 플레이오프 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-07-13T01:51:40.669Z",
+      "generatedAt": "2026-07-13T07:55:07.052Z",
       "teams": [
         {
           "name": "Gen.G Esports",
@@ -93,7 +93,7 @@
           "rating": 1590,
           "avgRank": 1.24584,
           "champ": 63.09,
-          "worlds": 97.75,
+          "worlds": 100,
           "advance": 100,
           "piPlus": 100,
           "rank1": 80.85
@@ -104,7 +104,7 @@
           "rating": 1515,
           "avgRank": 2.40238,
           "champ": 18.99,
-          "worlds": 88.93,
+          "worlds": 98.83,
           "advance": 100,
           "piPlus": 100,
           "rank1": 10.96
@@ -115,7 +115,7 @@
           "rating": 1510,
           "avgRank": 2.46406,
           "champ": 17.33,
-          "worlds": 87.76,
+          "worlds": 98.65,
           "advance": 100,
           "piPlus": 100,
           "rank1": 8.11
@@ -126,7 +126,7 @@
           "rating": 1383,
           "avgRank": 3.97835,
           "champ": 0.53,
-          "worlds": 19,
+          "worlds": 65.24,
           "advance": 99.79,
           "piPlus": 100,
           "rank1": 0.08
@@ -137,7 +137,7 @@
           "rating": 1340,
           "avgRank": 4.90937,
           "champ": 0.06,
-          "worlds": 5.94,
+          "worlds": 30.65,
           "advance": 95.2,
           "piPlus": 100,
           "rank1": 0
@@ -148,7 +148,7 @@
           "rating": 1268,
           "avgRank": 6.55399,
           "champ": 0,
-          "worlds": 0.55,
+          "worlds": 5.51,
           "advance": 62.12,
           "piPlus": 95.91,
           "rank1": 0
@@ -159,7 +159,7 @@
           "rating": 1198,
           "avgRank": 7.46906,
           "champ": 0,
-          "worlds": 0.03,
+          "worlds": 0.45,
           "advance": 17.83,
           "piPlus": 81.06,
           "rank1": 0
@@ -170,7 +170,7 @@
           "rating": 1212,
           "avgRank": 7.86341,
           "champ": 0,
-          "worlds": 0.02,
+          "worlds": 0.45,
           "advance": 15.16,
           "piPlus": 67.89,
           "rank1": 0
@@ -181,7 +181,7 @@
           "rating": 1196,
           "avgRank": 8.11774,
           "champ": 0,
-          "worlds": 0.01,
+          "worlds": 0.22,
           "advance": 9.9,
           "piPlus": 55.13,
           "rank1": 0
@@ -475,7 +475,8 @@
           "rating": 1596,
           "piPlus": 100,
           "advance": 100,
-          "champ": 90.26
+          "champ": 90.42,
+          "worlds": 99.74
         },
         {
           "team": "TES",
@@ -483,87 +484,98 @@
           "rating": 1404,
           "piPlus": 100,
           "advance": 99.97,
-          "champ": 5.4
+          "champ": 5.3,
+          "worlds": 82.38
         },
         {
           "team": "WE",
           "name": "Xi'an Team WE",
           "rating": 1282,
           "piPlus": 100,
-          "advance": 94.49,
-          "champ": 0.1
+          "advance": 94.54,
+          "champ": 0.07,
+          "worlds": 24.63
         },
         {
           "team": "AL",
           "name": "Anyone's Legend",
           "rating": 1372,
           "piPlus": 100,
-          "advance": 99.83,
-          "champ": 1.53
+          "advance": 99.84,
+          "champ": 1.49,
+          "worlds": 61.47
         },
         {
           "team": "JDG",
           "name": "Beijing JDG Esports",
           "rating": 1374,
           "piPlus": 100,
-          "advance": 99.86,
-          "champ": 2.27
+          "advance": 99.84,
+          "champ": 2.24,
+          "worlds": 69.72
         },
         {
           "team": "LGD",
           "name": "LGD Gaming",
           "rating": 1173,
           "piPlus": 100,
-          "advance": 45.71,
-          "champ": 0
+          "advance": 45.43,
+          "champ": 0,
+          "worlds": 0.95
         },
         {
           "team": "TT",
           "name": "ThunderTalk Gaming",
           "rating": 1174,
           "piPlus": 100,
-          "advance": 46.02,
-          "champ": 0
+          "advance": 46.11,
+          "champ": 0,
+          "worlds": 1.42
         },
         {
           "team": "EDG",
           "name": "Edward Gaming",
           "rating": 1192,
           "piPlus": 100,
-          "advance": 57.76,
-          "champ": 0
+          "advance": 57.97,
+          "champ": 0,
+          "worlds": 2.96
         },
         {
           "team": "NIP",
           "name": "Ninjas in Pyjamas",
           "rating": 1298,
-          "piPlus": 51.6,
-          "advance": 39.83,
-          "champ": 0.04
+          "piPlus": 51.76,
+          "advance": 40.01,
+          "champ": 0.05,
+          "worlds": 12.73
         },
         {
           "team": "WBG",
           "name": "Weibo Gaming",
           "rating": 1344,
-          "piPlus": 74.54,
-          "advance": 63.66,
-          "champ": 0.37
+          "piPlus": 74.61,
+          "advance": 63.47,
+          "champ": 0.38,
+          "worlds": 31.32
         },
         {
           "team": "IG",
           "name": "Invictus Gaming",
           "rating": 1285,
-          "piPlus": 43.36,
-          "advance": 32.18,
-          "champ": 0.03
+          "piPlus": 43.38,
+          "advance": 32.22,
+          "champ": 0.03,
+          "worlds": 8.95
         },
         {
           "team": "LNG",
           "name": "Suzhou LNG Esports",
           "rating": 1256,
-          "piPlus": 30.5,
-          "advance": 20.69,
-          "champ": 0
+          "piPlus": 30.25,
+          "advance": 20.61,
+          "champ": 0.01,
+          "worlds": 3.74
         }
       ]
     },
@@ -1335,7 +1347,7 @@
       "stage": "플레이-인 스테이지 (Bo5 더블 엘리미네이션) → 브래킷 스테이지 (Bo5 더블 엘리미네이션)",
       "format": "",
       "iterations": 100000,
-      "generatedAt": "2026-07-13T01:51:40.669Z",
+      "generatedAt": "2026-07-13T07:55:07.052Z",
       "teams": [
         {
           "name": "G2 Esports",

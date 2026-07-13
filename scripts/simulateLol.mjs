@@ -134,6 +134,8 @@ function simulateLCK(teams, fixed) {
   const n = teams.length; // 10
   const ti = (obj) => teams.indexOf(obj);
   const stat = teams.map(() => ({ sumRank: 0, rank1: 0, piPlus: 0, playoff: 0, worlds: 0, champ: 0, finalApp: 0 }));
+  // HLE = MSI 챔피언 확정 Worlds 진출. LCK 4슬롯(HLE 1 + 국내 플레이오프 3).
+  const hleTeam = teams.find((t) => t.short === 'HLE');
 
   // 그룹 내 더블 라운드로빈(쌍별 2시리즈) — 누적 wins에 가산
   const roundRobin = (groupIdx, wins) => {
@@ -226,10 +228,16 @@ function simulateLCK(teams, fixed) {
     stat[ti(lowerFinalsW)].finalApp++;
     stat[ti(champ)].champ++;
 
-    // Worlds 진출 = 최종 3위 이내 (우승 / 그랜드파이널 패자 / 로어파이널 패자)
+    // Worlds 진출 — LCK 4슬롯: HLE는 플레이오프 진출만 하면 확정(MSI 챔피언 슬롯)
+    // + 국내 플레이오프 최종 3위 이내. HLE가 top-3에 포함되면 4위(lb3L)도 추가 슬롯.
     const gfLoser = ub3W === champ ? lowerFinalsW : ub3W;
     const lfLoser = lowerFinalsW === ub3L ? lb3W : ub3L;
-    [champ, gfLoser, lfLoser].forEach((t) => { stat[ti(t)].worlds++; });
+    const lb3L = lb3W === ub2lHigh ? lb2W : ub2lHigh;
+    const hleInPlayoff = hleTeam && [s1, s2, s3, s4, s5, s6].includes(hleTeam);
+    if (hleInPlayoff) stat[ti(hleTeam)].worlds++;
+    const domesticTop3 = [champ, gfLoser, lfLoser];
+    domesticTop3.forEach((t) => { if (t !== hleTeam) stat[ti(t)].worlds++; });
+    if (hleInPlayoff && domesticTop3.some((t) => t === hleTeam)) stat[ti(lb3L)].worlds++;
   }
 
   const standings = teams
@@ -462,7 +470,7 @@ function simulateMSI(direct, playIn, fixedInfo = { pairing: {}, fixed: {} }, bra
 // 녹아웃 스테이지(8팀 더블 엘리미네이션 Bo5): 직행 6팀 + 기사의 길 승자 2팀을 GPR 점수로 시드(MSI 브래킷과 동일 페어링).
 function simulateLplSplit3(ascend, nirvana) {
   const stat = {};
-  [...ascend, ...nirvana].forEach((t) => { stat[t.short] = { kiPlus: 0, knockout: 0, champ: 0 }; });
+  [...ascend, ...nirvana].forEach((t) => { stat[t.short] = { kiPlus: 0, knockout: 0, champ: 0, worlds: 0 }; });
 
   const rankGroup = (group) => {
     const wins = new Array(group.length).fill(0);
@@ -507,6 +515,11 @@ function simulateLplSplit3(ascend, nirvana) {
     const lowerFinalW = simSeries(wbFinalL, lb3W, 3);
     const champ = simSeries(wbFinalW, lowerFinalW, 3);
     stat[champ.short].champ++;
+    // Worlds 진출 = 녹아웃 스테이지 최종 4위 이내 (LPL 4슬롯)
+    const lb3L = lb3W === lb2aW ? lb2bW : lb2aW; // 4위
+    const lowerFinalL = lowerFinalW === wbFinalL ? lb3W : wbFinalL; // 3위
+    const gfLoser = champ === wbFinalW ? lowerFinalW : wbFinalW; // 2위
+    [champ, gfLoser, lowerFinalL, lb3L].forEach((t) => { stat[t.short].worlds++; });
   }
 
   return [...ascend, ...nirvana].map((t) => ({
@@ -516,6 +529,7 @@ function simulateLplSplit3(ascend, nirvana) {
     piPlus: pct(stat[t.short].kiPlus / ITER),
     advance: pct(stat[t.short].knockout / ITER),
     champ: pct(stat[t.short].champ / ITER),
+    worlds: pct(stat[t.short].worlds / ITER),
   }));
 }
 
