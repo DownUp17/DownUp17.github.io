@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20",
+  "updatedAt": "2026-07-21",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -1630,132 +1630,114 @@
         }
       },
       "Split 2": {
-        "stage": "2026 스플릿 2 정규시즌",
+        "stage": "2026 스플릿 3 정규시즌",
         "rows": [
           {
             "rank": 1,
-            "team": "BLG",
-            "w": 12,
-            "l": 2,
-            "gw": 24,
-            "gl": 8,
+            "team": "TT",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
             "group": "Group Ascend"
           },
           {
-            "rank": 2,
-            "team": "JDG",
-            "w": 9,
-            "l": 5,
-            "gw": 20,
-            "gl": 15,
+            "rank": 1,
+            "team": "EDG",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
             "group": "Group Ascend"
           },
           {
-            "rank": 3,
-            "team": "TES",
-            "w": 8,
-            "l": 6,
-            "gw": 18,
-            "gl": 12,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 4,
-            "team": "AL",
-            "w": 8,
-            "l": 6,
-            "gw": 17,
-            "gl": 14,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 5,
-            "team": "NIP",
-            "w": 7,
-            "l": 7,
-            "gw": 16,
-            "gl": 17,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 6,
-            "team": "WBG",
-            "w": 6,
-            "l": 8,
-            "gw": 16,
-            "gl": 19,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 7,
-            "team": "IG",
-            "w": 5,
-            "l": 9,
-            "gw": 15,
-            "gl": 20,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 8,
+            "rank": 1,
             "team": "WE",
-            "w": 1,
-            "l": 13,
-            "gw": 6,
-            "gl": 27,
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
             "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
+            "team": "LGD",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
+            "team": "JDG",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
+            "team": "BLG",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
+            "team": "TES",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
+            "team": "AL",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
+            "team": "NIP",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Nirvana"
+          },
+          {
+            "rank": 1,
+            "team": "IG",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Nirvana"
           },
           {
             "rank": 1,
             "team": "LNG",
-            "w": 4,
-            "l": 1,
-            "gw": 9,
-            "gl": 4,
-            "group": "Group Nirvana"
-          },
-          {
-            "rank": 2,
-            "team": "TT",
-            "w": 3,
-            "l": 2,
-            "gw": 8,
-            "gl": 6,
-            "group": "Group Nirvana"
-          },
-          {
-            "rank": 3,
-            "team": "LGD",
-            "w": 3,
-            "l": 2,
-            "gw": 6,
-            "gl": 6,
-            "group": "Group Nirvana"
-          },
-          {
-            "rank": 4,
-            "team": "EDG",
-            "w": 3,
-            "l": 2,
-            "gw": 7,
-            "gl": 7,
-            "group": "Group Nirvana"
-          },
-          {
-            "rank": 5,
-            "team": "UP",
-            "w": 2,
-            "l": 3,
-            "gw": 6,
-            "gl": 6,
-            "group": "Group Nirvana"
-          },
-          {
-            "rank": 6,
-            "team": "OMG",
             "w": 0,
-            "l": 5,
-            "gw": 3,
-            "gl": 10,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "Group Nirvana"
+          },
+          {
+            "rank": 1,
+            "team": "WBG",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
             "group": "Group Nirvana"
           }
         ]
