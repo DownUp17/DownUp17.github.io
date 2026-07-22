@@ -1642,7 +1642,16 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 2,
+            "rank": 1,
+            "team": "TES",
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 0,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 3,
             "team": "TT",
             "w": 0,
             "l": 0,
@@ -1651,14 +1660,7 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 2,
-            "team": "WE",
-            "w": 0,
-            "l": 0,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 2,
+            "rank": 3,
             "team": "JDG",
             "w": 0,
             "l": 0,
@@ -1667,7 +1669,7 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 2,
+            "rank": 3,
             "team": "BLG",
             "w": 0,
             "l": 0,
@@ -1676,14 +1678,7 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 2,
-            "team": "TES",
-            "w": 0,
-            "l": 0,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 2,
+            "rank": 3,
             "team": "AL",
             "w": 0,
             "l": 0,
@@ -1692,8 +1687,17 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 8,
+            "rank": 7,
             "team": "EDG",
+            "w": 0,
+            "l": 1,
+            "gw": 0,
+            "gl": 2,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 7,
+            "team": "WE",
             "w": 0,
             "l": 1,
             "gw": 0,
