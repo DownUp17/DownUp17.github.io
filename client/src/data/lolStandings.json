@@ -1637,8 +1637,6 @@
             "team": "LGD",
             "w": 1,
             "l": 0,
-            "gw": 2,
-            "gl": 0,
             "group": "Group Ascend"
           },
           {
@@ -1655,8 +1653,6 @@
             "team": "TT",
             "w": 0,
             "l": 0,
-            "gw": 0,
-            "gl": 0,
             "group": "Group Ascend"
           },
           {
@@ -1664,8 +1660,6 @@
             "team": "JDG",
             "w": 0,
             "l": 0,
-            "gw": 0,
-            "gl": 0,
             "group": "Group Ascend"
           },
           {
@@ -1673,8 +1667,6 @@
             "team": "BLG",
             "w": 0,
             "l": 0,
-            "gw": 0,
-            "gl": 0,
             "group": "Group Ascend"
           },
           {
@@ -1682,8 +1674,6 @@
             "team": "AL",
             "w": 0,
             "l": 0,
-            "gw": 0,
-            "gl": 0,
             "group": "Group Ascend"
           },
           {
