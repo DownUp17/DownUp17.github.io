@@ -1649,35 +1649,28 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 3,
+            "rank": 1,
+            "team": "AL",
+            "w": 1,
+            "l": 0,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 4,
             "team": "TT",
             "w": 0,
             "l": 0,
             "group": "Group Ascend"
           },
           {
-            "rank": 3,
-            "team": "JDG",
-            "w": 0,
-            "l": 0,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 3,
+            "rank": 4,
             "team": "BLG",
             "w": 0,
             "l": 0,
             "group": "Group Ascend"
           },
           {
-            "rank": 3,
-            "team": "AL",
-            "w": 0,
-            "l": 0,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 7,
+            "rank": 6,
             "team": "EDG",
             "w": 0,
             "l": 1,
@@ -1686,11 +1679,20 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 7,
+            "rank": 6,
             "team": "WE",
             "w": 0,
             "l": 1,
             "gw": 0,
+            "gl": 2,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 6,
+            "team": "JDG",
+            "w": 0,
+            "l": 1,
+            "gw": 1,
             "gl": 2,
             "group": "Group Ascend"
           },
