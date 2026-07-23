@@ -1,6 +1,6 @@
 {
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "updatedAt": "2026-07-22",
+  "updatedAt": "2026-07-23",
   "note": "GPR 팀별 점수(포인트)와 전적. score를 시뮬레이션 레이팅으로 사용. fst는 2026 First Stand 최종 순위.",
   "teams": [
     {
@@ -65,10 +65,10 @@
       "name": "Top Esports",
       "short": "TES",
       "league": "LPL",
-      "score": 1404,
-      "w": 17,
+      "score": 1411,
+      "w": 18,
       "l": 17,
-      "gw": 51,
+      "gw": 53,
       "gl": 44,
       "logo": "https://static.lolesports.com/teams/1592592064571_TopEsportsTES-01-FullonDark.png"
     },
@@ -243,11 +243,11 @@
       "name": "Xi'an Team WE",
       "short": "WE",
       "league": "LPL",
-      "score": 1282,
+      "score": 1275,
       "w": 9,
-      "l": 21,
+      "l": 22,
       "gw": 31,
-      "gl": 53,
+      "gl": 55,
       "logo": "https://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png"
     },
     {
@@ -388,11 +388,11 @@
       "name": "Edward Gaming",
       "short": "EDG",
       "league": "LPL",
-      "score": 1192,
+      "score": 1181,
       "w": 8,
-      "l": 7,
+      "l": 8,
       "gw": 20,
-      "gl": 24,
+      "gl": 26,
       "logo": "https://static.lolesports.com/teams/1631819297476_edg-2021-worlds.png"
     },
     {
@@ -410,10 +410,10 @@
       "name": "LGD Gaming",
       "short": "LGD",
       "league": "LPL",
-      "score": 1173,
-      "w": 7,
+      "score": 1184,
+      "w": 8,
       "l": 8,
-      "gw": 20,
+      "gw": 22,
       "gl": 25,
       "logo": "https://static.lolesports.com/teams/LGD-FullonDark-1.png"
     },
