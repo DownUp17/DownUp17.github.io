@@ -1634,20 +1634,22 @@
         "rows": [
           {
             "rank": 1,
-            "team": "LGD",
-            "w": 1,
+            "team": "AL",
+            "w": 2,
             "l": 0,
+            "gw": 4,
+            "gl": 1,
             "group": "Group Ascend"
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "BLG",
             "w": 1,
             "l": 0,
             "group": "Group Ascend"
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "TES",
             "w": 1,
             "l": 0,
@@ -1656,10 +1658,12 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 1,
-            "team": "AL",
+            "rank": 4,
+            "team": "LGD",
             "w": 1,
-            "l": 0,
+            "l": 1,
+            "gw": 2,
+            "gl": 2,
             "group": "Group Ascend"
           },
           {
