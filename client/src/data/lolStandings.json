@@ -1644,8 +1644,6 @@
             "team": "BLG",
             "w": 1,
             "l": 0,
-            "gw": 2,
-            "gl": 1,
             "group": "Group Ascend"
           },
           {
@@ -1678,8 +1676,6 @@
             "team": "EDG",
             "w": 0,
             "l": 1,
-            "gw": 0,
-            "gl": 2,
             "group": "Group Ascend"
           },
           {
@@ -1687,8 +1683,6 @@
             "team": "WE",
             "w": 0,
             "l": 1,
-            "gw": 0,
-            "gl": 2,
             "group": "Group Ascend"
           },
           {
@@ -1696,8 +1690,6 @@
             "team": "JDG",
             "w": 0,
             "l": 1,
-            "gw": 1,
-            "gl": 2,
             "group": "Group Ascend"
           },
           {
