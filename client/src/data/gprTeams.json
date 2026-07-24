@@ -1,18 +1,18 @@
 {
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "updatedAt": "2026-07-23",
+  "updatedAt": "2026-07-24",
   "note": "GPR 팀별 점수(포인트)와 전적. score를 시뮬레이션 레이팅으로 사용. fst는 2026 First Stand 최종 순위.",
   "teams": [
     {
       "name": "Bilibili Gaming",
       "short": "BLG",
       "league": "LPL",
-      "score": 1596,
-      "w": 34,
+      "score": 1584,
+      "w": 35,
       "l": 8,
       "fst": 1,
-      "gw": 90,
-      "gl": 36,
+      "gw": 92,
+      "gl": 37,
       "logo": "https://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png"
     },
     {
@@ -87,23 +87,23 @@
       "name": "Beijing JDG Esports",
       "short": "JDG",
       "league": "LPL",
-      "score": 1374,
+      "score": 1368,
       "w": 20,
-      "l": 16,
+      "l": 17,
       "fst": 4,
-      "gw": 56,
-      "gl": 52,
+      "gw": 57,
+      "gl": 54,
       "logo": "https://static.lolesports.com/teams/1627457924722_29.png"
     },
     {
       "name": "Anyone's Legend",
       "short": "AL",
       "league": "LPL",
-      "score": 1372,
-      "w": 20,
+      "score": 1378,
+      "w": 21,
       "l": 12,
-      "gw": 50,
-      "gl": 36,
+      "gw": 52,
+      "gl": 37,
       "logo": "https://static.lolesports.com/teams/1641199582689_.png"
     },
     {
@@ -421,11 +421,11 @@
       "name": "ThunderTalk Gaming",
       "short": "TT",
       "league": "LPL",
-      "score": 1174,
+      "score": 1187,
       "w": 4,
-      "l": 11,
-      "gw": 15,
-      "gl": 27,
+      "l": 12,
+      "gw": 16,
+      "gl": 29,
       "logo": "https://static.lolesports.com/teams/TT-FullonDark.png"
     },
     {
