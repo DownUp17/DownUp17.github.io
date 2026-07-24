@@ -1634,6 +1634,15 @@
         "rows": [
           {
             "rank": 1,
+            "team": "BLG",
+            "w": 2,
+            "l": 0,
+            "gw": 4,
+            "gl": 2,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
             "team": "AL",
             "w": 2,
             "l": 0,
@@ -1642,14 +1651,7 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 2,
-            "team": "BLG",
-            "w": 1,
-            "l": 0,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 2,
+            "rank": 3,
             "team": "TES",
             "w": 1,
             "l": 0,
@@ -1685,14 +1687,16 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 6,
+            "rank": 7,
             "team": "EDG",
             "w": 0,
-            "l": 1,
+            "l": 2,
+            "gw": 1,
+            "gl": 4,
             "group": "Group Ascend"
           },
           {
-            "rank": 8,
+            "rank": 7,
             "team": "JDG",
             "w": 0,
             "l": 2,
@@ -1830,6 +1834,14 @@
         "rows": [
           {
             "rank": 1,
+            "team": "G2",
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 1
+          },
+          {
+            "rank": 2,
             "team": "SK",
             "w": 0,
             "l": 0,
@@ -1837,7 +1849,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "GX",
             "w": 0,
             "l": 0,
@@ -1845,15 +1857,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
-            "team": "MKOI",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0
-          },
-          {
-            "rank": 1,
+            "rank": 2,
             "team": "SHFT",
             "w": 0,
             "l": 0,
@@ -1861,7 +1865,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "TH",
             "w": 0,
             "l": 0,
@@ -1869,7 +1873,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "KC",
             "w": 0,
             "l": 0,
@@ -1877,7 +1881,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "NAVI",
             "w": 0,
             "l": 0,
@@ -1885,7 +1889,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "FNC",
             "w": 0,
             "l": 0,
@@ -1893,20 +1897,20 @@
             "gl": 0
           },
           {
-            "rank": 1,
-            "team": "G2",
+            "rank": 2,
+            "team": "VIT",
             "w": 0,
             "l": 0,
             "gw": 0,
             "gl": 0
           },
           {
-            "rank": 1,
-            "team": "VIT",
+            "rank": 10,
+            "team": "MKOI",
             "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0
+            "l": 1,
+            "gw": 1,
+            "gl": 2
           }
         ]
       }
