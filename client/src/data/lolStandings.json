@@ -1702,6 +1702,15 @@
           },
           {
             "rank": 1,
+            "team": "IG",
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 1,
+            "group": "Group Nirvana"
+          },
+          {
+            "rank": 2,
             "team": "NIP",
             "w": 0,
             "l": 0,
@@ -1710,14 +1719,7 @@
             "group": "Group Nirvana"
           },
           {
-            "rank": 1,
-            "team": "IG",
-            "w": 0,
-            "l": 0,
-            "group": "Group Nirvana"
-          },
-          {
-            "rank": 1,
+            "rank": 2,
             "team": "LNG",
             "w": 0,
             "l": 0,
@@ -1726,10 +1728,12 @@
             "group": "Group Nirvana"
           },
           {
-            "rank": 1,
+            "rank": 4,
             "team": "WBG",
             "w": 0,
-            "l": 0,
+            "l": 1,
+            "gw": 1,
+            "gl": 2,
             "group": "Group Nirvana"
           }
         ]
