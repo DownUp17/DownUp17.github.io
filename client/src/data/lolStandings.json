@@ -1652,23 +1652,27 @@
           },
           {
             "rank": 3,
+            "team": "WE",
+            "w": 2,
+            "l": 1,
+            "gw": 4,
+            "gl": 3,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 4,
             "team": "TES",
             "w": 1,
             "l": 0,
             "group": "Group Ascend"
           },
           {
-            "rank": 4,
-            "team": "WE",
-            "w": 1,
-            "l": 1,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 4,
+            "rank": 5,
             "team": "LGD",
             "w": 1,
-            "l": 1,
+            "l": 2,
+            "gw": 2,
+            "gl": 4,
             "group": "Group Ascend"
           },
           {
