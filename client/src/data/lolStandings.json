@@ -1635,15 +1635,15 @@
           {
             "rank": 1,
             "team": "BLG",
-            "w": 2,
+            "w": 3,
             "l": 0,
-            "gw": 4,
-            "gl": 2,
+            "gw": 6,
+            "gl": 3,
             "group": "Group Ascend"
           },
           {
-            "rank": 1,
-            "team": "AL",
+            "rank": 2,
+            "team": "TES",
             "w": 2,
             "l": 0,
             "gw": 4,
@@ -1660,12 +1660,21 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 4,
-            "team": "TES",
+            "rank": 3,
+            "team": "AL",
+            "w": 2,
+            "l": 1,
+            "gw": 5,
+            "gl": 3,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 5,
+            "team": "TT",
             "w": 1,
-            "l": 0,
-            "gw": 2,
-            "gl": 0,
+            "l": 2,
+            "gw": 4,
+            "gl": 4,
             "group": "Group Ascend"
           },
           {
@@ -1674,24 +1683,6 @@
             "w": 1,
             "l": 2,
             "gw": 2,
-            "gl": 4,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 6,
-            "team": "TT",
-            "w": 0,
-            "l": 1,
-            "gw": 1,
-            "gl": 2,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 7,
-            "team": "EDG",
-            "w": 0,
-            "l": 2,
-            "gw": 1,
             "gl": 4,
             "group": "Group Ascend"
           },
@@ -1705,6 +1696,24 @@
             "group": "Group Ascend"
           },
           {
+            "rank": 8,
+            "team": "EDG",
+            "w": 0,
+            "l": 3,
+            "gw": 1,
+            "gl": 6,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 1,
+            "team": "NIP",
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 0,
+            "group": "Group Nirvana"
+          },
+          {
             "rank": 1,
             "team": "IG",
             "w": 1,
@@ -1714,25 +1723,16 @@
             "group": "Group Nirvana"
           },
           {
-            "rank": 2,
-            "team": "NIP",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
-            "group": "Group Nirvana"
-          },
-          {
-            "rank": 2,
+            "rank": 3,
             "team": "LNG",
             "w": 0,
-            "l": 0,
+            "l": 1,
             "gw": 0,
-            "gl": 0,
+            "gl": 2,
             "group": "Group Nirvana"
           },
           {
-            "rank": 4,
+            "rank": 3,
             "team": "WBG",
             "w": 0,
             "l": 1,
@@ -1835,14 +1835,18 @@
           {
             "rank": 1,
             "team": "KC",
-            "w": 1,
-            "l": 0
+            "w": 3,
+            "l": 0,
+            "gw": 6,
+            "gl": 1
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "G2",
-            "w": 1,
-            "l": 0
+            "w": 2,
+            "l": 1,
+            "gw": 5,
+            "gl": 3
           },
           {
             "rank": 3,
@@ -1894,15 +1898,19 @@
           },
           {
             "rank": 9,
-            "team": "MKOI",
-            "w": 0,
-            "l": 1
+            "team": "VIT",
+            "w": 1,
+            "l": 2,
+            "gw": 2,
+            "gl": 5
           },
           {
-            "rank": 9,
-            "team": "VIT",
+            "rank": 10,
+            "team": "MKOI",
             "w": 0,
-            "l": 1
+            "l": 3,
+            "gw": 2,
+            "gl": 6
           }
         ]
       }
@@ -2053,6 +2061,22 @@
         "rows": [
           {
             "rank": 1,
+            "team": "SEN",
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 1
+          },
+          {
+            "rank": 1,
+            "team": "LYON",
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 0
+          },
+          {
+            "rank": 3,
             "team": "DSG",
             "w": 0,
             "l": 0,
@@ -2060,7 +2084,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
+            "rank": 3,
             "team": "SR",
             "w": 0,
             "l": 0,
@@ -2068,13 +2092,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
-            "team": "SEN",
-            "w": 0,
-            "l": 0
-          },
-          {
-            "rank": 1,
+            "rank": 3,
             "team": "C9",
             "w": 0,
             "l": 0,
@@ -2082,13 +2100,7 @@
             "gl": 0
           },
           {
-            "rank": 1,
-            "team": "DIG",
-            "w": 0,
-            "l": 0
-          },
-          {
-            "rank": 1,
+            "rank": 3,
             "team": "TLAW",
             "w": 0,
             "l": 0,
@@ -2096,16 +2108,20 @@
             "gl": 0
           },
           {
-            "rank": 1,
-            "team": "FLY",
+            "rank": 7,
+            "team": "DIG",
             "w": 0,
-            "l": 0
+            "l": 1,
+            "gw": 1,
+            "gl": 2
           },
           {
-            "rank": 1,
-            "team": "LYON",
+            "rank": 7,
+            "team": "FLY",
             "w": 0,
-            "l": 0
+            "l": 1,
+            "gw": 0,
+            "gl": 2
           }
         ]
       }
@@ -2185,55 +2201,67 @@
         "rows": [
           {
             "rank": 1,
-            "team": "FUR",
-            "w": 0,
-            "l": 0
-          },
-          {
-            "rank": 1,
             "team": "LOUD",
-            "w": 0,
-            "l": 0
-          },
-          {
-            "rank": 1,
-            "team": "LEV",
-            "w": 0,
-            "l": 0
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 1
           },
           {
             "rank": 1,
             "team": "FX",
-            "w": 0,
-            "l": 0
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 0
           },
           {
             "rank": 1,
             "team": "LOS",
-            "w": 0,
-            "l": 0
-          },
-          {
-            "rank": 1,
-            "team": "PAIN",
-            "w": 0,
-            "l": 0
+            "w": 1,
+            "l": 0,
+            "gw": 2,
+            "gl": 0
           },
           {
             "rank": 1,
             "team": "VKS",
-            "w": 0,
+            "w": 1,
             "l": 0,
-            "gw": 0,
-            "gl": 0
+            "gw": 2,
+            "gl": 1
           },
           {
-            "rank": 1,
+            "rank": 5,
+            "team": "FUR",
+            "w": 0,
+            "l": 1,
+            "gw": 0,
+            "gl": 2
+          },
+          {
+            "rank": 5,
+            "team": "LEV",
+            "w": 0,
+            "l": 1,
+            "gw": 0,
+            "gl": 2
+          },
+          {
+            "rank": 5,
+            "team": "PAIN",
+            "w": 0,
+            "l": 1,
+            "gw": 1,
+            "gl": 2
+          },
+          {
+            "rank": 5,
             "team": "RED",
             "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0
+            "l": 1,
+            "gw": 1,
+            "gl": 2
           }
         ]
       }
