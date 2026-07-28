@@ -97,7 +97,7 @@ const ACTUAL_SLOT_H = 39; // 실제 슬롯(팀 한 줄) 렌더 높이 — connY 
 
 const gridSlotTop = (r) => LABEL_H + r * SLOT_H + (r >= GAP_ROW ? LABEL_H : 0);
 
-const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick }) => {
+const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick, groupGap = false }) => {
   const useGrid = !!totalRows;
   const colH = useGrid ? gridSlotTop(totalRows - 1) + 2 * ACTUAL_SLOT_H + 2 : undefined;
   const totalW = rounds.length * COL_W + (rounds.length - 1) * COL_GAP;
@@ -182,15 +182,19 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
           <div key={ri}
             style={useGrid
               ? { position: 'relative', width: COL_W, flexShrink: 0, height: colH }
-              : { display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20, flex: 1, minWidth: 0 }}>
+              : { display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: groupGap ? 8 : 20, flex: 1, minWidth: 0 }}>
             {!useGrid && r.title && (
               <p className="text-[11px] font-black text-white/40 uppercase tracking-wider">{r.title}</p>
             )}
             {r.matches.map((m, mi) => {
               const pred = matchPrediction(m.a, m.b);
               if (!useGrid) {
+                // 같은 기록(recordKey) 묶음은 좁게, 다른 기록 사이는 넓게 띄운다
+                const groupBreak = groupGap && mi > 0 && (m.recordKey || '') !== (r.matches[mi - 1].recordKey || '');
                 return (
-                  <div key={mi} data-card={`${ri}-${mi}`} {...(cardPrefix && { 'data-xcard': `${cardPrefix}${ri}-${mi}` })} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
+                  <div key={mi} data-card={`${ri}-${mi}`} {...(cardPrefix && { 'data-xcard': `${cardPrefix}${ri}-${mi}` })}
+                    style={groupBreak ? { marginTop: 20 } : undefined}
+                    className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
                     {m.title && <div data-title="" className="px-2.5 py-1.5 bg-white/10 text-[11px] font-black text-white/70">{m.title}</div>}
                     <MsiSlot s={m.a} predPct={pred?.pA} onTeamClick={onTeamClick} />
                     <div className="h-px bg-white/10" />
@@ -493,8 +497,12 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   // 그룹명 → 표시 라벨·배지. 알려진 LCK 그룹은 고정색, 그 외(LPL 그룹 스테이지 등)는 기본 팔레트 순환.
   const GROUP_META = {
     Legend: { label: '레전드 그룹', badge: { color: '#E8C77E', bg: 'rgba(200,150,62,0.2)' } },
+    '레전드 그룹': { label: '레전드 그룹', badge: { color: '#E8C77E', bg: 'rgba(200,150,62,0.2)' } },
     Rise: { label: '라이즈 그룹', badge: { color: '#9CA3AF', bg: 'rgba(156,163,175,0.15)' } },
+    '라이즈 그룹': { label: '라이즈 그룹', badge: { color: '#9CA3AF', bg: 'rgba(156,163,175,0.15)' } },
   };
+  // 그룹 표시 순서 — 레전드 그룹을 먼저 (라이즈보다 위)
+  const GROUP_ORDER = ['Legend', '레전드 그룹', 'Rise', '라이즈 그룹'];
   const FALLBACK_BADGES = [
     { color: '#E8C77E', bg: 'rgba(200,150,62,0.2)' },
     { color: '#9CA3AF', bg: 'rgba(156,163,175,0.15)' },
@@ -572,7 +580,12 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     }
   } else {
     groups = grouped
-      ? [...new Set(current.map((t) => t.group))].map((name, gi) => ({
+      ? [...new Set(current.map((t) => t.group))]
+          .sort((a, b) => {
+            const ia = GROUP_ORDER.indexOf(a), ib = GROUP_ORDER.indexOf(b);
+            return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+          })
+          .map((name, gi) => ({
           name: GROUP_META[name]?.label ?? name,
           badge: GROUP_META[name]?.badge ?? FALLBACK_BADGES[gi % FALLBACK_BADGES.length],
           rows: current.filter((t) => t.group === name).map((t, i) => (noPredict ? { ...t, rank: i + 1 } : withProb(t, i + 1))),
@@ -661,6 +674,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             rounds={official[lcpCfg.bracketKey].rounds}
             connectors={official[lcpCfg.bracketKey].connectors}
             onTeamClick={onTeamClick}
+            groupGap={lcpCfg.bracketKey === 'swiss'}
           />
         </section>
       )}

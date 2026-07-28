@@ -987,96 +987,96 @@
         }
       },
       "LCK": {
-        "stage": "2026 스플릿 3 · 정규 1·2R (MSI 선발전 후 3·4R 진행)",
+        "stage": "2026 LCK · 정규 1·2R 종료 (3·4R 진행 예정)",
         "rows": [
           {
             "rank": 1,
-            "team": "BFX",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
-            "group": "라이즈 그룹"
-          },
-          {
-            "rank": 1,
-            "team": "NS",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
-            "group": "라이즈 그룹"
-          },
-          {
-            "rank": 1,
             "team": "BRO",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
+            "w": 6,
+            "l": 12,
+            "gw": 16,
+            "gl": 24,
             "group": "라이즈 그룹"
           },
           {
-            "rank": 1,
-            "team": "DNS",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
+            "rank": 2,
+            "team": "BFX",
+            "w": 6,
+            "l": 12,
+            "gw": 14,
+            "gl": 25,
             "group": "라이즈 그룹"
           },
           {
-            "rank": 1,
+            "rank": 3,
             "team": "KRX",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
+            "w": 5,
+            "l": 13,
+            "gw": 16,
+            "gl": 28,
             "group": "라이즈 그룹"
           },
           {
-            "rank": 1,
-            "team": "GEN",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
-            "group": "레전드 그룹"
+            "rank": 4,
+            "team": "NS",
+            "w": 5,
+            "l": 13,
+            "gw": 13,
+            "gl": 28,
+            "group": "라이즈 그룹"
+          },
+          {
+            "rank": 5,
+            "team": "DNS",
+            "w": 1,
+            "l": 17,
+            "gw": 3,
+            "gl": 34,
+            "group": "라이즈 그룹"
           },
           {
             "rank": 1,
             "team": "HLE",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
+            "w": 15,
+            "l": 3,
+            "gw": 32,
+            "gl": 11,
             "group": "레전드 그룹"
           },
           {
-            "rank": 1,
-            "team": "DK",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
-            "group": "레전드 그룹"
-          },
-          {
-            "rank": 1,
+            "rank": 2,
             "team": "T1",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
+            "w": 14,
+            "l": 4,
+            "gw": 30,
+            "gl": 10,
             "group": "레전드 그룹"
           },
           {
-            "rank": 1,
+            "rank": 3,
+            "team": "GEN",
+            "w": 14,
+            "l": 4,
+            "gw": 30,
+            "gl": 11,
+            "group": "레전드 그룹"
+          },
+          {
+            "rank": 4,
             "team": "KT",
-            "w": 0,
-            "l": 0,
-            "gw": 0,
-            "gl": 0,
+            "w": 13,
+            "l": 5,
+            "gw": 26,
+            "gl": 15,
+            "group": "레전드 그룹"
+          },
+          {
+            "rank": 5,
+            "team": "DK",
+            "w": 11,
+            "l": 7,
+            "gw": 24,
+            "gl": 18,
             "group": "레전드 그룹"
           }
         ]
@@ -2005,7 +2005,8 @@
                     "seed": "",
                     "short": "GZ",
                     "score": 0
-                  }
+                  },
+                  "recordKey": "0-0"
                 },
                 {
                   "title": "0승 0패",
@@ -2019,7 +2020,8 @@
                     "seed": "",
                     "short": "SHG",
                     "score": 0
-                  }
+                  },
+                  "recordKey": "0-0"
                 },
                 {
                   "title": "0승 0패",
@@ -2033,7 +2035,8 @@
                     "short": "GAM",
                     "score": 2,
                     "win": true
-                  }
+                  },
+                  "recordKey": "0-0"
                 },
                 {
                   "title": "0승 0패",
@@ -2047,7 +2050,8 @@
                     "short": "CFO",
                     "score": 2,
                     "win": true
-                  }
+                  },
+                  "recordKey": "0-0"
                 }
               ]
             },
@@ -2063,7 +2067,8 @@
                   "b": {
                     "seed": "",
                     "short": "MVK"
-                  }
+                  },
+                  "recordKey": "1-0"
                 },
                 {
                   "title": "1승 0패",
@@ -2074,7 +2079,8 @@
                   "b": {
                     "seed": "",
                     "short": "GAM"
-                  }
+                  },
+                  "recordKey": "1-0"
                 },
                 {
                   "title": "0승 1패",
@@ -2085,7 +2091,8 @@
                   "b": {
                     "seed": "",
                     "short": "DFM"
-                  }
+                  },
+                  "recordKey": "0-1"
                 },
                 {
                   "title": "0승 1패",
@@ -2096,7 +2103,8 @@
                   "b": {
                     "seed": "",
                     "short": "GZ"
-                  }
+                  },
+                  "recordKey": "0-1"
                 }
               ]
             },
@@ -2104,40 +2112,44 @@
               "title": "3라운드",
               "matches": [
                 {
-                  "title": "",
+                  "title": "2승 0패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "2-0"
                 },
                 {
-                  "title": "",
+                  "title": "1승 1패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "1-1"
                 },
                 {
-                  "title": "",
+                  "title": "1승 1패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "1-1"
                 },
                 {
-                  "title": "",
+                  "title": "0승 2패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "0-2"
                 }
               ]
             },
@@ -2145,31 +2157,34 @@
               "title": "4라운드",
               "matches": [
                 {
-                  "title": "",
+                  "title": "2승 1패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "2-1"
                 },
                 {
-                  "title": "",
+                  "title": "2승 1패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "2-1"
                 },
                 {
-                  "title": "",
+                  "title": "1승 2패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "1-2"
                 }
               ]
             },
@@ -2177,13 +2192,14 @@
               "title": "5라운드",
               "matches": [
                 {
-                  "title": "",
+                  "title": "2승 2패",
                   "a": {
                     "seed": ""
                   },
                   "b": {
                     "seed": ""
-                  }
+                  },
+                  "recordKey": "2-2"
                 }
               ]
             }

@@ -153,6 +153,36 @@ async function collectRegularMatches(leagueId, tour) {
   return matches;
 }
 
+// 특정 토너먼트의 정규시즌 팀별 기록(시리즈 W-L + 세트 gw/gl) 추출 — 대회 합산용
+async function tournamentRecords(leagueId, tour) {
+  const out = {};
+  const sjson = await api('getStandingsV3', { tournamentId: tour.id });
+  const standing = sjson.data?.standings?.[0];
+  if (!standing) return out;
+  const reg = standing.stages
+    .filter((s) => !isPostseason(s.slug) && !isPostseason(s.name))
+    .map((s) => ({ s, n: s.sections.reduce((a, x) => a + x.rankings.length, 0) }))
+    .filter((c) => c.n > 0)
+    .sort((a, b) => b.n - a.n)[0]?.s;
+  if (!reg) return out;
+  const set = {}; const bump = (c) => (set[c] = set[c] || { gw: 0, gl: 0, sw: 0, sl: 0 });
+  const matches = await collectRegularMatches(leagueId, tour);
+  for (const m of matches) {
+    const [a, b] = m.teams;
+    if (!a?.code || !b?.code) continue;
+    const A = bump(a.code), B = bump(b.code);
+    A.gw += a.result.gameWins; A.gl += b.result.gameWins;
+    B.gw += b.result.gameWins; B.gl += a.result.gameWins;
+    if (a.result.outcome === 'win') { A.sw++; B.sl++; } else { B.sw++; A.sl++; }
+  }
+  for (const sec of reg.sections) for (const r of sec.rankings) for (const t of r.teams) {
+    const s = set[t.code]; const w = t.record.wins, l = t.record.losses;
+    const ok = s && s.sw === w && s.sl === l;
+    out[t.code] = { w, l, gw: ok ? s.gw : null, gl: ok ? s.gl : null };
+  }
+  return out;
+}
+
 async function buildLeague(lg) {
   const tjson = await api('getTournamentsForLeague', { leagueId: lg.id });
   const tour = pickCurrentTournament(tjson.data.leagues[0].tournaments);
@@ -206,14 +236,34 @@ async function buildLeague(lg) {
   // LCK는 단일 섹션이지만 포맷상 상위5 레전드 / 하위5 라이즈로 분할
   if (lg.groups && !multi) rows.forEach((row, i) => { row.group = i < 5 ? 'Legend' : 'Rise'; });
 
-  // LCK 진행 단계 라벨: 정규 1·2R(팀당 18경기) → MSI 선발전(Road to MSI) → 정규 3·4R 순.
-  //   18경기 이하면 아직 1·2R 단계(MSI 선발전 후 3·4R 예정)임을 명시.
+  // LCK: 2026 LCK는 Split 2(1·2R)+Split 3(3·4R)가 한 시즌 → Split 2 기록을 합산해 누적 반영.
+  //   (Split 3 순위표는 그룹 구조만 제공하고 아직 0-0이므로, 1·2R 승패·득실을 더한다)
+  if (lg.key === 'lck') {
+    const s2 = tjson.data.leagues[0].tournaments.find((t) => /split_2_2026/.test(t.slug));
+    if (s2) {
+      const rec2 = await tournamentRecords(lg.id, s2);
+      for (const row of rows) {
+        const r = rec2[row.team];
+        if (!r) continue;
+        row.w += r.w; row.l += r.l;
+        if (row.gw != null && r.gw != null) { row.gw += r.gw; row.gl += r.gl; }
+        else if (r.gw != null) { row.gw = r.gw; row.gl = r.gl; }
+      }
+      // 합산 기록으로 그룹 내 재정렬 + 순위 재부여
+      const gd = (r) => (r.gw != null && r.gl != null ? r.gw - r.gl : -999);
+      rows.sort((a, b) => (a.group || '').localeCompare(b.group || '') || b.w - a.w || gd(b) - gd(a) || a.rank - b.rank);
+      const rk = {};
+      for (const row of rows) { rk[row.group] = (rk[row.group] || 0) + 1; row.rank = rk[row.group]; }
+    }
+  }
+
+  // LCK 진행 단계 라벨 — 2026 LCK는 한 시즌(1·2R=Split2, 3·4R=Split3)
   let stage = `${standing.name} 정규시즌`;
   if (lg.key === 'lck') {
     const maxG = Math.max(...rows.map((r) => r.w + r.l));
     stage = maxG <= 18
-      ? `${standing.name} · 정규 1·2R (MSI 선발전 후 3·4R 진행)`
-      : `${standing.name} · 정규 3·4R`;
+      ? '2026 LCK · 정규 1·2R 종료 (3·4R 진행 예정)'
+      : '2026 LCK · 정규 3·4R 진행';
   }
 
   // 포스트시즌 브래킷(LCK Road to MSI 등) — columns 있는 비정규 스테이지를 대진표로 변환
@@ -858,21 +908,29 @@ try {
       const cols = s.sections?.[0]?.columns || [];
       bySlug[s.slug] = bracketFromColumns(cols);
     }
-    // 스위스는 누적 승패 기록을 추적해: 각 경기에 "N승 N패 대진" 표기,
-    // 승자는 파랑(win), 패자는 실제 탈락(3패)일 때만 빨강(elim). 그 전엔 색 없음.
+    // 스위스: 위치별 승패 기록(대진)을 표기(TBD 경기 포함)하고, 누적 결과로 색 부여.
+    //   승자 파랑(win), 패자는 실제 3패 탈락일 때만 빨강(elim). 그 전엔 색 없음.
+    //   기록 라벨은 8팀 first-to-3 스위스 표준 구조(라운드별 4·4·4·3·1경기) 기준.
+    const SWISS_RECORDS = [
+      ['0-0', '0-0', '0-0', '0-0'],
+      ['1-0', '1-0', '0-1', '0-1'],
+      ['2-0', '1-1', '1-1', '0-2'],
+      ['2-1', '2-1', '1-2'],
+      ['2-2'],
+    ];
+    const recLabel = (rec) => { const [w, l] = rec.split('-'); return `${w}승 ${l}패`; };
     const swiss = bySlug['swiss'];
     if (swiss) {
       const wl = {}; // short → {w,l} 누적
       swiss.rounds.forEach((round, ri) => {
         round.title = `${ri + 1}라운드`;
-        // 1) 경기 전 기록으로 대진 라벨 (같은 기록끼리 대진)
-        for (const m of round.matches) {
-          const s = m.a?.short || m.b?.short;
-          if (s) { const r = wl[s] || { w: 0, l: 0 }; m.title = `${r.w}승 ${r.l}패`; }
-          else m.title = '';
-        }
-        // 2) 결과 반영 + 플래그 (승자 파랑 / 3패 시에만 탈락 빨강)
-        for (const m of round.matches) {
+        round.matches.forEach((m, mi) => {
+          // 대진 기록 라벨: 위치별 표준 기록(있으면), 없으면 알려진 팀의 실제 기록
+          const structRec = SWISS_RECORDS[ri]?.[mi];
+          if (structRec) m.title = recLabel(structRec);
+          else { const s = m.a?.short || m.b?.short; const r = (s && wl[s]) || { w: 0, l: 0 }; m.title = s ? `${r.w}승 ${r.l}패` : ''; }
+          m.recordKey = structRec || ''; // 같은 기록 그룹 판별용
+          // 결과 반영 + 플래그
           delete m.a?.msi; delete m.a?.elim; delete m.b?.msi; delete m.b?.elim;
           if (m.a?.short && m.b?.short && m.a.score != null && m.b.score != null && m.a.score !== m.b.score) {
             const aWin = m.a.score > m.b.score;
@@ -883,7 +941,7 @@ try {
             winner.win = true;
             if (wl[loser.short].l >= 3) loser.elim = true; // 3패 = 실제 탈락
           }
-        }
+        });
       });
     }
     data.standings.lcp = data.standings.lcp || {};

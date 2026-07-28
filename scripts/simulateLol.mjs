@@ -284,8 +284,10 @@ const argLeagues = process.argv.slice(2).map((s) => s.toUpperCase());
 const leagues = argLeagues.length ? ALL_LEAGUES.filter((l) => argLeagues.includes(l)) : ALL_LEAGUES;
 // LCK 현재 순위표(정규 1·2R 완료)를 고정 입력으로 사용 → 잔여 경기만 시뮬
 const lckRows = standingsData.standings?.lck?.LCK?.rows;
+// 그룹명 정규화 — 데이터가 '레전드 그룹'/'라이즈 그룹'(한글)이어도 시뮬은 Legend/Rise로 판별
+const normLckGroup = (g) => (/레전드/.test(g) ? 'Legend' : /라이즈/.test(g) ? 'Rise' : g);
 const lckFixed = lckRows && Object.fromEntries(
-  lckRows.map((r) => [r.team, { w: r.w, group: r.group }])
+  lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group) }])
 );
 
 for (const lg of leagues) {
