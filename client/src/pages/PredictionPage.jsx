@@ -420,9 +420,18 @@ const STAGE_CFG = {
   '럼블 스테이지': { cols: { piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '녹아웃 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 녹아웃 진출)/녹아웃/Worlds/우승 확률.' },
 };
 
+// LCP Split 3 전용 예측 설정 — 스위스 스테이지(8팀) → 4팀 더블 엘리 플레이오프
+const LCP_S3_CFG = {
+  cols: { advance: true, worlds: true, champ: true, labels: { advance: '플레이오프' } },
+  matches: false,
+  heading: '스위스 스테이지 예측',
+  desc: '스위스 8팀 → 4팀 플레이오프 진출. 플레이오프/Worlds/우승 확률(시뮬레이션).',
+};
+
 // 시뮬레이션 결과(예측) 렌더
 const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
-  const cfg = stage ? STAGE_CFG[stage] : null;
+  const lcpSplit3 = comp.key === 'lcp' && sub === 'Split 3';
+  const cfg = stage ? STAGE_CFG[stage] : (lcpSplit3 ? LCP_S3_CFG : null);
   // 현재 순위 — 해당 세부대회 공식 순위표가 있으면 우선, 없으면 GPR 전적으로 산출
   const leagueStd = officialStandings.standings[comp.key];
   const official = leagueStd ? leagueStd[sub] : null;
@@ -438,15 +447,23 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
           const g = w + l;
           return { ...t, w, l, games: g, winRate: g ? w / g : 0, gd: setDiff(gw, gl) };
         })
-        .sort((a, b) => b.winRate - a.winRate || b.w - a.w || (b.gd ?? -99) - (a.gd ?? -99) || b.rating - a.rating);
+        // LCP Split 3(미개막)는 전적 대신 시뮬 예측(플레이오프 확률) 순으로 정렬
+        .sort((a, b) => {
+          if (lcpSplit3) {
+            const pa = comp.split3?.find((s) => s.team === a.short) || {};
+            const pb = comp.split3?.find((s) => s.team === b.short) || {};
+            return (pb.advance ?? -1) - (pa.advance ?? -1) || (pb.champ ?? 0) - (pa.champ ?? 0) || b.rating - a.rating;
+          }
+          return b.winRate - a.winRate || b.w - a.w || (b.gd ?? -99) - (a.gd ?? -99) || b.rating - a.rating;
+        });
   const hasDiff = current.some((t) => t.gd != null);
   // Road to MSI(MSI 선발전): 정규 2R 기준 진출 6팀 명단만 표기, 시즌 예측 확률 컬럼은 생략
   const roadToMsi = comp.key === 'lck' && sub === 'Road to MSI';
   const lplSplit3 = comp.key === 'lpl' && sub === 'Split 3';
-  // 자체 대진표(토너먼트 포맷)가 있는 세부대회는 시즌 예측 확률 컬럼을 표기하지 않음 (LPL Split 3는 전용 확률을 표기하므로 예외)
+  // 자체 대진표(토너먼트 포맷)가 있는 세부대회는 시즌 예측 확률 컬럼을 표기하지 않음 (LPL/LCP Split 3는 전용 확률을 표기하므로 예외)
   const noPredict = roadToMsi || (!!official?.bracket && !lplSplit3);
-  // 팀 약칭 → 시뮬 예측 확률 (현재 순위표에 합쳐 표기) — LPL Split 3는 전용 시뮬 결과(comp.split3) 사용
-  const probByShort = lplSplit3
+  // 팀 약칭 → 시뮬 예측 확률 (현재 순위표에 합쳐 표기) — LPL·LCP Split 3는 전용 시뮬 결과(comp.split3) 사용
+  const probByShort = (lplSplit3 || lcpSplit3)
     ? Object.fromEntries((comp.split3 || []).map((s) => [s.team, s]))
     : Object.fromEntries((comp.standings || []).map((s) => [s.team, s]));
   // 브래킷 스테이지 여부 + 대진표에서 탈락(elim) 확정된 팀 집합 (참가팀 목록 회색 처리용)
@@ -570,12 +587,36 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     <div className="flex flex-col gap-8">
       {/* 메타 */}
       <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-        {(comp.stage || comp.format) && (
+        {(comp.stage || comp.format) && !lcpSplit3 && (
           <span className="text-white/50">형식: <strong className="text-white/80">{[comp.stage, comp.format].filter(Boolean).join(' · ')}</strong></span>
         )}
         {comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
         {comp.generatedAt && <span className="text-white/50">생성: <strong className="text-white/80">{fmtUpdated(comp.generatedAt)}</strong></span>}
       </div>
+
+      {/* LCP Split 3 진행 방식 안내 */}
+      {lcpSplit3 && (
+        <section className="rounded-2xl bg-white/5 border border-white/10 p-4 md:p-5 flex flex-col gap-3 text-sm">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">진행 방식</h3>
+            <span className="text-xs text-white/40">8팀 · 스위스 스테이지 → 4팀 플레이오프</span>
+          </div>
+          <div className="flex flex-col gap-2 text-white/70 leading-relaxed">
+            <p><strong className="text-white/90">① 스위스 스테이지</strong> (7/25~8/30) — Bo3·Bo5 혼합. <strong className="text-white/85">3승 시 플레이오프 진출, 3패 시 탈락.</strong> 1R은 Split 2 상위 4팀 vs 하위 4팀 무작위, 이후 같은 승패기록끼리 대진. 3승·3패가 걸린 경기는 Bo5.</p>
+            <p><strong className="text-white/90">② 플레이오프</strong> (8/29~30, 타이베이) — 4팀 더블 엘리미네이션 Bo5. 우승팀이 LCP 챔피언.</p>
+            <p><strong className="text-white/90">③ Worlds 진출 (3팀)</strong> — 플레이오프 결승 2팀 + 나머지 중 챔피언십 포인트 최다 1팀.</p>
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-white/40 pt-1 border-t border-white/10">
+            <span>챔피언십 포인트</span>
+            <span>3-0 <b className="text-white/60">50</b></span>
+            <span>3-1 <b className="text-white/60">40</b></span>
+            <span>3-2 <b className="text-white/60">30</b></span>
+            <span>2-3 <b className="text-white/60">15</b></span>
+            <span>1-3 <b className="text-white/60">3</b></span>
+            <span>0-3 <b className="text-white/60">0</b></span>
+          </div>
+        </section>
+      )}
 
       {/* 현재 순위 / 단계별 예측 */}
       {current.length > 0 && !hideStandings && (
@@ -811,7 +852,6 @@ const SUBTAB_DEFAULT = { lck: 'LCK', lpl: 'Split 3', lec: 'Summer', lcp: 'Split 
 // 아직 시작하지 않은 세부 대회 → "예정" 표시
 const SUB_UPCOMING = {
   lec: ['Summer'],
-  lcp: ['Split 3'],
   lcs: ['Summer'],
   cblol: ['Split 2'],
 };

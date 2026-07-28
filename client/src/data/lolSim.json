@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-28T05:37:42.030Z",
+  "updatedAt": "2026-07-21T11:05:20.898Z",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
   "iterationsDefault": 20000,
   "competitions": [
@@ -13,7 +13,7 @@
       "stage": "",
       "format": "정규시즌 1-2R (Bo3) → 그룹분할 → 정규시즌 3-4R (Bo3) → 플레이인 (Bo5) → 플레이오프 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-07-13T07:55:07.052Z",
+      "generatedAt": "2026-07-21T11:05:13.953Z",
       "teams": [
         {
           "name": "Gen.G Esports",
@@ -228,67 +228,67 @@
       "stage": "정규시즌 + 플레이오프 (시즌 전체)",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
       "iterations": 100000,
-      "generatedAt": "2026-07-27T02:00:06.672Z",
+      "generatedAt": "2026-07-21T11:05:13.953Z",
       "teams": [
         {
           "name": "Bilibili Gaming",
           "short": "BLG",
-          "rating": 1571
+          "rating": 1596
         },
         {
           "name": "Top Esports",
           "short": "TES",
-          "rating": 1403
+          "rating": 1404
         },
         {
           "name": "Beijing JDG Esports",
           "short": "JDG",
-          "rating": 1355
+          "rating": 1374
         },
         {
           "name": "Anyone's Legend",
           "short": "AL",
-          "rating": 1387
+          "rating": 1372
         },
         {
           "name": "Weibo Gaming",
           "short": "WBG",
-          "rating": 1337
+          "rating": 1344
         },
         {
           "name": "Ninjas in Pyjamas",
           "short": "NIP",
-          "rating": 1308
+          "rating": 1298
         },
         {
           "name": "Invictus Gaming",
           "short": "IG",
-          "rating": 1292
+          "rating": 1285
         },
         {
           "name": "Xi'an Team WE",
           "short": "WE",
-          "rating": 1295
+          "rating": 1282
         },
         {
           "name": "Suzhou LNG Esports",
           "short": "LNG",
-          "rating": 1246
+          "rating": 1256
         },
         {
           "name": "Edward Gaming",
           "short": "EDG",
-          "rating": 1179
+          "rating": 1192
         },
         {
           "name": "LGD Gaming",
           "short": "LGD",
-          "rating": 1172
+          "rating": 1173
         },
         {
           "name": "ThunderTalk Gaming",
           "short": "TT",
-          "rating": 1206
+          "rating": 1174
         },
         {
           "name": "Oh My God",
@@ -303,21 +303,21 @@
       ],
       "matches": [
         {
-          "a": "AL",
+          "a": "JDG",
           "b": "NIP",
           "pA": 70,
-          "winner": "AL"
+          "winner": "JDG"
         },
         {
-          "a": "JDG",
+          "a": "AL",
           "b": "WBG",
-          "pA": 55,
-          "winner": "JDG"
+          "pA": 58,
+          "winner": "AL"
         },
         {
           "a": "BLG",
           "b": "TES",
-          "pA": 87,
+          "pA": 90,
           "winner": "BLG"
         }
       ],
@@ -325,146 +325,146 @@
         {
           "team": "BLG",
           "name": "Bilibili Gaming",
-          "rating": 1571,
-          "avgRank": 1.20177,
-          "champ": 82.58,
-          "advance": 99.98,
-          "rank1": 84.78
+          "rating": 1596,
+          "avgRank": 1.14158,
+          "champ": 86.49,
+          "advance": 100,
+          "rank1": 88.67
         },
         {
           "team": "TES",
           "name": "Top Esports",
-          "rating": 1403,
-          "avgRank": 3.41185,
-          "champ": 7.58,
-          "advance": 92.9,
-          "rank1": 6.63
-        },
-        {
-          "team": "AL",
-          "name": "Anyone's Legend",
-          "rating": 1387,
-          "avgRank": 3.87886,
-          "champ": 5.31,
-          "advance": 89.14,
-          "rank1": 4.51
+          "rating": 1404,
+          "avgRank": 3.39957,
+          "champ": 6.16,
+          "advance": 93.37,
+          "rank1": 5.22
         },
         {
           "team": "JDG",
           "name": "Beijing JDG Esports",
-          "rating": 1355,
-          "avgRank": 4.84441,
-          "champ": 2.2,
-          "advance": 77.84,
-          "rank1": 2.05
+          "rating": 1374,
+          "avgRank": 4.24208,
+          "champ": 2.94,
+          "advance": 86.11,
+          "rank1": 2.43
+        },
+        {
+          "team": "AL",
+          "name": "Anyone's Legend",
+          "rating": 1372,
+          "avgRank": 4.30018,
+          "champ": 2.69,
+          "advance": 85.22,
+          "rank1": 2.23
         },
         {
           "team": "WBG",
           "name": "Weibo Gaming",
-          "rating": 1337,
-          "avgRank": 5.41251,
-          "champ": 1.29,
-          "advance": 69.31,
-          "rank1": 1.14
+          "rating": 1344,
+          "avgRank": 5.14508,
+          "champ": 1.18,
+          "advance": 73.8,
+          "rank1": 1.02
         },
         {
           "team": "NIP",
           "name": "Ninjas in Pyjamas",
-          "rating": 1308,
-          "avgRank": 6.44749,
-          "champ": 0.45,
-          "advance": 51.78,
-          "rank1": 0.41
-        },
-        {
-          "team": "WE",
-          "name": "Xi'an Team WE",
-          "rating": 1295,
-          "avgRank": 6.9076,
-          "champ": 0.29,
-          "advance": 43.59,
-          "rank1": 0.25
+          "rating": 1298,
+          "avgRank": 6.71581,
+          "champ": 0.23,
+          "advance": 47.37,
+          "rank1": 0.18
         },
         {
           "team": "IG",
           "name": "Invictus Gaming",
-          "rating": 1292,
-          "avgRank": 7.02127,
-          "champ": 0.25,
-          "advance": 42.13,
-          "rank1": 0.21
+          "rating": 1285,
+          "avgRank": 7.19424,
+          "champ": 0.16,
+          "advance": 39.61,
+          "rank1": 0.12
+        },
+        {
+          "team": "WE",
+          "name": "Xi'an Team WE",
+          "rating": 1282,
+          "avgRank": 7.30336,
+          "champ": 0.12,
+          "advance": 37.61,
+          "rank1": 0.09
         },
         {
           "team": "LNG",
           "name": "Suzhou LNG Esports",
-          "rating": 1246,
-          "avgRank": 8.73318,
-          "champ": 0.04,
-          "advance": 18.77,
-          "rank1": 0.02
-        },
-        {
-          "team": "TT",
-          "name": "ThunderTalk Gaming",
-          "rating": 1206,
-          "avgRank": 10.15918,
-          "champ": 0,
-          "advance": 7.59,
-          "rank1": 0.01
+          "rating": 1256,
+          "avgRank": 8.25366,
+          "champ": 0.03,
+          "advance": 24.3,
+          "rank1": 0.03
         },
         {
           "team": "EDG",
           "name": "Edward Gaming",
-          "rating": 1179,
-          "avgRank": 11.02686,
+          "rating": 1192,
+          "avgRank": 10.51332,
           "champ": 0,
-          "advance": 3.22,
+          "advance": 5.18,
+          "rank1": 0
+        },
+        {
+          "team": "TT",
+          "name": "ThunderTalk Gaming",
+          "rating": 1174,
+          "avgRank": 11.09309,
+          "champ": 0,
+          "advance": 3.28,
           "rank1": 0
         },
         {
           "team": "LGD",
           "name": "LGD Gaming",
-          "rating": 1172,
-          "avgRank": 11.24237,
+          "rating": 1173,
+          "avgRank": 11.12257,
           "champ": 0,
-          "advance": 2.76,
+          "advance": 3.04,
           "rank1": 0
         },
         {
           "team": "OMG",
           "name": "Oh My God",
           "rating": 1133,
-          "avgRank": 12.25282,
+          "avgRank": 12.18647,
           "champ": 0,
-          "advance": 0.58,
+          "advance": 0.68,
           "rank1": 0
         },
         {
           "team": "UP",
           "name": "Ultra Prime",
           "rating": 1124,
-          "avgRank": 12.45983,
+          "avgRank": 12.38899,
           "champ": 0,
-          "advance": 0.4,
+          "advance": 0.44,
           "rank1": 0
         }
       ],
       "situations": [
         {
           "label": "BLG 정규시즌 1위",
-          "prob": 84.78
+          "prob": 88.67
         },
         {
           "label": "BLG 우승",
-          "prob": 82.58
+          "prob": 86.49
         },
         {
           "label": "TES 우승",
-          "prob": 7.58
+          "prob": 6.16
         },
         {
           "label": "UP 플레이오프 진출",
-          "prob": 0.4
+          "prob": 0.44
         }
       ],
       "finalResult": null,
@@ -472,110 +472,110 @@
         {
           "team": "BLG",
           "name": "Bilibili Gaming",
-          "rating": 1571,
+          "rating": 1596,
           "piPlus": 100,
           "advance": 100,
-          "champ": 86.61,
-          "worlds": 99.47
+          "champ": 90.26,
+          "worlds": 99.72
         },
         {
           "team": "TES",
           "name": "Top Esports",
-          "rating": 1403,
+          "rating": 1404,
           "piPlus": 100,
-          "advance": 99.96,
-          "champ": 6.81,
-          "worlds": 81.23
+          "advance": 99.97,
+          "champ": 5.42,
+          "worlds": 82.49
         },
         {
           "team": "WE",
           "name": "Xi'an Team WE",
-          "rating": 1295,
+          "rating": 1282,
           "piPlus": 100,
-          "advance": 95.73,
-          "champ": 0.19,
-          "worlds": 29.42
+          "advance": 94.61,
+          "champ": 0.08,
+          "worlds": 24.89
         },
         {
           "team": "AL",
           "name": "Anyone's Legend",
-          "rating": 1387,
+          "rating": 1372,
           "piPlus": 100,
-          "advance": 99.91,
-          "champ": 4.37,
-          "worlds": 73.6
+          "advance": 99.84,
+          "champ": 1.55,
+          "worlds": 61.8
         },
         {
           "team": "JDG",
           "name": "Beijing JDG Esports",
-          "rating": 1355,
+          "rating": 1374,
           "piPlus": 100,
-          "advance": 99.56,
-          "champ": 1.37,
-          "worlds": 54.89
+          "advance": 99.84,
+          "champ": 2.25,
+          "worlds": 69.19
         },
         {
           "team": "LGD",
           "name": "LGD Gaming",
-          "rating": 1172,
+          "rating": 1173,
           "piPlus": 100,
-          "advance": 41.46,
+          "advance": 45.41,
           "champ": 0,
-          "worlds": 0.88
+          "worlds": 0.95
         },
         {
           "team": "TT",
           "name": "ThunderTalk Gaming",
-          "rating": 1206,
+          "rating": 1174,
           "piPlus": 100,
-          "advance": 62.34,
+          "advance": 46.02,
           "champ": 0,
-          "worlds": 4
+          "worlds": 1.43
         },
         {
           "team": "EDG",
           "name": "Edward Gaming",
-          "rating": 1179,
+          "rating": 1192,
           "piPlus": 100,
-          "advance": 46.26,
+          "advance": 57.94,
           "champ": 0,
-          "worlds": 1.54
+          "worlds": 2.86
         },
         {
           "team": "NIP",
           "name": "Ninjas in Pyjamas",
-          "rating": 1308,
-          "piPlus": 56.37,
-          "advance": 43.94,
-          "champ": 0.14,
-          "worlds": 15.23
+          "rating": 1298,
+          "piPlus": 51.13,
+          "advance": 39.42,
+          "champ": 0.04,
+          "worlds": 12.5
         },
         {
           "team": "WBG",
           "name": "Weibo Gaming",
-          "rating": 1337,
-          "piPlus": 71.47,
-          "advance": 59.39,
-          "champ": 0.44,
-          "worlds": 27.12
+          "rating": 1344,
+          "piPlus": 74.73,
+          "advance": 63.68,
+          "champ": 0.37,
+          "worlds": 31.49
         },
         {
           "team": "IG",
           "name": "Invictus Gaming",
-          "rating": 1292,
-          "piPlus": 46.37,
-          "advance": 34.85,
-          "champ": 0.06,
-          "worlds": 10.01
+          "rating": 1285,
+          "piPlus": 43.72,
+          "advance": 32.63,
+          "champ": 0.03,
+          "worlds": 8.93
         },
         {
           "team": "LNG",
           "name": "Suzhou LNG Esports",
-          "rating": 1246,
-          "piPlus": 25.79,
-          "advance": 16.61,
-          "champ": 0,
-          "worlds": 2.62
+          "rating": 1256,
+          "piPlus": 30.42,
+          "advance": 20.66,
+          "champ": 0.01,
+          "worlds": 3.76
         }
       ]
     },
@@ -589,27 +589,27 @@
       "stage": "정규시즌 + 플레이오프 (시즌 전체)",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
       "iterations": 100000,
-      "generatedAt": "2026-07-27T02:00:06.672Z",
+      "generatedAt": "2026-07-21T11:05:13.953Z",
       "teams": [
         {
           "name": "G2 Esports",
           "short": "G2",
-          "rating": 1470
+          "rating": 1477
         },
         {
           "name": "Karmine Corp",
           "short": "KC",
-          "rating": 1395
+          "rating": 1371
         },
         {
           "name": "Movistar KOI",
           "short": "MKOI",
-          "rating": 1303
+          "rating": 1318
         },
         {
           "name": "Team Vitality",
           "short": "VIT",
-          "rating": 1238
+          "rating": 1239
         },
         {
           "name": "Fnatic",
@@ -646,7 +646,7 @@
         {
           "a": "MKOI",
           "b": "GX",
-          "pA": 73,
+          "pA": 76,
           "winner": "MKOI"
         },
         {
@@ -658,7 +658,7 @@
         {
           "a": "G2",
           "b": "KC",
-          "pA": 69,
+          "pA": 76,
           "winner": "G2"
         }
       ],
@@ -666,110 +666,110 @@
         {
           "team": "G2",
           "name": "G2 Esports",
-          "rating": 1470,
-          "avgRank": 1.46682,
-          "champ": 67.15,
+          "rating": 1477,
+          "avgRank": 1.39339,
+          "champ": 72.97,
           "advance": 99.96,
-          "rank1": 65.46
+          "rank1": 71.17
         },
         {
           "team": "KC",
           "name": "Karmine Corp",
-          "rating": 1395,
-          "avgRank": 2.17756,
-          "champ": 27.12,
-          "advance": 99.41,
-          "rank1": 26.37
+          "rating": 1371,
+          "avgRank": 2.47741,
+          "champ": 18.91,
+          "advance": 98.7,
+          "rank1": 18.58
         },
         {
           "team": "MKOI",
           "name": "Movistar KOI",
-          "rating": 1303,
-          "avgRank": 3.74382,
-          "champ": 4.16,
-          "advance": 92.51,
-          "rank1": 5.81
+          "rating": 1318,
+          "avgRank": 3.45105,
+          "champ": 6.5,
+          "advance": 94.59,
+          "rank1": 7.85
         },
         {
           "team": "VIT",
           "name": "Team Vitality",
-          "rating": 1238,
-          "avgRank": 5.26769,
-          "champ": 0.75,
-          "advance": 73.54,
-          "rank1": 1.08
+          "rating": 1239,
+          "avgRank": 5.25497,
+          "champ": 0.8,
+          "advance": 73.63,
+          "rank1": 1.09
         },
         {
           "team": "FNC",
           "name": "Fnatic",
           "rating": 1219,
-          "avgRank": 5.74951,
+          "avgRank": 5.77136,
           "champ": 0.39,
-          "advance": 64.83,
-          "rank1": 0.57
+          "advance": 64.28,
+          "rank1": 0.58
         },
         {
           "team": "GX",
           "name": "GIANTX",
           "rating": 1212,
-          "avgRank": 5.93853,
+          "avgRank": 5.94025,
           "champ": 0.3,
-          "advance": 60.66,
-          "rank1": 0.46
+          "advance": 60.52,
+          "rank1": 0.48
         },
         {
           "team": "NAVI",
           "name": "Natus Vincere",
           "rating": 1175,
-          "avgRank": 6.89348,
+          "avgRank": 6.92251,
           "champ": 0.07,
-          "advance": 41.16,
+          "advance": 40.81,
           "rank1": 0.14
         },
         {
           "team": "SHFT",
           "name": "Shifters",
           "rating": 1165,
-          "avgRank": 7.12092,
-          "champ": 0.05,
-          "advance": 36.32,
+          "avgRank": 7.14443,
+          "champ": 0.04,
+          "advance": 36.09,
           "rank1": 0.09
         },
         {
           "team": "SK",
           "name": "SK Gaming",
           "rating": 1118,
-          "avgRank": 8.19694,
-          "champ": 0.01,
-          "advance": 17.6,
+          "avgRank": 8.20869,
+          "champ": 0,
+          "advance": 17.35,
           "rank1": 0.01
         },
         {
           "team": "TH",
           "name": "Team Heretics",
           "rating": 1107,
-          "avgRank": 8.44473,
+          "avgRank": 8.43594,
           "champ": 0,
-          "advance": 14.01,
+          "advance": 14.08,
           "rank1": 0.01
         }
       ],
       "situations": [
         {
           "label": "G2 정규시즌 1위",
-          "prob": 65.46
+          "prob": 71.17
         },
         {
           "label": "G2 우승",
-          "prob": 67.15
+          "prob": 72.97
         },
         {
           "label": "KC 우승",
-          "prob": 27.12
+          "prob": 18.91
         },
         {
           "label": "TH 플레이오프 진출",
-          "prob": 14.01
+          "prob": 14.08
         }
       ],
       "finalResult": null
@@ -784,66 +784,66 @@
       "stage": "정규시즌 + 플레이오프 (시즌 전체)",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
       "iterations": 100000,
-      "generatedAt": "2026-07-28T01:42:45.552Z",
+      "generatedAt": "2026-07-21T11:05:13.953Z",
       "teams": [
         {
           "name": "FlyQuest",
           "short": "FLY",
-          "rating": 1356
+          "rating": 1360
         },
         {
           "name": "Cloud9 Kia",
           "short": "C9",
-          "rating": 1312
+          "rating": 1317
         },
         {
           "name": "Team Liquid Alienware",
           "short": "TLAW",
-          "rating": 1338
+          "rating": 1333
         },
         {
           "name": "LYON",
           "short": "LYON",
-          "rating": 1456
+          "rating": 1452
         },
         {
           "name": "Sentinels",
           "short": "SEN",
-          "rating": 1207
+          "rating": 1204
         },
         {
           "name": "Shopify Rebellion",
           "short": "SR",
-          "rating": 1186
+          "rating": 1180
         },
         {
           "name": "Disguised",
           "short": "DSG",
-          "rating": 1171
+          "rating": 1176
         },
         {
           "name": "Dignitas",
           "short": "DIG",
-          "rating": 1130
+          "rating": 1132
         }
       ],
       "matches": [
         {
           "a": "TLAW",
           "b": "SR",
-          "pA": 84,
+          "pA": 85,
           "winner": "TLAW"
         },
         {
           "a": "C9",
           "b": "SEN",
-          "pA": 76,
+          "pA": 78,
           "winner": "C9"
         },
         {
           "a": "LYON",
           "b": "FLY",
-          "pA": 75,
+          "pA": 73,
           "winner": "LYON"
         }
       ],
@@ -851,92 +851,92 @@
         {
           "team": "LYON",
           "name": "LYON",
-          "rating": 1456,
-          "avgRank": 1.63929,
-          "champ": 64.55,
-          "advance": 99.91,
-          "rank1": 61.02
+          "rating": 1452,
+          "avgRank": 1.6721,
+          "champ": 63.1,
+          "advance": 99.9,
+          "rank1": 59.39
         },
         {
           "team": "FLY",
           "name": "FlyQuest",
-          "rating": 1356,
-          "avgRank": 2.8802,
-          "champ": 16.19,
-          "advance": 98.15,
-          "rank1": 17.56
+          "rating": 1360,
+          "avgRank": 2.81724,
+          "champ": 17.83,
+          "advance": 98.33,
+          "rank1": 18.92
         },
         {
           "team": "TLAW",
           "name": "Team Liquid Alienware",
-          "rating": 1338,
-          "avgRank": 3.21472,
-          "champ": 11.85,
-          "advance": 97.07,
-          "rank1": 12.46
+          "rating": 1333,
+          "avgRank": 3.29747,
+          "champ": 10.66,
+          "advance": 96.64,
+          "rank1": 11.78
         },
         {
           "team": "C9",
           "name": "Cloud9 Kia",
-          "rating": 1312,
-          "avgRank": 3.62557,
-          "champ": 6.87,
-          "advance": 94.95,
-          "rank1": 7.65
+          "rating": 1317,
+          "avgRank": 3.52663,
+          "champ": 7.89,
+          "advance": 95.44,
+          "rank1": 8.64
         },
         {
           "team": "SEN",
           "name": "Sentinels",
-          "rating": 1207,
-          "avgRank": 5.60413,
+          "rating": 1204,
+          "avgRank": 5.66746,
           "champ": 0.29,
-          "advance": 68.02,
-          "rank1": 0.64
+          "advance": 66.65,
+          "rank1": 0.63
         },
         {
           "team": "SR",
           "name": "Shopify Rebellion",
-          "rating": 1186,
-          "avgRank": 5.97827,
-          "champ": 0.14,
-          "advance": 58.5,
-          "rank1": 0.36
+          "rating": 1180,
+          "avgRank": 6.07759,
+          "champ": 0.12,
+          "advance": 55.83,
+          "rank1": 0.29
         },
         {
           "team": "DSG",
           "name": "Disguised",
-          "rating": 1171,
-          "avgRank": 6.2449,
+          "rating": 1176,
+          "avgRank": 6.14834,
           "champ": 0.09,
-          "advance": 50,
-          "rank1": 0.25
+          "advance": 53.17,
+          "rank1": 0.29
         },
         {
           "team": "DIG",
           "name": "Dignitas",
-          "rating": 1130,
-          "avgRank": 6.81292,
+          "rating": 1132,
+          "avgRank": 6.79317,
           "champ": 0.02,
-          "advance": 33.4,
+          "advance": 34.04,
           "rank1": 0.07
         }
       ],
       "situations": [
         {
           "label": "LYON 정규시즌 1위",
-          "prob": 61.02
+          "prob": 59.39
         },
         {
           "label": "LYON 우승",
-          "prob": 64.55
+          "prob": 63.1
         },
         {
           "label": "FLY 우승",
-          "prob": 16.19
+          "prob": 17.83
         },
         {
           "label": "DIG 플레이오프 진출",
-          "prob": 33.4
+          "prob": 34.04
         }
       ],
       "finalResult": null
@@ -951,66 +951,66 @@
       "stage": "정규시즌 + 플레이오프 (시즌 전체)",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
       "iterations": 100000,
-      "generatedAt": "2026-07-27T02:00:06.672Z",
+      "generatedAt": "2026-07-21T11:05:13.953Z",
       "teams": [
         {
           "name": "CTBC Flying Oyster",
           "short": "CFO",
-          "rating": 1331
+          "rating": 1326
         },
         {
           "name": "Team Secret Whales",
           "short": "TSW",
-          "rating": 1335
+          "rating": 1332
         },
         {
           "name": "Relove Deep Cross Gaming",
           "short": "DCG",
-          "rating": 1262
+          "rating": 1267
         },
         {
           "name": "GAM Esports",
           "short": "GAM",
-          "rating": 1279
+          "rating": 1276
         },
         {
           "name": "MVK Esports",
           "short": "MVK",
-          "rating": 1246
+          "rating": 1243
         },
         {
           "name": "Fukuoka SoftBank HAWKS",
           "short": "SHG",
-          "rating": 1185
+          "rating": 1188
         },
         {
           "name": "Ground Zero Gaming",
           "short": "GZ",
-          "rating": 1132
+          "rating": 1135
         },
         {
           "name": "DetonatioN FocusMe",
           "short": "DFM",
-          "rating": 1094
+          "rating": 1097
         }
       ],
       "matches": [
         {
           "a": "GAM",
           "b": "SHG",
-          "pA": 74,
+          "pA": 72,
           "winner": "GAM"
         },
         {
           "a": "DCG",
           "b": "MVK",
-          "pA": 54,
+          "pA": 56,
           "winner": "DCG"
         },
         {
           "a": "TSW",
           "b": "CFO",
-          "pA": 51,
+          "pA": 52,
           "winner": "TSW"
         }
       ],
@@ -1018,95 +1018,161 @@
         {
           "team": "TSW",
           "name": "Team Secret Whales",
-          "rating": 1335,
-          "avgRank": 2.49679,
-          "champ": 35.92,
-          "advance": 98.41,
-          "rank1": 32.91
+          "rating": 1332,
+          "avgRank": 2.51897,
+          "champ": 35.76,
+          "advance": 98.3,
+          "rank1": 32.53
         },
         {
           "team": "CFO",
           "name": "CTBC Flying Oyster",
-          "rating": 1331,
-          "avgRank": 2.57491,
-          "champ": 33.81,
-          "advance": 98.16,
-          "rank1": 32.34
+          "rating": 1326,
+          "avgRank": 2.63613,
+          "champ": 32.49,
+          "advance": 97.81,
+          "rank1": 31.32
         },
         {
           "team": "GAM",
           "name": "GAM Esports",
-          "rating": 1279,
-          "avgRank": 3.58256,
-          "champ": 13.28,
-          "advance": 93.41,
-          "rank1": 14.22
+          "rating": 1276,
+          "avgRank": 3.62736,
+          "champ": 13.2,
+          "advance": 93.04,
+          "rank1": 14.03
         },
         {
           "team": "DCG",
           "name": "Relove Deep Cross Gaming",
-          "rating": 1262,
-          "avgRank": 3.94311,
-          "champ": 9.24,
-          "advance": 90.77,
-          "rank1": 11.05
+          "rating": 1267,
+          "avgRank": 3.82853,
+          "champ": 10.91,
+          "advance": 91.54,
+          "rank1": 12.5
         },
         {
           "team": "MVK",
           "name": "MVK Esports",
-          "rating": 1246,
-          "avgRank": 4.29733,
-          "champ": 6.42,
-          "advance": 87.53,
-          "rank1": 7.22
+          "rating": 1243,
+          "avgRank": 4.34954,
+          "champ": 6.2,
+          "advance": 86.55,
+          "rank1": 7.15
         },
         {
           "team": "SHG",
           "name": "Fukuoka SoftBank HAWKS",
-          "rating": 1185,
-          "avgRank": 5.56131,
-          "champ": 1.16,
-          "advance": 66.57,
-          "rank1": 1.79
+          "rating": 1188,
+          "avgRank": 5.5357,
+          "champ": 1.23,
+          "advance": 66.9,
+          "rank1": 1.89
         },
         {
           "team": "GZ",
           "name": "Ground Zero Gaming",
-          "rating": 1132,
-          "avgRank": 6.52212,
-          "champ": 0.14,
-          "advance": 39.42,
-          "rank1": 0.35
+          "rating": 1135,
+          "avgRank": 6.49224,
+          "champ": 0.17,
+          "advance": 39.9,
+          "rank1": 0.46
         },
         {
           "team": "DFM",
           "name": "DetonatioN FocusMe",
-          "rating": 1094,
-          "avgRank": 7.02187,
-          "champ": 0.03,
-          "advance": 25.75,
-          "rank1": 0.12
+          "rating": 1097,
+          "avgRank": 7.01153,
+          "champ": 0.04,
+          "advance": 25.97,
+          "rank1": 0.13
         }
       ],
       "situations": [
         {
           "label": "TSW 정규시즌 1위",
-          "prob": 32.91
+          "prob": 32.53
         },
         {
           "label": "TSW 우승",
-          "prob": 35.92
+          "prob": 35.76
         },
         {
           "label": "CFO 우승",
-          "prob": 33.81
+          "prob": 32.49
         },
         {
           "label": "DFM 플레이오프 진출",
-          "prob": 25.75
+          "prob": 25.97
         }
       ],
-      "finalResult": null
+      "finalResult": null,
+      "split3": [
+        {
+          "team": "TSW",
+          "name": "Team Secret Whales",
+          "rating": 1332,
+          "advance": 88.31,
+          "worlds": 81.16,
+          "champ": 38.06
+        },
+        {
+          "team": "CFO",
+          "name": "CTBC Flying Oyster",
+          "rating": 1326,
+          "advance": 87.09,
+          "worlds": 78.9,
+          "champ": 34.42
+        },
+        {
+          "team": "GAM",
+          "name": "GAM Esports",
+          "rating": 1276,
+          "advance": 69.75,
+          "worlds": 52.98,
+          "champ": 12.07
+        },
+        {
+          "team": "DCG",
+          "name": "Relove Deep Cross Gaming",
+          "rating": 1267,
+          "advance": 65.94,
+          "worlds": 46,
+          "champ": 9.85
+        },
+        {
+          "team": "MVK",
+          "name": "MVK Esports",
+          "rating": 1243,
+          "advance": 50.38,
+          "worlds": 27.47,
+          "champ": 4.75
+        },
+        {
+          "team": "SHG",
+          "name": "Fukuoka SoftBank HAWKS",
+          "rating": 1188,
+          "advance": 24.67,
+          "worlds": 9.54,
+          "champ": 0.77
+        },
+        {
+          "team": "GZ",
+          "name": "Ground Zero Gaming",
+          "rating": 1135,
+          "advance": 9.54,
+          "worlds": 2.8,
+          "champ": 0.07
+        },
+        {
+          "team": "DFM",
+          "name": "DetonatioN FocusMe",
+          "rating": 1097,
+          "advance": 4.31,
+          "worlds": 1.14,
+          "champ": 0.01
+        }
+      ]
     },
     {
       "key": "cblol",
@@ -1118,66 +1184,66 @@
       "stage": "정규시즌 + 플레이오프 (시즌 전체)",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
       "iterations": 100000,
-      "generatedAt": "2026-07-27T02:00:06.672Z",
+      "generatedAt": "2026-07-21T11:05:13.953Z",
       "teams": [
         {
           "name": "FURIA",
           "short": "FUR",
-          "rating": 1181
+          "rating": 1188
         },
         {
           "name": "RED Canids Kalunga",
           "short": "RED",
-          "rating": 1177
+          "rating": 1180
         },
         {
           "name": "Vivo Keyd Stars",
           "short": "VKS",
-          "rating": 1169
+          "rating": 1166
         },
         {
           "name": "LOUD",
           "short": "LOUD",
-          "rating": 1157
+          "rating": 1153
         },
         {
           "name": "LOS",
           "short": "LOS",
-          "rating": 1143
+          "rating": 1136
         },
         {
           "name": "paiN Gaming",
           "short": "PAIN",
-          "rating": 1130
+          "rating": 1133
         },
         {
           "name": "Fluxo",
           "short": "FX",
-          "rating": 1085
+          "rating": 1078
         },
         {
           "name": "Leviatán",
           "short": "LEV",
-          "rating": 1063
+          "rating": 1069
         }
       ],
       "matches": [
         {
           "a": "VKS",
           "b": "PAIN",
-          "pA": 60,
+          "pA": 59,
           "winner": "VKS"
         },
         {
           "a": "LOUD",
           "b": "LOS",
-          "pA": 54,
+          "pA": 55,
           "winner": "LOUD"
         },
         {
           "a": "FUR",
           "b": "RED",
-          "pA": 51,
+          "pA": 52,
           "winner": "FUR"
         }
       ],
@@ -1185,92 +1251,92 @@
         {
           "team": "FUR",
           "name": "FURIA",
-          "rating": 1181,
-          "avgRank": 3.43274,
-          "champ": 23.63,
-          "advance": 90,
-          "rank1": 22.26
+          "rating": 1188,
+          "avgRank": 3.25792,
+          "champ": 26.76,
+          "advance": 91.24,
+          "rank1": 25.09
         },
         {
           "team": "RED",
           "name": "RED Canids Kalunga",
-          "rating": 1177,
-          "avgRank": 3.51859,
-          "champ": 21.94,
-          "advance": 89.44,
-          "rank1": 19.94
+          "rating": 1180,
+          "avgRank": 3.42768,
+          "champ": 23.27,
+          "advance": 90.26,
+          "rank1": 20.74
         },
         {
           "team": "VKS",
           "name": "Vivo Keyd Stars",
-          "rating": 1169,
-          "avgRank": 3.72752,
-          "champ": 18.61,
-          "advance": 87.17,
-          "rank1": 18.92
+          "rating": 1166,
+          "avgRank": 3.7999,
+          "champ": 17.3,
+          "advance": 86.53,
+          "rank1": 17.92
         },
         {
           "team": "LOUD",
           "name": "LOUD",
-          "rating": 1157,
-          "avgRank": 4.03179,
-          "champ": 14.47,
-          "advance": 83.78,
-          "rank1": 14.85
+          "rating": 1153,
+          "avgRank": 4.13376,
+          "champ": 13,
+          "advance": 82.72,
+          "rank1": 13.56
         },
         {
           "team": "LOS",
           "name": "LOS",
-          "rating": 1143,
-          "avgRank": 4.41028,
-          "champ": 10.51,
-          "advance": 79.64,
-          "rank1": 11.11
+          "rating": 1136,
+          "avgRank": 4.58195,
+          "champ": 8.7,
+          "advance": 77.51,
+          "rank1": 9.47
         },
         {
           "team": "PAIN",
           "name": "paiN Gaming",
-          "rating": 1130,
-          "avgRank": 4.75269,
-          "champ": 7.71,
-          "advance": 74.23,
-          "rank1": 8.29
+          "rating": 1133,
+          "avgRank": 4.66942,
+          "champ": 8.08,
+          "advance": 75.55,
+          "rank1": 8.85
         },
         {
           "team": "FX",
           "name": "Fluxo",
-          "rating": 1085,
-          "avgRank": 5.84529,
-          "champ": 2.11,
-          "advance": 52.77,
-          "rank1": 2.91
+          "rating": 1078,
+          "avgRank": 5.98629,
+          "champ": 1.71,
+          "advance": 49.8,
+          "rank1": 2.46
         },
         {
           "team": "LEV",
           "name": "Leviatán",
-          "rating": 1063,
-          "avgRank": 6.2811,
-          "champ": 1.02,
-          "advance": 42.98,
-          "rank1": 1.72
+          "rating": 1069,
+          "avgRank": 6.14308,
+          "champ": 1.18,
+          "advance": 46.39,
+          "rank1": 1.91
         }
       ],
       "situations": [
         {
           "label": "FUR 정규시즌 1위",
-          "prob": 22.26
+          "prob": 25.09
         },
         {
           "label": "FUR 우승",
-          "prob": 23.63
+          "prob": 26.76
         },
         {
           "label": "RED 우승",
-          "prob": 21.94
+          "prob": 23.27
         },
         {
           "label": "LEV 플레이오프 진출",
-          "prob": 42.98
+          "prob": 46.39
         }
       ],
       "finalResult": null
@@ -1347,12 +1413,12 @@
       "stage": "플레이-인 스테이지 (Bo5 더블 엘리미네이션) → 브래킷 스테이지 (Bo5 더블 엘리미네이션)",
       "format": "",
       "iterations": 100000,
-      "generatedAt": "2026-07-28T01:42:45.552Z",
+      "generatedAt": "2026-07-21T11:05:13.953Z",
       "teams": [
         {
           "name": "G2 Esports",
           "short": "G2",
-          "rating": 1470
+          "rating": 1477
         },
         {
           "name": "Hanwha Life Esports",
@@ -1362,37 +1428,37 @@
         {
           "name": "Team Secret Whales",
           "short": "TSW",
-          "rating": 1335
+          "rating": 1332
         },
         {
           "name": "FURIA",
           "short": "FUR",
-          "rating": 1181
+          "rating": 1188
         },
         {
           "name": "Top Esports",
           "short": "TES",
-          "rating": 1403
+          "rating": 1404
         },
         {
           "name": "Bilibili Gaming",
           "short": "BLG",
-          "rating": 1571
+          "rating": 1596
         },
         {
           "name": "LYON",
           "short": "LYON",
-          "rating": 1456
+          "rating": 1452
         },
         {
           "name": "Karmine Corp",
           "short": "KC",
-          "rating": 1395
+          "rating": 1371
         },
         {
           "name": "Relove Deep Cross Gaming",
           "short": "DCG",
-          "rating": 1262
+          "rating": 1267
         },
         {
           "name": "T1",
@@ -1402,7 +1468,7 @@
         {
           "name": "Team Liquid Alienware",
           "short": "TLAW",
-          "rating": 1338
+          "rating": 1333
         }
       ],
       "matches": [],
@@ -1416,50 +1482,50 @@
         {
           "team": "G2",
           "name": "G2 Esports",
-          "rating": 1470,
+          "rating": 1477,
           "champ": 0
         },
         {
           "team": "TSW",
           "name": "Team Secret Whales",
-          "rating": 1335,
+          "rating": 1332,
           "champ": 0
         },
         {
           "team": "FUR",
           "name": "FURIA",
-          "rating": 1181,
+          "rating": 1188,
           "champ": 0
         },
         {
           "team": "TES",
           "name": "Top Esports",
-          "rating": 1403,
+          "rating": 1404,
           "champ": 0
         },
         {
           "team": "BLG",
           "name": "Bilibili Gaming",
-          "rating": 1571,
+          "rating": 1596,
           "champ": 0
         },
         {
           "team": "LYON",
           "name": "LYON",
-          "rating": 1456,
+          "rating": 1452,
           "champ": 0
         },
         {
           "team": "KC",
           "name": "Karmine Corp",
-          "rating": 1395,
+          "rating": 1371,
           "champ": 0,
           "advance": 0
         },
         {
           "team": "DCG",
           "name": "Relove Deep Cross Gaming",
-          "rating": 1262,
+          "rating": 1267,
           "champ": 0,
           "advance": 0
         },
@@ -1473,7 +1539,7 @@
         {
           "team": "TLAW",
           "name": "Team Liquid Alienware",
-          "rating": 1338,
+          "rating": 1333,
           "champ": 0,
           "advance": 0
         }

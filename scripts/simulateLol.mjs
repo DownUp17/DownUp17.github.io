@@ -533,6 +533,87 @@ function simulateLplSplit3(ascend, nirvana) {
   }));
 }
 
+// ---- 2026 LCP Split 3 전용 시뮬레이션 ----
+// 스위스 스테이지(8팀, Bo3/Bo5): 3승 시 플레이오프 진출·3패 시 탈락, 챔피언십 포인트(CP) 부여.
+//   1R: 상위4 vs 하위4 무작위. 이후 라운드: 같은 승패기록끼리 대진(재대결 회피), 홀수조는 페어다운.
+//   3승/3패가 걸린 경기는 Bo5, 그 외 Bo3.
+// 플레이오프(4팀 더블 엘리미네이션 Bo5): 우승팀 + 결승 진출 2팀 Worlds. 3번째 Worlds는 잔여팀 중 CP 최다.
+const CP_TABLE = { '3-0': 50, '3-1': 40, '3-2': 30, '2-3': 15, '1-3': 3, '0-3': 0 };
+
+function simulateLcpSplit3(seeded) {
+  const stat = {};
+  seeded.forEach((t) => { stat[t.short] = { playoff: 0, worlds: 0, champ: 0 }; });
+  const top4 = seeded.slice(0, 4), bot4 = seeded.slice(4, 8);
+  const shuffle = (arr) => {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  };
+
+  for (let it = 0; it < ITER; it++) {
+    const rec = new Map(seeded.map((t) => [t, { w: 0, l: 0, opp: new Set() }]));
+    const play = (x, y, need) => {
+      const w = simSeries(x, y, need), l = w === x ? y : x;
+      rec.get(w).w++; rec.get(l).l++;
+      rec.get(x).opp.add(y); rec.get(y).opp.add(x);
+    };
+    // 1R: 상위4 vs 하위4 무작위
+    const drawn = shuffle(bot4);
+    shuffle(top4).forEach((t, i) => play(t, drawn[i], 2));
+    // 이후 라운드: 전원 3승/3패 확정될 때까지
+    for (let guard = 0; guard < 12; guard++) {
+      const active = seeded.filter((t) => rec.get(t).w < 3 && rec.get(t).l < 3);
+      if (!active.length) break;
+      const byRec = {};
+      active.forEach((t) => { const r = rec.get(t); const k = r.w + '-' + r.l; (byRec[k] = byRec[k] || []).push(t); });
+      const keys = Object.keys(byRec).sort((a, c) => {
+        const [aw, al] = a.split('-').map(Number), [cw, cl] = c.split('-').map(Number);
+        return cw - aw || al - cl;
+      });
+      let carry = null;
+      for (const k of keys) {
+        let pool = shuffle(byRec[k]);
+        if (carry) { pool.unshift(carry); carry = null; }
+        if (pool.length % 2 === 1) carry = pool.pop(); // 홀수조 → 최하위 페어다운
+        const [pw, pl] = k.split('-').map(Number);
+        const need = (pw === 2 || pl === 2) ? 3 : 2; // 3승/3패 걸린 경기 Bo5
+        while (pool.length >= 2) {
+          const x = pool.shift();
+          let idx = pool.findIndex((y) => !rec.get(x).opp.has(y)); // 재대결 회피
+          if (idx < 0) idx = 0;
+          const y = pool.splice(idx, 1)[0];
+          play(x, y, need);
+        }
+      }
+    }
+    const cpOf = (t) => { const r = rec.get(t); return CP_TABLE[r.w + '-' + r.l] ?? 0; };
+    // 플레이오프 진출 4팀 (승수 → CP → 레이팅 순)
+    const playoff = [...seeded].sort((a, c) => rec.get(c).w - rec.get(a).w || cpOf(c) - cpOf(a) || c.score - a.score).slice(0, 4);
+    playoff.forEach((t) => stat[t.short].playoff++);
+    // 플레이오프: 4팀 더블 엘리미네이션 Bo5
+    const [s1, s2, s3, s4] = playoff;
+    const ub1 = simSeries(s1, s4, 3), ub1l = ub1 === s1 ? s4 : s1;
+    const ub2 = simSeries(s2, s3, 3), ub2l = ub2 === s2 ? s3 : s2;
+    const ubf = simSeries(ub1, ub2, 3), ubfl = ubf === ub1 ? ub2 : ub1;
+    const lb = simSeries(ub1l, ub2l, 3);
+    const lbf = simSeries(ubfl, lb, 3);
+    const champ = simSeries(ubf, lbf, 3);
+    const runner = champ === ubf ? lbf : ubf;
+    stat[champ.short].champ++;
+    // Worlds: 우승·준우승 확정 + 잔여팀 중 CP 최다 1팀
+    stat[champ.short].worlds++; stat[runner.short].worlds++;
+    const rest = seeded.filter((t) => t !== champ && t !== runner).sort((a, c) => cpOf(c) - cpOf(a) || c.score - a.score);
+    if (rest[0]) stat[rest[0].short].worlds++;
+  }
+
+  return seeded.map((t) => ({
+    team: t.short, name: t.name, rating: t.score,
+    advance: pct(stat[t.short].playoff / ITER),
+    worlds: pct(stat[t.short].worlds / ITER),
+    champ: pct(stat[t.short].champ / ITER),
+  }));
+}
+
 const byShort = (short) => gpr.teams.find((t) => t.short === short);
 const lplS3Rows = standingsData.standings?.lpl?.['Split 3']?.rows || [];
 const lplAscend = lplS3Rows.filter((r) => r.group === '등봉조').map((r) => byShort(r.team)).filter(Boolean);
@@ -543,6 +624,16 @@ if (lplAscend.length === 8 && lplNirvana.length === 4) {
   lplComp.split3 = split3Standings;
   const split3Champ = [...split3Standings].sort((a, b) => b.champ - a.champ)[0];
   console.log(`LPL Split3: 우승1위 ${split3Champ.team} ${split3Champ.champ}%`);
+}
+
+// LCP Split 3 (스위스 스테이지 + 4팀 더블 엘리 플레이오프) — GPR 상위4=상위 시드
+const lcpTeams = gpr.teams.filter((t) => t.league === 'LCP').sort((a, b) => b.score - a.score);
+if (lcpTeams.length === 8) {
+  const lcpS3 = simulateLcpSplit3(lcpTeams);
+  const lcpComp = sim.competitions.find((c) => c.key === 'lcp');
+  if (lcpComp) lcpComp.split3 = lcpS3;
+  const top = [...lcpS3].sort((a, b) => b.champ - a.champ)[0];
+  console.log(`LCP Split3: 우승1위 ${top.team} ${top.champ}% · 플옵1위 ${[...lcpS3].sort((a, b) => b.advance - a.advance)[0].team}`);
 }
 
 const msiDirect = ['G2', 'HLE', 'TSW', 'FUR', 'TES', 'BLG', 'LYON'].map(byShort);
