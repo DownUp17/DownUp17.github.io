@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-27",
+  "updatedAt": "2026-07-28",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -987,97 +987,97 @@
         }
       },
       "LCK": {
-        "stage": "2026 스플릿 2 · 정규 1·2R (MSI 선발전 후 3·4R 진행)",
+        "stage": "2026 스플릿 3 · 정규 1·2R (MSI 선발전 후 3·4R 진행)",
         "rows": [
           {
             "rank": 1,
-            "team": "HLE",
-            "w": 15,
-            "l": 3,
-            "gw": 32,
-            "gl": 11,
-            "group": "Legend"
-          },
-          {
-            "rank": 2,
-            "team": "T1",
-            "w": 14,
-            "l": 4,
-            "gw": 30,
-            "gl": 10,
-            "group": "Legend"
-          },
-          {
-            "rank": 3,
-            "team": "GEN",
-            "w": 14,
-            "l": 4,
-            "gw": 30,
-            "gl": 11,
-            "group": "Legend"
-          },
-          {
-            "rank": 4,
-            "team": "KT",
-            "w": 13,
-            "l": 5,
-            "gw": 26,
-            "gl": 15,
-            "group": "Legend"
-          },
-          {
-            "rank": 5,
-            "team": "DK",
-            "w": 11,
-            "l": 7,
-            "gw": 24,
-            "gl": 18,
-            "group": "Legend"
-          },
-          {
-            "rank": 6,
-            "team": "BRO",
-            "w": 6,
-            "l": 12,
-            "gw": 16,
-            "gl": 24,
-            "group": "Rise"
-          },
-          {
-            "rank": 7,
             "team": "BFX",
-            "w": 6,
-            "l": 12,
-            "gw": 14,
-            "gl": 25,
-            "group": "Rise"
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "라이즈 그룹"
           },
           {
-            "rank": 8,
-            "team": "KRX",
-            "w": 5,
-            "l": 13,
-            "gw": 16,
-            "gl": 28,
-            "group": "Rise"
-          },
-          {
-            "rank": 9,
+            "rank": 1,
             "team": "NS",
-            "w": 5,
-            "l": 13,
-            "gw": 13,
-            "gl": 28,
-            "group": "Rise"
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "라이즈 그룹"
           },
           {
-            "rank": 10,
+            "rank": 1,
+            "team": "BRO",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "라이즈 그룹"
+          },
+          {
+            "rank": 1,
             "team": "DNS",
-            "w": 1,
-            "l": 17,
-            "gw": 3,
-            "gl": 34,
-            "group": "Rise"
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "라이즈 그룹"
+          },
+          {
+            "rank": 1,
+            "team": "KRX",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "라이즈 그룹"
+          },
+          {
+            "rank": 1,
+            "team": "GEN",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "레전드 그룹"
+          },
+          {
+            "rank": 1,
+            "team": "HLE",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "레전드 그룹"
+          },
+          {
+            "rank": 1,
+            "team": "DK",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "레전드 그룹"
+          },
+          {
+            "rank": 1,
+            "team": "T1",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "레전드 그룹"
+          },
+          {
+            "rank": 1,
+            "team": "KT",
+            "w": 0,
+            "l": 0,
+            "gw": 0,
+            "gl": 0,
+            "group": "레전드 그룹"
           }
         ]
       }

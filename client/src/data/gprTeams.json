@@ -1,6 +1,6 @@
 {
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "updatedAt": "2026-07-27",
+  "updatedAt": "2026-07-28",
   "note": "GPR 팀별 점수(포인트)와 전적. score를 시뮬레이션 레이팅으로 사용. fst는 2026 First Stand 최종 순위.",
   "teams": [
     {
@@ -210,11 +210,11 @@
       "name": "Cloud9 Kia",
       "short": "C9",
       "league": "LCS",
-      "score": 1317,
+      "score": 1312,
       "w": 13,
-      "l": 3,
+      "l": 4,
       "gw": 30,
-      "gl": 16,
+      "gl": 18,
       "logo": "https://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png"
     },
     {
@@ -266,10 +266,10 @@
       "name": "Team Liquid Alienware",
       "short": "TLAW",
       "league": "LCS",
-      "score": 1333,
-      "w": 13,
+      "score": 1338,
+      "w": 14,
       "l": 9,
-      "gw": 36,
+      "gw": 38,
       "gl": 27,
       "logo": "https://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png"
     },
@@ -499,10 +499,10 @@
       "name": "Shopify Rebellion",
       "short": "SR",
       "league": "LCS",
-      "score": 1180,
-      "w": 2,
+      "score": 1186,
+      "w": 3,
       "l": 9,
-      "gw": 5,
+      "gw": 7,
       "gl": 19,
       "logo": "https://static.lolesports.com/teams/1701424227458_Teams204_Shopify_1632869404072.png"
     },
@@ -521,11 +521,11 @@
       "name": "Disguised",
       "short": "DSG",
       "league": "LCS",
-      "score": 1176,
+      "score": 1171,
       "w": 4,
-      "l": 8,
+      "l": 9,
       "gw": 11,
-      "gl": 21,
+      "gl": 23,
       "logo": "https://static.lolesports.com/teams/1731496922454_Disguised-Wordmark-Yellow-Main.png"
     },
     {
