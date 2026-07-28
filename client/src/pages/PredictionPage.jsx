@@ -420,23 +420,29 @@ const STAGE_CFG = {
   '럼블 스테이지': { cols: { piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '녹아웃 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 녹아웃 진출)/녹아웃/Worlds/우승 확률.' },
 };
 
-// LCP Split 3 전용 예측 설정 — 스위스 스테이지(8팀) → 4팀 더블 엘리 플레이오프
-const LCP_S3_CFG = {
-  cols: { advance: true, worlds: true, champ: true, labels: { advance: '플레이오프' } },
-  matches: false,
-  heading: '스위스 스테이지 예측',
-  desc: '스위스 8팀 → 4팀 플레이오프 진출. 플레이오프/Worlds/우승 확률(시뮬레이션).',
+// LCP Split 3 단계별 설정 — 스위스 → 플레이-인 → 플레이오프
+const LCP_STAGE_CFG = {
+  '스위스 스테이지': {
+    pred: true,
+    cols: { advance: true, worlds: true, champ: true, labels: { advance: '플레이오프' } },
+    heading: '스위스 스테이지 예측',
+    desc: '3승 진출·3패 탈락. 플레이오프/Worlds/우승 확률(시뮬레이션).',
+    bracketKey: 'swiss', bracketTitle: '스위스 대진 (라운드별)',
+  },
+  '플레이-인 스테이지': { bracketKey: 'playin', bracketTitle: '플레이-인 대진' },
+  '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
 };
 
 // 시뮬레이션 결과(예측) 렌더
 const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const lcpSplit3 = comp.key === 'lcp' && sub === 'Split 3';
-  const cfg = stage ? STAGE_CFG[stage] : (lcpSplit3 ? LCP_S3_CFG : null);
+  const lcpCfg = lcpSplit3 ? (LCP_STAGE_CFG[stage] || LCP_STAGE_CFG['스위스 스테이지']) : null;
+  const cfg = lcpSplit3 ? lcpCfg : (stage ? STAGE_CFG[stage] : null);
   // 현재 순위 — 해당 세부대회 공식 순위표가 있으면 우선, 없으면 GPR 전적으로 산출
   const leagueStd = officialStandings.standings[comp.key];
   const official = leagueStd ? leagueStd[sub] : null;
   const setDiff = (gw, gl) => (gw != null && gl != null ? gw - gl : null);
-  const current = official
+  const current = official?.rows?.length
     ? official.rows.map((r) => {
         const g = r.w + r.l;
         return { short: r.team, w: r.w, l: r.l, group: r.group, games: g, winRate: g ? r.w / g : 0, gd: setDiff(r.gw, r.gl) };
@@ -575,7 +581,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   }
 
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
-  const hideStandings = lplSplit3 && stage && stage !== '럼블 스테이지';
+  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred);
   let bracketSections = official?.bracket?.sections;
   if (lplSplit3 && bracketSections && stage) {
     if (stage === '럼블 스테이지') bracketSections = [];
@@ -595,7 +601,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
       </div>
 
       {/* LCP Split 3 진행 방식 안내 */}
-      {lcpSplit3 && (
+      {lcpSplit3 && lcpCfg?.pred && (
         <section className="rounded-2xl bg-white/5 border border-white/10 p-4 md:p-5 flex flex-col gap-3 text-sm">
           <div className="flex items-baseline gap-2 flex-wrap">
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">진행 방식</h3>
@@ -641,6 +647,21 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={cfg?.cols} onTeamClick={onTeamClick} />
             </div>
           ))}
+        </section>
+      )}
+
+      {/* LCP Split 3 단계별 대진표 (스위스/플레이-인/플레이오프) */}
+      {lcpSplit3 && lcpCfg?.bracketKey && official?.[lcpCfg.bracketKey]?.rounds?.length > 0 && (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lcpCfg.bracketTitle}</h3>
+            <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
+          </div>
+          <MsiBracket
+            rounds={official[lcpCfg.bracketKey].rounds}
+            connectors={official[lcpCfg.bracketKey].connectors}
+            onTeamClick={onTeamClick}
+          />
         </section>
       )}
 
@@ -878,6 +899,7 @@ const SUB_STATUS = {
 const STAGE_TABS = {
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '녹아웃 스테이지'],
+  'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
 };
 
 const PredictionPage = () => {

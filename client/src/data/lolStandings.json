@@ -1984,6 +1984,411 @@
             "gl": 14
           }
         ]
+      },
+      "Split 3": {
+        "stage": "2026 LCP Split 3 · 스위스 → 플레이-인 → 플레이오프",
+        "rows": [],
+        "swiss": {
+          "rounds": [
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "1라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "MVK",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "GZ",
+                    "score": 0,
+                    "elim": true
+                  }
+                },
+                {
+                  "title": "1라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "TSW",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "SHG",
+                    "score": 0,
+                    "elim": true
+                  }
+                },
+                {
+                  "title": "1라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "DFM",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "GAM",
+                    "score": 2,
+                    "win": true
+                  }
+                },
+                {
+                  "title": "1라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "DCG",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "CFO",
+                    "score": 2,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "2라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "TSW"
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "MVK"
+                  }
+                },
+                {
+                  "title": "2라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "CFO"
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "GAM"
+                  }
+                },
+                {
+                  "title": "2라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "SHG"
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "DFM"
+                  }
+                },
+                {
+                  "title": "2라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "DCG"
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "GZ"
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "3라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                },
+                {
+                  "title": "3라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                },
+                {
+                  "title": "3라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                },
+                {
+                  "title": "3라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "4라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                },
+                {
+                  "title": "4라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                },
+                {
+                  "title": "4라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "5라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                }
+              ]
+            }
+          ],
+          "connectors": []
+        },
+        "playin": {
+          "rounds": [
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "1라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                },
+                {
+                  "title": "1라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "2라운드",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": "1라운드 승자"
+                  }
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "b"
+            ]
+          ]
+        },
+        "playoffs": {
+          "rounds": [
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "하위권 대진 - 4강",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                },
+                {
+                  "title": "하위권 대진 - 4강",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "상위권 대진 - 결승",
+                  "a": {
+                    "seed": "하위권 대진 - 4강 승자"
+                  },
+                  "b": {
+                    "seed": "하위권 대진 - 4강 승자"
+                  }
+                },
+                {
+                  "title": "상위권 대진 - 4강",
+                  "a": {
+                    "seed": "하위권 대진 - 4강 패자"
+                  },
+                  "b": {
+                    "seed": "하위권 대진 - 4강 패자"
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "하위권 대진 - 결승",
+                  "a": {
+                    "seed": "상위권 대진 - 결승 패자"
+                  },
+                  "b": {
+                    "seed": "상위권 대진 - 4강 승자"
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "title": "결승",
+                  "a": {
+                    "seed": "상위권 대진 - 결승 승자"
+                  },
+                  "b": {
+                    "seed": "하위권 대진 - 결승 승자"
+                  }
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              0,
+              "mid",
+              1,
+              1,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              1,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "mid",
+              2,
+              0,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              3,
+              0,
+              "a"
+            ],
+            [
+              2,
+              0,
+              "mid",
+              3,
+              0,
+              "b"
+            ]
+          ]
+        }
       }
     },
     "lcs": {

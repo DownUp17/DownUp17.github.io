@@ -847,6 +847,38 @@ try {
   console.warn(`MSI 브래킷 결과 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
 
+// 4단계: LCP 2026 Split 3 — 스위스/플레이-인/플레이오프 3단계 대진을 API에서 가져와 저장
+try {
+  const LCP_S3_TOURNAMENT = '115570728597462574';
+  const j = await api('getStandingsV3', { tournamentId: LCP_S3_TOURNAMENT });
+  const st = j.data?.standings?.[0];
+  if (st?.stages) {
+    const bySlug = {};
+    for (const s of st.stages) {
+      const cols = s.sections?.[0]?.columns || [];
+      bySlug[s.slug] = bracketFromColumns(cols);
+    }
+    // 스위스는 1승=진출·1패=탈락이 아니므로 플래그 완화: 승자만 파랑(win), 패자 빨강(elim) 제거
+    const swiss = bySlug['swiss'];
+    if (swiss) for (const r of swiss.rounds) for (const m of r.matches) for (const slot of [m.a, m.b]) {
+      if (slot?.msi) { delete slot.msi; slot.win = true; }
+      if (slot?.elim) delete slot.elim;
+    }
+    data.standings.lcp = data.standings.lcp || {};
+    data.standings.lcp['Split 3'] = {
+      stage: '2026 LCP Split 3 · 스위스 → 플레이-인 → 플레이오프',
+      rows: [],
+      swiss: swiss || null,
+      playin: bySlug['play_ins'] || null,
+      playoffs: bySlug['playoffs'] || null,
+    };
+    const cnt = (b) => b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0;
+    console.log(`LCP Split 3 대진 갱신 (스위스 ${cnt(swiss)}경기 / 플레이-인 ${cnt(bySlug['play_ins'])} / 플레이오프 ${cnt(bySlug['playoffs'])})`);
+  }
+} catch (e) {
+  console.warn(`LCP Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
+}
+
 data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
