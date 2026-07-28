@@ -858,11 +858,33 @@ try {
       const cols = s.sections?.[0]?.columns || [];
       bySlug[s.slug] = bracketFromColumns(cols);
     }
-    // 스위스는 1승=진출·1패=탈락이 아니므로 플래그 완화: 승자만 파랑(win), 패자 빨강(elim) 제거
+    // 스위스는 누적 승패 기록을 추적해: 각 경기에 "N승 N패 대진" 표기,
+    // 승자는 파랑(win), 패자는 실제 탈락(3패)일 때만 빨강(elim). 그 전엔 색 없음.
     const swiss = bySlug['swiss'];
-    if (swiss) for (const r of swiss.rounds) for (const m of r.matches) for (const slot of [m.a, m.b]) {
-      if (slot?.msi) { delete slot.msi; slot.win = true; }
-      if (slot?.elim) delete slot.elim;
+    if (swiss) {
+      const wl = {}; // short → {w,l} 누적
+      swiss.rounds.forEach((round, ri) => {
+        round.title = `${ri + 1}라운드`;
+        // 1) 경기 전 기록으로 대진 라벨 (같은 기록끼리 대진)
+        for (const m of round.matches) {
+          const s = m.a?.short || m.b?.short;
+          if (s) { const r = wl[s] || { w: 0, l: 0 }; m.title = `${r.w}승 ${r.l}패`; }
+          else m.title = '';
+        }
+        // 2) 결과 반영 + 플래그 (승자 파랑 / 3패 시에만 탈락 빨강)
+        for (const m of round.matches) {
+          delete m.a?.msi; delete m.a?.elim; delete m.b?.msi; delete m.b?.elim;
+          if (m.a?.short && m.b?.short && m.a.score != null && m.b.score != null && m.a.score !== m.b.score) {
+            const aWin = m.a.score > m.b.score;
+            const winner = aWin ? m.a : m.b, loser = aWin ? m.b : m.a;
+            wl[winner.short] = wl[winner.short] || { w: 0, l: 0 };
+            wl[loser.short] = wl[loser.short] || { w: 0, l: 0 };
+            wl[winner.short].w++; wl[loser.short].l++;
+            winner.win = true;
+            if (wl[loser.short].l >= 3) loser.elim = true; // 3패 = 실제 탈락
+          }
+        }
+      });
     }
     data.standings.lcp = data.standings.lcp || {};
     data.standings.lcp['Split 3'] = {
