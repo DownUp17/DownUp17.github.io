@@ -987,7 +987,7 @@
         }
       },
       "LCK": {
-        "stage": "2026 LCK · 정규 1·2R 종료 (3·4R 진행 예정)",
+        "stage": "2026 LCK · 정규 3·4R 진행",
         "rows": [
           {
             "rank": 1,
@@ -1009,20 +1009,20 @@
           },
           {
             "rank": 3,
-            "team": "KRX",
-            "w": 5,
+            "team": "NS",
+            "w": 6,
             "l": 13,
-            "gw": 16,
+            "gw": 15,
             "gl": 28,
             "group": "라이즈 그룹"
           },
           {
             "rank": 4,
-            "team": "NS",
+            "team": "KRX",
             "w": 5,
-            "l": 13,
-            "gw": 13,
-            "gl": 28,
+            "l": 14,
+            "gw": 16,
+            "gl": 30,
             "group": "라이즈 그룹"
           },
           {
@@ -1637,17 +1637,15 @@
             "team": "BLG",
             "w": 3,
             "l": 0,
-            "gw": 6,
-            "gl": 3,
             "group": "Group Ascend"
           },
           {
             "rank": 2,
-            "team": "TES",
-            "w": 2,
-            "l": 0,
-            "gw": 4,
-            "gl": 1,
+            "team": "AL",
+            "w": 3,
+            "l": 1,
+            "gw": 7,
+            "gl": 3,
             "group": "Group Ascend"
           },
           {
@@ -1661,10 +1659,10 @@
           },
           {
             "rank": 3,
-            "team": "AL",
+            "team": "TES",
             "w": 2,
             "l": 1,
-            "gw": 5,
+            "gw": 4,
             "gl": 3,
             "group": "Group Ascend"
           },
@@ -1682,8 +1680,6 @@
             "team": "LGD",
             "w": 1,
             "l": 2,
-            "gw": 2,
-            "gl": 4,
             "group": "Group Ascend"
           },
           {
