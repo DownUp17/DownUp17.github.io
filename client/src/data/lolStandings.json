@@ -1635,8 +1635,10 @@
           {
             "rank": 1,
             "team": "BLG",
-            "w": 3,
+            "w": 4,
             "l": 0,
+            "gw": 8,
+            "gl": 4,
             "group": "Group Ascend"
           },
           {
@@ -1676,10 +1678,12 @@
             "group": "Group Ascend"
           },
           {
-            "rank": 5,
+            "rank": 6,
             "team": "LGD",
             "w": 1,
-            "l": 2,
+            "l": 3,
+            "gw": 3,
+            "gl": 6,
             "group": "Group Ascend"
           },
           {
