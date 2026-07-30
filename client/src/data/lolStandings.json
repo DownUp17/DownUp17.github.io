@@ -1670,9 +1670,20 @@
           },
           {
             "rank": 5,
-            "team": "TT",
+            "team": "JDG",
             "w": 1,
             "l": 2,
+            "gw": 4,
+            "gl": 5,
+            "group": "Group Ascend"
+          },
+          {
+            "rank": 6,
+            "team": "TT",
+            "w": 1,
+            "l": 3,
+            "gw": 5,
+            "gl": 6,
             "group": "Group Ascend"
           },
           {
@@ -1682,13 +1693,6 @@
             "l": 3,
             "gw": 3,
             "gl": 6,
-            "group": "Group Ascend"
-          },
-          {
-            "rank": 7,
-            "team": "JDG",
-            "w": 0,
-            "l": 2,
             "group": "Group Ascend"
           },
           {
@@ -2097,11 +2101,14 @@
                   "title": "0승 1패",
                   "a": {
                     "seed": "",
-                    "short": "GZ"
+                    "short": "GZ",
+                    "score": 1
                   },
                   "b": {
                     "seed": "",
-                    "short": "DCG"
+                    "short": "DCG",
+                    "score": 2,
+                    "win": true
                   },
                   "recordKey": "0-1"
                 }
