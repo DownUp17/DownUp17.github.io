@@ -1655,8 +1655,6 @@
             "team": "WE",
             "w": 2,
             "l": 1,
-            "gw": 4,
-            "gl": 3,
             "group": "Group Ascend"
           },
           {
@@ -1673,8 +1671,6 @@
             "team": "TT",
             "w": 1,
             "l": 2,
-            "gw": 4,
-            "gl": 4,
             "group": "Group Ascend"
           },
           {
@@ -1691,8 +1687,6 @@
             "team": "JDG",
             "w": 0,
             "l": 2,
-            "gw": 2,
-            "gl": 4,
             "group": "Group Ascend"
           },
           {
@@ -1700,8 +1694,6 @@
             "team": "EDG",
             "w": 0,
             "l": 3,
-            "gw": 1,
-            "gl": 6,
             "group": "Group Ascend"
           },
           {
@@ -1709,8 +1701,6 @@
             "team": "NIP",
             "w": 1,
             "l": 0,
-            "gw": 2,
-            "gl": 0,
             "group": "Group Nirvana"
           },
           {
@@ -1736,8 +1726,6 @@
             "team": "WBG",
             "w": 0,
             "l": 1,
-            "gw": 1,
-            "gl": 2,
             "group": "Group Nirvana"
           }
         ]
