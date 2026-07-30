@@ -991,20 +991,20 @@
         "rows": [
           {
             "rank": 1,
+            "team": "BFX",
+            "w": 7,
+            "l": 12,
+            "gw": 16,
+            "gl": 25,
+            "group": "라이즈 그룹"
+          },
+          {
+            "rank": 2,
             "team": "BRO",
             "w": 6,
             "l": 12,
             "gw": 16,
             "gl": 24,
-            "group": "라이즈 그룹"
-          },
-          {
-            "rank": 2,
-            "team": "BFX",
-            "w": 6,
-            "l": 12,
-            "gw": 14,
-            "gl": 25,
             "group": "라이즈 그룹"
           },
           {
@@ -1029,9 +1029,9 @@
             "rank": 5,
             "team": "DNS",
             "w": 1,
-            "l": 17,
+            "l": 18,
             "gw": 3,
-            "gl": 34,
+            "gl": 36,
             "group": "라이즈 그룹"
           },
           {
@@ -1699,12 +1699,14 @@
           {
             "rank": 1,
             "team": "NIP",
-            "w": 1,
+            "w": 2,
             "l": 0,
+            "gw": 4,
+            "gl": 0,
             "group": "Group Nirvana"
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "IG",
             "w": 1,
             "l": 0,
@@ -1722,10 +1724,12 @@
             "group": "Group Nirvana"
           },
           {
-            "rank": 3,
+            "rank": 4,
             "team": "WBG",
             "w": 0,
-            "l": 1,
+            "l": 2,
+            "gw": 1,
+            "gl": 4,
             "group": "Group Nirvana"
           }
         ]
@@ -2074,11 +2078,11 @@
                   "title": "0승 1패",
                   "a": {
                     "seed": "",
-                    "short": "SHG"
+                    "short": "DFM"
                   },
                   "b": {
                     "seed": "",
-                    "short": "DFM"
+                    "short": "SHG"
                   },
                   "recordKey": "0-1"
                 },
