@@ -2077,11 +2077,14 @@
                   "title": "1승 0패",
                   "a": {
                     "seed": "",
-                    "short": "CFO"
+                    "short": "CFO",
+                    "score": 2,
+                    "win": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "GAM"
+                    "short": "GAM",
+                    "score": 1
                   },
                   "recordKey": "1-0"
                 },
@@ -2123,40 +2126,48 @@
                 {
                   "title": "2승 0패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "TSW"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "CFO"
                   },
                   "recordKey": "2-0"
                 },
                 {
                   "title": "1승 1패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "DCG"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "DFM"
                   },
                   "recordKey": "1-1"
                 },
                 {
                   "title": "1승 1패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "MVK"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "GAM"
                   },
                   "recordKey": "1-1"
                 },
                 {
                   "title": "0승 2패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "SHG"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "GZ"
                   },
                   "recordKey": "0-2"
                 }
