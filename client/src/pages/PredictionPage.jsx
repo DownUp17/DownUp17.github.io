@@ -421,7 +421,7 @@ const STAGE_CFG = {
   '정규시즌': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true }, matches: false, heading: '정규시즌 순위', desc: '현재 순위 + 예상 진출·우승 확률.' },
   '플레이-인': { cols: { piPlus: true, advance: true }, matches: false, heading: '플레이-인 예측', desc: '레전드 5위 + 라이즈 1~3위가 겨루는 플레이-인 단계. PI+/플레이오프 진출 확률.' },
   '플레이오프': { cols: { advance: true, worlds: true, champ: true }, matches: false, heading: '플레이오프 예측', desc: '플레이오프 진출·우승·Worlds 진출 확률. 확정 시드 기준 대진표.' },
-  '럼블 스테이지': { cols: { piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '녹아웃 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 녹아웃 진출)/녹아웃/Worlds/우승 확률.' },
+  '럼블 스테이지': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '녹아웃 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 녹아웃 진출)/녹아웃/Worlds/우승 확률.' },
 };
 
 // LCP Split 3 단계별 설정 — 스위스 → 플레이-인 → 플레이오프

@@ -24,7 +24,7 @@ const HL = 'ko-KR';
 const MSI_LEAGUE_ID = '98767991325878492'; // MSI 리그 ID
 const LEAGUES = [
   { key: 'lck', sub: 'LCK', id: '98767991310872058', groups: true },
-  { key: 'lpl', sub: 'Split 2', id: '98767991314006698' },
+  { key: 'lpl', sub: 'Split 3', id: '98767991314006698', sectionAlias: { 'Group Ascend': '등봉조', 'Group Nirvana': '열반조' } },
   { key: 'lec', sub: 'Summer', id: '98767991302996019' },
   { key: 'lcp', sub: 'Split 2', id: '113476371197627891' },
   { key: 'lcs', sub: 'Summer', id: '98767991299243165' },
@@ -227,7 +227,7 @@ async function buildLeague(lg) {
         const row = { rank: r.ordinal, team: t.code, w, l };
         if (ok) { row.gw = s.gw; row.gl = s.gl; }
         else if (!s && w === 0 && l === 0) { row.gw = 0; row.gl = 0; } // 미시작 → 득실차 0 표기
-        if (multi) row.group = sec.name;
+        if (multi) row.group = (lg.sectionAlias?.[sec.name]) || sec.name;
         rows.push(row);
       }
     }
@@ -416,7 +416,7 @@ for (const lg of LEAGUES) {
     const { tour, rows, mismatches, stage, road, roadMsiTeam } = await buildLeague(lg);
     // 기존 수동 키(Road to MSI 등)를 보존하기 위해 통째로 덮어쓰지 않고 병합
     const prev = data.standings[lg.key] || {};
-    data.standings[lg.key] = { ...prev, [lg.sub]: { stage, rows } };
+    data.standings[lg.key] = { ...prev, [lg.sub]: { ...(prev[lg.sub] || {}), stage, rows } };
     if (road) data.standings[lg.key]['Road to MSI'] = road; // 대진표 자동 갱신
     data.source[lg.key] = `https://lolesports.com/ko-KR/leagues/${lg.key === 'cblol' ? 'cblol-brazil' : lg.key}`;
     const warn = mismatches ? ` ⚠️ 세트 불일치 ${mismatches}팀(gw/gl 생략)` : '';

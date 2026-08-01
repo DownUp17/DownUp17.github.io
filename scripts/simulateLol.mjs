@@ -137,49 +137,56 @@ function simulateLCK(teams, fixed) {
   // HLE = MSI 챔피언 확정 Worlds 진출. LCK 4슬롯(HLE 1 + 국내 플레이오프 3).
   const hleTeam = teams.find((t) => t.short === 'HLE');
 
-  // 그룹 내 더블 라운드로빈(쌍별 2시리즈) — 누적 wins에 가산
-  const roundRobin = (groupIdx, wins) => {
+  // 그룹 내 더블 라운드로빈(쌍별 2시리즈) — 누적 wins·gd에 가산
+  const roundRobin = (groupIdx, wins, gd) => {
     for (let a = 0; a < groupIdx.length; a++)
       for (let b = a + 1; b < groupIdx.length; b++)
         for (let g = 0; g < 2; g++) {
           const i = groupIdx[a], j = groupIdx[b];
-          if (simSeries(teams[i], teams[j], 2) === teams[i]) wins[i]++; else wins[j]++;
+          let wa = 0, wb = 0;
+          const p = gameProb(teams[i].score, teams[j].score);
+          while (wa < 2 && wb < 2) (rng() < p ? wa++ : wb++);
+          if (wa === 2) wins[i]++; else wins[j]++;
+          gd[i] += wa - wb; gd[j] += wb - wa;
         }
   };
 
-  // 고정 모드 사전 계산: 그룹 멤버 인덱스 + 1·2R 누적 승수(시작값)
+  // 고정 모드 사전 계산: 그룹 멤버 인덱스 + 1·2R 누적 승수·득실차(시작값)
   const idxAll = teams.map((_, i) => i);
   const fixedLegend = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Legend');
   const fixedRise = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Rise');
   const startWins = fixed && teams.map((t) => fixed[t.short]?.w ?? 0);
+  const startGd = fixed && teams.map((t) => fixed[t.short]?.gd ?? 0);
 
   for (let it = 0; it < ITER; it++) {
-    let wins, legend, rise;
+    let wins, gd, legend, rise;
 
     if (fixed) {
-      // 정규 1·2R 결과 고정: 그룹·누적 승수를 실제 순위표에서 가져오고 3·4R만 시뮬
+      // 정규 1·2R 결과 고정: 그룹·누적 승수·득실차를 실제 순위표에서 가져오고 3·4R만 시뮬
       wins = startWins.slice();
+      gd = startGd.slice();
       legend = fixedLegend;
       rise = fixedRise;
-      roundRobin(legend, wins);
-      roundRobin(rise, wins);
+      roundRobin(legend, wins, gd);
+      roundRobin(rise, wins, gd);
     } else {
       wins = new Array(n).fill(0);
+      gd = new Array(n).fill(0);
       const idx = idxAll.slice();
       // 1~2R: 10팀 더블 라운드로빈
-      roundRobin(idx, wins);
-      // 1~2R 성적으로 그룹 분할 (상위5 레전드 / 하위5 라이즈), 동률 무작위
-      const order12 = idx.slice().sort((a, b) => (wins[b] - wins[a]) || (rng() - 0.5));
+      roundRobin(idx, wins, gd);
+      // 1~2R 성적으로 그룹 분할 (상위5 레전드 / 하위5 라이즈), 동률 득실차 → 무작위
+      const order12 = idx.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5));
       legend = order12.slice(0, 5);
       rise = order12.slice(5);
-      // 3~4R: 그룹 내 더블 라운드로빈 (1~2R 승수 연계)
-      roundRobin(legend, wins);
-      roundRobin(rise, wins);
+      // 3~4R: 그룹 내 더블 라운드로빈 (1~2R 승수·득실차 연계)
+      roundRobin(legend, wins, gd);
+      roundRobin(rise, wins, gd);
     }
 
-    // 최종 순위 — 그룹 내 누적 승수 기준 (레전드 1~5위, 라이즈 6~10위)
-    const legOrder = legend.slice().sort((a, b) => (wins[b] - wins[a]) || (rng() - 0.5));
-    const riseOrder = rise.slice().sort((a, b) => (wins[b] - wins[a]) || (rng() - 0.5));
+    // 최종 순위 — 그룹 내 누적 승수 기준, 동률 시 득실차 → 무작위
+    const legOrder = legend.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5));
+    const riseOrder = rise.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5));
     legOrder.forEach((tIdx, k) => {
       stat[tIdx].sumRank += k + 1;
       if (k === 0) stat[tIdx].rank1++;
@@ -287,7 +294,7 @@ const lckRows = standingsData.standings?.lck?.LCK?.rows;
 // 그룹명 정규화 — 데이터가 '레전드 그룹'/'라이즈 그룹'(한글)이어도 시뮬은 Legend/Rise로 판별
 const normLckGroup = (g) => (/레전드/.test(g) ? 'Legend' : /라이즈/.test(g) ? 'Rise' : g);
 const lckFixed = lckRows && Object.fromEntries(
-  lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group) }])
+  lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group), gd: (r.gw ?? 0) - (r.gl ?? 0) }])
 );
 
 for (const lg of leagues) {
@@ -470,23 +477,38 @@ function simulateMSI(direct, playIn, fixedInfo = { pairing: {}, fixed: {} }, bra
 // 럼블 스테이지(조별 Bo3 더블 라운드로빈, 등봉조 8팀·열반조 4팀):
 //   등봉 1~6위 녹아웃 직행 / 등봉 7·8위·열반 1·2위 → 기사의 길(Bo5) 승자 녹아웃 합류 / 열반 3·4위 탈락.
 // 녹아웃 스테이지(8팀 더블 엘리미네이션 Bo5): 직행 6팀 + 기사의 길 승자 2팀을 GPR 점수로 시드(MSI 브래킷과 동일 페어링).
-function simulateLplSplit3(ascend, nirvana) {
+function simulateLplSplit3(ascend, nirvana, fixedAscend = {}, fixedNirvana = {}) {
   const stat = {};
   [...ascend, ...nirvana].forEach((t) => { stat[t.short] = { kiPlus: 0, knockout: 0, champ: 0, worlds: 0 }; });
 
-  const rankGroup = (group) => {
-    const wins = new Array(group.length).fill(0);
-    for (let a = 0; a < group.length; a++)
-      for (let b = a + 1; b < group.length; b++)
-        for (let g = 0; g < 2; g++) {
-          if (simSeries(group[a], group[b], 2) === group[a]) wins[a]++; else wins[b]++;
+  // 현재 순위표(W-L, gw-gl)를 시작값으로 고정하고 잔여 경기만 시뮬.
+  // 잔여 경기 수: 각 대결쌍(2번 맞대결)에서 (팀별 소화율 평균) 만큼 이미 치렀다고 추정.
+  // 동률 타이브레이커: 득실차(gd) → 랜덤.
+  const rankGroup = (group, fixedRec) => {
+    const N = group.length;
+    const wins = group.map(t => fixedRec?.[t.short]?.w ?? 0);
+    const gd = group.map(t => { const r = fixedRec?.[t.short]; return r ? ((r.gw ?? 0) - (r.gl ?? 0)) : 0; });
+    const played = group.map(t => { const r = fixedRec?.[t.short]; return r ? ((r.w ?? 0) + (r.l ?? 0)) : 0; });
+    for (let a = 0; a < N; a++) {
+      for (let b = a + 1; b < N; b++) {
+        const avgFrac = (played[a] + played[b]) / (4 * (N - 1));
+        const pairPlayed = Math.min(2, Math.round(avgFrac * 2));
+        for (let g = pairPlayed; g < 2; g++) {
+          let wa = 0, wb = 0;
+          const p = gameProb(group[a].score, group[b].score);
+          while (wa < 2 && wb < 2) (rng() < p ? wa++ : wb++);
+          if (wa === 2) wins[a]++; else wins[b]++;
+          gd[a] += wa - wb;
+          gd[b] += wb - wa;
         }
-    return group.map((_, i) => i).sort((a, b) => (wins[b] - wins[a]) || (rng() - 0.5)).map((i) => group[i]);
+      }
+    }
+    return group.map((_, i) => i).sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5)).map((i) => group[i]);
   };
 
   for (let it = 0; it < ITER; it++) {
-    const aRanked = rankGroup(ascend); // 등봉 1~8위
-    const nRanked = rankGroup(nirvana); // 열반 1~4위
+    const aRanked = rankGroup(ascend, fixedAscend); // 등봉 1~8위
+    const nRanked = rankGroup(nirvana, fixedNirvana); // 열반 1~4위
     const direct = aRanked.slice(0, 6);
     const [a7, a8] = aRanked.slice(6, 8);
     const [n1, n2] = nRanked.slice(0, 2);
@@ -620,8 +642,11 @@ const byShort = (short) => gpr.teams.find((t) => t.short === short);
 const lplS3Rows = standingsData.standings?.lpl?.['Split 3']?.rows || [];
 const lplAscend = lplS3Rows.filter((r) => r.group === '등봉조').map((r) => byShort(r.team)).filter(Boolean);
 const lplNirvana = lplS3Rows.filter((r) => r.group === '열반조').map((r) => byShort(r.team)).filter(Boolean);
+const makeLplFixed = (rows) => Object.fromEntries(rows.map(r => [r.team, { w: r.w, l: r.l, gw: r.gw ?? 0, gl: r.gl ?? 0 }]));
+const lplFixedAscend = makeLplFixed(lplS3Rows.filter(r => r.group === '등봉조'));
+const lplFixedNirvana = makeLplFixed(lplS3Rows.filter(r => r.group === '열반조'));
 if (lplAscend.length === 8 && lplNirvana.length === 4) {
-  const split3Standings = simulateLplSplit3(lplAscend, lplNirvana);
+  const split3Standings = simulateLplSplit3(lplAscend, lplNirvana, lplFixedAscend, lplFixedNirvana);
   const lplComp = sim.competitions.find((c) => c.key === 'lpl');
   lplComp.split3 = split3Standings;
   const split3Champ = [...split3Standings].sort((a, b) => b.champ - a.champ)[0];
