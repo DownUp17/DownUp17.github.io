@@ -606,8 +606,10 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     <div className="flex flex-col gap-8">
       {/* 메타 */}
       <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-        {(comp.stage || comp.format) && !lcpSplit3 && (
-          <span className="text-white/50">형식: <strong className="text-white/80">{[comp.stage, comp.format].filter(Boolean).join(' · ')}</strong></span>
+        {(lplSplit3 || comp.stage || comp.format) && !lcpSplit3 && (
+          <span className="text-white/50">형식: <strong className="text-white/80">{lplSplit3
+            ? '그룹별 더블 라운드로빈 (Bo3) → 기사의 길 (Bo5) → 플레이오프 (Bo5)'
+            : [comp.stage, comp.format].filter(Boolean).join(' · ')}</strong></span>
         )}
         {comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
         {comp.generatedAt && <span className="text-white/50">생성: <strong className="text-white/80">{fmtUpdated(comp.generatedAt)}</strong></span>}
