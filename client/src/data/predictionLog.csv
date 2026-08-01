@@ -1,0 +1,4 @@
+date,competition,team_a,team_b,pA,predicted_winner,actual_winner,correct
+2026-06-17,lck,HLE,BFX,89,HLE,HLE,true
+2026-06-17,lck,KT,DK,61,KT,KT,true
+2026-06-17,lck,GEN,T1,60,GEN,GEN,true

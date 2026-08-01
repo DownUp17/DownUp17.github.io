@@ -98,10 +98,6 @@ const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-1.5">
                               <span className="font-black text-white text-sm leading-tight">{p.name}</span>
-                              {p.starter && (
-                                <span className="text-[9px] font-black px-1.5 py-0.5 rounded shrink-0"
-                                  style={{ backgroundColor: 'rgba(200,150,62,0.2)', color: '#E8C77E' }}>주전</span>
-                              )}
                             </div>
                             {(p.firstName || p.lastName) && (
                               <div className="text-white/35 text-xs mt-0.5 truncate">
