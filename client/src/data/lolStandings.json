@@ -1642,8 +1642,10 @@
           {
             "rank": 2,
             "team": "AL",
-            "w": 4,
+            "w": 5,
             "l": 1,
+            "gw": 11,
+            "gl": 3,
             "group": "Group Ascend"
           },
           {
@@ -1671,16 +1673,18 @@
           },
           {
             "rank": 6,
-            "team": "TT",
+            "team": "LGD",
             "w": 1,
             "l": 3,
             "group": "Group Ascend"
           },
           {
-            "rank": 6,
-            "team": "LGD",
+            "rank": 7,
+            "team": "TT",
             "w": 1,
-            "l": 3,
+            "l": 4,
+            "gw": 5,
+            "gl": 8,
             "group": "Group Ascend"
           },
           {
@@ -2127,11 +2131,11 @@
                   "title": "1승 1패",
                   "a": {
                     "seed": "",
-                    "short": "DCG"
+                    "short": "DFM"
                   },
                   "b": {
                     "seed": "",
-                    "short": "DFM"
+                    "short": "DCG"
                   },
                   "recordKey": "1-1"
                 },
