@@ -141,6 +141,8 @@ async function collectRegularMatches(leagueId, tour) {
     const events = data.schedule.events || [];
     for (const e of events) {
       if (e.type !== 'match' || e.state !== 'completed') continue;
+      // 승자 없는(0-0 등) 비정상 완료 경기 제외 — 세트 집계가 순위표와 어긋나 득실 생략되는 문제 방지
+      if (!e.match?.teams?.some((t) => t.result?.outcome === 'win')) continue;
       const day = (e.startTime || '').slice(0, 10);
       if (day < tour.startDate || day > tour.endDate) continue; // 다른 스플릿 제외
       if (isPostseason(e.blockName)) continue;                   // 포스트시즌 제외
