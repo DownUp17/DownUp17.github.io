@@ -182,25 +182,36 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
           <div key={ri}
             style={useGrid
               ? { position: 'relative', width: COL_W, flexShrink: 0, height: colH }
-              : { display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: groupGap ? 8 : 20, flex: 1, minWidth: 0 }}>
+              : { display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: groupGap ? 0 : 20, flex: 1, minWidth: 0 }}>
             {!useGrid && r.title && (
-              <p className="text-[11px] font-black text-white/40 uppercase tracking-wider">{r.title}</p>
+              <p className="text-[11px] font-black text-white/40 uppercase tracking-wider" style={groupGap ? { marginBottom: 4 } : undefined}>{r.title}</p>
             )}
             {r.matches.map((m, mi) => {
               const pred = matchPrediction(m.a, m.b);
               if (!useGrid) {
-                // 같은 기록(recordKey) 묶음은 좁게, 다른 기록 사이는 넓게 띄운다
-                const groupBreak = groupGap && mi > 0 && (m.recordKey || '') !== (r.matches[mi - 1].recordKey || '');
-                return (
-                  <div key={mi} data-card={`${ri}-${mi}`} {...(cardPrefix && { 'data-xcard': `${cardPrefix}${ri}-${mi}` })}
-                    style={groupBreak ? { marginTop: 20 } : undefined}
+                // groupGap(스위스): 같은 기록(recordKey)은 헤더로 한 번만 표기, 그 안 경기는 작은 간격으로 구분
+                const isGroupStart = groupGap && (mi === 0 || (m.recordKey || '') !== (r.matches[mi - 1].recordKey || ''));
+                const card = (
+                  <div data-card={`${ri}-${mi}`} {...(cardPrefix && { 'data-xcard': `${cardPrefix}${ri}-${mi}` })}
+                    style={groupGap ? { marginTop: isGroupStart ? 0 : 8 } : undefined}
                     className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-                    {m.title && <div data-title="" className="px-2.5 py-1.5 bg-white/10 text-[11px] font-black text-white/70">{m.title}</div>}
+                    {!groupGap && m.title && <div data-title="" className="px-2.5 py-1.5 bg-white/10 text-[11px] font-black text-white/70">{m.title}</div>}
                     <MsiSlot s={m.a} predPct={pred?.pA} onTeamClick={onTeamClick} />
                     <div className="h-px bg-white/10" />
                     <MsiSlot s={m.b} predPct={pred?.pB} onTeamClick={onTeamClick} />
                   </div>
                 );
+                if (groupGap) {
+                  return (
+                    <React.Fragment key={mi}>
+                      {isGroupStart && m.title && (
+                        <p className="text-[11px] font-black text-white/70 uppercase tracking-wider" style={{ marginTop: mi > 0 ? 22 : 0, marginBottom: 5 }}>{m.title}</p>
+                      )}
+                      {card}
+                    </React.Fragment>
+                  );
+                }
+                return <React.Fragment key={mi}>{card}</React.Fragment>;
               }
               const sr = m.startRow ?? 0;
               const cardTop = gridSlotTop(sr);
