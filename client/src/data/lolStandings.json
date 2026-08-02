@@ -1011,9 +1011,9 @@
             "rank": 3,
             "team": "BRO",
             "w": 6,
-            "l": 13,
-            "gw": 17,
-            "gl": 26,
+            "l": 14,
+            "gw": 18,
+            "gl": 28,
             "group": "라이즈 그룹"
           },
           {
@@ -1028,10 +1028,10 @@
           {
             "rank": 5,
             "team": "DNS",
-            "w": 1,
+            "w": 2,
             "l": 18,
-            "gw": 3,
-            "gl": 36,
+            "gw": 5,
+            "gl": 37,
             "group": "라이즈 그룹"
           },
           {
@@ -1047,26 +1047,26 @@
             "rank": 2,
             "team": "HLE",
             "w": 15,
-            "l": 4,
-            "gw": 33,
-            "gl": 13,
-            "group": "레전드 그룹"
-          },
-          {
-            "rank": 3,
-            "team": "GEN",
-            "w": 14,
-            "l": 6,
-            "gw": 30,
+            "l": 5,
+            "gw": 34,
             "gl": 15,
             "group": "레전드 그룹"
           },
           {
-            "rank": 4,
+            "rank": 3,
             "team": "KT",
-            "w": 14,
+            "w": 15,
             "l": 5,
-            "gw": 28,
+            "gw": 30,
+            "gl": 16,
+            "group": "레전드 그룹"
+          },
+          {
+            "rank": 4,
+            "team": "GEN",
+            "w": 14,
+            "l": 6,
+            "gw": 30,
             "gl": 15,
             "group": "레전드 그룹"
           },
@@ -1106,6 +1106,15 @@
           },
           {
             "rank": 3,
+            "team": "TES",
+            "w": 4,
+            "l": 1,
+            "gw": 8,
+            "gl": 4,
+            "group": "등봉조"
+          },
+          {
+            "rank": 4,
             "team": "WE",
             "w": 4,
             "l": 2,
@@ -1114,30 +1123,21 @@
             "group": "등봉조"
           },
           {
-            "rank": 4,
-            "team": "TES",
-            "w": 3,
-            "l": 1,
-            "gw": 6,
-            "gl": 4,
+            "rank": 5,
+            "team": "LGD",
+            "w": 1,
+            "l": 4,
+            "gw": 4,
+            "gl": 8,
             "group": "등봉조"
           },
           {
             "rank": 5,
             "team": "JDG",
             "w": 1,
-            "l": 3,
-            "gw": 4,
-            "gl": 7,
-            "group": "등봉조"
-          },
-          {
-            "rank": 6,
-            "team": "LGD",
-            "w": 1,
             "l": 4,
             "gw": 4,
-            "gl": 8,
+            "gl": 9,
             "group": "등봉조"
           },
           {
@@ -1168,11 +1168,11 @@
             "group": "열반조"
           },
           {
-            "rank": 2,
+            "rank": 1,
             "team": "IG",
-            "w": 1,
+            "w": 2,
             "l": 0,
-            "gw": 2,
+            "gw": 4,
             "gl": 1,
             "group": "열반조"
           },
@@ -1180,13 +1180,13 @@
             "rank": 3,
             "team": "LNG",
             "w": 0,
-            "l": 1,
+            "l": 2,
             "gw": 0,
-            "gl": 2,
+            "gl": 4,
             "group": "열반조"
           },
           {
-            "rank": 4,
+            "rank": 3,
             "team": "WBG",
             "w": 0,
             "l": 2,
@@ -2123,11 +2123,14 @@
                   "title": "2승 0패",
                   "a": {
                     "seed": "",
-                    "short": "TSW"
+                    "short": "TSW",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "CFO"
+                    "short": "CFO",
+                    "score": 0
                   },
                   "recordKey": "2-0"
                 },
@@ -2181,10 +2184,12 @@
                 {
                   "title": "2승 1패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "DCG"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "MVK"
                   },
                   "recordKey": "2-1"
                 },
@@ -2194,17 +2199,20 @@
                     "seed": ""
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "CFO"
                   },
                   "recordKey": "2-1"
                 },
                 {
                   "title": "1승 2패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "DFM"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "GAM"
                   },
                   "recordKey": "1-2"
                 }
