@@ -594,7 +594,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   }
 
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
-  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred);
+  // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
+  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi';
   let bracketSections = official?.bracket?.sections;
   if (lplSplit3 && bracketSections && stage) {
     if (stage === '럼블 스테이지') bracketSections = [];
