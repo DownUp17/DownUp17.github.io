@@ -50,6 +50,9 @@ jobs:
             echo "::warning::MIRROR_PAT 시크릿 미설정 — 미러링 생략"
             exit 0
           fi
+          # actions/checkout가 심은 기본 토큰 헤더 제거 — 없으면 URL의 MIRROR_PAT가 무시돼
+          # 기본 github-actions[bot] 토큰으로 push되어 권한 거부됨
+          git config --unset-all http.https://github.com/.extraheader || true
           for repo in "totaldu/totaldu.github.io" "totaldu/totaldu-com"; do
             if git push --force "https://x-access-token:${MIRROR_PAT}@github.com/${repo}.git" HEAD:main; then
               echo "✓ 미러 완료: ${repo}"
