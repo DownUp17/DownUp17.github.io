@@ -42,9 +42,11 @@ jobs:
           git push
 
       # open beta(totaldu.github.io)·prod(totaldu.com)는 예약 Actions가 불안정해 자체 갱신이
-      # 멈추는 문제가 있어, 안정적으로 도는 close beta가 최신 상태를 두 저장소에 미러링한다.
+      # 멈추는 문제가 있어, 안정적으로 도는 close beta가 시뮬 결과(데이터 파일)를 두 저장소에 동기화한다.
+      #   전체 트리 force-push는 워크플로 파일까지 건드려 workflow 스코프가 필요하므로,
+      #   생성 데이터 파일만 복사·커밋하는 방식으로 Contents 권한 토큰만으로 동작하게 한다.
       # MIRROR_PAT: totaldu 소유 두 저장소에 contents:write 권한이 있는 PAT (repo secret).
-      - name: Mirror to open beta & prod
+      - name: Mirror sim results to open beta & prod
         env:
           MIRROR_PAT: ${{ secrets.MIRROR_PAT }}
         run: |
@@ -52,13 +54,23 @@ jobs:
             echo "::warning::MIRROR_PAT 시크릿 미설정 — 미러링 생략"
             exit 0
           fi
-          # actions/checkout가 심은 기본 토큰 헤더 제거 — 없으면 URL의 MIRROR_PAT가 무시돼
-          # 기본 github-actions[bot] 토큰으로 push되어 권한 거부됨
-          git config --unset-all http.https://github.com/.extraheader || true
+          FILES="client/src/data/gprTeams.json client/src/data/lolGpr.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolRosters.json"
           for repo in "totaldu/totaldu.github.io" "totaldu/totaldu-com"; do
-            if git push --force "https://x-access-token:${MIRROR_PAT}@github.com/${repo}.git" HEAD:main; then
-              echo "✓ 미러 완료: ${repo}"
-            else
-              echo "::warning::미러 실패: ${repo}"
+            tmp=$(mktemp -d)
+            if ! git clone --depth 1 "https://x-access-token:${MIRROR_PAT}@github.com/${repo}.git" "$tmp" 2>/dev/null; then
+              echo "::warning::클론 실패: ${repo}"; rm -rf "$tmp"; continue
             fi
+            for f in $FILES; do [ -f "$f" ] && mkdir -p "$tmp/$(dirname "$f")" && cp "$f" "$tmp/$f"; done
+            ( cd "$tmp"
+              git config user.name "github-actions[bot]"
+              git config user.email "github-actions[bot]@users.noreply.github.com"
+              git add client/src/data
+              if git diff --cached --quiet; then
+                echo "변경 없음: ${repo}"
+              elif git commit -m "chore: close beta 시뮬 결과 동기화" && git push; then
+                echo "✓ 동기화 완료: ${repo}"
+              else
+                echo "::warning::동기화 실패: ${repo}"
+              fi )
+            rm -rf "$tmp"
           done
