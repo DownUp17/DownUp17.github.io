@@ -1037,9 +1037,9 @@
           {
             "rank": 1,
             "team": "T1",
-            "w": 15,
+            "w": 16,
             "l": 5,
-            "gw": 32,
+            "gw": 34,
             "gl": 12,
             "group": "레전드 그룹"
           },
@@ -1074,9 +1074,9 @@
             "rank": 5,
             "team": "DK",
             "w": 13,
-            "l": 7,
+            "l": 8,
             "gw": 28,
-            "gl": 19,
+            "gl": 21,
             "group": "레전드 그룹"
           }
         ]
@@ -1161,19 +1161,19 @@
           {
             "rank": 1,
             "team": "NIP",
-            "w": 2,
+            "w": 3,
             "l": 0,
-            "gw": 4,
-            "gl": 0,
+            "gw": 6,
+            "gl": 1,
             "group": "열반조"
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "IG",
             "w": 2,
-            "l": 0,
-            "gw": 4,
-            "gl": 1,
+            "l": 1,
+            "gw": 5,
+            "gl": 3,
             "group": "열반조"
           },
           {
@@ -2168,11 +2168,15 @@
                   "title": "0승 2패",
                   "a": {
                     "seed": "",
-                    "short": "GZ"
+                    "short": "GZ",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "SHG"
+                    "short": "SHG",
+                    "score": 0,
+                    "elim": true
                   },
                   "recordKey": "0-2"
                 }
@@ -2196,11 +2200,12 @@
                 {
                   "title": "2승 1패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "CFO"
                   },
                   "b": {
                     "seed": "",
-                    "short": "CFO"
+                    "short": "GZ"
                   },
                   "recordKey": "2-1"
                 },
