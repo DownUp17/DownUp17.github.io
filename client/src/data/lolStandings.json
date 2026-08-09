@@ -1170,9 +1170,9 @@
           {
             "rank": 2,
             "team": "IG",
-            "w": 2,
+            "w": 3,
             "l": 1,
-            "gw": 5,
+            "gw": 7,
             "gl": 3,
             "group": "열반조"
           },
@@ -1189,9 +1189,9 @@
             "rank": 4,
             "team": "LNG",
             "w": 0,
-            "l": 3,
+            "l": 4,
             "gw": 0,
-            "gl": 6,
+            "gl": 8,
             "group": "열반조"
           }
         ],
@@ -2204,11 +2204,11 @@
                   "title": "2승 1패",
                   "a": {
                     "seed": "",
-                    "short": "CFO"
+                    "short": "GZ"
                   },
                   "b": {
                     "seed": "",
-                    "short": "GZ"
+                    "short": "CFO"
                   },
                   "recordKey": "2-1"
                 },
