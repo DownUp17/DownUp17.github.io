@@ -1000,20 +1000,20 @@
           },
           {
             "rank": 2,
-            "team": "KRX",
-            "w": 7,
+            "team": "BFX",
+            "w": 8,
             "l": 14,
-            "gw": 20,
-            "gl": 31,
+            "gw": 19,
+            "gl": 29,
             "group": "라이즈 그룹"
           },
           {
             "rank": 3,
-            "team": "BFX",
+            "team": "KRX",
             "w": 7,
-            "l": 14,
-            "gw": 17,
-            "gl": 29,
+            "l": 15,
+            "gw": 20,
+            "gl": 33,
             "group": "라이즈 그룹"
           },
           {
@@ -1117,17 +1117,17 @@
             "rank": 4,
             "team": "WE",
             "w": 5,
-            "l": 3,
+            "l": 4,
             "gw": 11,
-            "gl": 8,
+            "gl": 10,
             "group": "등봉조"
           },
           {
             "rank": 5,
             "team": "JDG",
-            "w": 3,
+            "w": 4,
             "l": 4,
-            "gw": 8,
+            "gw": 10,
             "gl": 10,
             "group": "등봉조"
           },
@@ -2204,11 +2204,15 @@
                   "title": "2승 1패",
                   "a": {
                     "seed": "",
-                    "short": "GZ"
+                    "short": "GZ",
+                    "score": 1,
+                    "elim": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "CFO"
+                    "short": "CFO",
+                    "score": 3,
+                    "win": true
                   },
                   "recordKey": "2-1"
                 },
