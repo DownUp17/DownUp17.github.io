@@ -137,26 +137,36 @@ function simulateLCK(teams, fixed) {
   // HLE = MSI 챔피언 확정 Worlds 진출. LCK 4슬롯(HLE 1 + 국내 플레이오프 3).
   const hleTeam = teams.find((t) => t.short === 'HLE');
 
-  // 그룹 내 더블 라운드로빈(쌍별 2시리즈) — 누적 wins·gd에 가산
-  const roundRobin = (groupIdx, wins, gd) => {
-    for (let a = 0; a < groupIdx.length; a++)
-      for (let b = a + 1; b < groupIdx.length; b++)
-        for (let g = 0; g < 2; g++) {
-          const i = groupIdx[a], j = groupIdx[b];
+  // 그룹 내 더블 라운드로빈(쌍별 2시리즈) — 누적 wins·gd에 가산.
+  // s3played 배열이 있으면 팀별 소화율로 이미 치른 쌍별 경기 수를 추정하고 잔여만 시뮬.
+  const roundRobin = (groupIdx, wins, gd, s3played) => {
+    const N = groupIdx.length;
+    for (let a = 0; a < N; a++)
+      for (let b = a + 1; b < N; b++) {
+        const i = groupIdx[a], j = groupIdx[b];
+        let pairPlayed = 0;
+        if (s3played) {
+          const avgFrac = (s3played[i] + s3played[j]) / (4 * (N - 1));
+          pairPlayed = Math.min(2, Math.round(avgFrac * 2));
+        }
+        for (let g = pairPlayed; g < 2; g++) {
           let wa = 0, wb = 0;
           const p = gameProb(teams[i].score, teams[j].score);
           while (wa < 2 && wb < 2) (rng() < p ? wa++ : wb++);
           if (wa === 2) wins[i]++; else wins[j]++;
           gd[i] += wa - wb; gd[j] += wb - wa;
         }
+      }
   };
 
   // 고정 모드 사전 계산: 그룹 멤버 인덱스 + 1·2R 누적 승수·득실차(시작값)
+  // s3played: 1·2R(Split2) = 18경기 완료 기준으로 Split3 소화 경기 수 계산
   const idxAll = teams.map((_, i) => i);
   const fixedLegend = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Legend');
   const fixedRise = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Rise');
   const startWins = fixed && teams.map((t) => fixed[t.short]?.w ?? 0);
   const startGd = fixed && teams.map((t) => fixed[t.short]?.gd ?? 0);
+  const startS3Played = fixed && teams.map((t) => Math.max(0, (fixed[t.short]?.total ?? 0) - 18));
 
   for (let it = 0; it < ITER; it++) {
     let wins, gd, legend, rise;
@@ -167,8 +177,8 @@ function simulateLCK(teams, fixed) {
       gd = startGd.slice();
       legend = fixedLegend;
       rise = fixedRise;
-      roundRobin(legend, wins, gd);
-      roundRobin(rise, wins, gd);
+      roundRobin(legend, wins, gd, startS3Played);
+      roundRobin(rise, wins, gd, startS3Played);
     } else {
       wins = new Array(n).fill(0);
       gd = new Array(n).fill(0);
@@ -294,7 +304,7 @@ const lckRows = standingsData.standings?.lck?.LCK?.rows;
 // 그룹명 정규화 — 데이터가 '레전드 그룹'/'라이즈 그룹'(한글)이어도 시뮬은 Legend/Rise로 판별
 const normLckGroup = (g) => (/레전드/.test(g) ? 'Legend' : /라이즈/.test(g) ? 'Rise' : g);
 const lckFixed = lckRows && Object.fromEntries(
-  lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group), gd: (r.gw ?? 0) - (r.gl ?? 0) }])
+  lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group), gd: (r.gw ?? 0) - (r.gl ?? 0), total: r.w + r.l }])
 );
 
 for (const lg of leagues) {
