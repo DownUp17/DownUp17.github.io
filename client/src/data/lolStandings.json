@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-09",
+  "updatedAt": "2026-08-10",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -2240,10 +2240,12 @@
                 {
                   "title": "2승 2패",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "GAM"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "DCG"
                   },
                   "recordKey": "2-2"
                 }
@@ -2260,19 +2262,23 @@
                 {
                   "title": "1라운드",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "CFO"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "MVK"
                   }
                 },
                 {
                   "title": "1라운드",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "GZ"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "DFM"
                   }
                 }
               ]
@@ -2283,10 +2289,11 @@
                 {
                   "title": "2라운드",
                   "a": {
-                    "seed": ""
+                    "seed": "1라운드 승자"
                   },
                   "b": {
-                    "seed": "1라운드 승자"
+                    "seed": "",
+                    "short": "TSW"
                   }
                 }
               ]
@@ -2299,7 +2306,7 @@
               "mid",
               1,
               0,
-              "b"
+              "a"
             ]
           ]
         },
@@ -2525,17 +2532,17 @@
           {
             "rank": 1,
             "team": "TLAW",
-            "w": 2,
+            "w": 3,
             "l": 0,
-            "gw": 4,
+            "gw": 6,
             "gl": 0
           },
           {
             "rank": 1,
             "team": "LYON",
-            "w": 2,
+            "w": 3,
             "l": 0,
-            "gw": 4,
+            "gw": 6,
             "gl": 0
           },
           {
@@ -2556,14 +2563,6 @@
           },
           {
             "rank": 5,
-            "team": "FLY",
-            "w": 1,
-            "l": 1,
-            "gw": 2,
-            "gl": 2
-          },
-          {
-            "rank": 6,
             "team": "SEN",
             "w": 1,
             "l": 2,
@@ -2571,19 +2570,27 @@
             "gl": 5
           },
           {
-            "rank": 7,
-            "team": "DIG",
-            "w": 0,
+            "rank": 5,
+            "team": "FLY",
+            "w": 1,
             "l": 2,
             "gw": 2,
             "gl": 4
           },
           {
-            "rank": 8,
+            "rank": 7,
             "team": "DSG",
             "w": 0,
             "l": 3,
             "gw": 1,
+            "gl": 6
+          },
+          {
+            "rank": 7,
+            "team": "DIG",
+            "w": 0,
+            "l": 3,
+            "gw": 2,
             "gl": 6
           }
         ]
