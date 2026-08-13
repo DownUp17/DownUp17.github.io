@@ -1089,14 +1089,14 @@
           {
             "rank": 1,
             "team": "BLG",
-            "w": 7,
+            "w": 8,
             "l": 2,
-            "gw": 15,
+            "gw": 17,
             "gl": 8,
             "group": "등봉조"
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "TES",
             "w": 7,
             "l": 2,
@@ -1105,7 +1105,7 @@
             "group": "등봉조"
           },
           {
-            "rank": 1,
+            "rank": 2,
             "team": "AL",
             "w": 7,
             "l": 2,
@@ -1135,9 +1135,9 @@
             "rank": 6,
             "team": "TT",
             "w": 3,
-            "l": 6,
+            "l": 7,
             "gw": 10,
-            "gl": 14,
+            "gl": 16,
             "group": "등봉조"
           },
           {
@@ -2241,11 +2241,15 @@
                   "title": "2승 2패",
                   "a": {
                     "seed": "",
-                    "short": "DCG"
+                    "short": "DCG",
+                    "score": 1,
+                    "elim": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "GAM"
+                    "short": "GAM",
+                    "score": 3,
+                    "win": true
                   },
                   "recordKey": "2-2"
                 }
