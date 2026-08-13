@@ -2241,11 +2241,11 @@
                   "title": "2승 2패",
                   "a": {
                     "seed": "",
-                    "short": "GAM"
+                    "short": "DCG"
                   },
                   "b": {
                     "seed": "",
-                    "short": "DCG"
+                    "short": "GAM"
                   },
                   "recordKey": "2-2"
                 }
