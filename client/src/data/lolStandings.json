@@ -991,20 +991,20 @@
         "rows": [
           {
             "rank": 1,
-            "team": "BFX",
+            "team": "BRO",
             "w": 9,
             "l": 15,
-            "gw": 21,
+            "gw": 24,
             "gl": 32,
             "group": "라이즈 그룹"
           },
           {
             "rank": 2,
-            "team": "BRO",
-            "w": 8,
+            "team": "BFX",
+            "w": 9,
             "l": 15,
-            "gw": 22,
-            "gl": 31,
+            "gw": 21,
+            "gl": 32,
             "group": "라이즈 그룹"
           },
           {
@@ -1020,9 +1020,9 @@
             "rank": 4,
             "team": "KRX",
             "w": 7,
-            "l": 16,
-            "gw": 21,
-            "gl": 35,
+            "l": 17,
+            "gw": 22,
+            "gl": 37,
             "group": "라이즈 그룹"
           },
           {
@@ -1107,9 +1107,9 @@
           {
             "rank": 3,
             "team": "TES",
-            "w": 7,
+            "w": 8,
             "l": 3,
-            "gw": 14,
+            "gw": 16,
             "gl": 8,
             "group": "등봉조"
           },
@@ -1153,9 +1153,9 @@
             "rank": 8,
             "team": "EDG",
             "w": 0,
-            "l": 10,
+            "l": 11,
             "gw": 2,
-            "gl": 20,
+            "gl": 22,
             "group": "등봉조"
           },
           {
@@ -1170,19 +1170,19 @@
           {
             "rank": 2,
             "team": "IG",
-            "w": 3,
+            "w": 4,
             "l": 1,
-            "gw": 7,
-            "gl": 3,
+            "gw": 9,
+            "gl": 4,
             "group": "열반조"
           },
           {
             "rank": 3,
             "team": "WBG",
             "w": 1,
-            "l": 3,
-            "gw": 4,
-            "gl": 6,
+            "l": 4,
+            "gw": 5,
+            "gl": 8,
             "group": "열반조"
           },
           {
@@ -2302,11 +2302,15 @@
                   "title": "2라운드",
                   "a": {
                     "seed": "",
-                    "short": "TSW"
+                    "short": "TSW",
+                    "score": 2,
+                    "elim": true
                   },
                   "b": {
                     "seed": "1라운드 승자",
-                    "short": "CFO"
+                    "short": "CFO",
+                    "score": 3,
+                    "msi": true
                   }
                 }
               ]
@@ -2331,19 +2335,23 @@
                 {
                   "title": "하위권 대진 - 4강",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "CFO"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "MVK"
                   }
                 },
                 {
                   "title": "하위권 대진 - 4강",
                   "a": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "TSW"
                   },
                   "b": {
-                    "seed": ""
+                    "seed": "",
+                    "short": "GAM"
                   }
                 }
               ]
