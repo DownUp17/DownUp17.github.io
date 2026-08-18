@@ -1,6 +1,6 @@
 {
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "updatedAt": "2026-08-17",
+  "updatedAt": "2026-08-18",
   "note": "GPR 팀별 점수(포인트)와 전적. score를 시뮬레이션 레이팅으로 사용. fst는 2026 First Stand 최종 순위.",
   "teams": [
     {
@@ -110,10 +110,10 @@
       "name": "Karmine Corp",
       "short": "KC",
       "league": "LEC",
-      "score": 1405,
-      "w": 29,
+      "score": 1410,
+      "w": 30,
       "l": 11,
-      "gw": 62,
+      "gw": 64,
       "gl": 33,
       "logo": "https://static.lolesports.com/teams/1704714951336_KC.png"
     },
@@ -154,11 +154,11 @@
       "name": "FlyQuest",
       "short": "FLY",
       "league": "LCS",
-      "score": 1353,
+      "score": 1347,
       "w": 8,
-      "l": 10,
+      "l": 11,
       "gw": 24,
-      "gl": 27,
+      "gl": 29,
       "logo": "https://static.lolesports.com/teams/flyquest-new-on-dark.png"
     },
     {
@@ -210,10 +210,10 @@
       "name": "Cloud9 Kia",
       "short": "C9",
       "league": "LCS",
-      "score": 1312,
-      "w": 15,
+      "score": 1318,
+      "w": 16,
       "l": 4,
-      "gw": 34,
+      "gw": 36,
       "gl": 20,
       "logo": "https://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png"
     },
@@ -288,12 +288,12 @@
       "name": "LYON",
       "short": "LYON",
       "league": "LCS",
-      "score": 1458,
+      "score": 1452,
       "w": 20,
-      "l": 8,
+      "l": 9,
       "fst": 6,
-      "gw": 57,
-      "gl": 29,
+      "gw": 58,
+      "gl": 31,
       "logo": "https://static.lolesports.com/teams/1743717443673_isotypelyon-03.png"
     },
     {
@@ -344,11 +344,11 @@
       "name": "GIANTX",
       "short": "GX",
       "league": "LEC",
-      "score": 1214,
+      "score": 1209,
       "w": 16,
-      "l": 14,
+      "l": 15,
       "gw": 30,
-      "gl": 31,
+      "gl": 33,
       "logo": "https://static.lolesports.com/teams/1765897105091_GIANTX-logotype-white.png"
     },
     {
@@ -443,10 +443,10 @@
       "name": "Natus Vincere",
       "short": "NAVI",
       "league": "LEC",
-      "score": 1176,
-      "w": 16,
+      "score": 1185,
+      "w": 17,
       "l": 13,
-      "gw": 27,
+      "gw": 29,
       "gl": 29,
       "logo": "https://static.lolesports.com/teams/1752746833620_NAVI_FullColor.png"
     },
@@ -454,11 +454,11 @@
       "name": "Sentinels",
       "short": "SEN",
       "league": "LCS",
-      "score": 1203,
-      "w": 7,
+      "score": 1209,
+      "w": 8,
       "l": 10,
-      "gw": 21,
-      "gl": 28,
+      "gw": 23,
+      "gl": 29,
       "logo": "https://static.lolesports.com/teams/1767769784669_Sentinels_2020_Icon.png"
     },
     {
@@ -587,11 +587,11 @@
       "name": "Team Heretics",
       "short": "TH",
       "league": "LEC",
-      "score": 1106,
+      "score": 1097,
       "w": 8,
-      "l": 18,
+      "l": 19,
       "gw": 12,
-      "gl": 33,
+      "gl": 35,
       "logo": "https://static.lolesports.com/teams/1672933861879_Heretics-Full-Color.png"
     },
     {
