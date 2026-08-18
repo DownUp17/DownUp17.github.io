@@ -137,61 +137,85 @@ function simulateLCK(teams, fixed) {
   // HLE = MSI 챔피언 확정 Worlds 진출. LCK 4슬롯(HLE 1 + 국내 플레이오프 3).
   const hleTeam = teams.find((t) => t.short === 'HLE');
 
-  // 그룹 내 더블 라운드로빈(쌍별 2시리즈) — 누적 wins·gd에 가산.
-  // s3played 배열이 있으면 팀별 소화율로 이미 치른 쌍별 경기 수를 추정하고 잔여만 시뮬.
-  const roundRobin = (groupIdx, wins, gd, s3played) => {
+  // 그룹 잔여 대진 스케줄 구성 — [i,j] 팀 인덱스 시리즈 목록 반환.
+  //   s3played가 있으면 팀별 잔여 경기 수(rem = 8 - 소화)를 만족하는 근사 스케줄을,
+  //   없으면 완전 더블 라운드로빈(쌍별 2시리즈)을 반환한다.
+  //   (실제 잔여 대진표는 모르므로 잔여 많은 팀부터 그리디 매칭으로 근사)
+  const buildSchedule = (groupIdx, s3played) => {
     const N = groupIdx.length;
-    for (let a = 0; a < N; a++)
-      for (let b = a + 1; b < N; b++) {
-        const i = groupIdx[a], j = groupIdx[b];
-        let pairPlayed = 0;
-        if (s3played) {
-          const avgFrac = (s3played[i] + s3played[j]) / (4 * (N - 1));
-          pairPlayed = Math.min(2, Math.round(avgFrac * 2));
-        }
-        for (let g = pairPlayed; g < 2; g++) {
-          let wa = 0, wb = 0;
-          const p = gameProb(teams[i].score, teams[j].score);
-          while (wa < 2 && wb < 2) (rng() < p ? wa++ : wb++);
-          if (wa === 2) wins[i]++; else wins[j]++;
-          gd[i] += wa - wb; gd[j] += wb - wa;
-        }
-      }
+    const gamesPerTeam = 2 * (N - 1);
+    if (!s3played) {
+      const full = [];
+      for (let a = 0; a < N; a++)
+        for (let b = a + 1; b < N; b++)
+          for (let g = 0; g < 2; g++) full.push([groupIdx[a], groupIdx[b]]);
+      return full;
+    }
+    const rem = groupIdx.map((i) => Math.max(0, gamesPerTeam - s3played[i]));
+    const pairCnt = {};
+    const key = (a, b) => (a < b ? a + '-' + b : b + '-' + a);
+    const sched = [];
+    let guard = 0;
+    while (guard++ < 10000) {
+      const avail = groupIdx.map((_, k) => k).filter((k) => rem[k] > 0).sort((a, b) => rem[b] - rem[a]);
+      if (avail.length < 2) break;
+      const k1 = avail[0];
+      const k2 = avail.slice(1).find((k) => (pairCnt[key(groupIdx[k1], groupIdx[k])] || 0) < 2);
+      if (k2 === undefined) break;
+      sched.push([groupIdx[k1], groupIdx[k2]]);
+      rem[k1]--; rem[k2]--;
+      pairCnt[key(groupIdx[k1], groupIdx[k2])] = (pairCnt[key(groupIdx[k1], groupIdx[k2])] || 0) + 1;
+    }
+    return sched;
+  };
+
+  // 스케줄(시리즈 목록)을 시뮬 — 누적 wins·gd에 가산
+  const playSchedule = (sched, wins, gd) => {
+    for (const [i, j] of sched) {
+      let wa = 0, wb = 0;
+      const p = gameProb(teams[i].score, teams[j].score);
+      while (wa < 2 && wb < 2) (rng() < p ? wa++ : wb++);
+      if (wa === 2) wins[i]++; else wins[j]++;
+      gd[i] += wa - wb; gd[j] += wb - wa;
+    }
   };
 
   // 고정 모드 사전 계산: 그룹 멤버 인덱스 + 1·2R 누적 승수·득실차(시작값)
-  // s3played: 1·2R(Split2) = 18경기 완료 기준으로 Split3 소화 경기 수 계산
+  // s3played: 1·2R(Split2) = 18경기 완료 기준으로 Split3 소화 경기 수 계산.
+  //   잔여 대진 스케줄은 rng와 무관(팀별 잔여수만 반영)하므로 루프 밖에서 1회 구성.
   const idxAll = teams.map((_, i) => i);
   const fixedLegend = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Legend');
   const fixedRise = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Rise');
   const startWins = fixed && teams.map((t) => fixed[t.short]?.w ?? 0);
   const startGd = fixed && teams.map((t) => fixed[t.short]?.gd ?? 0);
   const startS3Played = fixed && teams.map((t) => Math.max(0, (fixed[t.short]?.total ?? 0) - 18));
+  const legendSched = fixed && buildSchedule(fixedLegend, startS3Played);
+  const riseSched = fixed && buildSchedule(fixedRise, startS3Played);
 
   for (let it = 0; it < ITER; it++) {
     let wins, gd, legend, rise;
 
     if (fixed) {
-      // 정규 1·2R 결과 고정: 그룹·누적 승수·득실차를 실제 순위표에서 가져오고 3·4R만 시뮬
+      // 정규 1·2R 결과 고정: 그룹·누적 승수·득실차를 실제 순위표에서 가져오고 3·4R 잔여만 시뮬
       wins = startWins.slice();
       gd = startGd.slice();
       legend = fixedLegend;
       rise = fixedRise;
-      roundRobin(legend, wins, gd, startS3Played);
-      roundRobin(rise, wins, gd, startS3Played);
+      playSchedule(legendSched, wins, gd);
+      playSchedule(riseSched, wins, gd);
     } else {
       wins = new Array(n).fill(0);
       gd = new Array(n).fill(0);
       const idx = idxAll.slice();
       // 1~2R: 10팀 더블 라운드로빈
-      roundRobin(idx, wins, gd);
+      playSchedule(buildSchedule(idx), wins, gd);
       // 1~2R 성적으로 그룹 분할 (상위5 레전드 / 하위5 라이즈), 동률 득실차 → 무작위
       const order12 = idx.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5));
       legend = order12.slice(0, 5);
       rise = order12.slice(5);
       // 3~4R: 그룹 내 더블 라운드로빈 (1~2R 승수·득실차 연계)
-      roundRobin(legend, wins, gd);
-      roundRobin(rise, wins, gd);
+      playSchedule(buildSchedule(legend), wins, gd);
+      playSchedule(buildSchedule(rise), wins, gd);
     }
 
     // 최종 순위 — 그룹 내 누적 승수 기준, 동률 시 득실차 → 무작위
@@ -492,33 +516,48 @@ function simulateLplSplit3(ascend, nirvana, fixedAscend = {}, fixedNirvana = {})
   [...ascend, ...nirvana].forEach((t) => { stat[t.short] = { kiPlus: 0, knockout: 0, champ: 0, worlds: 0 }; });
 
   // 현재 순위표(W-L, gw-gl)를 시작값으로 고정하고 잔여 경기만 시뮬.
-  // 잔여 경기 수: 각 대결쌍(2번 맞대결)에서 (팀별 소화율 평균) 만큼 이미 치렀다고 추정.
-  // 동률 타이브레이커: 득실차(gd) → 랜덤.
-  const rankGroup = (group, fixedRec) => {
+  //   팀별 잔여 경기 수(rem = 2(N-1) - 소화)를 만족하는 근사 스케줄을 1회 구성하고,
+  //   매 반복은 그 대진의 승패만 시뮬한다. 동률 타이브레이커: 득실차(gd) → 랜덤.
+  //   (실제 잔여 대진표를 모르므로 잔여 많은 팀부터 그리디 매칭으로 근사)
+  const buildSched = (group, fixedRec) => {
     const N = group.length;
+    const gamesPerTeam = 2 * (N - 1);
+    const rem = group.map(t => { const r = fixedRec?.[t.short]; const p = r ? ((r.w ?? 0) + (r.l ?? 0)) : 0; return Math.max(0, gamesPerTeam - p); });
+    const pairCnt = {};
+    const key = (a, b) => (a < b ? a + '-' + b : b + '-' + a);
+    const sched = [];
+    let guard = 0;
+    while (guard++ < 10000) {
+      const avail = group.map((_, k) => k).filter((k) => rem[k] > 0).sort((a, b) => rem[b] - rem[a]);
+      if (avail.length < 2) break;
+      const k1 = avail[0];
+      const k2 = avail.slice(1).find((k) => (pairCnt[key(k1, k)] || 0) < 2);
+      if (k2 === undefined) break;
+      sched.push([k1, k2]);
+      rem[k1]--; rem[k2]--;
+      pairCnt[key(k1, k2)] = (pairCnt[key(k1, k2)] || 0) + 1;
+    }
+    return sched;
+  };
+  const aSched = buildSched(ascend, fixedAscend);
+  const nSched = buildSched(nirvana, fixedNirvana);
+  const rankGroup = (group, fixedRec, sched) => {
     const wins = group.map(t => fixedRec?.[t.short]?.w ?? 0);
     const gd = group.map(t => { const r = fixedRec?.[t.short]; return r ? ((r.gw ?? 0) - (r.gl ?? 0)) : 0; });
-    const played = group.map(t => { const r = fixedRec?.[t.short]; return r ? ((r.w ?? 0) + (r.l ?? 0)) : 0; });
-    for (let a = 0; a < N; a++) {
-      for (let b = a + 1; b < N; b++) {
-        const avgFrac = (played[a] + played[b]) / (4 * (N - 1));
-        const pairPlayed = Math.min(2, Math.round(avgFrac * 2));
-        for (let g = pairPlayed; g < 2; g++) {
-          let wa = 0, wb = 0;
-          const p = gameProb(group[a].score, group[b].score);
-          while (wa < 2 && wb < 2) (rng() < p ? wa++ : wb++);
-          if (wa === 2) wins[a]++; else wins[b]++;
-          gd[a] += wa - wb;
-          gd[b] += wb - wa;
-        }
-      }
+    for (const [a, b] of sched) {
+      let wa = 0, wb = 0;
+      const p = gameProb(group[a].score, group[b].score);
+      while (wa < 2 && wb < 2) (rng() < p ? wa++ : wb++);
+      if (wa === 2) wins[a]++; else wins[b]++;
+      gd[a] += wa - wb;
+      gd[b] += wb - wa;
     }
     return group.map((_, i) => i).sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5)).map((i) => group[i]);
   };
 
   for (let it = 0; it < ITER; it++) {
-    const aRanked = rankGroup(ascend, fixedAscend); // 등봉 1~8위
-    const nRanked = rankGroup(nirvana, fixedNirvana); // 열반 1~4위
+    const aRanked = rankGroup(ascend, fixedAscend, aSched); // 등봉 1~8위
+    const nRanked = rankGroup(nirvana, fixedNirvana, nSched); // 열반 1~4위
     const direct = aRanked.slice(0, 6);
     const [a7, a8] = aRanked.slice(6, 8);
     const [n1, n2] = nRanked.slice(0, 2);
