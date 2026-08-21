@@ -1144,17 +1144,17 @@
             "rank": 7,
             "team": "TT",
             "w": 3,
-            "l": 9,
+            "l": 10,
             "gw": 12,
-            "gl": 20,
+            "gl": 22,
             "group": "등봉조"
           },
           {
             "rank": 8,
             "team": "EDG",
-            "w": 1,
+            "w": 2,
             "l": 11,
-            "gw": 4,
+            "gw": 6,
             "gl": 22,
             "group": "등봉조"
           },
@@ -2350,11 +2350,11 @@
                   "title": "하위권 대진 - 4강",
                   "a": {
                     "seed": "",
-                    "short": "TSW"
+                    "short": "GAM"
                   },
                   "b": {
                     "seed": "",
-                    "short": "GAM"
+                    "short": "TSW"
                   }
                 }
               ]
