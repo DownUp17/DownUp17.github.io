@@ -519,22 +519,11 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     { color: '#9CA3AF', bg: 'rgba(156,163,175,0.15)' },
     { color: '#7EC8E8', bg: 'rgba(62,150,200,0.2)' },
   ];
-  // LCK 플레이-인/플레이오프: MSI/LCP처럼 API 대진표(연결선) + 참가 팀 카드로 표기
+  // LCK 플레이-인/플레이오프: MSI/LCP처럼 API 대진표(연결선)로 표기하고,
+  //   참가 팀은 정규시즌 순위표(그룹별)로 대진표 위에 표기한다.
   let groups;
   const lckBracketStage = comp.key === 'lck' && grouped && (stage === '플레이-인' || stage === '플레이오프');
   const lckBracket = lckBracketStage ? official?.[stage === '플레이-인' ? 'playin' : 'playoffs'] : null;
-  const lckSeedsPending = lckBracketStage && !official?.seedsLocked;
-  // 참가 팀(시드) — 정규시즌 순위 기준 예상 배치. 확정 전이면 예상 팀 + 확률로 표기.
-  let lckQualifiers = null;
-  if (lckBracketStage) {
-    const legend = current.filter((t) => /레전드|Legend/.test(t.group || '')); // 레전드 1~5위(순위순)
-    const rise = current.filter((t) => /라이즈|Rise/.test(t.group || ''));      // 라이즈 1~5위
-    const q = (seed, team) => ({ seed, short: team?.short || null, label: seed });
-    lckQualifiers = stage === '플레이-인'
-      ? [q('레전드 5위', legend[4]), q('라이즈 1위', rise[0]), q('라이즈 2위', rise[1]), q('라이즈 3위', rise[2])]
-      : [q('레전드 1위', legend[0]), q('레전드 2위', legend[1]), q('레전드 3위', legend[2]), q('레전드 4위', legend[3]),
-         { seed: '플레이-인 통과', label: '플레이-인 통과' }, { seed: '플레이-인 통과', label: '플레이-인 통과' }];
-  }
   {
     groups = grouped
       ? [...new Set(current.map((t) => t.group))]
@@ -552,10 +541,9 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
 
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
   // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
-  // LCK 플레이-인/플레이오프는 순위표 대신 참가 팀 카드로 표기
-  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lckBracketStage;
-  // 참가 팀 카드: MSI는 official.qualifiers, LCK 플레이-인/플레이오프는 예상 시드 배치
-  const qualifiers = official?.qualifiers?.length ? official.qualifiers : lckQualifiers;
+  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi';
+  // 참가 팀 카드(MSI 전용). LCK 플레이-인/플레이오프는 정규시즌 순위표를 참가 팀으로 표기.
+  const qualifiers = official?.qualifiers?.length ? official.qualifiers : null;
   let bracketSections = official?.bracket?.sections;
   if (lplSplit3 && bracketSections && stage) {
     if (stage === '럼블 스테이지') bracketSections = [];
@@ -604,8 +592,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
       {current.length > 0 && !hideStandings && (
         <section className="flex flex-col gap-5">
           <div className="flex items-baseline gap-2 flex-wrap">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{cfg?.heading || (roadToMsi ? '진출 팀' : '현재 순위')}</h3>
-            {(cfg?.desc || official?.stage) && <span className="text-xs text-white/40">{cfg?.desc || official?.stage}</span>}
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lckBracketStage ? '참가 팀' : (cfg?.heading || (roadToMsi ? '진출 팀' : '현재 순위'))}</h3>
+            <span className="text-xs text-white/40">{lckBracketStage ? '정규시즌 순위표 (진출 시드 확정 기준)' : (cfg?.desc || official?.stage)}</span>
           </div>
           {groups.map((grp) => (
             <div key={grp.name || 'all'}>
@@ -615,7 +603,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={cfg?.cols} onTeamClick={onTeamClick} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckBracketStage ? STAGE_CFG['정규시즌'].cols : cfg?.cols} onTeamClick={onTeamClick} />
             </div>
           ))}
         </section>
@@ -669,13 +657,10 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
-      {/* 참가 팀 (MSI 스테이지 / LCK 플레이-인·플레이오프) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트 */}
+      {/* 참가 팀 (MSI 스테이지) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트 */}
       {qualifiers?.length > 0 && (
         <section className="flex flex-col gap-3">
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
-            {lckSeedsPending && <span className="text-xs text-white/40">정규시즌 순위 기준 예상 배치 · 종료 후 확정</span>}
-          </div>
+          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {qualifiers.map((q, i) => {
               const p = q.short ? probByShort[q.short] : null;
