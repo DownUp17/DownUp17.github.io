@@ -961,6 +961,51 @@ try {
   console.warn(`LCP Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
 
+// 5단계: LCK 플레이-인 · 지역별 챔피언십(플레이오프) 대진을 API에서 가져와 저장.
+//   MSI/LCP와 동일하게 bracketFromColumns 로 연결선을 만들고, 첫 라운드 시드 라벨은
+//   LCK 포맷(레전드/라이즈 그룹 순위)에 맞춰 주입한다(API는 시드 확정 전까지 라벨을 안 줌).
+try {
+  const LCK_S3_TOURNAMENT = '115548147890329817';
+  const j = await api('getStandingsV3', { tournamentId: LCK_S3_TOURNAMENT });
+  const st = j.data?.standings?.[0];
+  if (st?.stages) {
+    const bySlug = {};
+    for (const s of st.stages) {
+      if (s.slug !== 'play_ins' && s.slug !== 'regional_championship') continue;
+      const cols = s.sections?.[0]?.columns || [];
+      bySlug[s.slug] = bracketFromColumns(cols);
+    }
+    // 빈 시드 슬롯에만 라벨 주입 (팀 확정 시 API 라벨/코드 우선)
+    const setSeed = (slot, label) => { if (slot && !slot.seed && !slot.short) slot.seed = label; };
+    const playin = bySlug['play_ins'];
+    if (playin?.rounds?.[0]) {
+      const [m0, m1] = playin.rounds[0].matches;
+      if (m0) { setSeed(m0.a, '레전드 5위'); setSeed(m0.b, '라이즈 1위'); }
+      if (m1) { setSeed(m1.a, '라이즈 2위'); setSeed(m1.b, '라이즈 3위'); }
+    }
+    const playoffs = bySlug['regional_championship'];
+    if (playoffs?.rounds) {
+      const r0 = playoffs.rounds[0]?.matches || [];
+      if (r0[0]) { setSeed(r0[0].a, '레전드 3위'); setSeed(r0[0].b, '플레이-인 진출'); }
+      if (r0[1]) { setSeed(r0[1].a, '레전드 4위'); setSeed(r0[1].b, '플레이-인 진출'); }
+      const r1 = playoffs.rounds[1]?.matches || [];
+      if (r1[0]) setSeed(r1[0].a, '레전드 1위'); // 상위권 2라운드 상단 = 1시드 부전승
+      if (r1[1]) setSeed(r1[1].a, '레전드 2위');
+      // 상위권 2라운드 패자는 하위권으로 내려오지만 API가 origin을 안 줌 → 라벨 주입
+      const r2 = playoffs.rounds[2]?.matches || [];
+      if (r2[0]) setSeed(r2[0].a, '상위권 2R 패자');
+      const r3 = playoffs.rounds[3]?.matches || [];
+      if (r3[0]) setSeed(r3[0].a, '상위권 2R 패자');
+    }
+    data.standings.lck = data.standings.lck || {};
+    data.standings.lck['LCK'] = { ...(data.standings.lck['LCK'] || {}), playin: playin || null, playoffs: playoffs || null };
+    const cnt = (b) => (b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0);
+    console.log(`LCK 대진 갱신 (플레이-인 ${cnt(playin)}경기 / 플레이오프 ${cnt(playoffs)}경기)`);
+  }
+} catch (e) {
+  console.warn(`LCK 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
+}
+
 data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');

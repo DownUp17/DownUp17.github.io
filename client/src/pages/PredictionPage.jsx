@@ -430,8 +430,8 @@ const fmtUpdated = (v) => {
 // 단계별 뷰 설정 (LCK→LCK 에서 정규시즌/플레이-인/플레이오프 선택 시)
 const STAGE_CFG = {
   '정규시즌': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true }, matches: false, heading: '정규시즌 순위', desc: '현재 순위 + 예상 진출·우승 확률.' },
-  '플레이-인': { cols: { piPlus: true, advance: true }, matches: false, heading: '플레이-인 예측', desc: '레전드 5위 + 라이즈 1~3위가 겨루는 플레이-인 단계. PI+/플레이오프 진출 확률.' },
-  '플레이오프': { cols: { advance: true, worlds: true, champ: true }, matches: false, heading: '플레이오프 예측', desc: '플레이오프 진출·우승·Worlds 진출 확률. 확정 시드 기준 대진표.' },
+  '플레이-인': { cols: { piPlus: true, advance: true }, matches: false, heading: '플레이-인 예측', desc: '레전드 5위 + 라이즈 1~3위 · 승자 2팀 플레이오프 진출 · 전 경기 Bo5' },
+  '플레이오프': { cols: { advance: true, worlds: true, champ: true }, matches: false, heading: '플레이오프 예측', desc: '레전드 1~4위 + 플레이-인 통과 2팀 · 전 경기 Bo5' },
   '럼블 스테이지': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '녹아웃 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 녹아웃 진출)/녹아웃/Worlds/우승 확률.' },
 };
 
@@ -519,77 +519,23 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     { color: '#9CA3AF', bg: 'rgba(156,163,175,0.15)' },
     { color: '#7EC8E8', bg: 'rgba(62,150,200,0.2)' },
   ];
-  // LCK 플레이-인/플레이오프: 확정 시드만 표기한 대진표 (정규시즌 종료 전이면 미정)
-  let bracket = null;
+  // LCK 플레이-인/플레이오프: MSI/LCP처럼 API 대진표(연결선) + 참가 팀 카드로 표기
   let groups;
   const lckBracketStage = comp.key === 'lck' && grouped && (stage === '플레이-인' || stage === '플레이오프');
-  // 정규시즌 종료 전이면 진출팀 미정 → 참가팀 표는 비워둠
-  const seedsPending = lckBracketStage && !official?.seedsLocked;
+  const lckBracket = lckBracketStage ? official?.[stage === '플레이-인' ? 'playin' : 'playoffs'] : null;
+  const lckSeedsPending = lckBracketStage && !official?.seedsLocked;
+  // 참가 팀(시드) — 정규시즌 순위 기준 예상 배치. 확정 전이면 예상 팀 + 확률로 표기.
+  let lckQualifiers = null;
   if (lckBracketStage) {
-    const legend = current.filter((t) => t.group === 'Legend'); // L1~L5 (순위순)
-    const rise = current.filter((t) => t.group === 'Rise'); // R1~R5
-    const playin = [legend[4], rise[0], rise[1], rise[2]].filter(Boolean); // L5, R1~R3
-    const direct = legend.slice(0, 4); // L1~L4 플레이오프 직행
-    const locked = !!official?.seedsLocked; // 정규시즌 종료 → 시드 확정
-    // 시드 슬롯: 확정(locked)일 때만 팀 표기, 아니면 라벨만(미정)
-    const slot = (seed, team) => ({ seed, short: locked && team ? team.short : null });
-    if (stage === '플레이-인') {
-      groups = locked ? [{ name: null, rows: playin.map((t, i) => withProb(t, i + 1)) }] : [];
-      bracket = {
-        desc: '레전드 5위 + 라이즈 1~3위 · 승자 2팀 플레이오프 진출 · 전 경기 Bo5',
-        sections: [{
-          name: null,
-          rounds: [
-            { title: '플레이-인 1R', matches: [
-              { a: slot('레전드 5위', legend[4]), b: slot('라이즈 1위', rise[0]) },
-              { a: slot('라이즈 2위', rise[1]), b: slot('라이즈 3위', rise[2]) },
-            ] },
-            { title: '최종전', matches: [
-              { a: slot('1경기 패자'), b: slot('2경기 승자') },
-            ] },
-          ],
-        }],
-      };
-    } else {
-      groups = locked ? [{ name: null, rows: direct.map((t, i) => withProb(t, i + 1)) }] : [];
-      // 6팀 더블 엘리미네이션 — 1~4시드 레전드 직행, 5·6시드 플레이인 통과(미정)
-      bracket = {
-        desc: '레전드 1~4위 직행 + 플레이-인 통과 2팀 · 6팀 더블 엘리미네이션 · 전 경기 Bo5',
-        sections: [
-          { name: '승자조 (Upper Bracket)', rounds: [
-            { title: 'UB R1', matches: [
-              { a: slot('레전드 3위', legend[2]), b: slot('플레이인 진출') },
-              { a: slot('레전드 4위', legend[3]), b: slot('플레이인 진출') },
-            ] },
-            { title: 'UB R2', matches: [
-              { a: slot('레전드 1위', legend[0]), b: slot('UB R1 승자') },
-              { a: slot('레전드 2위', legend[1]), b: slot('UB R1 승자') },
-            ] },
-            { title: 'UB R3', matches: [
-              { a: slot('UB R2 M1 승자'), b: slot('UB R2 M2 승자') },
-            ] },
-            { title: '그랜드 파이널', matches: [
-              { a: slot('승자조 우승'), b: slot('로어 파이널 승자') },
-            ] },
-          ] },
-          { name: '패자조 (Lower Bracket)', rounds: [
-            { title: 'LB R1', matches: [
-              { a: slot('UB R1 M1 패자'), b: slot('UB R1 M2 패자') },
-            ] },
-            { title: 'LB R2', matches: [
-              { a: slot('UB R2 패자 (낮은 시드)'), b: slot('LB R1 승자') },
-            ] },
-            { title: 'LB R3', matches: [
-              { a: slot('UB R2 패자 (높은 시드)'), b: slot('LB R2 승자') },
-            ] },
-            { title: '로어 파이널', matches: [
-              { a: slot('UB R3 패자'), b: slot('LB R3 승자') },
-            ] },
-          ] },
-        ],
-      };
-    }
-  } else {
+    const legend = current.filter((t) => /레전드|Legend/.test(t.group || '')); // 레전드 1~5위(순위순)
+    const rise = current.filter((t) => /라이즈|Rise/.test(t.group || ''));      // 라이즈 1~5위
+    const q = (seed, team) => ({ seed, short: team?.short || null, label: seed });
+    lckQualifiers = stage === '플레이-인'
+      ? [q('레전드 5위', legend[4]), q('라이즈 1위', rise[0]), q('라이즈 2위', rise[1]), q('라이즈 3위', rise[2])]
+      : [q('레전드 1위', legend[0]), q('레전드 2위', legend[1]), q('레전드 3위', legend[2]), q('레전드 4위', legend[3]),
+         { seed: '플레이-인 통과', label: '플레이-인 통과' }, { seed: '플레이-인 통과', label: '플레이-인 통과' }];
+  }
+  {
     groups = grouped
       ? [...new Set(current.map((t) => t.group))]
           .sort((a, b) => {
@@ -606,7 +552,10 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
 
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
   // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
-  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi';
+  // LCK 플레이-인/플레이오프는 순위표 대신 참가 팀 카드로 표기
+  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lckBracketStage;
+  // 참가 팀 카드: MSI는 official.qualifiers, LCK 플레이-인/플레이오프는 예상 시드 배치
+  const qualifiers = official?.qualifiers?.length ? official.qualifiers : lckQualifiers;
   let bracketSections = official?.bracket?.sections;
   if (lplSplit3 && bracketSections && stage) {
     if (stage === '럼블 스테이지') bracketSections = [];
@@ -658,11 +607,6 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{cfg?.heading || (roadToMsi ? '진출 팀' : '현재 순위')}</h3>
             {(cfg?.desc || official?.stage) && <span className="text-xs text-white/40">{cfg?.desc || official?.stage}</span>}
           </div>
-          {seedsPending && (
-            <p className="text-sm text-white/40 py-3 px-4 rounded-xl bg-white/5 border border-white/10">
-              진출팀은 정규시즌 종료 후 확정됩니다. (현재 미정)
-            </p>
-          )}
           {groups.map((grp) => (
             <div key={grp.name || 'all'}>
               {grp.name && (
@@ -693,22 +637,18 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
-      {/* 대진표 (LCK 플레이-인/플레이오프) — 확정 시드만 표기 */}
-      {bracket && (
+      {/* 대진표 (LCK 플레이-인/플레이오프) — API 대진 + 연결선 (MSI/LCP와 동일 형식) */}
+      {lckBracket?.rounds?.length > 0 && (
         <section>
           <div className="flex items-baseline gap-2 flex-wrap mb-4">
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">대진표</h3>
-            <span className="text-xs text-white/40">{bracket.desc}</span>
+            <span className="text-xs text-white/40">{cfg?.desc || '경기 결과가 나오면 자동 갱신됩니다.'}</span>
           </div>
-          <div className="flex flex-col gap-6">
-            {bracket.sections.map((sec, si) => (
-              <div key={si}>
-                {sec.name && (
-                  <p className="text-xs font-black text-white/55 mb-3">{sec.name}</p>
-                )}
-                <MsiBracket rounds={sec.rounds} totalRows={sec.totalRows} connectors={sec.connectors} onTeamClick={onTeamClick} />
-              </div>
-            ))}
+          <MsiBracket rounds={lckBracket.rounds} connectors={lckBracket.connectors} onTeamClick={onTeamClick} />
+          <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> 우승/진출</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
           </div>
         </section>
       )}
@@ -729,12 +669,15 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
-      {/* 진출 팀 (MSI 스테이지) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트 */}
-      {official?.qualifiers?.length > 0 && (
+      {/* 참가 팀 (MSI 스테이지 / LCK 플레이-인·플레이오프) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트 */}
+      {qualifiers?.length > 0 && (
         <section className="flex flex-col gap-3">
-          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
+            {lckSeedsPending && <span className="text-xs text-white/40">정규시즌 순위 기준 예상 배치 · 종료 후 확정</span>}
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {official.qualifiers.map((q, i) => {
+            {qualifiers.map((q, i) => {
               const p = q.short ? probByShort[q.short] : null;
               const probRow = (label, v, color, strong) => (
                 <div key={label} className="flex items-center gap-2">
@@ -795,7 +738,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
       )}
 
       {/* 대진별 예측 — 진행중인 리그에서만 (단계별 대진표가 있으면 생략) */}
-    {comp.status === 'ongoing' && (!cfg || cfg.matches) && !bracket && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && (
+    {comp.status === 'ongoing' && (!cfg || cfg.matches) && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && (
       <section>
         <h3 className="text-sm font-black text-[#E8C77E] mb-4 uppercase tracking-wider">대진별 예측</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
