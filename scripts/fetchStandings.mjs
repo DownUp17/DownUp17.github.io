@@ -1125,8 +1125,100 @@ try {
         if (!token) break;
       }
     } catch (e) { console.warn(`LPL 일정 시간 조회 실패: ${e.message}`); }
-    // 기사의 길: 두 경기 제목 정리
-    if (byKind.knights) byKind.knights.rounds.forEach((r) => r.matches.forEach((m, i) => { m.title = `기사의 길 ${i + 1}`; }));
+    // 기사의 길: 두 경기 제목 정리 + 시드 규칙에 맞춰 예상 팀 채움
+    //   규칙: 1경기 = 등봉조 8위 vs 열반조 1위, 2경기 = 등봉조 7위 vs 열반조 2위
+    if (byKind.knights) {
+      byKind.knights.rounds.forEach((r) => r.matches.forEach((m, i) => { m.title = `기사의 길 ${i + 1}`; }));
+      const lplRows = data.standings.lpl?.['Split 3']?.rows || rows;
+      const asc = lplRows.filter((r) => /등봉/.test(r.group || '')).sort((a, b) => a.rank - b.rank);
+      const nir = lplRows.filter((r) => /열반/.test(r.group || '')).sort((a, b) => a.rank - b.rank);
+      const seedTeam = (list, rank) => list.find((r) => r.rank === rank);
+      const setSeed = (slot, label, team) => {
+        if (!slot || slot.short) return;
+        slot.seed = label;
+        if (team) slot.short = team.team;
+      };
+      const knMatches = byKind.knights.rounds.flatMap((r) => r.matches);
+      if (knMatches[0]) { setSeed(knMatches[0].a, '등봉조 8위', seedTeam(asc, 8)); setSeed(knMatches[0].b, '열반조 1위', seedTeam(nir, 1)); }
+      if (knMatches[1]) { setSeed(knMatches[1].a, '등봉조 7위', seedTeam(asc, 7)); setSeed(knMatches[1].b, '열반조 2위', seedTeam(nir, 2)); }
+    }
+    // 플레이오프: 이미지 배치(UPPER 상단 / LOWER 하단 / 결승 우측 중앙)로 그리드 재구성.
+    //   실제 대회 진행 방식:
+    //   - 상위권 8강 = 2경기만 진행 (등봉조 1·2위는 상위권 4강 직행)
+    //   - 하위권 1R에는 기사의 길 생존 2팀 + 상위권 8강 패자 2팀이 들어감
+    //   API 원본은 상위권 8강 4경기 · 여러 시드 slot origin을 주지만,
+    //   이 규칙에 맞춰 매치·시드·연결선을 처음부터 재구성한다(팀·시간·id는 유지).
+    if (byKind.playoffs) {
+      const P = byKind.playoffs.rounds;
+      // 원본 매치 재활용 — 8강은 앞 2경기만 사용, 나머지는 각 라운드에서 첫 매치 재활용
+      const ub8_1 = P[0].matches[0], ub8_2 = P[0].matches[1];
+      const ub4_1 = P[1].matches[0], ub4_2 = P[1].matches[1];
+      const lb1_1 = P[1].matches[2], lb1_2 = P[1].matches[3];
+      const ubFinal = P[2].matches[0];
+      const lb8_1 = P[2].matches[1], lb8_2 = P[2].matches[2];
+      const lb4 = P[3].matches[0], lbFinal = P[4].matches[0], grandFinal = P[5].matches[0];
+      // 매치 제목
+      if (ub8_1) ub8_1.title = '상위권 8강 M1'; if (ub8_2) ub8_2.title = '상위권 8강 M2';
+      if (ub4_1) ub4_1.title = '상위권 4강 M1'; if (ub4_2) ub4_2.title = '상위권 4강 M2';
+      if (ubFinal) ubFinal.title = '상위권 결승';
+      if (lb1_1) lb1_1.title = '하위권 1R M1'; if (lb1_2) lb1_2.title = '하위권 1R M2';
+      if (lb8_1) lb8_1.title = '하위권 8강 M1'; if (lb8_2) lb8_2.title = '하위권 8강 M2';
+      if (lb4) lb4.title = '하위권 4강'; if (lbFinal) lbFinal.title = '하위권 결승';
+      if (grandFinal) grandFinal.title = '결승';
+      // 시드 라벨 재설정 — 등봉조 1·2위 = 상위권 4강 직행 / 기사의 길 생존팀 = 하위권 1R
+      //   상위권 8강 M1 = 등봉조 3위 vs 6위, M2 = 등봉조 4위 vs 5위
+      //   크로스 시드: 8강 M1 승자 → 등봉조 2위(상위권 4강 M2), M2 승자 → 등봉조 1위(상위권 4강 M1)
+      const setLabel = (slot, label, teamShort) => { if (!slot) return; if (!slot.short) { slot.seed = label; if (teamShort) slot.short = teamShort; } };
+      const lplRows = data.standings.lpl?.['Split 3']?.rows || rows;
+      const asc = lplRows.filter((r) => /등봉/.test(r.group || '')).sort((a, b) => a.rank - b.rank);
+      // 공동 순위(예: 2위 tie)로 rank 값이 건너뛸 수 있어, 정렬 순서상의 위치로 접근한다.
+      const seedAt = (pos) => asc[pos - 1]?.team;
+      // 상위권 8강: M1 = 3위 vs 6위, M2 = 4위 vs 5위
+      if (ub8_1) { setLabel(ub8_1.a, '등봉조 3위', seedAt(3)); setLabel(ub8_1.b, '등봉조 6위', seedAt(6)); }
+      if (ub8_2) { setLabel(ub8_2.a, '등봉조 4위', seedAt(4)); setLabel(ub8_2.b, '등봉조 5위', seedAt(5)); }
+      // 상위권 4강: 등봉조 1위 vs 8강 M2 승자 / 등봉조 2위 vs 8강 M1 승자 (크로스 시드)
+      if (ub4_1) { setLabel(ub4_1.a, '등봉조 1위', seedAt(1)); setLabel(ub4_1.b, '상위권 8강 M2 승자'); }
+      if (ub4_2) { setLabel(ub4_2.a, '등봉조 2위', seedAt(2)); setLabel(ub4_2.b, '상위권 8강 M1 승자'); }
+      // 하위권 1R: a=기사의 길 승자, b=상위권 8강 패자
+      if (lb1_1) { setLabel(lb1_1.a, '기사의 길 1 승자'); setLabel(lb1_1.b, '상위권 8강 M1 패자'); }
+      if (lb1_2) { setLabel(lb1_2.a, '기사의 길 2 승자'); setLabel(lb1_2.b, '상위권 8강 M2 패자'); }
+      // 이후 라운드 시드 라벨 (첫 슬롯 승자·패자 관계 정리)
+      if (ubFinal) { setLabel(ubFinal.a, '상위권 4강 M1 승자'); setLabel(ubFinal.b, '상위권 4강 M2 승자'); }
+      if (lb8_1) { setLabel(lb8_1.a, '상위권 4강 M1 패자'); setLabel(lb8_1.b, '하위권 1R M1 승자'); }
+      if (lb8_2) { setLabel(lb8_2.a, '상위권 4강 M2 패자'); setLabel(lb8_2.b, '하위권 1R M2 승자'); }
+      if (lb4) { setLabel(lb4.a, '하위권 8강 M1 승자'); setLabel(lb4.b, '하위권 8강 M2 승자'); }
+      if (lbFinal) { setLabel(lbFinal.a, '상위권 결승 패자'); setLabel(lbFinal.b, '하위권 4강 승자'); }
+      if (grandFinal) { setLabel(grandFinal.a, '상위권 결승 승자'); setLabel(grandFinal.b, '하위권 결승 승자'); }
+      // 그리드 배치 — 상위권 8강(2경기)과 상위권 4강(2경기)이 동일 y로 정렬되도록
+      byKind.playoffs = {
+        totalRows: 24,
+        rounds: [
+          { title: '', matches: [{ ...ub8_1, startRow: 2 }, { ...ub8_2, startRow: 10 }] },
+          { title: '', matches: [
+            { ...ub4_1, startRow: 2 }, { ...ub4_2, startRow: 10 },
+            ...(lb1_1 ? [{ ...lb1_1, startRow: 18 }] : []), ...(lb1_2 ? [{ ...lb1_2, startRow: 22 }] : []),
+          ] },
+          { title: '', matches: [
+            { ...ubFinal, startRow: 6 },
+            ...(lb8_1 ? [{ ...lb8_1, startRow: 18 }] : []), ...(lb8_2 ? [{ ...lb8_2, startRow: 22 }] : []),
+          ] },
+          { title: '', matches: [{ ...lb4, startRow: 20 }] },
+          { title: '', matches: [{ ...lbFinal, startRow: 20 }] },
+          { title: '', matches: [{ ...grandFinal, startRow: 13 }] },
+        ],
+        // 연결선 재구성 (크로스 시드): 8강 M1 승자 → 4강 M2, M2 승자 → 4강 M1
+        connectors: [
+          [0, 0, 'mid', 1, 1, 'b'], [0, 1, 'mid', 1, 0, 'b'],  // 8강 승자 → 4강 b (교차)
+          [0, 0, 'mid', 1, 2, 'b'], [0, 1, 'mid', 1, 3, 'b'],  // 8강 패자 → 1R b
+          [1, 0, 'mid', 2, 0, 'a'], [1, 1, 'mid', 2, 0, 'b'],  // 4강 승자 → 상위권 결승
+          [1, 0, 'mid', 2, 1, 'a'], [1, 2, 'mid', 2, 1, 'b'],  // 4강 M1 패자 · 1R M1 승자 → 하위권 8강 M1
+          [1, 1, 'mid', 2, 2, 'a'], [1, 3, 'mid', 2, 2, 'b'],  // 4강 M2 패자 · 1R M2 승자 → 하위권 8강 M2
+          [2, 1, 'mid', 3, 0, 'a'], [2, 2, 'mid', 3, 0, 'b'],  // 하위권 8강 → 하위권 4강
+          [2, 0, 'mid', 4, 0, 'a'], [3, 0, 'mid', 4, 0, 'b'],  // 상위권 결승 패자 · 하위권 4강 승자 → 하위권 결승
+          [2, 0, 'mid', 5, 0, 'a'], [4, 0, 'mid', 5, 0, 'b'],  // 상위권 결승 승자 · 하위권 결승 승자 → 결승
+        ],
+      };
+    }
     for (const b of [byKind.knights, byKind.playoffs]) {
       if (!b) continue;
       for (const r of b.rounds) for (const m of r.matches) if (m.id && timeById[m.id]) m.time = kstLabel(timeById[m.id]);

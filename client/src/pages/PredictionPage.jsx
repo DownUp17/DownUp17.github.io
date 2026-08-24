@@ -748,7 +748,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lplCfg.bracketTitle}</h3>
             <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
           </div>
-          <MsiBracket rounds={official[lplCfg.bracketKey].rounds} connectors={official[lplCfg.bracketKey].connectors} onTeamClick={onTeamClick} />
+          <MsiBracket rounds={official[lplCfg.bracketKey].rounds} totalRows={official[lplCfg.bracketKey].totalRows} connectors={official[lplCfg.bracketKey].connectors} onTeamClick={onTeamClick} />
         </section>
       )}
 
