@@ -1038,6 +1038,12 @@ try {
     let playoffs = bySlug['regional_championship'];
     if (playoffs?.rounds?.length >= 7) {
       const P = playoffs.rounds;
+      // 시드 팀이 b슬롯에 잘못 배정된 경우(a=TBD, b=팀) 스왑해서 a에 오도록 정리.
+      //   API가 UB R1/UB R2 시드 슬롯을 b에 넣어 프론트의 seed 자동 채움과 겹치면
+      //   같은 팀이 좌우에 표시되는 버그(예: "T1 vs T1") 방지.
+      const swapAB = (m) => { if (m && !m.a?.short && m.b?.short) { const t = m.a; m.a = m.b; m.b = t; } };
+      swapAB(P[0].matches[0]); swapAB(P[0].matches[1]);
+      swapAB(P[1].matches[0]); swapAB(P[1].matches[1]);
       const ubR1M1 = P[0].matches[0], ubR1M2 = P[0].matches[1];
       const ubR2M1 = P[1].matches[0], ubR2M2 = P[1].matches[1], lbR1 = P[1].matches[2];
       const lbR2 = P[2].matches[0], lbR3 = P[3].matches[0], ubR3 = P[4].matches[0];
