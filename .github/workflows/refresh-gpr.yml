@@ -30,12 +30,15 @@ jobs:
       - name: Fetch GPR scores & re-simulate
         run: node scripts/fetchGpr.mjs
 
+      - name: Fetch rosters & starters
+        run: node scripts/fetchRosters.mjs
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           node -e "const fs=require('fs'),f='client/src/data/lolSim.json',d=JSON.parse(fs.readFileSync(f,'utf8'));d.updatedAt=new Date().toISOString();fs.writeFileSync(f,JSON.stringify(d,null,2)+'\n');"
-          git add client/src/data/gprTeams.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolGpr.json
+          git add client/src/data/gprTeams.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolGpr.json client/src/data/lolRosters.json
           git commit -m "chore: 순위표·GPR 자동 갱신 및 시뮬레이션 재계산" || echo "변경 없음 — 커밋 생략"
           # push 전 최신 커밋 통합 (동시 실행 시 충돌 방지)
           git pull --rebase origin main || (git rebase --abort && git pull --ff-only origin main)
