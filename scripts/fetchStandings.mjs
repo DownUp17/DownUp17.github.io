@@ -1003,19 +1003,54 @@ try {
         connectors: fin ? [[0, 0, 'mid', 2, 0, 'a'], [1, 0, 'mid', 2, 0, 'b']] : [],
       };
     }
-    const playoffs = bySlug['regional_championship'];
-    if (playoffs?.rounds) {
-      const r0 = playoffs.rounds[0]?.matches || [];
-      if (r0[0]) { setSeed(r0[0].a, '레전드 3위'); setSeed(r0[0].b, '플레이-인 진출'); }
-      if (r0[1]) { setSeed(r0[1].a, '레전드 4위'); setSeed(r0[1].b, '플레이-인 진출'); }
-      const r1 = playoffs.rounds[1]?.matches || [];
-      if (r1[0]) setSeed(r1[0].a, '레전드 1위'); // 상위권 2라운드 상단 = 1시드 부전승
-      if (r1[1]) setSeed(r1[1].a, '레전드 2위');
-      // 상위권 2라운드 패자는 하위권으로 내려오지만 API가 origin을 안 줌 → 라벨 주입
-      const r2 = playoffs.rounds[2]?.matches || [];
-      if (r2[0]) setSeed(r2[0].a, '상위권 2R 패자');
-      const r3 = playoffs.rounds[3]?.matches || [];
-      if (r3[0]) setSeed(r3[0].a, '상위권 2R 패자');
+    // 플레이오프(지역별 챔피언십): 공식 대진표 형식(UPPER 상단 / LOWER 하단 / 결승 우측 중앙)으로
+    //   재구성한다. API 원본 구조(라운드별)에서 10경기를 꺼내 5개 컬럼 + 그리드 startRow로 배치하고,
+    //   조건 라벨과 매치 제목(UB R1 M1 등)을 이미지에 맞춰 붙인다. (팀/결과는 API 값 유지)
+    let playoffs = bySlug['regional_championship'];
+    if (playoffs?.rounds?.length >= 7) {
+      const P = playoffs.rounds;
+      const ubR1M1 = P[0].matches[0], ubR1M2 = P[0].matches[1];
+      const ubR2M1 = P[1].matches[0], ubR2M2 = P[1].matches[1], lbR1 = P[1].matches[2];
+      const lbR2 = P[2].matches[0], lbR3 = P[3].matches[0], ubR3 = P[4].matches[0];
+      const lowerFinals = P[5].matches[0], grandFinals = P[6].matches[0];
+      // 조건/시드 라벨 (팀 미확정 슬롯만 덮어씀)
+      const lab = (s, l) => { if (s && !s.short) s.seed = l; };
+      lab(ubR1M1.a, '레전드 3위'); lab(ubR1M1.b, '플레이-인 진출');
+      lab(ubR1M2.a, '레전드 4위'); lab(ubR1M2.b, '플레이-인 진출');
+      lab(ubR2M1.a, '레전드 1위'); lab(ubR2M1.b, 'UB R1 승자');
+      lab(ubR2M2.a, '레전드 2위'); lab(ubR2M2.b, 'UB R1 승자');
+      lab(lbR1.a, 'UB R1 M1 패자'); lab(lbR1.b, 'UB R1 M2 패자');
+      lab(lbR2.a, 'UB R2 패자 (하위 시드)'); lab(lbR2.b, 'LB R1 승자');
+      lab(lbR3.a, 'UB R2 패자 (상위 시드)'); lab(lbR3.b, 'LB R2 승자');
+      lab(ubR3.a, 'UB R2 M1 승자'); lab(ubR3.b, 'UB R2 M2 승자');
+      lab(lowerFinals.a, 'UB R3 패자'); lab(lowerFinals.b, 'LB R3 승자');
+      lab(grandFinals.a, 'UB R3 승자'); lab(grandFinals.b, '결승 진출전 승자');
+      // 매치 제목
+      ubR1M1.title = 'UB R1 M1'; ubR1M2.title = 'UB R1 M2';
+      ubR2M1.title = 'UB R2 M1'; ubR2M2.title = 'UB R2 M2'; ubR3.title = 'UB R3';
+      lbR1.title = 'LB R1'; lbR2.title = 'LB R2'; lbR3.title = 'LB R3';
+      lowerFinals.title = 'Lower Finals'; grandFinals.title = 'Grand Finals';
+      // 5개 컬럼 + startRow: UPPER=상단(0)/하단(4), UB R3=중앙(2), LOWER=최하단(8), 결승=우측 중앙(5)
+      playoffs = {
+        totalRows: 10,
+        rounds: [
+          { title: '', matches: [{ ...ubR1M1, startRow: 0 }, { ...ubR1M2, startRow: 4 }, { ...lbR1, startRow: 8 }] }, // col0
+          { title: '', matches: [{ ...ubR2M1, startRow: 0 }, { ...ubR2M2, startRow: 4 }, { ...lbR2, startRow: 8 }] }, // col1
+          { title: '', matches: [{ ...ubR3, startRow: 2 }, { ...lbR3, startRow: 8 }] },                               // col2
+          { title: '', matches: [{ ...lowerFinals, startRow: 8 }] },                                                  // col3
+          { title: '', matches: [{ ...grandFinals, startRow: 5 }] },                                                  // col4
+        ],
+        connectors: [
+          [0, 0, 'mid', 1, 0, 'b'], [0, 1, 'mid', 1, 1, 'b'], // UB R1 승자 → UB R2
+          [0, 2, 'mid', 1, 2, 'b'],                            // LB R1 승자 → LB R2
+          [1, 2, 'mid', 2, 1, 'b'],                            // LB R2 승자 → LB R3
+          [1, 0, 'mid', 2, 0, 'a'], [1, 1, 'mid', 2, 0, 'b'], // UB R2 승자 → UB R3
+          [2, 0, 'mid', 3, 0, 'a'],                            // UB R3 패자 → Lower Finals
+          [2, 1, 'mid', 3, 0, 'b'],                            // LB R3 승자 → Lower Finals
+          [2, 0, 'mid', 4, 0, 'a'],                            // UB R3 승자 → Grand Finals
+          [3, 0, 'mid', 4, 0, 'b'],                            // Lower Finals 승자 → Grand Finals
+        ],
+      };
     }
     data.standings.lck = data.standings.lck || {};
     data.standings.lck['LCK'] = { ...(data.standings.lck['LCK'] || {}), playin: playin || null, playoffs: playoffs || null };
