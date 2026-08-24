@@ -716,7 +716,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckBracketStage ? STAGE_CFG['정규시즌'].cols : cfg?.cols} onTeamClick={onTeamClick} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : cfg?.cols} onTeamClick={onTeamClick} />
             </div>
           ))}
         </section>
@@ -970,6 +970,10 @@ const STAGE_TABS = {
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '녹아웃 스테이지'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
 };
+// 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
+const STAGE_DEFAULT = {
+  'lck|LCK': '플레이-인',
+};
 
 const PredictionPage = () => {
   const comps = sim.competitions;
@@ -1031,8 +1035,9 @@ const PredictionPage = () => {
   // 세부대회 내 단계 선택(LCK→LCK, LPL→Split 3 등)
   const stageList = comp ? STAGE_TABS[`${comp.key}|${activeSub}`] : null;
   const showStages = !!stageList;
+  const defaultStage = (comp && STAGE_DEFAULT[`${comp.key}|${activeSub}`]) || (stageList ? stageList[0] : null);
   const activeStage = showStages
-    ? (stageList.includes(searchParams.get('stage')) ? searchParams.get('stage') : stageList[0])
+    ? (stageList.includes(searchParams.get('stage')) ? searchParams.get('stage') : defaultStage)
     : null;
   const setActiveStage = (s) =>
     setSearchParams((p) => { const n = new URLSearchParams(p); n.set('stage', s); return n; }, { replace: true });
