@@ -990,11 +990,14 @@ try {
         if (fin.a && !fin.a.short) fin.a.seed = '1라운드 패자';
         if (fin.b && !fin.b.short) fin.b.seed = '2라운드 승자';
       }
+      // 세로 배치(공식 대진표 형식): 1라운드=상단, 2라운드=하단, 파이널=중앙.
+      //   그리드(totalRows) 기준 startRow로 y를 고정한다(매치=2행).
       playin = {
+        totalRows: 6,
         rounds: [
-          { title: '', matches: [m1] },   // col0: 1라운드
-          { title: '', matches: [m2] },   // col1: 2라운드
-          ...(fin ? [{ title: '', matches: [fin] }] : []), // col2: 파이널 라운드
+          { title: '', matches: [{ ...m1, startRow: 0 }] },                    // col0: 1라운드(상단)
+          { title: '', matches: [{ ...m2, startRow: 4 }] },                    // col1: 2라운드(하단)
+          ...(fin ? [{ title: '', matches: [{ ...fin, startRow: 2 }] }] : []), // col2: 파이널(중앙)
         ],
         // 1라운드 패자 → 파이널 a, 2라운드 승자 → 파이널 b
         connectors: fin ? [[0, 0, 'mid', 2, 0, 'a'], [1, 0, 'mid', 2, 0, 'b']] : [],

@@ -148,6 +148,24 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
     };
 
     const allCards = Array.from(wrap.querySelectorAll('[data-card]'));
+    // 카드 사각형(관통 판정용)
+    const cardRects = allCards.map((el) => {
+      const r = el.getBoundingClientRect();
+      return { id: el.getAttribute('data-card'), x1: r.left - wRect.left, x2: r.right - wRect.left, y1: r.top - wRect.top, y2: r.bottom - wRect.top };
+    });
+    // 직선 세그먼트가 카드 내부를 관통하는지 (양 끝 카드는 제외)
+    const hits = (pts, exclude) => {
+      for (let i = 0; i < pts.length - 1; i++) {
+        const [p1, p2] = [pts[i], pts[i + 1]];
+        for (const r of cardRects) {
+          if (exclude.includes(r.id)) continue;
+          const pad = 3, rx1 = r.x1 + pad, rx2 = r.x2 - pad, ry1 = r.y1 + pad, ry2 = r.y2 - pad;
+          if (Math.abs(p1[1] - p2[1]) < 0.5) { const y = p1[1], xa = Math.min(p1[0], p2[0]), xb = Math.max(p1[0], p2[0]); if (y > ry1 && y < ry2 && xa < rx2 && xb > rx1) return true; }
+          else { const x = p1[0], ya = Math.min(p1[1], p2[1]), yb = Math.max(p1[1], p2[1]); if (x > rx1 && x < rx2 && ya < ry2 && yb > ry1) return true; }
+        }
+      }
+      return false;
+    };
     const paths = connData.map(([fR, fM, fS, tR, tM, tS]) => {
       const fromEl = wrap.querySelector(`[data-card="${fR}-${fM}"]`);
       const toEl = wrap.querySelector(`[data-card="${tR}-${tM}"]`);
@@ -161,24 +179,22 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
       const flat = Math.abs(fy - ty) <= 2;
       if (flat) return `M ${fx} ${fy} L ${tx} ${ty}`;
 
-      // 중간 라운드를 건너뛰는 연결선은 그 매치 카드를 관통하지 않도록,
-      // 칸 사이 gap에서만 세로로 꺾고 가로 이동은 건너뛰는 카드들을 피하는 y(위/아래)에서 한다.
-      const loR = Math.min(fR, tR), hiR = Math.max(fR, tR);
-      if (hiR - loR > 1) {
-        const rects = allCards
-          .filter((el) => { const m = el.getAttribute('data-card').match(/^(\d+)-/); return m && +m[1] > loR && +m[1] < hiR; })
-          .map((el) => el.getBoundingClientRect());
-        if (rects.length) {
-          const minTop = Math.min(...rects.map((r) => r.top)) - wRect.top;
-          const maxBottom = Math.max(...rects.map((r) => r.bottom)) - wRect.top;
-          const above = minTop - 10, below = maxBottom + 10;
-          const detourY = Math.abs(fy - above) + Math.abs(ty - above) <= Math.abs(fy - below) + Math.abs(ty - below) ? above : below;
-          const gx1 = fx + COL_GAP / 2, gx2 = tx - COL_GAP / 2;
-          return `M ${fx} ${fy} L ${gx1} ${fy} L ${gx1} ${detourY} L ${gx2} ${detourY} L ${gx2} ${ty} L ${tx} ${ty}`;
-        }
-      }
-
+      // 기본 경로(중간에서 한 번 꺾기). 카드를 관통하지 않으면 그대로 사용.
       const mx = (fx + tx) / 2;
+      const exclude = [`${fR}-${fM}`, `${tR}-${tM}`];
+      const simple = [[fx, fy], [mx, fy], [mx, ty], [tx, ty]];
+      if (!hits(simple, exclude)) return `M ${fx} ${fy} L ${mx} ${fy} L ${mx} ${ty} L ${tx} ${ty}`;
+
+      // 관통 시: 사이 카드들을 피해 위/아래 빈 공간으로 우회(세로 꺾임은 칸 사이 gap에서만).
+      const loR = Math.min(fR, tR), hiR = Math.max(fR, tR);
+      const between = cardRects.filter((r) => { const m = r.id.match(/^(\d+)-/); return m && +m[1] > loR && +m[1] < hiR; });
+      if (between.length) {
+        const minTop = Math.min(...between.map((r) => r.y1)), maxBottom = Math.max(...between.map((r) => r.y2));
+        const above = minTop - 10, below = maxBottom + 10;
+        const detourY = Math.abs(fy - above) + Math.abs(ty - above) <= Math.abs(fy - below) + Math.abs(ty - below) ? above : below;
+        const gx1 = fx + COL_GAP / 2, gx2 = tx - COL_GAP / 2;
+        return `M ${fx} ${fy} L ${gx1} ${fy} L ${gx1} ${detourY} L ${gx2} ${detourY} L ${gx2} ${ty} L ${tx} ${ty}`;
+      }
       return `M ${fx} ${fy} L ${mx} ${fy} L ${mx} ${ty} L ${tx} ${ty}`;
     }).filter(Boolean);
 
@@ -716,7 +732,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">대진표</h3>
             <span className="text-xs text-white/40">{cfg?.desc || '경기 결과가 나오면 자동 갱신됩니다.'}</span>
           </div>
-          <MsiBracket rounds={lckBracket.rounds} connectors={lckBracket.connectors} onTeamClick={onTeamClick} />
+          <MsiBracket rounds={lckBracket.rounds} totalRows={lckBracket.totalRows} connectors={lckBracket.connectors} onTeamClick={onTeamClick} />
           <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> 우승/진출</span>
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
