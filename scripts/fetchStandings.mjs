@@ -976,10 +976,14 @@ try {
       bySlug[s.slug] = bracketFromColumns(cols);
     }
     // 경기 시간: LCK 일정에서 match id → 시작시각을 모아 각 대진 매치에 KST 라벨(m.time)로 붙인다.
+    // API 시간이 실제와 다른 날짜는 KST 시:분을 보정한다(예: 결승/로어파이널 = 14:00, API는 17:00 오기입).
+    const TIME_OVERRIDE_KST = { '2026-09-12': '14:00', '2026-09-13': '14:00' };
     const kstLabel = (iso) => {
       const k = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
       const dow = ['일', '월', '화', '수', '목', '금', '토'][k.getUTCDay()];
-      return `${k.getUTCMonth() + 1}/${k.getUTCDate()} (${dow}) ${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`;
+      const ymd = `${k.getUTCFullYear()}-${String(k.getUTCMonth() + 1).padStart(2, '0')}-${String(k.getUTCDate()).padStart(2, '0')}`;
+      const hm = TIME_OVERRIDE_KST[ymd] || `${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`;
+      return `${k.getUTCMonth() + 1}/${k.getUTCDate()} (${dow}) ${hm}`;
     };
     const timeById = {};
     try {
