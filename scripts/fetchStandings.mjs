@@ -1189,22 +1189,22 @@ try {
       if (lb4) { setLabel(lb4.a, '하위권 8강 M1 승자'); setLabel(lb4.b, '하위권 8강 M2 승자'); }
       if (lbFinal) { setLabel(lbFinal.a, '상위권 결승 패자'); setLabel(lbFinal.b, '하위권 4강 승자'); }
       if (grandFinal) { setLabel(grandFinal.a, '상위권 결승 승자'); setLabel(grandFinal.b, '하위권 결승 승자'); }
-      // 그리드 배치 — 상위권/하위권 매치 간 간격을 동일하게(4행)으로 통일
+      // 그리드 배치 — LCK 플레이오프/MSI 브래킷과 같은 간격으로 상위권/하위권 사이 gap 최소화
       byKind.playoffs = {
-        totalRows: 24,
+        totalRows: 14,
         rounds: [
-          { title: '', matches: [{ ...ub8_1, startRow: 2 }, { ...ub8_2, startRow: 6 }] },
+          { title: '', matches: [{ ...ub8_1, startRow: 0 }, { ...ub8_2, startRow: 4 }] },
           { title: '', matches: [
-            { ...ub4_1, startRow: 2 }, { ...ub4_2, startRow: 6 },
-            ...(lb1_1 ? [{ ...lb1_1, startRow: 18 }] : []), ...(lb1_2 ? [{ ...lb1_2, startRow: 22 }] : []),
+            { ...ub4_1, startRow: 0 }, { ...ub4_2, startRow: 4 },
+            ...(lb1_1 ? [{ ...lb1_1, startRow: 8 }] : []), ...(lb1_2 ? [{ ...lb1_2, startRow: 12 }] : []),
           ] },
           { title: '', matches: [
-            { ...ubFinal, startRow: 4 },
-            ...(lb8_1 ? [{ ...lb8_1, startRow: 18 }] : []), ...(lb8_2 ? [{ ...lb8_2, startRow: 22 }] : []),
+            { ...ubFinal, startRow: 2 },
+            ...(lb8_1 ? [{ ...lb8_1, startRow: 8 }] : []), ...(lb8_2 ? [{ ...lb8_2, startRow: 12 }] : []),
           ] },
-          { title: '', matches: [{ ...lb4, startRow: 20 }] },
-          { title: '', matches: [{ ...lbFinal, startRow: 20 }] },
-          { title: '', matches: [{ ...grandFinal, startRow: 12 }] },
+          { title: '', matches: [{ ...lb4, startRow: 10 }] },
+          { title: '', matches: [{ ...lbFinal, startRow: 10 }] },
+          { title: '', matches: [{ ...grandFinal, startRow: 6 }] },
         ],
         // 연결선 재구성 (크로스 시드): 8강 M1 승자 → 4강 M2, M2 승자 → 4강 M1
         connectors: [
@@ -1222,6 +1222,12 @@ try {
     for (const b of [byKind.knights, byKind.playoffs]) {
       if (!b) continue;
       for (const r of b.rounds) for (const m of r.matches) if (m.id && timeById[m.id]) m.time = kstLabel(timeById[m.id]);
+    }
+    // 기사의 길 시간 보정: API가 15:00·18:00으로 오지만 실제 시간은 14:00·17:00.
+    if (byKind.knights) {
+      const knM = byKind.knights.rounds.flatMap((r) => r.matches);
+      const override = ['14:00', '17:00'];
+      knM.forEach((m, i) => { if (m?.time && override[i]) m.time = m.time.replace(/\d{2}:\d{2}$/, override[i]); });
     }
     data.standings.lpl = data.standings.lpl || {};
     const prev = data.standings.lpl['Split 3'] || {};
