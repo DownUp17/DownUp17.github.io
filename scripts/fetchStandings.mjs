@@ -1090,6 +1090,58 @@ try {
   console.warn(`LCK 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
 
+// 6단계: LPL Split 3 — 기사의 길(Knights Rivals)·플레이오프 대진을 API에서 가져와 자동 갱신.
+//   기존 수동 bracket(sections)을 대체하고, LCP/LCK와 동일하게 bracketFromColumns 로 생성한다.
+try {
+  const tj = await api('getTournamentsForLeague', { leagueId: '98767991314006698' });
+  const tours = tj.data.leagues[0].tournaments || [];
+  const tour = tours.find((t) => /split_3_2026/.test(t.slug)) || pickCurrentTournament(tours);
+  if (!tour) throw new Error('LPL Split 3 토너먼트 없음');
+  const sj = await api('getStandingsV3', { tournamentId: tour.id });
+  const st = sj.data?.standings?.[0];
+  if (st?.stages) {
+    const byKind = {};
+    for (const s of st.stages) {
+      const cols = s.sections?.[0]?.columns || [];
+      if (!cols.length) continue;
+      if (/knights_rival/.test(s.slug)) byKind.knights = bracketFromColumns(cols);
+      else if (s.slug === 'playoffs') byKind.playoffs = bracketFromColumns(cols);
+    }
+    // 경기 시간(KST) 부착
+    const kstLabel = (iso) => {
+      const k = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
+      const dow = ['일', '월', '화', '수', '목', '금', '토'][k.getUTCDay()];
+      return `${k.getUTCMonth() + 1}/${k.getUTCDate()} (${dow}) ${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`;
+    };
+    const timeById = {};
+    try {
+      let token = null;
+      for (let g = 0; g < 10; g++) {
+        const params = { leagueId: '98767991314006698' };
+        if (token) params.pageToken = token;
+        const { data: sd } = await api('getSchedule', params);
+        for (const e of sd.schedule.events || []) if (e.type === 'match' && e.match?.id && e.startTime) timeById[e.match.id] = e.startTime;
+        token = sd.schedule.pages?.newer;
+        if (!token) break;
+      }
+    } catch (e) { console.warn(`LPL 일정 시간 조회 실패: ${e.message}`); }
+    // 기사의 길: 두 경기 제목 정리
+    if (byKind.knights) byKind.knights.rounds.forEach((r) => r.matches.forEach((m, i) => { m.title = `기사의 길 ${i + 1}`; }));
+    for (const b of [byKind.knights, byKind.playoffs]) {
+      if (!b) continue;
+      for (const r of b.rounds) for (const m of r.matches) if (m.id && timeById[m.id]) m.time = kstLabel(timeById[m.id]);
+    }
+    data.standings.lpl = data.standings.lpl || {};
+    const prev = data.standings.lpl['Split 3'] || {};
+    delete prev.bracket; // 수동 bracket 제거 (자동 대진으로 대체)
+    data.standings.lpl['Split 3'] = { ...prev, knights: byKind.knights || null, playoffs: byKind.playoffs || null };
+    const cnt = (b) => (b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0);
+    console.log(`LPL Split 3 대진 갱신 (기사의 길 ${cnt(byKind.knights)}경기 / 플레이오프 ${cnt(byKind.playoffs)}경기)`);
+  }
+} catch (e) {
+  console.warn(`LPL Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
+}
+
 data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');

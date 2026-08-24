@@ -495,7 +495,7 @@ const STAGE_CFG = {
   '정규시즌': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true }, matches: false, heading: '정규시즌 순위', desc: '현재 순위 + 예상 진출·우승 확률.' },
   '플레이-인': { cols: { piPlus: true, advance: true }, matches: false, heading: '플레이-인 예측', desc: '레전드 5위 + 라이즈 1~3위 · 승자 2팀 플레이오프 진출 · 전 경기 Bo5' },
   '플레이오프': { cols: { advance: true, worlds: true, champ: true }, matches: false, heading: '플레이오프 예측', desc: '레전드 1~4위 + 플레이-인 통과 2팀 · 전 경기 Bo5' },
-  '럼블 스테이지': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '녹아웃 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 녹아웃 진출)/녹아웃/Worlds/우승 확률.' },
+  '럼블 스테이지': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '플레이오프 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 플레이오프 직행)/플레이오프/Worlds/우승 확률.' },
 };
 
 // LCP Split 3 단계별 설정 — 스위스 → 플레이-인 → 플레이오프
@@ -508,6 +508,12 @@ const LCP_STAGE_CFG = {
     bracketKey: 'swiss', bracketTitle: '스위스 대진 (라운드별)',
   },
   '플레이-인 스테이지': { bracketKey: 'playin', bracketTitle: '플레이-인 대진' },
+  '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
+};
+
+// LPL Split 3 단계별 대진 (API 자동 갱신) — 기사의 길(Knights Rivals) / 플레이오프
+const LPL_STAGE_CFG = {
+  '기사의 길': { bracketKey: 'knights', bracketTitle: '기사의 길 대진' },
   '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
 };
 
@@ -585,6 +591,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   // Road to MSI(MSI 선발전): 정규 2R 기준 진출 6팀 명단만 표기, 시즌 예측 확률 컬럼은 생략
   const roadToMsi = comp.key === 'lck' && sub === 'Road to MSI';
   const lplSplit3 = comp.key === 'lpl' && sub === 'Split 3';
+  const lplCfg = lplSplit3 && stage ? LPL_STAGE_CFG[stage] : null;
   // 자체 대진표(토너먼트 포맷)가 있는 세부대회는 시즌 예측 확률 컬럼을 표기하지 않음 (LPL/LCP Split 3는 전용 확률을 표기하므로 예외)
   const noPredict = roadToMsi || (!!official?.bracket && !lplSplit3);
   // 팀 약칭 → 시뮬 예측 확률 (현재 순위표에 합쳐 표기) — LPL·LCP Split 3는 전용 시뮬 결과(comp.split3) 사용
@@ -657,12 +664,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi';
   // 참가 팀 카드(MSI 전용). LCK 플레이-인/플레이오프는 정규시즌 순위표를 참가 팀으로 표기.
   const qualifiers = official?.qualifiers?.length ? official.qualifiers : null;
-  let bracketSections = official?.bracket?.sections;
-  if (lplSplit3 && bracketSections && stage) {
-    if (stage === '럼블 스테이지') bracketSections = [];
-    else if (stage === '기사의 길') bracketSections = bracketSections.filter((s) => s.name?.includes('기사의 길'));
-    else if (stage === '녹아웃 스테이지') bracketSections = bracketSections.filter((s) => s.name?.includes('녹아웃'));
-  }
+  // LPL Split 3는 이제 API 자동 대진(knights/playoffs)을 쓰므로 섹션형 bracket을 사용하지 않는다.
+  const bracketSections = lplSplit3 ? undefined : official?.bracket?.sections;
 
   return (
     <div className="flex flex-col gap-8">
@@ -735,6 +738,17 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             onTeamClick={onTeamClick}
             groupGap={lcpCfg.bracketKey === 'swiss'}
           />
+        </section>
+      )}
+
+      {/* LPL Split 3 단계별 대진표 (기사의 길 / 플레이오프) — API 자동 갱신 */}
+      {lplSplit3 && lplCfg?.bracketKey && official?.[lplCfg.bracketKey]?.rounds?.length > 0 && (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lplCfg.bracketTitle}</h3>
+            <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
+          </div>
+          <MsiBracket rounds={official[lplCfg.bracketKey].rounds} connectors={official[lplCfg.bracketKey].connectors} onTeamClick={onTeamClick} />
         </section>
       )}
 
@@ -967,7 +981,7 @@ const SUB_STATUS = {
 // 세부대회 안에서 단계(스테이지) 선택 — `${comp.key}|${sub}` → 단계 목록
 const STAGE_TABS = {
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프'],
-  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '녹아웃 스테이지'],
+  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
