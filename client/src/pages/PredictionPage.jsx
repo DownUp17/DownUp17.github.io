@@ -33,6 +33,19 @@ const isContentTbd = (key, sub) =>
 const recordByShort = Object.fromEntries(
   gprTeams.teams.map((t) => [t.short, { w: t.w ?? 0, l: t.l ?? 0, gw: t.gw, gl: t.gl }])
 );
+// LCK 그룹 심볼 (레전드/라이즈) — 플레이-인/플레이오프 순위표 등수 앞에 표기
+const GroupSymbol = ({ group, size = 16 }) => (
+  group === 'Legend' ? (
+    <svg width={size} height={size} viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 0v30h30L20 20H10V10zm20 0 10 10V0Z" fill="#f38a5c" />
+    </svg>
+  ) : (
+    <svg width={size} height={size} viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 0v10L10 0Zm20 0L10 10h10v10l10-10V0Zm0 20H10l10 10h10V20Zm-10 0V10L0 20v10h10z" fill="#76b6fc" />
+    </svg>
+  )
+);
+
 // 팀 short → 로고 / 풀네임
 const logoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const nameByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name]));
@@ -134,6 +147,7 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
       return (aCy + bCy) / 2;
     };
 
+    const allCards = Array.from(wrap.querySelectorAll('[data-card]'));
     const paths = connData.map(([fR, fM, fS, tR, tM, tS]) => {
       const fromEl = wrap.querySelector(`[data-card="${fR}-${fM}"]`);
       const toEl = wrap.querySelector(`[data-card="${tR}-${tM}"]`);
@@ -144,12 +158,28 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
       const tx = tRect.left - wRect.left;
       const fy = slotCenterY(fromEl, fS);
       const ty = slotCenterY(toEl, tS);
-      const mx = (fx + tx) / 2;
       const flat = Math.abs(fy - ty) <= 2;
-      const d = flat
-        ? `M ${fx} ${fy} L ${tx} ${ty}`
-        : `M ${fx} ${fy} L ${mx} ${fy} L ${mx} ${ty} L ${tx} ${ty}`;
-      return d;
+      if (flat) return `M ${fx} ${fy} L ${tx} ${ty}`;
+
+      // 중간 라운드를 건너뛰는 연결선은 그 매치 카드를 관통하지 않도록,
+      // 칸 사이 gap에서만 세로로 꺾고 가로 이동은 건너뛰는 카드들을 피하는 y(위/아래)에서 한다.
+      const loR = Math.min(fR, tR), hiR = Math.max(fR, tR);
+      if (hiR - loR > 1) {
+        const rects = allCards
+          .filter((el) => { const m = el.getAttribute('data-card').match(/^(\d+)-/); return m && +m[1] > loR && +m[1] < hiR; })
+          .map((el) => el.getBoundingClientRect());
+        if (rects.length) {
+          const minTop = Math.min(...rects.map((r) => r.top)) - wRect.top;
+          const maxBottom = Math.max(...rects.map((r) => r.bottom)) - wRect.top;
+          const above = minTop - 10, below = maxBottom + 10;
+          const detourY = Math.abs(fy - above) + Math.abs(ty - above) <= Math.abs(fy - below) + Math.abs(ty - below) ? above : below;
+          const gx1 = fx + COL_GAP / 2, gx2 = tx - COL_GAP / 2;
+          return `M ${fx} ${fy} L ${gx1} ${fy} L ${gx1} ${detourY} L ${gx2} ${detourY} L ${gx2} ${ty} L ${tx} ${ty}`;
+        }
+      }
+
+      const mx = (fx + tx) / 2;
+      return `M ${fx} ${fy} L ${mx} ${fy} L ${mx} ${ty} L ${tx} ${ty}`;
     }).filter(Boolean);
 
     setConnPaths(paths);
@@ -390,7 +420,16 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick }) => {
               className="border-b border-white/5 cursor-pointer hover:bg-white/5 transition-colors"
               onClick={() => onTeamClick?.(t.short)}
             >
-              <td className="py-2 px-2 text-center text-white/40 font-mono">{t.rank}</td>
+              <td className="py-2 px-2 text-white/40 font-mono">
+                {t.seedGroup ? (
+                  <span className="flex items-center justify-center gap-1">
+                    <GroupSymbol group={t.seedGroup} />
+                    {t.rank}
+                  </span>
+                ) : (
+                  <span className="block text-center">{t.rank}</span>
+                )}
+              </td>
               <td className="py-2 pr-2">
                 <div className="flex items-center gap-2 min-w-0">
                   <TeamLogo src={logoByShort[t.short]} />
@@ -520,11 +559,20 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     { color: '#7EC8E8', bg: 'rgba(62,150,200,0.2)' },
   ];
   // LCK 플레이-인/플레이오프: MSI/LCP처럼 API 대진표(연결선)로 표기하고,
-  //   참가 팀은 정규시즌 순위표(그룹별)로 대진표 위에 표기한다.
+  //   참가 팀은 정규시즌 순위표로 대진표 위에 표기한다.
   let groups;
   const lckBracketStage = comp.key === 'lck' && grouped && (stage === '플레이-인' || stage === '플레이오프');
   const lckBracket = lckBracketStage ? official?.[stage === '플레이-인' ? 'playin' : 'playoffs'] : null;
-  {
+  if (lckBracketStage) {
+    // 그룹 구분 없이 해당 단계 참가 팀만 한 표에 표기.
+    //   등수 칸에는 그룹 심볼 + 그룹 내 시드(레전드 5위 / 라이즈 1~3위 등)를 표기.
+    const legend = current.filter((t) => /레전드|Legend/.test(t.group || ''));
+    const rise = current.filter((t) => /라이즈|Rise/.test(t.group || ''));
+    const seeds = stage === '플레이-인'
+      ? [{ t: legend[4], g: 'Legend', r: 5 }, { t: rise[0], g: 'Rise', r: 1 }, { t: rise[1], g: 'Rise', r: 2 }, { t: rise[2], g: 'Rise', r: 3 }]
+      : [{ t: legend[0], g: 'Legend', r: 1 }, { t: legend[1], g: 'Legend', r: 2 }, { t: legend[2], g: 'Legend', r: 3 }, { t: legend[3], g: 'Legend', r: 4 }];
+    groups = [{ name: null, rows: seeds.filter((s) => s.t).map((s) => ({ ...withProb(s.t, s.r), seedGroup: s.g })) }];
+  } else {
     groups = grouped
       ? [...new Set(current.map((t) => t.group))]
           .sort((a, b) => {
