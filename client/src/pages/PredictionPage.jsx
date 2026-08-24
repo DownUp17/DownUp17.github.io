@@ -241,7 +241,12 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
                   <div data-card={`${ri}-${mi}`} {...(cardPrefix && { 'data-xcard': `${cardPrefix}${ri}-${mi}` })}
                     style={groupGap ? { marginTop: isGroupStart ? 0 : 8 } : undefined}
                     className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-                    {!groupGap && m.title && <div data-title="" className="px-2.5 py-1.5 bg-white/10 text-[11px] font-black text-white/70">{m.title}</div>}
+                    {!groupGap && (m.title || m.time) && (
+                      <div data-title="" className="px-2.5 py-1.5 bg-white/10 text-[11px] font-black text-white/70 flex items-center gap-2">
+                        <span>{m.title}</span>
+                        {m.time && <span className="ml-auto text-white/40 font-semibold">{m.time}</span>}
+                      </div>
+                    )}
                     <MsiSlot s={m.a} predPct={pred?.pA} onTeamClick={onTeamClick} />
                     <div className="h-px bg-white/10" />
                     <MsiSlot s={m.b} predPct={pred?.pB} onTeamClick={onTeamClick} />
@@ -264,13 +269,16 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
               const labelTop = cardTop - LABEL_H;
               return (
                 <React.Fragment key={mi}>
-                  {m.title && (
+                  {(m.title || m.time) && (
                     <span style={{
-                      position: 'absolute', top: labelTop, left: 0, height: LABEL_H,
-                      display: 'flex', alignItems: 'center',
+                      position: 'absolute', top: labelTop, left: 0, right: 0, height: LABEL_H,
+                      display: 'flex', alignItems: 'center', gap: 6,
                       fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.4)',
                       textTransform: 'uppercase', letterSpacing: '0.05em',
-                    }}>{m.title}</span>
+                    }}>
+                      {m.title}
+                      {m.time && <span style={{ marginLeft: 'auto', color: 'rgba(255,255,255,0.32)', fontWeight: 600, textTransform: 'none', letterSpacing: 0 }}>{m.time}</span>}
+                    </span>
                   )}
                   <div
                     data-card={`${ri}-${mi}`}

@@ -97,7 +97,7 @@ function bracketFromColumns(columns) {
     for (const cell of columns[ci].cells || []) {
       for (const m of cell.matches || []) {
         const [a, b] = m.teams || [];
-        matches.push({ title: cell.name, a: slotOf(m, a), b: slotOf(m, b) });
+        matches.push({ id: m.id, title: cell.name, a: slotOf(m, a), b: slotOf(m, b) });
         // origin이 다른 match인 팀 슬롯 → connector 생성
         for (const [t, slot] of [[a, 'a'], [b, 'b']]) {
           const o = t?.origin;
@@ -974,6 +974,31 @@ try {
       if (s.slug !== 'play_ins' && s.slug !== 'regional_championship') continue;
       const cols = s.sections?.[0]?.columns || [];
       bySlug[s.slug] = bracketFromColumns(cols);
+    }
+    // 경기 시간: LCK 일정에서 match id → 시작시각을 모아 각 대진 매치에 KST 라벨(m.time)로 붙인다.
+    const kstLabel = (iso) => {
+      const k = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
+      const dow = ['일', '월', '화', '수', '목', '금', '토'][k.getUTCDay()];
+      return `${k.getUTCMonth() + 1}/${k.getUTCDate()} (${dow}) ${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`;
+    };
+    const timeById = {};
+    try {
+      let token = null;
+      for (let g = 0; g < 8; g++) {
+        const params = { leagueId: '98767991310872058' };
+        if (token) params.pageToken = token;
+        const { data: sd } = await api('getSchedule', params);
+        for (const e of sd.schedule.events || []) {
+          if (e.type === 'match' && e.match?.id && e.startTime) timeById[e.match.id] = e.startTime;
+        }
+        token = sd.schedule.pages?.newer;
+        if (!token) break;
+      }
+    } catch (e) { console.warn(`LCK 일정 시간 조회 실패: ${e.message}`); }
+    for (const key of ['play_ins', 'regional_championship']) {
+      const b = bySlug[key];
+      if (!b) continue;
+      for (const r of b.rounds) for (const m of r.matches) if (m.id && timeById[m.id]) m.time = kstLabel(timeById[m.id]);
     }
     // 빈 시드 슬롯에만 라벨 주입 (팀 확정 시 API 라벨/코드 우선)
     const setSeed = (slot, label) => { if (slot && !slot.seed && !slot.short) slot.seed = label; };
