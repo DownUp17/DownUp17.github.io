@@ -487,6 +487,42 @@ const LCP_STAGE_CFG = {
   '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
 };
 
+// LCK 플레이-인 대진표: 정규시즌 순위 기반 예상 팀을 1·2라운드 시드 슬롯에 채우고,
+//   1·2라운드 결과(승패)가 나오면 파이널 라운드(1라운드 패자 vs 2라운드 승자)를 자동으로 채운다.
+//   (플레이오프는 그대로 반환)
+const buildLckBracket = (raw, stage, current) => {
+  if (!raw || stage !== '플레이-인') return raw;
+  const legend = current.filter((t) => /레전드|Legend/.test(t.group || ''));
+  const rise = current.filter((t) => /라이즈|Rise/.test(t.group || ''));
+  const seedTeam = { '레전드 5위': legend[4], '라이즈 1위': rise[0], '라이즈 2위': rise[1], '라이즈 3위': rise[2] };
+  const fill = (s) => {
+    if (!s) return s;
+    const c = { ...s };
+    if (!c.short && seedTeam[c.seed]) c.short = seedTeam[c.seed].short; // 예상 시드 팀
+    return c;
+  };
+  const rounds = raw.rounds.map((r) => ({ ...r, matches: r.matches.map((m) => ({ ...m, a: fill(m.a), b: fill(m.b) })) }));
+  // 파이널 자동 채움 — 1·2라운드 결과가 있을 때만
+  const outcome = (m) => {
+    if (!m) return {};
+    const aWin = m.a?.win || m.a?.msi, bWin = m.b?.win || m.b?.msi;
+    if (aWin || bWin) return { winner: aWin ? m.a : m.b, loser: aWin ? m.b : m.a };
+    if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) {
+      const aBig = m.a.score > m.b.score;
+      return { winner: aBig ? m.a : m.b, loser: aBig ? m.b : m.a };
+    }
+    return {};
+  };
+  const fin = rounds[2]?.matches?.[0];
+  if (fin) {
+    const loser = outcome(rounds[0]?.matches?.[0]).loser;   // 1라운드 패자 → 파이널 a
+    const winner = outcome(rounds[1]?.matches?.[0]).winner; // 2라운드 승자 → 파이널 b
+    if (fin.a && !fin.a.short && loser?.short) fin.a = { ...fin.a, short: loser.short };
+    if (fin.b && !fin.b.short && winner?.short) fin.b = { ...fin.b, short: winner.short };
+  }
+  return { ...raw, rounds };
+};
+
 // 시뮬레이션 결과(예측) 렌더
 const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const lcpSplit3 = comp.key === 'lcp' && sub === 'Split 3';
@@ -562,7 +598,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   //   참가 팀은 정규시즌 순위표로 대진표 위에 표기한다.
   let groups;
   const lckBracketStage = comp.key === 'lck' && grouped && (stage === '플레이-인' || stage === '플레이오프');
-  const lckBracket = lckBracketStage ? official?.[stage === '플레이-인' ? 'playin' : 'playoffs'] : null;
+  const lckBracket = lckBracketStage ? buildLckBracket(official?.[stage === '플레이-인' ? 'playin' : 'playoffs'], stage, current) : null;
   if (lckBracketStage) {
     // 그룹 구분 없이 해당 단계 참가 팀만 한 표에 표기.
     //   등수 칸에는 그룹 심볼 + 그룹 내 시드(레전드 5위 / 라이즈 1~3위 등)를 표기.

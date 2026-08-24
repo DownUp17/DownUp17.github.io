@@ -977,11 +977,28 @@ try {
     }
     // 빈 시드 슬롯에만 라벨 주입 (팀 확정 시 API 라벨/코드 우선)
     const setSeed = (slot, label) => { if (slot && !slot.seed && !slot.short) slot.seed = label; };
-    const playin = bySlug['play_ins'];
-    if (playin?.rounds?.[0]) {
-      const [m0, m1] = playin.rounds[0].matches;
-      if (m0) { setSeed(m0.a, '레전드 5위'); setSeed(m0.b, '라이즈 1위'); }
-      if (m1) { setSeed(m1.a, '라이즈 2위'); setSeed(m1.b, '라이즈 3위'); }
+    // 플레이-인: 1라운드(레전드5 vs 라이즈1)·2라운드(라이즈2 vs 라이즈3)·파이널 라운드를
+    //   각각 별도 컬럼(x)으로 분리한다. (API는 1·2경기를 같은 컬럼에 둔다)
+    let playin = bySlug['play_ins'];
+    if (playin?.rounds?.length >= 2 && playin.rounds[0].matches.length >= 2) {
+      const [m1, m2] = playin.rounds[0].matches;    // 1라운드·2라운드 경기
+      const fin = playin.rounds[1].matches[0];       // 파이널 라운드 경기
+      setSeed(m1.a, '레전드 5위'); setSeed(m1.b, '라이즈 1위'); m1.title = '1라운드';
+      setSeed(m2.a, '라이즈 2위'); setSeed(m2.b, '라이즈 3위'); m2.title = '2라운드';
+      if (fin) {
+        fin.title = '파이널 라운드';
+        if (fin.a && !fin.a.short) fin.a.seed = '1라운드 패자';
+        if (fin.b && !fin.b.short) fin.b.seed = '2라운드 승자';
+      }
+      playin = {
+        rounds: [
+          { title: '', matches: [m1] },   // col0: 1라운드
+          { title: '', matches: [m2] },   // col1: 2라운드
+          ...(fin ? [{ title: '', matches: [fin] }] : []), // col2: 파이널 라운드
+        ],
+        // 1라운드 패자 → 파이널 a, 2라운드 승자 → 파이널 b
+        connectors: fin ? [[0, 0, 'mid', 2, 0, 'a'], [1, 0, 'mid', 2, 0, 'b']] : [],
+      };
     }
     const playoffs = bySlug['regional_championship'];
     if (playoffs?.rounds) {
