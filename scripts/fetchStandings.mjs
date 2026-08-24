@@ -1189,22 +1189,22 @@ try {
       if (lb4) { setLabel(lb4.a, '하위권 8강 M1 승자'); setLabel(lb4.b, '하위권 8강 M2 승자'); }
       if (lbFinal) { setLabel(lbFinal.a, '상위권 결승 패자'); setLabel(lbFinal.b, '하위권 4강 승자'); }
       if (grandFinal) { setLabel(grandFinal.a, '상위권 결승 승자'); setLabel(grandFinal.b, '하위권 결승 승자'); }
-      // 그리드 배치 — 상위권 8강(2경기)과 상위권 4강(2경기)이 동일 y로 정렬되도록
+      // 그리드 배치 — 상위권/하위권 매치 간 간격을 동일하게(4행)으로 통일
       byKind.playoffs = {
         totalRows: 24,
         rounds: [
-          { title: '', matches: [{ ...ub8_1, startRow: 2 }, { ...ub8_2, startRow: 10 }] },
+          { title: '', matches: [{ ...ub8_1, startRow: 2 }, { ...ub8_2, startRow: 6 }] },
           { title: '', matches: [
-            { ...ub4_1, startRow: 2 }, { ...ub4_2, startRow: 10 },
+            { ...ub4_1, startRow: 2 }, { ...ub4_2, startRow: 6 },
             ...(lb1_1 ? [{ ...lb1_1, startRow: 18 }] : []), ...(lb1_2 ? [{ ...lb1_2, startRow: 22 }] : []),
           ] },
           { title: '', matches: [
-            { ...ubFinal, startRow: 6 },
+            { ...ubFinal, startRow: 4 },
             ...(lb8_1 ? [{ ...lb8_1, startRow: 18 }] : []), ...(lb8_2 ? [{ ...lb8_2, startRow: 22 }] : []),
           ] },
           { title: '', matches: [{ ...lb4, startRow: 20 }] },
           { title: '', matches: [{ ...lbFinal, startRow: 20 }] },
-          { title: '', matches: [{ ...grandFinal, startRow: 13 }] },
+          { title: '', matches: [{ ...grandFinal, startRow: 12 }] },
         ],
         // 연결선 재구성 (크로스 시드): 8강 M1 승자 → 4강 M2, M2 승자 → 4강 M1
         connectors: [

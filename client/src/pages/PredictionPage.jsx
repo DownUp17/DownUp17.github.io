@@ -148,11 +148,18 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
     };
 
     const allCards = Array.from(wrap.querySelectorAll('[data-card]'));
-    // 카드 사각형(관통 판정용)
-    const cardRects = allCards.map((el) => {
+    // 카드 사각형(관통 판정용) — 그리드 모드에서는 카드 위 라벨(제목/시간)도 함께 체크한다
+    const cardRects = [];
+    for (const el of allCards) {
+      const id = el.getAttribute('data-card');
       const r = el.getBoundingClientRect();
-      return { id: el.getAttribute('data-card'), x1: r.left - wRect.left, x2: r.right - wRect.left, y1: r.top - wRect.top, y2: r.bottom - wRect.top };
-    });
+      cardRects.push({ id, x1: r.left - wRect.left, x2: r.right - wRect.left, y1: r.top - wRect.top, y2: r.bottom - wRect.top });
+      const label = el.previousElementSibling;
+      if (label && label.tagName === 'SPAN') {
+        const lr = label.getBoundingClientRect();
+        cardRects.push({ id, x1: lr.left - wRect.left, x2: lr.right - wRect.left, y1: lr.top - wRect.top, y2: lr.bottom - wRect.top });
+      }
+    }
     // 직선 세그먼트가 카드 내부를 관통하는지 (양 끝 카드는 제외)
     const hits = (pts, exclude) => {
       for (let i = 0; i < pts.length - 1; i++) {
