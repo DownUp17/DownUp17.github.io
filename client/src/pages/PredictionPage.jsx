@@ -445,41 +445,48 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick }) => {
           </tr>
         </thead>
         <tbody>
-          {rows.map((t) => (
-            <tr
-              key={t.short}
-              className="border-b border-white/5 cursor-pointer hover:bg-white/5 transition-colors"
-              onClick={() => onTeamClick?.(t.short)}
-            >
-              <td className="py-2 px-2 text-white/40 font-mono">
-                {t.seedGroup ? (
-                  <span className="flex items-center justify-center gap-1">
-                    <GroupSymbol group={t.seedGroup} />
-                    {t.rank}
-                  </span>
-                ) : (
-                  <span className="block text-center">{t.rank}</span>
-                )}
-              </td>
-              <td className="py-2 pr-2">
-                <div className="flex items-center gap-2 min-w-0">
-                  <TeamLogo src={logoByShort[t.short]} />
-                  <span className="font-bold text-white/90 truncate">{nameByShort[t.short] || t.short}</span>
-                </div>
-              </td>
-              <td className="py-2 px-2 text-center text-white/70 font-mono">{t.games ? `${t.w}-${t.l}` : '-'}</td>
-              {showDiff && (
-                <td className="py-2 px-2 text-center font-mono"
-                  style={{ color: t.gd > 0 ? '#34D399' : t.gd < 0 ? '#F87171' : '#9CA3AF' }}>
-                  {t.gd != null ? `${t.gd > 0 ? '+' : ''}${t.gd}` : '-'}
+          {rows.map((t, ri) => {
+            const pending = !t.short && t.pendingLabel; // 미확정 슬롯(예: 플레이-인 승자)
+            return (
+              <tr
+                key={t.short || `pending-${ri}`}
+                className={`border-b border-white/5 transition-colors ${pending ? 'opacity-60' : 'cursor-pointer hover:bg-white/5'}`}
+                onClick={() => !pending && onTeamClick?.(t.short)}
+              >
+                <td className="py-2 px-2 text-white/40 font-mono">
+                  {t.seedGroup ? (
+                    <span className="flex items-center justify-center gap-1">
+                      <GroupSymbol group={t.seedGroup} />
+                      {t.rank}
+                    </span>
+                  ) : (
+                    <span className="block text-center">{t.rank}</span>
+                  )}
                 </td>
-              )}
-              {hasPiPlus && prob(t.prob?.piPlus, '#9CA3AF')}
-              {hasAdvance && prob(t.prob?.advance, lighten(color))}
-              {hasWorlds && prob(t.prob?.worlds, '#60A5FA')}
-              {hasChamp && prob(t.prob?.champ, '#E8C77E', true)}
-            </tr>
-          ))}
+                <td className="py-2 pr-2">
+                  {pending ? (
+                    <span className="text-white/50 italic">{t.pendingLabel} (미정)</span>
+                  ) : (
+                    <div className="flex items-center gap-2 min-w-0">
+                      <TeamLogo src={logoByShort[t.short]} />
+                      <span className="font-bold text-white/90 truncate">{nameByShort[t.short] || t.short}</span>
+                    </div>
+                  )}
+                </td>
+                <td className="py-2 px-2 text-center text-white/70 font-mono">{t.games ? `${t.w}-${t.l}` : '-'}</td>
+                {showDiff && (
+                  <td className="py-2 px-2 text-center font-mono"
+                    style={{ color: t.gd > 0 ? '#34D399' : t.gd < 0 ? '#F87171' : '#9CA3AF' }}>
+                    {t.gd != null ? `${t.gd > 0 ? '+' : ''}${t.gd}` : '-'}
+                  </td>
+                )}
+                {hasPiPlus && prob(t.prob?.piPlus, '#9CA3AF')}
+                {hasAdvance && prob(t.prob?.advance, lighten(color))}
+                {hasWorlds && prob(t.prob?.worlds, '#60A5FA')}
+                {hasChamp && prob(t.prob?.champ, '#E8C77E', true)}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -577,7 +584,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const current = official?.rows?.length
     ? official.rows.map((r) => {
         const g = r.w + r.l;
-        return { short: r.team, w: r.w, l: r.l, group: r.group, games: g, winRate: g ? r.w / g : 0, gd: setDiff(r.gw, r.gl) };
+        return { short: r.team, w: r.w, l: r.l, group: r.group, rank: r.rank, games: g, winRate: g ? r.w / g : 0, gd: setDiff(r.gw, r.gl) };
       })
     : (comp.teams || [])
         .map((t) => {
@@ -650,7 +657,29 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     const seeds = stage === '플레이-인'
       ? [{ t: legend[4], g: 'Legend', r: 5 }, { t: rise[0], g: 'Rise', r: 1 }, { t: rise[1], g: 'Rise', r: 2 }, { t: rise[2], g: 'Rise', r: 3 }]
       : [{ t: legend[0], g: 'Legend', r: 1 }, { t: legend[1], g: 'Legend', r: 2 }, { t: legend[2], g: 'Legend', r: 3 }, { t: legend[3], g: 'Legend', r: 4 }];
-    groups = [{ name: null, rows: seeds.filter((s) => s.t).map((s) => ({ ...withProb(s.t, s.r), seedGroup: s.g })) }];
+    // 플레이오프: 플레이-인 1라운드 승자(=5시드)와 파이널 라운드 승자(=6시드) 추가.
+    //   플레이-인 대진에서 승자가 확정되면 그 팀의 정규시즌 순위 데이터를 가져와 표시.
+    if (stage === '플레이오프') {
+      const winnerOf = (m) => {
+        if (!m) return null;
+        if (m.a?.win || m.a?.msi) return m.a.short;
+        if (m.b?.win || m.b?.msi) return m.b.short;
+        if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) return m.a.score > m.b.score ? m.a.short : m.b.short;
+        return null;
+      };
+      const playin = official?.playin;
+      const r1Winner = winnerOf(playin?.rounds?.[0]?.matches?.[0]);       // 플레이-인 1라운드 승자 = PO 5시드
+      const finalWinner = winnerOf(playin?.rounds?.[2]?.matches?.[0]);    // 파이널 라운드 승자 = PO 6시드
+      const teamOf = (short) => short ? current.find((t) => t.short === short) : null;
+      // 확정 시 그 팀의 정규시즌 그룹 심볼과 그룹 내 순위(예: 레전드 5위, 라이즈 1위)로 표기
+      const gOf = (t) => /레전드|Legend/.test(t?.group || '') ? 'Legend' : /라이즈|Rise/.test(t?.group || '') ? 'Rise' : null;
+      const r1Team = teamOf(r1Winner), finalTeam = teamOf(finalWinner);
+      seeds.push({ t: r1Team, g: gOf(r1Team), r: r1Team?.rank ?? 5, pendingLabel: '플레이-인 1라운드 승자' });
+      seeds.push({ t: finalTeam, g: gOf(finalTeam), r: finalTeam?.rank ?? 6, pendingLabel: '파이널 라운드 승자' });
+    }
+    groups = [{ name: null, rows: seeds.map((s) => s.t
+      ? { ...withProb(s.t, s.r), seedGroup: s.g }
+      : { rank: s.r, pendingLabel: s.pendingLabel, seedGroup: s.g }) }];
   } else {
     groups = grouped
       ? [...new Set(current.map((t) => t.group))]
@@ -741,6 +770,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
           </div>
           <MsiBracket
             rounds={official[lcpCfg.bracketKey].rounds}
+            totalRows={official[lcpCfg.bracketKey].totalRows}
             connectors={official[lcpCfg.bracketKey].connectors}
             onTeamClick={onTeamClick}
             groupGap={lcpCfg.bracketKey === 'swiss'}

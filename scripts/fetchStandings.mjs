@@ -946,13 +946,32 @@ try {
         });
       });
     }
+    // LCP 플레이오프: 이미지 배치대로 그리드화 (하위권 4강 좌상단 / 상위권 결승 중상단 /
+    //   상위권 4강 하단 / 하위권 결승 중하단 / 결승 우측 중앙)
+    let lcpPlayoffs = bySlug['playoffs'];
+    if (lcpPlayoffs?.rounds?.length >= 4) {
+      const P = lcpPlayoffs.rounds;
+      const lb4_1 = P[0].matches[0], lb4_2 = P[0].matches[1];
+      const ubFinal = P[1].matches[0], ub4 = P[1].matches[1];
+      const lbFinal = P[2].matches[0], grandFinal = P[3].matches[0];
+      lcpPlayoffs = {
+        totalRows: 8,
+        rounds: [
+          { title: '', matches: [{ ...lb4_1, startRow: 0 }, { ...lb4_2, startRow: 2 }] },
+          { title: '', matches: [{ ...ubFinal, startRow: 1 }, { ...ub4, startRow: 6 }] },
+          { title: '', matches: [{ ...lbFinal, startRow: 6 }] },
+          { title: '', matches: [{ ...grandFinal, startRow: 3 }] },
+        ],
+        connectors: lcpPlayoffs.connectors,
+      };
+    }
     data.standings.lcp = data.standings.lcp || {};
     data.standings.lcp['Split 3'] = {
       stage: '2026 LCP Split 3 · 스위스 → 플레이-인 → 플레이오프',
       rows: [],
       swiss: swiss || null,
       playin: bySlug['play_ins'] || null,
-      playoffs: bySlug['playoffs'] || null,
+      playoffs: lcpPlayoffs || null,
     };
     const cnt = (b) => b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0;
     console.log(`LCP Split 3 대진 갱신 (스위스 ${cnt(swiss)}경기 / 플레이-인 ${cnt(bySlug['play_ins'])} / 플레이오프 ${cnt(bySlug['playoffs'])})`);
