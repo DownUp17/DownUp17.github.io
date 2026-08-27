@@ -1,6 +1,6 @@
 {
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "updatedAt": "2026-08-26",
+  "updatedAt": "2026-08-27",
   "note": "GPR 팀별 점수(포인트)와 전적. score를 시뮬레이션 레이팅으로 사용. fst는 2026 First Stand 최종 순위.",
   "teams": [
     {
@@ -76,11 +76,11 @@
       "name": "kt Rolster",
       "short": "KT",
       "league": "LCK",
-      "score": 1390,
-      "w": 18,
+      "score": 1381,
+      "w": 19,
       "l": 16,
-      "gw": 43,
-      "gl": 44,
+      "gw": 46,
+      "gl": 46,
       "logo": "https://static.lolesports.com/teams/kt_darkbackground.png"
     },
     {
@@ -366,11 +366,11 @@
       "name": "Hanjin BRION",
       "short": "BRO",
       "league": "LCK",
-      "score": 1200,
+      "score": 1209,
       "w": 10,
-      "l": 23,
-      "gw": 33,
-      "gl": 50,
+      "l": 24,
+      "gw": 35,
+      "gl": 53,
       "logo": "https://static.lolesports.com/teams/1716454325887_Nowyprojekt.png"
     },
     {
