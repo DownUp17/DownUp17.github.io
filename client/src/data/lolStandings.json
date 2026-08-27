@@ -1113,11 +1113,15 @@
                   "title": "2라운드",
                   "a": {
                     "seed": "",
-                    "short": "NS"
+                    "short": "BFX",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "BFX"
+                    "short": "NS",
+                    "score": 1,
+                    "elim": true
                   },
                   "time": "8/27 (목) 17:00",
                   "startRow": 4
@@ -1131,11 +1135,12 @@
                   "id": "117030752644841583",
                   "title": "파이널 라운드",
                   "a": {
-                    "seed": "1라운드 패자"
-                  },
-                  "b": {
                     "seed": "1라운드 패자",
                     "short": "BRO"
+                  },
+                  "b": {
+                    "seed": "1라운드 승자",
+                    "short": "BFX"
                   },
                   "time": "8/28 (금) 17:00",
                   "startRow": 2
