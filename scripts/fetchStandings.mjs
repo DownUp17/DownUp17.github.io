@@ -1035,8 +1035,9 @@ try {
       setSeed(m2.a, '라이즈 2위'); setSeed(m2.b, '라이즈 3위'); m2.title = '2라운드';
       if (fin) {
         fin.title = '파이널 라운드';
-        if (fin.a && !fin.a.short) fin.a.seed = '1라운드 패자';
-        if (fin.b && !fin.b.short) fin.b.seed = '2라운드 승자';
+        // API 원본이 "1라운드 승자" 등 잘못된 라벨을 줄 수 있어 팀 확정 여부 무관하게 강제 지정
+        if (fin.a) fin.a.seed = '1라운드 패자';
+        if (fin.b) fin.b.seed = '2라운드 승자';
       }
       // 세로 배치(공식 대진표 형식): 1라운드=상단, 2라운드=하단, 파이널=중앙.
       //   그리드(totalRows) 기준 startRow로 y를 고정한다(매치=2행).

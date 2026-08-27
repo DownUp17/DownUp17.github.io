@@ -101,9 +101,9 @@ if (Object.keys(leagueElo).length >= 6) {
   console.warn(`지역 GPR 추출 실패(${Object.keys(leagueElo).length}개) — lolGpr.json 유지`);
 }
 
-// MSI 플레이-인 경기 결과만 바뀐 경우(GPR 점수는 그대로)에도 시뮬을 재실행해야
-// 참가팀 확률이 갱신된다. lolStandings 의 플레이-인 브래킷과 lolSim 의 저장 시그니처를 비교.
-let msiChanged = false;
+// 경기 결과만 바뀐 경우(GPR 점수는 그대로)에도 시뮬을 재실행해야 참가팀 확률이 갱신된다.
+// MSI 브래킷 + LCK 플레이-인/플레이오프를 lolSim 의 저장 시그니처와 비교.
+let bracketChanged = false;
 try {
   const stPath = path.join(__dirname, '..', 'client', 'src', 'data', 'lolStandings.json');
   const simPath = path.join(__dirname, '..', 'client', 'src', 'data', 'lolSim.json');
@@ -112,22 +112,25 @@ try {
   const sig = JSON.stringify({
     pi: st.standings?.msi?.['플레이-인 스테이지']?.bracket ?? null,
     br: st.standings?.msi?.['브래킷 스테이지']?.bracket ?? null,
+    lckPi: st.standings?.lck?.LCK?.playin ?? null,
+    lckPo: st.standings?.lck?.LCK?.playoffs ?? null,
   });
-  msiChanged = simData.msiBracketSig !== sig;
+  bracketChanged = simData.msiBracketSig !== sig;
 } catch (e) {
-  console.warn(`MSI 변화 감지 실패(무시): ${e.message}`);
+  console.warn(`브래킷 변화 감지 실패(무시): ${e.message}`);
 }
 
 // 점수가 바뀐 팀이 속한 리그만 시뮬 재계산 (변화 없는 리그는 기존 결과 유지)
-// MSI·LPL Split3 블록은 simulateLol 내에서 인자와 무관하게 항상 재계산되므로,
-// MSI 결과만 바뀐 경우 리그 인자 없이 실행해 MSI 확률만 갱신한다.
+// MSI·LPL Split3 블록은 simulateLol 내에서 인자와 무관하게 항상 재계산되지만, LCK는 리그
+// 인자에 포함돼야 재계산되므로 브래킷 결과가 바뀌면 LCK를 명시적으로 추가한다.
 const simLeagues = [...changedLeagues];
-if (simLeagues.length || msiChanged) {
-  const reason = simLeagues.length
-    ? `GPR 점수 변화 리그 [${simLeagues.join(', ')}]${msiChanged ? ' + MSI 결과' : ''}`
-    : 'MSI 플레이-인 결과 변화';
+if (bracketChanged && !simLeagues.includes('LCK')) simLeagues.push('LCK');
+if (simLeagues.length || bracketChanged) {
+  const reason = changedLeagues.length
+    ? `GPR 점수 변화 리그 [${changedLeagues.join(', ')}]${bracketChanged ? ' + 브래킷 결과' : ''}`
+    : '브래킷(MSI/LCK) 경기 결과 변화';
   console.log(`— ${reason} → 시뮬 재실행 —`);
   execFileSync('node', [path.join(__dirname, 'simulateLol.mjs'), ...simLeagues], { stdio: 'inherit' });
 } else {
-  console.log('— GPR·MSI 변화 없음 → 시뮬레이션 생략 —');
+  console.log('— GPR·브래킷 변화 없음 → 시뮬레이션 생략 —');
 }

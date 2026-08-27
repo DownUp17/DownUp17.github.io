@@ -130,12 +130,20 @@ function simulateLeague(teams) {
 //   '지목=더 낮은 시드 선택' 가정 → 표준 시드 대진(3v6, 4v5, 1·2시드 UB R2 부전승).
 // fixed: { [short]: { w, group } } — 현재까지(정규 1·2R) 결과를 고정하고 잔여 경기만 시뮬.
 //   주어지면 그룹 배정과 누적 승수를 실제 순위표로 고정하고 3·4R부터 시뮬레이션한다.
-function simulateLCK(teams, fixed) {
+function simulateLCK(teams, fixed, playinFixed = {}) {
   const n = teams.length; // 10
   const ti = (obj) => teams.indexOf(obj);
   const stat = teams.map(() => ({ sumRank: 0, rank1: 0, piPlus: 0, playoff: 0, worlds: 0, champ: 0, finalApp: 0 }));
   // HLE = MSI 챔피언 확정 Worlds 진출. LCK 4슬롯(HLE 1 + 국내 플레이오프 3).
   const hleTeam = teams.find((t) => t.short === 'HLE');
+  // 플레이-인 확정 결과 반영: 해당 대진(무순서 페어)에 확정 승자가 있으면 그 결과로,
+  //   없으면 시뮬레이션. (정규시즌 종료 후 참가팀이 고정되므로 실제 진행에 맞춰 갱신)
+  const pinKey = (a, b) => [a.short, b.short].sort().join('|');
+  const pinDecide = (a, b) => {
+    const w = playinFixed[pinKey(a, b)];
+    if (w) return a.short === w ? a : b;
+    return simSeries(a, b, 3);
+  };
 
   // 그룹 잔여 대진 스케줄 구성 — [i,j] 팀 인덱스 시리즈 목록 반환.
   //   s3played가 있으면 팀별 잔여 경기 수(rem = 8 - 소화)를 만족하는 근사 스케줄을,
@@ -233,10 +241,10 @@ function simulateLCK(teams, fixed) {
 
     // 플레이인 (Bo5): L5 vs R1 → 승자 직행 / 패자 최종전, R2 vs R3 → 승자 최종전
     const L5 = teams[legOrder[4]], R1 = teams[riseOrder[0]], R2 = teams[riseOrder[1]], R3 = teams[riseOrder[2]];
-    const pin1W = simSeries(L5, R1, 3);
+    const pin1W = pinDecide(L5, R1);
     const pin1L = pin1W === L5 ? R1 : L5;
-    const pin2W = simSeries(R2, R3, 3);
-    const finalW = simSeries(pin1L, pin2W, 3); // 최종전 승자 → 직행
+    const pin2W = pinDecide(R2, R3);
+    const finalW = pinDecide(pin1L, pin2W); // 최종전 승자 → 직행
 
     // 6팀 시드: 1~4 레전드 직행, 5 = 플레이인 1경기 승자, 6 = 최종전 승자
     const s1 = teams[legOrder[0]], s2 = teams[legOrder[1]], s3 = teams[legOrder[2]], s4 = teams[legOrder[3]];
@@ -331,10 +339,33 @@ const lckFixed = lckRows && Object.fromEntries(
   lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group), gd: (r.gw ?? 0) - (r.gl ?? 0), total: r.w + r.l }])
 );
 
+// LCK 플레이-인 확정 결과 추출 — { "TEAMA|TEAMB"(정렬): 승자 short }.
+//   실제 경기가 진행되면 그 결과를 시뮬에 고정해 PO/Worlds/우승 확률을 갱신한다.
+function extractLckPlayinFixed() {
+  const out = {};
+  const playin = standingsData.standings?.lck?.LCK?.playin;
+  if (!playin?.rounds) return out;
+  for (const r of playin.rounds) {
+    for (const m of r.matches || []) {
+      const { a, b } = m;
+      if (!a?.short || !b?.short) continue;
+      let w = null;
+      if (a.win || a.msi) w = a.short;
+      else if (b.win || b.msi) w = b.short;
+      else if (a.score != null && b.score != null && a.score !== b.score) w = a.score > b.score ? a.short : b.short;
+      if (w) out[[a.short, b.short].sort().join('|')] = w;
+    }
+  }
+  return out;
+}
+const lckPlayinFixed = extractLckPlayinFixed();
+const lckPlayinKeys = Object.keys(lckPlayinFixed);
+if (lckPlayinKeys.length) console.log(`LCK 플레이-인 확정 반영: ${lckPlayinKeys.map((k) => `${k}→${lckPlayinFixed[k]}`).join(', ')}`);
+
 for (const lg of leagues) {
   const teams = gpr.teams.filter((t) => t.league === lg);
   const isLck = lg === 'LCK';
-  const { standings, situations, matches } = isLck ? simulateLCK(teams, lckFixed) : simulateLeague(teams);
+  const { standings, situations, matches } = isLck ? simulateLCK(teams, lckFixed, lckPlayinFixed) : simulateLeague(teams);
   const comp = sim.competitions.find((c) => c.key === lg.toLowerCase());
   comp.ready = true;
   comp.status = 'ongoing';
@@ -747,11 +778,13 @@ fst.finalResult = {
 };
 console.log(`FST: 우승 ${fstTeams[0].name}`);
 
-// MSI 플레이-인 브래킷 시그니처 저장 — fetchGpr가 "GPR 변화 없이 경기 결과만 바뀐 경우"를
-// 감지해 시뮬을 재실행하도록 하는 기준값.
+// 브래킷 시그니처 저장 — fetchGpr가 "GPR 변화 없이 경기 결과만 바뀐 경우"를
+// 감지해 시뮬을 재실행하도록 하는 기준값. MSI 브래킷 + LCK 플레이-인/플레이오프 포함.
 sim.msiBracketSig = JSON.stringify({
   pi: standingsData.standings?.msi?.['플레이-인 스테이지']?.bracket ?? null,
   br: standingsData.standings?.msi?.['브래킷 스테이지']?.bracket ?? null,
+  lckPi: standingsData.standings?.lck?.LCK?.playin ?? null,
+  lckPo: standingsData.standings?.lck?.LCK?.playoffs ?? null,
 });
 
 sim.updatedAt = new Date().toISOString(); // 시간까지 포함(페이지에서 KST로 표시)
