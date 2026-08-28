@@ -531,7 +531,6 @@ const LCP_STAGE_CFG = {
 const LPL_STAGE_CFG = {
   '기사의 길': { bracketKey: 'knights', bracketTitle: '기사의 길 대진' },
   '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
-  '대표 선발전': { bracketKey: 'qualifier', bracketTitle: '대표 선발전 대진' },
 };
 
 // LCK 플레이-인 대진표: 정규시즌 순위 기반 예상 팀을 1·2라운드 시드 슬롯에 채우고,
@@ -609,6 +608,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const roadToMsi = comp.key === 'lck' && sub === 'Road to MSI';
   const lplSplit3 = comp.key === 'lpl' && sub === 'Split 3';
   const lplCfg = lplSplit3 && stage ? LPL_STAGE_CFG[stage] : null;
+  const lplQualifier = comp.key === 'lpl' && sub === '대표 선발전';
   // 자체 대진표(토너먼트 포맷)가 있는 세부대회는 시즌 예측 확률 컬럼을 표기하지 않음 (LPL/LCP Split 3는 전용 확률을 표기하므로 예외)
   const noPredict = roadToMsi || (!!official?.bracket && !lplSplit3);
   // 팀 약칭 → 시뮬 예측 확률 (현재 순위표에 합쳐 표기) — LPL·LCP Split 3는 전용 시뮬 결과(comp.split3) 사용
@@ -746,7 +746,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
 
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
   // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
-  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi';
+  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier;
   // 참가 팀 카드(MSI 전용). LCK 플레이-인/플레이오프는 정규시즌 순위표를 참가 팀으로 표기.
   const qualifiers = official?.qualifiers?.length ? official.qualifiers : null;
   // LPL Split 3는 이제 API 자동 대진(knights/playoffs)을 쓰므로 섹션형 bracket을 사용하지 않는다.
@@ -840,6 +840,64 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
           </div>
           <MsiBracket rounds={official[lplCfg.bracketKey].rounds} totalRows={official[lplCfg.bracketKey].totalRows} connectors={official[lplCfg.bracketKey].connectors} onTeamClick={onTeamClick} />
+        </section>
+      )}
+
+      {/* LPL 대표 선발전 — 대진 탭 */}
+      {lplQualifier && stage === '대진' && official?.qualifier?.rounds?.length > 0 && (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">대표 선발전 대진</h3>
+            <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
+          </div>
+          <MsiBracket rounds={official.qualifier.rounds} totalRows={official.qualifier.totalRows} connectors={official.qualifier.connectors} onTeamClick={onTeamClick} />
+        </section>
+      )}
+
+      {/* LPL 대표 선발전 — 챔피언십 포인트 탭 */}
+      {lplQualifier && stage === '챔피언십 포인트' && (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">챔피언십 포인트</h3>
+            <span className="text-xs text-white/40">2026 시즌 Split 1·2·3 성적 누적</span>
+          </div>
+          {official?.points?.length > 0 ? (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="text-white/40 text-xs border-b border-white/10">
+                    <th className="text-center font-bold py-2 px-2 w-10">#</th>
+                    <th className="text-left font-bold py-2 pr-2">팀</th>
+                    {official.points[0]?.split1 != null && <th className="text-center font-bold py-2 px-2">Split 1</th>}
+                    {official.points[0]?.split2 != null && <th className="text-center font-bold py-2 px-2">Split 2</th>}
+                    {official.points[0]?.split3 != null && <th className="text-center font-bold py-2 px-2">Split 3</th>}
+                    <th className="text-right font-bold py-2 px-2">합계</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {official.points.map((p, i) => (
+                    <tr key={p.team} className="border-b border-white/5 cursor-pointer hover:bg-white/5 transition-colors" onClick={() => onTeamClick?.(p.team)}>
+                      <td className="py-2 px-2 text-center text-white/40 font-mono">{i + 1}</td>
+                      <td className="py-2 pr-2">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <TeamLogo src={logoByShort[p.team]} />
+                          <span className="font-bold text-white/90 truncate">{nameByShort[p.team] || p.team}</span>
+                        </div>
+                      </td>
+                      {p.split1 != null && <td className="py-2 px-2 text-center text-white/60 font-mono">{p.split1}</td>}
+                      {p.split2 != null && <td className="py-2 px-2 text-center text-white/60 font-mono">{p.split2}</td>}
+                      {p.split3 != null && <td className="py-2 px-2 text-center text-white/60 font-mono">{p.split3}</td>}
+                      <td className="py-2 px-2 text-right font-mono font-black text-white">{p.total}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="text-sm text-white/50 py-6 px-4 rounded-xl bg-white/5 border border-white/10">
+              챔피언십 포인트 데이터는 곧 게재됩니다.
+            </p>
+          )}
         </section>
       )}
 
@@ -1036,7 +1094,7 @@ const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
   lck: ['LCK CUP', 'LCK', 'Road to MSI'],
-  lpl: ['Split 1', 'Split 2', 'Split 3'],
+  lpl: ['Split 1', 'Split 2', 'Split 3', '대표 선발전'],
   lec: ['Versus', 'Spring', 'Summer'],
   lcp: ['Split 1', 'Split 2', 'Split 3'],
   lcs: ['Lock-In', 'Spring', 'Summer'],
@@ -1056,6 +1114,7 @@ const SUB_STATUS = {
   'lpl|Split 1': 'finished',
   'lpl|Split 2': 'finished',
   'lpl|Split 3': 'upcoming',
+  'lpl|대표 선발전': 'upcoming',
   'lec|Versus': 'finished',
   'lec|Spring': 'finished',
   'lec|Summer': 'upcoming',
@@ -1073,7 +1132,8 @@ const SUB_STATUS = {
 // 세부대회 안에서 단계(스테이지) 선택 — `${comp.key}|${sub}` → 단계 목록
 const STAGE_TABS = {
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
-  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프', '대표 선발전'],
+  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
+  'lpl|대표 선발전': ['대진', '챔피언십 포인트'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계

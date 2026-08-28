@@ -1307,7 +1307,58 @@ try {
     data.standings.lpl = data.standings.lpl || {};
     const prev = data.standings.lpl['Split 3'] || {};
     delete prev.bracket; // 수동 bracket 제거 (자동 대진으로 대체)
-    data.standings.lpl['Split 3'] = { ...prev, knights: byKind.knights || null, playoffs: byKind.playoffs || null, qualifier: byKind.qualifier || null };
+    delete prev.qualifier; // 대표 선발전은 별도 서브탭으로 분리
+    data.standings.lpl['Split 3'] = { ...prev, knights: byKind.knights || null, playoffs: byKind.playoffs || null };
+    // 대표 선발전은 Split 3과 별도의 세부대회(서브탭)로 저장
+    if (byKind.qualifier) {
+      // 챔피언십 포인트 계산: Split 1·2 순위(고정) + Split 3 순위(진행 중이면 미포함)로 합산
+      const S1_RANK = ['BLG', 'JDG', 'WBG', 'AL', 'TES', 'IG', 'NIP', 'WE'];
+      const S2_RANK = ['BLG', 'TES', 'WE', 'AL', 'JDG', 'LGD', 'EDG', 'TT'];
+      const S1_PT = [80, 50, 40, 20, 10, 10, 5, 5];
+      const S2_PT = [110, 80, 50, 30, 15, 15, 10, 10];
+      const S3_PT = [null, 110, 80, 50, 30, 30, 15, 15]; // 1등은 별도(LPL 1시드 자동)
+      const pointsMap = {};
+      const bump = (short, key, pt) => { pointsMap[short] = pointsMap[short] || { team: short, split1: 0, split2: 0, split3: 0 }; pointsMap[short][key] = pt; };
+      S1_RANK.forEach((t, i) => bump(t, 'split1', S1_PT[i]));
+      S2_RANK.forEach((t, i) => bump(t, 'split2', S2_PT[i]));
+      // Split 3 순위: 플레이오프 결승 승자가 확정된 경우만 반영
+      const po = byKind.playoffs;
+      const winnerOf = (m) => {
+        if (!m) return {};
+        if (m.a?.win || m.a?.msi) return { w: m.a.short, l: m.b?.short };
+        if (m.b?.win || m.b?.msi) return { w: m.b.short, l: m.a?.short };
+        if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) {
+          const aBig = m.a.score > m.b.score;
+          return { w: aBig ? m.a.short : m.b.short, l: aBig ? m.b.short : m.a.short };
+        }
+        return {};
+      };
+      const s3Rank = [null, null, null, null, null, null, null, null]; // 1~8위
+      // po.rounds[5]=결승, [4]=하위결승, [3]=하위4강, ...
+      const gfM = po?.rounds?.[5]?.matches?.[0];
+      const gf = winnerOf(gfM);
+      if (gf.w) {
+        s3Rank[0] = gf.w; s3Rank[1] = gf.l;
+        s3Rank[2] = winnerOf(po?.rounds?.[4]?.matches?.[0]).l;      // 하위 결승 패자 = 3위
+        s3Rank[3] = winnerOf(po?.rounds?.[3]?.matches?.[0]).l;      // 하위 4강 패자 = 4위
+        s3Rank[4] = winnerOf(po?.rounds?.[2]?.matches?.[1]).l;      // 하위 8강 M1 패자
+        s3Rank[5] = winnerOf(po?.rounds?.[2]?.matches?.[2]).l;      // 하위 8강 M2 패자
+        s3Rank[6] = winnerOf(po?.rounds?.[1]?.matches?.[2]).l;      // 하위 1R M1 패자
+        s3Rank[7] = winnerOf(po?.rounds?.[1]?.matches?.[3]).l;      // 하위 1R M2 패자
+      }
+      s3Rank.forEach((t, i) => { if (t && S3_PT[i] != null) bump(t, 'split3', S3_PT[i]); });
+      const points = Object.values(pointsMap).map((p) => ({
+        team: p.team, split1: p.split1 || 0, split2: p.split2 || 0, split3: p.split3 || 0,
+        total: (p.split1 || 0) + (p.split2 || 0) + (p.split3 || 0),
+      })).sort((a, b) => b.total - a.total);
+      data.standings.lpl['대표 선발전'] = {
+        stage: '2026 LPL 대표 선발전',
+        rows: [],
+        qualifier: byKind.qualifier,
+        points,
+        pointsNote: 'LPL 1시드=Split 3 우승 / 2시드=(1시드 제외) 포인트 합산 1등 / 대표 선발전 진출=합산 2~5등',
+      };
+    }
     const cnt = (b) => (b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0);
     console.log(`LPL Split 3 대진 갱신 (기사의 길 ${cnt(byKind.knights)}경기 / 플레이오프 ${cnt(byKind.playoffs)}경기 / 대표 선발전 ${cnt(byKind.qualifier)}경기)`);
   }

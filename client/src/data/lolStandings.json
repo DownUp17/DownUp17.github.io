@@ -1884,75 +1884,6 @@
               "b"
             ]
           ]
-        },
-        "qualifier": {
-          "totalRows": 6,
-          "rounds": [
-            {
-              "title": "",
-              "matches": [
-                {
-                  "id": "116957100120526824",
-                  "title": "1라운드 M1",
-                  "a": {
-                    "seed": ""
-                  },
-                  "b": {
-                    "seed": ""
-                  },
-                  "time": "9/17 (목) 18:00",
-                  "startRow": 0
-                },
-                {
-                  "id": "116957100120526830",
-                  "title": "1라운드 M2",
-                  "a": {
-                    "seed": ""
-                  },
-                  "b": {
-                    "seed": ""
-                  },
-                  "time": "9/18 (금) 18:00",
-                  "startRow": 4
-                }
-              ]
-            },
-            {
-              "title": "",
-              "matches": [
-                {
-                  "id": "116957100120526836",
-                  "title": "2라운드",
-                  "a": {
-                    "seed": "1R M1 승자"
-                  },
-                  "b": {
-                    "seed": "1R M2 승자"
-                  },
-                  "time": "9/19 (토) 18:00",
-                  "startRow": 2
-                }
-              ]
-            }
-          ],
-          "connectors": [
-            [
-              0,
-              0,
-              "mid",
-              1,
-              0,
-              "a"
-            ],
-            [
-              0,
-              1,
-              "mid",
-              1,
-              0,
-              "b"
-            ]
-          ]
         }
       },
       "Split 2": {
@@ -2063,6 +1994,159 @@
             "group": "Group Nirvana"
           }
         ]
+      },
+      "대표 선발전": {
+        "stage": "2026 LPL 대표 선발전",
+        "rows": [],
+        "qualifier": {
+          "totalRows": 6,
+          "rounds": [
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "116957100120526824",
+                  "title": "1라운드 M1",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  },
+                  "time": "9/17 (목) 18:00",
+                  "startRow": 0
+                },
+                {
+                  "id": "116957100120526830",
+                  "title": "1라운드 M2",
+                  "a": {
+                    "seed": ""
+                  },
+                  "b": {
+                    "seed": ""
+                  },
+                  "time": "9/18 (금) 18:00",
+                  "startRow": 4
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "116957100120526836",
+                  "title": "2라운드",
+                  "a": {
+                    "seed": "1R M1 승자"
+                  },
+                  "b": {
+                    "seed": "1R M2 승자"
+                  },
+                  "time": "9/19 (토) 18:00",
+                  "startRow": 2
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              0,
+              "b"
+            ]
+          ]
+        },
+        "points": [
+          {
+            "team": "BLG",
+            "split1": 80,
+            "split2": 110,
+            "split3": 0,
+            "total": 190
+          },
+          {
+            "team": "TES",
+            "split1": 10,
+            "split2": 80,
+            "split3": 0,
+            "total": 90
+          },
+          {
+            "team": "JDG",
+            "split1": 50,
+            "split2": 15,
+            "split3": 0,
+            "total": 65
+          },
+          {
+            "team": "WE",
+            "split1": 5,
+            "split2": 50,
+            "split3": 0,
+            "total": 55
+          },
+          {
+            "team": "AL",
+            "split1": 20,
+            "split2": 30,
+            "split3": 0,
+            "total": 50
+          },
+          {
+            "team": "WBG",
+            "split1": 40,
+            "split2": 0,
+            "split3": 0,
+            "total": 40
+          },
+          {
+            "team": "LGD",
+            "split1": 0,
+            "split2": 15,
+            "split3": 0,
+            "total": 15
+          },
+          {
+            "team": "IG",
+            "split1": 10,
+            "split2": 0,
+            "split3": 0,
+            "total": 10
+          },
+          {
+            "team": "EDG",
+            "split1": 0,
+            "split2": 10,
+            "split3": 0,
+            "total": 10
+          },
+          {
+            "team": "TT",
+            "split1": 0,
+            "split2": 10,
+            "split3": 0,
+            "total": 10
+          },
+          {
+            "team": "NIP",
+            "split1": 5,
+            "split2": 0,
+            "split3": 0,
+            "total": 5
+          }
+        ],
+        "pointsNote": "LPL 1시드=Split 3 우승 / 2시드=(1시드 제외) 포인트 합산 1등 / 대표 선발전 진출=합산 2~5등"
       }
     },
     "lec": {
