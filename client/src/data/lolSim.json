@@ -1548,6 +1548,23 @@
       "finalResult": null
     },
     {
+      "key": "demacia",
+      "name": "2026 DEMACIA",
+      "scope": "intl",
+      "color": "#2D3ECC",
+      "status": "upcoming",
+      "ready": false,
+      "stage": "",
+      "format": "",
+      "iterations": 0,
+      "generatedAt": null,
+      "teams": [],
+      "matches": [],
+      "standings": [],
+      "situations": [],
+      "finalResult": null
+    },
+    {
       "key": "worlds",
       "name": "2026 Worlds",
       "scope": "intl",

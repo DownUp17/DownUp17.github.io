@@ -9,6 +9,7 @@ import officialStandings from '../data/lolStandings.json';
 import GprTable, { TeamLogo } from '../components/GprTable';
 import TeamPanel from '../components/TeamPanel';
 import { textOn, lighten } from '../utils/colorContrast';
+import demaciaLogo from '../assets/demacia.svg';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -974,6 +975,7 @@ const COMP_LOGO = {
   cblol: 'https://static.lolesports.com/leagues/cblol-logo-symbol-offwhite.png',
   fst: 'https://static.lolesports.com/leagues/1740042025201_RG_LOL_FIRST_STAND_LOGO_VOLT_ALPHA.png',
   msi: 'https://static.lolesports.com/leagues/1592594634248_MSIDarkBG.png',
+  demacia: demaciaLogo,
   worlds: 'https://static.lolesports.com/leagues/1592594612171_WorldsDarkBG.png',
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
