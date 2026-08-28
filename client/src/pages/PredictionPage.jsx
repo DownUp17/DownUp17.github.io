@@ -510,6 +510,7 @@ const STAGE_CFG = {
   '정규시즌': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true }, matches: false, heading: '정규시즌 순위', desc: '현재 순위 + 예상 진출·우승 확률.' },
   '플레이-인': { cols: { piPlus: true, advance: true }, matches: false, heading: '플레이-인 예측', desc: '레전드 5위 + 라이즈 1~3위 · 승자 2팀 플레이오프 진출 · 전 경기 Bo5' },
   '플레이오프': { cols: { advance: true, worlds: true, champ: true }, matches: false, heading: '플레이오프 예측', desc: '레전드 1~4위 + 플레이-인 통과 2팀 · 전 경기 Bo5' },
+  '최종 순위': { cols: { diff: true }, matches: false, heading: '최종 순위', desc: '플레이오프 종료 후 확정' },
   '럼블 스테이지': { cols: { diff: true, piPlus: true, advance: true, worlds: true, champ: true, labels: { piPlus: '기사의 길+ 진출', advance: '플레이오프 진출' } }, matches: false, heading: '럼블 스테이지 순위', desc: '조별 Bo3 더블 라운드로빈 + 기사의 길+(기사의 길 또는 플레이오프 직행)/플레이오프/Worlds/우승 확률.' },
 };
 
@@ -648,9 +649,56 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   // LCK 플레이-인/플레이오프: MSI/LCP처럼 API 대진표(연결선)로 표기하고,
   //   참가 팀은 정규시즌 순위표로 대진표 위에 표기한다.
   let groups;
+  // LCK 최종 순위: 전체 팀을 우승 → Worlds → PO 진출 순으로 정렬한 단일 표
+  const lckFinalStage = comp.key === 'lck' && grouped && stage === '최종 순위';
   const lckBracketStage = comp.key === 'lck' && grouped && (stage === '플레이-인' || stage === '플레이오프');
   const lckBracket = lckBracketStage ? buildLckBracket(official?.[stage === '플레이-인' ? 'playin' : 'playoffs'], stage, current) : null;
-  if (lckBracketStage) {
+  if (lckFinalStage) {
+    // 실제 대진 결과가 확정되면 그 순위를 표기 (미확정이면 groups=[] → 안내만 표시).
+    //   PO 6팀(더블 엘리미네이션): 1위=결승 승자, 2위=결승 패자, 3위=Lower Finals 패자,
+    //     4위=LB R3 패자, 5위=LB R2 패자, 6위=LB R1 패자
+    //   7·8위 = 플레이-인 탈락 2팀(2R 패자·파이널 패자)
+    //   9·10위 = 정규시즌 라이즈 4·5위 (플레이-인 미진출)
+    const gOf = (t) => /레전드|Legend/.test(t?.group || '') ? 'Legend' : /라이즈|Rise/.test(t?.group || '') ? 'Rise' : null;
+    const winnerLoser = (m) => {
+      if (!m) return {};
+      const aWin = m.a?.win || m.a?.msi, bWin = m.b?.win || m.b?.msi;
+      if (aWin) return { w: m.a.short, l: m.b?.short };
+      if (bWin) return { w: m.b.short, l: m.a?.short };
+      if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) {
+        const aBig = m.a.score > m.b.score;
+        return { w: aBig ? m.a.short : m.b.short, l: aBig ? m.b.short : m.a.short };
+      }
+      return {};
+    };
+    const playin = official?.playin, playoffs = official?.playoffs;
+    const gf = winnerLoser(playoffs?.rounds?.[4]?.matches?.[0]);        // Grand Finals
+    const lf = winnerLoser(playoffs?.rounds?.[3]?.matches?.[0]);        // Lower Finals
+    const lbR3 = winnerLoser(playoffs?.rounds?.[2]?.matches?.[1]);      // col2 m1 = LB R3
+    const lbR2 = winnerLoser(playoffs?.rounds?.[1]?.matches?.[2]);      // col1 m2 = LB R2
+    const lbR1 = winnerLoser(playoffs?.rounds?.[0]?.matches?.[2]);      // col0 m2 = LB R1
+    const piFinal = winnerLoser(playin?.rounds?.[2]?.matches?.[0]);
+    const piR2 = winnerLoser(playin?.rounds?.[1]?.matches?.[0]);
+    const rise = current.filter((t) => /라이즈|Rise/.test(t.group || '')).sort((a, b) => a.rank - b.rank);
+    // 각 순위별 확정 팀 (미확정이면 undefined) — 확정된 것만 순위 순으로 표기
+    const rankSlots = [
+      { rank: 1, short: gf.w },
+      { rank: 2, short: gf.l },
+      { rank: 3, short: lf.l },
+      { rank: 4, short: lbR3.l },
+      { rank: 5, short: lbR2.l },
+      { rank: 6, short: lbR1.l },
+      { rank: 7, short: piFinal.l },
+      { rank: 8, short: piR2.l },
+      { rank: 9, short: rise[3]?.short },
+      { rank: 10, short: rise[4]?.short },
+    ];
+    const teamOf = (short) => current.find((t) => t.short === short);
+    const rows = rankSlots
+      .filter((s) => s.short && teamOf(s.short))
+      .map((s) => ({ ...teamOf(s.short), rank: s.rank, seedGroup: gOf(teamOf(s.short)) }));
+    groups = rows.length ? [{ name: null, rows }] : [];
+  } else if (lckBracketStage) {
     // 그룹 구분 없이 해당 단계 참가 팀만 한 표에 표기.
     //   등수 칸에는 그룹 심볼 + 그룹 내 시드(레전드 5위 / 라이즈 1~3위 등)를 표기.
     const legend = current.filter((t) => /레전드|Legend/.test(t.group || ''));
@@ -748,6 +796,11 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lckBracketStage ? '참가 팀' : (cfg?.heading || (roadToMsi ? '진출 팀' : '현재 순위'))}</h3>
             <span className="text-xs text-white/40">{lckBracketStage ? '정규시즌 순위표 (진출 시드 확정 기준)' : (cfg?.desc || official?.stage)}</span>
           </div>
+          {lckFinalStage && groups.length === 0 && (
+            <p className="text-sm text-white/50 py-6 px-4 rounded-xl bg-white/5 border border-white/10">
+              최종 순위는 플레이오프 결승 종료 후 확정됩니다.
+            </p>
+          )}
           {groups.map((grp) => (
             <div key={grp.name || 'all'}>
               {grp.name && (
@@ -1019,7 +1072,7 @@ const SUB_STATUS = {
 };
 // 세부대회 안에서 단계(스테이지) 선택 — `${comp.key}|${sub}` → 단계 목록
 const STAGE_TABS = {
-  'lck|LCK': ['정규시즌', '플레이-인', '플레이오프'],
+  'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
 };
@@ -1120,7 +1173,7 @@ const PredictionPage = () => {
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"
-                  style={{ width: 18, height: 18, filter: active ? 'brightness(0) invert(1)' : 'none', opacity: active ? 0.9 : 1 }}
+                  style={{ width: 18, height: 18, filter: active && c.key !== 'demacia' ? 'brightness(0) invert(1)' : 'none', opacity: active ? 0.9 : 1 }}
                   onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                 {c.name.replace('2026 ', '')}
               </button>
@@ -1149,7 +1202,7 @@ const PredictionPage = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: comp.color }}>
                     <img src={COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={{ filter: 'brightness(0) invert(1)' }}
+                      style={comp.key !== 'demacia' ? { filter: 'brightness(0) invert(1)' } : undefined}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                   <div>
