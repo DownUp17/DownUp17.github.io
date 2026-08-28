@@ -1192,27 +1192,45 @@ try {
       if (lb8_1) lb8_1.title = '하위권 8강 M1'; if (lb8_2) lb8_2.title = '하위권 8강 M2';
       if (lb4) lb4.title = '하위권 4강'; if (lbFinal) lbFinal.title = '하위권 결승';
       if (grandFinal) grandFinal.title = '결승';
-      // 시드 라벨 재설정 — 등봉조 1·2위 = 상위권 4강 직행 / 기사의 길 생존팀 = 하위권 1R
-      //   상위권 8강 M1 = 등봉조 3위 vs 6위, M2 = 등봉조 4위 vs 5위
-      //   크로스 시드: 8강 M1 승자 → 등봉조 2위(상위권 4강 M2), M2 승자 → 등봉조 1위(상위권 4강 M1)
-      const setLabel = (slot, label, teamShort) => { if (!slot) return; if (!slot.short) { slot.seed = label; if (teamShort) slot.short = teamShort; } };
+      // 시드/라벨 재설정 — 공식 대진표(이미지) 슬롯 순서에 맞게. 슬롯 a=이전 매치 승자/패자, b=시드 팀.
+      //   MATCH 번호 매핑: ub8_1=M1, ub8_2=M2, ub4_1=M3, ub4_2=M4, lb1_1=M5, lb1_2=M6,
+      //   lb8_1=M7, lb8_2=M8, ubFinal=M9, lb4=M10, lbFinal=M11, grandFinal=M12.
+      const setLabel = (slot, label, teamShort) => {
+        if (!slot) return;
+        slot.seed = label;  // 라벨은 항상 덮어써서 화면 표기 정리
+        if (!slot.short && teamShort) slot.short = teamShort;
+      };
       const lplRows = data.standings.lpl?.['Split 3']?.rows || rows;
       const asc = lplRows.filter((r) => /등봉/.test(r.group || '')).sort((a, b) => a.rank - b.rank);
-      // 공동 순위(예: 2위 tie)로 rank 값이 건너뛸 수 있어, 정렬 순서상의 위치로 접근한다.
       const seedAt = (pos) => asc[pos - 1]?.team;
       // 상위권 8강: M1 = 3위 vs 6위, M2 = 4위 vs 5위
       if (ub8_1) { setLabel(ub8_1.a, '등봉조 3위', seedAt(3)); setLabel(ub8_1.b, '등봉조 6위', seedAt(6)); }
       if (ub8_2) { setLabel(ub8_2.a, '등봉조 4위', seedAt(4)); setLabel(ub8_2.b, '등봉조 5위', seedAt(5)); }
-      // 상위권 4강: 등봉조 1위 vs 8강 M2 승자 / 등봉조 2위 vs 8강 M1 승자 (크로스 시드)
-      if (ub4_1) { setLabel(ub4_1.a, '등봉조 1위', seedAt(1)); setLabel(ub4_1.b, '상위권 8강 M2 승자'); }
-      if (ub4_2) { setLabel(ub4_2.a, '등봉조 2위', seedAt(2)); setLabel(ub4_2.b, '상위권 8강 M1 승자'); }
-      // 하위권 1R: a=기사의 길 승자, b=상위권 8강 패자
-      if (lb1_1) { setLabel(lb1_1.a, '기사의 길 1 승자'); setLabel(lb1_1.b, '상위권 8강 M1 패자'); }
-      if (lb1_2) { setLabel(lb1_2.a, '기사의 길 2 승자'); setLabel(lb1_2.b, '상위권 8강 M2 패자'); }
-      // 이후 라운드 시드 라벨 (첫 슬롯 승자·패자 관계 정리)
-      if (ubFinal) { setLabel(ubFinal.a, '상위권 4강 M1 승자'); setLabel(ubFinal.b, '상위권 4강 M2 승자'); }
-      if (lb8_1) { setLabel(lb8_1.a, '상위권 4강 M1 패자'); setLabel(lb8_1.b, '하위권 1R M1 승자'); }
-      if (lb8_2) { setLabel(lb8_2.a, '상위권 4강 M2 패자'); setLabel(lb8_2.b, '하위권 1R M2 승자'); }
+      // 상위권 4강: M3 = M1 승자 vs 등봉 2위, M4 = M2 승자 vs 등봉 1위
+      if (ub4_1) { setLabel(ub4_1.a, 'M1 승자'); setLabel(ub4_1.b, '등봉조 2위', seedAt(2)); }
+      if (ub4_2) { setLabel(ub4_2.a, 'M2 승자'); setLabel(ub4_2.b, '등봉조 1위', seedAt(1)); }
+      // 하위권 1R: M5 = M1 패자 vs IG, M6 = M2 패자 vs NIP (이미지 배정 — API의 NIP/IG는 반대라 강제 스왑)
+      if (lb1_1) {
+        setLabel(lb1_1.a, 'M1 패자');
+        setLabel(lb1_1.b, '기사의 길 1 승자');
+        if (lb1_1.b.short === 'NIP') lb1_1.b.short = 'IG';
+      }
+      if (lb1_2) {
+        setLabel(lb1_2.a, 'M2 패자');
+        setLabel(lb1_2.b, '기사의 길 2 승자');
+        if (lb1_2.b.short === 'IG') lb1_2.b.short = 'NIP';
+      }
+      // 하위권 8강: M7 = M5 승자 vs M4 패자, M8 = M6 승자 vs M3 패자
+      if (lb8_1) { setLabel(lb8_1.a, 'M5 승자'); setLabel(lb8_1.b, 'M4 패자'); }
+      if (lb8_2) { setLabel(lb8_2.a, 'M6 승자'); setLabel(lb8_2.b, 'M3 패자'); }
+      // 상위권 결승(M9): M3 승자 vs M4 승자
+      if (ubFinal) { setLabel(ubFinal.a, 'M3 승자'); setLabel(ubFinal.b, 'M4 승자'); }
+      // 하위권 4강(M10): M7 승자 vs M8 승자
+      if (lb4) { setLabel(lb4.a, 'M7 승자'); setLabel(lb4.b, 'M8 승자'); }
+      // 하위권 결승(M11): M9 패자 vs M10 승자
+      if (lbFinal) { setLabel(lbFinal.a, 'M9 패자'); setLabel(lbFinal.b, 'M10 승자'); }
+      // 결승(M12): M9 승자 vs M11 승자
+      if (grandFinal) { setLabel(grandFinal.a, 'M9 승자'); setLabel(grandFinal.b, 'M11 승자'); }
       if (lb4) { setLabel(lb4.a, '하위권 8강 M1 승자'); setLabel(lb4.b, '하위권 8강 M2 승자'); }
       if (lbFinal) { setLabel(lbFinal.a, '상위권 결승 패자'); setLabel(lbFinal.b, '하위권 4강 승자'); }
       if (grandFinal) { setLabel(grandFinal.a, '상위권 결승 승자'); setLabel(grandFinal.b, '하위권 결승 승자'); }
@@ -1222,7 +1240,7 @@ try {
         rounds: [
           { title: '', matches: [{ ...ub8_1, startRow: 0 }, { ...ub8_2, startRow: 4 }] },
           { title: '', matches: [
-            { ...ub4_1, startRow: 0 }, { ...ub4_2, startRow: 4 },
+            { ...ub4_1, startRow: 0 }, { ...ub4_2, startRow: 4 },  // M3(ub4_1) 상단, M4(ub4_2) 하단
             ...(lb1_1 ? [{ ...lb1_1, startRow: 8 }] : []), ...(lb1_2 ? [{ ...lb1_2, startRow: 12 }] : []),
           ] },
           { title: '', matches: [
@@ -1233,16 +1251,25 @@ try {
           { title: '', matches: [{ ...lbFinal, startRow: 10 }] },
           { title: '', matches: [{ ...grandFinal, startRow: 6 }] },
         ],
-        // 연결선 재구성 (크로스 시드): 8강 M1 승자 → 4강 M2, M2 승자 → 4강 M1
+        // 연결선 — 이미지 배치대로 직선 연결 (승자/패자 라벨은 항상 슬롯 a=상단)
         connectors: [
-          [0, 0, 'mid', 1, 1, 'b'], [0, 1, 'mid', 1, 0, 'b'],  // 8강 승자 → 4강 b (교차)
-          [0, 0, 'mid', 1, 2, 'b'], [0, 1, 'mid', 1, 3, 'b'],  // 8강 패자 → 1R b
-          [1, 0, 'mid', 2, 0, 'a'], [1, 1, 'mid', 2, 0, 'b'],  // 4강 승자 → 상위권 결승
-          [1, 0, 'mid', 2, 1, 'a'], [1, 2, 'mid', 2, 1, 'b'],  // 4강 M1 패자 · 1R M1 승자 → 하위권 8강 M1
-          [1, 1, 'mid', 2, 2, 'a'], [1, 3, 'mid', 2, 2, 'b'],  // 4강 M2 패자 · 1R M2 승자 → 하위권 8강 M2
-          [2, 1, 'mid', 3, 0, 'a'], [2, 2, 'mid', 3, 0, 'b'],  // 하위권 8강 → 하위권 4강
-          [2, 0, 'mid', 4, 0, 'a'], [3, 0, 'mid', 4, 0, 'b'],  // 상위권 결승 패자 · 하위권 4강 승자 → 하위권 결승
-          [2, 0, 'mid', 5, 0, 'a'], [4, 0, 'mid', 5, 0, 'b'],  // 상위권 결승 승자 · 하위권 결승 승자 → 결승
+          // 상위 8강 승자 → 상위 4강: M1→M3(ub4_1) a, M2→M4(ub4_2) a
+          [0, 0, 'mid', 1, 0, 'a'], [0, 1, 'mid', 1, 1, 'a'],
+          // 상위 8강 패자 → 하위 1R: M1→M5(lb1_1) a, M2→M6(lb1_2) a
+          [0, 0, 'mid', 1, 2, 'a'], [0, 1, 'mid', 1, 3, 'a'],
+          // 상위 4강 승자 → 상위 결승(M9): M3(ub4_1)→a, M4(ub4_2)→b
+          [1, 0, 'mid', 2, 0, 'a'], [1, 1, 'mid', 2, 0, 'b'],
+          // 하위 8강 슬롯 a=하위 1R 승자, b=상위 4강 패자 (크로스)
+          //   M7(lb8_1): a=M5 승자(lb1_1), b=M4 패자(ub4_2)
+          [1, 2, 'mid', 2, 1, 'a'], [1, 1, 'mid', 2, 1, 'b'],
+          //   M8(lb8_2): a=M6 승자(lb1_2), b=M3 패자(ub4_1)
+          [1, 3, 'mid', 2, 2, 'a'], [1, 0, 'mid', 2, 2, 'b'],
+          // 하위 8강 → 하위 4강(M10): M7→a, M8→b
+          [2, 1, 'mid', 3, 0, 'a'], [2, 2, 'mid', 3, 0, 'b'],
+          // 하위 결승(M11): M9 패자→a, M10 승자→b
+          [2, 0, 'mid', 4, 0, 'a'], [3, 0, 'mid', 4, 0, 'b'],
+          // 결승(M12): M9 승자→a, M11 승자→b
+          [2, 0, 'mid', 5, 0, 'a'], [4, 0, 'mid', 5, 0, 'b'],
         ],
       };
     }

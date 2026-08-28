@@ -1079,6 +1079,7 @@ const STAGE_TABS = {
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
 const STAGE_DEFAULT = {
   'lck|LCK': '플레이오프',
+  'lpl|Split 3': '플레이오프',
 };
 
 const PredictionPage = () => {
