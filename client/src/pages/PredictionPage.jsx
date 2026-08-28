@@ -531,6 +531,7 @@ const LCP_STAGE_CFG = {
 const LPL_STAGE_CFG = {
   '기사의 길': { bracketKey: 'knights', bracketTitle: '기사의 길 대진' },
   '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
+  '대표 선발전': { bracketKey: 'qualifier', bracketTitle: '대표 선발전 대진' },
 };
 
 // LCK 플레이-인 대진표: 정규시즌 순위 기반 예상 팀을 1·2라운드 시드 슬롯에 채우고,
@@ -1072,7 +1073,7 @@ const SUB_STATUS = {
 // 세부대회 안에서 단계(스테이지) 선택 — `${comp.key}|${sub}` → 단계 목록
 const STAGE_TABS = {
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
-  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
+  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프', '대표 선발전'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계

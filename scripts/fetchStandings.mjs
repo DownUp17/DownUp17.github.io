@@ -1132,6 +1132,7 @@ try {
       if (!cols.length) continue;
       if (/knights_rival/.test(s.slug)) byKind.knights = bracketFromColumns(cols);
       else if (s.slug === 'playoffs') byKind.playoffs = bracketFromColumns(cols);
+      else if (s.slug === 'regional_qualifier') byKind.qualifier = bracketFromColumns(cols);
     }
     // 경기 시간(KST) 부착
     const kstLabel = (iso) => {
@@ -1245,7 +1246,7 @@ try {
         ],
       };
     }
-    for (const b of [byKind.knights, byKind.playoffs]) {
+    for (const b of [byKind.knights, byKind.playoffs, byKind.qualifier]) {
       if (!b) continue;
       for (const r of b.rounds) for (const m of r.matches) if (m.id && timeById[m.id]) m.time = kstLabel(timeById[m.id]);
     }
@@ -1255,12 +1256,33 @@ try {
       const override = ['14:00', '17:00'];
       knM.forEach((m, i) => { if (m?.time && override[i]) m.time = m.time.replace(/\d{2}:\d{2}$/, override[i]); });
     }
+    // 대표 선발전: LCK 플레이-인처럼 1라운드 2경기(상단/하단)·2라운드 1경기(중앙) 그리드로 재구성.
+    if (byKind.qualifier?.rounds?.length >= 2 && byKind.qualifier.rounds[0].matches.length >= 2) {
+      const q = byKind.qualifier;
+      const [q1, q2] = q.rounds[0].matches;
+      const qFinal = q.rounds[1].matches[0];
+      if (q1) q1.title = '1라운드 M1';
+      if (q2) q2.title = '1라운드 M2';
+      if (qFinal) {
+        qFinal.title = '2라운드';
+        if (qFinal.a && !qFinal.a.short) qFinal.a.seed = '1R M1 승자';
+        if (qFinal.b && !qFinal.b.short) qFinal.b.seed = '1R M2 승자';
+      }
+      byKind.qualifier = {
+        totalRows: 6,
+        rounds: [
+          { title: '', matches: [{ ...q1, startRow: 0 }, { ...q2, startRow: 4 }] },
+          ...(qFinal ? [{ title: '', matches: [{ ...qFinal, startRow: 2 }] }] : []),
+        ],
+        connectors: qFinal ? [[0, 0, 'mid', 1, 0, 'a'], [0, 1, 'mid', 1, 0, 'b']] : [],
+      };
+    }
     data.standings.lpl = data.standings.lpl || {};
     const prev = data.standings.lpl['Split 3'] || {};
     delete prev.bracket; // 수동 bracket 제거 (자동 대진으로 대체)
-    data.standings.lpl['Split 3'] = { ...prev, knights: byKind.knights || null, playoffs: byKind.playoffs || null };
+    data.standings.lpl['Split 3'] = { ...prev, knights: byKind.knights || null, playoffs: byKind.playoffs || null, qualifier: byKind.qualifier || null };
     const cnt = (b) => (b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0);
-    console.log(`LPL Split 3 대진 갱신 (기사의 길 ${cnt(byKind.knights)}경기 / 플레이오프 ${cnt(byKind.playoffs)}경기)`);
+    console.log(`LPL Split 3 대진 갱신 (기사의 길 ${cnt(byKind.knights)}경기 / 플레이오프 ${cnt(byKind.playoffs)}경기 / 대표 선발전 ${cnt(byKind.qualifier)}경기)`);
   }
 } catch (e) {
   console.warn(`LPL Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
