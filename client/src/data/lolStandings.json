@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27",
+  "updatedAt": "2026-08-28",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -1139,7 +1139,7 @@
                     "short": "BRO"
                   },
                   "b": {
-                    "seed": "1라운드 승자",
+                    "seed": "2라운드 승자",
                     "short": "BFX"
                   },
                   "time": "8/28 (금) 17:00",
