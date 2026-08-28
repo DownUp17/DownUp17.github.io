@@ -1136,11 +1136,15 @@
                   "title": "파이널 라운드",
                   "a": {
                     "seed": "1라운드 패자",
-                    "short": "BRO"
+                    "short": "BFX",
+                    "score": 3,
+                    "msi": true
                   },
                   "b": {
                     "seed": "2라운드 승자",
-                    "short": "BFX"
+                    "short": "BRO",
+                    "score": 2,
+                    "elim": true
                   },
                   "time": "8/28 (금) 17:00",
                   "startRow": 2
@@ -1177,10 +1181,12 @@
                   "id": "117030752644841589",
                   "title": "UB R1 M1",
                   "a": {
-                    "seed": "레전드 3위"
+                    "seed": "",
+                    "short": "T1"
                   },
                   "b": {
-                    "seed": "플레이-인 진출"
+                    "seed": "",
+                    "short": "BFX"
                   },
                   "time": "8/29 (토) 17:00",
                   "startRow": 0
@@ -1189,10 +1195,12 @@
                   "id": "117030752644841595",
                   "title": "UB R1 M2",
                   "a": {
-                    "seed": "레전드 4위"
+                    "seed": "",
+                    "short": "DK"
                   },
                   "b": {
-                    "seed": "플레이-인 진출"
+                    "seed": "",
+                    "short": "KT"
                   },
                   "time": "8/30 (일) 17:00",
                   "startRow": 4
@@ -1218,7 +1226,8 @@
                   "id": "117030752644841601",
                   "title": "UB R2 M1",
                   "a": {
-                    "seed": "레전드 1위"
+                    "seed": "",
+                    "short": "GEN"
                   },
                   "b": {
                     "seed": "UB R1 승자"
@@ -1230,7 +1239,8 @@
                   "id": "117030752644841607",
                   "title": "UB R2 M2",
                   "a": {
-                    "seed": "레전드 2위"
+                    "seed": "",
+                    "short": "HLE"
                   },
                   "b": {
                     "seed": "UB R1 승자"
@@ -1524,11 +1534,15 @@
                   "title": "기사의 길 1",
                   "a": {
                     "seed": "",
-                    "short": "EDG"
+                    "short": "EDG",
+                    "score": 0,
+                    "elim": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "NIP"
+                    "short": "NIP",
+                    "score": 3,
+                    "msi": true
                   },
                   "time": "8/28 (금) 14:00"
                 },
@@ -1537,11 +1551,15 @@
                   "title": "기사의 길 2",
                   "a": {
                     "seed": "",
-                    "short": "TT"
+                    "short": "TT",
+                    "score": 0,
+                    "elim": true
                   },
                   "b": {
                     "seed": "",
-                    "short": "IG"
+                    "short": "IG",
+                    "score": 3,
+                    "msi": true
                   },
                   "time": "8/28 (금) 17:00"
                 }
@@ -1624,7 +1642,8 @@
                     "seed": "기사의 길 1 승자"
                   },
                   "b": {
-                    "seed": "상위권 8강 M1 패자"
+                    "seed": "",
+                    "short": "NIP"
                   },
                   "startRow": 8,
                   "time": "9/5 (토) 15:00"
@@ -1636,7 +1655,8 @@
                     "seed": "기사의 길 2 승자"
                   },
                   "b": {
-                    "seed": "상위권 8강 M2 패자"
+                    "seed": "",
+                    "short": "IG"
                   },
                   "startRow": 12,
                   "time": "9/5 (토) 18:00"
