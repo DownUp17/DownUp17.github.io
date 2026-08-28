@@ -659,7 +659,6 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     //     4위=LB R3 패자, 5위=LB R2 패자, 6위=LB R1 패자
     //   7·8위 = 플레이-인 탈락 2팀(2R 패자·파이널 패자)
     //   9·10위 = 정규시즌 라이즈 4·5위 (플레이-인 미진출)
-    const gOf = (t) => /레전드|Legend/.test(t?.group || '') ? 'Legend' : /라이즈|Rise/.test(t?.group || '') ? 'Rise' : null;
     const winnerLoser = (m) => {
       if (!m) return {};
       const aWin = m.a?.win || m.a?.msi, bWin = m.b?.win || m.b?.msi;
@@ -696,7 +695,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     const teamOf = (short) => current.find((t) => t.short === short);
     const rows = rankSlots
       .filter((s) => s.short && teamOf(s.short))
-      .map((s) => ({ ...teamOf(s.short), rank: s.rank, seedGroup: gOf(teamOf(s.short)) }));
+      .map((s) => ({ ...teamOf(s.short), rank: s.rank }));  // 그룹 심볼 사용 안 함
     groups = rows.length ? [{ name: null, rows }] : [];
   } else if (lckBracketStage) {
     // 그룹 구분 없이 해당 단계 참가 팀만 한 표에 표기.
@@ -1173,7 +1172,7 @@ const PredictionPage = () => {
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"
-                  style={{ width: 18, height: 18, filter: active && c.key !== 'demacia' ? 'brightness(0) invert(1)' : 'none', opacity: active ? 0.9 : 1 }}
+                  style={{ width: 18, height: 18, filter: active ? 'brightness(0) invert(1)' : 'none', opacity: active ? 0.9 : 1 }}
                   onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                 {c.name.replace('2026 ', '')}
               </button>
@@ -1202,7 +1201,7 @@ const PredictionPage = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: comp.color }}>
                     <img src={COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={comp.key !== 'demacia' ? { filter: 'brightness(0) invert(1)' } : undefined}
+                      style={{ filter: 'brightness(0) invert(1)' }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                   <div>
