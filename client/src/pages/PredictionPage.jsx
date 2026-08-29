@@ -999,7 +999,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
       )}
 
       {/* 대진별 예측 — 진행중인 리그에서만 (단계별 대진표가 있으면 생략) */}
-    {comp.status === 'ongoing' && (!cfg || cfg.matches) && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && (
+    {comp.status === 'ongoing' && (!cfg || cfg.matches) && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && !lplQualifier && (
       <section>
         <h3 className="text-sm font-black text-[#E8C77E] mb-4 uppercase tracking-wider">대진별 예측</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
@@ -1134,6 +1134,7 @@ const STAGE_TABS = {
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
   'lpl|대표 선발전': ['대진', '챔피언십 포인트'],
+  demacia: ['그룹 스테이지', '녹아웃 스테이지'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
@@ -1200,7 +1201,8 @@ const PredictionPage = () => {
     return `${comp?.name ?? ''}${subSuffix}`;
   })();
   // 세부대회 내 단계 선택(LCK→LCK, LPL→Split 3 등)
-  const stageList = comp ? STAGE_TABS[`${comp.key}|${activeSub}`] : null;
+  // stage 목록: 서브탭이 있으면 `key|sub`으로, 서브탭이 없는 대회는 key만으로도 조회
+  const stageList = comp ? (STAGE_TABS[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_TABS[comp.key])) : null;
   const showStages = !!stageList;
   const defaultStage = (comp && STAGE_DEFAULT[`${comp.key}|${activeSub}`]) || (stageList ? stageList[0] : null);
   const activeStage = showStages
@@ -1236,7 +1238,7 @@ const PredictionPage = () => {
                   className="object-contain shrink-0"
                   style={{ width: 18, height: 18, filter: active ? 'brightness(0) invert(1)' : 'none', opacity: active ? 0.9 : 1 }}
                   onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
-                {c.name.replace('2026 ', '')}
+                {c.tabName || c.name.replace('2026 ', '')}
               </button>
             );
           })}

@@ -114,6 +114,34 @@ function bracketFromColumns(columns) {
   return { rounds, connectors };
 }
 
+// 시드 라벨 → 랭크(작을수록 상위). null이면 우열 없음.
+//   LCK: 레전드 N위 = N, 라이즈 N위 = 5+N
+//   LPL: 등봉조 N위 = N, 열반조 N위 = 8+N
+//   기타: "N위" → N
+function seedRank(seed) {
+  if (!seed) return null;
+  const m1 = seed.match(/^(레전드|라이즈)\s?(\d+)위$/);
+  if (m1) return (m1[1] === '레전드' ? 0 : 5) + parseInt(m1[2], 10);
+  const m2 = seed.match(/^(등봉|열반)조\s?(\d+)위$/);
+  if (m2) return (m2[1] === '등봉' ? 0 : 8) + parseInt(m2[2], 10);
+  const m3 = seed.match(/^(\d+)위$/);
+  if (m3) return parseInt(m3[1], 10);
+  return null;
+}
+
+// 매치 슬롯 a/b를 시드 상위가 상단이 되도록 정리. connectors의 dest slot도 함께 반전.
+//   두 슬롯 모두 시드 파싱 가능한 경우에만 적용.
+function applySeedOrder(bracket) {
+  if (!bracket?.rounds) return;
+  const conn = bracket.connectors || [];
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => {
+    const ra = seedRank(m.a?.seed), rb = seedRank(m.b?.seed);
+    if (ra == null || rb == null || rb >= ra) return;
+    const t = m.a; m.a = m.b; m.b = t;
+    conn.forEach((c) => { if (c[3] === ci && c[4] === mi) c[5] = c[5] === 'a' ? 'b' : 'a'; });
+  }));
+}
+
 async function api(endpoint, params) {
   const url = `${API}/${endpoint}?` + new URLSearchParams({ hl: HL, ...params });
   const res = await fetch(url, { headers: { 'x-api-key': KEY } });
@@ -1031,13 +1059,33 @@ try {
     if (playin?.rounds?.length >= 2 && playin.rounds[0].matches.length >= 2) {
       const [m1, m2] = playin.rounds[0].matches;    // 1라운드·2라운드 경기
       const fin = playin.rounds[1].matches[0];       // 파이널 라운드 경기
-      setSeed(m1.a, '레전드 5위'); setSeed(m1.b, '라이즈 1위'); m1.title = '1라운드';
-      setSeed(m2.a, '라이즈 2위'); setSeed(m2.b, '라이즈 3위'); m2.title = '2라운드';
+      // 팀별 정규시즌 그룹·순위로 시드 라벨/랭크 조회, 시드 상위가 상단(a)에 오도록 정렬.
+      const rowByShort = {};
+      rows.forEach((r) => { rowByShort[r.team] = r; });
+      const teamSeed = (short) => {
+        const r = rowByShort[short];
+        if (!r?.group) return null;
+        const isLegend = /레전드|Legend/.test(r.group), isRise = /라이즈|Rise/.test(r.group);
+        if (!isLegend && !isRise) return null;
+        return { label: (isLegend ? '레전드' : '라이즈') + ' ' + r.rank + '위', rank: (isLegend ? 0 : 5) + r.rank };
+      };
+      const orderByTeamSeed = (m, defaultSeedA, defaultSeedB) => {
+        if (m?.a?.short && m?.b?.short) {
+          let sa = teamSeed(m.a.short), sb = teamSeed(m.b.short);
+          if (sa && sb && sa.rank > sb.rank) { const t = m.a; m.a = m.b; m.b = t; [sa, sb] = [sb, sa]; }
+          if (sa) m.a.seed = sa.label; if (sb) m.b.seed = sb.label;
+        } else {
+          setSeed(m.a, defaultSeedA); setSeed(m.b, defaultSeedB);
+        }
+      };
+      orderByTeamSeed(m1, '레전드 5위', '라이즈 1위'); m1.title = '1라운드';
+      orderByTeamSeed(m2, '라이즈 2위', '라이즈 3위'); m2.title = '2라운드';
       if (fin) {
         fin.title = '파이널 라운드';
-        // API 원본이 "1라운드 승자" 등 잘못된 라벨을 줄 수 있어 팀 확정 여부 무관하게 강제 지정
-        if (fin.a) fin.a.seed = '1라운드 패자';
-        if (fin.b) fin.b.seed = '2라운드 승자';
+        // API 원본은 a=2R 승자, b=1R 패자 순서로 준다. 이미지 형식(a=1R 패자, b=2R 승자)로 스왑.
+        const oldA = fin.a, oldB = fin.b;
+        if (oldA && oldB) { fin.a = { ...oldB, seed: '1라운드 패자' }; fin.b = { ...oldA, seed: '2라운드 승자' }; }
+        else { if (fin.a) fin.a.seed = '1라운드 패자'; if (fin.b) fin.b.seed = '2라운드 승자'; }
       }
       // 세로 배치(공식 대진표 형식): 1라운드=상단, 2라운드=하단, 파이널=중앙.
       //   그리드(totalRows) 기준 startRow로 y를 고정한다(매치=2행).
@@ -1108,6 +1156,7 @@ try {
       };
     }
     data.standings.lck = data.standings.lck || {};
+    applySeedOrder(playin); applySeedOrder(playoffs);
     data.standings.lck['LCK'] = { ...(data.standings.lck['LCK'] || {}), playin: playin || null, playoffs: playoffs || null };
     const cnt = (b) => (b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0);
     console.log(`LCK 대진 갱신 (플레이-인 ${cnt(playin)}경기 / 플레이오프 ${cnt(playoffs)}경기)`);
@@ -1248,8 +1297,8 @@ try {
             ...(lb8_1 ? [{ ...lb8_1, startRow: 8 }] : []), ...(lb8_2 ? [{ ...lb8_2, startRow: 12 }] : []),
           ] },
           { title: '', matches: [{ ...lb4, startRow: 10 }] },
-          { title: '', matches: [{ ...lbFinal, startRow: 10 }] },
-          { title: '', matches: [{ ...grandFinal, startRow: 6 }] },
+          { title: '', matches: [{ ...lbFinal, startRow: 6 }] },     // 하위결승(M11): M9와 M10 사이 중앙
+          { title: '', matches: [{ ...grandFinal, startRow: 6 }] },  // 결승(M12): M11과 같은 y
         ],
         // 연결선 — 이미지 배치대로 직선 연결 (승자/패자 라벨은 항상 슬롯 a=상단)
         connectors: [
@@ -1308,6 +1357,7 @@ try {
     const prev = data.standings.lpl['Split 3'] || {};
     delete prev.bracket; // 수동 bracket 제거 (자동 대진으로 대체)
     delete prev.qualifier; // 대표 선발전은 별도 서브탭으로 분리
+    applySeedOrder(byKind.knights); applySeedOrder(byKind.playoffs); applySeedOrder(byKind.qualifier);
     data.standings.lpl['Split 3'] = { ...prev, knights: byKind.knights || null, playoffs: byKind.playoffs || null };
     // 대표 선발전은 Split 3과 별도의 세부대회(서브탭)로 저장
     if (byKind.qualifier) {
