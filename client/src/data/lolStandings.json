@@ -1093,7 +1093,7 @@
                     "seed": "레전드 5위",
                     "short": "KT",
                     "score": 3,
-                    "msi": true
+                    "win": true
                   },
                   "b": {
                     "seed": "라이즈 1위",
@@ -1189,7 +1189,7 @@
                     "seed": "",
                     "short": "T1",
                     "score": 3,
-                    "msi": true
+                    "win": true
                   },
                   "time": "8/29 (토) 17:00",
                   "startRow": 0
@@ -1546,7 +1546,7 @@
                     "seed": "",
                     "short": "NIP",
                     "score": 3,
-                    "msi": true
+                    "win": true
                   },
                   "time": "8/28 (금) 14:00"
                 },

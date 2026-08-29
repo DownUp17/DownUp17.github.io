@@ -129,6 +129,21 @@ function seedRank(seed) {
   return null;
 }
 
+// 결승(마지막 매치)이 아닌 매치의 승자 msi 플래그를 win으로 강등.
+//   bracketFromColumns 는 승자가 이후 매치에서 참조되지 않으면 msi(진출/우승)로 표시하지만,
+//   자동 채움 후 참조 매칭이 안 될 수 있어 오탐이 발생. 최종 결승 승자만 우승(msi)로 남긴다.
+function normalizeAdvancementFlags(bracket) {
+  if (!bracket?.rounds?.length) return;
+  const lastRound = bracket.rounds[bracket.rounds.length - 1];
+  const finalMatch = lastRound?.matches?.[lastRound.matches.length - 1];
+  for (const r of bracket.rounds) for (const m of r.matches) {
+    for (const s of [m.a, m.b]) {
+      if (!s?.msi) continue;
+      if (m !== finalMatch) { delete s.msi; s.win = true; }
+    }
+  }
+}
+
 // 매치 슬롯 a/b를 시드 상위가 상단이 되도록 정리. connectors의 dest slot도 함께 반전.
 //   두 슬롯 모두 시드 파싱 가능한 경우에만 적용.
 function applySeedOrder(bracket) {
@@ -1157,6 +1172,7 @@ try {
     }
     data.standings.lck = data.standings.lck || {};
     applySeedOrder(playin); applySeedOrder(playoffs);
+    normalizeAdvancementFlags(playin); normalizeAdvancementFlags(playoffs);
     data.standings.lck['LCK'] = { ...(data.standings.lck['LCK'] || {}), playin: playin || null, playoffs: playoffs || null };
     const cnt = (b) => (b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0);
     console.log(`LCK 대진 갱신 (플레이-인 ${cnt(playin)}경기 / 플레이오프 ${cnt(playoffs)}경기)`);
@@ -1358,6 +1374,7 @@ try {
     delete prev.bracket; // 수동 bracket 제거 (자동 대진으로 대체)
     delete prev.qualifier; // 대표 선발전은 별도 서브탭으로 분리
     applySeedOrder(byKind.knights); applySeedOrder(byKind.playoffs); applySeedOrder(byKind.qualifier);
+    normalizeAdvancementFlags(byKind.knights); normalizeAdvancementFlags(byKind.playoffs); normalizeAdvancementFlags(byKind.qualifier);
     data.standings.lpl['Split 3'] = { ...prev, knights: byKind.knights || null, playoffs: byKind.playoffs || null };
     // 대표 선발전은 Split 3과 별도의 세부대회(서브탭)로 저장
     if (byKind.qualifier) {
