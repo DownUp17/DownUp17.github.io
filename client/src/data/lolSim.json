@@ -1549,20 +1549,21 @@
     },
     {
       "key": "demacia",
-      "name": "2026 DEMACIA",
+      "name": "Demacia Cup Global Invitational",
       "scope": "intl",
       "color": "#1826a1",
       "status": "upcoming",
-      "ready": false,
-      "stage": "",
-      "format": "",
+      "ready": true,
+      "stage": "2026 시즌",
+      "format": "12팀 초청 · LPL 5·6·7위 / LCK 5~7위 / LEC 4·5위 / LCS 4·5위 / LCP 4위 / CBLOL 4위",
       "iterations": 0,
       "generatedAt": null,
       "teams": [],
       "matches": [],
       "standings": [],
       "situations": [],
-      "finalResult": null
+      "finalResult": null,
+      "tabName": "DEMACIA"
     },
     {
       "key": "worlds",
