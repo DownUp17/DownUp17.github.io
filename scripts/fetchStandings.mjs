@@ -1249,14 +1249,15 @@ try {
       const ubFinal = P[2].matches[0];
       const lb8_1 = P[2].matches[1], lb8_2 = P[2].matches[2];
       const lb4 = P[3].matches[0], lbFinal = P[4].matches[0], grandFinal = P[5].matches[0];
-      // 매치 제목
-      if (ub8_1) ub8_1.title = '상위권 8강 M1'; if (ub8_2) ub8_2.title = '상위권 8강 M2';
-      if (ub4_1) ub4_1.title = '상위권 4강 M1'; if (ub4_2) ub4_2.title = '상위권 4강 M2';
-      if (ubFinal) ubFinal.title = '상위권 결승';
-      if (lb1_1) lb1_1.title = '하위권 1R M1'; if (lb1_2) lb1_2.title = '하위권 1R M2';
-      if (lb8_1) lb8_1.title = '하위권 8강 M1'; if (lb8_2) lb8_2.title = '하위권 8강 M2';
-      if (lb4) lb4.title = '하위권 4강'; if (lbFinal) lbFinal.title = '하위권 결승';
-      if (grandFinal) grandFinal.title = '결승';
+      // 매치 제목 (공식 대진표와 동일하게 MATCH 1~12로 통일)
+      if (ub8_1) ub8_1.title = 'MATCH 1'; if (ub8_2) ub8_2.title = 'MATCH 2';
+      if (ub4_1) ub4_1.title = 'MATCH 3'; if (ub4_2) ub4_2.title = 'MATCH 4';
+      if (lb1_1) lb1_1.title = 'MATCH 5'; if (lb1_2) lb1_2.title = 'MATCH 6';
+      if (lb8_1) lb8_1.title = 'MATCH 7'; if (lb8_2) lb8_2.title = 'MATCH 8';
+      if (ubFinal) ubFinal.title = 'MATCH 9';
+      if (lb4) lb4.title = 'MATCH 10';
+      if (lbFinal) lbFinal.title = 'MATCH 11';
+      if (grandFinal) grandFinal.title = 'MATCH 12';
       // 시드/라벨 재설정 — 공식 대진표(이미지) 슬롯 순서에 맞게. 슬롯 a=이전 매치 승자/패자, b=시드 팀.
       //   MATCH 번호 매핑: ub8_1=M1, ub8_2=M2, ub4_1=M3, ub4_2=M4, lb1_1=M5, lb1_2=M6,
       //   lb8_1=M7, lb8_2=M8, ubFinal=M9, lb4=M10, lbFinal=M11, grandFinal=M12.
