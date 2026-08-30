@@ -1300,42 +1300,48 @@ try {
       if (lb4) { setLabel(lb4.a, '하위권 8강 M1 승자'); setLabel(lb4.b, '하위권 8강 M2 승자'); }
       if (lbFinal) { setLabel(lbFinal.a, '상위권 결승 패자'); setLabel(lbFinal.b, '하위권 4강 승자'); }
       if (grandFinal) { setLabel(grandFinal.a, '상위권 결승 승자'); setLabel(grandFinal.b, '하위권 결승 승자'); }
-      // 그리드 배치 — LCK 플레이오프/MSI 브래킷과 같은 간격으로 상위권/하위권 사이 gap 최소화
+      // 이미지 배치 — 총 5개 컬럼.
+      //   col0: M1·M2·M5·M6 (좌측 4매치 세로 나열)
+      //   col1: M3·M4·M7·M8 (col0 오른쪽, 세로 4매치)
+      //   col2: M9(상)·M10(하)
+      //   col3: M11 (중앙)
+      //   col4: M12 (결승)
       byKind.playoffs = {
         totalRows: 14,
         rounds: [
-          { title: '', matches: [{ ...ub8_1, startRow: 0 }, { ...ub8_2, startRow: 4 }] },
           { title: '', matches: [
-            { ...ub4_1, startRow: 0 }, { ...ub4_2, startRow: 4 },  // M3(ub4_1) 상단, M4(ub4_2) 하단
-            ...(lb1_1 ? [{ ...lb1_1, startRow: 8 }] : []), ...(lb1_2 ? [{ ...lb1_2, startRow: 12 }] : []),
+            { ...ub8_1, startRow: 0 }, { ...ub8_2, startRow: 4 },
+            ...(lb1_1 ? [{ ...lb1_1, startRow: 8 }] : []),
+            ...(lb1_2 ? [{ ...lb1_2, startRow: 12 }] : []),
+          ] },
+          { title: '', matches: [
+            { ...ub4_1, startRow: 0 }, { ...ub4_2, startRow: 4 },
+            ...(lb8_1 ? [{ ...lb8_1, startRow: 8 }] : []),
+            ...(lb8_2 ? [{ ...lb8_2, startRow: 12 }] : []),
           ] },
           { title: '', matches: [
             { ...ubFinal, startRow: 2 },
-            ...(lb8_1 ? [{ ...lb8_1, startRow: 8 }] : []), ...(lb8_2 ? [{ ...lb8_2, startRow: 12 }] : []),
+            ...(lb4 ? [{ ...lb4, startRow: 10 }] : []),
           ] },
-          { title: '', matches: [{ ...lb4, startRow: 10 }] },
-          { title: '', matches: [{ ...lbFinal, startRow: 6 }] },     // 하위결승(M11): M9와 M10 사이 중앙
-          { title: '', matches: [{ ...grandFinal, startRow: 6 }] },  // 결승(M12): M11과 같은 y
+          { title: '', matches: [{ ...lbFinal, startRow: 6 }] },
+          { title: '', matches: [{ ...grandFinal, startRow: 6 }] },
         ],
-        // 연결선 — 이미지 배치대로 직선 연결 (승자/패자 라벨은 항상 슬롯 a=상단)
+        // 연결선 (승자/패자 라벨은 항상 슬롯 a=상단)
+        //   col0 인덱스: M1=0, M2=1, M5=2, M6=3
+        //   col1 인덱스: M3=0, M4=1, M7=2, M8=3
         connectors: [
-          // 상위 8강 승자 → 상위 4강: M1→M3(ub4_1) a, M2→M4(ub4_2) a
-          [0, 0, 'mid', 1, 0, 'a'], [0, 1, 'mid', 1, 1, 'a'],
-          // 상위 8강 패자 → 하위 1R: M1→M5(lb1_1) a, M2→M6(lb1_2) a
-          [0, 0, 'mid', 1, 2, 'a'], [0, 1, 'mid', 1, 3, 'a'],
-          // 상위 4강 승자 → 상위 결승(M9): M3(ub4_1)→a, M4(ub4_2)→b
-          [1, 0, 'mid', 2, 0, 'a'], [1, 1, 'mid', 2, 0, 'b'],
-          // 하위 8강 슬롯 a=하위 1R 승자, b=상위 4강 패자 (크로스)
-          //   M7(lb8_1): a=M5 승자(lb1_1), b=M4 패자(ub4_2)
-          [1, 2, 'mid', 2, 1, 'a'], [1, 1, 'mid', 2, 1, 'b'],
-          //   M8(lb8_2): a=M6 승자(lb1_2), b=M3 패자(ub4_1)
-          [1, 3, 'mid', 2, 2, 'a'], [1, 0, 'mid', 2, 2, 'b'],
-          // 하위 8강 → 하위 4강(M10): M7→a, M8→b
-          [2, 1, 'mid', 3, 0, 'a'], [2, 2, 'mid', 3, 0, 'b'],
-          // 하위 결승(M11): M9 패자→a, M10 승자→b
-          [2, 0, 'mid', 4, 0, 'a'], [3, 0, 'mid', 4, 0, 'b'],
-          // 결승(M12): M9 승자→a, M11 승자→b
-          [2, 0, 'mid', 5, 0, 'a'], [4, 0, 'mid', 5, 0, 'b'],
+          [0, 0, 'mid', 1, 0, 'a'],  // M1승 → M3 a
+          [0, 1, 'mid', 1, 1, 'a'],  // M2승 → M4 a
+          [1, 0, 'mid', 2, 0, 'a'],  // M3승 → M9 a
+          [1, 1, 'mid', 2, 0, 'b'],  // M4승 → M9 b
+          [0, 2, 'mid', 1, 2, 'a'],  // M5승 → M7 a
+          [0, 3, 'mid', 1, 3, 'a'],  // M6승 → M8 a
+          [1, 2, 'mid', 2, 1, 'a'],  // M7승 → M10 a
+          [1, 3, 'mid', 2, 1, 'b'],  // M8승 → M10 b
+          [2, 0, 'mid', 3, 0, 'a'],  // M9패 → M11 a
+          [2, 1, 'mid', 3, 0, 'b'],  // M10승 → M11 b
+          [2, 0, 'mid', 4, 0, 'a'],  // M9승 → M12 a
+          [3, 0, 'mid', 4, 0, 'b'],  // M11승 → M12 b
         ],
       };
     }
