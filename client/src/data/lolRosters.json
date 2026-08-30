@@ -3150,19 +3150,19 @@
           "starter": false
         },
         {
-          "name": "Keine",
-          "firstName": "Kim",
-          "lastName": "Cheol",
-          "role": "mid",
-          "image": "http://static.lolesports.com/players/1785141987751_PNG_Keine-1copy.png",
-          "starter": true
-        },
-        {
           "name": "Namiru",
           "firstName": "Daniel",
           "lastName": "Tonelli",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1717432498685_Namiru.png",
+          "starter": true
+        },
+        {
+          "name": "Keine",
+          "firstName": "Kim",
+          "lastName": "Cheol",
+          "role": "mid",
+          "image": "http://static.lolesports.com/players/1785141987751_PNG_Keine-1copy.png",
           "starter": false
         },
         {
