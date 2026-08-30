@@ -1199,11 +1199,14 @@
                   "title": "UB R1 M2",
                   "a": {
                     "seed": "레전드 4위",
-                    "short": "DK"
+                    "short": "KT",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "플레이-인 진출",
-                    "short": "KT"
+                    "short": "DK",
+                    "score": 0
                   },
                   "time": "8/30 (일) 17:00",
                   "startRow": 4
@@ -1212,7 +1215,8 @@
                   "id": "117030752644841613",
                   "title": "LB R1",
                   "a": {
-                    "seed": "UB R1 패자"
+                    "seed": "UB R1 패자",
+                    "short": "DK"
                   },
                   "b": {
                     "seed": "UB R1 패자",
@@ -1234,7 +1238,8 @@
                     "short": "GEN"
                   },
                   "b": {
-                    "seed": "UB R1 승자"
+                    "seed": "UB R1 승자",
+                    "short": "KT"
                   },
                   "time": "9/1 (화) 17:00",
                   "startRow": 0
@@ -1247,7 +1252,8 @@
                     "short": "HLE"
                   },
                   "b": {
-                    "seed": "UB R1 승자"
+                    "seed": "UB R1 승자",
+                    "short": "T1"
                   },
                   "time": "9/2 (수) 17:00",
                   "startRow": 4
@@ -1600,11 +1606,14 @@
                   "title": "MATCH 2",
                   "a": {
                     "seed": "등봉조 4위",
-                    "short": "JDG"
+                    "short": "JDG",
+                    "score": 1
                   },
                   "b": {
                     "seed": "등봉조 5위",
-                    "short": "WE"
+                    "short": "WE",
+                    "score": 3,
+                    "win": true
                   },
                   "startRow": 4,
                   "time": "8/30 (일) 18:00"
@@ -1627,7 +1636,8 @@
                   "id": "117155436343202166",
                   "title": "MATCH 6",
                   "a": {
-                    "seed": "M2 패자"
+                    "seed": "M2 패자",
+                    "short": "JDG"
                   },
                   "b": {
                     "seed": "기사의 길 2 승자",
@@ -1659,7 +1669,8 @@
                   "id": "117155436343202154",
                   "title": "MATCH 4",
                   "a": {
-                    "seed": "M2 승자"
+                    "seed": "M2 승자",
+                    "short": "WE"
                   },
                   "b": {
                     "seed": "등봉조 1위",
@@ -2836,11 +2847,15 @@
                   "title": "결승",
                   "a": {
                     "seed": "상위권 대진 - 결승 승자",
-                    "short": "TSW"
+                    "short": "TSW",
+                    "score": 3,
+                    "msi": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 결승 승자",
-                    "short": "CFO"
+                    "short": "CFO",
+                    "score": 0,
+                    "elim": true
                   },
                   "startRow": 3
                 }
@@ -3200,12 +3215,12 @@
       "stage": "2026 Demacia Cup Global Invitational",
       "qualifiers": [
         {
-          "short": "AL",
-          "seed": "LPL #5"
+          "seed": "LPL #5",
+          "label": "LPL #5"
         },
         {
-          "short": "WBG",
-          "seed": "LPL #6"
+          "seed": "LPL #6",
+          "label": "LPL #6"
         },
         {
           "short": "LGD",

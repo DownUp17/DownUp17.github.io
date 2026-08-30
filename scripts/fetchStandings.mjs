@@ -1075,8 +1075,9 @@ try {
       const [m1, m2] = playin.rounds[0].matches;    // 1라운드·2라운드 경기
       const fin = playin.rounds[1].matches[0];       // 파이널 라운드 경기
       // 팀별 정규시즌 그룹·순위로 시드 라벨/랭크 조회, 시드 상위가 상단(a)에 오도록 정렬.
+      const lckRows = data.standings.lck?.LCK?.rows || [];
       const rowByShort = {};
-      rows.forEach((r) => { rowByShort[r.team] = r; });
+      lckRows.forEach((r) => { rowByShort[r.team] = r; });
       const teamSeed = (short) => {
         const r = rowByShort[short];
         if (!r?.group) return null;
@@ -1474,14 +1475,19 @@ try {
     const lck5 = winnerLoserOf(lckPO?.rounds?.[1]?.matches?.[2]).l; // LB R2 패자 = 5위
     const lck6 = winnerLoserOf(lckPO?.rounds?.[0]?.matches?.[2]).l; // LB R1 패자 = 6위
     const lck7 = winnerLoserOf(lckPI?.rounds?.[2]?.matches?.[0]).l; // 플레이-인 파이널 패자 = 7위
-    // LPL: 챔피언십 포인트 (대표 선발전 sub의 points 배열)
+    // LPL: 대표 선발전 결과 + 챔피언십 포인트로 DEMACIA 진출팀 결정
+    //   LPL #5 = 대표 선발전 2라운드 패자, #6 = 1라운드 M2 패자, #7 = 챔피언십 포인트 누적 7위
+    const lplRQ = data.standings.lpl?.['대표 선발전']?.qualifier;
+    const lpl5 = winnerLoserOf(lplRQ?.rounds?.[1]?.matches?.[0]).l; // 2R 패자
+    const lpl6 = winnerLoserOf(lplRQ?.rounds?.[0]?.matches?.[1]).l; // 1R M2 패자
     const lplPts = data.standings.lpl?.['대표 선발전']?.points || [];
+    const lpl7 = lplPts[6]?.team; // 챔피언십 포인트 7위
     const lecRows = rowsFor('lec');
     const lcsRows = rowsFor('lcs');
     const lcpRows = rowsFor('lcp');
     const cblolRows = rowsFor('cblol');
     const seedMap = {
-      'LPL #5': lplPts[4]?.team, 'LPL #6': lplPts[5]?.team, 'LPL #7': lplPts[6]?.team,
+      'LPL #5': lpl5, 'LPL #6': lpl6, 'LPL #7': lpl7,
       'LCK #5': lck5, 'LCK #6': lck6, 'LCK #7': lck7,
       'LEC #4': teamAtRank(lecRows, 4), 'LEC #5': teamAtRank(lecRows, 5),
       'LCS #4': teamAtRank(lcsRows, 4), 'LCS #5': teamAtRank(lcsRows, 5),
