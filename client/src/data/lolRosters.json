@@ -1094,7 +1094,7 @@
           "lastName": "XU",
           "role": "top",
           "image": "http://static.lolesports.com/players/1772232812105_xiaoxu.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "xiaofang",
@@ -1102,7 +1102,7 @@
           "lastName": "FANG",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1753282860904_image6311.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "JunJia",
@@ -1118,7 +1118,7 @@
           "lastName": "TSAI",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1768348294988_hongq.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "GALA",
@@ -1126,7 +1126,7 @@
           "lastName": "Chen",
           "role": "bottom",
           "image": "http://static.lolesports.com/players/1768348104959_gala.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Vampire",
@@ -1134,7 +1134,7 @@
           "lastName": "ZHAO",
           "role": "support",
           "image": "http://static.lolesports.com/players/1768349226496_vampire.png",
-          "starter": true
+          "starter": false
         }
       ]
     },
@@ -1343,7 +1343,7 @@
           "lastName": "Dai",
           "role": "top",
           "image": "http://static.lolesports.com/players/1768347927566_cube.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Monki",
@@ -1351,7 +1351,7 @@
           "lastName": "WANG",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1768348759598_monki.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Tyrion",
@@ -1367,7 +1367,7 @@
           "lastName": "Kim",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1768348517805_karis.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "About",
@@ -1375,7 +1375,7 @@
           "lastName": "Moon",
           "role": "bottom",
           "image": "http://static.lolesports.com/players/1768347747815_about.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Erha",
@@ -1383,7 +1383,7 @@
           "lastName": "SHI",
           "role": "support",
           "image": "http://static.lolesports.com/players/1775225577413_erha.png",
-          "starter": true
+          "starter": false
         }
       ]
     },
@@ -2363,19 +2363,19 @@
       "id": "98926509883054987",
       "players": [
         {
-          "name": "Dardoch",
-          "firstName": "Joshua",
-          "lastName": "Hartnett",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
-          "starter": true
-        },
-        {
           "name": "Denathor",
           "firstName": "Noah",
           "lastName": "Erikson",
           "role": "top",
           "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
+          "starter": true
+        },
+        {
+          "name": "Dardoch",
+          "firstName": "Joshua",
+          "lastName": "Hartnett",
+          "role": "top",
+          "image": "http://static.lolesports.com/players/default-headshot.png",
           "starter": true
         },
         {
