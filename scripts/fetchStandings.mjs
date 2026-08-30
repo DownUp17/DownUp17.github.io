@@ -1440,6 +1440,68 @@ try {
   console.warn(`LPL Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
 
+// DEMACIA 참가팀 자동 채움 — 각 리그 정규시즌 순위/LPL 챔피언십 포인트에서 시드에 맞는 팀 조회.
+//   팀이 데이터에 있으면 short로, 없으면 기존 label 유지.
+try {
+  const dem = data.standings.demacia;
+  if (dem?.qualifiers?.length) {
+    // 각 리그별 정규시즌 sub 우선순위 (뒤에 최신 sub)
+    const SUB_PRIORITY = {
+      lck: ['LCK'], lpl: ['Split 3'],
+      lec: ['Summer', 'Spring'], lcs: ['Summer', 'Spring'],
+      lcp: ['Split 3', 'Split 2'], cblol: ['Split 2', 'Split 1'],
+    };
+    const rowsFor = (leagueKey) => {
+      const lg = data.standings[leagueKey]; if (!lg) return [];
+      for (const sub of SUB_PRIORITY[leagueKey] || []) if (lg[sub]?.rows?.length) return lg[sub].rows;
+      return [];
+    };
+    const teamAtRank = (rows, rank) => rows.find((r) => r.rank === rank)?.team;
+    // LCK 최종 순위 (5·6·7위): 플레이오프 LB R2/R1 패자, 플레이-인 파이널 패자.
+    //   미확정이면 null. 정규시즌 통합 순위(BRO가 6위, NS가 7위 등)와 다르므로 최종 순위 기준 사용.
+    const winnerLoserOf = (m) => {
+      if (!m) return {};
+      if (m.a?.win || m.a?.msi) return { w: m.a.short, l: m.b?.short };
+      if (m.b?.win || m.b?.msi) return { w: m.b.short, l: m.a?.short };
+      if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) {
+        const aBig = m.a.score > m.b.score;
+        return { w: aBig ? m.a.short : m.b.short, l: aBig ? m.b.short : m.a.short };
+      }
+      return {};
+    };
+    const lckPO = data.standings.lck?.LCK?.playoffs, lckPI = data.standings.lck?.LCK?.playin;
+    // playoffs 매치 인덱스: col0 m2 = LB R1, col1 m2 = LB R2
+    const lck5 = winnerLoserOf(lckPO?.rounds?.[1]?.matches?.[2]).l; // LB R2 패자 = 5위
+    const lck6 = winnerLoserOf(lckPO?.rounds?.[0]?.matches?.[2]).l; // LB R1 패자 = 6위
+    const lck7 = winnerLoserOf(lckPI?.rounds?.[2]?.matches?.[0]).l; // 플레이-인 파이널 패자 = 7위
+    // LPL: 챔피언십 포인트 (대표 선발전 sub의 points 배열)
+    const lplPts = data.standings.lpl?.['대표 선발전']?.points || [];
+    const lecRows = rowsFor('lec');
+    const lcsRows = rowsFor('lcs');
+    const lcpRows = rowsFor('lcp');
+    const cblolRows = rowsFor('cblol');
+    const seedMap = {
+      'LPL #5': lplPts[4]?.team, 'LPL #6': lplPts[5]?.team, 'LPL #7': lplPts[6]?.team,
+      'LCK #5': lck5, 'LCK #6': lck6, 'LCK #7': lck7,
+      'LEC #4': teamAtRank(lecRows, 4), 'LEC #5': teamAtRank(lecRows, 5),
+      'LCS #4': teamAtRank(lcsRows, 4), 'LCS #5': teamAtRank(lcsRows, 5),
+      'LCP #4': teamAtRank(lcpRows, 4),
+      'CBLOL #4': teamAtRank(cblolRows, 4),
+    };
+    let filled = 0;
+    for (const q of dem.qualifiers) {
+      const key = q.label || q.seed;
+      const team = seedMap[key];
+      q.seed = key;
+      if (team) { q.short = team; delete q.label; filled++; }
+      else if (q.short) { q.label = key; delete q.short; } // 규칙에 맞지 않게 채워진 팀 복원
+    }
+    console.log(`DEMACIA 참가팀 자동 채움: ${filled}/${dem.qualifiers.length}팀`);
+  }
+} catch (e) {
+  console.warn(`DEMACIA 참가팀 갱신 실패: ${e.message}`);
+}
+
 data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
