@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-29",
+  "updatedAt": "2026-08-30",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -2180,7 +2180,7 @@
           "lastName": "Sloma",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1769150137024_AME_LCS26S1_LYON_INSPIRED.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "Saint",
