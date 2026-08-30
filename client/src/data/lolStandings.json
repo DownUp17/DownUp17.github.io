@@ -3195,6 +3195,47 @@
           }
         ]
       }
+    },
+    "demacia": {
+      "stage": "2026 Demacia Cup Global Invitational",
+      "qualifiers": [
+        {
+          "label": "LPL #5"
+        },
+        {
+          "label": "LPL #6"
+        },
+        {
+          "label": "LPL #7"
+        },
+        {
+          "label": "LCK #5"
+        },
+        {
+          "label": "LCK #6"
+        },
+        {
+          "label": "LCK #7"
+        },
+        {
+          "label": "LEC #4"
+        },
+        {
+          "label": "LEC #5"
+        },
+        {
+          "label": "LCS #4"
+        },
+        {
+          "label": "LCS #5"
+        },
+        {
+          "label": "LCP #4"
+        },
+        {
+          "label": "CBLOL #4"
+        }
+      ]
     }
   }
 }

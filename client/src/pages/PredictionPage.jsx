@@ -581,7 +581,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const cfg = lcpSplit3 ? lcpCfg : (stage ? STAGE_CFG[stage] : null);
   // 현재 순위 — 해당 세부대회 공식 순위표가 있으면 우선, 없으면 GPR 전적으로 산출
   const leagueStd = officialStandings.standings[comp.key];
-  const official = leagueStd ? leagueStd[sub] : null;
+  // 서브탭이 있는 대회는 leagueStd[sub], 서브탭 없는 대회(예: DEMACIA)는 leagueStd 자체를 official로 사용
+  const official = leagueStd ? (sub ? leagueStd[sub] : leagueStd) : null;
   const setDiff = (gw, gl) => (gw != null && gl != null ? gw - gl : null);
   const current = official?.rows?.length
     ? official.rows.map((r) => {
