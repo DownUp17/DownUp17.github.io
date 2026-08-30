@@ -1132,15 +1132,15 @@ try {
       const lbR2 = P[2].matches[0], lbR3 = P[3].matches[0], ubR3 = P[4].matches[0];
       const lowerFinals = P[5].matches[0], grandFinals = P[6].matches[0];
       // 조건/시드 라벨 (팀 미확정 슬롯만 덮어씀)
-      const lab = (s, l) => { if (s && !s.short) s.seed = l; };
+      const lab = (s, l) => { if (s) s.seed = l; };
       lab(ubR1M1.a, '레전드 3위'); lab(ubR1M1.b, '플레이-인 진출');
       lab(ubR1M2.a, '레전드 4위'); lab(ubR1M2.b, '플레이-인 진출');
       lab(ubR2M1.a, '레전드 1위'); lab(ubR2M1.b, 'UB R1 승자');
       lab(ubR2M2.a, '레전드 2위'); lab(ubR2M2.b, 'UB R1 승자');
-      lab(lbR1.a, 'UB R1 M1 패자'); lab(lbR1.b, 'UB R1 M2 패자');
+      lab(lbR1.a, 'UB R1 패자'); lab(lbR1.b, 'UB R1 패자');
       lab(lbR2.a, 'UB R2 패자 (하위 시드)'); lab(lbR2.b, 'LB R1 승자');
       lab(lbR3.a, 'UB R2 패자 (상위 시드)'); lab(lbR3.b, 'LB R2 승자');
-      lab(ubR3.a, 'UB R2 M1 승자'); lab(ubR3.b, 'UB R2 M2 승자');
+      lab(ubR3.a, 'UB R2 승자'); lab(ubR3.b, 'UB R2 승자');
       lab(lowerFinals.a, 'UB R3 패자'); lab(lowerFinals.b, 'LB R3 승자');
       lab(grandFinals.a, 'UB R3 승자'); lab(grandFinals.b, '결승 진출전 승자');
       // 매치 제목
