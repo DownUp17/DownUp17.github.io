@@ -145,13 +145,17 @@ function normalizeAdvancementFlags(bracket) {
 }
 
 // 매치 슬롯 a/b를 시드 상위가 상단이 되도록 정리. connectors의 dest slot도 함께 반전.
-//   두 슬롯 모두 시드 파싱 가능한 경우에만 적용.
+//   두 슬롯 모두 시드 랭크 있으면 상위 시드를 a로.
+//   한 쪽만 시드 랭크 있으면(예: 시드 팀 vs "플레이-인 진출") 시드 팀을 a로.
 function applySeedOrder(bracket) {
   if (!bracket?.rounds) return;
   const conn = bracket.connectors || [];
   bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => {
     const ra = seedRank(m.a?.seed), rb = seedRank(m.b?.seed);
-    if (ra == null || rb == null || rb >= ra) return;
+    let swap = false;
+    if (ra != null && rb != null) swap = rb < ra;
+    else if (ra == null && rb != null) swap = true;  // b쪽만 시드 있음 → a로 이동
+    if (!swap) return;
     const t = m.a; m.a = m.b; m.b = t;
     conn.forEach((c) => { if (c[3] === ci && c[4] === mi) c[5] = c[5] === 'a' ? 'b' : 'a'; });
   }));
@@ -1122,20 +1126,17 @@ try {
     let playoffs = bySlug['regional_championship'];
     if (playoffs?.rounds?.length >= 7) {
       const P = playoffs.rounds;
-      // 시드 팀이 b슬롯에 잘못 배정된 경우(a=TBD, b=팀) 스왑해서 a에 오도록 정리.
-      //   API가 UB R1/UB R2 시드 슬롯을 b에 넣어 프론트의 seed 자동 채움과 겹치면
-      //   같은 팀이 좌우에 표시되는 버그(예: "T1 vs T1") 방지.
-      const swapAB = (m) => { if (m && !m.a?.short && m.b?.short) { const t = m.a; m.a = m.b; m.b = t; } };
-      swapAB(P[0].matches[0]); swapAB(P[0].matches[1]);
-      swapAB(P[1].matches[0]); swapAB(P[1].matches[1]);
       const ubR1M1 = P[0].matches[0], ubR1M2 = P[0].matches[1];
       const ubR2M1 = P[1].matches[0], ubR2M2 = P[1].matches[1], lbR1 = P[1].matches[2];
       const lbR2 = P[2].matches[0], lbR3 = P[3].matches[0], ubR3 = P[4].matches[0];
       const lowerFinals = P[5].matches[0], grandFinals = P[6].matches[0];
-      // 조건/시드 라벨 (팀 미확정 슬롯만 덮어씀)
+      // 조건/시드 라벨 — API 원본 슬롯 순서에 맞춰 부여.
+      //   UB R1: API가 a=플레이-인 진출(미정), b=시드 팀 순서로 준다.
+      //   UB R2: API가 a=시드 팀, b=UB R1 승자(미정) 순서.
+      //   그 후 applySeedOrder가 시드 상위(레전드 시드)를 상단(a)으로 자동 스왑.
       const lab = (s, l) => { if (s) s.seed = l; };
-      lab(ubR1M1.a, '레전드 3위'); lab(ubR1M1.b, '플레이-인 진출');
-      lab(ubR1M2.a, '레전드 4위'); lab(ubR1M2.b, '플레이-인 진출');
+      lab(ubR1M1.a, '플레이-인 진출'); lab(ubR1M1.b, '레전드 3위');
+      lab(ubR1M2.a, '플레이-인 진출'); lab(ubR1M2.b, '레전드 4위');
       lab(ubR2M1.a, '레전드 1위'); lab(ubR2M1.b, 'UB R1 승자');
       lab(ubR2M2.a, '레전드 2위'); lab(ubR2M2.b, 'UB R1 승자');
       lab(lbR1.a, 'UB R1 패자'); lab(lbR1.b, 'UB R1 패자');

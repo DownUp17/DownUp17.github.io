@@ -144,9 +144,12 @@ function simulateLCK(teams, fixed, playinFixed = {}, playoffFixed = {}) {
     if (w) return a.short === w ? a : b;
     return simSeries(a, b, 3);
   };
-  const poDecide = (a, b) => {
-    const w = playoffFixed[pinKey(a, b)];
-    if (w) return a.short === w ? a : b;
+  // 플레이오프 매치는 라운드/매치 위치별로 fixed 조회.
+  //   팀 페어 키만으로 매칭하면 같은 두 팀이 다른 라운드에서 재대결할 때
+  //   (예: UB R1 M2 KT vs DK 결과가 LB R2 KT vs DK 매치에 잘못 재사용) 편향 발생.
+  const poDecide = (a, b, matchKey) => {
+    const w = matchKey ? playoffFixed[matchKey] : undefined;
+    if (w) return a.short === w ? a : (b.short === w ? b : simSeries(a, b, 3));
     return simSeries(a, b, 3);
   };
 
@@ -199,6 +202,8 @@ function simulateLCK(teams, fixed, playinFixed = {}, playoffFixed = {}) {
   const idxAll = teams.map((_, i) => i);
   const fixedLegend = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Legend');
   const fixedRise = fixed && idxAll.filter((i) => fixed[teams[i].short]?.group === 'Rise');
+  // 정규시즌 확정 rank (tie-break용). fixed 데이터에 rank 있으면 그것으로 정렬 유지.
+  const fixedRank = fixed && ((i) => fixed[teams[i].short]?.rank ?? 99);
   const startWins = fixed && teams.map((t) => fixed[t.short]?.w ?? 0);
   const startGd = fixed && teams.map((t) => fixed[t.short]?.gd ?? 0);
   const startS3Played = fixed && teams.map((t) => Math.max(0, (fixed[t.short]?.total ?? 0) - 18));
@@ -231,9 +236,11 @@ function simulateLCK(teams, fixed, playinFixed = {}, playoffFixed = {}) {
       playSchedule(buildSchedule(rise), wins, gd);
     }
 
-    // 최종 순위 — 그룹 내 누적 승수 기준, 동률 시 득실차 → 무작위
-    const legOrder = legend.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5));
-    const riseOrder = rise.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || (rng() - 0.5));
+    // 최종 순위 — 그룹 내 누적 승수 기준, 동률 시 득실차 → 확정 rank(tiebreak) → 무작위
+    //   fixed 데이터에 rank가 있으면 실제 tiebreak 결과(예: GEN 1위·HLE 2위)를 존중해 무작위 편향 제거
+    const tieBreak = fixedRank ? (a, b) => fixedRank(a) - fixedRank(b) : () => rng() - 0.5;
+    const legOrder = legend.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || tieBreak(a, b));
+    const riseOrder = rise.slice().sort((a, b) => (wins[b] - wins[a]) || (gd[b] - gd[a]) || tieBreak(a, b));
     legOrder.forEach((tIdx, k) => {
       stat[tIdx].sumRank += k + 1;
       if (k === 0) stat[tIdx].rank1++;
@@ -260,24 +267,24 @@ function simulateLCK(teams, fixed, playinFixed = {}, playoffFixed = {}) {
 
     // 플레이오프 — 6팀 더블 엘리미네이션 (Bo5) · 진행된 매치는 poDecide로 실제 결과 고정
     // 승자조 R1: 3v6, 4v5
-    const ub1m1W = poDecide(s3, s6), ub1m1L = ub1m1W === s3 ? s6 : s3;
-    const ub1m2W = poDecide(s4, s5), ub1m2L = ub1m2W === s4 ? s5 : s4;
+    const ub1m1W = poDecide(s3, s6, 'UB R1 M1'), ub1m1L = ub1m1W === s3 ? s6 : s3;
+    const ub1m2W = poDecide(s4, s5, 'UB R1 M2'), ub1m2L = ub1m2W === s4 ? s5 : s4;
     // 1위가 더 낮은 시드를 지목 → 승자조 R2 대진
     const lowW = seedOf(ub1m1W) > seedOf(ub1m2W) ? ub1m1W : ub1m2W;
     const highW = seedOf(ub1m1W) > seedOf(ub1m2W) ? ub1m2W : ub1m1W;
-    const ub2m1W = poDecide(s1, lowW), ub2m1L = ub2m1W === s1 ? lowW : s1;
-    const ub2m2W = poDecide(s2, highW), ub2m2L = ub2m2W === s2 ? highW : s2;
+    const ub2m1W = poDecide(s1, lowW, 'UB R2 M1'), ub2m1L = ub2m1W === s1 ? lowW : s1;
+    const ub2m2W = poDecide(s2, highW, 'UB R2 M2'), ub2m2L = ub2m2W === s2 ? highW : s2;
     // 승자조 R3 → 승자 그랜드파이널 직행, 패자 로어파이널
-    const ub3W = poDecide(ub2m1W, ub2m2W), ub3L = ub3W === ub2m1W ? ub2m2W : ub2m1W;
+    const ub3W = poDecide(ub2m1W, ub2m2W, 'UB R3'), ub3L = ub3W === ub2m1W ? ub2m2W : ub2m1W;
     // 패자조: UB R2 패자 중 시드 높은 팀 → LB R3, 낮은 팀 → LB R2
     const ub2lHigh = seedOf(ub2m1L) < seedOf(ub2m2L) ? ub2m1L : ub2m2L;
     const ub2lLow = seedOf(ub2m1L) < seedOf(ub2m2L) ? ub2m2L : ub2m1L;
-    const lb1W = poDecide(ub1m1L, ub1m2L);
-    const lb2W = poDecide(ub2lLow, lb1W);
-    const lb3W = poDecide(ub2lHigh, lb2W);
-    const lowerFinalsW = poDecide(ub3L, lb3W);
+    const lb1W = poDecide(ub1m1L, ub1m2L, 'LB R1');
+    const lb2W = poDecide(ub2lLow, lb1W, 'LB R2');
+    const lb3W = poDecide(ub2lHigh, lb2W, 'LB R3');
+    const lowerFinalsW = poDecide(ub3L, lb3W, 'Lower Finals');
     // 그랜드파이널
-    const champ = poDecide(ub3W, lowerFinalsW);
+    const champ = poDecide(ub3W, lowerFinalsW, 'Grand Finals');
     stat[ti(ub3W)].finalApp++;
     stat[ti(lowerFinalsW)].finalApp++;
     stat[ti(champ)].champ++;
@@ -341,7 +348,7 @@ const lckRows = standingsData.standings?.lck?.LCK?.rows;
 // 그룹명 정규화 — 데이터가 '레전드 그룹'/'라이즈 그룹'(한글)이어도 시뮬은 Legend/Rise로 판별
 const normLckGroup = (g) => (/레전드/.test(g) ? 'Legend' : /라이즈/.test(g) ? 'Rise' : g);
 const lckFixed = lckRows && Object.fromEntries(
-  lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group), gd: (r.gw ?? 0) - (r.gl ?? 0), total: r.w + r.l }])
+  lckRows.map((r) => [r.team, { w: r.w, group: normLckGroup(r.group), gd: (r.gw ?? 0) - (r.gl ?? 0), total: r.w + r.l, rank: r.rank }])
 );
 
 // LCK 플레이-인 확정 결과 추출 — { "TEAMA|TEAMB"(정렬): 승자 short }.
@@ -369,18 +376,20 @@ if (lckPlayinKeys.length) console.log(`LCK 플레이-인 확정 반영: ${lckPla
 
 // 플레이오프 확정 결과도 시뮬 고정 — 진행된 매치는 실제 승자로.
 function extractLckPlayoffFixed() {
+  // 매치 위치(title) → 승자. 팀 페어 키가 아니라 매치별로 저장해야
+  //   같은 두 팀이 다른 라운드에서 재대결할 때 이전 결과가 잘못 재사용되지 않음.
   const out = {};
   const po = standingsData.standings?.lck?.LCK?.playoffs;
   if (!po?.rounds) return out;
   for (const r of po.rounds) {
     for (const m of r.matches || []) {
       const { a, b } = m;
-      if (!a?.short || !b?.short) continue;
+      if (!a?.short || !b?.short || !m.title) continue;
       let w = null;
       if (a.win || a.msi) w = a.short;
       else if (b.win || b.msi) w = b.short;
       else if (a.score != null && b.score != null && a.score !== b.score) w = a.score > b.score ? a.short : b.short;
-      if (w) out[[a.short, b.short].sort().join('|')] = w;
+      if (w) out[m.title] = w;
     }
   }
   return out;
