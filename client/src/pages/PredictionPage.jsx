@@ -111,60 +111,98 @@ const ACTUAL_SLOT_H = 39; // 실제 슬롯(팀 한 줄) 렌더 높이 — connY 
 
 const gridSlotTop = (r) => LABEL_H + r * SLOT_H + (r >= GAP_ROW ? LABEL_H : 0);
 
-// DEMACIA 그룹/녹아웃 스테이지 렌더링 — 컬럼별 매치 카드 나열
-const DemaciaBracket = ({ columns, teams, onTeamClick, logoByShort, nameByShort }) => {
+// DEMACIA 브래킷 — 컬럼당 여러 브래킷 그룹(1-0/0-1 등)을 세로로 배치. MsiSlot 재사용으로 다른 대진표와 일관.
+//   champion(GF 승자) = msi(금색), 매치 승자 = win(파랑), elim 집합 = elim(빨강).
+const DemaciaBracket = ({ columns, teams, championShort, elimSet, onTeamClick }) => {
   const teamMap = Object.fromEntries((teams || []).map((t) => [t.slot, t]));
-  const shortOf = (v) => (v && teamMap[v]?.short) || v; // TEAM1 → 실제 short, 이미 short면 그대로
-  const displayOf = (v) => {
-    if (!v) return 'TBD';
-    const t = teamMap[v];
-    if (t?.short) return nameByShort?.[t.short] || t.short;
-    if (t) return t.seed || v;
-    return nameByShort?.[v] || v;
+  const resolveShort = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
+  const toSlot = (v, isWinner, score) => {
+    const short = resolveShort(v);
+    const slot = short ? { short } : { label: 'TBD' };
+    if (short) {
+      if (championShort && short === championShort) slot.msi = true;
+      else if (isWinner) slot.win = true;
+      else if (elimSet?.has(short)) slot.elim = true;
+    }
+    if (score != null) slot.score = score;
+    return slot;
   };
-  const logoOf = (v) => { const s = shortOf(v); return s && logoByShort?.[s]; };
+  const renderMatch = (m) => {
+    const aShort = resolveShort(m.a), bShort = resolveShort(m.b);
+    const aWin = m.winner && (m.winner === m.a || m.winner === aShort);
+    const bWin = m.winner && (m.winner === m.b || m.winner === bShort);
+    return (
+      <div key={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
+        <div className="px-2.5 py-1.5 bg-white/10 text-[11px] font-black text-white/70 flex items-center gap-2">
+          <span>{m.id}</span>
+          <span className="ml-auto text-white/40 font-semibold">{m.format}</span>
+        </div>
+        <MsiSlot s={toSlot(m.a, aWin, m.scoreA)} onTeamClick={onTeamClick} />
+        <div className="h-px bg-white/10" />
+        <MsiSlot s={toSlot(m.b, bWin, m.scoreB)} onTeamClick={onTeamClick} />
+      </div>
+    );
+  };
   return (
-    <div className="flex gap-3 overflow-x-auto pb-2">
+    <div className="flex gap-4 overflow-x-auto pb-3">
       {columns.map((col, ci) => (
-        <div key={ci} className="flex flex-col gap-2 shrink-0" style={{ width: 200 }}>
-          <div className="text-[11px] text-white/40 font-bold px-1">
-            {col.title}
-            {col.subtitle && <span className="text-white/25 font-normal ml-1">· {col.subtitle}</span>}
-          </div>
-          <div className="flex flex-col gap-2">
-            {col.matches.map((m) => {
-              const aShort = shortOf(m.a);
-              const bShort = shortOf(m.b);
-              const aWin = m.winner && (m.winner === m.a || m.winner === aShort);
-              const bWin = m.winner && (m.winner === m.b || m.winner === bShort);
-              const slot = (v, isWin, score) => (
-                <div
-                  onClick={() => v && aShort && onTeamClick?.(shortOf(v))}
-                  className={`flex items-center gap-1.5 px-2 py-1.5 rounded ${isWin ? 'bg-[#E8C77E]/15' : 'bg-white/5'} ${v ? 'cursor-pointer hover:bg-white/10' : ''}`}
-                >
-                  {logoOf(v) && <TeamLogo src={logoOf(v)} size={16} />}
-                  <span className={`text-xs truncate flex-1 ${isWin ? 'font-bold text-white' : 'text-white/70'}`}>{displayOf(v)}</span>
-                  {score != null && <span className={`font-mono tabular-nums text-xs ${isWin ? 'text-[#E8C77E] font-bold' : 'text-white/40'}`}>{score}</span>}
-                </div>
-              );
-              return (
-                <div key={m.id} className="rounded-lg border border-white/10 bg-white/[0.02] p-1.5">
-                  <div className="flex items-center justify-between px-1 mb-1">
-                    <span className="text-[10px] text-white/40 font-bold">{m.id}</span>
-                    <span className="text-[10px] text-white/30">{m.format}</span>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    {slot(m.a, aWin, m.scoreA)}
-                    {slot(m.b, bWin, m.scoreB)}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        <div key={ci} className="flex flex-col gap-3 shrink-0" style={{ width: 200 }}>
+          <div className="text-[11px] text-white/50 font-black uppercase tracking-wider px-1">{col.title}</div>
+          {(col.groups || [{ subtitle: col.subtitle, matches: col.matches }]).map((g, gi) => (
+            <div key={gi} className="flex flex-col gap-2">
+              {g.subtitle && <div className="text-[10px] text-white/40 font-bold px-1">{g.subtitle}</div>}
+              {g.matches.map(renderMatch)}
+            </div>
+          ))}
         </div>
       ))}
     </div>
   );
+};
+
+// 그룹 스테이지 완전 탈락 집합 계산.
+//   M19-M20 패자 + M16-M18 라운드로빈 2·3위 (승수 < 2인 팀).
+const computeGroupEliminated = (matches, teamMap) => {
+  const out = new Set();
+  const shortOf = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
+  const loserOf = (m) => {
+    if (!m?.winner) return null;
+    const a = shortOf(m.a), b = shortOf(m.b);
+    return m.winner === m.a || m.winner === a ? b : a;
+  };
+  // M19-M20 패자
+  for (const id of ['M19', 'M20']) {
+    const m = matches.find((x) => x.id === id);
+    const l = loserOf(m); if (l) out.add(l);
+  }
+  // M16-M18 라운드로빈: 각 팀 승수 카운트
+  const rr = matches.filter((m) => ['M16', 'M17', 'M18'].includes(m.id) && m.winner);
+  if (rr.length === 3) {
+    const wins = {};
+    for (const m of rr) {
+      const w = m.winner === m.a || m.winner === shortOf(m.a) ? shortOf(m.a) : shortOf(m.b);
+      if (w) wins[w] = (wins[w] || 0) + 1;
+    }
+    Object.entries(wins).forEach(([short, w]) => { if (w < 2) out.add(short); });
+    // 0승 팀도 wins 객체에 없으니 매치 참가자 중 wins에 없는 팀 추가
+    const players = new Set();
+    for (const m of rr) { const a = shortOf(m.a), b = shortOf(m.b); if (a) players.add(a); if (b) players.add(b); }
+    for (const p of players) if (!wins[p]) out.add(p);
+  }
+  return out;
+};
+
+// 녹아웃 완전 탈락 집합 = GF 이외 매치의 패자.
+const computeKnockoutEliminated = (matches, teamMap) => {
+  const out = new Set();
+  const shortOf = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
+  for (const m of matches) {
+    if (m.id === 'GF' || !m.winner) continue;
+    const a = shortOf(m.a), b = shortOf(m.b);
+    const loser = m.winner === m.a || m.winner === a ? b : a;
+    if (loser) out.add(loser);
+  }
+  return out;
 };
 
 const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick, groupGap = false }) => {
@@ -900,62 +938,77 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
-      {/* DEMACIA 그룹/녹아웃 스테이지 */}
-      {comp.key === 'demacia' && stage === '그룹 스테이지' && official?.group?.matches?.length > 0 && (
-        <section>
-          <div className="flex items-baseline gap-2 flex-wrap mb-4">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">온라인 그룹 스테이지</h3>
-            <span className="text-xs text-white/40">더블 엘리미네이션식 · 8팀 진출</span>
+      {/* DEMACIA 그룹/녹아웃 스테이지 — 다른 대진표와 일관된 카드/색상 규칙 사용 */}
+      {(() => {
+        if (comp.key !== 'demacia') return null;
+        const groupMatches = official?.group?.matches || [];
+        const knockoutMatches = official?.knockout?.matches || [];
+        const teamMap = Object.fromEntries((official?.teams || []).map((t) => [t.slot, t]));
+        const gfMatch = knockoutMatches.find((m) => m.id === 'GF');
+        const gfWinner = gfMatch?.winner;
+        const championShort = gfWinner && (teamMap[gfWinner]?.short || gfWinner);
+        const legend = (
+          <div className="mt-3 flex items-center gap-4 text-xs text-white/60 flex-wrap">
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> 우승</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
           </div>
-          <DemaciaBracket
-            columns={[
-              { title: '10-03 · Bo1', subtitle: '0-0', matches: official.group.matches.filter((m) => m.bracket === '0-0') },
-              { title: '10-04 · Bo3', subtitle: '1-0 · Winners of M1-M6', matches: official.group.matches.filter((m) => m.bracket === '1-0') },
-              { title: '10-05 · Bo3', subtitle: '0-1 · Losers of M1-M6', matches: official.group.matches.filter((m) => m.bracket === '0-1') },
-              { title: '10-06 · Bo3', subtitle: '1-1 · Losers M7-9 / Winners M10-12', matches: official.group.matches.filter((m) => m.bracket === '1-1') },
-              { title: '10-07 · Bo3', subtitle: '0-2 라운드로빈 · Losers M10-12', matches: official.group.matches.filter((m) => m.bracket === '0-2 RR') },
-              { title: '10-08 · Bo3', subtitle: '1-2 & 0-2 1st', matches: official.group.matches.filter((m) => m.bracket === '1-2 & 0-2 1st') },
-            ]}
-            teams={official.teams}
-            logoByShort={logoByShort}
-            nameByShort={nameByShort}
-            onTeamClick={onTeamClick}
-          />
-          {official.group.advancing?.seeds && (
-            <div className="mt-4 text-xs text-white/50">
-              <div className="font-bold text-white/70 mb-1">녹아웃 진출 시드</div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
-                {official.group.advancing.seeds.map((s) => (
-                  <div key={s.seed} className="flex items-center gap-1.5">
-                    <span className="text-white/40 text-[10px] w-6">#{s.seed}</span>
-                    <span className="text-white/60 text-[10px]">{s.from}</span>
-                    <span className="text-white/80 ml-auto">{s.short || 'TBD'}</span>
-                  </div>
-                ))}
+        );
+        if (stage === '그룹 스테이지' && groupMatches.length > 0) {
+          const elimSet = computeGroupEliminated(groupMatches, teamMap);
+          return (
+            <section>
+              <div className="flex items-baseline gap-2 flex-wrap mb-4">
+                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">온라인 그룹 스테이지</h3>
+                <span className="text-xs text-white/40">더블 엘리미네이션식 · 8팀 진출</span>
               </div>
-            </div>
-          )}
-        </section>
-      )}
-      {comp.key === 'demacia' && stage === '녹아웃 스테이지' && official?.knockout?.matches?.length > 0 && (
-        <section>
-          <div className="flex items-baseline gap-2 flex-wrap mb-4">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">오프라인 녹아웃 스테이지</h3>
-            <span className="text-xs text-white/40">싱글 엘리미네이션 · Bo5</span>
-          </div>
-          <DemaciaBracket
-            columns={[
-              { title: '10-12~13 · Bo5', subtitle: '8강', matches: official.knockout.matches.filter((m) => m.round === '8강') },
-              { title: '10-14~15 · Bo5', subtitle: '4강', matches: official.knockout.matches.filter((m) => m.round === '4강') },
-              { title: '10-17 · Bo5', subtitle: '결승', matches: official.knockout.matches.filter((m) => m.round === '결승') },
-            ]}
-            teams={official.teams}
-            logoByShort={logoByShort}
-            nameByShort={nameByShort}
-            onTeamClick={onTeamClick}
-          />
-        </section>
-      )}
+              <DemaciaBracket
+                columns={[
+                  { title: 'Oct.3 · Bo1', subtitle: '0-0', matches: groupMatches.filter((m) => m.bracket === '0-0') },
+                  { title: 'Oct.4~5 · Bo3', groups: [
+                    { subtitle: '1-0 · Winners of M1-M6', matches: groupMatches.filter((m) => m.bracket === '1-0') },
+                    { subtitle: '0-1 · Losers of M1-M6', matches: groupMatches.filter((m) => m.bracket === '0-1') },
+                  ] },
+                  { title: 'Oct.6~7 · Bo3', groups: [
+                    { subtitle: '1-1 · Losers M7-9 / Winners M10-12', matches: groupMatches.filter((m) => m.bracket === '1-1') },
+                    { subtitle: '0-2 라운드로빈 · Losers M10-12', matches: groupMatches.filter((m) => m.bracket === '0-2 RR') },
+                  ] },
+                  { title: 'Oct.8 · Bo3', subtitle: '1-2 & 0-2 1st', matches: groupMatches.filter((m) => m.bracket === '1-2 & 0-2 1st') },
+                ]}
+                teams={official.teams}
+                championShort={championShort}
+                elimSet={elimSet}
+                onTeamClick={onTeamClick}
+              />
+              {legend}
+            </section>
+          );
+        }
+        if (stage === '녹아웃 스테이지' && knockoutMatches.length > 0) {
+          const elimSet = computeKnockoutEliminated(knockoutMatches, teamMap);
+          return (
+            <section>
+              <div className="flex items-baseline gap-2 flex-wrap mb-4">
+                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">오프라인 녹아웃 스테이지</h3>
+                <span className="text-xs text-white/40">싱글 엘리미네이션 · Bo5</span>
+              </div>
+              <DemaciaBracket
+                columns={[
+                  { title: 'Oct.12~13 · Bo5', subtitle: '8강', matches: knockoutMatches.filter((m) => m.round === '8강') },
+                  { title: 'Oct.14~15 · Bo5', subtitle: '4강', matches: knockoutMatches.filter((m) => m.round === '4강') },
+                  { title: 'Oct.17 · Bo5', subtitle: '결승', matches: knockoutMatches.filter((m) => m.round === '결승') },
+                ]}
+                teams={official.teams}
+                championShort={championShort}
+                elimSet={elimSet}
+                onTeamClick={onTeamClick}
+              />
+              {legend}
+            </section>
+          );
+        }
+        return null;
+      })()}
 
       {/* LPL 대표 선발전 — 대진 탭 */}
       {lplQualifier && stage === '대진' && official?.qualifier?.rounds?.length > 0 && (
