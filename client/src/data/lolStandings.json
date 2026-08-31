@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30",
+  "updatedAt": "2026-08-31",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -3029,20 +3029,20 @@
             "gl": 6
           },
           {
-            "rank": 4,
-            "team": "SR",
-            "w": 3,
+            "rank": 3,
+            "team": "C9",
+            "w": 4,
             "l": 2,
-            "gw": 7,
-            "gl": 6
+            "gw": 8,
+            "gl": 7
           },
           {
-            "rank": 4,
-            "team": "C9",
+            "rank": 5,
+            "team": "SR",
             "w": 3,
-            "l": 2,
-            "gw": 6,
-            "gl": 6
+            "l": 3,
+            "gw": 8,
+            "gl": 8
           },
           {
             "rank": 6,
@@ -3247,12 +3247,12 @@
           "label": "LEC #5"
         },
         {
-          "short": "SR",
-          "seed": "LCS #4"
+          "seed": "LCS #4",
+          "label": "LCS #4"
         },
         {
           "seed": "LCS #5",
-          "label": "LCS #5"
+          "short": "SR"
         },
         {
           "short": "SHG",
