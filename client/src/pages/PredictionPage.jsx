@@ -132,26 +132,89 @@ const DemaciaBracket = ({ columns, teams, championShort, elimSet, onTeamClick })
     const aWin = m.winner && (m.winner === m.a || m.winner === aShort);
     const bWin = m.winner && (m.winner === m.b || m.winner === bShort);
     return (
-      <div key={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-        <div className="px-2.5 py-1.5 bg-white/10 text-[11px] font-black text-white/70 flex items-center gap-2">
-          <span>{m.id}</span>
-          <span className="ml-auto text-white/40 font-semibold">{m.format}</span>
+      <div key={m.id} className="flex flex-col">
+        <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider px-0.5 mb-1">{m.id}</span>
+        <div className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
+          <MsiSlot s={toSlot(m.a, aWin, m.scoreA)} onTeamClick={onTeamClick} />
+          <div className="h-px bg-white/10" />
+          <MsiSlot s={toSlot(m.b, bWin, m.scoreB)} onTeamClick={onTeamClick} />
         </div>
-        <MsiSlot s={toSlot(m.a, aWin, m.scoreA)} onTeamClick={onTeamClick} />
-        <div className="h-px bg-white/10" />
-        <MsiSlot s={toSlot(m.b, bWin, m.scoreB)} onTeamClick={onTeamClick} />
+      </div>
+    );
+  };
+  // 라운드로빈 순위표 — 3팀이 각 2경기씩. 1위(2승)만 진출, 2·3위 탈락.
+  const renderRRStandings = (matches) => {
+    const parts = new Set();
+    for (const m of matches) {
+      const a = resolveShort(m.a); if (a) parts.add(a);
+      const b = resolveShort(m.b); if (b) parts.add(b);
+    }
+    const list = Array.from(parts);
+    const wins = Object.fromEntries(list.map((p) => [p, 0]));
+    const losses = Object.fromEntries(list.map((p) => [p, 0]));
+    for (const m of matches) {
+      if (!m.winner) continue;
+      const a = resolveShort(m.a), b = resolveShort(m.b);
+      const winShort = m.winner === m.a || m.winner === a ? a : b;
+      const loseShort = winShort === a ? b : a;
+      if (winShort && wins[winShort] != null) wins[winShort]++;
+      if (loseShort && losses[loseShort] != null) losses[loseShort]++;
+    }
+    const sorted = list.slice().sort((x, y) => wins[y] - wins[x] || losses[x] - losses[y]);
+    const rows = sorted.length > 0 ? sorted.map((short) => ({ short, w: wins[short], l: losses[short] })) : [null, null, null];
+    return (
+      <div className="mt-1 rounded-xl bg-white/5 border border-white/10 overflow-hidden">
+        <div className="px-2.5 py-1.5 bg-white/10 text-[10px] font-black text-white/70 uppercase tracking-wider">순위표</div>
+        {rows.map((r, i) => {
+          const rank = i + 1;
+          const played = r ? r.w + r.l : 0;
+          const completed = r && played === 2;
+          const bg = r && (championShort === r.short) ? 'rgba(232,199,126,0.16)'
+                    : rank === 1 && completed ? 'rgba(96,165,250,0.14)'
+                    : rank > 1 && completed ? 'rgba(248,113,113,0.18)'
+                    : 'transparent';
+          const accent = r && championShort === r.short ? '#E8C77E'
+                        : rank === 1 && completed ? '#60A5FA'
+                        : rank > 1 && completed ? '#F87171'
+                        : null;
+          return (
+            <div key={i}
+                 className={`flex items-center gap-1.5 px-2.5 py-1.5 min-h-[30px]${r ? ' cursor-pointer hover:brightness-125 transition-all' : ''}`}
+                 style={{ backgroundColor: bg }}
+                 onClick={r ? () => onTeamClick?.(r.short) : undefined}>
+              <span className="text-[10px] text-white/50 w-3 font-bold shrink-0">{rank}</span>
+              {r ? (
+                <>
+                  <TeamLogo src={logoByShort[r.short]} size={14} />
+                  <span className="text-xs font-bold truncate flex-1" style={{ color: accent || 'rgba(255,255,255,0.88)' }}>{r.short}</span>
+                  <span className="font-mono tabular-nums text-xs shrink-0" style={{ color: accent || 'rgba(255,255,255,0.55)' }}>{r.w}-{r.l}</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-xs text-white/35 flex-1">TBD</span>
+                  <span className="font-mono tabular-nums text-xs text-white/40 shrink-0">0-0</span>
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
     );
   };
   return (
-    <div className="flex gap-4 overflow-x-auto pb-3">
+    <div className="flex gap-4 overflow-x-auto pb-3 items-stretch">
       {columns.map((col, ci) => (
-        <div key={ci} className="flex flex-col gap-3 shrink-0" style={{ width: 200 }}>
-          <div className="text-[11px] text-white/50 font-black uppercase tracking-wider px-1">{col.title}</div>
-          {(col.groups || [{ subtitle: col.subtitle, matches: col.matches }]).map((g, gi) => (
+        <div key={ci} className="flex flex-col gap-4 shrink-0 justify-center" style={{ width: 200 }}>
+          {col.groups.map((g, gi) => (
             <div key={gi} className="flex flex-col gap-2">
-              {g.subtitle && <div className="text-[10px] text-white/40 font-bold px-1">{g.subtitle}</div>}
+              <div className="text-[11px] text-white/50 font-black tracking-wider px-1 flex items-baseline gap-1.5">
+                <span>{g.day}</span>
+                <span className="text-white/40">·</span>
+                <span>{g.format}</span>
+                {g.label && <><span className="text-white/40">·</span><span className="text-white/70">{g.label}</span></>}
+              </div>
               {g.matches.map(renderMatch)}
+              {g.showRRStandings && renderRRStandings(g.matches)}
             </div>
           ))}
         </div>
@@ -964,16 +1027,16 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               </div>
               <DemaciaBracket
                 columns={[
-                  { title: 'Oct.3 · Bo1', subtitle: '0-0', matches: groupMatches.filter((m) => m.bracket === '0-0') },
-                  { title: 'Oct.4~5 · Bo3', groups: [
-                    { subtitle: '1-0 · Winners of M1-M6', matches: groupMatches.filter((m) => m.bracket === '1-0') },
-                    { subtitle: '0-1 · Losers of M1-M6', matches: groupMatches.filter((m) => m.bracket === '0-1') },
+                  { groups: [{ day: '10/3', format: 'Bo1', label: '0-0', matches: groupMatches.filter((m) => m.bracket === '0-0') }] },
+                  { groups: [
+                    { day: '10/4', format: 'Bo3', label: '1-0', matches: groupMatches.filter((m) => m.bracket === '1-0') },
+                    { day: '10/5', format: 'Bo3', label: '0-1', matches: groupMatches.filter((m) => m.bracket === '0-1') },
                   ] },
-                  { title: 'Oct.6~7 · Bo3', groups: [
-                    { subtitle: '1-1 · Losers M7-9 / Winners M10-12', matches: groupMatches.filter((m) => m.bracket === '1-1') },
-                    { subtitle: '0-2 라운드로빈 · Losers M10-12', matches: groupMatches.filter((m) => m.bracket === '0-2 RR') },
+                  { groups: [
+                    { day: '10/6', format: 'Bo3', label: '1-1', matches: groupMatches.filter((m) => m.bracket === '1-1') },
+                    { day: '10/7', format: 'Bo3', label: '0-2 RR', matches: groupMatches.filter((m) => m.bracket === '0-2 RR'), showRRStandings: true },
                   ] },
-                  { title: 'Oct.8 · Bo3', subtitle: '1-2 & 0-2 1st', matches: groupMatches.filter((m) => m.bracket === '1-2 & 0-2 1st') },
+                  { groups: [{ day: '10/8', format: 'Bo3', label: '1-2 & 0-2 1st', matches: groupMatches.filter((m) => m.bracket === '1-2 & 0-2 1st') }] },
                 ]}
                 teams={official.teams}
                 championShort={championShort}
@@ -994,9 +1057,9 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               </div>
               <DemaciaBracket
                 columns={[
-                  { title: 'Oct.12~13 · Bo5', subtitle: '8강', matches: knockoutMatches.filter((m) => m.round === '8강') },
-                  { title: 'Oct.14~15 · Bo5', subtitle: '4강', matches: knockoutMatches.filter((m) => m.round === '4강') },
-                  { title: 'Oct.17 · Bo5', subtitle: '결승', matches: knockoutMatches.filter((m) => m.round === '결승') },
+                  { groups: [{ day: '10/12~13', format: 'Bo5', label: '8강', matches: knockoutMatches.filter((m) => m.round === '8강') }] },
+                  { groups: [{ day: '10/14~15', format: 'Bo5', label: '4강', matches: knockoutMatches.filter((m) => m.round === '4강') }] },
+                  { groups: [{ day: '10/17', format: 'Bo5', label: '결승', matches: knockoutMatches.filter((m) => m.round === '결승') }] },
                 ]}
                 teams={official.teams}
                 championShort={championShort}
