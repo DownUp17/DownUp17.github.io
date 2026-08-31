@@ -1088,7 +1088,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <section>
               <div className="flex items-baseline gap-2 flex-wrap mb-4">
                 <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">온라인 그룹 스테이지</h3>
-                <span className="text-xs text-white/40">더블 엘리미네이션식 · 8팀 진출</span>
+                <span className="text-xs text-white/40">스위스 시스템(0-2: 싱글 라운드 로빈) · 8팀 진출</span>
               </div>
               <DemaciaBracket
                 columns={[
