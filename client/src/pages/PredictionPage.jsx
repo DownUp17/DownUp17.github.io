@@ -111,30 +111,38 @@ const ACTUAL_SLOT_H = 39; // 실제 슬롯(팀 한 줄) 렌더 높이 — connY 
 
 const gridSlotTop = (r) => LABEL_H + r * SLOT_H + (r >= GAP_ROW ? LABEL_H : 0);
 
-// DEMACIA 브래킷 — 컬럼당 여러 브래킷 그룹(1-0/0-1 등)을 세로로 배치. MsiSlot 재사용으로 다른 대진표와 일관.
-//   champion(GF 승자) = msi(금색), 매치 승자 = win(파랑), elim 집합 = elim(빨강).
-const DemaciaBracket = ({ columns, teams, championShort, elimSet, onTeamClick }) => {
+// DEMACIA 브래킷 — 컬럼당 여러 브래킷 그룹을 세로로 배치. MsiSlot 재사용으로 다른 대진표와 일관.
+//   msiSet(진출/우승) = 금색, 매치 승자 = 파랑, elimSet = 빨강.
+//   connectors: [srcMatchId, destMatchId, destSlot('a'|'b')] — 매치 카드 간 SVG 연결선.
+const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamClick }) => {
   const teamMap = Object.fromEntries((teams || []).map((t) => [t.slot, t]));
   const resolveShort = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
+  const wrapRef = useRef(null);
+  const [connPaths, setConnPaths] = useState([]);
+  const [svgSize, setSvgSize] = useState({ w: 0, h: 0 });
+  const matchDisplayName = (m) => m.id === 'GF' ? 'Grand Final' : m.id;
   const toSlot = (v, isWinner, score) => {
     const short = resolveShort(v);
     const slot = short ? { short } : { label: 'TBD' };
     if (short) {
-      if (championShort && short === championShort) slot.msi = true;
+      if (msiSet?.has(short)) slot.msi = true;
       else if (isWinner) slot.win = true;
       else if (elimSet?.has(short)) slot.elim = true;
     }
     if (score != null) slot.score = score;
     return slot;
   };
-  const renderMatch = (m) => {
+  const renderMatch = (m, showDate) => {
     const aShort = resolveShort(m.a), bShort = resolveShort(m.b);
     const aWin = m.winner && (m.winner === m.a || m.winner === aShort);
     const bWin = m.winner && (m.winner === m.b || m.winner === bShort);
     return (
       <div key={m.id} className="flex flex-col">
-        <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider px-0.5 mb-1">{m.id}</span>
-        <div className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
+        <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider px-0.5 mb-1 flex items-baseline gap-1.5">
+          <span>{matchDisplayName(m)}</span>
+          {showDate && m.day && <span className="text-white/30 normal-case font-normal ml-auto">{m.day.replace(/^(\d+)-(\d+)$/, '$1/$2')}</span>}
+        </span>
+        <div data-card-id={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
           <MsiSlot s={toSlot(m.a, aWin, m.scoreA)} onTeamClick={onTeamClick} />
           <div className="h-px bg-white/10" />
           <MsiSlot s={toSlot(m.b, bWin, m.scoreB)} onTeamClick={onTeamClick} />
@@ -142,6 +150,36 @@ const DemaciaBracket = ({ columns, teams, championShort, elimSet, onTeamClick })
       </div>
     );
   };
+  useLayoutEffect(() => {
+    if (!connectors?.length || !wrapRef.current) { setConnPaths([]); return; }
+    const wrap = wrapRef.current;
+    const wRect = wrap.getBoundingClientRect();
+    setSvgSize({ w: wrap.scrollWidth, h: wrap.scrollHeight });
+    const cardPos = (id) => {
+      const el = wrap.querySelector(`[data-card-id="${id}"]`);
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      const slots = el.children;
+      const slotA = slots[0]?.getBoundingClientRect();
+      const slotB = slots[2]?.getBoundingClientRect();
+      return {
+        right: r.right - wRect.left,
+        left: r.left - wRect.left,
+        cy: (r.top + r.bottom) / 2 - wRect.top,
+        aCy: slotA ? (slotA.top + slotA.bottom) / 2 - wRect.top : null,
+        bCy: slotB ? (slotB.top + slotB.bottom) / 2 - wRect.top : null,
+      };
+    };
+    const paths = [];
+    for (const [srcId, destId, destSlot] of connectors) {
+      const src = cardPos(srcId), dest = cardPos(destId);
+      if (!src || !dest) continue;
+      const y2 = destSlot === 'a' ? dest.aCy : destSlot === 'b' ? dest.bCy : dest.cy;
+      const midX = (src.right + dest.left) / 2;
+      paths.push(`M ${src.right} ${src.cy} H ${midX} V ${y2} H ${dest.left}`);
+    }
+    setConnPaths(paths);
+  }, [connectors, columns, teams, msiSet, elimSet]);
   // 라운드로빈 순위표 — 3팀이 각 2경기씩. 1위(2승)만 진출, 2·3위 탈락.
   const renderRRStandings = (matches) => {
     const parts = new Set();
@@ -169,11 +207,11 @@ const DemaciaBracket = ({ columns, teams, championShort, elimSet, onTeamClick })
           const rank = i + 1;
           const played = r ? r.w + r.l : 0;
           const completed = r && played === 2;
-          const bg = r && (championShort === r.short) ? 'rgba(232,199,126,0.16)'
+          const bg = r && msiSet?.has(r.short) ? 'rgba(232,199,126,0.16)'
                     : rank === 1 && completed ? 'rgba(96,165,250,0.14)'
                     : rank > 1 && completed ? 'rgba(248,113,113,0.18)'
                     : 'transparent';
-          const accent = r && championShort === r.short ? '#E8C77E'
+          const accent = r && msiSet?.has(r.short) ? '#E8C77E'
                         : rank === 1 && completed ? '#60A5FA'
                         : rank > 1 && completed ? '#F87171'
                         : null;
@@ -202,23 +240,33 @@ const DemaciaBracket = ({ columns, teams, championShort, elimSet, onTeamClick })
     );
   };
   return (
-    <div className="flex gap-4 overflow-x-auto pb-3 items-stretch">
+    <div ref={wrapRef} className="relative flex gap-4 overflow-x-auto pb-3 items-stretch">
       {columns.map((col, ci) => (
         <div key={ci} className="flex flex-col gap-4 shrink-0 justify-center" style={{ width: 200 }}>
           {col.groups.map((g, gi) => (
             <div key={gi} className="flex flex-col gap-2">
               <div className="text-[11px] text-white/50 font-black tracking-wider px-1 flex items-baseline gap-1.5">
-                <span>{g.day}</span>
-                <span className="text-white/40">·</span>
+                {!g.showMatchDate && <><span>{g.day}</span><span className="text-white/40">·</span></>}
                 <span>{g.format}</span>
                 {g.label && <><span className="text-white/40">·</span><span className="text-white/70">{g.label}</span></>}
               </div>
-              {g.matches.map(renderMatch)}
+              {g.matches.map((m) => renderMatch(m, g.showMatchDate))}
               {g.showRRStandings && renderRRStandings(g.matches)}
             </div>
           ))}
         </div>
       ))}
+      {connPaths.length > 0 && (
+        <svg
+          className="pointer-events-none absolute top-0 left-0"
+          width={svgSize.w} height={svgSize.h}
+          style={{ overflow: 'visible' }}
+        >
+          {connPaths.map((d, i) => (
+            <path key={i} d={d} fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth={1.5} />
+          ))}
+        </svg>
+      )}
     </div>
   );
 };
@@ -1007,18 +1055,35 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         const groupMatches = official?.group?.matches || [];
         const knockoutMatches = official?.knockout?.matches || [];
         const teamMap = Object.fromEntries((official?.teams || []).map((t) => [t.slot, t]));
+        const shortOf = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
+        const winnerShortOf = (m) => {
+          if (!m?.winner) return null;
+          const a = shortOf(m.a), b = shortOf(m.b);
+          return m.winner === m.a || m.winner === a ? a : b;
+        };
         const gfMatch = knockoutMatches.find((m) => m.id === 'GF');
-        const gfWinner = gfMatch?.winner;
-        const championShort = gfWinner && (teamMap[gfWinner]?.short || gfWinner);
-        const legend = (
+        const championShort = winnerShortOf(gfMatch);
+        const makeLegend = (goldLabel) => (
           <div className="mt-3 flex items-center gap-4 text-xs text-white/60 flex-wrap">
-            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> 우승</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> {goldLabel}</span>
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
           </div>
         );
         if (stage === '그룹 스테이지' && groupMatches.length > 0) {
           const elimSet = computeGroupEliminated(groupMatches, teamMap);
+          // 녹아웃 진출자(msi) = M7-M9, M13-M15, M19-M20 승자 + M16-M18 라운드로빈 1위(2승)
+          const msiSet = new Set();
+          ['M7','M8','M9','M13','M14','M15','M19','M20'].forEach((id) => {
+            const w = winnerShortOf(groupMatches.find((x) => x.id === id));
+            if (w) msiSet.add(w);
+          });
+          const rrWins = {};
+          for (const id of ['M16','M17','M18']) {
+            const w = winnerShortOf(groupMatches.find((x) => x.id === id));
+            if (w) rrWins[w] = (rrWins[w] || 0) + 1;
+          }
+          Object.entries(rrWins).forEach(([s, w]) => { if (w >= 2) msiSet.add(s); });
           return (
             <section>
               <div className="flex items-baseline gap-2 flex-wrap mb-4">
@@ -1039,16 +1104,17 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                   { groups: [{ day: '10/8', format: 'Bo3', label: '1-2 & 0-2 1st', matches: groupMatches.filter((m) => m.bracket === '1-2 & 0-2 1st') }] },
                 ]}
                 teams={official.teams}
-                championShort={championShort}
+                msiSet={msiSet}
                 elimSet={elimSet}
                 onTeamClick={onTeamClick}
               />
-              {legend}
+              {makeLegend('진출')}
             </section>
           );
         }
         if (stage === '녹아웃 스테이지' && knockoutMatches.length > 0) {
           const elimSet = computeKnockoutEliminated(knockoutMatches, teamMap);
+          const msiSet = new Set(); if (championShort) msiSet.add(championShort);
           return (
             <section>
               <div className="flex items-baseline gap-2 flex-wrap mb-4">
@@ -1057,16 +1123,21 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               </div>
               <DemaciaBracket
                 columns={[
-                  { groups: [{ day: '10/12~13', format: 'Bo5', label: '8강', matches: knockoutMatches.filter((m) => m.round === '8강') }] },
-                  { groups: [{ day: '10/14~15', format: 'Bo5', label: '4강', matches: knockoutMatches.filter((m) => m.round === '4강') }] },
-                  { groups: [{ day: '10/17', format: 'Bo5', label: '결승', matches: knockoutMatches.filter((m) => m.round === '결승') }] },
+                  { groups: [{ format: 'Bo5', label: '8강', matches: knockoutMatches.filter((m) => m.round === '8강'), showMatchDate: true }] },
+                  { groups: [{ format: 'Bo5', label: '4강', matches: knockoutMatches.filter((m) => m.round === '4강'), showMatchDate: true }] },
+                  { groups: [{ format: 'Bo5', label: '결승', matches: knockoutMatches.filter((m) => m.round === '결승'), showMatchDate: true }] },
                 ]}
                 teams={official.teams}
-                championShort={championShort}
+                msiSet={msiSet}
                 elimSet={elimSet}
+                connectors={[
+                  ['M21', 'M25', 'a'], ['M22', 'M25', 'b'],
+                  ['M23', 'M26', 'a'], ['M24', 'M26', 'b'],
+                  ['M25', 'GF', 'a'], ['M26', 'GF', 'b'],
+                ]}
                 onTeamClick={onTeamClick}
               />
-              {legend}
+              {makeLegend('우승')}
             </section>
           );
         }
