@@ -1509,6 +1509,49 @@ try {
   console.warn(`DEMACIA 참가팀 갱신 실패: ${e.message}`);
 }
 
+// DEMACIA 대회 정보 (그룹·플레이오프) 외부 API에서 fetch.
+//   경기 결과가 확정되면 이 API를 통해 groups/playoffs 갱신.
+try {
+  const DEMACIA_API = 'https://raw.githubusercontent.com/totaldu/demacia-data_2026/main/demacia.json';
+  const res = await fetch(DEMACIA_API);
+  if (res.ok) {
+    const api = await res.json();
+    const dem = data.standings.demacia || (data.standings.demacia = {});
+    if (Array.isArray(api.teams)) dem.teams = api.teams;
+    if (api.group) dem.group = api.group;
+    if (api.knockout) dem.knockout = api.knockout;
+    if (api.format) dem.format = api.format;
+    if (api.updatedAt) dem.apiUpdatedAt = api.updatedAt;
+    // prev 참조에 따라 매치 팀 자동 전파 (M1 승자 확정 시 M7 슬롯 자동 채움 등)
+    const all = [...(dem.group?.matches || []), ...(dem.knockout?.matches || [])];
+    const byId = Object.fromEntries(all.map((m) => [m.id, m]));
+    const resolveRef = (ref) => {
+      if (!ref || typeof ref !== 'string') return null;
+      const m = ref.match(/^(\w+):(W|L)$/); if (!m) return null;
+      const src = byId[m[1]]; if (!src || !src.winner) return null;
+      if (m[2] === 'W') return src.winner;
+      return src.winner === src.a ? src.b : src.a;
+    };
+    for (const m of all) {
+      if (!m.a && m.prev?.a) { const t = resolveRef(m.prev.a); if (t) m.a = t; }
+      if (!m.b && m.prev?.b) { const t = resolveRef(m.prev.b); if (t) m.b = t; }
+    }
+    // knockout advancing seeds → 팀 short 자동 채움
+    if (dem.group?.advancing?.seeds) {
+      for (const s of dem.group.advancing.seeds) {
+        if (!s.short) { const t = resolveRef(s.from); if (t) s.short = t; }
+      }
+    }
+    const g = dem.group?.matches?.length || 0;
+    const k = dem.knockout?.matches?.length || 0;
+    console.log(`DEMACIA API 반영: 그룹 ${g}경기 / 녹아웃 ${k}경기`);
+  } else {
+    console.warn(`DEMACIA API 접근 실패: ${res.status}`);
+  }
+} catch (e) {
+  console.warn(`DEMACIA API 갱신 실패 — 기존 값 유지: ${e.message}`);
+}
+
 data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');

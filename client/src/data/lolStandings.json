@@ -3262,7 +3262,536 @@
           "seed": "CBLOL #4",
           "label": "CBLOL #4"
         }
-      ]
+      ],
+      "groups": [],
+      "playoffs": {
+        "matches": []
+      },
+      "format": "온라인 그룹 스테이지 (더블 엘리미네이션식) → 오프라인 녹아웃 (8팀 싱글 엘리미네이션 Bo5)",
+      "apiUpdatedAt": "2026-08-31T00:00:00Z",
+      "teams": [
+        {
+          "slot": "TEAM1",
+          "seed": "LPL #5",
+          "short": null
+        },
+        {
+          "slot": "TEAM2",
+          "seed": "LPL #6",
+          "short": null
+        },
+        {
+          "slot": "TEAM3",
+          "seed": "LPL #7",
+          "short": null
+        },
+        {
+          "slot": "TEAM4",
+          "seed": "LCK #5",
+          "short": null
+        },
+        {
+          "slot": "TEAM5",
+          "seed": "LCK #6",
+          "short": null
+        },
+        {
+          "slot": "TEAM6",
+          "seed": "LCK #7",
+          "short": null
+        },
+        {
+          "slot": "TEAM7",
+          "seed": "LEC #4",
+          "short": null
+        },
+        {
+          "slot": "TEAM8",
+          "seed": "LEC #5",
+          "short": null
+        },
+        {
+          "slot": "TEAM9",
+          "seed": "LCS #4",
+          "short": null
+        },
+        {
+          "slot": "TEAM10",
+          "seed": "LCS #5",
+          "short": null
+        },
+        {
+          "slot": "TEAM11",
+          "seed": "LCP #4",
+          "short": null
+        },
+        {
+          "slot": "TEAM12",
+          "seed": "CBLOL #4",
+          "short": null
+        }
+      ],
+      "group": {
+        "matches": [
+          {
+            "id": "M1",
+            "day": "10-03",
+            "format": "Bo1",
+            "bracket": "0-0",
+            "a": "TEAM1",
+            "b": "TEAM2",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M2",
+            "day": "10-03",
+            "format": "Bo1",
+            "bracket": "0-0",
+            "a": "TEAM3",
+            "b": "TEAM4",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M3",
+            "day": "10-03",
+            "format": "Bo1",
+            "bracket": "0-0",
+            "a": "TEAM5",
+            "b": "TEAM6",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M4",
+            "day": "10-03",
+            "format": "Bo1",
+            "bracket": "0-0",
+            "a": "TEAM7",
+            "b": "TEAM8",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M5",
+            "day": "10-03",
+            "format": "Bo1",
+            "bracket": "0-0",
+            "a": "TEAM9",
+            "b": "TEAM10",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M6",
+            "day": "10-03",
+            "format": "Bo1",
+            "bracket": "0-0",
+            "a": "TEAM11",
+            "b": "TEAM12",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M7",
+            "day": "10-04",
+            "format": "Bo3",
+            "bracket": "1-0",
+            "prev": {
+              "a": "M1:W",
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M8",
+            "day": "10-04",
+            "format": "Bo3",
+            "bracket": "1-0",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M9",
+            "day": "10-04",
+            "format": "Bo3",
+            "bracket": "1-0",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M10",
+            "day": "10-05",
+            "format": "Bo3",
+            "bracket": "0-1",
+            "prev": {
+              "a": "M1:L",
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M11",
+            "day": "10-05",
+            "format": "Bo3",
+            "bracket": "0-1",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M12",
+            "day": "10-05",
+            "format": "Bo3",
+            "bracket": "0-1",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M13",
+            "day": "10-06",
+            "format": "Bo3",
+            "bracket": "1-1",
+            "prev": {
+              "a": "M7:L",
+              "b": "M10:W"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M14",
+            "day": "10-06",
+            "format": "Bo3",
+            "bracket": "1-1",
+            "prev": {
+              "a": "M8:L",
+              "b": "M11:W"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M15",
+            "day": "10-06",
+            "format": "Bo3",
+            "bracket": "1-1",
+            "prev": {
+              "a": "M9:L",
+              "b": "M12:W"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M16",
+            "day": "10-07",
+            "format": "Bo3",
+            "bracket": "0-2 RR",
+            "prev": {
+              "a": "M10:L",
+              "b": "M11:L"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M17",
+            "day": "10-07",
+            "format": "Bo3",
+            "bracket": "0-2 RR",
+            "prev": {
+              "a": "M10:L",
+              "b": "M12:L"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M18",
+            "day": "10-07",
+            "format": "Bo3",
+            "bracket": "0-2 RR",
+            "prev": {
+              "a": "M11:L",
+              "b": "M12:L"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M19",
+            "day": "10-08",
+            "format": "Bo3",
+            "bracket": "1-2 & 0-2 1st",
+            "prev": {
+              "a": "M13:L",
+              "b": "M16-18:#1"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M20",
+            "day": "10-08",
+            "format": "Bo3",
+            "bracket": "1-2 & 0-2 1st",
+            "prev": {
+              "a": "M14:L",
+              "b": "M15:L"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          }
+        ],
+        "advancing": {
+          "note": "8팀 진출: M7-M9 승자 3팀 (1-0) + M13-M15 승자 3팀 (1-1) + M19-M20 승자 2팀 (1-2 & 0-2 1st). 탈락: M16-M18 2·3위 + M19-M20 패자.",
+          "seeds": [
+            {
+              "seed": 1,
+              "from": "M7:W",
+              "short": null
+            },
+            {
+              "seed": 2,
+              "from": "M8:W",
+              "short": null
+            },
+            {
+              "seed": 3,
+              "from": "M9:W",
+              "short": null
+            },
+            {
+              "seed": 4,
+              "from": "M13:W",
+              "short": null
+            },
+            {
+              "seed": 5,
+              "from": "M14:W",
+              "short": null
+            },
+            {
+              "seed": 6,
+              "from": "M15:W",
+              "short": null
+            },
+            {
+              "seed": 7,
+              "from": "M19:W",
+              "short": null
+            },
+            {
+              "seed": 8,
+              "from": "M20:W",
+              "short": null
+            }
+          ]
+        }
+      },
+      "knockout": {
+        "matches": [
+          {
+            "id": "M21",
+            "day": "10-12",
+            "format": "Bo5",
+            "round": "8강",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M22",
+            "day": "10-12",
+            "format": "Bo5",
+            "round": "8강",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M23",
+            "day": "10-13",
+            "format": "Bo5",
+            "round": "8강",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M24",
+            "day": "10-13",
+            "format": "Bo5",
+            "round": "8강",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M25",
+            "day": "10-14",
+            "format": "Bo5",
+            "round": "4강",
+            "prev": {
+              "a": "M21:W",
+              "b": "M22:W"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M26",
+            "day": "10-15",
+            "format": "Bo5",
+            "round": "4강",
+            "prev": {
+              "a": "M23:W",
+              "b": "M24:W"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "GF",
+            "day": "10-17",
+            "format": "Bo5",
+            "round": "결승",
+            "prev": {
+              "a": "M25:W",
+              "b": "M26:W"
+            },
+            "a": null,
+            "b": null,
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          }
+        ]
+      }
     }
   }
 }

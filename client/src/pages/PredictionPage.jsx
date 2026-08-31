@@ -111,6 +111,62 @@ const ACTUAL_SLOT_H = 39; // 실제 슬롯(팀 한 줄) 렌더 높이 — connY 
 
 const gridSlotTop = (r) => LABEL_H + r * SLOT_H + (r >= GAP_ROW ? LABEL_H : 0);
 
+// DEMACIA 그룹/녹아웃 스테이지 렌더링 — 컬럼별 매치 카드 나열
+const DemaciaBracket = ({ columns, teams, onTeamClick, logoByShort, nameByShort }) => {
+  const teamMap = Object.fromEntries((teams || []).map((t) => [t.slot, t]));
+  const shortOf = (v) => (v && teamMap[v]?.short) || v; // TEAM1 → 실제 short, 이미 short면 그대로
+  const displayOf = (v) => {
+    if (!v) return 'TBD';
+    const t = teamMap[v];
+    if (t?.short) return nameByShort?.[t.short] || t.short;
+    if (t) return t.seed || v;
+    return nameByShort?.[v] || v;
+  };
+  const logoOf = (v) => { const s = shortOf(v); return s && logoByShort?.[s]; };
+  return (
+    <div className="flex gap-3 overflow-x-auto pb-2">
+      {columns.map((col, ci) => (
+        <div key={ci} className="flex flex-col gap-2 shrink-0" style={{ width: 200 }}>
+          <div className="text-[11px] text-white/40 font-bold px-1">
+            {col.title}
+            {col.subtitle && <span className="text-white/25 font-normal ml-1">· {col.subtitle}</span>}
+          </div>
+          <div className="flex flex-col gap-2">
+            {col.matches.map((m) => {
+              const aShort = shortOf(m.a);
+              const bShort = shortOf(m.b);
+              const aWin = m.winner && (m.winner === m.a || m.winner === aShort);
+              const bWin = m.winner && (m.winner === m.b || m.winner === bShort);
+              const slot = (v, isWin, score) => (
+                <div
+                  onClick={() => v && aShort && onTeamClick?.(shortOf(v))}
+                  className={`flex items-center gap-1.5 px-2 py-1.5 rounded ${isWin ? 'bg-[#E8C77E]/15' : 'bg-white/5'} ${v ? 'cursor-pointer hover:bg-white/10' : ''}`}
+                >
+                  {logoOf(v) && <TeamLogo src={logoOf(v)} size={16} />}
+                  <span className={`text-xs truncate flex-1 ${isWin ? 'font-bold text-white' : 'text-white/70'}`}>{displayOf(v)}</span>
+                  {score != null && <span className={`font-mono tabular-nums text-xs ${isWin ? 'text-[#E8C77E] font-bold' : 'text-white/40'}`}>{score}</span>}
+                </div>
+              );
+              return (
+                <div key={m.id} className="rounded-lg border border-white/10 bg-white/[0.02] p-1.5">
+                  <div className="flex items-center justify-between px-1 mb-1">
+                    <span className="text-[10px] text-white/40 font-bold">{m.id}</span>
+                    <span className="text-[10px] text-white/30">{m.format}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    {slot(m.a, aWin, m.scoreA)}
+                    {slot(m.b, bWin, m.scoreB)}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick, groupGap = false }) => {
   const useGrid = !!totalRows;
   const colH = useGrid ? gridSlotTop(totalRows - 1) + 2 * ACTUAL_SLOT_H + 2 : undefined;
@@ -841,6 +897,63 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
           </div>
           <MsiBracket rounds={official[lplCfg.bracketKey].rounds} totalRows={official[lplCfg.bracketKey].totalRows} connectors={official[lplCfg.bracketKey].connectors} onTeamClick={onTeamClick} />
+        </section>
+      )}
+
+      {/* DEMACIA 그룹/녹아웃 스테이지 */}
+      {comp.key === 'demacia' && stage === '그룹 스테이지' && official?.group?.matches?.length > 0 && (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">온라인 그룹 스테이지</h3>
+            <span className="text-xs text-white/40">더블 엘리미네이션식 · 8팀 진출</span>
+          </div>
+          <DemaciaBracket
+            columns={[
+              { title: '10-03 · Bo1', subtitle: '0-0', matches: official.group.matches.filter((m) => m.bracket === '0-0') },
+              { title: '10-04 · Bo3', subtitle: '1-0 · Winners of M1-M6', matches: official.group.matches.filter((m) => m.bracket === '1-0') },
+              { title: '10-05 · Bo3', subtitle: '0-1 · Losers of M1-M6', matches: official.group.matches.filter((m) => m.bracket === '0-1') },
+              { title: '10-06 · Bo3', subtitle: '1-1 · Losers M7-9 / Winners M10-12', matches: official.group.matches.filter((m) => m.bracket === '1-1') },
+              { title: '10-07 · Bo3', subtitle: '0-2 라운드로빈 · Losers M10-12', matches: official.group.matches.filter((m) => m.bracket === '0-2 RR') },
+              { title: '10-08 · Bo3', subtitle: '1-2 & 0-2 1st', matches: official.group.matches.filter((m) => m.bracket === '1-2 & 0-2 1st') },
+            ]}
+            teams={official.teams}
+            logoByShort={logoByShort}
+            nameByShort={nameByShort}
+            onTeamClick={onTeamClick}
+          />
+          {official.group.advancing?.seeds && (
+            <div className="mt-4 text-xs text-white/50">
+              <div className="font-bold text-white/70 mb-1">녹아웃 진출 시드</div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
+                {official.group.advancing.seeds.map((s) => (
+                  <div key={s.seed} className="flex items-center gap-1.5">
+                    <span className="text-white/40 text-[10px] w-6">#{s.seed}</span>
+                    <span className="text-white/60 text-[10px]">{s.from}</span>
+                    <span className="text-white/80 ml-auto">{s.short || 'TBD'}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+      {comp.key === 'demacia' && stage === '녹아웃 스테이지' && official?.knockout?.matches?.length > 0 && (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">오프라인 녹아웃 스테이지</h3>
+            <span className="text-xs text-white/40">싱글 엘리미네이션 · Bo5</span>
+          </div>
+          <DemaciaBracket
+            columns={[
+              { title: '10-12~13 · Bo5', subtitle: '8강', matches: official.knockout.matches.filter((m) => m.round === '8강') },
+              { title: '10-14~15 · Bo5', subtitle: '4강', matches: official.knockout.matches.filter((m) => m.round === '4강') },
+              { title: '10-17 · Bo5', subtitle: '결승', matches: official.knockout.matches.filter((m) => m.round === '결승') },
+            ]}
+            teams={official.teams}
+            logoByShort={logoByShort}
+            nameByShort={nameByShort}
+            onTeamClick={onTeamClick}
+          />
         </section>
       )}
 
