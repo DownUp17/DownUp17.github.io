@@ -1442,88 +1442,21 @@ try {
   console.warn(`LPL Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
 
-// DEMACIA 참가팀 자동 채움 — 각 리그 정규시즌 순위/LPL 챔피언십 포인트에서 시드에 맞는 팀 조회.
-//   팀이 데이터에 있으면 short로, 없으면 기존 label 유지.
-try {
-  const dem = data.standings.demacia;
-  if (dem?.qualifiers?.length) {
-    // 각 리그별 정규시즌 sub 우선순위 (뒤에 최신 sub)
-    const SUB_PRIORITY = {
-      lck: ['LCK'], lpl: ['Split 3'],
-      lec: ['Summer', 'Spring'], lcs: ['Summer', 'Spring'],
-      lcp: ['Split 3', 'Split 2'], cblol: ['Split 2', 'Split 1'],
-    };
-    const rowsFor = (leagueKey) => {
-      const lg = data.standings[leagueKey]; if (!lg) return [];
-      for (const sub of SUB_PRIORITY[leagueKey] || []) if (lg[sub]?.rows?.length) return lg[sub].rows;
-      return [];
-    };
-    const teamAtRank = (rows, rank) => rows.find((r) => r.rank === rank)?.team;
-    // LCK 최종 순위 (5·6·7위): 플레이오프 LB R2/R1 패자, 플레이-인 파이널 패자.
-    //   미확정이면 null. 정규시즌 통합 순위(BRO가 6위, NS가 7위 등)와 다르므로 최종 순위 기준 사용.
-    const winnerLoserOf = (m) => {
-      if (!m) return {};
-      if (m.a?.win || m.a?.msi) return { w: m.a.short, l: m.b?.short };
-      if (m.b?.win || m.b?.msi) return { w: m.b.short, l: m.a?.short };
-      if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) {
-        const aBig = m.a.score > m.b.score;
-        return { w: aBig ? m.a.short : m.b.short, l: aBig ? m.b.short : m.a.short };
-      }
-      return {};
-    };
-    const lckPO = data.standings.lck?.LCK?.playoffs, lckPI = data.standings.lck?.LCK?.playin;
-    // playoffs 매치 인덱스: col0 m2 = LB R1, col1 m2 = LB R2
-    const lck5 = winnerLoserOf(lckPO?.rounds?.[1]?.matches?.[2]).l; // LB R2 패자 = 5위
-    const lck6 = winnerLoserOf(lckPO?.rounds?.[0]?.matches?.[2]).l; // LB R1 패자 = 6위
-    const lck7 = winnerLoserOf(lckPI?.rounds?.[2]?.matches?.[0]).l; // 플레이-인 파이널 패자 = 7위
-    // LPL: 대표 선발전 결과 + 챔피언십 포인트로 DEMACIA 진출팀 결정
-    //   LPL #5 = 대표 선발전 2라운드 패자, #6 = 1라운드 M2 패자, #7 = 챔피언십 포인트 누적 7위
-    const lplRQ = data.standings.lpl?.['대표 선발전']?.qualifier;
-    const lpl5 = winnerLoserOf(lplRQ?.rounds?.[1]?.matches?.[0]).l; // 2R 패자
-    const lpl6 = winnerLoserOf(lplRQ?.rounds?.[0]?.matches?.[1]).l; // 1R M2 패자
-    const lplPts = data.standings.lpl?.['대표 선발전']?.points || [];
-    // 챔피언십 포인트 7위 = LPL #7. Split 3 종료 후에만 확정.
-    //   대표 선발전 데이터는 시즌 전에도 뿌려질 수 있으므로 매치가 실제 완료된 것이 있는지로 판단.
-    const rqPlayed = (lplRQ?.rounds || []).some((r) => (r.matches || []).some((m) => (
-      m.a?.win || m.b?.win || m.a?.msi || m.b?.msi ||
-      (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score)
-    )));
-    const lpl7 = rqPlayed ? lplPts[6]?.team : null;
-    const lecRows = rowsFor('lec');
-    const lcsRows = rowsFor('lcs');
-    const lcpRows = rowsFor('lcp');
-    const cblolRows = rowsFor('cblol');
-    const seedMap = {
-      'LPL #5': lpl5, 'LPL #6': lpl6, 'LPL #7': lpl7,
-      'LCK #5': lck5, 'LCK #6': lck6, 'LCK #7': lck7,
-      'LEC #4': teamAtRank(lecRows, 4), 'LEC #5': teamAtRank(lecRows, 5),
-      'LCS #4': teamAtRank(lcsRows, 4), 'LCS #5': teamAtRank(lcsRows, 5),
-      'LCP #4': teamAtRank(lcpRows, 4),
-      'CBLOL #4': teamAtRank(cblolRows, 4),
-    };
-    let filled = 0;
-    for (const q of dem.qualifiers) {
-      const key = q.label || q.seed;
-      const team = seedMap[key];
-      q.seed = key;
-      if (team) { q.short = team; delete q.label; filled++; }
-      else if (q.short) { q.label = key; delete q.short; } // 규칙에 맞지 않게 채워진 팀 복원
-    }
-    console.log(`DEMACIA 참가팀 자동 채움: ${filled}/${dem.qualifiers.length}팀`);
-  }
-} catch (e) {
-  console.warn(`DEMACIA 참가팀 갱신 실패: ${e.message}`);
-}
-
-// DEMACIA 대회 정보 (그룹·플레이오프) 외부 API에서 fetch.
-//   경기 결과가 확정되면 이 API를 통해 groups/playoffs 갱신.
+// DEMACIA 대회 정보 (참가팀·그룹·녹아웃) 외부 API에서 fetch.
+//   참가팀 short는 사용자가 demacia-data_2026 리포지토리에서 직접 관리.
 try {
   const DEMACIA_API = 'https://raw.githubusercontent.com/totaldu/demacia-data_2026/main/demacia.json';
   const res = await fetch(DEMACIA_API);
   if (res.ok) {
     const api = await res.json();
     const dem = data.standings.demacia || (data.standings.demacia = {});
-    if (Array.isArray(api.teams)) dem.teams = api.teams;
+    if (Array.isArray(api.teams)) {
+      dem.teams = api.teams;
+      // qualifiers는 API teams에서 파생: short 있으면 팀 표시, 없으면 시드 라벨.
+      dem.qualifiers = api.teams.map((t) => (
+        t.short ? { seed: t.seed, short: t.short } : { seed: t.seed, label: t.seed }
+      ));
+    }
     if (api.group) dem.group = api.group;
     if (api.knockout) dem.knockout = api.knockout;
     if (api.format) dem.format = api.format;

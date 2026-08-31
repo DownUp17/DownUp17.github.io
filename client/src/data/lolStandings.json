@@ -3235,12 +3235,12 @@
           "label": "LCK #6"
         },
         {
-          "short": "BRO",
-          "seed": "LCK #7"
+          "seed": "LCK #7",
+          "label": "LCK #7"
         },
         {
-          "short": "GX",
-          "seed": "LEC #4"
+          "seed": "LEC #4",
+          "label": "LEC #4"
         },
         {
           "seed": "LEC #5",
@@ -3252,15 +3252,15 @@
         },
         {
           "seed": "LCS #5",
-          "short": "SR"
+          "label": "LCS #5"
         },
         {
-          "short": "SHG",
-          "seed": "LCP #4"
+          "seed": "LCP #4",
+          "label": "LCP #4"
         },
         {
           "seed": "CBLOL #4",
-          "short": "FUR"
+          "label": "CBLOL #4"
         }
       ],
       "groups": [],
