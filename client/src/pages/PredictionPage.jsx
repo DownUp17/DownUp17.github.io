@@ -239,10 +239,13 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
       </div>
     );
   };
+  // 싱글 엘리미네이션 그리드: 카드 2행 span, 라운드가 진행될수록 시작 위치가 중앙으로 오도록 계산
+  //   Round k, match i → gridStart = 2^k + i * 2^(k+1). 총 rows = 2 * (첫 라운드 매치 수).
+  const SLOT_H_D = 46, ROW_GAP_D = 8;
   return (
     <div ref={wrapRef} className="relative flex gap-4 overflow-x-auto pb-3 items-stretch">
       {columns.map((col, ci) => (
-        <div key={ci} className="flex flex-col gap-4 shrink-0 justify-center" style={{ width: 200 }}>
+        <div key={ci} className={`flex flex-col shrink-0 ${col.gridRows ? 'gap-2' : 'gap-4 justify-center'}`} style={{ width: 200 }}>
           {col.groups.map((g, gi) => (
             <div key={gi} className="flex flex-col gap-2">
               <div className="text-[11px] text-white/50 font-black tracking-wider px-1 flex items-baseline gap-1.5">
@@ -250,8 +253,20 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
                 <span>{g.format}</span>
                 {g.label && <><span className="text-white/40">·</span><span className="text-white/70">{g.label}</span></>}
               </div>
-              {g.matches.map((m) => renderMatch(m, g.showMatchDate))}
-              {g.showRRStandings && renderRRStandings(g.matches)}
+              {col.gridRows ? (
+                <div className="grid" style={{ gridTemplateRows: `repeat(${col.gridRows}, ${SLOT_H_D}px)`, rowGap: `${ROW_GAP_D}px` }}>
+                  {g.matches.map((m) => (
+                    <div key={m.id} style={{ gridRow: `${m.gridStart} / span 2` }}>
+                      {renderMatch(m, g.showMatchDate)}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <>
+                  {g.matches.map((m) => renderMatch(m, g.showMatchDate))}
+                  {g.showRRStandings && renderRRStandings(g.matches)}
+                </>
+              )}
             </div>
           ))}
         </div>
@@ -1115,6 +1130,24 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         if (stage === '녹아웃 스테이지' && knockoutMatches.length > 0) {
           const elimSet = computeKnockoutEliminated(knockoutMatches, teamMap);
           const msiSet = new Set(); if (championShort) msiSet.add(championShort);
+          // 싱글 엘리미네이션 라운드 정의 (라운드 순 → 매치 리스트). 각 라운드 매치는
+          //   gridStart = 2^roundIdx + i * 2^(roundIdx+1) 규칙으로 상위 라운드가 중앙에 정렬.
+          const rounds = [
+            { label: '8강',   matches: knockoutMatches.filter((m) => m.round === '8강') },
+            { label: '4강',   matches: knockoutMatches.filter((m) => m.round === '4강') },
+            { label: '결승',  matches: knockoutMatches.filter((m) => m.round === '결승') },
+          ];
+          const firstCount = rounds[0].matches.length;
+          const gridRows = firstCount * 2;
+          const columns = rounds.map((r, ri) => ({
+            gridRows,
+            groups: [{
+              format: 'Bo5',
+              label: r.label,
+              matches: r.matches.map((m, i) => ({ ...m, gridStart: Math.pow(2, ri) + i * Math.pow(2, ri + 1) })),
+              showMatchDate: true,
+            }],
+          }));
           return (
             <section>
               <div className="flex items-baseline gap-2 flex-wrap mb-4">
@@ -1122,11 +1155,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                 <span className="text-xs text-white/40">싱글 엘리미네이션 · Bo5</span>
               </div>
               <DemaciaBracket
-                columns={[
-                  { groups: [{ format: 'Bo5', label: '8강', matches: knockoutMatches.filter((m) => m.round === '8강'), showMatchDate: true }] },
-                  { groups: [{ format: 'Bo5', label: '4강', matches: knockoutMatches.filter((m) => m.round === '4강'), showMatchDate: true }] },
-                  { groups: [{ format: 'Bo5', label: '결승', matches: knockoutMatches.filter((m) => m.round === '결승'), showMatchDate: true }] },
-                ]}
+                columns={columns}
                 teams={official.teams}
                 msiSet={msiSet}
                 elimSet={elimSet}
