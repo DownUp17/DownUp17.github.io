@@ -1482,9 +1482,13 @@ try {
     const lpl5 = winnerLoserOf(lplRQ?.rounds?.[1]?.matches?.[0]).l; // 2R 패자
     const lpl6 = winnerLoserOf(lplRQ?.rounds?.[0]?.matches?.[1]).l; // 1R M2 패자
     const lplPts = data.standings.lpl?.['대표 선발전']?.points || [];
-    // 챔피언십 포인트 7위 = LPL #7. Split 3 정규시즌 종료 후에만 확정.
-    //   대표 선발전 자체가 Split 3 정규 종료 후 시작되므로 lplRQ 존재로 판단.
-    const lpl7 = lplRQ ? lplPts[6]?.team : null;
+    // 챔피언십 포인트 7위 = LPL #7. Split 3 종료 후에만 확정.
+    //   대표 선발전 데이터는 시즌 전에도 뿌려질 수 있으므로 매치가 실제 완료된 것이 있는지로 판단.
+    const rqPlayed = (lplRQ?.rounds || []).some((r) => (r.matches || []).some((m) => (
+      m.a?.win || m.b?.win || m.a?.msi || m.b?.msi ||
+      (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score)
+    )));
+    const lpl7 = rqPlayed ? lplPts[6]?.team : null;
     const lecRows = rowsFor('lec');
     const lcsRows = rowsFor('lcs');
     const lcpRows = rowsFor('lcp');

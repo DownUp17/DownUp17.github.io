@@ -1064,6 +1064,52 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
+      {/* DEMACIA 참가 팀 — 대진표 위에 배치. 녹아웃 스테이지에서는 진출 8팀만 표시. */}
+      {(() => {
+        if (comp.key !== 'demacia' || !qualifiers?.length) return null;
+        const gm = official?.group?.matches || [];
+        const teamMap = Object.fromEntries((official?.teams || []).map((t) => [t.slot, t]));
+        const shortOf = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
+        const winnerShortOf = (m) => {
+          if (!m?.winner) return null;
+          const a = shortOf(m.a), b = shortOf(m.b);
+          return m.winner === m.a || m.winner === a ? a : b;
+        };
+        const advancing = new Set();
+        ['M7','M8','M9','M13','M14','M15','M19','M20'].forEach((id) => {
+          const w = winnerShortOf(gm.find((x) => x.id === id));
+          if (w) advancing.add(w);
+        });
+        const rrWins = {};
+        for (const id of ['M16','M17','M18']) {
+          const w = winnerShortOf(gm.find((x) => x.id === id));
+          if (w) rrWins[w] = (rrWins[w] || 0) + 1;
+        }
+        Object.entries(rrWins).forEach(([s, w]) => { if (w >= 2) advancing.add(s); });
+        const list = stage === '녹아웃 스테이지' ? qualifiers.filter((q) => q.short && advancing.has(q.short)) : qualifiers;
+        if (!list.length) return null;
+        return (
+          <section className="flex flex-col gap-3">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {list.map((q, i) => (
+                <div key={i} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+                  {q.short ? (
+                    <>
+                      <TeamLogo src={logoByShort[q.short]} size={20} />
+                      <span className="font-bold truncate text-white/90">{nameByShort[q.short] || q.short}</span>
+                      {q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
+                    </>
+                  ) : (
+                    <span className="text-white/55 truncate">{q.label || q.seed}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
       {/* DEMACIA 그룹/녹아웃 스테이지 — 다른 대진표와 일관된 카드/색상 규칙 사용 */}
       {(() => {
         if (comp.key !== 'demacia') return null;
@@ -1263,8 +1309,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
-      {/* 참가 팀 (MSI 스테이지) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트 */}
-      {qualifiers?.length > 0 && (
+      {/* 참가 팀 (MSI 스테이지) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트. DEMACIA는 별도 렌더링으로 대진표 위에 배치. */}
+      {qualifiers?.length > 0 && comp.key !== 'demacia' && (
         <section className="flex flex-col gap-3">
           <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
