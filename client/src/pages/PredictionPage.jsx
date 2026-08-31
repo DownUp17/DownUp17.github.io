@@ -243,7 +243,7 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
   //   Round k, match i → gridStart = 2^k + i * 2^(k+1). 총 rows = 2 * (첫 라운드 매치 수).
   const SLOT_H_D = 46, ROW_GAP_D = 8;
   return (
-    <div ref={wrapRef} className="relative flex gap-4 overflow-x-auto pb-3 items-stretch">
+    <div ref={wrapRef} className="relative flex gap-4 items-stretch w-fit pb-3">
       {columns.map((col, ci) => (
         <div key={ci} className={`flex flex-col shrink-0 ${col.gridRows ? 'gap-2' : 'gap-4 justify-center'}`} style={{ width: 200 }}>
           {col.groups.map((g, gi) => (
