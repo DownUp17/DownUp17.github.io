@@ -1145,8 +1145,8 @@ try {
       'CBLOL #1': null, 'CBLOL #2': null,
     };
     // 참가팀 순서: 스위스 직행 15팀 → 플레이-인 4팀. UI에서 두 그룹으로 나눠 표기.
-    const swissSeeds = ['LCK #1','LCK #2','LCK #3','LCK #4','LPL #1','LPL #2','LPL #3','LEC #1','LEC #2','LCS #1','LCS #2','LCP #1','LCP #2','CBLOL #1','CBLOL #2'];
-    const playinSeeds = ['LPL #4','LCS #3','LEC #3','LCP #3'];
+    const swissSeeds = ['LCK #1','LCK #2','LCK #3','LCK #4','LPL #1','LPL #2','LPL #3','LPL #4','LEC #1','LEC #2','LCS #1','LCS #2','LCP #1','LCP #2','CBLOL #1'];
+    const playinSeeds = ['LCS #3','LEC #3','LCP #3','CBLOL #2'];
     const buildQ = (seeds, stage) => seeds.map((seed) => {
       const team = seedMap[seed];
       return team ? { seed, short: team, stage } : { seed, label: seed, stage };
@@ -1279,8 +1279,8 @@ try {
       lab(ubR2M1.a, '레전드 1위'); lab(ubR2M1.b, 'UB R1 승자');
       lab(ubR2M2.a, '레전드 2위'); lab(ubR2M2.b, 'UB R1 승자');
       lab(lbR1.a, 'UB R1 패자'); lab(lbR1.b, 'UB R1 패자');
-      lab(lbR2.a, 'UB R2 패자 (하위 시드)'); lab(lbR2.b, 'LB R1 승자');
-      lab(lbR3.a, 'UB R2 패자 (상위 시드)'); lab(lbR3.b, 'LB R2 승자');
+      lab(lbR2.a, 'UB R2 패자'); lab(lbR2.b, 'LB R1 승자');
+      lab(lbR3.a, 'UB R2 패자'); lab(lbR3.b, 'LB R2 승자');
       lab(ubR3.a, 'UB R2 승자'); lab(ubR3.b, 'UB R2 승자');
       lab(lowerFinals.a, 'UB R3 패자'); lab(lowerFinals.b, 'LB R3 승자');
       lab(grandFinals.a, 'UB R3 승자'); lab(grandFinals.b, '결승 진출전 승자');

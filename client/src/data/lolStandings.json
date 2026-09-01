@@ -1266,7 +1266,7 @@
                   "id": "117030752644841625",
                   "title": "LB R2",
                   "a": {
-                    "seed": "UB R2 패자 (하위 시드)"
+                    "seed": "UB R2 패자"
                   },
                   "b": {
                     "seed": "LB R1 승자"
@@ -1296,7 +1296,7 @@
                   "id": "117030752644841631",
                   "title": "LB R3",
                   "a": {
-                    "seed": "UB R2 패자 (상위 시드)"
+                    "seed": "UB R2 패자"
                   },
                   "b": {
                     "seed": "LB R2 승자"
@@ -3837,6 +3837,11 @@
           "stage": "swiss"
         },
         {
+          "seed": "LPL #4",
+          "label": "LPL #4",
+          "stage": "swiss"
+        },
+        {
           "seed": "LEC #1",
           "label": "LEC #1",
           "stage": "swiss"
@@ -3872,16 +3877,6 @@
           "stage": "swiss"
         },
         {
-          "seed": "CBLOL #2",
-          "label": "CBLOL #2",
-          "stage": "swiss"
-        },
-        {
-          "seed": "LPL #4",
-          "label": "LPL #4",
-          "stage": "playin"
-        },
-        {
           "seed": "LCS #3",
           "label": "LCS #3",
           "stage": "playin"
@@ -3894,6 +3889,11 @@
         {
           "seed": "LCP #3",
           "short": "MVK",
+          "stage": "playin"
+        },
+        {
+          "seed": "CBLOL #2",
+          "label": "CBLOL #2",
           "stage": "playin"
         }
       ],
