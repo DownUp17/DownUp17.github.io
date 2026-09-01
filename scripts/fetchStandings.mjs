@@ -1027,6 +1027,107 @@ try {
   console.warn(`LCP Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
 
+// 4-2단계: 2026 Worlds — 플레이-인 · 스위스 · 녹아웃 3단계를 lolesports API에서 fetch.
+//   대진이 확정되면 API에 데이터가 뜨므로 별도 리포지토리 없이 자동 갱신.
+try {
+  const WORLDS_2026_TOURNAMENT = '115660540725177488';
+  const j = await api('getStandingsV3', { tournamentId: WORLDS_2026_TOURNAMENT });
+  const st = j.data?.standings?.[0];
+  if (st?.stages) {
+    const bySlug = {};
+    for (const s of st.stages) {
+      const cols = s.sections?.[0]?.columns || [];
+      bySlug[s.slug] = bracketFromColumns(cols);
+    }
+    // 스위스 스테이지: 16팀 first-to-3 (라운드별 8·8·8·6·2경기).
+    const SWISS_RECORDS_16 = [
+      ['0-0','0-0','0-0','0-0','0-0','0-0','0-0','0-0'],
+      ['1-0','1-0','1-0','1-0','0-1','0-1','0-1','0-1'],
+      ['2-0','2-0','1-1','1-1','1-1','1-1','0-2','0-2'],
+      ['2-1','2-1','2-1','2-1','1-2','1-2'],
+      ['2-2','2-2'],
+    ];
+    const recLabel = (r) => { const [w, l] = r.split('-'); return `${w}승 ${l}패`; };
+    const swiss = bySlug['swiss'];
+    if (swiss) {
+      const wl = {};
+      swiss.rounds.forEach((round, ri) => {
+        round.title = `${ri + 1}라운드`;
+        round.matches.forEach((m, mi) => {
+          const structRec = SWISS_RECORDS_16[ri]?.[mi];
+          if (structRec) m.title = recLabel(structRec);
+          else { const s = m.a?.short || m.b?.short; const r = (s && wl[s]) || { w: 0, l: 0 }; m.title = s ? `${r.w}승 ${r.l}패` : ''; }
+          m.recordKey = structRec || '';
+          delete m.a?.msi; delete m.a?.elim; delete m.b?.msi; delete m.b?.elim;
+          if (m.a?.short && m.b?.short && m.a.score != null && m.b.score != null && m.a.score !== m.b.score) {
+            const aWin = m.a.score > m.b.score;
+            const winner = aWin ? m.a : m.b, loser = aWin ? m.b : m.a;
+            wl[winner.short] = wl[winner.short] || { w: 0, l: 0 };
+            wl[loser.short] = wl[loser.short] || { w: 0, l: 0 };
+            wl[winner.short].w++; wl[loser.short].l++;
+            winner.win = true;
+            if (wl[loser.short].l >= 3) loser.elim = true;
+          }
+        });
+      });
+    }
+    // Worlds 참가팀 시드 라벨 (LCK 4 + LPL 4 + LEC 3 + LCS 3 + LCP 3 + CBLOL 2 = 19팀).
+    //   플레이-인 4팀: LPL#4, LCS#3, LEC#3, LCP#3. 나머지 15팀은 스위스 직행.
+    //   각 리그 최종 순위에서 자동 채움. LPL은 대회별 세부 규칙 반영, LCP는 대회 규정으로 하드코딩.
+    const SUB_PRIORITY = {
+      lck: ['LCK'], lpl: ['Split 3'],
+      lec: ['Summer', 'Spring'], lcs: ['Summer', 'Spring'],
+      lcp: ['Split 3', 'Split 2'], cblol: ['Split 2', 'Split 1'],
+    };
+    const rowsFor = (k) => { const lg = data.standings[k]; if (!lg) return []; for (const sub of SUB_PRIORITY[k] || []) if (lg[sub]?.rows?.length) return lg[sub].rows; return []; };
+    const teamAtRank = (rows, rank) => rows.find((r) => r.rank === rank)?.team;
+    const winnerOf = (m) => {
+      if (!m) return null;
+      if (m.a?.win || m.a?.msi) return m.a.short;
+      if (m.b?.win || m.b?.msi) return m.b.short;
+      if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) return m.a.score > m.b.score ? m.a.short : m.b.short;
+      return null;
+    };
+    // LPL 세부 시드 규칙
+    const lplPO = data.standings.lpl?.['Split 3']?.playoffs;
+    const lplGF = lplPO?.rounds?.[4]?.matches?.[0]; // MATCH 12 = GF
+    const lpl1 = winnerOf(lplGF); // Split 3 우승 = LPL #1
+    const lplPtsW = data.standings.lpl?.['대표 선발전']?.points || [];
+    const lpl2 = lpl1 ? (lplPtsW.find((p) => p.team !== lpl1)?.team || null) : null; // 챔피언십 포인트 1위 (우승팀 제외)
+    const lplRQ2 = data.standings.lpl?.['대표 선발전']?.qualifier;
+    const lpl3 = winnerOf(lplRQ2?.rounds?.[0]?.matches?.[0]); // 대표 선발전 1R M1 승자 = LPL #3
+    const lpl4 = winnerOf(lplRQ2?.rounds?.[1]?.matches?.[0]); // 대표 선발전 2R 승자 = LPL #4
+    const seedMap = {
+      'LCK #1': teamAtRank(rowsFor('lck'), 1), 'LCK #2': teamAtRank(rowsFor('lck'), 2), 'LCK #3': teamAtRank(rowsFor('lck'), 3), 'LCK #4': teamAtRank(rowsFor('lck'), 4),
+      'LPL #1': lpl1, 'LPL #2': lpl2, 'LPL #3': lpl3, 'LPL #4': lpl4,
+      'LEC #1': teamAtRank(rowsFor('lec'), 1), 'LEC #2': teamAtRank(rowsFor('lec'), 2), 'LEC #3': teamAtRank(rowsFor('lec'), 3),
+      'LCS #1': teamAtRank(rowsFor('lcs'), 1), 'LCS #2': teamAtRank(rowsFor('lcs'), 2), 'LCS #3': teamAtRank(rowsFor('lcs'), 3),
+      // LCP 시드는 대회 규정으로 확정 (Split 3 rows가 스위스 스테이지라 rank 자동 계산 불가)
+      'LCP #1': 'TSW', 'LCP #2': 'CFO', 'LCP #3': 'MVK',
+      'CBLOL #1': teamAtRank(rowsFor('cblol'), 1), 'CBLOL #2': teamAtRank(rowsFor('cblol'), 2),
+    };
+    // 참가팀 순서: 스위스 직행 15팀 → 플레이-인 4팀. UI에서 두 그룹으로 나눠 표기.
+    const swissSeeds = ['LCK #1','LCK #2','LCK #3','LCK #4','LPL #1','LPL #2','LPL #3','LEC #1','LEC #2','LCS #1','LCS #2','LCP #1','LCP #2','CBLOL #1','CBLOL #2'];
+    const playinSeeds = ['LPL #4','LCS #3','LEC #3','LCP #3'];
+    const buildQ = (seeds, stage) => seeds.map((seed) => {
+      const team = seedMap[seed];
+      return team ? { seed, short: team, stage } : { seed, label: seed, stage };
+    });
+    const qualifiers = [...buildQ(swissSeeds, 'swiss'), ...buildQ(playinSeeds, 'playin')];
+    data.standings.worlds = {
+      stage: '2026 Worlds · 플레이-인 → 스위스 → 녹아웃',
+      qualifiers,
+      playin: bySlug['play_ins'] || null,
+      swiss: swiss || null,
+      knockout: bySlug['knockouts'] || null,
+    };
+    const cnt = (b) => b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0;
+    console.log(`Worlds 대진 갱신 (플레이-인 ${cnt(bySlug['play_ins'])}경기 / 스위스 ${cnt(swiss)}경기 / 녹아웃 ${cnt(bySlug['knockouts'])}경기 · 참가팀 자동 ${qualifiers.filter((q) => q.short).length}/${qualifiers.length}팀)`);
+  }
+} catch (e) {
+  console.warn(`Worlds 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
+}
+
 // 5단계: LCK 플레이-인 · 지역별 챔피언십(플레이오프) 대진을 API에서 가져와 저장.
 //   MSI/LCP와 동일하게 bracketFromColumns 로 연결선을 만들고, 첫 라운드 시드 라벨은
 //   LCK 포맷(레전드/라이즈 그룹 순위)에 맞춰 주입한다(API는 시드 확정 전까지 라벨을 안 줌).

@@ -1053,6 +1053,31 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
+      {/* Worlds 단계별 대진표 (플레이-인 / 스위스 / 녹아웃) — lolesports API 자동 갱신 */}
+      {(() => {
+        if (comp.key !== 'worlds') return null;
+        const bracketKey = stage === '플레이-인' ? 'playin' : stage === '스위스 스테이지' ? 'swiss' : stage === '녹아웃 스테이지' ? 'knockout' : null;
+        if (!bracketKey) return null;
+        const br = official?.[bracketKey];
+        if (!br?.rounds?.length) {
+          return (
+            <section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">
+              대진 정보가 아직 확정되지 않았습니다. 대회 진행 시 자동 갱신됩니다.
+            </section>
+          );
+        }
+        const titles = { playin: '플레이-인 대진', swiss: '스위스 스테이지 (16팀 · 3승 진출 · 3패 탈락)', knockout: '녹아웃 스테이지 (8팀 싱글 엘리미네이션 Bo5)' };
+        return (
+          <section>
+            <div className="flex items-baseline gap-2 flex-wrap mb-4">
+              <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{titles[bracketKey]}</h3>
+              <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
+            </div>
+            <MsiBracket rounds={br.rounds} totalRows={br.totalRows} connectors={br.connectors} onTeamClick={onTeamClick} groupGap={bracketKey === 'swiss'} />
+          </section>
+        );
+      })()}
+
       {/* LPL Split 3 단계별 대진표 (기사의 길 / 플레이오프) — API 자동 갱신 */}
       {lplSplit3 && lplCfg?.bracketKey && official?.[lplCfg.bracketKey]?.rounds?.length > 0 && (
         <section>
@@ -1309,12 +1334,17 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
-      {/* 참가 팀 (MSI 스테이지) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트. DEMACIA는 별도 렌더링으로 대진표 위에 배치. */}
-      {qualifiers?.length > 0 && comp.key !== 'demacia' && (
-        <section className="flex flex-col gap-3">
-          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {qualifiers.map((q, i) => {
+      {/* 참가 팀 (MSI 스테이지) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트. DEMACIA는 별도 렌더링으로 대진표 위에 배치.
+          Worlds는 스위스 직행/플레이-인을 소제목으로 분리 표기. */}
+      {qualifiers?.length > 0 && comp.key !== 'demacia' && (() => {
+        const isWorlds = comp.key === 'worlds' && qualifiers.some((q) => q.stage);
+        const groups = isWorlds
+          ? [
+              { title: '스위스 스테이지 직행 (15팀)', items: qualifiers.filter((q) => q.stage === 'swiss') },
+              { title: '플레이-인 (4팀, 1팀 스위스 진출)', items: qualifiers.filter((q) => q.stage === 'playin') },
+            ]
+          : [{ title: null, items: qualifiers }];
+        const renderCard = (q, i) => {
               const p = q.short ? probByShort[q.short] : null;
               const probRow = (label, v, color, strong) => (
                 <div key={label} className="flex items-center gap-2">
@@ -1351,10 +1381,21 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                   )}
                 </div>
               );
-            })}
-          </div>
-        </section>
-      )}
+        };
+        return (
+          <section className="flex flex-col gap-3">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
+            {groups.map((g, gi) => (
+              <div key={gi} className="flex flex-col gap-2">
+                {g.title && <h4 className="text-xs font-bold text-white/60">{g.title}</h4>}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {g.items.map((q, i) => renderCard(q, i))}
+                </div>
+              </div>
+            ))}
+          </section>
+        );
+      })()}
 
       {/* MSI/LPL 스테이지 대진표 — 섹션 구조 (단계 선택 시 해당 섹션만) */}
       {bracketSections?.length > 0 && (
@@ -1512,6 +1553,7 @@ const STAGE_TABS = {
   'lpl|대표 선발전': ['대진', '챔피언십 포인트'],
   demacia: ['그룹 스테이지', '녹아웃 스테이지'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
+  worlds: ['플레이-인', '스위스 스테이지', '녹아웃 스테이지'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
 const STAGE_DEFAULT = {
