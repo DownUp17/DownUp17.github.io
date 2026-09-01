@@ -129,6 +129,29 @@ function seedRank(seed) {
   return null;
 }
 
+// 4팀 더블 엘리미네이션(4rounds: 상위 4강×2 / 상위 결승·하위 4강 / 하위 결승 / 결승) 표준 그리드 레이아웃.
+//   LCP 플레이오프·MSI 플레이-인·Worlds 플레이-인 등 4팀 DE 브래킷 공통 배치.
+//   totalRows=8 · 상위 4강 좌상단(0,2) / 상위 결승 중상단(1) / 하위 4강 우상단(6) /
+//   하위 결승 중하단(6) / 결승 우측 중앙(3).
+function apply4TeamDELayout(bracket) {
+  if (!bracket?.rounds || bracket.rounds.length < 4) return bracket;
+  const P = bracket.rounds;
+  const ubSF1 = P[0].matches[0], ubSF2 = P[0].matches[1];
+  const ubF = P[1].matches[0], lbSF = P[1].matches[1];
+  const lbF = P[2].matches[0], gf = P[3].matches[0];
+  if (!ubSF1 || !ubSF2 || !ubF || !lbSF || !lbF || !gf) return bracket;
+  return {
+    totalRows: 8,
+    rounds: [
+      { title: '', matches: [{ ...ubSF1, startRow: 0 }, { ...ubSF2, startRow: 2 }] },
+      { title: '', matches: [{ ...ubF, startRow: 1 }, { ...lbSF, startRow: 6 }] },
+      { title: '', matches: [{ ...lbF, startRow: 6 }] },
+      { title: '', matches: [{ ...gf, startRow: 3 }] },
+    ],
+    connectors: bracket.connectors,
+  };
+}
+
 // 결승(마지막 매치)이 아닌 매치의 승자 msi 플래그를 win으로 강등.
 //   bracketFromColumns 는 승자가 이후 매치에서 참조되지 않으면 msi(진출/우승)로 표시하지만,
 //   자동 채움 후 참조 매칭이 안 될 수 있어 오탐이 발생. 최종 결승 승자만 우승(msi)로 남긴다.
@@ -993,25 +1016,8 @@ try {
         });
       });
     }
-    // LCP 플레이오프: 이미지 배치대로 그리드화 (하위권 4강 좌상단 / 상위권 결승 중상단 /
-    //   상위권 4강 하단 / 하위권 결승 중하단 / 결승 우측 중앙)
-    let lcpPlayoffs = bySlug['playoffs'];
-    if (lcpPlayoffs?.rounds?.length >= 4) {
-      const P = lcpPlayoffs.rounds;
-      const lb4_1 = P[0].matches[0], lb4_2 = P[0].matches[1];
-      const ubFinal = P[1].matches[0], ub4 = P[1].matches[1];
-      const lbFinal = P[2].matches[0], grandFinal = P[3].matches[0];
-      lcpPlayoffs = {
-        totalRows: 8,
-        rounds: [
-          { title: '', matches: [{ ...lb4_1, startRow: 0 }, { ...lb4_2, startRow: 2 }] },
-          { title: '', matches: [{ ...ubFinal, startRow: 1 }, { ...ub4, startRow: 6 }] },
-          { title: '', matches: [{ ...lbFinal, startRow: 6 }] },
-          { title: '', matches: [{ ...grandFinal, startRow: 3 }] },
-        ],
-        connectors: lcpPlayoffs.connectors,
-      };
-    }
+    // LCP 플레이오프: 4팀 더블 엘리미네이션 표준 레이아웃.
+    const lcpPlayoffs = apply4TeamDELayout(bySlug['playoffs']);
     data.standings.lcp = data.standings.lcp || {};
     data.standings.lcp['Split 3'] = {
       stage: '2026 LCP Split 3 · 스위스 → 플레이-인 → 플레이오프',
@@ -1040,12 +1046,14 @@ try {
       bySlug[s.slug] = bracketFromColumns(cols);
     }
     // 스위스 스테이지: 16팀 first-to-3 (라운드별 8·8·8·6·2경기).
+    // 16팀 first-to-3 실제 매치 분포:
+    //   R1 0-0×8 / R2 1-0×4·0-1×4 / R3 2-0×2·1-1×4·0-2×2 / R4 2-1×3·1-2×3 / R5 2-2×3
     const SWISS_RECORDS_16 = [
       ['0-0','0-0','0-0','0-0','0-0','0-0','0-0','0-0'],
       ['1-0','1-0','1-0','1-0','0-1','0-1','0-1','0-1'],
       ['2-0','2-0','1-1','1-1','1-1','1-1','0-2','0-2'],
-      ['2-1','2-1','2-1','2-1','1-2','1-2'],
-      ['2-2','2-2'],
+      ['2-1','2-1','2-1','1-2','1-2','1-2'],
+      ['2-2','2-2','2-2'],
     ];
     const recLabel = (r) => { const [w, l] = r.split('-'); return `${w}승 ${l}패`; };
     const swiss = bySlug['swiss'];
@@ -1088,6 +1096,17 @@ try {
       if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) return m.a.score > m.b.score ? m.a.short : m.b.short;
       return null;
     };
+    // LCK 최종 순위(플레이오프 결과) → Worlds #1~#4 시드.
+    //   #1 = GF 승자, #2 = GF 패자, #3 = Lower Finals 패자, #4 = LB R3 패자.
+    const lckPO = data.standings.lck?.LCK?.playoffs;
+    const loserOf = (m) => {
+      const w = winnerOf(m); if (!w) return null;
+      return m.a?.short === w ? m.b?.short : m.a?.short;
+    };
+    const lckGF = lckPO?.rounds?.[6]?.matches?.[0];
+    const lckLF = lckPO?.rounds?.[5]?.matches?.[0];
+    const lckLB3 = lckPO?.rounds?.[3]?.matches?.[0];
+    const lck1 = winnerOf(lckGF), lck2 = loserOf(lckGF), lck3 = loserOf(lckLF), lck4 = loserOf(lckLB3);
     // LPL 세부 시드 규칙
     const lplPO = data.standings.lpl?.['Split 3']?.playoffs;
     const lplGF = lplPO?.rounds?.[4]?.matches?.[0]; // MATCH 12 = GF
@@ -1098,13 +1117,14 @@ try {
     const lpl3 = winnerOf(lplRQ2?.rounds?.[0]?.matches?.[0]); // 대표 선발전 1R M1 승자 = LPL #3
     const lpl4 = winnerOf(lplRQ2?.rounds?.[1]?.matches?.[0]); // 대표 선발전 2R 승자 = LPL #4
     const seedMap = {
-      'LCK #1': teamAtRank(rowsFor('lck'), 1), 'LCK #2': teamAtRank(rowsFor('lck'), 2), 'LCK #3': teamAtRank(rowsFor('lck'), 3), 'LCK #4': teamAtRank(rowsFor('lck'), 4),
+      'LCK #1': lck1, 'LCK #2': lck2, 'LCK #3': lck3, 'LCK #4': lck4,
       'LPL #1': lpl1, 'LPL #2': lpl2, 'LPL #3': lpl3, 'LPL #4': lpl4,
-      'LEC #1': teamAtRank(rowsFor('lec'), 1), 'LEC #2': teamAtRank(rowsFor('lec'), 2), 'LEC #3': teamAtRank(rowsFor('lec'), 3),
-      'LCS #1': teamAtRank(rowsFor('lcs'), 1), 'LCS #2': teamAtRank(rowsFor('lcs'), 2), 'LCS #3': teamAtRank(rowsFor('lcs'), 3),
-      // LCP 시드는 대회 규정으로 확정 (Split 3 rows가 스위스 스테이지라 rank 자동 계산 불가)
+      // LEC/LCS/CBLOL 시드는 사용자가 직접 제공 (대회별 배정 규칙 상이).
+      'LEC #1': null, 'LEC #2': null, 'LEC #3': null,
+      'LCS #1': null, 'LCS #2': null, 'LCS #3': null,
+      // LCP 시드는 대회 규정으로 확정.
       'LCP #1': 'TSW', 'LCP #2': 'CFO', 'LCP #3': 'MVK',
-      'CBLOL #1': teamAtRank(rowsFor('cblol'), 1), 'CBLOL #2': teamAtRank(rowsFor('cblol'), 2),
+      'CBLOL #1': null, 'CBLOL #2': null,
     };
     // 참가팀 순서: 스위스 직행 15팀 → 플레이-인 4팀. UI에서 두 그룹으로 나눠 표기.
     const swissSeeds = ['LCK #1','LCK #2','LCK #3','LCK #4','LPL #1','LPL #2','LPL #3','LEC #1','LEC #2','LCS #1','LCS #2','LCP #1','LCP #2','CBLOL #1','CBLOL #2'];
@@ -1117,7 +1137,7 @@ try {
     data.standings.worlds = {
       stage: '2026 Worlds · 플레이-인 → 스위스 → 녹아웃',
       qualifiers,
-      playin: bySlug['play_ins'] || null,
+      playin: apply4TeamDELayout(bySlug['play_ins']),
       swiss: swiss || null,
       knockout: bySlug['knockouts'] || null,
     };

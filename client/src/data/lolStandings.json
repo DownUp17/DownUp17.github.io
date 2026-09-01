@@ -3798,22 +3798,22 @@
       "qualifiers": [
         {
           "seed": "LCK #1",
-          "short": "BRO",
+          "label": "LCK #1",
           "stage": "swiss"
         },
         {
           "seed": "LCK #2",
-          "short": "NS",
+          "label": "LCK #2",
           "stage": "swiss"
         },
         {
           "seed": "LCK #3",
-          "short": "BFX",
+          "label": "LCK #3",
           "stage": "swiss"
         },
         {
           "seed": "LCK #4",
-          "short": "KRX",
+          "label": "LCK #4",
           "stage": "swiss"
         },
         {
@@ -3833,17 +3833,17 @@
         },
         {
           "seed": "LEC #1",
-          "short": "KC",
+          "label": "LEC #1",
           "stage": "swiss"
         },
         {
           "seed": "LEC #2",
-          "short": "VIT",
+          "label": "LEC #2",
           "stage": "swiss"
         },
         {
           "seed": "LCS #1",
-          "short": "TLAW",
+          "label": "LCS #1",
           "stage": "swiss"
         },
         {
@@ -3863,12 +3863,12 @@
         },
         {
           "seed": "CBLOL #1",
-          "short": "LOUD",
+          "label": "CBLOL #1",
           "stage": "swiss"
         },
         {
           "seed": "CBLOL #2",
-          "short": "LOS",
+          "label": "CBLOL #2",
           "stage": "swiss"
         },
         {
@@ -3878,12 +3878,12 @@
         },
         {
           "seed": "LCS #3",
-          "short": "SEN",
+          "label": "LCS #3",
           "stage": "playin"
         },
         {
           "seed": "LEC #3",
-          "short": "G2",
+          "label": "LEC #3",
           "stage": "playin"
         },
         {
@@ -3893,6 +3893,7 @@
         }
       ],
       "playin": {
+        "totalRows": 8,
         "rounds": [
           {
             "title": "",
@@ -3905,7 +3906,8 @@
                 },
                 "b": {
                   "seed": ""
-                }
+                },
+                "startRow": 0
               },
               {
                 "id": "115660588583171786",
@@ -3915,7 +3917,8 @@
                 },
                 "b": {
                   "seed": ""
-                }
+                },
+                "startRow": 2
               }
             ]
           },
@@ -3930,7 +3933,8 @@
                 },
                 "b": {
                   "seed": "상위권 대진 - 4강 승자"
-                }
+                },
+                "startRow": 1
               },
               {
                 "id": "115660588583171794",
@@ -3940,7 +3944,8 @@
                 },
                 "b": {
                   "seed": "상위권 대진 - 4강 패자"
-                }
+                },
+                "startRow": 6
               }
             ]
           },
@@ -3955,7 +3960,8 @@
                 },
                 "b": {
                   "seed": "하위권 대진 - 4강 승자"
-                }
+                },
+                "startRow": 6
               }
             ]
           },
@@ -3970,7 +3976,8 @@
                 },
                 "b": {
                   "seed": "하위권 대진 - 결승 승자"
-                }
+                },
+                "startRow": 3
               }
             ]
           }
@@ -4361,14 +4368,14 @@
               },
               {
                 "id": "115660540726095073",
-                "title": "2승 1패",
+                "title": "1승 2패",
                 "a": {
                   "seed": ""
                 },
                 "b": {
                   "seed": ""
                 },
-                "recordKey": "2-1"
+                "recordKey": "1-2"
               },
               {
                 "id": "115660540726095077",
@@ -4421,14 +4428,14 @@
               },
               {
                 "id": "115660540726095093",
-                "title": "",
+                "title": "2승 2패",
                 "a": {
                   "seed": ""
                 },
                 "b": {
                   "seed": ""
                 },
-                "recordKey": ""
+                "recordKey": "2-2"
               }
             ]
           }
