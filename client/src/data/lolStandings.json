@@ -1235,11 +1235,15 @@
                   "title": "UB R2 M1",
                   "a": {
                     "seed": "레전드 1위",
-                    "short": "GEN"
+                    "short": "GEN",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "UB R1 승자",
-                    "short": "KT"
+                    "short": "KT",
+                    "score": 0,
+                    "elim": true
                   },
                   "time": "9/1 (화) 17:00",
                   "startRow": 0
@@ -1282,7 +1286,8 @@
                     "seed": "UB R2 승자"
                   },
                   "b": {
-                    "seed": "UB R2 승자"
+                    "seed": "UB R2 승자",
+                    "short": "GEN"
                   },
                   "time": "9/5 (토) 17:00",
                   "startRow": 2
@@ -2254,7 +2259,7 @@
             "gl": 11
           },
           {
-            "rank": 4,
+            "rank": 5,
             "team": "NAVI",
             "w": 5,
             "l": 4,
@@ -2271,19 +2276,19 @@
           },
           {
             "rank": 7,
-            "team": "SK",
-            "w": 3,
-            "l": 6,
-            "gw": 7,
-            "gl": 13
-          },
-          {
-            "rank": 7,
             "team": "FNC",
             "w": 3,
             "l": 6,
             "gw": 10,
             "gl": 12
+          },
+          {
+            "rank": 8,
+            "team": "SK",
+            "w": 3,
+            "l": 6,
+            "gw": 7,
+            "gl": 13
           },
           {
             "rank": 9,
