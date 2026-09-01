@@ -2363,19 +2363,19 @@
       "id": "98926509883054987",
       "players": [
         {
-          "name": "Denathor",
-          "firstName": "Noah",
-          "lastName": "Erikson",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
-          "starter": true
-        },
-        {
           "name": "Dardoch",
           "firstName": "Joshua",
           "lastName": "Hartnett",
           "role": "top",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": true
+        },
+        {
+          "name": "Denathor",
+          "firstName": "Noah",
+          "lastName": "Erikson",
+          "role": "top",
+          "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
           "starter": true
         },
         {
