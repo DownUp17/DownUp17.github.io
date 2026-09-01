@@ -814,14 +814,28 @@ fst.finalResult = {
 };
 console.log(`FST: 우승 ${fstTeams[0].name}`);
 
-// 브래킷 시그니처 저장 — fetchGpr가 "GPR 변화 없이 경기 결과만 바뀐 경우"를
-// 감지해 시뮬을 재실행하도록 하는 기준값. MSI 브래킷 + LCK 플레이-인/플레이오프 포함.
-sim.msiBracketSig = JSON.stringify({
-  pi: standingsData.standings?.msi?.['플레이-인 스테이지']?.bracket ?? null,
-  br: standingsData.standings?.msi?.['브래킷 스테이지']?.bracket ?? null,
-  lckPi: standingsData.standings?.lck?.LCK?.playin ?? null,
-  lckPo: standingsData.standings?.lck?.LCK?.playoffs ?? null,
-});
+// 브래킷 시그니처 저장 — fetchGpr가 "GPR 변화 없이 경기 결과만 바뀐 대회"를
+// 감지해 해당 리그만 시뮬 재실행하도록 하는 기준값. 대회별로 개별 시그니처 저장.
+sim.bracketSigs = {
+  MSI: JSON.stringify({
+    pi: standingsData.standings?.msi?.['플레이-인 스테이지']?.bracket ?? null,
+    br: standingsData.standings?.msi?.['브래킷 스테이지']?.bracket ?? null,
+  }),
+  LCK: JSON.stringify({
+    pi: standingsData.standings?.lck?.LCK?.playin ?? null,
+    po: standingsData.standings?.lck?.LCK?.playoffs ?? null,
+  }),
+  LPL: JSON.stringify({
+    po: standingsData.standings?.lpl?.['Split 3']?.playoffs ?? null,
+    rq: standingsData.standings?.lpl?.['대표 선발전']?.qualifier ?? null,
+  }),
+  LCP: JSON.stringify({
+    swiss: standingsData.standings?.lcp?.['Split 3']?.swiss ?? null,
+    pi: standingsData.standings?.lcp?.['Split 3']?.playin ?? null,
+    po: standingsData.standings?.lcp?.['Split 3']?.playoffs ?? null,
+  }),
+};
+delete sim.msiBracketSig; // 이전 형식(단일 문자열) 제거
 
 sim.updatedAt = new Date().toISOString(); // 시간까지 포함(페이지에서 KST로 표시)
 fs.writeFileSync(path.join(dataDir, 'lolSim.json'), JSON.stringify(sim, null, 2) + '\n');
