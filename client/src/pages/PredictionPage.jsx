@@ -111,6 +111,15 @@ const ACTUAL_SLOT_H = 39; // 실제 슬롯(팀 한 줄) 렌더 높이 — connY 
 
 const gridSlotTop = (r) => LABEL_H + r * SLOT_H + (r >= GAP_ROW ? LABEL_H : 0);
 
+// 공통 대진표 배경색 범례. 대회별로 goldLabel만 다름 (우승/MSI 진출/진출 등).
+const BracketLegend = ({ goldLabel = '우승/진출' }) => (
+  <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
+    <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> {goldLabel}</span>
+    <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
+    <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
+  </div>
+);
+
 // DEMACIA 브래킷 — 컬럼당 여러 브래킷 그룹을 세로로 배치. MsiSlot 재사용으로 다른 대진표와 일관.
 //   msiSet(진출/우승) = 금색, 매치 승자 = 파랑, elimSet = 빨강.
 //   connectors: [srcMatchId, destMatchId, destSlot('a'|'b')] — 매치 카드 간 SVG 연결선.
@@ -767,29 +776,75 @@ const buildLckBracket = (raw, stage, current) => {
   const fill = (s) => {
     if (!s) return s;
     const c = { ...s };
-    if (!c.short && seedTeam[c.seed]) c.short = seedTeam[c.seed].short; // 예상 시드 팀
+    if (!c.short && seedTeam[c.seed]) c.short = seedTeam[c.seed].short;
     return c;
   };
   const rounds = raw.rounds.map((r) => ({ ...r, matches: r.matches.map((m) => ({ ...m, a: fill(m.a), b: fill(m.b) })) }));
+  const outcome = (m) => {
+    if (!m) return {};
+    const aWin = m.a?.win || m.a?.msi, bWin = m.b?.win || m.b?.msi;
+    if (aWin || bWin) return { winner: aWin ? m.a : m.b, loser: aWin ? m.b : m.a };
+    if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) {
+      const aBig = m.a.score > m.b.score;
+      return { winner: aBig ? m.a : m.b, loser: aBig ? m.b : m.a };
+    }
+    return {};
+  };
   // 플레이-인 파이널 자동 채움 — 1·2라운드 결과가 있을 때만
   if (stage === '플레이-인') {
-    const outcome = (m) => {
-      if (!m) return {};
-      const aWin = m.a?.win || m.a?.msi, bWin = m.b?.win || m.b?.msi;
-      if (aWin || bWin) return { winner: aWin ? m.a : m.b, loser: aWin ? m.b : m.a };
-      if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) {
-        const aBig = m.a.score > m.b.score;
-        return { winner: aBig ? m.a : m.b, loser: aBig ? m.b : m.a };
-      }
-      return {};
-    };
     const fin = rounds[2]?.matches?.[0];
     if (fin) {
-      const loser = outcome(rounds[0]?.matches?.[0]).loser;   // 1라운드 패자 → 파이널 a
-      const winner = outcome(rounds[1]?.matches?.[0]).winner; // 2라운드 승자 → 파이널 b
+      const loser = outcome(rounds[0]?.matches?.[0]).loser;
+      const winner = outcome(rounds[1]?.matches?.[0]).winner;
       if (fin.a && !fin.a.short && loser?.short) fin.a = { ...fin.a, short: loser.short };
       if (fin.b && !fin.b.short && winner?.short) fin.b = { ...fin.b, short: winner.short };
     }
+  }
+  // 플레이오프 후처리: UB R2 두 패자 → 시드 기반 LB R2 slot a(하위 시드) / LB R3 slot a(상위 시드) 자동 채움.
+  //   한 매치만 완료됐어도 그 패자의 시드가 상대 매치 참가자들과 명확히 순위 결정되면 확정.
+  //   자동 배치된 팀의 elim 플래그는 제거(다음 라운드 진출).
+  if (stage === '플레이오프') {
+    // 시드 번호 매핑: legend 1-4 → 1-4, 플레이-인 5=P1, 6=P2. 여기선 상대 비교용 순서만 필요하니
+    // 팀별 시드 번호를 slot의 seed 라벨에서 역산. UB R1/UB R2 slot a는 항상 레전드 시드.
+    // 각 매치별 slot을 훑어서 팀별 시드 번호 유추. 플레이-인 통과 팀은 5·6로 폴백.
+    const seedNumByShort = {};
+    for (const r of rounds) for (const m of r.matches) for (const s of [m.a, m.b]) {
+      if (!s?.short) continue;
+      const mLeg = /^레전드\s(\d+)위$/.exec(s.seed || '');
+      if (mLeg) seedNumByShort[s.short] = parseInt(mLeg[1], 10);
+    }
+    // 플레이-인 진출 2팀에 5·6 부여 (UB R1의 b슬롯 = 플레이-인 진출)
+    const pins = [];
+    for (const m of rounds[0]?.matches || []) {
+      const t = m.b?.short; if (t && !(t in seedNumByShort)) pins.push(t);
+    }
+    pins.forEach((t, i) => { seedNumByShort[t] = 5 + i; });
+    const ub2m1 = rounds[1]?.matches?.[0], ub2m2 = rounds[1]?.matches?.[1];
+    const l1 = outcome(ub2m1).loser?.short, l2 = outcome(ub2m2).loser?.short;
+    const lbR2 = rounds[1]?.matches?.[2]; // LB R2
+    const lbR3 = rounds[3]?.matches?.[0]; // LB R3
+    let lowerShort = null, higherShort = null;
+    if (l1 && l2) {
+      const s1 = seedNumByShort[l1] ?? 99, s2 = seedNumByShort[l2] ?? 99;
+      lowerShort = s1 > s2 ? l1 : l2;
+      higherShort = s1 > s2 ? l2 : l1;
+    } else if (l1 || l2) {
+      // 한쪽만 완료 — 상대 매치 참가자들의 시드와 비교해 하위/상위 확정 가능하면 배치
+      const done = l1 || l2;
+      const other = l1 ? ub2m2 : ub2m1;
+      const others = [other?.a?.short, other?.b?.short].filter(Boolean).map((s) => seedNumByShort[s] ?? 99);
+      const doneSeed = seedNumByShort[done] ?? 99;
+      if (others.length > 0 && doneSeed > Math.max(...others)) lowerShort = done;
+      else if (others.length > 0 && doneSeed < Math.min(...others)) higherShort = done;
+    }
+    const clearElim = (short) => {
+      if (!short) return;
+      for (const r of rounds) for (const m of r.matches) for (const s of [m.a, m.b]) {
+        if (s?.short === short) delete s.elim;
+      }
+    };
+    if (lbR2?.a && !lbR2.a.short && lowerShort) { lbR2.a = { ...lbR2.a, short: lowerShort }; clearElim(lowerShort); }
+    if (lbR3?.a && !lbR3.a.short && higherShort) { lbR3.a = { ...lbR3.a, short: higherShort }; clearElim(higherShort); }
   }
   return { ...raw, rounds };
 };
@@ -1050,6 +1105,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             onTeamClick={onTeamClick}
             groupGap={lcpCfg.bracketKey === 'swiss'}
           />
+          <BracketLegend />
         </section>
       )}
 
@@ -1074,6 +1130,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
             </div>
             <MsiBracket rounds={br.rounds} totalRows={br.totalRows} connectors={br.connectors} onTeamClick={onTeamClick} groupGap={bracketKey === 'swiss'} />
+            <BracketLegend goldLabel={bracketKey === 'knockout' ? '우승' : '진출'} />
           </section>
         );
       })()}
@@ -1086,6 +1143,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
           </div>
           <MsiBracket rounds={official[lplCfg.bracketKey].rounds} totalRows={official[lplCfg.bracketKey].totalRows} connectors={official[lplCfg.bracketKey].connectors} onTeamClick={onTeamClick} />
+          <BracketLegend />
         </section>
       )}
 
@@ -1252,6 +1310,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
           </div>
           <MsiBracket rounds={official.qualifier.rounds} totalRows={official.qualifier.totalRows} connectors={official.qualifier.connectors} onTeamClick={onTeamClick} />
+          <BracketLegend />
         </section>
       )}
 
@@ -1338,12 +1397,42 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
           Worlds는 스위스 직행/플레이-인을 소제목으로 분리 표기. */}
       {qualifiers?.length > 0 && comp.key !== 'demacia' && (() => {
         const isWorlds = comp.key === 'worlds' && qualifiers.some((q) => q.stage);
-        const groups = isWorlds
-          ? [
-              { title: '스위스 스테이지 직행 (15팀)', items: qualifiers.filter((q) => q.stage === 'swiss') },
-              { title: '플레이-인 (4팀, 1팀 스위스 진출)', items: qualifiers.filter((q) => q.stage === 'playin') },
-            ]
-          : [{ title: null, items: qualifiers }];
+        // Worlds 스테이지별 필터: 플레이-인=4팀, 스위스=15+플레이-인 통과 1팀, 녹아웃=진출 8팀.
+        //   미확정 슬롯은 TBD 라벨로.
+        let groups;
+        if (!isWorlds) {
+          groups = [{ title: null, items: qualifiers }];
+        } else if (stage === '플레이-인') {
+          groups = [{ title: null, items: qualifiers.filter((q) => q.stage === 'playin') }];
+        } else if (stage === '스위스 스테이지') {
+          const playin = official?.playin;
+          const gf = playin?.rounds?.[playin.rounds.length - 1]?.matches?.[0];
+          const winShort = gf?.a?.win || gf?.a?.msi ? gf?.a?.short : (gf?.b?.win || gf?.b?.msi ? gf?.b?.short : null);
+          const items = [
+            ...qualifiers.filter((q) => q.stage === 'swiss'),
+            winShort ? { seed: '플레이-인 통과', short: winShort } : { seed: '플레이-인 통과', label: 'TBD' },
+          ];
+          groups = [{ title: null, items }];
+        } else if (stage === '녹아웃 스테이지') {
+          const swissB = official?.swiss;
+          const wins = {};
+          swissB?.rounds?.forEach((r) => r.matches.forEach((m) => {
+            if (!m.a?.short || !m.b?.short) return;
+            if (m.a.score != null && m.b.score != null && m.a.score !== m.b.score) {
+              const aWin = m.a.score > m.b.score;
+              const w = aWin ? m.a.short : m.b.short;
+              wins[w] = (wins[w] || 0) + 1;
+            }
+          }));
+          const advancers = Object.keys(wins).filter((t) => wins[t] >= 3);
+          const items = Array.from({ length: 8 }, (_, i) => {
+            const s = advancers[i];
+            return s ? { seed: `녹아웃 #${i + 1}`, short: s } : { seed: `녹아웃 #${i + 1}`, label: 'TBD' };
+          });
+          groups = [{ title: null, items }];
+        } else {
+          groups = [{ title: null, items: qualifiers }];
+        }
         const renderCard = (q, i) => {
               const p = q.short ? probByShort[q.short] : null;
               const probRow = (label, v, color, strong) => (
@@ -1377,7 +1466,10 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                       )}
                     </>
                   ) : (
-                    <span className="text-white/55 truncate">{q.label}</span>
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className={`truncate ${isWorlds ? 'text-white/35 font-bold' : 'text-white/55'}`}>{isWorlds ? 'TBD' : q.label}</span>
+                      {isWorlds && q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
+                    </div>
                   )}
                 </div>
               );
@@ -1405,12 +1497,14 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             {official.bracket.desc && <span className="text-xs text-white/40">{official.bracket.desc}</span>}
           </div>
           <BracketGroup sections={bracketSections} crossConnectors={official.bracket.crossConnectors} onTeamClick={onTeamClick} />
-          {official.bracket.legend?.length > 0 && (
+          {official.bracket.legend?.length > 0 ? (
             <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
               {official.bracket.legend.map((lg, i) => (
                 <span key={i} className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: lg.color }} /> {lg.label}</span>
               ))}
             </div>
+          ) : (
+            <BracketLegend />
           )}
         </section>
       )}

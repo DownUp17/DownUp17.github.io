@@ -129,6 +129,24 @@ function seedRank(seed) {
   return null;
 }
 
+// 싱글 엘리미네이션 표준 그리드 레이아웃 — 라운드 k, 매치 i에서
+//   startRow = 2^k - 1 + i * 2^(k+1) 규칙으로 상위 라운드 매치가
+//   하위 라운드 두 매치의 y좌표 중앙에 정렬된다. totalRows = 2 * (첫 라운드 매치 수).
+//   8팀 SE: 8강 startRow=0/2/4/6, 4강=1/5, 결승=3 → totalRows=8.
+function applySingleElimLayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  const firstCount = bracket.rounds[0].matches.length;
+  const totalRows = firstCount * 2;
+  return {
+    totalRows,
+    rounds: bracket.rounds.map((r, ri) => ({
+      ...r,
+      matches: r.matches.map((m, i) => ({ ...m, startRow: Math.pow(2, ri) - 1 + i * Math.pow(2, ri + 1) })),
+    })),
+    connectors: bracket.connectors,
+  };
+}
+
 // 4팀 더블 엘리미네이션(4rounds: 상위 4강×2 / 상위 결승·하위 4강 / 하위 결승 / 결승) 표준 그리드 레이아웃.
 //   LCP 플레이오프·MSI 플레이-인·Worlds 플레이-인 등 4팀 DE 브래킷 공통 배치.
 //   totalRows=8 · 상위 4강 좌상단(0,2) / 상위 결승 중상단(1) / 하위 4강 우상단(6) /
@@ -1139,7 +1157,7 @@ try {
       qualifiers,
       playin: apply4TeamDELayout(bySlug['play_ins']),
       swiss: swiss || null,
-      knockout: bySlug['knockouts'] || null,
+      knockout: applySingleElimLayout(bySlug['knockouts']),
     };
     const cnt = (b) => b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0;
     console.log(`Worlds 대진 갱신 (플레이-인 ${cnt(bySlug['play_ins'])}경기 / 스위스 ${cnt(swiss)}경기 / 녹아웃 ${cnt(bySlug['knockouts'])}경기 · 참가팀 자동 ${qualifiers.filter((q) => q.short).length}/${qualifiers.length}팀)`);
