@@ -1628,11 +1628,11 @@
                   "title": "MATCH 5",
                   "a": {
                     "seed": "M1 패자",
-                    "short": "TES"
+                    "short": "IG"
                   },
                   "b": {
                     "seed": "기사의 길 1 승자",
-                    "short": "IG"
+                    "short": "TES"
                   },
                   "startRow": 8,
                   "time": "9/5 (토) 15:00"
@@ -1642,11 +1642,11 @@
                   "title": "MATCH 6",
                   "a": {
                     "seed": "M2 패자",
-                    "short": "JDG"
+                    "short": "NIP"
                   },
                   "b": {
                     "seed": "기사의 길 2 승자",
-                    "short": "NIP"
+                    "short": "JDG"
                   },
                   "startRow": 12,
                   "time": "9/5 (토) 18:00"
