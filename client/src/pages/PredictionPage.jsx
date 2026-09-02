@@ -1091,6 +1091,99 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
+      {/* 참가 팀 — 항상 대진표 위에 배치. DEMACIA는 별도 렌더링(스테이지별 필터).
+          Worlds도 스테이지별 필터 적용. */}
+      {qualifiers?.length > 0 && comp.key !== 'demacia' && (() => {
+        const isWorlds = comp.key === 'worlds' && qualifiers.some((q) => q.stage);
+        let groups;
+        if (!isWorlds) {
+          groups = [{ title: null, items: qualifiers }];
+        } else if (stage === '플레이-인') {
+          groups = [{ title: null, items: qualifiers.filter((q) => q.stage === 'playin') }];
+        } else if (stage === '스위스 스테이지') {
+          const playin = official?.playin;
+          const gf = playin?.rounds?.[playin.rounds.length - 1]?.matches?.[0];
+          const winShort = gf?.a?.win || gf?.a?.msi ? gf?.a?.short : (gf?.b?.win || gf?.b?.msi ? gf?.b?.short : null);
+          const items = [
+            ...qualifiers.filter((q) => q.stage === 'swiss'),
+            winShort ? { seed: '플레이-인 통과', short: winShort } : { seed: '플레이-인 통과', label: 'TBD' },
+          ];
+          groups = [{ title: null, items }];
+        } else if (stage === '녹아웃 스테이지') {
+          const swissB = official?.swiss;
+          const wins = {};
+          swissB?.rounds?.forEach((r) => r.matches.forEach((m) => {
+            if (!m.a?.short || !m.b?.short) return;
+            if (m.a.score != null && m.b.score != null && m.a.score !== m.b.score) {
+              const aWin = m.a.score > m.b.score;
+              const w = aWin ? m.a.short : m.b.short;
+              wins[w] = (wins[w] || 0) + 1;
+            }
+          }));
+          const advancers = Object.keys(wins).filter((t) => wins[t] >= 3);
+          const items = Array.from({ length: 8 }, (_, i) => {
+            const s = advancers[i];
+            return s ? { seed: `녹아웃 #${i + 1}`, short: s } : { seed: `녹아웃 #${i + 1}`, label: 'TBD' };
+          });
+          groups = [{ title: null, items }];
+        } else {
+          groups = [{ title: null, items: qualifiers }];
+        }
+        const renderCard = (q, i) => {
+          const p = q.short ? probByShort[q.short] : null;
+          const probRow = (label, v, color, strong) => (
+            <div key={label} className="flex items-center gap-2">
+              <span className="text-[10px] text-white/40 w-8 shrink-0">{label}</span>
+              <div className="flex-1 h-1.5 rounded-full bg-white/5 overflow-hidden">
+                <div className="h-full rounded-full" style={{ width: `${Math.min(v, 100)}%`, backgroundColor: color }} />
+              </div>
+              <span className="font-mono tabular-nums text-[11px] w-12 text-right shrink-0" style={{ color, fontWeight: strong ? 800 : 600 }}>{v}%</span>
+            </div>
+          );
+          const eliminated = q.short && eliminatedSet.has(q.short);
+          const showAdvance = !isBracketStage && p?.advance != null;
+          return (
+            <div key={i} className="flex flex-col gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+              {q.short ? (
+                <>
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div style={eliminated ? { filter: 'grayscale(1)', opacity: 0.4 } : undefined} className="shrink-0">
+                      <TeamLogo src={logoByShort[q.short]} size={20} />
+                    </div>
+                    <span className={`font-bold truncate ${eliminated ? 'text-white/35' : 'text-white/90'}`}>{nameByShort[q.short] || q.short}</span>
+                    {q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
+                  </div>
+                  {(showAdvance || p?.champ != null) && (
+                    <div className="flex flex-col gap-1">
+                      {showAdvance && probRow('진출', p.advance, comp.color)}
+                      {p?.champ != null && probRow('우승', p.champ, '#E8C77E', true)}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className={`truncate ${isWorlds ? 'text-white/35 font-bold' : 'text-white/55'}`}>{isWorlds ? 'TBD' : q.label}</span>
+                  {isWorlds && q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
+                </div>
+              )}
+            </div>
+          );
+        };
+        return (
+          <section className="flex flex-col gap-3">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
+            {groups.map((g, gi) => (
+              <div key={gi} className="flex flex-col gap-2">
+                {g.title && <h4 className="text-xs font-bold text-white/60">{g.title}</h4>}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {g.items.map((q, i) => renderCard(q, i))}
+                </div>
+              </div>
+            ))}
+          </section>
+        );
+      })()}
+
       {/* LCP Split 3 단계별 대진표 (스위스/플레이-인/플레이오프) */}
       {lcpSplit3 && lcpCfg?.bracketKey && official?.[lcpCfg.bracketKey]?.rounds?.length > 0 && (
         <section>
@@ -1392,102 +1485,6 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
           </div>
         </section>
       )}
-
-      {/* 참가 팀 (MSI 스테이지) — 확정 팀은 로고+시뮬 확률, 미확정은 조건 텍스트. DEMACIA는 별도 렌더링으로 대진표 위에 배치.
-          Worlds는 스위스 직행/플레이-인을 소제목으로 분리 표기. */}
-      {qualifiers?.length > 0 && comp.key !== 'demacia' && (() => {
-        const isWorlds = comp.key === 'worlds' && qualifiers.some((q) => q.stage);
-        // Worlds 스테이지별 필터: 플레이-인=4팀, 스위스=15+플레이-인 통과 1팀, 녹아웃=진출 8팀.
-        //   미확정 슬롯은 TBD 라벨로.
-        let groups;
-        if (!isWorlds) {
-          groups = [{ title: null, items: qualifiers }];
-        } else if (stage === '플레이-인') {
-          groups = [{ title: null, items: qualifiers.filter((q) => q.stage === 'playin') }];
-        } else if (stage === '스위스 스테이지') {
-          const playin = official?.playin;
-          const gf = playin?.rounds?.[playin.rounds.length - 1]?.matches?.[0];
-          const winShort = gf?.a?.win || gf?.a?.msi ? gf?.a?.short : (gf?.b?.win || gf?.b?.msi ? gf?.b?.short : null);
-          const items = [
-            ...qualifiers.filter((q) => q.stage === 'swiss'),
-            winShort ? { seed: '플레이-인 통과', short: winShort } : { seed: '플레이-인 통과', label: 'TBD' },
-          ];
-          groups = [{ title: null, items }];
-        } else if (stage === '녹아웃 스테이지') {
-          const swissB = official?.swiss;
-          const wins = {};
-          swissB?.rounds?.forEach((r) => r.matches.forEach((m) => {
-            if (!m.a?.short || !m.b?.short) return;
-            if (m.a.score != null && m.b.score != null && m.a.score !== m.b.score) {
-              const aWin = m.a.score > m.b.score;
-              const w = aWin ? m.a.short : m.b.short;
-              wins[w] = (wins[w] || 0) + 1;
-            }
-          }));
-          const advancers = Object.keys(wins).filter((t) => wins[t] >= 3);
-          const items = Array.from({ length: 8 }, (_, i) => {
-            const s = advancers[i];
-            return s ? { seed: `녹아웃 #${i + 1}`, short: s } : { seed: `녹아웃 #${i + 1}`, label: 'TBD' };
-          });
-          groups = [{ title: null, items }];
-        } else {
-          groups = [{ title: null, items: qualifiers }];
-        }
-        const renderCard = (q, i) => {
-              const p = q.short ? probByShort[q.short] : null;
-              const probRow = (label, v, color, strong) => (
-                <div key={label} className="flex items-center gap-2">
-                  <span className="text-[10px] text-white/40 w-8 shrink-0">{label}</span>
-                  <div className="flex-1 h-1.5 rounded-full bg-white/5 overflow-hidden">
-                    <div className="h-full rounded-full" style={{ width: `${Math.min(v, 100)}%`, backgroundColor: color }} />
-                  </div>
-                  <span className="font-mono tabular-nums text-[11px] w-12 text-right shrink-0" style={{ color, fontWeight: strong ? 800 : 600 }}>{v}%</span>
-                </div>
-              );
-              const eliminated = q.short && eliminatedSet.has(q.short);
-              // 브래킷 스테이지에서는 진출 확률은 의미가 없으므로 우승 확률만 표기
-              const showAdvance = !isBracketStage && p?.advance != null;
-              return (
-                <div key={i} className="flex flex-col gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
-                  {q.short ? (
-                    <>
-                      <div className="flex items-center gap-2 min-w-0">
-                        <div style={eliminated ? { filter: 'grayscale(1)', opacity: 0.4 } : undefined} className="shrink-0">
-                          <TeamLogo src={logoByShort[q.short]} size={20} />
-                        </div>
-                        <span className={`font-bold truncate ${eliminated ? 'text-white/35' : 'text-white/90'}`}>{nameByShort[q.short] || q.short}</span>
-                        {q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
-                      </div>
-                      {(showAdvance || p?.champ != null) && (
-                        <div className="flex flex-col gap-1">
-                          {showAdvance && probRow('진출', p.advance, comp.color)}
-                          {p?.champ != null && probRow('우승', p.champ, '#E8C77E', true)}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className={`truncate ${isWorlds ? 'text-white/35 font-bold' : 'text-white/55'}`}>{isWorlds ? 'TBD' : q.label}</span>
-                      {isWorlds && q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
-                    </div>
-                  )}
-                </div>
-              );
-        };
-        return (
-          <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
-            {groups.map((g, gi) => (
-              <div key={gi} className="flex flex-col gap-2">
-                {g.title && <h4 className="text-xs font-bold text-white/60">{g.title}</h4>}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {g.items.map((q, i) => renderCard(q, i))}
-                </div>
-              </div>
-            ))}
-          </section>
-        );
-      })()}
 
       {/* MSI/LPL 스테이지 대진표 — 섹션 구조 (단계 선택 시 해당 섹션만) */}
       {bracketSections?.length > 0 && (
