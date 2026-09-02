@@ -19,11 +19,11 @@
       "name": "Gen.G Esports",
       "short": "GEN",
       "league": "LCK",
-      "score": 1507,
-      "w": 30,
+      "score": 1509,
+      "w": 31,
       "l": 9,
       "fst": 3,
-      "gw": 72,
+      "gw": 75,
       "gl": 27,
       "logo": "https://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png"
     },
@@ -33,9 +33,9 @@
       "league": "LCK",
       "score": 1471,
       "w": 28,
-      "l": 14,
-      "gw": 74,
-      "gl": 43,
+      "l": 15,
+      "gw": 76,
+      "gl": 46,
       "logo": "https://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png"
     },
     {
@@ -54,11 +54,11 @@
       "name": "Hanwha Life Esports",
       "short": "HLE",
       "league": "LCK",
-      "score": 1547,
-      "w": 26,
+      "score": 1548,
+      "w": 27,
       "l": 11,
-      "gw": 64,
-      "gl": 38,
+      "gw": 67,
+      "gl": 40,
       "logo": "https://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png"
     },
     {
@@ -76,11 +76,11 @@
       "name": "kt Rolster",
       "short": "KT",
       "league": "LCK",
-      "score": 1386,
+      "score": 1383,
       "w": 20,
-      "l": 16,
+      "l": 17,
       "gw": 49,
-      "gl": 46,
+      "gl": 49,
       "logo": "https://static.lolesports.com/teams/kt_darkbackground.png"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-02T18:14:27.485Z",
+  "updatedAt": "2026-09-02T22:54:37.115Z",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
   "iterationsDefault": 20000,
   "competitions": [
@@ -13,12 +13,12 @@
       "stage": "",
       "format": "정규시즌 1-2R (Bo3) → 그룹분할 → 정규시즌 3-4R (Bo3) → 플레이인 (Bo5) → 플레이오프 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-09-02T18:13:58.768Z",
+      "generatedAt": "2026-09-02T22:54:11.345Z",
       "teams": [
         {
           "name": "Gen.G Esports",
           "short": "GEN",
-          "rating": 1507
+          "rating": 1509
         },
         {
           "name": "T1",
@@ -28,12 +28,12 @@
         {
           "name": "Hanwha Life Esports",
           "short": "HLE",
-          "rating": 1547
+          "rating": 1548
         },
         {
           "name": "kt Rolster",
           "short": "KT",
-          "rating": 1386
+          "rating": 1383
         },
         {
           "name": "Dplus KIA",
@@ -76,13 +76,13 @@
         {
           "a": "DK",
           "b": "KT",
-          "pA": 57,
+          "pA": 58,
           "winner": "DK"
         },
         {
           "a": "HLE",
           "b": "GEN",
-          "pA": 61,
+          "pA": 60,
           "winner": "HLE"
         }
       ],
@@ -90,9 +90,9 @@
         {
           "team": "HLE",
           "name": "Hanwha Life Esports",
-          "rating": 1547,
+          "rating": 1548,
           "avgRank": 2,
-          "champ": 57.06,
+          "champ": 56.98,
           "worlds": 100,
           "advance": 100,
           "piPlus": 100,
@@ -101,9 +101,9 @@
         {
           "team": "GEN",
           "name": "Gen.G Esports",
-          "rating": 1507,
+          "rating": 1509,
           "avgRank": 1,
-          "champ": 33.4,
+          "champ": 33.74,
           "worlds": 100,
           "advance": 100,
           "piPlus": 100,
@@ -114,7 +114,7 @@
           "name": "T1",
           "rating": 1471,
           "avgRank": 3,
-          "champ": 8.29,
+          "champ": 8.05,
           "worlds": 100,
           "advance": 100,
           "piPlus": 100,
@@ -125,8 +125,8 @@
           "name": "Dplus KIA",
           "rating": 1412,
           "avgRank": 4,
-          "champ": 0.8,
-          "worlds": 48.94,
+          "champ": 0.82,
+          "worlds": 49.49,
           "advance": 100,
           "piPlus": 100,
           "rank1": 0
@@ -134,10 +134,10 @@
         {
           "team": "KT",
           "name": "kt Rolster",
-          "rating": 1386,
+          "rating": 1383,
           "avgRank": 5,
-          "champ": 0.45,
-          "worlds": 48.41,
+          "champ": 0.41,
+          "worlds": 47.76,
           "advance": 100,
           "piPlus": 100,
           "rank1": 0
@@ -170,7 +170,7 @@
           "rating": 1251,
           "avgRank": 8,
           "champ": 0,
-          "worlds": 2.65,
+          "worlds": 2.75,
           "advance": 100,
           "piPlus": 100,
           "rank1": 0
@@ -205,11 +205,11 @@
         },
         {
           "label": "HLE 우승",
-          "prob": 57.06
+          "prob": 56.98
         },
         {
           "label": "GEN 우승",
-          "prob": 33.4
+          "prob": 33.74
         },
         {
           "label": "HLE 플레이오프 진출",
@@ -1413,7 +1413,7 @@
       "stage": "플레이-인 스테이지 (Bo5 더블 엘리미네이션) → 브래킷 스테이지 (Bo5 더블 엘리미네이션)",
       "format": "",
       "iterations": 100000,
-      "generatedAt": "2026-09-02T18:13:58.768Z",
+      "generatedAt": "2026-09-02T22:54:11.345Z",
       "teams": [
         {
           "name": "G2 Esports",
@@ -1423,7 +1423,7 @@
         {
           "name": "Hanwha Life Esports",
           "short": "HLE",
-          "rating": 1547
+          "rating": 1548
         },
         {
           "name": "Team Secret Whales",
@@ -1476,7 +1476,7 @@
         {
           "team": "HLE",
           "name": "Hanwha Life Esports",
-          "rating": 1547,
+          "rating": 1548,
           "champ": 100
         },
         {
