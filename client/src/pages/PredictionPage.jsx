@@ -822,7 +822,7 @@ const buildLckBracket = (raw, stage, current) => {
     const ub2m1 = rounds[1]?.matches?.[0], ub2m2 = rounds[1]?.matches?.[1];
     const l1 = outcome(ub2m1).loser?.short, l2 = outcome(ub2m2).loser?.short;
     const lbR2 = rounds[1]?.matches?.[2]; // LB R2
-    const lbR3 = rounds[3]?.matches?.[0]; // LB R3
+    const lbR3 = rounds[2]?.matches?.[1]; // LB R3 (r2m0=UB R3, r2m1=LB R3, r3m0=Lower Finals)
     let lowerShort = null, higherShort = null;
     if (l1 && l2) {
       const s1 = seedNumByShort[l1] ?? 99, s2 = seedNumByShort[l2] ?? 99;
