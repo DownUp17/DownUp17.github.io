@@ -1253,11 +1253,15 @@
                   "title": "UB R2 M2",
                   "a": {
                     "seed": "레전드 2위",
-                    "short": "HLE"
+                    "short": "T1",
+                    "score": 2,
+                    "elim": true
                   },
                   "b": {
                     "seed": "UB R1 승자",
-                    "short": "T1"
+                    "short": "HLE",
+                    "score": 3,
+                    "win": true
                   },
                   "time": "9/2 (수) 17:00",
                   "startRow": 4
@@ -1283,7 +1287,8 @@
                   "id": "117030752644841619",
                   "title": "UB R3",
                   "a": {
-                    "seed": "UB R2 승자"
+                    "seed": "UB R2 승자",
+                    "short": "HLE"
                   },
                   "b": {
                     "seed": "UB R2 승자",
