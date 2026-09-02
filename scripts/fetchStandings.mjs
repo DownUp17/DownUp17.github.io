@@ -1276,8 +1276,13 @@ try {
       const lab = (s, l) => { if (s) s.seed = l; };
       lab(ubR1M1.a, '플레이-인 진출'); lab(ubR1M1.b, '레전드 3위');
       lab(ubR1M2.a, '플레이-인 진출'); lab(ubR1M2.b, '레전드 4위');
+      // API 원본 슬롯 순서:
+      //   UB R2 M1 = slot1(레전드 시드 1) / slot2(UB R1 승자)
+      //   UB R2 M2 = slot1(UB R1 승자) / slot2(레전드 시드 2)
+      // 각 매치의 원본 슬롯 순서에 맞춰 라벨을 붙이고, applySeedOrder가 시드 상위(rank 있음)를
+      // a로 자동 정렬한다.
       lab(ubR2M1.a, '레전드 1위'); lab(ubR2M1.b, 'UB R1 승자');
-      lab(ubR2M2.a, '레전드 2위'); lab(ubR2M2.b, 'UB R1 승자');
+      lab(ubR2M2.a, 'UB R1 승자'); lab(ubR2M2.b, '레전드 2위');
       lab(lbR1.a, 'UB R1 패자'); lab(lbR1.b, 'UB R1 패자');
       lab(lbR2.a, 'UB R2 패자'); lab(lbR2.b, 'LB R1 승자');
       lab(lbR3.a, 'UB R2 패자'); lab(lbR3.b, 'LB R2 승자');
