@@ -1274,7 +1274,8 @@
                   "id": "117030752644841625",
                   "title": "LB R2",
                   "a": {
-                    "seed": "UB R2 패자"
+                    "seed": "UB R2 패자",
+                    "short": "KT"
                   },
                   "b": {
                     "seed": "LB R1 승자",
@@ -1293,11 +1294,11 @@
                   "title": "UB R3",
                   "a": {
                     "seed": "UB R2 승자",
-                    "short": "HLE"
+                    "short": "GEN"
                   },
                   "b": {
                     "seed": "UB R2 승자",
-                    "short": "GEN"
+                    "short": "HLE"
                   },
                   "time": "9/5 (토) 17:00",
                   "startRow": 2
@@ -1309,7 +1310,8 @@
                     "seed": "UB R2 패자"
                   },
                   "b": {
-                    "seed": "LB R2 승자"
+                    "seed": "LB R2 승자",
+                    "short": "T1"
                   },
                   "time": "9/6 (일) 17:00",
                   "startRow": 8
@@ -1685,11 +1687,14 @@
                   "title": "MATCH 4",
                   "a": {
                     "seed": "등봉조 1위",
-                    "short": "BLG"
+                    "short": "BLG",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "M2 승자",
-                    "short": "WE"
+                    "short": "WE",
+                    "score": 1
                   },
                   "startRow": 4,
                   "time": "9/3 (목) 18:00"
@@ -1701,7 +1706,8 @@
                     "seed": "M5 승자"
                   },
                   "b": {
-                    "seed": "M4 패자"
+                    "seed": "M4 패자",
+                    "short": "WE"
                   },
                   "startRow": 8,
                   "time": "9/6 (일) 15:00"
@@ -1730,7 +1736,8 @@
                     "seed": "M3 승자"
                   },
                   "b": {
-                    "seed": "M4 승자"
+                    "seed": "M4 승자",
+                    "short": "BLG"
                   },
                   "startRow": 2,
                   "time": "9/7 (월) 18:00"
