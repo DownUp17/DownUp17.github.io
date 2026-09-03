@@ -1004,7 +1004,7 @@
           "lastName": "Peng",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1768349380095_xun.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Knight",
@@ -1012,7 +1012,7 @@
           "lastName": "Zhuo",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1768348559860_knight.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Viper",
@@ -1020,7 +1020,7 @@
           "lastName": "Park",
           "role": "bottom",
           "image": "http://static.lolesports.com/players/1768349250531_viper.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "ON",
@@ -1028,7 +1028,7 @@
           "lastName": "LUO",
           "role": "support",
           "image": "http://static.lolesports.com/players/1768348897219_on.png",
-          "starter": true
+          "starter": false
         }
       ]
     },
@@ -1343,7 +1343,7 @@
           "lastName": "Dai",
           "role": "top",
           "image": "http://static.lolesports.com/players/1768347927566_cube.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Monki",
@@ -1351,7 +1351,7 @@
           "lastName": "WANG",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1768348759598_monki.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Tyrion",
@@ -1367,7 +1367,7 @@
           "lastName": "Kim",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1768348517805_karis.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "About",
@@ -1375,7 +1375,7 @@
           "lastName": "Moon",
           "role": "bottom",
           "image": "http://static.lolesports.com/players/1768347747815_about.png",
-          "starter": true
+          "starter": false
         },
         {
           "name": "Erha",
@@ -1383,7 +1383,7 @@
           "lastName": "SHI",
           "role": "support",
           "image": "http://static.lolesports.com/players/1775225577413_erha.png",
-          "starter": true
+          "starter": false
         }
       ]
     },
