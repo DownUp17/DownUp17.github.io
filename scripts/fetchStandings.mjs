@@ -1285,6 +1285,9 @@ try {
       lab(ubR2M2.a, 'UB R1 승자'); lab(ubR2M2.b, '레전드 2위');
       lab(lbR1.a, 'UB R1 패자'); lab(lbR1.b, 'UB R1 패자');
       lab(lbR2.a, 'UB R2 패자'); lab(lbR2.b, 'LB R1 승자');
+      // LB R3: API가 slot1=LB R2 승자, slot2=UB R2 패자 순서로 반환. UI에서는 UB R2 패자를 상단에 두어야
+      //   상위 시드 패자·LB R2 승자 순서가 자연스러워지므로 슬롯 스왑 후 라벨 부여.
+      if (lbR3?.a && lbR3?.b) { const t = lbR3.a; lbR3.a = lbR3.b; lbR3.b = t; }
       lab(lbR3.a, 'UB R2 패자'); lab(lbR3.b, 'LB R2 승자');
       lab(ubR3.a, 'UB R2 승자'); lab(ubR3.b, 'UB R2 승자');
       lab(lowerFinals.a, 'UB R3 패자'); lab(lowerFinals.b, 'LB R3 승자');

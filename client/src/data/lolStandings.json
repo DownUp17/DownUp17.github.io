@@ -1307,11 +1307,11 @@
                   "id": "117030752644841631",
                   "title": "LB R3",
                   "a": {
-                    "seed": "UB R2 패자"
+                    "seed": "UB R2 패자",
+                    "short": "T1"
                   },
                   "b": {
-                    "seed": "LB R2 승자",
-                    "short": "T1"
+                    "seed": "LB R2 승자"
                   },
                   "time": "9/6 (일) 17:00",
                   "startRow": 8
