@@ -1216,11 +1216,15 @@
                   "title": "LB R1",
                   "a": {
                     "seed": "UB R1 패자",
-                    "short": "DK"
+                    "short": "BFX",
+                    "score": 2,
+                    "elim": true
                   },
                   "b": {
                     "seed": "UB R1 패자",
-                    "short": "BFX"
+                    "short": "DK",
+                    "score": 3,
+                    "win": true
                   },
                   "time": "9/3 (목) 17:00",
                   "startRow": 8
@@ -1273,7 +1277,8 @@
                     "seed": "UB R2 패자"
                   },
                   "b": {
-                    "seed": "LB R1 승자"
+                    "seed": "LB R1 승자",
+                    "short": "DK"
                   },
                   "time": "9/4 (금) 17:00",
                   "startRow": 8
@@ -3242,7 +3247,7 @@
         },
         {
           "seed": "LCK #6",
-          "label": "LCK #6"
+          "short": "BFX"
         },
         {
           "seed": "LCK #7",
@@ -3303,7 +3308,7 @@
         {
           "slot": "TEAM5",
           "seed": "LCK #6",
-          "short": null
+          "short": "BFX"
         },
         {
           "slot": "TEAM6",
