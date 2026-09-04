@@ -8,6 +8,13 @@ import { textOn, lighten } from '../utils/colorContrast';
 const leagueColor = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
 const gprRanked = [...gprTeams.teams].sort((a, b) => b.score - a.score);
 const gprMaxScore = Math.max(...gprRanked.map((t) => t.score));
+// 동점 팀은 같은 순위 (standard competition ranking, 1224 방식).
+const gprRankByShort = {};
+gprRanked.forEach((t, i) => {
+  gprRankByShort[t.short] = (i > 0 && gprRanked[i - 1].score === t.score)
+    ? gprRankByShort[gprRanked[i - 1].short]
+    : i + 1;
+});
 
 // 로고 (로드 실패 시 숨김)
 export const TeamLogo = ({ src, size = 20 }) =>
@@ -84,7 +91,7 @@ const GprTable = ({ showIntro = true, selectedTeam, onTeamClick }) => {
                 className={`border-b border-white/5 cursor-pointer transition-colors ${selectedTeam === t.short ? 'bg-white/10' : 'hover:bg-white/5'}`}
                 onClick={() => onTeamClick?.(t.short)}
               >
-                <td className="py-2 px-2 text-center text-white/40 font-mono">{gprRanked.indexOf(t) + 1}</td>
+                <td className="py-2 px-2 text-center text-white/40 font-mono">{gprRankByShort[t.short]}</td>
                 <td className="py-2 pr-2">
                   <div className="flex items-center gap-2 min-w-0">
                     <TeamLogo src={t.logo} />
