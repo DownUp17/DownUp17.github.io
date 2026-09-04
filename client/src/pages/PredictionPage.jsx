@@ -845,8 +845,11 @@ const buildLckBracket = (raw, stage, current) => {
         if (s?.short === short) delete s.elim;
       }
     };
-    if (lbR2?.a && !lbR2.a.short && lowerShort) { lbR2.a = { ...lbR2.a, short: lowerShort }; clearElim(lowerShort); }
-    if (lbR3?.a && !lbR3.a.short && higherShort) { lbR3.a = { ...lbR3.a, short: higherShort }; clearElim(higherShort); }
+    if (lbR2?.a && !lbR2.a.short && lowerShort) { lbR2.a = { ...lbR2.a, short: lowerShort }; }
+    if (lbR3?.a && !lbR3.a.short && higherShort) { lbR3.a = { ...lbR3.a, short: higherShort }; }
+    // UB R2 패자는 무조건 LB로 진출하므로 elim 플래그 항상 제거 (fetchStandings의 그래프 판정 오탐 방지)
+    if (l1) clearElim(l1);
+    if (l2) clearElim(l2);
   }
   return { ...raw, rounds };
 };
