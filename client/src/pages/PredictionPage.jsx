@@ -1870,9 +1870,10 @@ const PredictionPage = () => {
                 </div>
               ) : !comp.ready ? (
                 <NotReady comp={comp} />
-              ) : comp.status === 'finished' ? (
+              ) : comp.status === 'finished' && comp.key !== 'msi' ? (
                 <ResultView comp={comp} />
               ) : (
+                // MSI는 종료 상태여도 브래킷·참가팀·시뮬 결과를 그대로 표시.
                 <SimulationView comp={comp} sub={activeSub} stage={activeStage} onTeamClick={handleTeamClick} />
               )}
             </>
