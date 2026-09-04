@@ -3250,7 +3250,7 @@
         },
         {
           "seed": "LCK #5",
-          "label": "LCK #5"
+          "short": "KT"
         },
         {
           "seed": "LCK #6",
@@ -3310,7 +3310,7 @@
         {
           "slot": "TEAM4",
           "seed": "LCK #5",
-          "short": null
+          "short": "KT"
         },
         {
           "slot": "TEAM5",
