@@ -1106,6 +1106,14 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         } else if (stage === '플레이-인') {
           groups = [{ title: null, items: qualifiers.filter((q) => q.stage === 'playin') }];
         } else if (stage === '스위스 스테이지') {
+          // POOL 배정 (2026 Worlds 규정): POOL 1 = LCK/LPL/LCS/LEC #1, POOL 2 = LCP/CBLOL #1 + LCK/LPL #2,
+          //   POOL 3 = LCS/LEC #2 + LCK/LPL #3, POOL 4 = LCP #2 + LCK/LPL #4 + PI 생존.
+          const POOLS = {
+            'LCK #1': 1, 'LPL #1': 1, 'LCS #1': 1, 'LEC #1': 1,
+            'LCP #1': 2, 'CBLOL #1': 2, 'LCK #2': 2, 'LPL #2': 2,
+            'LCS #2': 3, 'LEC #2': 3, 'LCK #3': 3, 'LPL #3': 3,
+            'LCP #2': 4, 'LCK #4': 4, 'LPL #4': 4, // '플레이-인 통과' = 4
+          };
           const playin = official?.playin;
           const gf = playin?.rounds?.[playin.rounds.length - 1]?.matches?.[0];
           const winShort = gf?.a?.win || gf?.a?.msi ? gf?.a?.short : (gf?.b?.win || gf?.b?.msi ? gf?.b?.short : null);
@@ -1113,23 +1121,36 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             ...qualifiers.filter((q) => q.stage === 'swiss'),
             winShort ? { seed: '플레이-인 통과', short: winShort } : { seed: '플레이-인 통과', label: 'TBD' },
           ];
+          // POOL 순으로 정렬 (POOL 1 위, POOL 4 아래). 같은 POOL 안에서는 기존 순서 유지.
+          items.sort((a, b) => {
+            const pa = POOLS[a.seed] ?? (a.seed === '플레이-인 통과' ? 4 : 99);
+            const pb = POOLS[b.seed] ?? (b.seed === '플레이-인 통과' ? 4 : 99);
+            return pa - pb;
+          });
           groups = [{ title: null, items }];
         } else if (stage === '녹아웃 스테이지') {
+          // 각 팀의 승패 카운트 → 3승 진출자를 3-0/3-1/3-2로 분류 (각각 최대 2/3/3팀).
           const swissB = official?.swiss;
-          const wins = {};
+          const wins = {}, losses = {};
           swissB?.rounds?.forEach((r) => r.matches.forEach((m) => {
             if (!m.a?.short || !m.b?.short) return;
             if (m.a.score != null && m.b.score != null && m.a.score !== m.b.score) {
               const aWin = m.a.score > m.b.score;
               const w = aWin ? m.a.short : m.b.short;
+              const l = aWin ? m.b.short : m.a.short;
               wins[w] = (wins[w] || 0) + 1;
+              losses[l] = (losses[l] || 0) + 1;
             }
           }));
           const advancers = Object.keys(wins).filter((t) => wins[t] >= 3);
-          const items = Array.from({ length: 8 }, (_, i) => {
-            const s = advancers[i];
-            return s ? { seed: `녹아웃 #${i + 1}`, short: s } : { seed: `녹아웃 #${i + 1}`, label: 'TBD' };
-          });
+          const byRec = { '3-0': [], '3-1': [], '3-2': [] };
+          for (const t of advancers) { const l = losses[t] || 0; const k = `3-${l}`; if (byRec[k]) byRec[k].push(t); }
+          const slots = [
+            ...['3-0','3-0'].map((rec, i) => ({ rec, short: byRec['3-0'][i] || null })),
+            ...['3-1','3-1','3-1'].map((rec, i) => ({ rec, short: byRec['3-1'][i] || null })),
+            ...['3-2','3-2','3-2'].map((rec, i) => ({ rec, short: byRec['3-2'][i] || null })),
+          ];
+          const items = slots.map((s) => s.short ? { seed: s.rec, short: s.short } : { seed: s.rec, label: 'TBD' });
           groups = [{ title: null, items }];
         } else {
           groups = [{ title: null, items: qualifiers }];
