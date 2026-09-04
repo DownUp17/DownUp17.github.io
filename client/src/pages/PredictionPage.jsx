@@ -839,17 +839,20 @@ const buildLckBracket = (raw, stage, current) => {
       if (others.length > 0 && doneSeed > Math.max(...others)) lowerShort = done;
       else if (others.length > 0 && doneSeed < Math.min(...others)) higherShort = done;
     }
-    const clearElim = (short) => {
+    // UB R2 매치의 elim만 제거 (bracketFromColumns 오탐).
+    //   실제 LB 스테이지 패배 elim은 유지해야 함 (예: KT가 LB R2에서 지면 진짜 탈락).
+    const clearUB2Elim = (short) => {
       if (!short) return;
-      for (const r of rounds) for (const m of r.matches) for (const s of [m.a, m.b]) {
-        if (s?.short === short) delete s.elim;
+      for (const m of [ub2m1, ub2m2]) {
+        if (!m) continue;
+        for (const s of [m.a, m.b]) if (s?.short === short) delete s.elim;
       }
     };
     if (lbR2?.a && !lbR2.a.short && lowerShort) { lbR2.a = { ...lbR2.a, short: lowerShort }; }
     if (lbR3?.a && !lbR3.a.short && higherShort) { lbR3.a = { ...lbR3.a, short: higherShort }; }
-    // UB R2 패자는 무조건 LB로 진출하므로 elim 플래그 항상 제거 (fetchStandings의 그래프 판정 오탐 방지)
-    if (l1) clearElim(l1);
-    if (l2) clearElim(l2);
+    // UB R2 패자는 LB로 진출하므로 UB R2 매치의 elim만 제거. LB 매치의 elim은 유지.
+    if (l1) clearUB2Elim(l1);
+    if (l2) clearUB2Elim(l2);
   }
   return { ...raw, rounds };
 };
