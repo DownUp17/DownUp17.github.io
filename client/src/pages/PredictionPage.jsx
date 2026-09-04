@@ -1774,7 +1774,7 @@ const PredictionPage = () => {
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"
-                  style={{ width: 18, height: 18, filter: active ? (textOn(c.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none', opacity: active ? 0.9 : 1 }}
+                  style={{ width: 18, height: 18, filter: active ? (c.key === 'worlds' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none', opacity: active ? 0.9 : 1 }}
                   onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                 {c.tabName || c.name.replace('2026 ', '')}
               </button>
@@ -1803,7 +1803,7 @@ const PredictionPage = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: comp.color }}>
                     <img src={COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={{ filter: textOn(comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)' }}
+                      style={{ filter: comp.key === 'worlds' ? 'brightness(0)' : 'brightness(0) invert(1)' }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                   <div>
