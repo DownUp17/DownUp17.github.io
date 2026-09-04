@@ -1345,7 +1345,7 @@
       "key": "fst",
       "name": "2026 First Stand",
       "scope": "intl",
-      "color": "#C8963E",
+      "color": "#ff5500",
       "status": "finished",
       "ready": true,
       "stage": "2026 First Stand (시즌 첫 국제전)",
@@ -1566,7 +1566,7 @@
     },
     {
       "key": "worlds",
-      "name": "2026 World Championship",
+      "name": "2026 Worlds",
       "scope": "intl",
       "color": "#0fe3f9",
       "status": "upcoming",
