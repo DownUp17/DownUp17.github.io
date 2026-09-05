@@ -1668,11 +1668,15 @@
                   "title": "MATCH 6",
                   "a": {
                     "seed": "M2 패자",
-                    "short": "NIP"
+                    "short": "NIP",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "기사의 길 2 승자",
-                    "short": "JDG"
+                    "short": "JDG",
+                    "score": 0,
+                    "elim": true
                   },
                   "startRow": 12,
                   "time": "9/5 (토) 18:00"
@@ -1734,11 +1738,12 @@
                   "id": "117155436343202184",
                   "title": "MATCH 8",
                   "a": {
-                    "seed": "M6 승자"
+                    "seed": "M6 승자",
+                    "short": "LGD"
                   },
                   "b": {
                     "seed": "M3 패자",
-                    "short": "LGD"
+                    "short": "NIP"
                   },
                   "startRow": 12,
                   "time": "9/6 (일) 18:00"
