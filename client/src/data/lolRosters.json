@@ -1094,7 +1094,7 @@
           "lastName": "XU",
           "role": "top",
           "image": "http://static.lolesports.com/players/1772232812105_xiaoxu.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "JunJia",
@@ -1102,7 +1102,7 @@
           "lastName": "Yu",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1768348461257_junjia.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "xiaofang",
@@ -1118,7 +1118,7 @@
           "lastName": "TSAI",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1768348294988_hongq.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "GALA",
@@ -1126,7 +1126,7 @@
           "lastName": "Chen",
           "role": "bottom",
           "image": "http://static.lolesports.com/players/1768348104959_gala.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "Vampire",
@@ -1134,7 +1134,7 @@
           "lastName": "ZHAO",
           "role": "support",
           "image": "http://static.lolesports.com/players/1768349226496_vampire.png",
-          "starter": false
+          "starter": true
         }
       ]
     },
@@ -1245,7 +1245,7 @@
           "lastName": "Yoon",
           "role": "top",
           "image": "http://static.lolesports.com/players/1768348332479_hoya.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "Guwon",
@@ -1253,7 +1253,7 @@
           "lastName": "Kwanmo",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1768348142810_guwon.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "Care",
@@ -1261,7 +1261,7 @@
           "lastName": "jie",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1768347863404_care.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "Photic",
@@ -1269,7 +1269,7 @@
           "lastName": "Ying",
           "role": "bottom",
           "image": "http://static.lolesports.com/players/1768348885435_photic.png",
-          "starter": false
+          "starter": true
         },
         {
           "name": "fengyue",
@@ -1277,7 +1277,7 @@
           "lastName": "Wang",
           "role": "support",
           "image": "http://static.lolesports.com/players/1768348013713_fengyue.png",
-          "starter": false
+          "starter": true
         }
       ]
     },

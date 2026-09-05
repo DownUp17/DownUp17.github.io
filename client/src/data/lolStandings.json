@@ -1298,11 +1298,14 @@
                   "title": "UB R3",
                   "a": {
                     "seed": "UB R2 승자",
-                    "short": "GEN"
+                    "short": "HLE",
+                    "score": 1
                   },
                   "b": {
                     "seed": "UB R2 승자",
-                    "short": "HLE"
+                    "short": "GEN",
+                    "score": 3,
+                    "win": true
                   },
                   "time": "9/5 (토) 17:00",
                   "startRow": 2
@@ -1333,7 +1336,8 @@
                     "seed": "UB R3 패자"
                   },
                   "b": {
-                    "seed": "LB R3 승자"
+                    "seed": "LB R3 승자",
+                    "short": "HLE"
                   },
                   "time": "9/12 (토) 14:00",
                   "startRow": 8
@@ -1350,7 +1354,8 @@
                     "seed": "UB R3 승자"
                   },
                   "b": {
-                    "seed": "결승 진출전 승자"
+                    "seed": "결승 진출전 승자",
+                    "short": "GEN"
                   },
                   "time": "9/13 (일) 14:00",
                   "startRow": 5
@@ -1645,11 +1650,15 @@
                   "title": "MATCH 5",
                   "a": {
                     "seed": "M1 패자",
-                    "short": "IG"
+                    "short": "IG",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "기사의 길 1 승자",
-                    "short": "TES"
+                    "short": "TES",
+                    "score": 2,
+                    "elim": true
                   },
                   "startRow": 8,
                   "time": "9/5 (토) 15:00"
@@ -1711,11 +1720,12 @@
                   "id": "117155436343202178",
                   "title": "MATCH 7",
                   "a": {
-                    "seed": "M5 승자"
+                    "seed": "M5 승자",
+                    "short": "WE"
                   },
                   "b": {
                     "seed": "M4 패자",
-                    "short": "WE"
+                    "short": "IG"
                   },
                   "startRow": 8,
                   "time": "9/6 (일) 15:00"
