@@ -1315,11 +1315,15 @@
                   "title": "LB R3",
                   "a": {
                     "seed": "UB R2 패자",
-                    "short": "T1"
+                    "short": "T1",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "LB R2 승자",
-                    "short": "DK"
+                    "short": "DK",
+                    "score": 1,
+                    "elim": true
                   },
                   "time": "9/6 (일) 17:00",
                   "startRow": 8
@@ -1333,7 +1337,8 @@
                   "id": "117030752644841637",
                   "title": "Lower Finals",
                   "a": {
-                    "seed": "UB R3 패자"
+                    "seed": "UB R3 패자",
+                    "short": "T1"
                   },
                   "b": {
                     "seed": "LB R3 승자",
@@ -1725,11 +1730,15 @@
                   "title": "MATCH 7",
                   "a": {
                     "seed": "M5 승자",
-                    "short": "WE"
+                    "short": "WE",
+                    "score": 1,
+                    "elim": true
                   },
                   "b": {
                     "seed": "M4 패자",
-                    "short": "IG"
+                    "short": "IG",
+                    "score": 3,
+                    "win": true
                   },
                   "startRow": 8,
                   "time": "9/6 (일) 15:00"
@@ -1774,7 +1783,8 @@
                     "seed": "하위권 8강 M1 승자"
                   },
                   "b": {
-                    "seed": "하위권 8강 M2 승자"
+                    "seed": "하위권 8강 M2 승자",
+                    "short": "IG"
                   },
                   "startRow": 10,
                   "time": "9/8 (화) 18:00"
