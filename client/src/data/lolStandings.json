@@ -1771,11 +1771,14 @@
                   "title": "MATCH 9",
                   "a": {
                     "seed": "M3 승자",
-                    "short": "BLG"
+                    "short": "BLG",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "M4 승자",
-                    "short": "AL"
+                    "short": "AL",
+                    "score": 0
                   },
                   "startRow": 2,
                   "time": "9/7 (월) 18:00"
@@ -1806,7 +1809,8 @@
                     "seed": "상위권 결승 패자"
                   },
                   "b": {
-                    "seed": "하위권 4강 승자"
+                    "seed": "하위권 4강 승자",
+                    "short": "AL"
                   },
                   "startRow": 6,
                   "time": "9/12 (토) 18:00"
@@ -1823,7 +1827,8 @@
                     "seed": "상위권 결승 승자"
                   },
                   "b": {
-                    "seed": "하위권 결승 승자"
+                    "seed": "하위권 결승 승자",
+                    "short": "BLG"
                   },
                   "startRow": 6,
                   "time": "9/13 (일) 18:00"
