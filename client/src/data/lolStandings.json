@@ -1788,11 +1788,15 @@
                   "title": "MATCH 10",
                   "a": {
                     "seed": "하위권 8강 M1 승자",
-                    "short": "LGD"
+                    "short": "LGD",
+                    "score": 0,
+                    "elim": true
                   },
                   "b": {
                     "seed": "하위권 8강 M2 승자",
-                    "short": "IG"
+                    "short": "IG",
+                    "score": 3,
+                    "win": true
                   },
                   "startRow": 10,
                   "time": "9/8 (화) 18:00"
@@ -1806,7 +1810,8 @@
                   "id": "117155436343202196",
                   "title": "MATCH 11",
                   "a": {
-                    "seed": "상위권 결승 패자"
+                    "seed": "상위권 결승 패자",
+                    "short": "IG"
                   },
                   "b": {
                     "seed": "하위권 4강 승자",
