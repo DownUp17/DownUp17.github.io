@@ -1121,9 +1121,11 @@ try {
       const w = winnerOf(m); if (!w) return null;
       return m.a?.short === w ? m.b?.short : m.a?.short;
     };
-    const lckGF = lckPO?.rounds?.[6]?.matches?.[0];
-    const lckLF = lckPO?.rounds?.[5]?.matches?.[0];
-    const lckLB3 = lckPO?.rounds?.[3]?.matches?.[0];
+    // LCK PO 재구성 후 rounds 인덱스:
+    //   rounds[2] = UB R3(0), LB R3(1) / rounds[3] = Lower Finals(0) / rounds[4] = Grand Finals(0).
+    const lckGF = lckPO?.rounds?.[4]?.matches?.[0];
+    const lckLF = lckPO?.rounds?.[3]?.matches?.[0];
+    const lckLB3 = lckPO?.rounds?.[2]?.matches?.[1];
     const lck1 = winnerOf(lckGF), lck2 = loserOf(lckGF), lck3 = loserOf(lckLF), lck4 = loserOf(lckLB3);
     // LPL 세부 시드 규칙
     const lplPO = data.standings.lpl?.['Split 3']?.playoffs;
