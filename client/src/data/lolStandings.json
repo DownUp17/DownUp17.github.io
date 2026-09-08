@@ -3296,7 +3296,7 @@
         },
         {
           "seed": "LPL #7",
-          "label": "LPL #7"
+          "short": "LGD"
         },
         {
           "seed": "LCK #5",
@@ -3355,7 +3355,7 @@
         {
           "slot": "TEAM3",
           "seed": "LPL #7",
-          "short": null
+          "short": "LGD"
         },
         {
           "slot": "TEAM4",
