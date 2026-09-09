@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-08",
+  "updatedAt": "2026-09-09",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -983,19 +983,19 @@
           "starter": true
         },
         {
-          "name": "Flandre",
-          "firstName": "Xuan-jun",
-          "lastName": "Li",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/1768348080942_flandre.png",
-          "starter": false
-        },
-        {
           "name": "Wenbo",
           "firstName": "Wenbo",
           "lastName": "Yang",
           "role": "top",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "name": "Flandre",
+          "firstName": "Xuan-jun",
+          "lastName": "Li",
+          "role": "top",
+          "image": "http://static.lolesports.com/players/1768348080942_flandre.png",
           "starter": false
         },
         {
