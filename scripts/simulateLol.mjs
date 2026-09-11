@@ -789,7 +789,7 @@ if (fixedKeys.length) console.log(`MSI 플레이-인 확정 반영: ${fixedKeys.
 if (msiBracketInfo.ready) console.log(`MSI 브래킷 실제 대진 반영 (확정 ${Object.keys(msiBracketInfo.fixed).length}경기)`);
 const msi = sim.competitions.find((c) => c.key === 'msi');
 msi.ready = true;
-msi.status = 'upcoming';
+msi.status = 'finished';
 msi.iterations = ITER;
 msi.generatedAt = GENERATED_AT;
 msi.teams = [...msiDirect, ...msiPlayIn].map((t) => ({ name: t.name, short: t.short, rating: t.score }));

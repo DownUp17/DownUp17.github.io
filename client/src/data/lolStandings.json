@@ -1338,11 +1338,11 @@
                   "title": "Lower Finals",
                   "a": {
                     "seed": "UB R3 패자",
-                    "short": "T1"
+                    "short": "HLE"
                   },
                   "b": {
                     "seed": "LB R3 승자",
-                    "short": "HLE"
+                    "short": "T1"
                   },
                   "time": "9/12 (토) 14:00",
                   "startRow": 8
@@ -1356,11 +1356,11 @@
                   "id": "117030752644841643",
                   "title": "Grand Finals",
                   "a": {
-                    "seed": "UB R3 승자"
+                    "seed": "UB R3 승자",
+                    "short": "GEN"
                   },
                   "b": {
-                    "seed": "결승 진출전 승자",
-                    "short": "GEN"
+                    "seed": "결승 진출전 승자"
                   },
                   "time": "9/13 (일) 14:00",
                   "startRow": 5

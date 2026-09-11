@@ -1292,6 +1292,10 @@ try {
       if (lbR3?.a && lbR3?.b) { const t = lbR3.a; lbR3.a = lbR3.b; lbR3.b = t; }
       lab(lbR3.a, 'UB R2 패자'); lab(lbR3.b, 'LB R2 승자');
       lab(ubR3.a, 'UB R2 승자'); lab(ubR3.b, 'UB R2 승자');
+      // Lower Finals·Grand Finals: API가 slot1=LB R3 승자/slot2=UB R3 패자, slot1=LF 승자/slot2=UB R3 승자 순서로
+      //   반환하는데 UI에서는 UB R3 계열을 상단에 두어야 자연스러워 슬롯 스왑 후 라벨 부여.
+      if (lowerFinals?.a && lowerFinals?.b) { const t = lowerFinals.a; lowerFinals.a = lowerFinals.b; lowerFinals.b = t; }
+      if (grandFinals?.a && grandFinals?.b) { const t = grandFinals.a; grandFinals.a = grandFinals.b; grandFinals.b = t; }
       lab(lowerFinals.a, 'UB R3 패자'); lab(lowerFinals.b, 'LB R3 승자');
       lab(grandFinals.a, 'UB R3 승자'); lab(grandFinals.b, '결승 진출전 승자');
       // 매치 제목
