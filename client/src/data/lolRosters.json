@@ -983,19 +983,19 @@
           "starter": true
         },
         {
-          "name": "Wenbo",
-          "firstName": "Wenbo",
-          "lastName": "Yang",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
-          "starter": false
-        },
-        {
           "name": "Flandre",
           "firstName": "Xuan-jun",
           "lastName": "Li",
           "role": "top",
           "image": "http://static.lolesports.com/players/1768348080942_flandre.png",
+          "starter": false
+        },
+        {
+          "name": "Wenbo",
+          "firstName": "Wenbo",
+          "lastName": "Yang",
+          "role": "top",
+          "image": "http://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -2363,19 +2363,19 @@
       "id": "98926509883054987",
       "players": [
         {
-          "name": "Denathor",
-          "firstName": "Noah",
-          "lastName": "Erikson",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
-          "starter": true
-        },
-        {
           "name": "Dardoch",
           "firstName": "Joshua",
           "lastName": "Hartnett",
           "role": "top",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": true
+        },
+        {
+          "name": "Denathor",
+          "firstName": "Noah",
+          "lastName": "Erikson",
+          "role": "top",
+          "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
           "starter": true
         },
         {
@@ -2951,11 +2951,11 @@
           "starter": true
         },
         {
-          "name": "Luuukz",
-          "firstName": "Lucas",
-          "lastName": "Higashi",
+          "name": "Shini",
+          "firstName": "Diogo",
+          "lastName": "Rogê",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1654466535795_Luuukzcopy.png",
+          "image": "http://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
