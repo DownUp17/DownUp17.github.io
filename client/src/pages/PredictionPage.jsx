@@ -10,6 +10,7 @@ import GprTable, { TeamLogo } from '../components/GprTable';
 import TeamPanel from '../components/TeamPanel';
 import { textOn, lighten } from '../utils/colorContrast';
 import demaciaLogo from '../assets/demacia.svg';
+import asiangamesLogo from '../assets/asiangames.svg';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -1737,6 +1738,7 @@ const COMP_LOGO = {
   msi: 'https://static.lolesports.com/leagues/1592594634248_MSIDarkBG.png',
   demacia: demaciaLogo,
   worlds: 'https://static.lolesports.com/leagues/1592594612171_WorldsDarkBG.png',
+  asiangames: asiangamesLogo,
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 
