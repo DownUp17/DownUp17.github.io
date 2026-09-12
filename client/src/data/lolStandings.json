@@ -1338,11 +1338,11 @@
                   "title": "Lower Finals",
                   "a": {
                     "seed": "UB R3 패자",
-                    "short": "HLE"
+                    "short": "T1"
                   },
                   "b": {
                     "seed": "LB R3 승자",
-                    "short": "T1"
+                    "short": "HLE"
                   },
                   "time": "9/12 (토) 14:00",
                   "startRow": 8
