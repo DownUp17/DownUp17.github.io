@@ -1465,47 +1465,54 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             </div>
           );
         };
-        if (stage === 'A조' || stage === 'B조') {
-          const gk = stage === 'A조' ? 'A' : 'B';
-          const grp = official?.groups?.[gk];
-          if (!grp) return <section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">조별 정보가 아직 확정되지 않았습니다.</section>;
-          const rows = grp.standings || [];
+        if (stage === '그룹 스테이지') {
+          const groupBlock = (gk) => {
+            const grp = official?.groups?.[gk];
+            const rows = grp?.standings?.length ? grp.standings : teams.filter((t) => t.group === gk).map((t) => ({ code: t.code, w: 0, l: 0, sw: 0, sl: 0 }));
+            return (
+              <div key={gk} className="flex flex-col gap-4">
+                <div>
+                  <div className="flex items-baseline gap-2 flex-wrap mb-3">
+                    <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{gk}조 순위</h3>
+                    <span className="text-xs text-white/40">싱글 라운드로빈 · Bo3 · 상위 2팀 4강 진출</span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm border-collapse">
+                      <thead><tr className="text-white/40 text-xs border-b border-white/10">
+                        <th className="text-center font-bold py-2 px-2 w-10">#</th>
+                        <th className="text-left font-bold py-2 pr-2">국가</th>
+                        <th className="text-center font-bold py-2 px-2">Elo</th>
+                        <th className="text-center font-bold py-2 px-2">승-패</th>
+                        <th className="text-center font-bold py-2 px-2">세트</th>
+                      </tr></thead>
+                      <tbody>
+                        {rows.map((r, i) => (
+                          <tr key={r.code} className="border-b border-white/5" style={i < 2 ? { backgroundColor: 'rgba(96,165,250,0.10)' } : undefined}>
+                            <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
+                            <td className="py-2 pr-2 font-bold text-white/90">{nameOf(r.code)}</td>
+                            <td className="py-2 px-2 text-center text-white/50 font-mono">{eloOf(r.code) ?? '-'}</td>
+                            <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
+                            <td className="py-2 px-2 text-center font-mono text-white/50">{r.sw}-{r.sl}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider mb-3">{gk}조 대진</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {(grp?.matches || []).map(matchCard)}
+                  </div>
+                </div>
+              </div>
+            );
+          };
+          if (!official?.groups) return <section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">조별 정보가 아직 확정되지 않았습니다.</section>;
           return (
-            <section className="flex flex-col gap-4">
-              <div>
-                <div className="flex items-baseline gap-2 flex-wrap mb-3">
-                  <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{gk}조 순위</h3>
-                  <span className="text-xs text-white/40">싱글 라운드로빈 · Bo3 · 상위 2팀 4강 진출</span>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm border-collapse">
-                    <thead><tr className="text-white/40 text-xs border-b border-white/10">
-                      <th className="text-center font-bold py-2 px-2 w-10">#</th>
-                      <th className="text-left font-bold py-2 pr-2">국가</th>
-                      <th className="text-center font-bold py-2 px-2">Elo</th>
-                      <th className="text-center font-bold py-2 px-2">승-패</th>
-                      <th className="text-center font-bold py-2 px-2">세트</th>
-                    </tr></thead>
-                    <tbody>
-                      {(rows.length ? rows : (teams.filter((t) => t.group === gk).map((t) => ({ code: t.code, w: 0, l: 0, sw: 0, sl: 0 })))).map((r, i) => (
-                        <tr key={r.code} className="border-b border-white/5" style={i < 2 ? { backgroundColor: 'rgba(96,165,250,0.10)' } : undefined}>
-                          <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
-                          <td className="py-2 pr-2 font-bold text-white/90">{nameOf(r.code)}</td>
-                          <td className="py-2 px-2 text-center text-white/50 font-mono">{eloOf(r.code) ?? '-'}</td>
-                          <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
-                          <td className="py-2 px-2 text-center font-mono text-white/50">{r.sw}-{r.sl}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider mb-3">{gk}조 대진</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {(grp.matches || []).map(matchCard)}
-                </div>
-              </div>
+            <section className="flex flex-col gap-8">
+              {groupBlock('A')}
+              {groupBlock('B')}
             </section>
           );
         }
@@ -1788,7 +1795,7 @@ const STAGE_TABS = {
   demacia: ['그룹 스테이지', '녹아웃 스테이지'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
   worlds: ['플레이-인', '스위스 스테이지', '녹아웃 스테이지'],
-  asiangames: ['A조', 'B조', '녹아웃 스테이지'],
+  asiangames: ['그룹 스테이지', '녹아웃 스테이지'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
 const STAGE_DEFAULT = {
