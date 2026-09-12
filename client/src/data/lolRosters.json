@@ -2943,19 +2943,19 @@
           "starter": true
         },
         {
-          "name": "Tatu",
-          "firstName": "Pedro",
-          "lastName": "Seixas",
-          "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785137528696_FUR_Tatu-1copy.png",
-          "starter": true
-        },
-        {
           "name": "Shini",
           "firstName": "Diogo",
           "lastName": "Rogê",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": true
+        },
+        {
+          "name": "Tatu",
+          "firstName": "Pedro",
+          "lastName": "Seixas",
+          "role": "jungle",
+          "image": "http://static.lolesports.com/players/1785137528696_FUR_Tatu-1copy.png",
           "starter": false
         },
         {
