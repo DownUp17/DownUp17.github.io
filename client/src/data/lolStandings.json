@@ -1816,11 +1816,15 @@
                   "title": "MATCH 11",
                   "a": {
                     "seed": "상위권 결승 패자",
-                    "short": "IG"
+                    "short": "IG",
+                    "score": 2,
+                    "elim": true
                   },
                   "b": {
                     "seed": "하위권 4강 승자",
-                    "short": "AL"
+                    "short": "AL",
+                    "score": 3,
+                    "win": true
                   },
                   "startRow": 6,
                   "time": "9/12 (토) 18:00"
@@ -1834,7 +1838,8 @@
                   "id": "117155436343202202",
                   "title": "MATCH 12",
                   "a": {
-                    "seed": "상위권 결승 승자"
+                    "seed": "상위권 결승 승자",
+                    "short": "AL"
                   },
                   "b": {
                     "seed": "하위권 결승 승자",
@@ -3885,7 +3890,7 @@
         },
         {
           "seed": "LCK #3",
-          "label": "LCK #3",
+          "short": "T1",
           "stage": "swiss"
         },
         {

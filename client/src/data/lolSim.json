@@ -1583,6 +1583,17 @@
       "finalResult": null,
       "tabName": "Worlds",
       "desc": "국제 대회"
+    },
+    {
+      "key": "asiangames",
+      "name": "20th Asian Games Aichi-Nagoya 2026 Esports League of Legends",
+      "tabName": "AG",
+      "scope": "intl",
+      "color": "#c9a227",
+      "status": "upcoming",
+      "ready": true,
+      "format": "8개국 2개조 싱글 라운드로빈 (Bo3) → 4강 (Bo3) · 3·4위전·결승 (Bo5)",
+      "desc": "국제 대회"
     }
   ],
   "bracketSigs": {
