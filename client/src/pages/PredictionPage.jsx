@@ -866,7 +866,10 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   // 현재 순위 — 해당 세부대회 공식 순위표가 있으면 우선, 없으면 GPR 전적으로 산출
   const leagueStd = officialStandings.standings[comp.key];
   // 서브탭이 있는 대회는 leagueStd[sub], 서브탭 없는 대회(예: DEMACIA)는 leagueStd 자체를 official로 사용
-  const official = leagueStd ? (sub ? leagueStd[sub] : leagueStd) : null;
+  // MSI는 서브탭 대신 스테이지 탭(플레이-인/브래킷)을 쓰므로 stage로 해당 스테이지 객체를 선택.
+  const official = leagueStd
+    ? (sub ? leagueStd[sub] : (comp.key === 'msi' && stage ? leagueStd[stage] : leagueStd))
+    : null;
   const setDiff = (gw, gl) => (gw != null && gl != null ? gw - gl : null);
   const current = official?.rows?.length
     ? official.rows.map((r) => {
@@ -1465,6 +1468,28 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             </div>
           );
         };
+        // 참가 팀 — 8개국을 A조/B조로 나눠 Elo와 함께 대진표 위에 표기.
+        const participants = teams.length > 0 && (
+          <section className="flex flex-col gap-3">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {['A', 'B'].map((gk) => (
+                <div key={gk} className="flex flex-col gap-2">
+                  <h4 className="text-xs font-bold text-white/60">{gk}조</h4>
+                  <div className="flex flex-col gap-2">
+                    {teams.filter((t) => t.group === gk).map((t) => (
+                      <div key={t.code} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+                        <span className="font-bold truncate text-white/90">{t.name}</span>
+                        {t.elo != null && <span className="text-[11px] text-white/40 shrink-0 ml-auto font-mono">Elo {t.elo}</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+        const wrap = (body) => <>{participants}{body}</>;
         if (stage === '그룹 스테이지') {
           const groupBlock = (gk) => {
             const grp = official?.groups?.[gk];
@@ -1508,8 +1533,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               </div>
             );
           };
-          if (!official?.groups) return <section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">조별 정보가 아직 확정되지 않았습니다.</section>;
-          return (
+          if (!official?.groups) return wrap(<section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">조별 정보가 아직 확정되지 않았습니다.</section>);
+          return wrap(
             <section className="flex flex-col gap-8">
               {groupBlock('A')}
               {groupBlock('B')}
@@ -1518,7 +1543,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         }
         if (stage === '녹아웃 스테이지') {
           const ko = official?.knockout?.matches || [];
-          if (!ko.length) return <section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">녹아웃 대진이 아직 확정되지 않았습니다.</section>;
+          if (!ko.length) return wrap(<section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">녹아웃 대진이 아직 확정되지 않았습니다.</section>);
           const byId = Object.fromEntries(ko.map((m) => [m.id, m]));
           const col = (title, ids) => (
             <div className="flex flex-col gap-4 shrink-0 justify-center" style={{ width: 220 }}>
@@ -1526,7 +1551,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               {ids.map((id) => byId[id] && matchCard(byId[id]))}
             </div>
           );
-          return (
+          return wrap(
             <section>
               <div className="flex items-baseline gap-2 flex-wrap mb-4">
                 <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">녹아웃 스테이지</h3>
@@ -1757,10 +1782,9 @@ const SUBTABS = {
   lcp: ['Split 1', 'Split 2', 'Split 3'],
   lcs: ['Lock-In', 'Spring', 'Summer'],
   cblol: ['Copa', 'Split 1', 'Split 2'],
-  msi: ['플레이-인 스테이지', '브래킷 스테이지'],
 };
 // 세부 대회 기본 선택(현재 진행/직전 완료된 대회)
-const SUBTAB_DEFAULT = { lck: 'LCK', lpl: 'Split 3', lec: 'Summer', lcp: 'Split 3', lcs: 'Summer', cblol: 'Split 2', msi: '브래킷 스테이지' };
+const SUBTAB_DEFAULT = { lck: 'LCK', lpl: 'Split 3', lec: 'Summer', lcp: 'Split 3', lcs: 'Summer', cblol: 'Split 2' };
 // 아직 시작하지 않은 세부 대회 → "예정" 표시
 const SUB_UPCOMING = {
   lec: ['Summer'],
@@ -1796,11 +1820,13 @@ const STAGE_TABS = {
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
   worlds: ['플레이-인', '스위스 스테이지', '녹아웃 스테이지'],
   asiangames: ['그룹 스테이지', '녹아웃 스테이지'],
+  msi: ['플레이-인 스테이지', '브래킷 스테이지'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
 const STAGE_DEFAULT = {
   'lck|LCK': '플레이오프',
   'lpl|Split 3': '플레이오프',
+  msi: '브래킷 스테이지',
 };
 
 const PredictionPage = () => {
@@ -1864,7 +1890,7 @@ const PredictionPage = () => {
   // stage 목록: 서브탭이 있으면 `key|sub`으로, 서브탭이 없는 대회는 key만으로도 조회
   const stageList = comp ? (STAGE_TABS[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_TABS[comp.key])) : null;
   const showStages = !!stageList;
-  const defaultStage = (comp && STAGE_DEFAULT[`${comp.key}|${activeSub}`]) || (stageList ? stageList[0] : null);
+  const defaultStage = (comp && (STAGE_DEFAULT[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_DEFAULT[comp.key]))) || (stageList ? stageList[0] : null);
   const activeStage = showStages
     ? (stageList.includes(searchParams.get('stage')) ? searchParams.get('stage') : defaultStage)
     : null;
