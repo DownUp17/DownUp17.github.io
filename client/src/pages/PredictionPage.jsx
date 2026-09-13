@@ -11,6 +11,7 @@ import TeamPanel from '../components/TeamPanel';
 import { textOn, lighten } from '../utils/colorContrast';
 import demaciaLogo from '../assets/demacia.svg';
 import asiangamesLogo from '../assets/asiangames.svg';
+import asiangames2026Logo from '../assets/asiangames2026.svg';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -1774,6 +1775,11 @@ const COMP_LOGO = {
   worlds: 'https://static.lolesports.com/leagues/1592594612171_WorldsDarkBG.png',
   asiangames: asiangamesLogo,
 };
+// 대회 상세(헤더)에서 탭 기본 로고 대신 쓸 에디션별 로고. 없으면 COMP_LOGO 사용.
+//   AG는 탭에는 기본 아시안게임 로고, 상세에는 해당 에디션(2026 Aichi-Nagoya) 로고를 표기.
+const COMP_DETAIL_LOGO = {
+  asiangames: asiangames2026Logo,
+};
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 
 // 지역 리그별 세부 대회 (2026 기준)
@@ -1952,7 +1958,7 @@ const PredictionPage = () => {
               <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: comp.color }}>
-                    <img src={COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
+                    <img src={COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
                       style={{ filter: textOn(comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)' }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
