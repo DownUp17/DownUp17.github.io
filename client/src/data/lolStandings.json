@@ -1361,11 +1361,15 @@
                   "title": "Grand Finals",
                   "a": {
                     "seed": "UB R3 승자",
-                    "short": "HLE"
+                    "short": "HLE",
+                    "score": 1,
+                    "elim": true
                   },
                   "b": {
                     "seed": "결승 진출전 승자",
-                    "short": "GEN"
+                    "short": "GEN",
+                    "score": 3,
+                    "msi": true
                   },
                   "time": "9/13 (일) 14:00",
                   "startRow": 5
@@ -1839,11 +1843,15 @@
                   "title": "MATCH 12",
                   "a": {
                     "seed": "상위권 결승 승자",
-                    "short": "AL"
+                    "short": "AL",
+                    "score": 3,
+                    "msi": true
                   },
                   "b": {
                     "seed": "하위권 결승 승자",
-                    "short": "BLG"
+                    "short": "BLG",
+                    "score": 1,
+                    "elim": true
                   },
                   "startRow": 6,
                   "time": "9/13 (일) 18:00"
@@ -3880,12 +3888,12 @@
       "qualifiers": [
         {
           "seed": "LCK #1",
-          "label": "LCK #1",
+          "short": "GEN",
           "stage": "swiss"
         },
         {
           "seed": "LCK #2",
-          "label": "LCK #2",
+          "short": "HLE",
           "stage": "swiss"
         },
         {
@@ -3900,12 +3908,12 @@
         },
         {
           "seed": "LPL #1",
-          "label": "LPL #1",
+          "short": "AL",
           "stage": "swiss"
         },
         {
           "seed": "LPL #2",
-          "label": "LPL #2",
+          "short": "BLG",
           "stage": "swiss"
         },
         {
