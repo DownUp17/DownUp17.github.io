@@ -1361,11 +1361,11 @@
                   "title": "Grand Finals",
                   "a": {
                     "seed": "UB R3 승자",
-                    "short": "GEN"
+                    "short": "HLE"
                   },
                   "b": {
                     "seed": "결승 진출전 승자",
-                    "short": "HLE"
+                    "short": "GEN"
                   },
                   "time": "9/13 (일) 14:00",
                   "startRow": 5

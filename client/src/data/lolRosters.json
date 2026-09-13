@@ -619,19 +619,19 @@
           "starter": true
         },
         {
-          "name": "Vincenzo",
-          "firstName": "Seungmin",
-          "lastName": "Ha",
-          "role": "jungle",
-          "image": "http://static.lolesports.com/players/1778842840049_LCK_DRX_Vincenzo_F.PNG",
-          "starter": false
-        },
-        {
           "name": "Winner",
           "firstName": "JOOSUNG",
           "lastName": "Woo",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1769088522766_image6-2026-01-22T142810.865.png",
+          "starter": false
+        },
+        {
+          "name": "Vincenzo",
+          "firstName": "Seungmin",
+          "lastName": "Ha",
+          "role": "jungle",
+          "image": "http://static.lolesports.com/players/1778842840049_LCK_DRX_Vincenzo_F.PNG",
           "starter": false
         },
         {
@@ -728,19 +728,19 @@
           "starter": true
         },
         {
-          "name": "Pungyeon",
-          "firstName": "Lee",
-          "lastName": "Jonghyuk",
-          "role": "mid",
-          "image": "http://static.lolesports.com/players/1769232251135_Pungyeon.png",
-          "starter": false
-        },
-        {
           "name": "Tempester",
           "firstName": "Yeongwoong",
           "lastName": "Oh",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
+          "starter": false
+        },
+        {
+          "name": "Pungyeon",
+          "firstName": "Lee",
+          "lastName": "Jonghyuk",
+          "role": "mid",
+          "image": "http://static.lolesports.com/players/1769232251135_Pungyeon.png",
           "starter": false
         },
         {
@@ -954,19 +954,19 @@
           "starter": true
         },
         {
-          "name": "Quantum ",
-          "firstName": "Son",
-          "lastName": "Junghwan",
-          "role": "support",
-          "image": "http://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
-          "starter": false
-        },
-        {
           "name": "Life",
           "firstName": "Jeongmin",
           "lastName": "Kim",
           "role": "support",
           "image": "http://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
+          "starter": false
+        },
+        {
+          "name": "Quantum ",
+          "firstName": "Son",
+          "lastName": "Junghwan",
+          "role": "support",
+          "image": "http://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
           "starter": false
         }
       ]
@@ -2363,19 +2363,19 @@
       "id": "98926509883054987",
       "players": [
         {
-          "name": "Denathor",
-          "firstName": "Noah",
-          "lastName": "Erikson",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
-          "starter": true
-        },
-        {
           "name": "Dardoch",
           "firstName": "Joshua",
           "lastName": "Hartnett",
           "role": "top",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": true
+        },
+        {
+          "name": "Denathor",
+          "firstName": "Noah",
+          "lastName": "Erikson",
+          "role": "top",
+          "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
           "starter": true
         },
         {
@@ -2755,19 +2755,19 @@
           "starter": false
         },
         {
-          "name": "Gury",
-          "firstName": "Luong Hai",
-          "lastName": "Long",
-          "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769231815740_Gury.png",
-          "starter": false
-        },
-        {
           "name": "SanSan",
           "firstName": "QUOC KHANH",
           "lastName": "LE",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1785926056081_SanSan.png",
+          "starter": false
+        },
+        {
+          "name": "Gury",
+          "firstName": "Luong Hai",
+          "lastName": "Long",
+          "role": "jungle",
+          "image": "http://static.lolesports.com/players/1769231815740_Gury.png",
           "starter": false
         },
         {
