@@ -1837,6 +1837,30 @@ const STAGE_DEFAULT = {
   msi: '브래킷 스테이지',
 };
 
+// ── 대회 연도(에디션) 선택 ─────────────────────────────────────────────
+// 현재 시즌 연도. lolSim.json 의 대회명에 이 연도가 들어있다(예: "2026 LCK").
+const CURRENT_YEAR = 2026;
+// 대회별 선택 가능한 연도(내림차순, 첫 항목 = 현재 시즌).
+// 현재 연도 외에는 아직 결과 데이터가 없어 '준비 중'으로 표시된다.
+// 과거 결과는 PAST_EDITIONS 에 등록하면 자동으로 최종 순위가 노출된다.
+// AG·DCGI 등 에디션별 명칭/로고가 다른 대회는 단일 연도만 두어 드롭다운을 숨긴다.
+const COMP_EDITIONS = {
+  lck: [2026, 2025, 2024, 2023],
+  lpl: [2026, 2025, 2024, 2023],
+  lec: [2026, 2025, 2024, 2023],
+  lcs: [2026, 2025, 2024, 2023],
+  lcp: [2026, 2025],
+  cblol: [2026, 2025, 2024, 2023],
+  fst: [2026, 2025],
+  msi: [2026, 2025, 2024, 2023],
+  worlds: [2026, 2025, 2024, 2023],
+};
+const editionYears = (key) => COMP_EDITIONS[key] || [CURRENT_YEAR];
+// 과거 연도 결과: `${key}|${year}` → { finalResult: { champion, runnerUp, standings:[{rank,team,note}] } }
+// 여기에 항목을 추가하면 해당 연도 선택 시 ResultView 로 최종 순위가 자동 표시된다.
+// 예) 'worlds|2025': { finalResult: { champion: 'T1', runnerUp: 'BLG', standings: [{ rank: 1, team: 'T1' }] } },
+const PAST_EDITIONS = {};
+
 const PredictionPage = () => {
   const comps = sim.competitions;
   const tabs = [GPR_TAB, ...comps];
@@ -1905,6 +1929,24 @@ const PredictionPage = () => {
   const setActiveStage = (s) =>
     setSearchParams((p) => { const n = new URLSearchParams(p); n.set('stage', s); return n; }, { replace: true });
 
+  // 대회 연도(에디션) 선택 — 대회명 오른쪽 드롭다운. `?year=` 로 유지(현재 연도는 파라미터 생략)
+  const years = comp ? editionYears(comp.key) : [CURRENT_YEAR];
+  const yearParam = Number(searchParams.get('year'));
+  const activeYear = years.includes(yearParam) ? yearParam : CURRENT_YEAR;
+  const isCurrentYear = activeYear === CURRENT_YEAR;
+  const setActiveYear = (y) =>
+    setSearchParams((p) => {
+      const n = new URLSearchParams(p);
+      if (y === CURRENT_YEAR) n.delete('year'); else n.set('year', String(y));
+      return n;
+    }, { replace: true });
+  // 과거 연도 결과 데이터(있으면 ResultView, 없으면 준비 중 안내)
+  const pastEdition = comp && !isCurrentYear ? PAST_EDITIONS[`${comp.key}|${activeYear}`] : null;
+  // 과거 연도 선택 시 제목의 연도 토큰을 교체(예: "2026 LCK" → "2024 LCK")
+  const displayTitle = isCurrentYear ? title : title.replace(String(CURRENT_YEAR), String(activeYear));
+  // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
+  const stDisplay = !isCurrentYear ? statusMeta.finished : st;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
       <div className="max-w-[1600px] mx-auto">
@@ -1963,17 +2005,31 @@ const PredictionPage = () => {
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                   <div>
-                    <h2 className="text-xl font-black text-white">{title}</h2>
+                    <h2 className="text-xl font-black text-white">{displayTitle}</h2>
                     <p className="text-xs text-white/40">{comp.scope === 'intl' ? '국제 대회' : '지역 리그'}</p>
                   </div>
+                  {years.length > 1 && (
+                    <select
+                      value={activeYear}
+                      onChange={(e) => setActiveYear(Number(e.target.value))}
+                      aria-label="대회 연도 선택"
+                      className="ml-1 px-2.5 py-1.5 rounded-lg text-sm font-black bg-white/10 border border-white/20 text-white hover:border-white/40 focus:outline-none focus:border-[#C8963E] cursor-pointer"
+                    >
+                      {years.map((y) => (
+                        <option key={y} value={y} className="bg-[#1e2328] text-white">
+                          {y}
+                        </option>
+                      ))}
+                    </select>
+                  )}
                 </div>
-                <span className="px-3 py-1 rounded-lg text-xs font-black" style={{ color: st.color, backgroundColor: st.bg }}>
-                  {st.label}
+                <span className="px-3 py-1 rounded-lg text-xs font-black" style={{ color: stDisplay.color, backgroundColor: stDisplay.bg }}>
+                  {stDisplay.label}
                 </span>
               </div>
 
-              {/* 세부 대회 선택 */}
-              {subTabs && (
+              {/* 세부 대회 선택 (현재 시즌에만; 과거 연도는 최종 결과만 표시) */}
+              {isCurrentYear && subTabs && (
                 <div className="flex flex-wrap gap-2 mb-6">
                   {subTabs.map((s) => {
                     const on = s === activeSub;
@@ -1993,7 +2049,7 @@ const PredictionPage = () => {
               )}
 
               {/* 단계 선택 (LCK→LCK 전용) */}
-              {showStages && (
+              {isCurrentYear && showStages && (
                 <div className="inline-flex bg-white/5 rounded-xl p-1 mb-6 border border-white/10">
                   {stageList.map((s) => {
                     const on = s === activeStage;
@@ -2012,7 +2068,17 @@ const PredictionPage = () => {
                 </div>
               )}
 
-              {isContentTbd(comp.key, activeSub) ? (
+              {!isCurrentYear ? (
+                pastEdition ? (
+                  <ResultView comp={{ ...comp, ...pastEdition }} />
+                ) : (
+                  <div className="py-16 text-center border-2 border-dashed border-white/10 rounded-3xl">
+                    <Hourglass size={28} className="mx-auto text-white/30 mb-3" />
+                    <p className="text-white/50 font-bold mb-1">{activeYear} 결과 준비 중</p>
+                    <p className="text-white/30 text-sm">이전 연도 대회 결과를 곧 게재합니다.</p>
+                  </div>
+                )
+              ) : isContentTbd(comp.key, activeSub) ? (
                 <div className="py-20 text-center border-2 border-dashed border-white/10 rounded-3xl">
                   <Hourglass size={32} className="mx-auto text-white/30 mb-4" />
                   <p className="text-white/60 font-black text-lg mb-2">추후 제공 예정</p>
