@@ -814,6 +814,47 @@ fst.finalResult = {
 };
 console.log(`FST: 우승 ${fstTeams[0].name}`);
 
+// ---- 대회 상태(status) 자동 산출 ----
+//   규칙: 대진(브래킷·그룹) 안에 진행된 경기가 없거나 대진 자체가 없으면 'upcoming'(예정),
+//         한 경기라도 진행되면 'ongoing'(진행중), 진행되지 않은 경기가 하나도 없으면 'finished'(종료).
+//   리그 정규시즌(rows)은 개별 경기가 아닌 승패 집계로만 저장되므로, 브래킷 매치가 없을 때의
+//   보조 신호로 사용한다(정규시즌이 시작됐으면 최소 '진행중').
+function matchPlayed(m) {
+  const a = m.a, b = m.b;
+  if (a && (a.win || a.msi)) return true;
+  if (b && (b.win || b.msi)) return true;
+  if (a && b && a.score != null && b.score != null && a.score !== b.score) return true;
+  if (m.winner != null && m.winner !== '') return true; // 그룹 매치(DCGI/AG) 형식
+  if (m.scoreA != null && m.scoreB != null && m.scoreA !== m.scoreB) return true;
+  return false;
+}
+function collectByKey(node, key, out) {
+  if (node == null || typeof node !== 'object') return out;
+  if (Array.isArray(node)) { for (const x of node) collectByKey(x, key, out); return out; }
+  for (const [k, v] of Object.entries(node)) {
+    if (k === key && Array.isArray(v)) for (const el of v) out.push(el);
+    else collectByKey(v, key, out);
+  }
+  return out;
+}
+function deriveStatus(compKey, fallback) {
+  const node = standingsData.standings?.[compKey];
+  if (!node) return fallback; // 순위 데이터 없음(예: FST는 GPR 결과, AG는 미제공) → 기존 상태 유지
+  const matches = collectByKey(node, 'matches', []);
+  const total = matches.length;
+  const played = matches.filter(matchPlayed).length;
+  const regStarted = collectByKey(node, 'rows', []).some((r) => (r.w || 0) + (r.l || 0) > 0);
+  if (total > 0 && played === total) return 'finished';
+  if (played > 0 || regStarted) return 'ongoing';
+  if (total > 0) return 'upcoming';
+  return fallback;
+}
+for (const comp of sim.competitions) {
+  const before = comp.status;
+  comp.status = deriveStatus(comp.key, comp.status);
+  if (comp.status !== before) console.log(`상태 자동 변경: ${comp.key} ${before} → ${comp.status}`);
+}
+
 // 브래킷 시그니처 저장 — fetchGpr가 "GPR 변화 없이 경기 결과만 바뀐 대회"를
 // 감지해 해당 리그만 시뮬 재실행하도록 하는 기준값. 대회별로 개별 시그니처 저장.
 sim.bracketSigs = {
