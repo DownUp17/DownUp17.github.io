@@ -412,6 +412,90 @@ async function buildLeague(lg) {
   return { tour, rows, mismatches, stage, road, roadMsiTeam };
 }
 
+// 2026 LCK CUP (= lck_split_1_2026) — 별도 토너먼트(그룹 스테이지 2개조 + 플레이-인 + 플레이오프).
+//   이미 종료된 대회. 그룹 순위표 + 플레이-인/플레이오프 대진표 + 최종순위를 구성해 반환한다.
+async function buildLckCup(leagueId) {
+  const tjson = await api('getTournamentsForLeague', { leagueId });
+  const tours = tjson.data.leagues[0].tournaments || [];
+  const cup = tours.find((t) => /split_1_2026/.test(t.slug));
+  if (!cup) return null;
+  const st = (await api('getStandingsV3', { tournamentId: cup.id })).data?.standings?.[0];
+  if (!st) return null;
+  // 그룹 스테이지 순위 (알파조/오메가조) — API 공식 ordinal 사용(타이브레이크 반영)
+  const gs = st.stages.find((s) => s.slug === 'group_stage');
+  const rows = [];
+  for (const sec of gs?.sections || [])
+    for (const r of sec.rankings || [])
+      for (const t of r.teams)
+        rows.push({ rank: r.ordinal, team: t.code, w: t.record.wins, l: t.record.losses, group: sec.name });
+  // 플레이-인 / 플레이오프 대진표
+  const colsOf = (slug) => st.stages.find((s) => s.slug === slug)?.sections?.[0]?.columns;
+  const piCols = colsOf('play_ins'), poCols = colsOf('playoffs');
+  const playin = piCols?.length ? bracketFromColumns(piCols) : null;
+  const playoffs = poCols?.length ? bracketFromColumns(poCols) : null;
+  const finalStandings = cupFinalStandings(rows, playin, playoffs);
+  const champ = finalStandings[0]?.team;
+  return {
+    stage: `2026 LCK CUP · 종료${champ ? ` · 우승 ${champ}` : ''}`,
+    format: '10팀 · 2개조 그룹 스테이지 → 플레이-인 → 플레이오프',
+    rows,
+    playin,
+    playoffs,
+    finalStandings,
+  };
+}
+
+// LCK CUP 최종순위: 플레이오프 도달 단계(패배 라운드)로 상위 6팀, 이어서 플레이-인,
+//   마지막으로 그룹 성적 순. 플레이오프 결승 승자가 우승.
+function cupFinalStandings(rows, playin, playoffs) {
+  const wl = (m) => {
+    const a = m.a, b = m.b;
+    if (a?.win || a?.msi) return { w: a.short, l: b?.short };
+    if (b?.win || b?.msi) return { w: b.short, l: a?.short };
+    if (a && b && a.score != null && b.score != null && a.score !== b.score) {
+      const A = a.score > b.score;
+      return { w: A ? a.short : b.short, l: A ? b.short : a.short };
+    }
+    return {};
+  };
+  // 각 팀이 마지막으로 등장한(=가장 깊은) 라운드와 그 경기 승패
+  const lastOf = (bracket) => {
+    const info = {};
+    bracket?.rounds?.forEach((r, ri) =>
+      r.matches.forEach((m) => {
+        for (const slot of [m.a, m.b]) {
+          if (slot?.short && (!info[slot.short] || info[slot.short].ri <= ri)) info[slot.short] = { ri, won: null };
+        }
+        const { w, l } = wl(m);
+        if (w && info[w]?.ri === ri) info[w].won = true;
+        if (l && info[l]?.ri === ri) info[l].won = false;
+      })
+    );
+    return info;
+  };
+  const po = lastOf(playoffs), pi = lastOf(playin);
+  const rec = Object.fromEntries(rows.map((r) => [r.team, r]));
+  const gd = (t) => (rec[t] ? rec[t].w - rec[t].l : -99);
+  // tier: 3=플레이오프, 2=플레이-인, 1=그룹만. 정렬 키 [tier, depth, won]
+  const key = (t) => {
+    if (po[t]) return [3, po[t].ri, po[t].won ? 1 : 0];
+    if (pi[t]) return [2, pi[t].ri, pi[t].won ? 1 : 0];
+    return [1, 0, 0];
+  };
+  const order = rows
+    .map((r) => r.team)
+    .sort((x, y) => {
+      const kx = key(x), ky = key(y);
+      for (let i = 0; i < 3; i++) if (kx[i] !== ky[i]) return ky[i] - kx[i];
+      return gd(y) - gd(x) || rec[x].rank - rec[y].rank;
+    });
+  return order.map((team, i) => ({
+    rank: i + 1,
+    team,
+    note: i === 0 ? '우승' : i === 1 ? '준우승' : i === 2 ? '3위' : '',
+  }));
+}
+
 // MSI 진출팀 갱신: getStandingsV3로 각 스테이지의 확정 팀을 가져와
 // lolStandings.json 의 msi[stage].qualifiers 를 업데이트한다.
 // 미확정(TBD) 슬롯은 기존 label 표기를 유지한다.
@@ -516,6 +600,18 @@ for (const lg of LEAGUES) {
   } catch (e) {
     console.warn(`${lg.label} 실패 — 기존 값 유지: ${e.message}`);
   }
+}
+
+// 2026 LCK CUP (Split 1) — LCK 세부탭 'LCK CUP'에 그룹/대진/최종순위 저장
+try {
+  const cup = await buildLckCup('98767991310872058');
+  if (cup) {
+    data.standings.lck = data.standings.lck || {};
+    data.standings.lck['LCK CUP'] = cup;
+    console.log(`LCK CUP: ${cup.rows.length}팀 · 우승 ${cup.finalStandings[0]?.team} · 대진 PI ${cup.playin?.rounds?.length || 0}R / PO ${cup.playoffs?.rounds?.length || 0}R`);
+  }
+} catch (e) {
+  console.warn(`LCK CUP 실패 — 기존 값 유지: ${e.message}`);
 }
 
 // MSI 진출팀 갱신 — 두 단계로 시도:

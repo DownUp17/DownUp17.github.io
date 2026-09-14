@@ -1460,6 +1460,554 @@
             ]
           ]
         }
+      },
+      "LCK CUP": {
+        "stage": "2026 LCK CUP · 종료 · 우승 GEN",
+        "format": "10팀 · 2개조 그룹 스테이지 → 플레이-인 → 플레이오프",
+        "rows": [
+          {
+            "rank": 1,
+            "team": "GEN",
+            "w": 5,
+            "l": 0,
+            "group": "알파조"
+          },
+          {
+            "rank": 2,
+            "team": "T1",
+            "w": 5,
+            "l": 0,
+            "group": "알파조"
+          },
+          {
+            "rank": 3,
+            "team": "NS",
+            "w": 2,
+            "l": 3,
+            "group": "알파조"
+          },
+          {
+            "rank": 4,
+            "team": "DNS",
+            "w": 1,
+            "l": 4,
+            "group": "알파조"
+          },
+          {
+            "rank": 5,
+            "team": "BRO",
+            "w": 0,
+            "l": 5,
+            "group": "알파조"
+          },
+          {
+            "rank": 1,
+            "team": "BFX",
+            "w": 3,
+            "l": 2,
+            "group": "오메가조"
+          },
+          {
+            "rank": 2,
+            "team": "DK",
+            "w": 3,
+            "l": 2,
+            "group": "오메가조"
+          },
+          {
+            "rank": 3,
+            "team": "KRX",
+            "w": 2,
+            "l": 3,
+            "group": "오메가조"
+          },
+          {
+            "rank": 4,
+            "team": "KT",
+            "w": 2,
+            "l": 3,
+            "group": "오메가조"
+          },
+          {
+            "rank": 5,
+            "team": "HLE",
+            "w": 2,
+            "l": 3,
+            "group": "오메가조"
+          }
+        ],
+        "playin": {
+          "rounds": [
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650618779",
+                  "title": "1라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "KRX",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "BRO",
+                    "score": 1,
+                    "elim": true
+                  }
+                },
+                {
+                  "id": "115604876650880927",
+                  "title": "1라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "KT",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "DNS",
+                    "score": 2,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650880931",
+                  "title": "2라운드",
+                  "a": {
+                    "seed": "1라운드 승자",
+                    "short": "KRX",
+                    "score": 0
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "DK",
+                    "score": 2,
+                    "msi": true
+                  }
+                },
+                {
+                  "id": "115604876650946471",
+                  "title": "2라운드",
+                  "a": {
+                    "seed": "",
+                    "short": "NS",
+                    "score": 1
+                  },
+                  "b": {
+                    "seed": "1라운드 승자",
+                    "short": "DNS",
+                    "score": 2,
+                    "msi": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650946475",
+                  "title": "결승",
+                  "a": {
+                    "seed": "2라운드 패자",
+                    "short": "KRX",
+                    "score": 3,
+                    "msi": true
+                  },
+                  "b": {
+                    "seed": "2라운드 패자",
+                    "short": "NS",
+                    "score": 0,
+                    "elim": true
+                  }
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              1,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "mid",
+              2,
+              0,
+              "b"
+            ]
+          ]
+        },
+        "playoffs": {
+          "rounds": [
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650946481",
+                  "title": "상위권 대진 - 8강",
+                  "a": {
+                    "seed": "",
+                    "short": "BFX",
+                    "score": 3,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "DNS",
+                    "score": 2
+                  }
+                },
+                {
+                  "id": "115604876650946487",
+                  "title": "상위권 대진 - 8강",
+                  "a": {
+                    "seed": "",
+                    "short": "KRX",
+                    "score": 2
+                  },
+                  "b": {
+                    "seed": "",
+                    "short": "DK",
+                    "score": 3,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650946493",
+                  "title": "상위권 대진 - 4강",
+                  "a": {
+                    "seed": "",
+                    "short": "T1",
+                    "score": 1,
+                    "elim": true
+                  },
+                  "b": {
+                    "seed": "상위권 대진 - 8강 승자",
+                    "short": "BFX",
+                    "score": 3,
+                    "win": true
+                  }
+                },
+                {
+                  "id": "115604876650946499",
+                  "title": "상위권 대진 - 4강",
+                  "a": {
+                    "seed": "",
+                    "short": "GEN",
+                    "score": 3,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "상위권 대진 - 8강 승자",
+                    "short": "DK",
+                    "score": 1,
+                    "elim": true
+                  }
+                },
+                {
+                  "id": "115604876650946505",
+                  "title": "하위권 대진 - 1라운드",
+                  "a": {
+                    "seed": "상위권 대진 - 8강 패자",
+                    "short": "DNS",
+                    "score": 3,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "상위권 대진 - 8강 패자",
+                    "short": "KRX",
+                    "score": 1,
+                    "elim": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650946511",
+                  "title": "상위권 대진 - 결승",
+                  "a": {
+                    "seed": "상위권 대진 - 4강 승자",
+                    "short": "BFX",
+                    "score": 1
+                  },
+                  "b": {
+                    "seed": "상위권 대진 - 4강 승자",
+                    "short": "GEN",
+                    "score": 3,
+                    "win": true
+                  }
+                },
+                {
+                  "id": "115604876650946517",
+                  "title": "하위권 대진 - 8강",
+                  "a": {
+                    "seed": "",
+                    "short": "DK",
+                    "score": 3,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "하위권 대진 - 1라운드 승자",
+                    "short": "DNS",
+                    "score": 1,
+                    "elim": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650946523",
+                  "title": "하위권 대진 - 4강",
+                  "a": {
+                    "seed": "",
+                    "short": "T1",
+                    "score": 2,
+                    "elim": true
+                  },
+                  "b": {
+                    "seed": "하위권 대진 - 8강 승자",
+                    "short": "DK",
+                    "score": 3,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650946529",
+                  "title": "하위권 대진 - 결승",
+                  "a": {
+                    "seed": "상위권 대진 - 결승 패자",
+                    "short": "BFX",
+                    "score": 3,
+                    "win": true
+                  },
+                  "b": {
+                    "seed": "하위권 대진 - 4강 승자",
+                    "short": "DK",
+                    "score": 0,
+                    "elim": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "",
+              "matches": [
+                {
+                  "id": "115604876650946535",
+                  "title": "결승",
+                  "a": {
+                    "seed": "하위권 대진 - 결승 승자",
+                    "short": "BFX",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "seed": "상위권 대진 - 결승 승자",
+                    "short": "GEN",
+                    "score": 3,
+                    "msi": true
+                  }
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              1,
+              "b"
+            ],
+            [
+              0,
+              0,
+              "mid",
+              1,
+              2,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              2,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "mid",
+              2,
+              0,
+              "b"
+            ],
+            [
+              1,
+              2,
+              "mid",
+              2,
+              1,
+              "b"
+            ],
+            [
+              2,
+              1,
+              "mid",
+              3,
+              0,
+              "b"
+            ],
+            [
+              2,
+              0,
+              "mid",
+              4,
+              0,
+              "a"
+            ],
+            [
+              3,
+              0,
+              "mid",
+              4,
+              0,
+              "b"
+            ],
+            [
+              4,
+              0,
+              "mid",
+              5,
+              0,
+              "a"
+            ],
+            [
+              2,
+              0,
+              "mid",
+              5,
+              0,
+              "b"
+            ]
+          ]
+        },
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "GEN",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "BFX",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "DK",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "T1",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "DNS",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "KRX",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "NS",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "KT",
+            "note": ""
+          },
+          {
+            "rank": 9,
+            "team": "BRO",
+            "note": ""
+          },
+          {
+            "rank": 10,
+            "team": "HLE",
+            "note": ""
+          }
+        ]
       }
     },
     "lpl": {

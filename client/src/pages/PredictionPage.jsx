@@ -22,7 +22,6 @@ const statusMeta = {
 // 본문 추후 제공 대회 (정보 미준비)
 const CONTENT_TBD = new Set([
   'fst',
-  'lck|LCK CUP',
   'lpl|Split 1', 'lpl|Split 2',
   'lec|Versus', 'lec|Spring',
   'lcp|Split 1', 'lcp|Split 2',
@@ -899,7 +898,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const lplCfg = lplSplit3 && stage ? LPL_STAGE_CFG[stage] : null;
   const lplQualifier = comp.key === 'lpl' && sub === '대표 선발전';
   // 자체 대진표(토너먼트 포맷)가 있는 세부대회는 시즌 예측 확률 컬럼을 표기하지 않음 (LPL/LCP Split 3는 전용 확률을 표기하므로 예외)
-  const noPredict = roadToMsi || (!!official?.bracket && !lplSplit3);
+  const noPredict = roadToMsi || (comp.key === 'lck' && sub === 'LCK CUP') || (!!official?.bracket && !lplSplit3);
   // 팀 약칭 → 시뮬 예측 확률 (현재 순위표에 합쳐 표기) — LPL·LCP Split 3는 전용 시뮬 결과(comp.split3) 사용
   const probByShort = (lplSplit3 || lcpSplit3)
     ? Object.fromEntries((comp.split3 || []).map((s) => [s.team, s]))
@@ -939,9 +938,13 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   // LCK 플레이-인/플레이오프: MSI/LCP처럼 API 대진표(연결선)로 표기하고,
   //   참가 팀은 정규시즌 순위표로 대진표 위에 표기한다.
   let groups;
+  // LCK CUP(별도 토너먼트: 그룹+플레이-인+플레이오프) — 정규 LCK 전용 로직과 분리
+  const isLckCup = comp.key === 'lck' && sub === 'LCK CUP';
+  const lckCupBracket = isLckCup && (stage === '플레이-인' || stage === '플레이오프');
+  const lckCupFinalStage = isLckCup && stage === '최종 순위';
   // LCK 최종 순위: 전체 팀을 우승 → Worlds → PO 진출 순으로 정렬한 단일 표
-  const lckFinalStage = comp.key === 'lck' && grouped && stage === '최종 순위';
-  const lckBracketStage = comp.key === 'lck' && grouped && (stage === '플레이-인' || stage === '플레이오프');
+  const lckFinalStage = comp.key === 'lck' && !isLckCup && grouped && stage === '최종 순위';
+  const lckBracketStage = comp.key === 'lck' && !isLckCup && grouped && (stage === '플레이-인' || stage === '플레이오프');
   const lckBracket = lckBracketStage ? buildLckBracket(official?.[stage === '플레이-인' ? 'playin' : 'playoffs'], stage, current) : null;
   if (lckFinalStage) {
     // 실제 대진 결과가 확정되면 그 순위를 표기 (미확정이면 groups=[] → 안내만 표시).
@@ -1035,7 +1038,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
 
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
   // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
-  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier;
+  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
+    || (isLckCup && stage !== '그룹 스테이지'); // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
   // 참가 팀 카드(MSI 전용). LCK 플레이-인/플레이오프는 정규시즌 순위표를 참가 팀으로 표기.
   const qualifiers = official?.qualifiers?.length ? official.qualifiers : null;
   // LPL Split 3는 이제 API 자동 대진(knights/playoffs)을 쓰므로 섹션형 bracket을 사용하지 않는다.
@@ -1045,12 +1049,14 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
     <div className="flex flex-col gap-8">
       {/* 메타 */}
       <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-        {(lplSplit3 || comp.stage || comp.format) && !lcpSplit3 && (
+        {(lplSplit3 || isLckCup || comp.stage || comp.format) && !lcpSplit3 && (
           <span className="text-white/50">형식: <strong className="text-white/80">{lplSplit3
             ? '그룹별 더블 라운드로빈 (Bo3) → 기사의 길 (Bo5) → 플레이오프 (Bo5)'
+            : isLckCup
+            ? (official?.format || '10팀 · 2개조 그룹 스테이지 → 플레이-인 → 플레이오프')
             : [comp.stage, comp.format].filter(Boolean).join(' · ')}</strong></span>
         )}
-        {comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
+        {!isLckCup && comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
         {comp.generatedAt && <span className="text-white/50">생성: <strong className="text-white/80">{fmtUpdated(comp.generatedAt)}</strong></span>}
       </div>
 
@@ -1647,6 +1653,54 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         </section>
       )}
 
+      {/* LCK CUP 플레이-인/플레이오프 대진표 — API 실제 결과 (연결선) */}
+      {lckCupBracket && official?.[stage === '플레이-인' ? 'playin' : 'playoffs']?.rounds?.length > 0 && (() => {
+        const br = official[stage === '플레이-인' ? 'playin' : 'playoffs'];
+        return (
+          <section>
+            <div className="flex items-baseline gap-2 flex-wrap mb-4">
+              <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{stage} 대진</h3>
+              <span className="text-xs text-white/40">2026 LCK CUP · 실제 경기 결과</span>
+            </div>
+            <MsiBracket rounds={br.rounds} totalRows={br.totalRows} connectors={br.connectors} onTeamClick={onTeamClick} />
+            <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> 우승/진출</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* LCK CUP 최종 순위 */}
+      {lckCupFinalStage && official?.finalStandings?.length > 0 && (
+        <section className="flex flex-col gap-4">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">최종 순위</h3>
+            <span className="text-xs text-white/40">그룹 스테이지 → 플레이-인 → 플레이오프 · 우승 {official.finalStandings[0]?.team}</span>
+          </div>
+          <div className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+            {official.finalStandings.map((f) => (
+              <button
+                key={f.team}
+                onClick={() => onTeamClick?.(f.team)}
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-left border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors"
+              >
+                <span className={`w-7 text-center font-black tabular-nums ${f.rank === 1 ? 'text-[#E8C77E]' : f.rank <= 3 ? 'text-white/80' : 'text-white/40'}`}>{f.rank}</span>
+                <span className="font-bold text-white/90">{f.team}</span>
+                {f.note && (
+                  <span className="text-[11px] font-black px-2 py-0.5 rounded"
+                    style={{ color: f.rank === 1 ? '#E8C77E' : '#9CA3AF', backgroundColor: f.rank === 1 ? 'rgba(200,150,62,0.2)' : 'rgba(156,163,175,0.15)' }}>
+                    {f.note}
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+          <p className="text-[11px] text-white/40">플레이오프 미진출 팀(8위 이하)은 도달 단계·조별 성적 기준입니다.</p>
+        </section>
+      )}
+
       {/* Road to MSI(선발전) 대진표 — 실제 결과 */}
       {roadToMsi && official?.bracket && (
         <section>
@@ -1818,9 +1872,11 @@ const SUB_STATUS = {
   'cblol|Split 1': 'finished',
   'cblol|Split 2': 'upcoming',
   'lck|Road to MSI': 'finished',
+  'lck|LCK CUP': 'finished',
 };
 // 세부대회 안에서 단계(스테이지) 선택 — `${comp.key}|${sub}` → 단계 목록
 const STAGE_TABS = {
+  'lck|LCK CUP': ['그룹 스테이지', '플레이-인', '플레이오프', '최종 순위'],
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
   'lpl|대표 선발전': ['대진', '챔피언십 포인트'],
@@ -1832,6 +1888,7 @@ const STAGE_TABS = {
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
 const STAGE_DEFAULT = {
+  'lck|LCK CUP': '최종 순위',
   'lck|LCK': '최종 순위',
   'lpl|Split 3': '플레이오프',
   msi: '브래킷 스테이지',
@@ -2093,10 +2150,11 @@ const PredictionPage = () => {
                 </div>
               ) : !comp.ready ? (
                 <NotReady comp={comp} />
-              ) : comp.status === 'finished' && comp.key !== 'msi' ? (
+              ) : comp.status === 'finished' && !SUBTABS[comp.key] && !STAGE_TABS[comp.key] ? (
                 <ResultView comp={comp} />
               ) : (
-                // MSI는 종료 상태여도 브래킷·참가팀·시뮬 결과를 그대로 표시.
+                // 종료 상태여도 세부탭·스테이지(브래킷·참가팀·시뮬 결과)가 있는 대회
+                //   (리그·MSI·Worlds 등)는 그대로 표시. finalResult만 있는 대회(FST)만 ResultView.
                 <SimulationView comp={comp} sub={activeSub} stage={activeStage} onTeamClick={handleTeamClick} />
               )}
             </>
