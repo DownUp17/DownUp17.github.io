@@ -4764,26 +4764,6 @@
         },
         "finalStandings": [
           {
-            "rank": 1,
-            "team": "G2",
-            "note": "우승"
-          },
-          {
-            "rank": 2,
-            "team": "KC",
-            "note": "준우승"
-          },
-          {
-            "rank": 3,
-            "team": "NAVI",
-            "note": "3위"
-          },
-          {
-            "rank": 4,
-            "team": "MKOI",
-            "note": ""
-          },
-          {
             "rank": 5,
             "team": "VIT",
             "note": ""
@@ -7304,36 +7284,6 @@
         },
         "finalStandings": [
           {
-            "rank": 1,
-            "team": "LYON",
-            "note": "우승"
-          },
-          {
-            "rank": 2,
-            "team": "TLAW",
-            "note": "준우승"
-          },
-          {
-            "rank": 3,
-            "team": "C9",
-            "note": "3위"
-          },
-          {
-            "rank": 4,
-            "team": "FLY",
-            "note": ""
-          },
-          {
-            "rank": 5,
-            "team": "SEN",
-            "note": ""
-          },
-          {
-            "rank": 6,
-            "team": "SR",
-            "note": ""
-          },
-          {
             "rank": 7,
             "team": "DSG",
             "note": ""
@@ -8594,36 +8544,6 @@
           ]
         },
         "finalStandings": [
-          {
-            "rank": 1,
-            "team": "LOUD",
-            "note": "우승"
-          },
-          {
-            "rank": 2,
-            "team": "LOS",
-            "note": "준우승"
-          },
-          {
-            "rank": 3,
-            "team": "FUR",
-            "note": "3위"
-          },
-          {
-            "rank": 4,
-            "team": "PAIN",
-            "note": ""
-          },
-          {
-            "rank": 5,
-            "team": "VKS",
-            "note": ""
-          },
-          {
-            "rank": 6,
-            "team": "RED",
-            "note": ""
-          },
           {
             "rank": 7,
             "team": "FX",

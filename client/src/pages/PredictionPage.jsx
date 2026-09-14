@@ -1735,7 +1735,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           <div className="flex items-baseline gap-2 flex-wrap">
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">최종 순위</h3>
             <span className="text-xs text-white/40">
-              {subFinished ? '우승' : '현재 대진 기준 잠정 순위 · 예상 우승'} {official.finalStandings[0]?.team}
+              {subFinished ? `우승 ${official.finalStandings[0]?.team}` : '대진 결과로 순위가 확정된 팀만 표시'}
             </span>
           </div>
           <StandingsTable
@@ -1745,7 +1745,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
             onTeamClick={onTeamClick}
             teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined}
           />
-          {!subFinished && <p className="text-[11px] text-white/40">진행 중 — 대진 결과에 따라 자동 갱신됩니다.</p>}
+          {!subFinished && <p className="text-[11px] text-white/40">진행 중 — 상위 순위는 대진이 진행됨에 따라 자동 확정됩니다.</p>}
         </section>
       )}
 
@@ -1786,7 +1786,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
       )}
 
       {/* 대진별 예측 — 진행중인 리그에서만 (단계별 대진표가 있으면 생략) */}
-    {comp.status === 'ongoing' && (!cfg || cfg.matches) && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && !lplQualifier && (
+    {comp.status === 'ongoing' && (!cfg || cfg.matches) && stage !== '최종 순위' && !finalDataStage && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && !lplQualifier && (
       <section>
         <h3 className="text-sm font-black text-[#E8C77E] mb-4 uppercase tracking-wider">대진별 예측</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">

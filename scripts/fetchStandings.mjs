@@ -728,7 +728,19 @@ function splitFinalStandings(rows, bracketsOrdered) {
     for (let i = 0; i < 3; i++) if (kx[i] !== ky[i]) return ky[i] - kx[i];
     return gd(y) - gd(x) || (rec[x].rank - rec[y].rank);
   });
-  return order.map((team, i) => ({ rank: i + 1, team, note: i === 0 ? '우승' : i === 1 ? '준우승' : i === 2 ? '3위' : '' }));
+  const full = order.map((team, i) => ({ rank: i + 1, team, note: i === 0 ? '우승' : i === 1 ? '준우승' : i === 2 ? '3위' : '' }));
+  // 대회 종료 여부: 마지막 대진의 최종 경기 승자가 결정됐으면 종료.
+  const lastBr = (bracketsOrdered || []).at(-1);
+  const finalMatch = lastBr?.rounds?.at(-1)?.matches?.at(-1);
+  const done = !!(finalMatch && wl(finalMatch).w);
+  if (done) return full;
+  // 진행 중: 아직 탈락하지 않은(=최종순위 미확정) 대진 생존팀은 제외하고, 확정된 팀만 반환.
+  const eliminated = new Set(), inBracket = new Set();
+  for (const b of bracketsOrdered || []) for (const r of b?.rounds || []) for (const m of r.matches) for (const s of [m.a, m.b]) {
+    if (s?.short) { inBracket.add(s.short); if (s.elim) eliminated.add(s.short); }
+  }
+  const aliveSet = new Set([...inBracket].filter((t) => !eliminated.has(t)));
+  return full.filter((e) => !aliveSet.has(e.team)); // 확정 팀만(생존팀 제외). 순위는 실제 확정 위치 유지.
 }
 
 // 범용 완료 스플릿 빌더 — 임의의 2026 토너먼트(slug)에서 정규/그룹 순위 + 모든 대진 스테이지 + 최종순위 구성.
