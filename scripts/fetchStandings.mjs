@@ -708,13 +708,22 @@ function splitFinalStandings(rows, bracketsOrdered) {
     return info;
   };
   const infos = (bracketsOrdered || []).map(lastOf);
-  const rec = Object.fromEntries(rows.map((r) => [r.team, r]));
+  // 정규 순위가 없는 포맷(스위스 등)은 대진 참가팀으로 팀 목록을 만든다.
+  let teamRows = rows;
+  if (!teamRows.length) {
+    const seen = new Set();
+    teamRows = [];
+    for (const b of bracketsOrdered || []) for (const r of b?.rounds || []) for (const m of r.matches) for (const s of [m.a, m.b]) {
+      if (s?.short && !seen.has(s.short)) { seen.add(s.short); teamRows.push({ rank: teamRows.length + 1, team: s.short, w: 0, l: 0 }); }
+    }
+  }
+  const rec = Object.fromEntries(teamRows.map((r) => [r.team, r]));
   const gd = (t) => (rec[t] ? (rec[t].w || 0) - (rec[t].l || 0) : -99);
   const key = (t) => {
     for (let i = infos.length - 1; i >= 0; i--) if (infos[i][t]) return [i + 2, infos[i][t].ri, infos[i][t].won ? 1 : 0];
     return [1, 0, 0];
   };
-  const order = rows.map((r) => r.team).sort((x, y) => {
+  const order = teamRows.map((r) => r.team).sort((x, y) => {
     const kx = key(x), ky = key(y);
     for (let i = 0; i < 3; i++) if (kx[i] !== ky[i]) return ky[i] - kx[i];
     return gd(y) - gd(x) || (rec[x].rank - rec[y].rank);
@@ -889,6 +898,8 @@ const PAST_SPLITS = [
   { key: 'lcs', sub: 'Spring', league: '98767991299243165', slug: 'lcs_split_2_2026' },
   { key: 'cblol', sub: 'Copa', league: '98767991332355509', slug: 'cblol_split_1_2026' },
   { key: 'cblol', sub: 'Split 1', league: '98767991332355509', slug: 'cblol_split_2_2026' },
+  { key: 'lcp', sub: 'Split 1', league: '113476371197627891', slug: 'lcp_split_1_2026' },
+  { key: 'lcp', sub: 'Split 2', league: '113476371197627891', slug: 'lcp_split_2_2026' },
 ];
 for (const ps of PAST_SPLITS) {
   try {
@@ -2145,6 +2156,24 @@ if (data.standings.worlds?.qualifiers) {
   const refreshed = computeWorldsQualifiers(data);
   data.standings.worlds.qualifiers = refreshed;
   console.log(`Worlds 참가팀 시드 재계산: 자동 ${refreshed.filter((q) => q.short).length}/${refreshed.length}팀`);
+}
+
+// 진행중/종료 스플릿의 최종순위 — 대진(플레이오프 등) 진행에 따라 자동 산출·갱신.
+//   미종료 대회는 현재 대진 기준 잠정 순위(생존팀이 상위). 종료되면 확정.
+const FINAL_STANDINGS_SUBS = [
+  { key: 'lec', sub: 'Summer', brackets: ['playoffs'] },
+  { key: 'lcs', sub: 'Summer', brackets: ['playoffs'] },
+  { key: 'cblol', sub: 'Split 2', brackets: ['playoffs'] },
+  { key: 'lpl', sub: 'Split 3', brackets: ['knights', 'playoffs'] },
+  { key: 'lcp', sub: 'Split 3', brackets: ['swiss', 'playin', 'playoffs'] },
+];
+for (const fsub of FINAL_STANDINGS_SUBS) {
+  const node = data.standings[fsub.key]?.[fsub.sub];
+  if (!node) continue;
+  const brs = fsub.brackets.map((b) => node[b]).filter((x) => x?.rounds?.length);
+  if (!brs.length) continue;
+  node.finalStandings = splitFinalStandings(node.rows || [], brs);
+  console.log(`${fsub.key.toUpperCase()} ${fsub.sub} 최종순위: 1위 ${node.finalStandings[0]?.team}`);
 }
 
 data.updatedAt = new Date().toISOString().slice(0, 10);

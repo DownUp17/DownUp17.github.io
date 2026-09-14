@@ -22,9 +22,7 @@ const statusMeta = {
 };
 
 // 본문 추후 제공 대회 (정보 미준비)
-const CONTENT_TBD = new Set([
-  'lcp|Split 1', 'lcp|Split 2',
-]);
+const CONTENT_TBD = new Set([]);
 const isContentTbd = (key, sub) =>
   CONTENT_TBD.has(key) || (sub ? CONTENT_TBD.has(`${key}|${sub}`) : false);
 // 완료된 과거 스플릿(정규/그룹 순위 + 대진 + 최종순위를 PastSplitView로 표시)
@@ -33,6 +31,7 @@ const PAST_SPLIT_SUBS = new Set([
   'lec|Versus', 'lec|Spring',
   'lcs|Lock-In', 'lcs|Spring',
   'cblol|Copa', 'cblol|Split 1',
+  'lcp|Split 1', 'lcp|Split 2',
 ]);
 
 // 팀 short → 실제 전적(GPR 기준). gw/gl = 세트(게임) 승-패
@@ -889,11 +888,12 @@ const buildLckBracket = (raw, stage, current) => {
 };
 
 // 시뮬레이션 결과(예측) 렌더
-const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
+const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick }) => {
+  const subFinished = finishedProp ?? (comp.status === 'finished');
   const lcpSplit3 = comp.key === 'lcp' && sub === 'Split 3';
-  const lcpCfg = lcpSplit3 ? (LCP_STAGE_CFG[stage] || LCP_STAGE_CFG['스위스 스테이지']) : null;
+  const lcpCfg = lcpSplit3 ? LCP_STAGE_CFG[stage] : null;
   const isLecSummer = LIVE_SPLIT_SUBS.has(`${comp.key}|${sub}`);
-  const lecCfg = isLecSummer ? (LEC_STAGE_CFG[stage] || LEC_STAGE_CFG['정규시즌']) : null;
+  const lecCfg = isLecSummer ? LEC_STAGE_CFG[stage] : null;
   const cfg = lcpSplit3 ? lcpCfg : isLecSummer ? lecCfg : (stage ? STAGE_CFG[stage] : null);
   // 현재 순위 — 해당 세부대회 공식 순위표가 있으면 우선, 없으면 GPR 전적으로 산출
   const leagueStd = officialStandings.standings[comp.key];
@@ -973,7 +973,9 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   // LCK CUP(별도 토너먼트: 그룹+플레이-인+플레이오프) — 정규 LCK 전용 로직과 분리
   const isLckCup = comp.key === 'lck' && sub === 'LCK CUP';
   const lckCupBracket = isLckCup && (stage === '플레이-인' || stage === '플레이오프');
-  const lckCupFinalStage = isLckCup && stage === '최종 순위';
+  // 대진 기반 최종순위(LCK CUP·LEC/LCS/CBLOL 서머·LPL/LCP Split 3 등) — official.finalStandings 사용.
+  const finalDataStage = stage === '최종 순위' && official?.finalStandings?.length > 0;
+  const lckCupFinalStage = finalDataStage; // 하위 호환
   // LCK 최종 순위: 전체 팀을 우승 → Worlds → PO 진출 순으로 정렬한 단일 표
   const lckFinalStage = comp.key === 'lck' && !isLckCup && grouped && stage === '최종 순위';
   const lckBracketStage = comp.key === 'lck' && !isLckCup && grouped && (stage === '플레이-인' || stage === '플레이오프');
@@ -1070,9 +1072,12 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
 
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
   // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
+  // LCP Split 3 종료 → 스위스 순위표의 진출/우승 확률 컬럼 제거
+  const lcpFinished = lcpSplit3 && subFinished;
   const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
     || (isLckCup && stage !== '그룹 스테이지') // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
-    || (isLecSummer && !lecCfg?.pred); // LEC: 정규시즌에서만 순위표, 플레이오프는 대진만
+    || (isLecSummer && !lecCfg?.pred) // LEC: 정규시즌에서만 순위표, 플레이오프는 대진만
+    || finalDataStage; // 최종 순위 단계는 대진 기반 최종순위만 표기
   // 참가 팀 카드(MSI 전용). LCK 플레이-인/플레이오프는 정규시즌 순위표를 참가 팀으로 표기.
   const qualifiers = official?.qualifiers?.length ? official.qualifiers : null;
   // LPL Split 3는 이제 API 자동 대진(knights/playoffs)을 쓰므로 섹션형 bracket을 사용하지 않는다.
@@ -1137,7 +1142,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || lckCupFinalStage ? { minimal: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || finalDataStage ? { minimal: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : lcpFinished ? { diff: true } : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} />
             </div>
           ))}
         </section>
@@ -1724,21 +1729,23 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
         );
       })()}
 
-      {/* LCK CUP 최종 순위 */}
-      {lckCupFinalStage && official?.finalStandings?.length > 0 && (
+      {/* 최종 순위 (대진 기반) — LCK CUP·라이브 스플릿 등 */}
+      {finalDataStage && (
         <section className="flex flex-col gap-4">
           <div className="flex items-baseline gap-2 flex-wrap">
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">최종 순위</h3>
-            <span className="text-xs text-white/40">그룹 스테이지 → 플레이-인 → 플레이오프 · 우승 {official.finalStandings[0]?.team}</span>
+            <span className="text-xs text-white/40">
+              {subFinished ? '우승' : '현재 대진 기준 잠정 순위 · 예상 우승'} {official.finalStandings[0]?.team}
+            </span>
           </div>
           <StandingsTable
             rows={official.finalStandings.map((f) => ({ short: f.team, rank: f.rank }))}
             color={comp.color}
             cols={{ minimal: true }}
             onTeamClick={onTeamClick}
-            teamOverride={LCKCUP_TEAM_OVERRIDE}
+            teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined}
           />
-          <p className="text-[11px] text-white/40">플레이오프 미진출 팀(8위 이하)은 도달 단계·조별 성적 기준입니다.</p>
+          {!subFinished && <p className="text-[11px] text-white/40">진행 중 — 대진 결과에 따라 자동 갱신됩니다.</p>}
         </section>
       )}
 
@@ -2003,13 +2010,13 @@ const SUB_STATUS = {
 const STAGE_TABS = {
   'lck|LCK CUP': ['그룹 스테이지', '플레이-인', '플레이오프', '최종 순위'],
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
-  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
-  'lec|Summer': ['정규시즌', '플레이오프'],
-  'lcs|Summer': ['정규시즌', '플레이오프'],
-  'cblol|Split 2': ['정규시즌', '플레이오프'],
+  'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프', '최종 순위'],
+  'lec|Summer': ['정규시즌', '플레이오프', '최종 순위'],
+  'lcs|Summer': ['정규시즌', '플레이오프', '최종 순위'],
+  'cblol|Split 2': ['정규시즌', '플레이오프', '최종 순위'],
   'lpl|대표 선발전': ['대진', '챔피언십 포인트'],
   demacia: ['그룹 스테이지', '녹아웃 스테이지'],
-  'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
+  'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프', '최종 순위'],
   worlds: ['플레이-인', '스위스 스테이지', '녹아웃 스테이지'],
   asiangames: ['그룹 스테이지', '녹아웃 스테이지'],
   msi: ['플레이-인 스테이지', '브래킷 스테이지'],
@@ -2293,7 +2300,7 @@ const PredictionPage = () => {
               ) : (
                 // 종료 상태여도 세부탭·스테이지(브래킷·참가팀·시뮬 결과)가 있는 대회
                 //   (리그·MSI·Worlds 등)는 그대로 표시. finalResult만 있는 대회(FST)만 ResultView.
-                <SimulationView comp={comp} sub={activeSub} stage={activeStage} onTeamClick={handleTeamClick} />
+                <SimulationView comp={comp} sub={activeSub} stage={activeStage} finished={(subStatus || comp.status) === 'finished'} onTeamClick={handleTeamClick} />
               )}
             </>
           )}

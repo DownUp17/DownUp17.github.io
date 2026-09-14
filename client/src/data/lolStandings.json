@@ -2493,7 +2493,69 @@
               "b"
             ]
           ]
-        }
+        },
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "AL",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "BLG",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "IG",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "LGD",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "NIP",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "WE",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "TES",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "JDG",
+            "note": ""
+          },
+          {
+            "rank": 9,
+            "team": "TT",
+            "note": ""
+          },
+          {
+            "rank": 10,
+            "team": "EDG",
+            "note": ""
+          },
+          {
+            "rank": 11,
+            "team": "WBG",
+            "note": ""
+          },
+          {
+            "rank": 12,
+            "team": "LNG",
+            "note": ""
+          }
+        ]
       },
       "Split 2": {
         "stage": "2026 스플릿 3 정규시즌",
@@ -4699,7 +4761,59 @@
               "b"
             ]
           ]
-        }
+        },
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "G2",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "KC",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "NAVI",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "MKOI",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "VIT",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "GX",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "FNC",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "SK",
+            "note": ""
+          },
+          {
+            "rank": 9,
+            "team": "TH",
+            "note": ""
+          },
+          {
+            "rank": 10,
+            "team": "SHFT",
+            "note": ""
+          }
+        ]
       },
       "Versus": {
         "name": "2026 LEC 버서스",
@@ -5269,67 +5383,335 @@
             "rank": 1,
             "team": "TSW",
             "w": 7,
-            "l": 0,
-            "gw": 14,
-            "gl": 3
+            "l": 0
           },
           {
             "rank": 2,
             "team": "GAM",
             "w": 6,
-            "l": 1,
-            "gw": 12,
-            "gl": 6
+            "l": 1
           },
           {
             "rank": 3,
             "team": "MVK",
             "w": 5,
-            "l": 2,
-            "gw": 11,
-            "gl": 6
+            "l": 2
           },
           {
             "rank": 4,
             "team": "SHG",
             "w": 4,
-            "l": 3,
-            "gw": 10,
-            "gl": 7
+            "l": 3
           },
           {
             "rank": 5,
             "team": "DCG",
             "w": 3,
-            "l": 4,
-            "gw": 8,
-            "gl": 10
+            "l": 4
           },
           {
             "rank": 6,
             "team": "CFO",
             "w": 2,
-            "l": 5,
-            "gw": 7,
-            "gl": 11
+            "l": 5
           },
           {
             "rank": 7,
             "team": "GZ",
             "w": 1,
-            "l": 6,
-            "gw": 3,
-            "gl": 12
+            "l": 6
           },
           {
             "rank": 8,
             "team": "DFM",
             "w": 0,
-            "l": 7,
-            "gw": 4,
-            "gl": 14
+            "l": 7
           }
-        ]
+        ],
+        "name": "2026 스플릿 2",
+        "brackets": [
+          {
+            "slug": "playoffs",
+            "name": "플레이오프",
+            "bracket": {
+              "rounds": [
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570683341512187",
+                      "title": "상위권 대진 - 8강",
+                      "a": {
+                        "seed": "",
+                        "short": "CFO",
+                        "score": 2
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "MVK",
+                        "score": 3,
+                        "win": true
+                      }
+                    },
+                    {
+                      "id": "115570683341512193",
+                      "title": "상위권 대진 - 8강",
+                      "a": {
+                        "seed": "",
+                        "short": "SHG",
+                        "score": 0
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "DCG",
+                        "score": 3,
+                        "win": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570683341512199",
+                      "title": "상위권 대진 - 4강",
+                      "a": {
+                        "seed": "상위권 대진 - 8강 승자",
+                        "short": "MVK",
+                        "score": 0
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "TSW",
+                        "score": 3,
+                        "win": true
+                      }
+                    },
+                    {
+                      "id": "115570683341512205",
+                      "title": "상위권 대진 - 4강",
+                      "a": {
+                        "seed": "상위권 대진 - 8강 승자",
+                        "short": "DCG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "GAM",
+                        "score": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570683341512211",
+                      "title": "상위권 대진 - 결승",
+                      "a": {
+                        "seed": "상위권 대진 - 4강 승자",
+                        "short": "DCG",
+                        "score": 2
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 4강 승자",
+                        "short": "TSW",
+                        "score": 3,
+                        "win": true
+                      }
+                    },
+                    {
+                      "id": "115570683341512217",
+                      "title": "하위권 대진 - 4강",
+                      "a": {
+                        "seed": "상위권 대진 - 4강 패자",
+                        "short": "GAM",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 4강 패자",
+                        "short": "MVK",
+                        "score": 0,
+                        "elim": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570683341512223",
+                      "title": "하위권 대진 - 결승",
+                      "a": {
+                        "seed": "하위권 대진 - 4강 승자",
+                        "short": "GAM",
+                        "score": 2,
+                        "elim": true
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 결승 패자",
+                        "short": "DCG",
+                        "score": 3,
+                        "win": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570683341512229",
+                      "title": "결승",
+                      "a": {
+                        "seed": "상위권 대진 - 결승 승자",
+                        "short": "TSW",
+                        "score": 3,
+                        "msi": true
+                      },
+                      "b": {
+                        "seed": "하위권 대진 - 결승 승자",
+                        "short": "DCG",
+                        "score": 1,
+                        "elim": true
+                      }
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "mid",
+                  1,
+                  0,
+                  "a"
+                ],
+                [
+                  0,
+                  1,
+                  "mid",
+                  1,
+                  1,
+                  "a"
+                ],
+                [
+                  1,
+                  1,
+                  "mid",
+                  2,
+                  0,
+                  "a"
+                ],
+                [
+                  1,
+                  0,
+                  "mid",
+                  2,
+                  0,
+                  "b"
+                ],
+                [
+                  1,
+                  1,
+                  "mid",
+                  2,
+                  1,
+                  "a"
+                ],
+                [
+                  1,
+                  0,
+                  "mid",
+                  2,
+                  1,
+                  "b"
+                ],
+                [
+                  2,
+                  1,
+                  "mid",
+                  3,
+                  0,
+                  "a"
+                ],
+                [
+                  2,
+                  0,
+                  "mid",
+                  3,
+                  0,
+                  "b"
+                ],
+                [
+                  2,
+                  0,
+                  "mid",
+                  4,
+                  0,
+                  "a"
+                ],
+                [
+                  3,
+                  0,
+                  "mid",
+                  4,
+                  0,
+                  "b"
+                ]
+              ]
+            }
+          }
+        ],
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "TSW",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "DCG",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "GAM",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "MVK",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "SHG",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "CFO",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "GZ",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "DFM",
+            "note": ""
+          }
+        ],
+        "finished": true
       },
       "Split 3": {
         "stage": "2026 LCP Split 3 · 스위스 → 플레이-인 → 플레이오프",
@@ -5885,7 +6267,385 @@
               "b"
             ]
           ]
-        }
+        },
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "TSW",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "CFO",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "MVK",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "GAM",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "GZ",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "DFM",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "DCG",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "SHG",
+            "note": ""
+          }
+        ]
+      },
+      "Split 1": {
+        "name": "2026 스플릿 1",
+        "rows": [
+          {
+            "rank": 1,
+            "team": "TSW",
+            "w": 6,
+            "l": 1
+          },
+          {
+            "rank": 2,
+            "team": "DCG",
+            "w": 6,
+            "l": 1
+          },
+          {
+            "rank": 3,
+            "team": "GAM",
+            "w": 4,
+            "l": 3
+          },
+          {
+            "rank": 4,
+            "team": "GZ",
+            "w": 4,
+            "l": 3
+          },
+          {
+            "rank": 5,
+            "team": "CFO",
+            "w": 3,
+            "l": 4
+          },
+          {
+            "rank": 6,
+            "team": "SHG",
+            "w": 3,
+            "l": 4
+          },
+          {
+            "rank": 7,
+            "team": "MVK",
+            "w": 2,
+            "l": 5
+          },
+          {
+            "rank": 8,
+            "team": "DFM",
+            "w": 0,
+            "l": 7
+          }
+        ],
+        "brackets": [
+          {
+            "slug": "playoffs",
+            "name": "플레이오프",
+            "bracket": {
+              "rounds": [
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570680941730327",
+                      "title": "상위권 대진 - 8강",
+                      "a": {
+                        "seed": "",
+                        "short": "GAM",
+                        "score": 0
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "SHG",
+                        "score": 3,
+                        "win": true
+                      }
+                    },
+                    {
+                      "id": "115570680941730333",
+                      "title": "상위권 대진 - 8강",
+                      "a": {
+                        "seed": "",
+                        "short": "GZ",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "CFO",
+                        "score": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570680941730339",
+                      "title": "상위권 대진 - 4강",
+                      "a": {
+                        "seed": "",
+                        "short": "TSW",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 8강 승자",
+                        "short": "SHG",
+                        "score": 1
+                      }
+                    },
+                    {
+                      "id": "115570680941730345",
+                      "title": "상위권 대진 - 4강",
+                      "a": {
+                        "seed": "",
+                        "short": "DCG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 8강 승자",
+                        "short": "GZ",
+                        "score": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570680941730351",
+                      "title": "상위권 대진 - 결승",
+                      "a": {
+                        "seed": "상위권 대진 - 4강 승자",
+                        "short": "DCG",
+                        "score": 2
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 4강 승자",
+                        "short": "TSW",
+                        "score": 3,
+                        "win": true
+                      }
+                    },
+                    {
+                      "id": "115570680941730357",
+                      "title": "하위권 대진 - 4강",
+                      "a": {
+                        "seed": "상위권 대진 - 4강 패자",
+                        "short": "SHG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 4강 패자",
+                        "short": "GZ",
+                        "score": 1,
+                        "elim": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570680941730363",
+                      "title": "하위권 대진 - 결승",
+                      "a": {
+                        "seed": "상위권 대진 - 결승 패자",
+                        "short": "DCG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "하위권 대진 - 4강 승자",
+                        "short": "SHG",
+                        "score": 2,
+                        "elim": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "115570680941730369",
+                      "title": "결승",
+                      "a": {
+                        "seed": "하위권 대진 - 결승 승자",
+                        "short": "DCG",
+                        "score": 0,
+                        "elim": true
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 결승 승자",
+                        "short": "TSW",
+                        "score": 3,
+                        "msi": true
+                      }
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "mid",
+                  1,
+                  0,
+                  "b"
+                ],
+                [
+                  0,
+                  1,
+                  "mid",
+                  1,
+                  1,
+                  "b"
+                ],
+                [
+                  1,
+                  1,
+                  "mid",
+                  2,
+                  0,
+                  "a"
+                ],
+                [
+                  1,
+                  0,
+                  "mid",
+                  2,
+                  0,
+                  "b"
+                ],
+                [
+                  1,
+                  0,
+                  "mid",
+                  2,
+                  1,
+                  "a"
+                ],
+                [
+                  1,
+                  1,
+                  "mid",
+                  2,
+                  1,
+                  "b"
+                ],
+                [
+                  2,
+                  0,
+                  "mid",
+                  3,
+                  0,
+                  "a"
+                ],
+                [
+                  2,
+                  1,
+                  "mid",
+                  3,
+                  0,
+                  "b"
+                ],
+                [
+                  3,
+                  0,
+                  "mid",
+                  4,
+                  0,
+                  "a"
+                ],
+                [
+                  2,
+                  0,
+                  "mid",
+                  4,
+                  0,
+                  "b"
+                ]
+              ]
+            }
+          }
+        ],
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "TSW",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "DCG",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "SHG",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "GZ",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "GAM",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "CFO",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "MVK",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "DFM",
+            "note": ""
+          }
+        ],
+        "finished": true
       }
     },
     "lcs": {
@@ -6541,7 +7301,49 @@
               "b"
             ]
           ]
-        }
+        },
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "LYON",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "TLAW",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "C9",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "FLY",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "SEN",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "SR",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "DSG",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "DIG",
+            "note": ""
+          }
+        ]
       },
       "Lock-In": {
         "name": "2026 스플릿 1",
@@ -7790,7 +8592,49 @@
               "b"
             ]
           ]
-        }
+        },
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "LOUD",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "LOS",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "FUR",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "PAIN",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "VKS",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "RED",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "FX",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "LEV",
+            "note": ""
+          }
+        ]
       },
       "Copa": {
         "name": "COPA CBLOL",
