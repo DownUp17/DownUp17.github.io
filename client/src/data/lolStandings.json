@@ -1733,8 +1733,7 @@
                   "a": {
                     "seed": "",
                     "short": "T1",
-                    "score": 1,
-                    "elim": true
+                    "score": 1
                   },
                   "b": {
                     "seed": "상위권 대진 - 8강 승자",
@@ -1750,8 +1749,7 @@
                   "a": {
                     "seed": "상위권 대진 - 8강 승자",
                     "short": "DK",
-                    "score": 1,
-                    "elim": true
+                    "score": 1
                   },
                   "b": {
                     "seed": "",
@@ -3445,8 +3443,7 @@
                       "a": {
                         "seed": "",
                         "short": "WE",
-                        "score": 2,
-                        "elim": true
+                        "score": 2
                       },
                       "b": {
                         "seed": "",
@@ -3467,8 +3464,7 @@
                       "b": {
                         "seed": "",
                         "short": "IG",
-                        "score": 1,
-                        "elim": true
+                        "score": 1
                       }
                     }
                   ]
@@ -4148,8 +4144,7 @@
                       "b": {
                         "seed": "1위",
                         "short": "VIT",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       }
                     },
                     {
@@ -4164,8 +4159,7 @@
                       "b": {
                         "seed": "2위",
                         "short": "KC",
-                        "score": 1,
-                        "elim": true
+                        "score": 1
                       }
                     }
                   ]
@@ -4511,8 +4505,7 @@
                   "b": {
                     "seed": "4위",
                     "short": "GX",
-                    "score": 1,
-                    "elim": true
+                    "score": 1
                   },
                   "startRow": 0
                 },
@@ -4528,8 +4521,7 @@
                   "b": {
                     "seed": "2위",
                     "short": "VIT",
-                    "score": 0,
-                    "elim": true
+                    "score": 0
                   },
                   "startRow": 2
                 },
@@ -4599,7 +4591,8 @@
                     "seed": "하위권 대진 - 1라운드 승자",
                     "short": "NAVI"
                   },
-                  "startRow": 5
+                  "startRow": 5,
+                  "time": "9/19 00:00"
                 }
               ]
             },
@@ -4616,7 +4609,8 @@
                     "seed": "상위권 대진 - 2라운드 패자",
                     "short": "KC"
                   },
-                  "startRow": 5
+                  "startRow": 5,
+                  "time": "9/20 00:00"
                 }
               ]
             },
@@ -4633,7 +4627,8 @@
                     "seed": "상위권 대진 - 2라운드 승자",
                     "short": "G2"
                   },
-                  "startRow": 3
+                  "startRow": 3,
+                  "time": "9/21 00:00"
                 }
               ]
             }
@@ -6350,7 +6345,8 @@
                     "seed": "상위권 대진 - 8강 패자",
                     "short": "SR"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "9/19 05:00"
                 }
               ]
             },
@@ -6368,7 +6364,8 @@
                     "seed": "상위권 대진 - 8강 승자",
                     "short": "C9"
                   },
-                  "startRow": 0
+                  "startRow": 0,
+                  "time": "9/20 05:00"
                 },
                 {
                   "id": "115565004607949393",
@@ -6381,7 +6378,8 @@
                     "seed": "",
                     "short": "TLAW"
                   },
-                  "startRow": 4
+                  "startRow": 4,
+                  "time": "9/21 05:00"
                 },
                 {
                   "id": "115565004607949411",
@@ -6392,7 +6390,8 @@
                   "b": {
                     "seed": "하위권 대진 - 1라운드 승자"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "9/26 05:00"
                 }
               ]
             },
@@ -6408,7 +6407,8 @@
                   "b": {
                     "seed": "상위권 대진 - 4강 승자"
                   },
-                  "startRow": 2
+                  "startRow": 2,
+                  "time": "9/28 05:00"
                 },
                 {
                   "id": "115565004607949417",
@@ -6419,7 +6419,8 @@
                   "b": {
                     "seed": "하위권 대진 - 2라운드 승자"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "9/27 05:00"
                 }
               ]
             },
@@ -6435,7 +6436,8 @@
                   "b": {
                     "seed": "하위권 대진 - 4강 승자"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "10/4 05:00"
                 }
               ]
             },
@@ -6451,7 +6453,8 @@
                   "b": {
                     "seed": "하위권 대진 - 결승 승자"
                   },
-                  "startRow": 5
+                  "startRow": 5,
+                  "time": "10/5 05:00"
                 }
               ]
             }
@@ -6564,8 +6567,7 @@
                       "b": {
                         "seed": "",
                         "short": "TLAW",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       }
                     },
                     {
@@ -6574,8 +6576,7 @@
                       "a": {
                         "seed": "",
                         "short": "SEN",
-                        "score": 1,
-                        "elim": true
+                        "score": 1
                       },
                       "b": {
                         "seed": "",
@@ -6590,8 +6591,7 @@
                       "a": {
                         "seed": "",
                         "short": "SR",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       },
                       "b": {
                         "seed": "",
@@ -6606,8 +6606,7 @@
                       "a": {
                         "seed": "",
                         "short": "DIG",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       },
                       "b": {
                         "seed": "",
@@ -6633,8 +6632,7 @@
                       "b": {
                         "seed": "",
                         "short": "LYON",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       }
                     },
                     {
@@ -6649,8 +6647,7 @@
                       "b": {
                         "seed": "",
                         "short": "DSG",
-                        "score": 1,
-                        "elim": true
+                        "score": 1
                       }
                     },
                     {
@@ -6665,8 +6662,7 @@
                       "b": {
                         "seed": "",
                         "short": "DIG",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       }
                     },
                     {
@@ -6681,8 +6677,7 @@
                       "b": {
                         "seed": "",
                         "short": "SR",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       }
                     }
                   ]
@@ -7187,8 +7182,7 @@
                       "a": {
                         "seed": "상위권 대진 - 8강 승자",
                         "short": "LOUD",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       },
                       "b": {
                         "seed": "",
@@ -7203,8 +7197,7 @@
                       "a": {
                         "seed": "상위권 대진 - 8강 승자",
                         "short": "FX",
-                        "score": 1,
-                        "elim": true
+                        "score": 1
                       },
                       "b": {
                         "seed": "",
@@ -7593,7 +7586,8 @@
                     "seed": "상위권 대진 - 8강 패자",
                     "short": "VKS"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "9/20 01:00"
                 }
               ]
             },
@@ -7612,8 +7606,7 @@
                   "b": {
                     "seed": "상위권 대진 - 8강 승자",
                     "short": "FUR",
-                    "score": 1,
-                    "elim": true
+                    "score": 1
                   },
                   "startRow": 0
                 },
@@ -7623,8 +7616,7 @@
                   "a": {
                     "seed": "상위권 대진 - 8강 승자",
                     "short": "PAIN",
-                    "score": 1,
-                    "elim": true
+                    "score": 1
                   },
                   "b": {
                     "seed": "",
@@ -7644,7 +7636,8 @@
                   "b": {
                     "seed": "하위권 대진 - 1라운드 승자"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "9/21 01:00"
                 }
               ]
             },
@@ -7662,7 +7655,8 @@
                     "seed": "상위권 대진 - 4강 승자",
                     "short": "LOUD"
                   },
-                  "startRow": 2
+                  "startRow": 2,
+                  "time": "9/28 01:00"
                 },
                 {
                   "id": "115565671526468635",
@@ -7674,7 +7668,8 @@
                   "b": {
                     "seed": "하위권 대진 - 2라운드 승자"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "9/27 01:00"
                 }
               ]
             },
@@ -7690,7 +7685,8 @@
                   "b": {
                     "seed": "하위권 대진 - 4강 승자"
                   },
-                  "startRow": 8
+                  "startRow": 8,
+                  "time": "10/4 01:00"
                 }
               ]
             },
@@ -7706,7 +7702,8 @@
                   "b": {
                     "seed": "하위권 대진 - 결승 승자"
                   },
-                  "startRow": 5
+                  "startRow": 5,
+                  "time": "10/11 01:00"
                 }
               ]
             }
@@ -7986,8 +7983,7 @@
                       "b": {
                         "seed": "",
                         "short": "LOS",
-                        "score": 1,
-                        "elim": true
+                        "score": 1
                       }
                     },
                     {
@@ -7996,8 +7992,7 @@
                       "a": {
                         "seed": "상위권 대진 - 4강 승자",
                         "short": "FUR",
-                        "score": 0,
-                        "elim": true
+                        "score": 0
                       },
                       "b": {
                         "seed": "",
@@ -9648,6 +9643,427 @@
           ]
         ]
       }
+    },
+    "fst": {
+      "name": "2026",
+      "brackets": [
+        {
+          "slug": "group_stage",
+          "name": "그룹 스테이지",
+          "bracket": {
+            "rounds": [
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308363",
+                    "title": "1라운드",
+                    "a": {
+                      "seed": "",
+                      "short": "BFX",
+                      "score": 2
+                    },
+                    "b": {
+                      "seed": "",
+                      "short": "BLG",
+                      "score": 3,
+                      "win": true
+                    }
+                  },
+                  {
+                    "id": "115570888977308369",
+                    "title": "1라운드",
+                    "a": {
+                      "seed": "",
+                      "short": "TSW",
+                      "score": 0
+                    },
+                    "b": {
+                      "seed": "",
+                      "short": "G2",
+                      "score": 3,
+                      "win": true
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308375",
+                    "title": "상위권 대진 - 결승",
+                    "a": {
+                      "seed": "1라운드 승자",
+                      "short": "BLG",
+                      "score": 3,
+                      "msi": true
+                    },
+                    "b": {
+                      "seed": "1라운드 승자",
+                      "short": "G2",
+                      "score": 0
+                    }
+                  },
+                  {
+                    "id": "115846976541810692",
+                    "title": "하위권 대진 - 4강",
+                    "a": {
+                      "seed": "1라운드 패자",
+                      "short": "TSW",
+                      "score": 0,
+                      "elim": true
+                    },
+                    "b": {
+                      "seed": "1라운드 패자",
+                      "short": "BFX",
+                      "score": 3,
+                      "win": true
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308387",
+                    "title": "하위권 대진 - 결승",
+                    "a": {
+                      "seed": "하위권 대진 - 4강 승자",
+                      "short": "BFX",
+                      "score": 0,
+                      "elim": true
+                    },
+                    "b": {
+                      "seed": "상위권 대진 - 결승 패자",
+                      "short": "G2",
+                      "score": 3,
+                      "msi": true
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308393",
+                    "title": "1라운드",
+                    "a": {
+                      "seed": "",
+                      "short": "JDG",
+                      "score": 0
+                    },
+                    "b": {
+                      "seed": "",
+                      "short": "GEN",
+                      "score": 3,
+                      "win": true
+                    }
+                  },
+                  {
+                    "id": "115570888977308399",
+                    "title": "1라운드",
+                    "a": {
+                      "seed": "",
+                      "short": "LYON",
+                      "score": 3,
+                      "win": true
+                    },
+                    "b": {
+                      "seed": "",
+                      "short": "LOUD",
+                      "score": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308405",
+                    "title": "상위권 대진 - 결승",
+                    "a": {
+                      "seed": "1라운드 승자",
+                      "short": "LYON",
+                      "score": 0
+                    },
+                    "b": {
+                      "seed": "1라운드 승자",
+                      "short": "GEN",
+                      "score": 3,
+                      "msi": true
+                    }
+                  },
+                  {
+                    "id": "115846976541941770",
+                    "title": "하위권 대진 - 4강",
+                    "a": {
+                      "seed": "1라운드 패자",
+                      "short": "JDG",
+                      "score": 3,
+                      "win": true
+                    },
+                    "b": {
+                      "seed": "1라운드 패자",
+                      "short": "LOUD",
+                      "score": 0,
+                      "elim": true
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308417",
+                    "title": "하위권 대진 - 결승",
+                    "a": {
+                      "seed": "하위권 대진 - 4강 승자",
+                      "short": "JDG",
+                      "score": 3,
+                      "msi": true
+                    },
+                    "b": {
+                      "seed": "상위권 대진 - 결승 패자",
+                      "short": "LYON",
+                      "score": 1,
+                      "elim": true
+                    }
+                  }
+                ]
+              }
+            ],
+            "connectors": [
+              [
+                0,
+                0,
+                "mid",
+                1,
+                0,
+                "a"
+              ],
+              [
+                0,
+                1,
+                "mid",
+                1,
+                0,
+                "b"
+              ],
+              [
+                0,
+                1,
+                "mid",
+                1,
+                1,
+                "a"
+              ],
+              [
+                0,
+                0,
+                "mid",
+                1,
+                1,
+                "b"
+              ],
+              [
+                1,
+                1,
+                "mid",
+                2,
+                0,
+                "a"
+              ],
+              [
+                1,
+                0,
+                "mid",
+                2,
+                0,
+                "b"
+              ],
+              [
+                3,
+                1,
+                "mid",
+                4,
+                0,
+                "a"
+              ],
+              [
+                3,
+                0,
+                "mid",
+                4,
+                0,
+                "b"
+              ],
+              [
+                3,
+                0,
+                "mid",
+                4,
+                1,
+                "a"
+              ],
+              [
+                3,
+                1,
+                "mid",
+                4,
+                1,
+                "b"
+              ],
+              [
+                4,
+                1,
+                "mid",
+                5,
+                0,
+                "a"
+              ],
+              [
+                4,
+                0,
+                "mid",
+                5,
+                0,
+                "b"
+              ]
+            ]
+          }
+        },
+        {
+          "slug": "playoffs",
+          "name": "플레이오프",
+          "bracket": {
+            "rounds": [
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308423",
+                    "title": "4강",
+                    "a": {
+                      "seed": "4위",
+                      "short": "JDG",
+                      "score": 0,
+                      "elim": true
+                    },
+                    "b": {
+                      "seed": "1위",
+                      "short": "BLG",
+                      "score": 3,
+                      "win": true
+                    }
+                  },
+                  {
+                    "id": "115570888977308429",
+                    "title": "4강",
+                    "a": {
+                      "seed": "3위",
+                      "short": "G2",
+                      "score": 3,
+                      "win": true
+                    },
+                    "b": {
+                      "seed": "2위",
+                      "short": "GEN",
+                      "score": 0,
+                      "elim": true
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "",
+                "matches": [
+                  {
+                    "id": "115570888977308435",
+                    "title": "결승",
+                    "a": {
+                      "seed": "4강 승자",
+                      "short": "G2",
+                      "score": 1,
+                      "elim": true
+                    },
+                    "b": {
+                      "seed": "4강 승자",
+                      "short": "BLG",
+                      "score": 3,
+                      "msi": true
+                    }
+                  }
+                ]
+              }
+            ],
+            "connectors": [
+              [
+                0,
+                1,
+                "mid",
+                1,
+                0,
+                "a"
+              ],
+              [
+                0,
+                0,
+                "mid",
+                1,
+                0,
+                "b"
+              ]
+            ]
+          }
+        }
+      ],
+      "finalStandings": [
+        {
+          "rank": 1,
+          "team": "BLG",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "G2",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "GEN",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "JDG",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "BFX",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "LYON",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "TSW",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "LOUD",
+          "note": ""
+        }
+      ]
     }
   }
 }
