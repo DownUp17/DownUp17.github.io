@@ -486,7 +486,15 @@ async function buildLeague(lg) {
     }
   }
 
-  return { tour, rows, mismatches, stage, road, roadMsiTeam };
+  // LEC: 플레이오프(6팀 더블 엘리) 대진표를 API에서 추출 — 진행 중 라이브 갱신용
+  let playoffs = null;
+  if (lg.key === 'lec') {
+    const poStage = standing.stages.find((s) => s.slug === 'playoffs');
+    const cols = poStage?.sections?.[0]?.columns;
+    if (cols?.length) playoffs = bracketFromColumns(cols); // LEC 자체 모양(흐름 배치)
+  }
+
+  return { tour, rows, mismatches, stage, road, roadMsiTeam, playoffs };
 }
 
 // 2026 LCK CUP (= lck_split_1_2026) — 별도 토너먼트(그룹 스테이지 2개조 + 플레이-인 + 플레이오프).
@@ -665,10 +673,10 @@ const roadMsiByLeague = {};
 
 for (const lg of LEAGUES) {
   try {
-    const { tour, rows, mismatches, stage, road, roadMsiTeam } = await buildLeague(lg);
+    const { tour, rows, mismatches, stage, road, roadMsiTeam, playoffs } = await buildLeague(lg);
     // 기존 수동 키(Road to MSI 등)를 보존하기 위해 통째로 덮어쓰지 않고 병합
     const prev = data.standings[lg.key] || {};
-    data.standings[lg.key] = { ...prev, [lg.sub]: { ...(prev[lg.sub] || {}), stage, rows } };
+    data.standings[lg.key] = { ...prev, [lg.sub]: { ...(prev[lg.sub] || {}), stage, rows, ...(playoffs ? { playoffs } : {}) } };
     if (road) data.standings[lg.key]['Road to MSI'] = road; // 대진표 자동 갱신
     data.source[lg.key] = `https://lolesports.com/ko-KR/leagues/${lg.key === 'cblol' ? 'cblol-brazil' : lg.key}`;
     const warn = mismatches ? ` ⚠️ 세트 불일치 ${mismatches}팀(gw/gl 생략)` : '';

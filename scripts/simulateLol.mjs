@@ -754,6 +754,64 @@ function simulateLcpSplit3(seeded) {
   }));
 }
 
+// ---- 2026 LEC 서머 플레이오프 (6팀 더블 엘리미네이션, 전 경기 Bo5) ----
+//   정규시즌 종료 → 시드 1~6. 상위권: (1v4),(2v3) → 상위결승.
+//   하위권: (상위1R 패자 vs 5),(상위1R 패자 vs 6) → 하위2R → 하위3R(vs 상위결승 패자)
+//   → 결승(상위결승 승자 vs 하위3R 승자). 완료 경기 결과는 fixed로 고정하고 잔여만 시뮬.
+function extractLecSummerFixed(bracket, seeds) {
+  const fixed = {};
+  if (!bracket?.rounds) return fixed;
+  const [s1, s2, s3, s5, s6] = [seeds[0], seeds[1], seeds[2], seeds[4], seeds[5]].map((t) => t?.short);
+  const winnerOf = (m) => {
+    if (!m) return null;
+    if (m.a?.win || m.a?.msi) return m.a.short;
+    if (m.b?.win || m.b?.msi) return m.b.short;
+    if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) return m.a.score > m.b.score ? m.a.short : m.b.short;
+    return null;
+  };
+  const has = (m, c) => c && (m.a?.short === c || m.b?.short === c);
+  for (const r of bracket.rounds) for (const m of r.matches) {
+    const t = m.title || '', w = winnerOf(m);
+    if (!w) continue;
+    if (/상위권.*1라운드/.test(t)) { if (has(m, s1)) fixed.UB1M1 = w; else if (has(m, s2) || has(m, s3)) fixed.UB1M2 = w; }
+    else if (/상위권.*2라운드|상위권.*결승/.test(t)) fixed.UBF = w;
+    else if (/하위권.*1라운드/.test(t)) { if (has(m, s5)) fixed.LB1M1 = w; else if (has(m, s6)) fixed.LB1M2 = w; }
+    else if (/하위권.*2라운드/.test(t)) fixed.LB2 = w;
+    else if (/하위권.*3라운드/.test(t)) fixed.LB3 = w;
+    else if (/결승/.test(t)) fixed.F = w;
+  }
+  return fixed;
+}
+function simulateLecSummer(seeds, fixed = {}) {
+  const stat = {};
+  seeds.forEach((t) => { stat[t.short] = { champ: 0, finals: 0 }; });
+  const play = (a, b, key) => {
+    if (!a || !b) return { w: a || b, l: null };
+    const f = fixed[key];
+    if (f) { const w = f === a.short ? a : f === b.short ? b : null; if (w) return { w, l: w === a ? b : a }; }
+    const w = simSeries(a, b, 3);
+    return { w, l: w === a ? b : a };
+  };
+  const [s1, s2, s3, s4, s5, s6] = seeds;
+  for (let it = 0; it < ITER; it++) {
+    const ub1 = play(s1, s4, 'UB1M1');
+    const ub2 = play(s2, s3, 'UB1M2');
+    const ubf = play(ub1.w, ub2.w, 'UBF');
+    const lb1a = play(ub1.l, s5, 'LB1M1');
+    const lb1b = play(ub2.l, s6, 'LB1M2');
+    const lb2 = play(lb1a.w, lb1b.w, 'LB2');
+    const lb3 = play(lb2.w, ubf.l, 'LB3');
+    const fin = play(ubf.w, lb3.w, 'F');
+    stat[fin.w.short].champ++;
+    stat[ubf.w.short].finals++; stat[lb3.w.short].finals++;
+  }
+  return seeds.map((t) => ({
+    team: t.short, name: t.name, rating: t.score,
+    champ: pct(stat[t.short].champ / ITER),
+    finals: pct(stat[t.short].finals / ITER),
+  }));
+}
+
 const byShort = (short) => gpr.teams.find((t) => t.short === short);
 const lplS3Rows = standingsData.standings?.lpl?.['Split 3']?.rows || [];
 const lplAscend = lplS3Rows.filter((r) => r.group === '등봉조').map((r) => byShort(r.team)).filter(Boolean);
@@ -767,6 +825,38 @@ if (lplAscend.length === 8 && lplNirvana.length === 4) {
   lplComp.split3 = split3Standings;
   const split3Champ = [...split3Standings].sort((a, b) => b.champ - a.champ)[0];
   console.log(`LPL Split3: 우승1위 ${split3Champ.team} ${split3Champ.champ}%`);
+}
+
+// 2026 LEC 서머: 정규시즌 종료 → 실제 순위 + 플레이오프(6팀 DE) 라이브 시뮬로 LEC 대회 덮어쓰기
+{
+  const lecSummer = standingsData.standings?.lec?.Summer;
+  const lecRows = lecSummer?.rows || [];
+  if (lecRows.length >= 6) {
+    const ranked = lecRows.slice().sort((a, b) => a.rank - b.rank);
+    const seeds6 = ranked.slice(0, 6).map((r) => byShort(r.team)).filter(Boolean);
+    if (seeds6.length === 6) {
+      const fixed = extractLecSummerFixed(lecSummer.playoffs, seeds6);
+      const summer = simulateLecSummer(seeds6, fixed);
+      const probMap = Object.fromEntries(summer.map((p) => [p.team, p]));
+      const lecComp = sim.competitions.find((c) => c.key === 'lec');
+      lecComp.summer = summer;
+      // 정규시즌 실제 순위 + 플레이오프 확률로 대회 순위표 재구성 (상위6 = 진출 확정)
+      lecComp.standings = ranked.map((r, i) => {
+        const t = byShort(r.team);
+        return {
+          team: r.team, name: t?.name || r.team, rating: t?.score ?? 0,
+          avgRank: r.rank, rank1: i === 0 ? 100 : 0,
+          advance: i < 6 ? 100 : 0,
+          champ: probMap[r.team]?.champ ?? 0,
+          finals: probMap[r.team]?.finals ?? 0,
+        };
+      });
+      lecComp.stage = '2026 서머 · 정규시즌 종료 · 플레이오프 진행';
+      lecComp.format = '싱글 라운드로빈 Bo3 → 상위 6팀 더블 엘리미네이션 (Bo5)';
+      const top = [...summer].sort((a, b) => b.champ - a.champ)[0];
+      console.log(`LEC 서머: 우승1위 ${top.team} ${top.champ}% · 플레이오프 확정 ${Object.keys(fixed).length}경기`);
+    }
+  }
 }
 
 // LCP Split 3 (스위스 스테이지 + 4팀 더블 엘리 플레이오프) — GPR 상위4=상위 시드
@@ -874,6 +964,9 @@ sim.bracketSigs = {
     swiss: standingsData.standings?.lcp?.['Split 3']?.swiss ?? null,
     pi: standingsData.standings?.lcp?.['Split 3']?.playin ?? null,
     po: standingsData.standings?.lcp?.['Split 3']?.playoffs ?? null,
+  }),
+  LEC: JSON.stringify({
+    po: standingsData.standings?.lec?.Summer?.playoffs ?? null,
   }),
 };
 delete sim.msiBracketSig; // 이전 형식(단일 문자열) 제거

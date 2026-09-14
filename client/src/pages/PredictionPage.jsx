@@ -777,6 +777,17 @@ const LPL_STAGE_CFG = {
   '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
 };
 
+// LEC 서머 단계별 설정 — 정규시즌(순위·우승 확률) / 플레이오프(6팀 더블 엘리 대진, 라이브 갱신)
+const LEC_STAGE_CFG = {
+  '정규시즌': {
+    pred: true,
+    cols: { advance: true, champ: true, labels: { advance: '플레이오프 진출' } },
+    heading: '정규시즌 순위',
+    desc: '싱글 라운드로빈 Bo3 · 상위 6팀 플레이오프 진출 · 우승 확률(시뮬레이션)',
+  },
+  '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
+};
+
 // LCK 플레이-인 대진표: 정규시즌 순위 기반 예상 팀을 1·2라운드 시드 슬롯에 채우고,
 //   1·2라운드 결과(승패)가 나오면 파이널 라운드(1라운드 패자 vs 2라운드 승자)를 자동으로 채운다.
 //   (플레이오프는 그대로 반환)
@@ -874,7 +885,9 @@ const buildLckBracket = (raw, stage, current) => {
 const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const lcpSplit3 = comp.key === 'lcp' && sub === 'Split 3';
   const lcpCfg = lcpSplit3 ? (LCP_STAGE_CFG[stage] || LCP_STAGE_CFG['스위스 스테이지']) : null;
-  const cfg = lcpSplit3 ? lcpCfg : (stage ? STAGE_CFG[stage] : null);
+  const isLecSummer = comp.key === 'lec' && sub === 'Summer';
+  const lecCfg = isLecSummer ? (LEC_STAGE_CFG[stage] || LEC_STAGE_CFG['정규시즌']) : null;
+  const cfg = lcpSplit3 ? lcpCfg : isLecSummer ? lecCfg : (stage ? STAGE_CFG[stage] : null);
   // 현재 순위 — 해당 세부대회 공식 순위표가 있으면 우선, 없으면 GPR 전적으로 산출
   const leagueStd = officialStandings.standings[comp.key];
   // 서브탭이 있는 대회는 leagueStd[sub], 서브탭 없는 대회(예: DEMACIA)는 leagueStd 자체를 official로 사용
@@ -1051,7 +1064,8 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   // LPL Split 3 단계별 표시: 럼블=조 순위만, 기사의 길/녹아웃=해당 대진표만
   // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
   const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
-    || (isLckCup && stage !== '그룹 스테이지'); // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
+    || (isLckCup && stage !== '그룹 스테이지') // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
+    || (isLecSummer && !lecCfg?.pred); // LEC: 정규시즌에서만 순위표, 플레이오프는 대진만
   // 참가 팀 카드(MSI 전용). LCK 플레이-인/플레이오프는 정규시즌 순위표를 참가 팀으로 표기.
   const qualifiers = official?.qualifiers?.length ? official.qualifiers : null;
   // LPL Split 3는 이제 API 자동 대진(knights/playoffs)을 쓰므로 섹션형 bracket을 사용하지 않는다.
@@ -1281,6 +1295,18 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
           </section>
         );
       })()}
+
+      {/* LEC 서머 플레이오프 대진표 (6팀 더블 엘리) — API 자동 갱신 */}
+      {isLecSummer && lecCfg?.bracketKey && official?.[lecCfg.bracketKey]?.rounds?.length > 0 && (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lecCfg.bracketTitle}</h3>
+            <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
+          </div>
+          <MsiBracket rounds={official[lecCfg.bracketKey].rounds} totalRows={official[lecCfg.bracketKey].totalRows} connectors={official[lecCfg.bracketKey].connectors} onTeamClick={onTeamClick} />
+          <BracketLegend />
+        </section>
+      )}
 
       {/* LPL Split 3 단계별 대진표 (기사의 길 / 플레이오프) — API 자동 갱신 */}
       {lplSplit3 && lplCfg?.bracketKey && official?.[lplCfg.bracketKey]?.rounds?.length > 0 && (
@@ -1850,7 +1876,6 @@ const SUBTABS = {
 const SUBTAB_DEFAULT = { lck: 'LCK', lpl: 'Split 3', lec: 'Summer', lcp: 'Split 3', lcs: 'Summer', cblol: 'Split 2' };
 // 아직 시작하지 않은 세부 대회 → "예정" 표시
 const SUB_UPCOMING = {
-  lec: ['Summer'],
   lcs: ['Summer'],
   cblol: ['Split 2'],
 };
@@ -1862,7 +1887,7 @@ const SUB_STATUS = {
   'lpl|대표 선발전': 'upcoming',
   'lec|Versus': 'finished',
   'lec|Spring': 'finished',
-  'lec|Summer': 'upcoming',
+  'lec|Summer': 'ongoing',
   'lcp|Split 1': 'finished',
   'lcp|Split 2': 'finished',
   'lcp|Split 3': 'finished',
@@ -1880,6 +1905,7 @@ const STAGE_TABS = {
   'lck|LCK CUP': ['그룹 스테이지', '플레이-인', '플레이오프', '최종 순위'],
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
+  'lec|Summer': ['정규시즌', '플레이오프'],
   'lpl|대표 선발전': ['대진', '챔피언십 포인트'],
   demacia: ['그룹 스테이지', '녹아웃 스테이지'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
@@ -1892,6 +1918,7 @@ const STAGE_DEFAULT = {
   'lck|LCK CUP': '최종 순위',
   'lck|LCK': '최종 순위',
   'lpl|Split 3': '플레이오프',
+  'lec|Summer': '플레이오프',
   msi: '브래킷 스테이지',
 };
 

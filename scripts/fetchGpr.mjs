@@ -128,6 +128,9 @@ try {
       pi: st.standings?.lcp?.['Split 3']?.playin ?? null,
       po: st.standings?.lcp?.['Split 3']?.playoffs ?? null,
     }),
+    LEC: JSON.stringify({
+      po: st.standings?.lec?.Summer?.playoffs ?? null,
+    }),
   };
   const oldSigs = simData.bracketSigs || {};
   bracketChangedLeagues = Object.keys(bracketSigs).filter((k) => oldSigs[k] !== bracketSigs[k]);
