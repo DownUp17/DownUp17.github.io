@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-14T15:08:38.818Z",
+  "updatedAt": "2026-09-14T15:19:56.094Z",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
   "iterationsDefault": 20000,
   "competitions": [
@@ -13,7 +13,7 @@
       "stage": "",
       "format": "정규시즌 1-2R (Bo3) → 그룹분할 → 정규시즌 3-4R (Bo3) → 플레이인 (Bo5) → 플레이오프 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-09-14T15:08:31.596Z",
+      "generatedAt": "2026-09-14T15:19:50.133Z",
       "teams": [
         {
           "name": "Gen.G Esports",
@@ -228,7 +228,7 @@
       "stage": "정규시즌 + 플레이오프 (시즌 전체)",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
       "iterations": 100000,
-      "generatedAt": "2026-09-14T15:08:31.596Z",
+      "generatedAt": "2026-09-14T15:19:50.133Z",
       "teams": [
         {
           "name": "Bilibili Gaming",
@@ -589,7 +589,7 @@
       "stage": "2026 서머 · 정규시즌 종료 · 플레이오프 진행",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 더블 엘리미네이션 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-09-14T15:08:31.596Z",
+      "generatedAt": "2026-09-14T15:19:50.133Z",
       "teams": [
         {
           "name": "G2 Esports",
@@ -882,7 +882,7 @@
       "stage": "2026 서머 · 정규시즌 종료 · 플레이오프 진행",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 더블 엘리미네이션 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-09-14T15:08:31.596Z",
+      "generatedAt": "2026-09-14T15:19:50.133Z",
       "teams": [
         {
           "name": "FlyQuest",
@@ -1101,7 +1101,7 @@
       "stage": "정규시즌 + 플레이오프 (시즌 전체)",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 Bo5 플레이오프",
       "iterations": 100000,
-      "generatedAt": "2026-09-14T15:08:31.596Z",
+      "generatedAt": "2026-09-14T15:19:50.133Z",
       "teams": [
         {
           "name": "CTBC Flying Oyster",
@@ -1334,7 +1334,7 @@
       "stage": "2026 스플릿 2 · 정규시즌 종료 · 플레이오프 진행",
       "format": "싱글 라운드로빈 Bo3 → 상위 6팀 더블 엘리미네이션 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-09-14T15:08:31.596Z",
+      "generatedAt": "2026-09-14T15:19:50.133Z",
       "teams": [
         {
           "name": "FURIA",
@@ -1616,7 +1616,7 @@
       "stage": "플레이-인 스테이지 (Bo5 더블 엘리미네이션) → 브래킷 스테이지 (Bo5 더블 엘리미네이션)",
       "format": "",
       "iterations": 100000,
-      "generatedAt": "2026-09-14T15:08:31.596Z",
+      "generatedAt": "2026-09-14T15:19:50.133Z",
       "teams": [
         {
           "name": "G2 Esports",

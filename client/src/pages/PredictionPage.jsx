@@ -55,6 +55,8 @@ const GroupSymbol = ({ group, size = 16 }) => (
 // 팀 short → 로고 / 풀네임
 const logoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const nameByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name]));
+// 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
+const knownTeam = (short) => short != null && logoByShort[short] != null;
 
 // 특정 대회(에디션)에서만 다른 팀명·태그·로고를 쓰던 팀 오버라이드.
 //   2026 LCK CUP까지 KRX는 팀명·태그 모두 DRX였고, GEN은 예전 로고를 사용.
@@ -88,7 +90,7 @@ const MsiSlot = ({ s, predPct, onTeamClick, teamOverride }) => {
   const label = s?.seed || s?.label || '';
   const ov = (s?.short && teamOverride?.[s.short]) || {};
   const tag = ov.tag || s?.short;
-  const clickable = !!(s?.short && onTeamClick);
+  const clickable = !!(s?.short && onTeamClick && knownTeam(s.short));
   return (
     <div
       className={`flex items-center gap-2 px-2.5 py-2 min-h-[36px]${clickable ? ' cursor-pointer hover:brightness-125 transition-all' : ''}`}
@@ -694,11 +696,12 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride 
         <tbody>
           {rows.map((t, ri) => {
             const pending = !t.short && t.pendingLabel; // 미확정 슬롯(예: 플레이-인 승자)
+            const clickable = !pending && !!onTeamClick && knownTeam(t.short); // GPR에 없는 팀은 클릭 차단
             return (
               <tr
                 key={t.short || `pending-${ri}`}
-                className={`border-b border-white/5 transition-colors ${pending ? 'opacity-60' : 'cursor-pointer hover:bg-white/5'}`}
-                onClick={() => !pending && onTeamClick?.(t.short)}
+                className={`border-b border-white/5 transition-colors ${pending ? 'opacity-60' : clickable ? 'cursor-pointer hover:bg-white/5' : ''}`}
+                onClick={() => clickable && onTeamClick(t.short)}
               >
                 <td className="py-2 px-2 text-white/40 font-mono">
                   {t.seedGroup ? (
@@ -1519,25 +1522,32 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             </div>
           );
         };
-        // 참가 팀 — 8개국을 A조/B조로 나눠 Elo와 함께 대진표 위에 표기.
+        // 참가 팀 — 8개국. 조 배정이 있으면 A조/B조로 나눠, 없으면 한 목록으로 Elo와 함께 표기.
+        const hasGroups = teams.some((t) => t.group === 'A' || t.group === 'B');
+        const teamCard = (t) => (
+          <div key={t.code} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+            <span className="font-bold truncate text-white/90">{t.name}</span>
+            {t.elo != null && <span className="text-[11px] text-white/40 shrink-0 ml-auto font-mono">Elo {t.elo}</span>}
+          </div>
+        );
         const participants = teams.length > 0 && (
           <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {['A', 'B'].map((gk) => (
-                <div key={gk} className="flex flex-col gap-2">
-                  <h4 className="text-xs font-bold text-white/60">{gk}조</h4>
-                  <div className="flex flex-col gap-2">
-                    {teams.filter((t) => t.group === gk).map((t) => (
-                      <div key={t.code} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
-                        <span className="font-bold truncate text-white/90">{t.name}</span>
-                        {t.elo != null && <span className="text-[11px] text-white/40 shrink-0 ml-auto font-mono">Elo {t.elo}</span>}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
+              <span className="text-xs text-white/40">{teams.length}개국{hasGroups ? '' : ' · 조 배정·Elo 추후 반영'}</span>
             </div>
+            {hasGroups ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {['A', 'B'].map((gk) => (
+                  <div key={gk} className="flex flex-col gap-2">
+                    <h4 className="text-xs font-bold text-white/60">{gk}조</h4>
+                    <div className="flex flex-col gap-2">{teams.filter((t) => t.group === gk).map(teamCard)}</div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">{teams.map(teamCard)}</div>
+            )}
           </section>
         );
         const wrap = (body) => <>{participants}{body}</>;

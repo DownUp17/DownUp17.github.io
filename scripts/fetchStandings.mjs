@@ -31,6 +31,17 @@ const LEAGUES = [
   { key: 'cblol', sub: 'Split 2', id: '98767991332355509' },
 ];
 
+// 대회별 그룹명 표시 변경 (API 원본명 → 표시명). `${key}|${sub}` 기준.
+const GROUP_RENAME = {
+  'lck|LCK CUP': { '알파조': '바론 그룹', '오메가조': '장로 그룹' },
+  'lpl|Split 1': { 'S 그룹': '등봉조', 'A조': '인내조', 'B조': '열반조' },
+};
+const renameGroups = (rows, key) => {
+  const map = GROUP_RENAME[key];
+  if (map) for (const r of rows || []) if (r.group && map[r.group]) r.group = map[r.group];
+  return rows;
+};
+
 // 포스트시즌(정규시즌 이후) — 순위표 성적에서 제외. 블록명/스테이지명/슬러그에 키워드 포함 검사.
 const POSTSEASON = [
   '토너먼트', '플레이오프', '플레이-인', '플레이 인', '플레이인', '결승', '승강', '승격', '선발',
@@ -859,6 +870,7 @@ for (const lg of LEAGUES) {
 try {
   const cup = await buildLckCup('98767991310872058');
   if (cup) {
+    renameGroups(cup.rows, 'lck|LCK CUP');
     data.standings.lck = data.standings.lck || {};
     data.standings.lck['LCK CUP'] = cup;
     console.log(`LCK CUP: ${cup.rows.length}팀 · 우승 ${cup.finalStandings[0]?.team} · 대진 PI ${cup.playin?.rounds?.length || 0}R / PO ${cup.playoffs?.rounds?.length || 0}R`);
@@ -882,6 +894,7 @@ for (const ps of PAST_SPLITS) {
   try {
     const split = await buildSplit(ps.league, ps.slug);
     if (split) {
+      renameGroups(split.rows, `${ps.key}|${ps.sub}`);
       data.standings[ps.key] = data.standings[ps.key] || {};
       data.standings[ps.key][ps.sub] = { ...(data.standings[ps.key][ps.sub] || {}), ...split };
       console.log(`${ps.key.toUpperCase()} ${ps.sub}: ${split.rows.length}팀 · 대진 ${split.brackets.length}개 · 우승 ${split.finalStandings[0]?.team}`);
@@ -2111,6 +2124,19 @@ try {
   }
 } catch (e) {
   console.warn(`Asian Games API 갱신 실패 — 기존 값 유지: ${e.message}`);
+}
+// AG 참가팀 기본값 — 리포지토리 데이터가 아직 없을 때 8개국 참가팀을 표시(조 배정·Elo는 추후 제공).
+{
+  const ag = data.standings.asiangames || (data.standings.asiangames = {});
+  if (!Array.isArray(ag.teams) || ag.teams.length === 0) {
+    ag.teams = [
+      { code: 'KOR', name: '대한민국' }, { code: 'TPE', name: '대만' },
+      { code: 'VIE', name: '베트남' }, { code: 'HKG', name: '홍콩' },
+      { code: 'SAU', name: '사우디아라비아' }, { code: 'IND', name: '인도' },
+      { code: 'UAE', name: '아랍에미리트' }, { code: 'MYS', name: '말레이시아' },
+    ];
+    console.log('Asian Games: 기본 참가팀 8개국 표시(조 배정·Elo 미정)');
+  }
 }
 
 // Worlds 참가팀 시드 재계산 — LCK PO·LPL Split 3 블록이 Worlds 블록보다 뒤에 실행되므로,
