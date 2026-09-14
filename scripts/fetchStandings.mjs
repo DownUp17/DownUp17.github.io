@@ -170,6 +170,54 @@ function apply4TeamDELayout(bracket) {
   };
 }
 
+// 6팀 더블 엘리미네이션(LCK 플레이오프형)을 LCK PO 대진표 모양으로 재배치.
+//   LCK PO 기준 그리드: totalRows=10 · UB 3라운드(상단) / LB 3라운드+로어파이널(하단) / 그랜드파이널(우측 중앙).
+//   col0: UB R1 M1(sr0)·UB R1 M2(sr4)·LB R1(sr8)
+//   col1: UB R2 M1(sr0)·UB R2 M2(sr4)·LB R2(sr8)
+//   col2: UB R3(sr2)·LB R3(sr8)   col3: Lower Finals(sr8)   col4: Grand Finals(sr5)
+//   LCK CUP PO(상위권/하위권 대진)의 매치 제목을 UB/LB 라운드로 매핑해 같은 모양을 만든다.
+//   제목이 이 스킴과 맞지 않으면 원본(흐름 배치)을 그대로 반환한다.
+function lckPoStyleLayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  // 제목(+동일 제목 내 순서 k) → [목표 col, startRow]
+  const targetFor = (title, k) => {
+    const t = title || '';
+    if (/상위권.*8강|UB\s*R1/i.test(t)) return [0, k === 0 ? 0 : 4];
+    if (/상위권.*4강|UB\s*R2/i.test(t)) return [1, k === 0 ? 0 : 4];
+    if (/상위권.*결승|UB\s*R3|결승\s*진출전/i.test(t)) return [2, 2];
+    if (/하위권.*(1라운드|1R)|LB\s*R1/i.test(t)) return [0, 8];
+    if (/하위권.*8강|LB\s*R2/i.test(t)) return [1, 8];
+    if (/하위권.*4강|LB\s*R3/i.test(t)) return [2, 8];
+    if (/하위권.*결승|Lower\s*Final/i.test(t)) return [3, 8];
+    if (/^결승$|Grand\s*Final|그랜드/i.test(t)) return [4, 5];
+    return null;
+  };
+  const cols = [[], [], [], [], []];
+  const seen = {};
+  const origPos = {}; // `${ci}-${mi}` → id
+  let ok = true;
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => {
+    origPos[`${ci}-${mi}`] = m.id;
+    const k = seen[m.title] || 0; seen[m.title] = k + 1;
+    const tgt = targetFor(m.title, k);
+    if (!tgt) { ok = false; return; }
+    cols[tgt[0]].push({ m, startRow: tgt[1] });
+  }));
+  if (!ok || cols.some((c, i) => (i < 3 ? c.length === 0 : false))) return bracket; // 구조 불일치 → 원본 유지
+  const idPos = {};
+  const rounds2 = cols.filter((c) => c.length).map((arr, ci) => ({
+    title: '',
+    matches: arr.map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }),
+  }));
+  const connectors = [];
+  for (const c of bracket.connectors || []) {
+    const [sci, smi, mid, dci, dmi, slot] = c;
+    const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
+    if (sp && dp) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
+  }
+  return { totalRows: 10, rounds: rounds2, connectors };
+}
+
 // 결승(마지막 매치)이 아닌 매치의 승자 msi 플래그를 win으로 강등.
 //   bracketFromColumns 는 승자가 이후 매치에서 참조되지 않으면 msi(진출/우승)로 표시하지만,
 //   자동 채움 후 참조 매칭이 안 될 수 있어 오탐이 발생. 최종 결승 승자만 우승(msi)로 남긴다.
@@ -432,7 +480,8 @@ async function buildLckCup(leagueId) {
   const colsOf = (slug) => st.stages.find((s) => s.slug === slug)?.sections?.[0]?.columns;
   const piCols = colsOf('play_ins'), poCols = colsOf('playoffs');
   const playin = piCols?.length ? bracketFromColumns(piCols) : null;
-  const playoffs = poCols?.length ? bracketFromColumns(poCols) : null;
+  // 플레이오프(6팀 더블 엘리)는 LCK PO 대진표 모양(그리드)으로 재배치
+  const playoffs = poCols?.length ? lckPoStyleLayout(bracketFromColumns(poCols)) : null;
   const finalStandings = cupFinalStandings(rows, playin, playoffs);
   const champ = finalStandings[0]?.team;
   return {

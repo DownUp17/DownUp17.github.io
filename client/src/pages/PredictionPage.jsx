@@ -641,11 +641,12 @@ const BracketGroup = ({ sections, crossConnectors, onTeamClick }) => {
 // 현재 순위 표 (그룹 단위로 재사용) — 승률 대신 예측 확률(PI+/PO/Worlds/우승)을 표기
 // cols 가 주어지면 그 컬럼만 표시(단계별 뷰), 없으면 데이터 유무로 자동 판단
 const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick }) => {
-  const showDiff = cols ? !!cols.diff : hasDiff;
-  const hasPiPlus = cols ? !!cols.piPlus : rows.some((r) => r.prob?.piPlus != null);
-  const hasAdvance = cols ? !!cols.advance : rows.some((r) => r.prob);
-  const hasChamp = cols ? !!cols.champ : rows.some((r) => r.prob);
-  const hasWorlds = cols ? !!cols.worlds : rows.some((r) => r.prob?.worlds != null);
+  const minimal = !!cols?.minimal; // 최종 순위 등: 순위 + 팀 로고/이름만 (승-패·득실차·확률 숨김)
+  const showDiff = minimal ? false : (cols ? !!cols.diff : hasDiff);
+  const hasPiPlus = minimal ? false : (cols ? !!cols.piPlus : rows.some((r) => r.prob?.piPlus != null));
+  const hasAdvance = minimal ? false : (cols ? !!cols.advance : rows.some((r) => r.prob));
+  const hasChamp = minimal ? false : (cols ? !!cols.champ : rows.some((r) => r.prob));
+  const hasWorlds = minimal ? false : (cols ? !!cols.worlds : rows.some((r) => r.prob?.worlds != null));
   // 확률 셀 (소수 2자리) — 값 + 막대 바
   const prob = (v, c, strong) => (
     <td className="py-2 px-2">
@@ -669,7 +670,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick }) => {
           <tr className="text-white/40 text-xs border-b border-white/10">
             <th className="text-center font-bold py-2 px-2 w-10">#</th>
             <th className="text-left font-bold py-2 pr-2">팀</th>
-            <th className="text-center font-bold py-2 px-2">승-패</th>
+            {!minimal && <th className="text-center font-bold py-2 px-2">승-패</th>}
             {showDiff && <th className="text-center font-bold py-2 px-2">득실차</th>}
             {hasPiPlus && <th className="text-right font-bold py-2 px-2">{cols?.labels?.piPlus || 'PI+ 진출'}</th>}
             {hasAdvance && <th className="text-right font-bold py-2 px-2">{cols?.labels?.advance || 'PO 진출'}</th>}
@@ -706,7 +707,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick }) => {
                     </div>
                   )}
                 </td>
-                <td className="py-2 px-2 text-center text-white/70 font-mono">{t.games ? `${t.w}-${t.l}` : '-'}</td>
+                {!minimal && <td className="py-2 px-2 text-center text-white/70 font-mono">{t.games ? `${t.w}-${t.l}` : '-'}</td>}
                 {showDiff && (
                   <td className="py-2 px-2 text-center font-mono"
                     style={{ color: t.gd > 0 ? '#34D399' : t.gd < 0 ? '#F87171' : '#9CA3AF' }}>
@@ -1104,7 +1105,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : cfg?.cols} onTeamClick={onTeamClick} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || lckCupFinalStage ? { minimal: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : cfg?.cols} onTeamClick={onTeamClick} />
             </div>
           ))}
         </section>
@@ -1679,24 +1680,12 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">최종 순위</h3>
             <span className="text-xs text-white/40">그룹 스테이지 → 플레이-인 → 플레이오프 · 우승 {official.finalStandings[0]?.team}</span>
           </div>
-          <div className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
-            {official.finalStandings.map((f) => (
-              <button
-                key={f.team}
-                onClick={() => onTeamClick?.(f.team)}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-left border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors"
-              >
-                <span className={`w-7 text-center font-black tabular-nums ${f.rank === 1 ? 'text-[#E8C77E]' : f.rank <= 3 ? 'text-white/80' : 'text-white/40'}`}>{f.rank}</span>
-                <span className="font-bold text-white/90">{f.team}</span>
-                {f.note && (
-                  <span className="text-[11px] font-black px-2 py-0.5 rounded"
-                    style={{ color: f.rank === 1 ? '#E8C77E' : '#9CA3AF', backgroundColor: f.rank === 1 ? 'rgba(200,150,62,0.2)' : 'rgba(156,163,175,0.15)' }}>
-                    {f.note}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
+          <StandingsTable
+            rows={official.finalStandings.map((f) => ({ short: f.team, rank: f.rank }))}
+            color={comp.color}
+            cols={{ minimal: true }}
+            onTeamClick={onTeamClick}
+          />
           <p className="text-[11px] text-white/40">플레이오프 미진출 팀(8위 이하)은 도달 단계·조별 성적 기준입니다.</p>
         </section>
       )}
