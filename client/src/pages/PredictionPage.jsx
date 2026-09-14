@@ -654,7 +654,7 @@ const BracketGroup = ({ sections, crossConnectors, onTeamClick }) => {
 
 // 현재 순위 표 (그룹 단위로 재사용) — 승률 대신 예측 확률(PI+/PO/Worlds/우승)을 표기
 // cols 가 주어지면 그 컬럼만 표시(단계별 뷰), 없으면 데이터 유무로 자동 판단
-const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride }) => {
+const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride, elimSet }) => {
   const minimal = !!cols?.minimal; // 최종 순위 등: 순위 + 팀 로고/이름만 (승-패·득실차·확률 숨김)
   const showDiff = minimal ? false : (cols ? !!cols.diff : hasDiff);
   const hasPiPlus = minimal ? false : (cols ? !!cols.piPlus : rows.some((r) => r.prob?.piPlus != null));
@@ -696,6 +696,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride 
           {rows.map((t, ri) => {
             const pending = !t.short && t.pendingLabel; // 미확정 슬롯(예: 플레이-인 승자)
             const clickable = !pending && !!onTeamClick && knownTeam(t.short); // GPR에 없는 팀은 클릭 차단
+            const elim = !!(t.short && elimSet?.has(t.short)); // 탈락 팀 회색 처리
             return (
               <tr
                 key={t.short || `pending-${ri}`}
@@ -717,8 +718,10 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride 
                     <span className="text-white/50 italic">{t.pendingLabel} (미정)</span>
                   ) : (
                     <div className="flex items-center gap-2 min-w-0">
-                      <TeamLogo src={teamOverride?.[t.short]?.logo || logoByShort[t.short]} />
-                      <span className="font-bold text-white/90 truncate">{teamOverride?.[t.short]?.name || nameByShort[t.short] || t.short}</span>
+                      <div style={elim ? { filter: 'grayscale(1)', opacity: 0.4 } : undefined} className="shrink-0">
+                        <TeamLogo src={teamOverride?.[t.short]?.logo || logoByShort[t.short]} />
+                      </div>
+                      <span className={`font-bold truncate ${elim ? 'text-white/35' : 'text-white/90'}`}>{teamOverride?.[t.short]?.name || nameByShort[t.short] || t.short}</span>
                     </div>
                   )}
                 </td>
@@ -930,7 +933,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
   const lplCfg = lplSplit3 && stage ? LPL_STAGE_CFG[stage] : null;
   const lplQualifier = comp.key === 'lpl' && sub === '대표 선발전';
   // 자체 대진표(토너먼트 포맷)가 있는 세부대회는 시즌 예측 확률 컬럼을 표기하지 않음 (LPL/LCP Split 3는 전용 확률을 표기하므로 예외)
-  const noPredict = roadToMsi || (comp.key === 'lck' && sub === 'LCK CUP') || (!!official?.bracket && !lplSplit3);
+  const noPredict = roadToMsi || (comp.key === 'lck' && sub === 'LCK CUP') || (comp.key === 'lck' && sub === 'LCK' && subFinished) || (!!official?.bracket && !lplSplit3);
   // 팀 약칭 → 시뮬 예측 확률 (현재 순위표에 합쳐 표기) — LPL·LCP Split 3는 전용 시뮬 결과(comp.split3) 사용
   const probByShort = (lplSplit3 || lcpSplit3)
     ? Object.fromEntries((comp.split3 || []).map((s) => [s.team, s]))
@@ -1076,8 +1079,33 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
   const lcpFinished = lcpSplit3 && subFinished;
   const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
     || (isLckCup && stage !== '그룹 스테이지') // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
-    || (isLecSummer && !lecCfg?.pred) // LEC: 정규시즌에서만 순위표, 플레이오프는 대진만
+    || (isLecSummer && !lecCfg?.pred && stage !== '플레이오프') // LEC/LCS/CBLOL: 정규시즌·플레이오프(참가팀)에서 순위표 표기
     || finalDataStage; // 최종 순위 단계는 대진 기반 최종순위만 표기
+  // LCK(종료) — 진출 확률 제거 + 스테이지별 탈락 팀 회색 처리
+  const lckStages = comp.key === 'lck' && !isLckCup;
+  const lckFinished = lckStages && subFinished;
+  // 라이브 스플릿(LEC/LCS/CBLOL) 플레이오프 단계 — 정규시즌 순위표를 참가 팀으로 표기
+  const liveBracketStage = isLecSummer && stage === '플레이오프';
+  const collectElim = (rounds) => { const s = new Set(); for (const r of rounds || []) for (const m of r.matches || []) for (const slot of [m.a, m.b]) if (slot?.elim && slot?.short) s.add(slot.short); return s; };
+  const stageElimSet = (() => {
+    if (lckStages) {
+      if (stage === '플레이-인') return collectElim(official?.playin?.rounds);
+      if (stage === '플레이오프') return collectElim(official?.playoffs?.rounds);
+      if (stage === '정규시즌') {
+        const inBr = new Set();
+        for (const rounds of [official?.playin?.rounds, official?.playoffs?.rounds]) for (const r of rounds || []) for (const m of r.matches || []) for (const slot of [m.a, m.b]) if (slot?.short) inBr.add(slot.short);
+        return new Set(current.filter((t) => !inBr.has(t.short)).map((t) => t.short));
+      }
+    }
+    if (liveBracketStage) {
+      const set = collectElim(official?.playoffs?.rounds);
+      const inBr = new Set();
+      for (const r of official?.playoffs?.rounds || []) for (const m of r.matches || []) for (const slot of [m.a, m.b]) if (slot?.short) inBr.add(slot.short);
+      for (const t of current) if (!inBr.has(t.short)) set.add(t.short); // 플레이오프 미진출 팀도 회색
+      return set;
+    }
+    return null;
+  })();
   // 참가 팀 카드(MSI 전용). LCK 플레이-인/플레이오프는 정규시즌 순위표를 참가 팀으로 표기.
   const qualifiers = official?.qualifiers?.length ? official.qualifiers : null;
   // LPL Split 3는 이제 API 자동 대진(knights/playoffs)을 쓰므로 섹션형 bracket을 사용하지 않는다.
@@ -1126,8 +1154,8 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
       {current.length > 0 && !hideStandings && (
         <section className="flex flex-col gap-5">
           <div className="flex items-baseline gap-2 flex-wrap">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lckBracketStage ? '참가 팀' : (cfg?.heading || (roadToMsi ? '진출 팀' : '현재 순위'))}</h3>
-            <span className="text-xs text-white/40">{lckBracketStage ? '정규시즌 순위표 (진출 시드 확정 기준)' : (cfg?.desc || official?.stage)}</span>
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{lckBracketStage || liveBracketStage ? '참가 팀' : (cfg?.heading || (roadToMsi ? '진출 팀' : '현재 순위'))}</h3>
+            <span className="text-xs text-white/40">{lckBracketStage || liveBracketStage ? '정규시즌 순위표 (플레이오프 진출 시드)' : (cfg?.desc || official?.stage)}</span>
           </div>
           {lckFinalStage && groups.length === 0 && (
             <p className="text-sm text-white/50 py-6 px-4 rounded-xl bg-white/5 border border-white/10">
@@ -1142,7 +1170,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || finalDataStage ? { minimal: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : lcpFinished ? { diff: true } : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || finalDataStage ? { minimal: true } : lckFinished ? { diff: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : liveBracketStage ? { diff: true, champ: true } : lcpFinished ? { diff: true } : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} elimSet={stageElimSet} />
             </div>
           ))}
         </section>
