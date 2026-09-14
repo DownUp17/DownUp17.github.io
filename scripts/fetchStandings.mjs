@@ -209,13 +209,42 @@ function lckPoStyleLayout(bracket) {
     title: '',
     matches: arr.map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }),
   }));
-  const connectors = [];
+  // 원본(origin 기반) 연결선을 새 좌표로 재매핑 — 각 dest 매치의 현재 슬롯 파악용
+  const myConn = [];
   for (const c of bracket.connectors || []) {
     const [sci, smi, mid, dci, dmi, slot] = c;
     const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
-    if (sp && dp) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
+    if (sp && dp) myConn.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
   }
-  return { totalRows: 10, rounds: rounds2, connectors };
+  // LCK PO 표준 연결선 템플릿(그리드 좌표 동일) — 승자 진출선 + 상위결승 패자→하위결승 강등선.
+  //   패자 강등선(8강→1R 등)은 LCK PO와 동일하게 생략한다.
+  const TMPL = [
+    [0, 0, 'mid', 1, 0, 'b'], [0, 1, 'mid', 1, 1, 'a'], [0, 2, 'mid', 1, 2, 'b'],
+    [1, 2, 'mid', 2, 1, 'b'], [1, 0, 'mid', 2, 0, 'a'], [1, 1, 'mid', 2, 0, 'b'],
+    [2, 0, 'mid', 3, 0, 'a'], [2, 1, 'mid', 3, 0, 'b'], [2, 0, 'mid', 4, 0, 'a'],
+    [3, 0, 'mid', 4, 0, 'b'],
+  ];
+  // dest 매치의 팀 슬롯(a/b)이 템플릿과 반대면 뒤집어, 템플릿 연결선이 올바른 팀을 가리키게 한다.
+  const collect = (arr) => {
+    const out = {};
+    for (const [sci, smi, , dci, dmi, slot] of arr) {
+      const k = `${dci}-${dmi}`; (out[k] = out[k] || {})[`${sci}-${smi}`] = slot;
+    }
+    return out;
+  };
+  const desired = collect(TMPL), current = collect(myConn);
+  for (const k of Object.keys(desired)) {
+    const des = desired[k], cur = current[k] || {};
+    const shared = Object.keys(des).filter((s) => cur[s] != null);
+    if (shared.length && shared.every((s) => cur[s] !== des[s])) {
+      const [ci, mi] = k.split('-').map(Number);
+      const m = rounds2[ci]?.matches[mi];
+      if (m) { const t = m.a; m.a = m.b; m.b = t; }
+    }
+  }
+  // 실제로 존재하는 매치 좌표만 남긴다(구조 안전장치)
+  const valid = TMPL.filter(([sci, smi, , dci, dmi]) => rounds2[sci]?.matches[smi] && rounds2[dci]?.matches[dmi]);
+  return { totalRows: 10, rounds: rounds2, connectors: valid };
 }
 
 // 결승(마지막 매치)이 아닌 매치의 승자 msi 플래그를 win으로 강등.

@@ -12,6 +12,8 @@ import { textOn, lighten } from '../utils/colorContrast';
 import demaciaLogo from '../assets/demacia.svg';
 import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
+import drxLogo from '../assets/drx.svg';
+import gengSimpleLogo from '../assets/geng-simple.svg';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -51,6 +53,13 @@ const GroupSymbol = ({ group, size = 16 }) => (
 // 팀 short → 로고 / 풀네임
 const logoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const nameByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name]));
+
+// 특정 대회(에디션)에서만 다른 팀명·태그·로고를 쓰던 팀 오버라이드.
+//   2026 LCK CUP까지 KRX는 팀명·태그 모두 DRX였고, GEN은 예전 로고를 사용.
+const LCKCUP_TEAM_OVERRIDE = {
+  KRX: { tag: 'DRX', name: 'DRX', logo: drxLogo },
+  GEN: { logo: gengSimpleLogo },
+};
 // 팀 short → GPR 점수 (대진 확정·미진행 경기의 승부예측에 사용)
 const gprScoreByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.score]));
 
@@ -70,11 +79,13 @@ const matchPrediction = (a, b) => {
 };
 
 // Road to MSI(선발전) 사다리식 대진표 — 실제 점수·진출/MSI 결과 표기
-const MsiSlot = ({ s, predPct, onTeamClick }) => {
+const MsiSlot = ({ s, predPct, onTeamClick, teamOverride }) => {
   // MSI(토너먼트) 진출 = 금색, 하위 라운드 승자 = 파랑, 탈락 = 빨강 배경
   const accent = s?.msi ? '#E8C77E' : s?.win ? '#60A5FA' : null;
   const bg = s?.msi ? 'rgba(232,199,126,0.16)' : s?.win ? 'rgba(96,165,250,0.14)' : s?.elim ? 'rgba(248,113,113,0.18)' : 'transparent';
   const label = s?.seed || s?.label || '';
+  const ov = (s?.short && teamOverride?.[s.short]) || {};
+  const tag = ov.tag || s?.short;
   const clickable = !!(s?.short && onTeamClick);
   return (
     <div
@@ -85,8 +96,8 @@ const MsiSlot = ({ s, predPct, onTeamClick }) => {
       {s?.short ? (
         <>
           {label && <span className="text-[10px] text-white/40 shrink-0 max-w-[80px] truncate">{label}</span>}
-          <TeamLogo src={logoByShort[s.short]} size={16} />
-          <span className="text-xs font-bold truncate" style={{ color: accent || 'rgba(255,255,255,0.88)' }}>{s.short}</span>
+          <TeamLogo src={ov.logo || logoByShort[s.short]} size={16} />
+          <span className="text-xs font-bold truncate" style={{ color: accent || 'rgba(255,255,255,0.88)' }}>{tag}</span>
         </>
       ) : (
         <span className="text-xs text-white/35 truncate">{label || '미정'}</span>
@@ -343,7 +354,7 @@ const computeKnockoutEliminated = (matches, teamMap) => {
   return out;
 };
 
-const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick, groupGap = false }) => {
+const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick, groupGap = false, teamOverride }) => {
   const useGrid = !!totalRows;
   const colH = useGrid ? gridSlotTop(totalRows - 1) + 2 * ACTUAL_SLOT_H + 2 : undefined;
   const totalW = rounds.length * COL_W + (rounds.length - 1) * COL_GAP;
@@ -487,9 +498,9 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
                         {m.time && <span className="ml-auto text-white/40 font-semibold">{m.time}</span>}
                       </div>
                     )}
-                    <MsiSlot s={m.a} predPct={pred?.pA} onTeamClick={onTeamClick} />
+                    <MsiSlot s={m.a} predPct={pred?.pA} onTeamClick={onTeamClick} teamOverride={teamOverride} />
                     <div className="h-px bg-white/10" />
-                    <MsiSlot s={m.b} predPct={pred?.pB} onTeamClick={onTeamClick} />
+                    <MsiSlot s={m.b} predPct={pred?.pB} onTeamClick={onTeamClick} teamOverride={teamOverride} />
                   </div>
                 );
                 if (groupGap) {
@@ -525,9 +536,9 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
                     {...(cardPrefix && { 'data-xcard': `${cardPrefix}${ri}-${mi}` })}
                     className="rounded-xl bg-white/5 border border-white/10 overflow-hidden"
                     style={{ position: 'absolute', top: cardTop, left: 0, right: 0 }}>
-                    <MsiSlot s={m.a} predPct={pred?.pA} onTeamClick={onTeamClick} />
+                    <MsiSlot s={m.a} predPct={pred?.pA} onTeamClick={onTeamClick} teamOverride={teamOverride} />
                     <div className="h-px bg-white/10" />
-                    <MsiSlot s={m.b} predPct={pred?.pB} onTeamClick={onTeamClick} />
+                    <MsiSlot s={m.b} predPct={pred?.pB} onTeamClick={onTeamClick} teamOverride={teamOverride} />
                   </div>
                 </React.Fragment>
               );
@@ -640,7 +651,7 @@ const BracketGroup = ({ sections, crossConnectors, onTeamClick }) => {
 
 // 현재 순위 표 (그룹 단위로 재사용) — 승률 대신 예측 확률(PI+/PO/Worlds/우승)을 표기
 // cols 가 주어지면 그 컬럼만 표시(단계별 뷰), 없으면 데이터 유무로 자동 판단
-const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick }) => {
+const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride }) => {
   const minimal = !!cols?.minimal; // 최종 순위 등: 순위 + 팀 로고/이름만 (승-패·득실차·확률 숨김)
   const showDiff = minimal ? false : (cols ? !!cols.diff : hasDiff);
   const hasPiPlus = minimal ? false : (cols ? !!cols.piPlus : rows.some((r) => r.prob?.piPlus != null));
@@ -702,8 +713,8 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick }) => {
                     <span className="text-white/50 italic">{t.pendingLabel} (미정)</span>
                   ) : (
                     <div className="flex items-center gap-2 min-w-0">
-                      <TeamLogo src={logoByShort[t.short]} />
-                      <span className="font-bold text-white/90 truncate">{nameByShort[t.short] || t.short}</span>
+                      <TeamLogo src={teamOverride?.[t.short]?.logo || logoByShort[t.short]} />
+                      <span className="font-bold text-white/90 truncate">{teamOverride?.[t.short]?.name || nameByShort[t.short] || t.short}</span>
                     </div>
                   )}
                 </td>
@@ -1105,7 +1116,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || lckCupFinalStage ? { minimal: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : cfg?.cols} onTeamClick={onTeamClick} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || lckCupFinalStage ? { minimal: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} />
             </div>
           ))}
         </section>
@@ -1663,7 +1674,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
               <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{stage} 대진</h3>
               <span className="text-xs text-white/40">2026 LCK CUP · 실제 경기 결과</span>
             </div>
-            <MsiBracket rounds={br.rounds} totalRows={br.totalRows} connectors={br.connectors} onTeamClick={onTeamClick} />
+            <MsiBracket rounds={br.rounds} totalRows={br.totalRows} connectors={br.connectors} onTeamClick={onTeamClick} teamOverride={LCKCUP_TEAM_OVERRIDE} />
             <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> 우승/진출</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
@@ -1685,6 +1696,7 @@ const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
             color={comp.color}
             cols={{ minimal: true }}
             onTeamClick={onTeamClick}
+            teamOverride={LCKCUP_TEAM_OVERRIDE}
           />
           <p className="text-[11px] text-white/40">플레이오프 미진출 팀(8위 이하)은 도달 단계·조별 성적 기준입니다.</p>
         </section>
