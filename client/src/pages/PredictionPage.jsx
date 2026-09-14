@@ -23,15 +23,17 @@ const statusMeta = {
 
 // 본문 추후 제공 대회 (정보 미준비)
 const CONTENT_TBD = new Set([
-  'fst',
-  'lpl|Split 1', 'lpl|Split 2',
-  'lec|Versus', 'lec|Spring',
   'lcp|Split 1', 'lcp|Split 2',
-  'lcs|Lock-In', 'lcs|Spring',
-  'cblol|Copa', 'cblol|Split 1',
 ]);
 const isContentTbd = (key, sub) =>
   CONTENT_TBD.has(key) || (sub ? CONTENT_TBD.has(`${key}|${sub}`) : false);
+// 완료된 과거 스플릿(정규/그룹 순위 + 대진 + 최종순위를 PastSplitView로 표시)
+const PAST_SPLIT_SUBS = new Set([
+  'lpl|Split 1', 'lpl|Split 2',
+  'lec|Versus', 'lec|Spring',
+  'lcs|Lock-In', 'lcs|Spring',
+  'cblol|Copa', 'cblol|Split 1',
+]);
 
 // 팀 short → 실제 전적(GPR 기준). gw/gl = 세트(게임) 승-패
 const recordByShort = Object.fromEntries(
@@ -777,7 +779,9 @@ const LPL_STAGE_CFG = {
   '플레이오프': { bracketKey: 'playoffs', bracketTitle: '플레이오프 대진' },
 };
 
-// LEC 서머 단계별 설정 — 정규시즌(순위·우승 확률) / 플레이오프(6팀 더블 엘리 대진, 라이브 갱신)
+// 진행 중 지역 리그 스플릿(LEC 서머·LCS 서머·CBLOL 스플릿2) — 정규시즌 종료 + 플레이오프 라이브 갱신
+const LIVE_SPLIT_SUBS = new Set(['lec|Summer', 'lcs|Summer', 'cblol|Split 2']);
+// 단계별 설정 — 정규시즌(순위·우승 확률) / 플레이오프(6팀 더블 엘리 대진, 라이브 갱신)
 const LEC_STAGE_CFG = {
   '정규시즌': {
     pred: true,
@@ -885,7 +889,7 @@ const buildLckBracket = (raw, stage, current) => {
 const SimulationView = ({ comp, sub, stage, onTeamClick }) => {
   const lcpSplit3 = comp.key === 'lcp' && sub === 'Split 3';
   const lcpCfg = lcpSplit3 ? (LCP_STAGE_CFG[stage] || LCP_STAGE_CFG['스위스 스테이지']) : null;
-  const isLecSummer = comp.key === 'lec' && sub === 'Summer';
+  const isLecSummer = LIVE_SPLIT_SUBS.has(`${comp.key}|${sub}`);
   const lecCfg = isLecSummer ? (LEC_STAGE_CFG[stage] || LEC_STAGE_CFG['정규시즌']) : null;
   const cfg = lcpSplit3 ? lcpCfg : isLecSummer ? lecCfg : (stage ? STAGE_CFG[stage] : null);
   // 현재 순위 — 해당 세부대회 공식 순위표가 있으면 우선, 없으면 GPR 전적으로 산출
@@ -1839,6 +1843,67 @@ const NotReady = ({ comp }) => (
   </div>
 );
 
+// 완료된 과거 스플릿 표시 — 최종순위 + 정규/그룹 순위 + 모든 대진표(단일 페이지).
+const PAST_GROUP_BADGES = [
+  { color: '#E8C77E', bg: 'rgba(200,150,62,0.2)' },
+  { color: '#9CA3AF', bg: 'rgba(156,163,175,0.15)' },
+  { color: '#7EC8E8', bg: 'rgba(62,150,200,0.2)' },
+];
+const PastSplitView = ({ comp, sub, onTeamClick }) => {
+  const data = officialStandings.standings[comp.key]?.[sub];
+  if (!data) return <NotReady comp={comp} />;
+  const rows = data.rows || [];
+  const grouped = rows.some((r) => r.group);
+  const groupNames = grouped ? [...new Set(rows.map((r) => r.group))] : [null];
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
+        <span className="text-white/50">형식: <strong className="text-white/80">{data.name} · 종료</strong></span>
+      </div>
+
+      {data.finalStandings?.length > 0 && (
+        <section className="flex flex-col gap-4">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">최종 순위</h3>
+            <span className="text-xs text-white/40">우승 {data.finalStandings[0]?.team}</span>
+          </div>
+          <StandingsTable rows={data.finalStandings.map((f) => ({ short: f.team, rank: f.rank }))} color={comp.color} cols={{ minimal: true }} onTeamClick={onTeamClick} />
+        </section>
+      )}
+
+      {rows.length > 0 && (
+        <section className="flex flex-col gap-5">
+          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{grouped ? '그룹 순위' : '정규시즌 순위'}</h3>
+          {groupNames.map((g, gi) => {
+            const grpRows = rows.filter((r) => g == null || r.group === g).map((r) => ({
+              short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
+              gd: r.gw != null && r.gl != null ? r.gw - r.gl : null,
+            }));
+            const badge = PAST_GROUP_BADGES[gi % PAST_GROUP_BADGES.length];
+            return (
+              <div key={g || 'all'}>
+                {g && <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: badge.color, backgroundColor: badge.bg }}>{g}</span>}
+                <StandingsTable rows={grpRows} color={comp.color} hasDiff={grpRows.some((r) => r.gd != null)} onTeamClick={onTeamClick} />
+              </div>
+            );
+          })}
+        </section>
+      )}
+
+      {(data.brackets || []).map((b, bi) => (b.bracket?.rounds?.length > 0 && (
+        <section key={bi}>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{b.name}</h3>
+            <span className="text-xs text-white/40">실제 경기 결과</span>
+          </div>
+          <MsiBracket rounds={b.bracket.rounds} totalRows={b.bracket.totalRows} connectors={b.bracket.connectors} onTeamClick={onTeamClick} groupGap={/swiss|스위스/i.test(b.slug || b.name)} />
+          <BracketLegend />
+        </section>
+      )))}
+    </div>
+  );
+};
+
 const GPR_TAB = { key: 'gpr', name: 'GPR 순위', scope: 'data', color: '#E8C77E' };
 
 // 탭 로고 (LoL Esports / 각 대회). 출처: static.lolesports.com
@@ -1875,10 +1940,7 @@ const SUBTABS = {
 // 세부 대회 기본 선택(현재 진행/직전 완료된 대회)
 const SUBTAB_DEFAULT = { lck: 'LCK', lpl: 'Split 3', lec: 'Summer', lcp: 'Split 3', lcs: 'Summer', cblol: 'Split 2' };
 // 아직 시작하지 않은 세부 대회 → "예정" 표시
-const SUB_UPCOMING = {
-  lcs: ['Summer'],
-  cblol: ['Split 2'],
-};
+const SUB_UPCOMING = {};
 // 세부 대회별 상태 배지 오버라이드 — 리그 전체 상태(comp.status)와 무관하게 표시할 값
 const SUB_STATUS = {
   'lpl|Split 1': 'finished',
@@ -1893,10 +1955,10 @@ const SUB_STATUS = {
   'lcp|Split 3': 'finished',
   'lcs|Lock-In': 'finished',
   'lcs|Spring': 'finished',
-  'lcs|Summer': 'upcoming',
+  'lcs|Summer': 'ongoing',
   'cblol|Copa': 'finished',
   'cblol|Split 1': 'finished',
-  'cblol|Split 2': 'upcoming',
+  'cblol|Split 2': 'ongoing',
   'lck|Road to MSI': 'finished',
   'lck|LCK CUP': 'finished',
 };
@@ -1906,6 +1968,8 @@ const STAGE_TABS = {
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프'],
   'lec|Summer': ['정규시즌', '플레이오프'],
+  'lcs|Summer': ['정규시즌', '플레이오프'],
+  'cblol|Split 2': ['정규시즌', '플레이오프'],
   'lpl|대표 선발전': ['대진', '챔피언십 포인트'],
   demacia: ['그룹 스테이지', '녹아웃 스테이지'],
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프'],
@@ -1919,6 +1983,8 @@ const STAGE_DEFAULT = {
   'lck|LCK': '최종 순위',
   'lpl|Split 3': '플레이오프',
   'lec|Summer': '플레이오프',
+  'lcs|Summer': '플레이오프',
+  'cblol|Split 2': '플레이오프',
   msi: '브래킷 스테이지',
 };
 
@@ -2164,6 +2230,8 @@ const PredictionPage = () => {
                     <p className="text-white/30 text-sm">이전 연도 대회 결과를 곧 게재합니다.</p>
                   </div>
                 )
+              ) : PAST_SPLIT_SUBS.has(`${comp.key}|${activeSub}`) ? (
+                <PastSplitView comp={comp} sub={activeSub} onTeamClick={handleTeamClick} />
               ) : isContentTbd(comp.key, activeSub) ? (
                 <div className="py-20 text-center border-2 border-dashed border-white/10 rounded-3xl">
                   <Hourglass size={32} className="mx-auto text-white/30 mb-4" />

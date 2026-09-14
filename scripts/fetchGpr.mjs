@@ -131,6 +131,12 @@ try {
     LEC: JSON.stringify({
       po: st.standings?.lec?.Summer?.playoffs ?? null,
     }),
+    LCS: JSON.stringify({
+      po: st.standings?.lcs?.Summer?.playoffs ?? null,
+    }),
+    CBLOL: JSON.stringify({
+      po: st.standings?.cblol?.['Split 2']?.playoffs ?? null,
+    }),
   };
   const oldSigs = simData.bracketSigs || {};
   bracketChangedLeagues = Object.keys(bracketSigs).filter((k) => oldSigs[k] !== bracketSigs[k]);

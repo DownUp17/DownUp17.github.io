@@ -812,6 +812,66 @@ function simulateLecSummer(seeds, fixed = {}) {
   }));
 }
 
+// LCK PO식 6팀 더블 엘리(시드 1·2 부전승) — LCS/CBLOL 서머·스플릿 플레이오프.
+//   상위8강: 3v6,4v5 → 상위4강: 1v(8강M1승),2v(8강M2승) → 상위결승.
+//   하위1R: 8강 두 패자 → 하위2R: (하위1R승 vs 4강M2패) → 하위4강: (하위2R승 vs 4강M1패)
+//   → 하위결승(vs 상위결승패) → 결승.
+function extractDE6Fixed(bracket, seeds) {
+  const fixed = {};
+  if (!bracket?.rounds) return fixed;
+  const [s1, s2, s3, s4, s5, s6] = seeds.map((t) => t?.short);
+  const winnerOf = (m) => {
+    if (!m) return null;
+    if (m.a?.win || m.a?.msi) return m.a.short;
+    if (m.b?.win || m.b?.msi) return m.b.short;
+    if (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score) return m.a.score > m.b.score ? m.a.short : m.b.short;
+    return null;
+  };
+  const has = (m, c) => c && (m.a?.short === c || m.b?.short === c);
+  for (const r of bracket.rounds) for (const m of r.matches) {
+    const t = m.title || '', w = winnerOf(m);
+    if (!w) continue;
+    if (/상위권.*8강/.test(t)) { if (has(m, s3) || has(m, s6)) fixed.UB8M1 = w; else if (has(m, s4) || has(m, s5)) fixed.UB8M2 = w; }
+    else if (/상위권.*4강/.test(t)) { if (has(m, s1)) fixed.UB4M1 = w; else if (has(m, s2)) fixed.UB4M2 = w; }
+    else if (/상위권.*결승/.test(t)) fixed.UBF = w;
+    else if (/하위권.*1라운드/.test(t)) fixed.LB1 = w;
+    else if (/하위권.*2라운드/.test(t)) fixed.LB2 = w;
+    else if (/하위권.*4강/.test(t)) fixed.LB4 = w;
+    else if (/하위권.*결승/.test(t)) fixed.LBF = w;
+    else if (/결승/.test(t)) fixed.F = w;
+  }
+  return fixed;
+}
+function simulateDE6(seeds, fixed = {}) {
+  const stat = {};
+  seeds.forEach((t) => { stat[t.short] = { champ: 0, finals: 0 }; });
+  const play = (a, b, key) => {
+    if (!a || !b) return { w: a || b, l: null };
+    const f = fixed[key];
+    if (f) { const w = f === a.short ? a : f === b.short ? b : null; if (w) return { w, l: w === a ? b : a }; }
+    const w = simSeries(a, b, 3);
+    return { w, l: w === a ? b : a };
+  };
+  const [s1, s2, s3, s4, s5, s6] = seeds;
+  for (let it = 0; it < ITER; it++) {
+    const u8a = play(s3, s6, 'UB8M1'), u8b = play(s4, s5, 'UB8M2');
+    const u4a = play(s1, u8a.w, 'UB4M1'), u4b = play(s2, u8b.w, 'UB4M2');
+    const uf = play(u4a.w, u4b.w, 'UBF');
+    const l1 = play(u8a.l, u8b.l, 'LB1');
+    const l2 = play(l1.w, u4b.l, 'LB2');
+    const l4 = play(l2.w, u4a.l, 'LB4');
+    const lf = play(l4.w, uf.l, 'LBF');
+    const fin = play(uf.w, lf.w, 'F');
+    stat[fin.w.short].champ++;
+    stat[uf.w.short].finals++; stat[lf.w.short].finals++;
+  }
+  return seeds.map((t) => ({
+    team: t.short, name: t.name, rating: t.score,
+    champ: pct(stat[t.short].champ / ITER),
+    finals: pct(stat[t.short].finals / ITER),
+  }));
+}
+
 const byShort = (short) => gpr.teams.find((t) => t.short === short);
 const lplS3Rows = standingsData.standings?.lpl?.['Split 3']?.rows || [];
 const lplAscend = lplS3Rows.filter((r) => r.group === '등봉조').map((r) => byShort(r.team)).filter(Boolean);
@@ -827,37 +887,38 @@ if (lplAscend.length === 8 && lplNirvana.length === 4) {
   console.log(`LPL Split3: 우승1위 ${split3Champ.team} ${split3Champ.champ}%`);
 }
 
-// 2026 LEC 서머: 정규시즌 종료 → 실제 순위 + 플레이오프(6팀 DE) 라이브 시뮬로 LEC 대회 덮어쓰기
-{
-  const lecSummer = standingsData.standings?.lec?.Summer;
-  const lecRows = lecSummer?.rows || [];
-  if (lecRows.length >= 6) {
-    const ranked = lecRows.slice().sort((a, b) => a.rank - b.rank);
-    const seeds6 = ranked.slice(0, 6).map((r) => byShort(r.team)).filter(Boolean);
-    if (seeds6.length === 6) {
-      const fixed = extractLecSummerFixed(lecSummer.playoffs, seeds6);
-      const summer = simulateLecSummer(seeds6, fixed);
-      const probMap = Object.fromEntries(summer.map((p) => [p.team, p]));
-      const lecComp = sim.competitions.find((c) => c.key === 'lec');
-      lecComp.summer = summer;
-      // 정규시즌 실제 순위 + 플레이오프 확률로 대회 순위표 재구성 (상위6 = 진출 확정)
-      lecComp.standings = ranked.map((r, i) => {
-        const t = byShort(r.team);
-        return {
-          team: r.team, name: t?.name || r.team, rating: t?.score ?? 0,
-          avgRank: r.rank, rank1: i === 0 ? 100 : 0,
-          advance: i < 6 ? 100 : 0,
-          champ: probMap[r.team]?.champ ?? 0,
-          finals: probMap[r.team]?.finals ?? 0,
-        };
-      });
-      lecComp.stage = '2026 서머 · 정규시즌 종료 · 플레이오프 진행';
-      lecComp.format = '싱글 라운드로빈 Bo3 → 상위 6팀 더블 엘리미네이션 (Bo5)';
-      const top = [...summer].sort((a, b) => b.champ - a.champ)[0];
-      console.log(`LEC 서머: 우승1위 ${top.team} ${top.champ}% · 플레이오프 확정 ${Object.keys(fixed).length}경기`);
-    }
-  }
+// 진행 중 지역 리그 서머/스플릿: 정규시즌 종료 → 실제 순위 + 플레이오프(6팀 DE) 라이브 시뮬로 덮어쓰기.
+//   LEC는 상위1R=1v4/2v3 구조(simulateLecSummer), LCS/CBLOL은 LCK PO식(simulateDE6).
+function applyLiveSplit(compKey, subKey, splitNode, simFn, extractFn, label) {
+  const rows = splitNode?.rows || [];
+  if (rows.length < 6) return;
+  const ranked = rows.slice().sort((a, b) => a.rank - b.rank);
+  const seeds6 = ranked.slice(0, 6).map((r) => byShort(r.team)).filter(Boolean);
+  if (seeds6.length !== 6) return;
+  const fixed = extractFn(splitNode.playoffs, seeds6);
+  const probs = simFn(seeds6, fixed);
+  const probMap = Object.fromEntries(probs.map((p) => [p.team, p]));
+  const comp = sim.competitions.find((c) => c.key === compKey);
+  if (!comp) return;
+  comp.playoffProbs = probs;
+  comp.standings = ranked.map((r, i) => {
+    const t = byShort(r.team);
+    return {
+      team: r.team, name: t?.name || r.team, rating: t?.score ?? 0,
+      avgRank: r.rank, rank1: i === 0 ? 100 : 0,
+      advance: i < 6 ? 100 : 0,
+      champ: probMap[r.team]?.champ ?? 0,
+      finals: probMap[r.team]?.finals ?? 0,
+    };
+  });
+  comp.stage = `${label} · 정규시즌 종료 · 플레이오프 진행`;
+  comp.format = '싱글 라운드로빈 Bo3 → 상위 6팀 더블 엘리미네이션 (Bo5)';
+  const top = [...probs].sort((a, b) => b.champ - a.champ)[0];
+  console.log(`${compKey.toUpperCase()} ${subKey}: 우승1위 ${top.team} ${top.champ}% · 플레이오프 확정 ${Object.keys(fixed).length}경기`);
 }
+applyLiveSplit('lec', 'Summer', standingsData.standings?.lec?.Summer, simulateLecSummer, extractLecSummerFixed, '2026 서머');
+applyLiveSplit('lcs', 'Summer', standingsData.standings?.lcs?.Summer, simulateDE6, extractDE6Fixed, '2026 서머');
+applyLiveSplit('cblol', 'Split 2', standingsData.standings?.cblol?.['Split 2'], simulateDE6, extractDE6Fixed, '2026 스플릿 2');
 
 // LCP Split 3 (스위스 스테이지 + 4팀 더블 엘리 플레이오프) — GPR 상위4=상위 시드
 const lcpTeams = gpr.teams.filter((t) => t.league === 'LCP').sort((a, b) => b.score - a.score);
@@ -967,6 +1028,12 @@ sim.bracketSigs = {
   }),
   LEC: JSON.stringify({
     po: standingsData.standings?.lec?.Summer?.playoffs ?? null,
+  }),
+  LCS: JSON.stringify({
+    po: standingsData.standings?.lcs?.Summer?.playoffs ?? null,
+  }),
+  CBLOL: JSON.stringify({
+    po: standingsData.standings?.cblol?.['Split 2']?.playoffs ?? null,
   }),
 };
 delete sim.msiBracketSig; // 이전 형식(단일 문자열) 제거
