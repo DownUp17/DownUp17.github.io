@@ -2141,6 +2141,8 @@ const editionYears = (key) => COMP_EDITIONS[key] || [CURRENT_YEAR];
 const PAST_EDITIONS = {};
 // 특정 대회·연도에 세부 대회 선택(연도 오른쪽 드롭다운). DCGI 2025 = ASI / Demacia Cup(합쳐지기 전 두 대회).
 const YEAR_SUBEVENTS = { 'demacia|2025': ['ASI', 'Demacia Cup'] };
+// 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
+const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
 const PredictionPage = () => {
   const comps = sim.competitions;
@@ -2242,7 +2244,9 @@ const PredictionPage = () => {
     ? PAST_EDITIONS[activeEvent ? `${comp.key}|${activeYear}|${activeEvent}` : `${comp.key}|${activeYear}`]
     : null;
   // 과거 연도 선택 시 제목의 연도 토큰을 교체(예: "2026 LCK" → "2024 LCK")
-  const displayTitle = isCurrentYear ? title : title.replace(String(CURRENT_YEAR), String(activeYear));
+  const displayTitle = isCurrentYear
+    ? title
+    : (activeEvent ? `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}` : title.replace(String(CURRENT_YEAR), String(activeYear)));
   // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
   const stDisplay = !isCurrentYear ? statusMeta.finished : st;
 
