@@ -850,30 +850,49 @@ function splitFinalStandings(rows, bracketsOrdered) {
     }
     return {};
   };
+  // 브래킷의 모든 매치(rounds 또는 sections 구조 모두 지원)
+  const allMatches = (br) => (Array.isArray(br?.sections) ? br.sections.flatMap((s) => s.rounds || []) : (br?.rounds || [])).flatMap((r) => r.matches || []);
+  // 각 팀의 '최종 진출 깊이(depth)'와 그 매치 승패를 산출. sections(더블 엘리 등)는
+  //   같은 섹션 내 라운드 순서 + crossConnectors 방향으로 최장경로 depth를 계산해 탈락 순서를 정한다.
   const lastOf = (bracket) => {
+    const nodes = [];
+    const push = (si, ri, mi, m) => { if (m && (m.a || m.b)) nodes.push({ id: `${si}-${ri}-${mi}`, si, ri, m }); };
+    if (Array.isArray(bracket?.sections)) bracket.sections.forEach((s, si) => (s.rounds || []).forEach((r, ri) => r.matches.forEach((m, mi) => push(si, ri, mi, m))));
+    else (bracket?.rounds || []).forEach((r, ri) => r.matches.forEach((m, mi) => push(0, ri, mi, m)));
+    const ids = new Set(nodes.map((n) => n.id));
+    const preds = {}; nodes.forEach((n) => (preds[n.id] = []));
+    const addEdge = (f, t) => { if (ids.has(f) && ids.has(t)) preds[t].push(f); };
+    // 같은 섹션 내: 라운드 ri의 모든 매치 → 다음(존재하는) 라운드의 모든 매치
+    const bySec = {}; nodes.forEach((n) => { (bySec[n.si] = bySec[n.si] || {}); (bySec[n.si][n.ri] = bySec[n.si][n.ri] || []).push(n.id); });
+    for (const si of Object.keys(bySec)) { const rs = Object.keys(bySec[si]).map(Number).sort((a, b) => a - b); for (let i = 0; i < rs.length - 1; i++) for (const f of bySec[si][rs[i]]) for (const t of bySec[si][rs[i + 1]]) addEdge(f, t); }
+    // 섹션 간: crossConnectors 방향
+    for (const c of bracket?.crossConnectors || []) addEdge(`${c[0]}-${c[1]}-${c[2]}`, `${c[4]}-${c[5]}-${c[6]}`);
+    // 최장경로 depth (DAG · 메모 DFS)
+    const depth = {}; const calc = (id) => { if (depth[id] != null) return depth[id]; depth[id] = 0; let mx = 0; for (const p of preds[id]) mx = Math.max(mx, calc(p) + 1); return (depth[id] = mx); };
+    nodes.forEach((n) => calc(n.id));
     const info = {};
-    bracket?.rounds?.forEach((r, ri) => r.matches.forEach((m) => {
-      for (const slot of [m.a, m.b]) if (slot?.short && (!info[slot.short] || info[slot.short].ri <= ri)) info[slot.short] = { ri, won: null };
-      const { w, l } = wl(m);
-      if (w && info[w]?.ri === ri) info[w].won = true;
-      if (l && info[l]?.ri === ri) info[l].won = false;
-    }));
-    return info;
+    for (const n of nodes) {
+      const dep = depth[n.id]; const { w, l } = wl(n.m);
+      for (const slot of [n.m.a, n.m.b]) { const t = slot?.short; if (!t) continue; if (!info[t] || info[t].depth < dep) info[t] = { depth: dep, won: t === w ? true : t === l ? false : null }; }
+    }
+    const maxDepth = nodes.reduce((mx, n) => Math.max(mx, depth[n.id]), -1);
+    return { info, finalMatch: nodes.find((n) => depth[n.id] === maxDepth)?.m };
   };
-  const infos = (bracketsOrdered || []).map(lastOf);
+  const results = (bracketsOrdered || []).map(lastOf);
+  const infos = results.map((r) => r.info);
   // 정규 순위가 없는 포맷(스위스 등)은 대진 참가팀으로 팀 목록을 만든다.
   let teamRows = rows;
   if (!teamRows.length) {
     const seen = new Set();
     teamRows = [];
-    for (const b of bracketsOrdered || []) for (const r of b?.rounds || []) for (const m of r.matches) for (const s of [m.a, m.b]) {
+    for (const b of bracketsOrdered || []) for (const m of allMatches(b)) for (const s of [m.a, m.b]) {
       if (s?.short && !seen.has(s.short)) { seen.add(s.short); teamRows.push({ rank: teamRows.length + 1, team: s.short, w: 0, l: 0 }); }
     }
   }
   const rec = Object.fromEntries(teamRows.map((r) => [r.team, r]));
   const gd = (t) => (rec[t] ? (rec[t].w || 0) - (rec[t].l || 0) : -99);
   const key = (t) => {
-    for (let i = infos.length - 1; i >= 0; i--) if (infos[i][t]) return [i + 2, infos[i][t].ri, infos[i][t].won ? 1 : 0];
+    for (let i = infos.length - 1; i >= 0; i--) if (infos[i][t]) return [i + 2, infos[i][t].depth, infos[i][t].won ? 1 : 0];
     return [1, 0, 0];
   };
   const order = teamRows.map((r) => r.team).sort((x, y) => {
@@ -882,14 +901,13 @@ function splitFinalStandings(rows, bracketsOrdered) {
     return gd(y) - gd(x) || (rec[x].rank - rec[y].rank);
   });
   const full = order.map((team, i) => ({ rank: i + 1, team, note: i === 0 ? '우승' : i === 1 ? '준우승' : i === 2 ? '3위' : '' }));
-  // 대회 종료 여부: 마지막 대진의 최종 경기 승자가 결정됐으면 종료.
-  const lastBr = (bracketsOrdered || []).at(-1);
-  const finalMatch = lastBr?.rounds?.at(-1)?.matches?.at(-1);
+  // 대회 종료 여부: 마지막 대진의 최종(최장경로) 경기 승자가 결정됐으면 종료.
+  const finalMatch = results.at(-1)?.finalMatch;
   const done = !!(finalMatch && wl(finalMatch).w);
   if (done) return full;
   // 진행 중: 아직 탈락하지 않은(=최종순위 미확정) 대진 생존팀은 제외하고, 확정된 팀만 반환.
   const eliminated = new Set(), inBracket = new Set();
-  for (const b of bracketsOrdered || []) for (const r of b?.rounds || []) for (const m of r.matches) for (const s of [m.a, m.b]) {
+  for (const b of bracketsOrdered || []) for (const m of allMatches(b)) for (const s of [m.a, m.b]) {
     if (s?.short) { inBracket.add(s.short); if (s.elim) eliminated.add(s.short); }
   }
   const aliveSet = new Set([...inBracket].filter((t) => !eliminated.has(t)));
@@ -2462,12 +2480,13 @@ console.log('lolStandings.json 갱신 완료');
   const titleFor = (segs) => {
     const [lg, sub] = segs;
     if (lg === 'fst') return '2026 First Stand';
-    if (lg === 'msi') return '2026 MSI';
+    if (lg === 'msi') return '2026 Mid-Season Invitational';
     if (lg === 'worlds') return '2026 Worlds';
     if (!sub) return null;
     if (lg === 'lck' && sub === 'LCK CUP') return '2026 LCK CUP';
     if (lg === 'lck' && sub === 'KeSPA CUP') return '2026 LoL KeSPA CUP';
-    if (lg === 'cblol' && sub === 'Copa') return '2026 CBLOL Copa';
+    if (lg === 'cblol' && sub === 'Copa') return 'Copa CBLOL 2026'; // 앱 표기와 동일
+    if (lg === 'cblol') return `CBLOL 2026 ${sub}`;
     return `2026 ${LEAGUE_LABEL[lg] || lg.toUpperCase()} ${sub}`;
   };
   const titles = {};
@@ -2476,17 +2495,37 @@ console.log('lolStandings.json 갱신 완료');
     (titles[short] = titles[short] || []);
     if (!titles[short].some((t) => t.name === name)) titles[short].push({ name, detail: '우승' });
   };
+  // 섹션/라운드 브래킷의 결승(마지막 섹션·마지막 라운드·마지막 매치) 승자 = 우승자.
+  const bracketChampion = (br) => {
+    if (!br) return null;
+    const rounds = (Array.isArray(br.sections) && br.sections.length)
+      ? br.sections[br.sections.length - 1].rounds
+      : br.rounds;
+    if (!Array.isArray(rounds) || !rounds.length) return null;
+    const lm = rounds[rounds.length - 1]?.matches?.slice(-1)[0];
+    if (!lm || lm.a?.score == null || lm.b?.score == null || lm.a.score === lm.b.score) return null;
+    return lm.a.score > lm.b.score ? lm.a.short : lm.b.short;
+  };
   const SKIP_KEYS = ['rows', 'players', 'teams', 'rounds', 'sections', 'connectors', 'qual', 'fs1', 'fs2', 'finalStandings', 'standings', 'knockout', 'groups', 'playin', 'playoffs', 'swiss', 'bracket', 'qualifier'];
   const walk = (obj, segs) => {
     if (!obj || typeof obj !== 'object') return;
     if (Array.isArray(obj.finalStandings) && obj.finalStandings[0]?.team) add(obj.finalStandings[0].team, titleFor(segs));
     if (typeof obj.champion === 'string') add(obj.champion, titleFor(segs));
+    // MSI/Worlds는 최종 순위 대신 결승 대진 결과로 우승자 판정 (플레이-인·스위스 제외).
+    const seg = segs[segs.length - 1];
+    if ((segs[0] === 'msi' && seg === '브래킷 스테이지') || (segs[0] === 'worlds' && seg === '녹아웃 스테이지')) {
+      add(bracketChampion(obj.bracket), titleFor(segs));
+    }
     for (const k of Object.keys(obj)) {
       if (SKIP_KEYS.includes(k)) continue;
       if (obj[k] && typeof obj[k] === 'object' && !Array.isArray(obj[k])) walk(obj[k], segs.concat(k));
     }
   };
   for (const lg of Object.keys(data.standings)) walk(data.standings[lg], [lg]);
+  // 오래된 대회를 위에 표시 — 2026 대회 개최 순서(대략)로 정렬.
+  const TITLE_ORDER = ['First Stand', 'LCK CUP', 'Lock-In', 'Copa', 'Versus', 'Split 1', 'Spring', 'Mid-Season', 'Split 2', 'Summer', 'KeSPA', 'Split 3', 'Worlds'];
+  const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
+  for (const short of Object.keys(titles)) titles[short].sort((a, b) => ord(a.name) - ord(b.name));
   const titlesFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolTitles.json');
   fs.writeFileSync(titlesFile, JSON.stringify({ updatedAt: data.updatedAt, titles }, null, 2) + '\n');
   console.log(`우승 경력 자동 산출: ${Object.keys(titles).length}개 팀 (${Object.values(titles).reduce((n, a) => n + a.length, 0)}개 타이틀)`);

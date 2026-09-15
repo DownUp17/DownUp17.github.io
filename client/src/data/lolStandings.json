@@ -3654,43 +3654,63 @@
         ],
         "finalStandings": [
           {
-            "rank": 5,
-            "team": "LNG",
-            "note": ""
-          },
-          {
-            "rank": 6,
-            "team": "NIP",
-            "note": ""
-          },
-          {
-            "rank": 7,
-            "team": "WBG",
-            "note": ""
-          },
-          {
-            "rank": 8,
-            "team": "IG",
-            "note": ""
-          },
-          {
-            "rank": 9,
+            "rank": 1,
             "team": "BLG",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "TES",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "WE",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "AL",
             "note": ""
           },
           {
-            "rank": 10,
+            "rank": 5,
             "team": "JDG",
             "note": ""
           },
           {
+            "rank": 6,
+            "team": "LGD",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "TT",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "EDG",
+            "note": ""
+          },
+          {
+            "rank": 9,
+            "team": "LNG",
+            "note": ""
+          },
+          {
+            "rank": 10,
+            "team": "NIP",
+            "note": ""
+          },
+          {
             "rank": 11,
-            "team": "TES",
+            "team": "WBG",
             "note": ""
           },
           {
             "rank": 12,
-            "team": "AL",
+            "team": "IG",
             "note": ""
           },
           {
@@ -4588,43 +4608,63 @@
         ],
         "finalStandings": [
           {
+            "rank": 1,
+            "team": "BLG",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "JDG",
+            "note": "준우승"
+          },
+          {
             "rank": 3,
-            "team": "LNG",
+            "team": "WBG",
             "note": "3위"
           },
           {
             "rank": 4,
-            "team": "OMG",
-            "note": ""
-          },
-          {
-            "rank": 7,
-            "team": "EDG",
-            "note": ""
-          },
-          {
-            "rank": 8,
-            "team": "TT",
-            "note": ""
-          },
-          {
-            "rank": 9,
             "team": "AL",
             "note": ""
           },
           {
+            "rank": 5,
+            "team": "TES",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "IG",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "NIP",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "WE",
+            "note": ""
+          },
+          {
+            "rank": 9,
+            "team": "LNG",
+            "note": ""
+          },
+          {
             "rank": 10,
-            "team": "BLG",
+            "team": "OMG",
             "note": ""
           },
           {
             "rank": 11,
-            "team": "WBG",
+            "team": "EDG",
             "note": ""
           },
           {
             "rank": 12,
-            "team": "JDG",
+            "team": "TT",
             "note": ""
           },
           {
@@ -5884,37 +5924,37 @@
         "finalStandings": [
           {
             "rank": 1,
-            "team": "KC",
+            "team": "G2",
             "note": "우승"
           },
           {
             "rank": 2,
-            "team": "NAVI",
+            "team": "KC",
             "note": "준우승"
           },
           {
             "rank": 3,
-            "team": "VIT",
+            "team": "MKOI",
             "note": "3위"
           },
           {
             "rank": 4,
-            "team": "TH",
-            "note": ""
-          },
-          {
-            "rank": 5,
             "team": "GX",
             "note": ""
           },
           {
+            "rank": 5,
+            "team": "NAVI",
+            "note": ""
+          },
+          {
             "rank": 6,
-            "team": "MKOI",
+            "team": "VIT",
             "note": ""
           },
           {
             "rank": 7,
-            "team": "G2",
+            "team": "TH",
             "note": ""
           },
           {

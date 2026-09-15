@@ -120,12 +120,10 @@ const TeamPage = () => {
               {titles.map((t, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-3 rounded-xl"
+                  className="p-3 rounded-xl"
                   style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
                 >
-                  <span className="text-base shrink-0">🏆</span>
                   <span className="font-bold text-white/90 text-sm">{t.name}</span>
-                  {t.detail && <span className="ml-auto text-xs text-white/40 font-mono shrink-0">{t.detail}</span>}
                 </div>
               ))}
             </div>
