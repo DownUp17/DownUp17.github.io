@@ -330,18 +330,32 @@ const SwissBracket = ({ swiss, onTeamClick, bo }) => {
   for (const r of swiss?.rounds || []) for (const m of r.matches || []) for (const s of [m.a, m.b]) {
     if (s?.short) { if (s.msi) msiSet.add(s.short); if (s.elim) elimSet.add(s.short); }
   }
-  // 기록(m-n) → Bo 표기. bo={ base, clinch, clinchAt }: 승 또는 패가 clinchAt이면 clinch(진출/탈락 걸린 경기).
-  const boFor = (recordKey) => {
-    if (!bo) return null;
-    const [w, l] = (recordKey || '').split('-').map(Number);
-    return (w === bo.clinchAt || l === bo.clinchAt) ? bo.clinch : bo.base;
+  // recordKey가 없으면(라운드별로만 구분된 스위스: LCS Lock-In 등) 진행 결과로 각 매치의 기록(m-n)을 계산.
+  const teamWL = {}, recOf = {};
+  for (const round of swiss?.rounds || []) {
+    for (const m of round.matches || []) {
+      const a = m.a?.short, b = m.b?.short;
+      const r = (a && teamWL[a]) || (b && teamWL[b]) || { w: 0, l: 0 };
+      recOf[m.id] = `${r.w}-${r.l}`;
+    }
+    for (const m of round.matches || []) {
+      const a = m.a?.short, b = m.b?.short, w = winnerOf(m), l = (w === a ? b : a);
+      if (w) { teamWL[w] = teamWL[w] || { w: 0, l: 0 }; teamWL[w].w++; }
+      if (l && (l === a || l === b)) { teamWL[l] = teamWL[l] || { w: 0, l: 0 }; teamWL[l].l++; }
+    }
+  }
+  // Bo 표기. bo 설정이 있으면 기록으로 판별, 없으면 매치의 게임 수(scoreA+scoreB)로 도출(1→Bo1,2~3→Bo3,4~5→Bo5).
+  const boFor = (recordKey, sample) => {
+    if (bo) { const [w, l] = (recordKey || '').split('-').map(Number); return (w === bo.clinchAt || l === bo.clinchAt) ? bo.clinch : bo.base; }
+    const g = (sample?.a?.score || 0) + (sample?.b?.score || 0);
+    return g <= 0 ? null : g <= 1 ? 1 : g <= 3 ? 3 : 5;
   };
   const columns = (swiss?.rounds || []).map((round) => {
     const byRec = {};
-    for (const m of round.matches || []) { const k = m.recordKey || m.title || ''; (byRec[k] = byRec[k] || []).push(m); }
+    for (const m of round.matches || []) { const k = m.recordKey || recOf[m.id] || m.title || ''; (byRec[k] = byRec[k] || []).push(m); }
     return {
       groups: Object.entries(byRec).map(([rec, ms]) => {
-        const boN = boFor(rec);
+        const boN = boFor(rec, ms[0]);
         return {
           label: boN ? `${rec} · Bo${boN}` : rec, // "m-n" (+ Bo)
           matches: ms.map((m) => ({

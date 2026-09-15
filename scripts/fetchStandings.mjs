@@ -296,13 +296,32 @@ function lecPoLayout(bracket) {
     title: '',
     matches: arr.map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }),
   }));
-  const connectors = [];
+  // 원본(origin 기반) 연결선을 새 좌표로 재매핑 — 슬롯 파악용
+  const myConn = [];
   for (const c of bracket.connectors || []) {
     const [sci, smi, mid, dci, dmi, slot] = c;
     const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
-    if (sp && dp) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
+    if (sp && dp) myConn.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
   }
-  return fixDropElim({ totalRows: 8, rounds: rounds2, connectors });
+  // LEC 표준 연결선 템플릿(같은 라운드=같은 컬럼) — 승자 진출선 + 상위결승 패자→하위결승 강등선.
+  //   패자 강등선(상위1R→하위1R)은 LEC Spring과 동일하게 생략한다.
+  const TMPL = [
+    [0, 0, 'mid', 1, 0, 'a'], [0, 1, 'mid', 1, 0, 'b'], [0, 2, 'mid', 1, 1, 'a'], [0, 3, 'mid', 1, 1, 'b'],
+    [1, 1, 'mid', 2, 0, 'a'], [1, 0, 'mid', 2, 0, 'b'], [1, 0, 'mid', 3, 0, 'a'], [2, 0, 'mid', 3, 0, 'b'],
+  ];
+  const collect = (arr) => { const out = {}; for (const [sci, smi, , dci, dmi, slot] of arr) { const k = `${dci}-${dmi}`; (out[k] = out[k] || {})[`${sci}-${smi}`] = slot; } return out; };
+  const desired = collect(TMPL), current = collect(myConn);
+  for (const k of Object.keys(desired)) {
+    const des = desired[k], cur = current[k] || {};
+    const shared = Object.keys(des).filter((s) => cur[s] != null);
+    if (shared.length && shared.every((s) => cur[s] !== des[s])) {
+      const [ci, mi] = k.split('-').map(Number);
+      const m = rounds2[ci]?.matches[mi];
+      if (m) { const t = m.a; m.a = m.b; m.b = t; }
+    }
+  }
+  const valid = TMPL.filter(([sci, smi, , dci, dmi]) => rounds2[sci]?.matches[smi] && rounds2[dci]?.matches[dmi]);
+  return fixDropElim({ totalRows: 8, rounds: rounds2, connectors: valid });
 }
 
 // LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
