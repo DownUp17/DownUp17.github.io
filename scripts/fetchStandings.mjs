@@ -2403,19 +2403,20 @@ try {
     ],
     connectors: [[0, 0, 'b', 1, 0, 'b'], [1, 0, 'b', 2, 0, 'b']],
   };
-  // 예선 A·B조 순위(세트 승-패 · 비고=세트 평균 승리 시간). 각 조 5위 탈락(elim).
+  // 예선 A·B조 순위(세트 승-패 · 세트 평균 승리 시간). 각 조 5위 탈락.
   const qual = {
     A: [
-      { code: 'NS', w: 4, l: 1 }, { code: 'GEN', w: 2, l: 3, note: '25:37' }, { code: 'DNS', w: 2, l: 3, note: '27:17' },
-      { code: 'KRX', w: 2, l: 3, note: '36:12' }, { code: 'DK', w: 0, l: 5, note: '전패', elim: true },
+      { code: 'NS', w: 4, l: 1 }, { code: 'GEN', w: 2, l: 3, time: '25:37' }, { code: 'DNS', w: 2, l: 3, time: '27:17' },
+      { code: 'KRX', w: 2, l: 3, time: '36:12' }, { code: 'DK', w: 0, l: 5 },
     ],
     B: [
-      { code: 'T1', w: 4, l: 1, note: '25:58' }, { code: 'HLE', w: 4, l: 1, note: '34:12' }, { code: 'BRO', w: 3, l: 2 },
-      { code: 'KT', w: 2, l: 3, note: '33:01' }, { code: 'BFX', w: 2, l: 3, note: '42:13', elim: true },
+      { code: 'T1', w: 4, l: 1, time: '25:58' }, { code: 'HLE', w: 4, l: 1, time: '34:12' }, { code: 'BRO', w: 3, l: 2 },
+      { code: 'KT', w: 2, l: 3, time: '33:01' }, { code: 'BFX', w: 2, l: 3, time: '42:13' },
     ],
   };
   data.standings.lck = data.standings.lck || {};
-  data.standings.lck['KeSPA'] = {
+  delete data.standings.lck['KeSPA']; // 이전 약칭 키 제거(약칭 KeSPA → KeSPA CUP 변경)
+  data.standings.lck['KeSPA CUP'] = {
     name: 'LoL KeSPA CUP', year: 2026,
     format: '10팀 · 2개조 예선 → 결선 스테이지 1(사다리) → 결선 스테이지 2',
     champion: 'DNS', qual, fs1, fs2,
@@ -2453,3 +2454,40 @@ data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 console.log('lolStandings.json 갱신 완료');
+
+// ── 팀별 우승 경력 자동 산출 ──────────────────────────────────────────────
+//   앱이 추적하는 2026 대회의 우승팀(finalStandings 1위 · champion)을 모아 팀 상세 페이지용 lolTitles.json 생성.
+{
+  const LEAGUE_LABEL = { lck: 'LCK', lpl: 'LPL', lec: 'LEC', lcs: 'LCS', lcp: 'LCP', cblol: 'CBLOL' };
+  const titleFor = (segs) => {
+    const [lg, sub] = segs;
+    if (lg === 'fst') return '2026 First Stand';
+    if (lg === 'msi') return '2026 MSI';
+    if (lg === 'worlds') return '2026 Worlds';
+    if (!sub) return null;
+    if (lg === 'lck' && sub === 'LCK CUP') return '2026 LCK CUP';
+    if (lg === 'lck' && sub === 'KeSPA CUP') return '2026 LoL KeSPA CUP';
+    if (lg === 'cblol' && sub === 'Copa') return '2026 CBLOL Copa';
+    return `2026 ${LEAGUE_LABEL[lg] || lg.toUpperCase()} ${sub}`;
+  };
+  const titles = {};
+  const add = (short, name) => {
+    if (!short || !name) return;
+    (titles[short] = titles[short] || []);
+    if (!titles[short].some((t) => t.name === name)) titles[short].push({ name, detail: '우승' });
+  };
+  const SKIP_KEYS = ['rows', 'players', 'teams', 'rounds', 'sections', 'connectors', 'qual', 'fs1', 'fs2', 'finalStandings', 'standings', 'knockout', 'groups', 'playin', 'playoffs', 'swiss', 'bracket', 'qualifier'];
+  const walk = (obj, segs) => {
+    if (!obj || typeof obj !== 'object') return;
+    if (Array.isArray(obj.finalStandings) && obj.finalStandings[0]?.team) add(obj.finalStandings[0].team, titleFor(segs));
+    if (typeof obj.champion === 'string') add(obj.champion, titleFor(segs));
+    for (const k of Object.keys(obj)) {
+      if (SKIP_KEYS.includes(k)) continue;
+      if (obj[k] && typeof obj[k] === 'object' && !Array.isArray(obj[k])) walk(obj[k], segs.concat(k));
+    }
+  };
+  for (const lg of Object.keys(data.standings)) walk(data.standings[lg], [lg]);
+  const titlesFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolTitles.json');
+  fs.writeFileSync(titlesFile, JSON.stringify({ updatedAt: data.updatedAt, titles }, null, 2) + '\n');
+  console.log(`우승 경력 자동 산출: ${Object.keys(titles).length}개 팀 (${Object.values(titles).reduce((n, a) => n + a.length, 0)}개 타이틀)`);
+}

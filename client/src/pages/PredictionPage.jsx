@@ -12,6 +12,7 @@ import { textOn, lighten } from '../utils/colorContrast';
 import demaciaLogo from '../assets/demacia.svg';
 import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
+import kespa2026Logo from '../assets/kespa2026.webp';
 import drxLogo from '../assets/drx.svg';
 import gengSimpleLogo from '../assets/geng-simple.svg';
 
@@ -1149,7 +1150,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
   const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
     || (isLckCup && stage !== '그룹 스테이지') // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
     || (isLecSummer && !lecCfg?.pred && stage !== '플레이오프') // LEC/LCS/CBLOL: 정규시즌·플레이오프(참가팀)에서 순위표 표기
-    || (comp.key === 'lck' && sub === 'KeSPA') // KeSPA는 전용 예선 순위표·대진표만 표기
+    || (comp.key === 'lck' && sub === 'KeSPA CUP') // KeSPA는 전용 예선 순위표·대진표만 표기
     || finalDataStage; // 최종 순위 단계는 대진 기반 최종순위만 표기
   // LCK(종료) — 진출 확률 제거 + 스테이지별 탈락 팀 회색 처리
   const lckStages = comp.key === 'lck' && !isLckCup;
@@ -1177,17 +1178,17 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
     <div className="flex flex-col gap-8">
       {/* 메타 */}
       <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-        {comp.key === 'lck' && sub === 'KeSPA' && official?.format && (
+        {comp.key === 'lck' && sub === 'KeSPA CUP' && official?.format && (
           <span className="text-white/50">형식: <strong className="text-white/80">{official.format}</strong></span>
         )}
-        {(lplSplit3 || isLckCup || comp.stage || comp.format) && !lcpSplit3 && sub !== 'KeSPA' && (
+        {(lplSplit3 || isLckCup || comp.stage || comp.format) && !lcpSplit3 && sub !== 'KeSPA CUP' && (
           <span className="text-white/50">형식: <strong className="text-white/80">{lplSplit3
             ? '그룹별 더블 라운드로빈 (Bo3) → 기사의 길 (Bo5) → 플레이오프 (Bo5)'
             : isLckCup
             ? (official?.format || '10팀 · 2개조 그룹 스테이지 → 플레이-인 → 플레이오프')
             : [comp.stage, comp.format].filter(Boolean).join(' · ')}</strong></span>
         )}
-        {!isLckCup && sub !== 'KeSPA' && comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
+        {!isLckCup && sub !== 'KeSPA CUP' && comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
         {comp.generatedAt && <span className="text-white/50">생성: <strong className="text-white/80">{fmtUpdated(comp.generatedAt)}</strong></span>}
       </div>
 
@@ -1871,7 +1872,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
       )}
 
       {/* LCK KeSPA CUP — 예선 2개조 순위표 + 결선 스테이지 1(사다리)·2 대진표 (수기 데이터) */}
-      {comp.key === 'lck' && sub === 'KeSPA' && (() => {
+      {comp.key === 'lck' && sub === 'KeSPA CUP' && (() => {
         const legend = (gold) => (
           <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> {gold}</span>
@@ -1892,17 +1893,17 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                     <th className="text-center font-bold py-2 px-2 w-10">#</th>
                     <th className="text-left font-bold py-2 pr-2">팀</th>
                     <th className="text-center font-bold py-2 px-2">승-패</th>
-                    <th className="text-center font-bold py-2 px-2">비고</th>
+                    <th className="text-center font-bold py-2 px-2">세트 평균 시간</th>
                   </tr></thead>
                   <tbody>
                     {rows.map((r, i) => (
                       <tr key={r.code} className="border-b border-white/5"
-                          style={{ backgroundColor: r.elim ? 'rgba(248,113,113,0.12)' : i < 4 ? 'rgba(96,165,250,0.10)' : undefined, cursor: knownTeam(r.code) ? 'pointer' : undefined }}
+                          style={{ cursor: knownTeam(r.code) ? 'pointer' : undefined }}
                           onClick={knownTeam(r.code) ? () => onTeamClick(r.code) : undefined}>
                         <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
                         <td className="py-2 pr-2"><span className="inline-flex items-center gap-2 font-bold text-white/90"><TeamLogo src={logoByShort[r.code]} size={16} />{r.code}</span></td>
                         <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
-                        <td className="py-2 px-2 text-center font-mono text-white/40 text-xs">{r.note || ''}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/40 text-xs">{r.time || ''}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1916,7 +1917,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 {groupTable('A', official?.qual?.A || [])}
                 {groupTable('B', official?.qual?.B || [])}
               </div>
-              <p className="text-[11px] text-white/40">각 조 5위는 탈락, 상위 4팀씩(총 8팀)이 결선 스테이지 1에 진출합니다. 비고는 세트 평균 승리 시간(동률 시 비교).</p>
+              <p className="text-[11px] text-white/40">각 조 5위는 탈락, 상위 4팀씩(총 8팀)이 결선 스테이지 1에 진출합니다. 세트 평균 시간은 동률 시 순위 비교 기준입니다.</p>
             </section>
           );
         }
@@ -1968,7 +1969,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
       )}
 
       {/* 대진별 예측 — 진행중인 리그에서만 (단계별 대진표가 있으면 생략) */}
-    {comp.status === 'ongoing' && (!cfg || cfg.matches) && stage !== '최종 순위' && !finalDataStage && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && !lplQualifier && !(comp.key === 'lck' && sub === 'KeSPA') && (
+    {comp.status === 'ongoing' && (!cfg || cfg.matches) && stage !== '최종 순위' && !finalDataStage && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && !lplQualifier && !(comp.key === 'lck' && sub === 'KeSPA CUP') && (
       <section>
         <h3 className="text-sm font-black text-[#E8C77E] mb-4 uppercase tracking-wider">대진별 예측</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
@@ -2159,11 +2160,15 @@ const COMP_LOGO = {
 const COMP_DETAIL_LOGO = {
   asiangames: asiangames2026Logo,
 };
+// 서브탭별 상세 헤더 오버라이드(로고·상징색) — 리그 안의 별도 대회(예: KeSPA CUP)에 사용.
+const SUBTAB_DETAIL = {
+  'lck|KeSPA CUP': { color: '#072148', logo: kespa2026Logo },
+};
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
-  lck: ['LCK CUP', 'LCK', 'Road to MSI', 'KeSPA'],
+  lck: ['LCK CUP', 'LCK', 'Road to MSI', 'KeSPA CUP'],
   lpl: ['Split 1', 'Split 2', 'Split 3', '대표 선발전'],
   lec: ['Versus', 'Spring', 'Summer'],
   lcp: ['Split 1', 'Split 2', 'Split 3'],
@@ -2194,13 +2199,13 @@ const SUB_STATUS = {
   'cblol|Split 2': 'ongoing',
   'lck|Road to MSI': 'finished',
   'lck|LCK CUP': 'finished',
-  'lck|KeSPA': 'finished',
+  'lck|KeSPA CUP': 'finished',
 };
 // 세부대회 안에서 단계(스테이지) 선택 — `${comp.key}|${sub}` → 단계 목록
 const STAGE_TABS = {
   'lck|LCK CUP': ['그룹 스테이지', '플레이-인', '플레이오프', '최종 순위'],
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
-  'lck|KeSPA': ['예선', '결선 스테이지 1', '결선 스테이지 2'],
+  'lck|KeSPA CUP': ['예선', '결선 스테이지 1', '결선 스테이지 2'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프', '최종 순위'],
   'lec|Summer': ['정규시즌', '플레이오프', '최종 순위'],
   'lcs|Summer': ['정규시즌', '플레이오프', '최종 순위'],
@@ -2216,7 +2221,7 @@ const STAGE_TABS = {
 const STAGE_DEFAULT = {
   'lck|LCK CUP': '최종 순위',
   'lck|LCK': '최종 순위',
-  'lck|KeSPA': '결선 스테이지 2',
+  'lck|KeSPA CUP': '결선 스테이지 2',
   'lpl|Split 3': '플레이오프',
   'lec|Summer': '플레이오프',
   'lcs|Summer': '플레이오프',
@@ -2291,6 +2296,8 @@ const PredictionPage = () => {
   // 세부 대회별 상태 오버라이드가 있으면 리그 전체 상태(comp.status) 대신 그 값으로 배지를 표시
   const subStatus = comp && activeSub ? SUB_STATUS[`${comp.key}|${activeSub}`] : null;
   const st = comp ? (statusMeta[subStatus || comp.status] || statusMeta.upcoming) : null;
+  // 서브탭별 상세 헤더 오버라이드(로고·상징색)
+  const subDetail = comp && activeSub ? SUBTAB_DETAIL[`${comp.key}|${activeSub}`] : null;
   // 제목 접미사: 점(·) 없이 공백으로 이어붙이되, 리그명이 sub에 중복되면 제거
   // 예) LPL+'Split 2' → "Split 2", LCK+'LCK' → "", LCK+'LCK CUP' → "CUP"
   const subSuffix = (() => {
@@ -2302,6 +2309,7 @@ const PredictionPage = () => {
   })();
   // CBLOL 예외 표기: "CBLOL 2026" 기준, Copa는 앞에 → "Copa CBLOL 2026", 그 외 세부는 뒤에
   const title = (() => {
+    if (comp?.key === 'lck' && activeSub === 'KeSPA CUP') return '2026 LoL KeSPA CUP';
     if (comp?.key === 'cblol') {
       const base = 'CBLOL 2026';
       if (activeSub === 'Copa') return `Copa ${base}`;
@@ -2411,9 +2419,9 @@ const PredictionPage = () => {
             <>
               <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: comp.color }}>
-                    <img src={COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={{ filter: textOn(comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)' }}
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: subDetail?.color || comp.color }}>
+                    <img src={subDetail?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
+                      style={{ filter: subDetail?.logo ? 'none' : (textOn(subDetail?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                   <div>
