@@ -480,6 +480,7 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
       return false;
     };
     const paths = connData.map(([fR, fM, fS, tR, tM, tS]) => {
+      if (fR === tR) return null; // 같은 컬럼(라운드) 간 연결선은 그리지 않음
       const fromEl = wrap.querySelector(`[data-card="${fR}-${fM}"]`);
       const toEl = wrap.querySelector(`[data-card="${tR}-${tM}"]`);
       if (!fromEl || !toEl) return null;
@@ -1148,6 +1149,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
   const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
     || (isLckCup && stage !== '그룹 스테이지') // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
     || (isLecSummer && !lecCfg?.pred && stage !== '플레이오프') // LEC/LCS/CBLOL: 정규시즌·플레이오프(참가팀)에서 순위표 표기
+    || (comp.key === 'lck' && sub === 'KeSPA') // KeSPA는 전용 예선 순위표·대진표만 표기
     || finalDataStage; // 최종 순위 단계는 대진 기반 최종순위만 표기
   // LCK(종료) — 진출 확률 제거 + 스테이지별 탈락 팀 회색 처리
   const lckStages = comp.key === 'lck' && !isLckCup;
@@ -1175,14 +1177,17 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
     <div className="flex flex-col gap-8">
       {/* 메타 */}
       <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-        {(lplSplit3 || isLckCup || comp.stage || comp.format) && !lcpSplit3 && (
+        {comp.key === 'lck' && sub === 'KeSPA' && official?.format && (
+          <span className="text-white/50">형식: <strong className="text-white/80">{official.format}</strong></span>
+        )}
+        {(lplSplit3 || isLckCup || comp.stage || comp.format) && !lcpSplit3 && sub !== 'KeSPA' && (
           <span className="text-white/50">형식: <strong className="text-white/80">{lplSplit3
             ? '그룹별 더블 라운드로빈 (Bo3) → 기사의 길 (Bo5) → 플레이오프 (Bo5)'
             : isLckCup
             ? (official?.format || '10팀 · 2개조 그룹 스테이지 → 플레이-인 → 플레이오프')
             : [comp.stage, comp.format].filter(Boolean).join(' · ')}</strong></span>
         )}
-        {!isLckCup && comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
+        {!isLckCup && sub !== 'KeSPA' && comp.iterations > 0 && <span className="text-white/50">반복: <strong className="text-white/80">{comp.iterations.toLocaleString()}회</strong></span>}
         {comp.generatedAt && <span className="text-white/50">생성: <strong className="text-white/80">{fmtUpdated(comp.generatedAt)}</strong></span>}
       </div>
 
@@ -1639,7 +1644,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           <section className="flex flex-col gap-3">
             <div className="flex items-baseline gap-2 flex-wrap">
               <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
-              <span className="text-xs text-white/40">{teams.length}개국{hasGroups ? '' : ' · 조 배정·Elo 추후 반영'}</span>
+              <span className="text-xs text-white/40">{teams.length}개국{official?.placeholder ? ' · 조 배정·Elo 잠정(임시 대진표)' : hasGroups ? '' : ' · 조 배정·Elo 추후 반영'}</span>
             </div>
             {hasGroups ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1865,6 +1870,83 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
         </section>
       )}
 
+      {/* LCK KeSPA CUP — 예선 2개조 순위표 + 결선 스테이지 1(사다리)·2 대진표 (수기 데이터) */}
+      {comp.key === 'lck' && sub === 'KeSPA' && (() => {
+        const legend = (gold) => (
+          <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> {gold}</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
+          </div>
+        );
+        if (stage === '예선') {
+          const groupTable = (gk, rows) => (
+            <div key={gk} className="flex flex-col gap-2">
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{gk}조</h3>
+                <span className="text-xs text-white/40">싱글 라운드로빈 · 상위 4팀 결선 진출</span>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead><tr className="text-white/40 text-xs border-b border-white/10">
+                    <th className="text-center font-bold py-2 px-2 w-10">#</th>
+                    <th className="text-left font-bold py-2 pr-2">팀</th>
+                    <th className="text-center font-bold py-2 px-2">승-패</th>
+                    <th className="text-center font-bold py-2 px-2">비고</th>
+                  </tr></thead>
+                  <tbody>
+                    {rows.map((r, i) => (
+                      <tr key={r.code} className="border-b border-white/5"
+                          style={{ backgroundColor: r.elim ? 'rgba(248,113,113,0.12)' : i < 4 ? 'rgba(96,165,250,0.10)' : undefined, cursor: knownTeam(r.code) ? 'pointer' : undefined }}
+                          onClick={knownTeam(r.code) ? () => onTeamClick(r.code) : undefined}>
+                        <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
+                        <td className="py-2 pr-2"><span className="inline-flex items-center gap-2 font-bold text-white/90"><TeamLogo src={logoByShort[r.code]} size={16} />{r.code}</span></td>
+                        <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/40 text-xs">{r.note || ''}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          );
+          return (
+            <section className="flex flex-col gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {groupTable('A', official?.qual?.A || [])}
+                {groupTable('B', official?.qual?.B || [])}
+              </div>
+              <p className="text-[11px] text-white/40">각 조 5위는 탈락, 상위 4팀씩(총 8팀)이 결선 스테이지 1에 진출합니다. 비고는 세트 평균 승리 시간(동률 시 비교).</p>
+            </section>
+          );
+        }
+        if (stage === '결선 스테이지 1' && official?.fs1) {
+          return (
+            <section>
+              <div className="flex items-baseline gap-2 flex-wrap mb-4">
+                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">결선 스테이지 1</h3>
+                <span className="text-xs text-white/40">사다리 방식 · 각 라운드 최상위 매치 승자 결선 스테이지 2 진출</span>
+              </div>
+              <MsiBracket rounds={official.fs1.rounds} totalRows={official.fs1.totalRows} connectors={official.fs1.connectors} onTeamClick={onTeamClick} />
+              {legend('결선 스테이지 2 진출')}
+            </section>
+          );
+        }
+        if (stage === '결선 스테이지 2' && official?.fs2) {
+          return (
+            <section>
+              <div className="flex items-baseline gap-2 flex-wrap mb-4">
+                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">결선 스테이지 2</h3>
+                <span className="text-xs text-white/40">결선 스테이지 1 진출 4팀{official.champion ? ` · 우승 ${official.champion}` : ''}</span>
+              </div>
+              <MsiBracket rounds={official.fs2.rounds} connectors={official.fs2.connectors} onTeamClick={onTeamClick} />
+              {legend('우승')}
+            </section>
+          );
+        }
+        return null;
+      })()}
+
       {/* MSI/LPL 스테이지 대진표 — 섹션 구조 (단계 선택 시 해당 섹션만) */}
       {bracketSections?.length > 0 && (
         <section>
@@ -1886,7 +1968,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
       )}
 
       {/* 대진별 예측 — 진행중인 리그에서만 (단계별 대진표가 있으면 생략) */}
-    {comp.status === 'ongoing' && (!cfg || cfg.matches) && stage !== '최종 순위' && !finalDataStage && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && !lplQualifier && (
+    {comp.status === 'ongoing' && (!cfg || cfg.matches) && stage !== '최종 순위' && !finalDataStage && !lckBracketStage && !roadToMsi && comp.matches?.length > 0 && !(comp.key === 'lpl' && sub === 'Split 3') && !lplQualifier && !(comp.key === 'lck' && sub === 'KeSPA') && (
       <section>
         <h3 className="text-sm font-black text-[#E8C77E] mb-4 uppercase tracking-wider">대진별 예측</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
@@ -2081,7 +2163,7 @@ const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
-  lck: ['LCK CUP', 'LCK', 'Road to MSI'],
+  lck: ['LCK CUP', 'LCK', 'Road to MSI', 'KeSPA'],
   lpl: ['Split 1', 'Split 2', 'Split 3', '대표 선발전'],
   lec: ['Versus', 'Spring', 'Summer'],
   lcp: ['Split 1', 'Split 2', 'Split 3'],
@@ -2112,11 +2194,13 @@ const SUB_STATUS = {
   'cblol|Split 2': 'ongoing',
   'lck|Road to MSI': 'finished',
   'lck|LCK CUP': 'finished',
+  'lck|KeSPA': 'finished',
 };
 // 세부대회 안에서 단계(스테이지) 선택 — `${comp.key}|${sub}` → 단계 목록
 const STAGE_TABS = {
   'lck|LCK CUP': ['그룹 스테이지', '플레이-인', '플레이오프', '최종 순위'],
   'lck|LCK': ['정규시즌', '플레이-인', '플레이오프', '최종 순위'],
+  'lck|KeSPA': ['예선', '결선 스테이지 1', '결선 스테이지 2'],
   'lpl|Split 3': ['럼블 스테이지', '기사의 길', '플레이오프', '최종 순위'],
   'lec|Summer': ['정규시즌', '플레이오프', '최종 순위'],
   'lcs|Summer': ['정규시즌', '플레이오프', '최종 순위'],
@@ -2132,6 +2216,7 @@ const STAGE_TABS = {
 const STAGE_DEFAULT = {
   'lck|LCK CUP': '최종 순위',
   'lck|LCK': '최종 순위',
+  'lck|KeSPA': '결선 스테이지 2',
   'lpl|Split 3': '플레이오프',
   'lec|Summer': '플레이오프',
   'lcs|Summer': '플레이오프',

@@ -425,13 +425,13 @@ function fstGroupLayout(bracket) {
   const colMatches = {};
   let ok = true;
   groups.forEach((grp, g) => {
-    const base = g * 3; const gseen = {};
+    const base = g * 2; const gseen = {};
     for (const { m } of grp) {
       const t = m.title || ''; let col, sr;
       if (/1라운드/.test(t)) { const k = gseen.r1 || 0; gseen.r1 = k + 1; col = base; sr = k === 0 ? 0 : 2; }
       else if (/하위권.*4강/.test(t)) { col = base; sr = 4; }
-      else if (/상위권.*결승/.test(t)) { col = base + 1; sr = 1; }
-      else if (/하위권.*결승/.test(t)) { col = base + 2; sr = 3; }
+      else if (/상위권.*결승/.test(t)) { col = base + 1; sr = 1; }   // 상위 결승
+      else if (/하위권.*결승/.test(t)) { col = base + 1; sr = 4; }   // 하위 결승 (상위 결승과 같은 컬럼)
       else { ok = false; continue; }
       (colMatches[col] = colMatches[col] || []).push({ m, startRow: sr });
     }
@@ -2322,18 +2322,105 @@ try {
 } catch (e) {
   console.warn(`Asian Games API 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
-// AG 참가팀 기본값 — 리포지토리 데이터가 아직 없을 때 8개국 참가팀을 표시(조 배정·Elo는 추후 제공).
+// AG 참가팀 기본값 — 리포지토리 데이터가 아직 없을 때 8개국 참가팀 + 임시 대진표를 표시.
+//   (Worlds/DCGI처럼 실제 대진이 들어오기 전이라도 브래킷 구조를 TBD 슬롯으로 노출)
 {
   const ag = data.standings.asiangames || (data.standings.asiangames = {});
-  if (!Array.isArray(ag.teams) || ag.teams.length === 0) {
+  if (!ag.groups) { // API가 실제 조·대진 데이터를 제공하지 않은 경우 → 임시 대진표 생성
+    // 조 배정은 잠정(placeholder) — 실제 배정은 리포지토리 데이터로 대체된다.
     ag.teams = [
-      { code: 'KOR', name: '대한민국' }, { code: 'TPE', name: '대만' },
-      { code: 'VIE', name: '베트남' }, { code: 'HKG', name: '홍콩' },
-      { code: 'SAU', name: '사우디아라비아' }, { code: 'IND', name: '인도' },
-      { code: 'UAE', name: '아랍에미리트' }, { code: 'MYS', name: '말레이시아' },
+      { code: 'KOR', name: '대한민국', group: 'A' }, { code: 'VIE', name: '베트남', group: 'A' },
+      { code: 'SAU', name: '사우디아라비아', group: 'A' }, { code: 'MYS', name: '말레이시아', group: 'A' },
+      { code: 'TPE', name: '대만', group: 'B' }, { code: 'HKG', name: '홍콩', group: 'B' },
+      { code: 'IND', name: '인도', group: 'B' }, { code: 'UAE', name: '아랍에미리트', group: 'B' },
     ];
-    console.log('Asian Games: 기본 참가팀 8개국 표시(조 배정·Elo 미정)');
+    ag.placeholder = true; // 임시 대진표임을 표시
+    // 조별 싱글 라운드로빈(4팀 → 6경기, Bo3). 팀 코드는 잠정 배정이나 결과는 미정(TBD 슬롯).
+    const rrPairs = [[0, 1], [2, 3], [0, 2], [1, 3], [0, 3], [1, 2]];
+    const groupBlock = (gk) => {
+      const codes = ag.teams.filter((t) => t.group === gk).map((t) => t.code);
+      const matches = rrPairs.map(([i, j], n) => ({ id: `${gk}${n + 1}`, a: codes[i], b: codes[j], format: 'Bo3' }));
+      return { matches };
+    };
+    ag.groups = { A: groupBlock('A'), B: groupBlock('B') };
+    // 녹아웃: 4강(Bo3) · 결승/동메달(Bo5) — 팀 미정(각 조 순위 확정 후 채워짐).
+    ag.knockout = {
+      matches: [
+        { id: 'SF1', a: null, b: null, format: 'Bo3', prev: { a: 'A:1', b: 'B:2' } },
+        { id: 'SF2', a: null, b: null, format: 'Bo3', prev: { a: 'B:1', b: 'A:2' } },
+        { id: 'FINAL', a: null, b: null, format: 'Bo5', prev: { a: 'SF1:W', b: 'SF2:W' } },
+        { id: 'BRONZE', a: null, b: null, format: 'Bo5', prev: { a: 'SF1:L', b: 'SF2:L' } },
+      ],
+    };
+    console.log('Asian Games: 기본 참가팀 8개국 + 임시 대진표(조별 라운드로빈·녹아웃) 표시(조 배정·Elo 잠정)');
   }
+}
+
+// 2026 LoL KeSPA CUP — lolesports API 미제공 종료 대회(수기 관리).
+//   예선(A·B조 라운드로빈) → 결선 스테이지 1(사다리) → 결선 스테이지 2. MsiBracket 그리드/플로우로 표기.
+{
+  // 슬롯 헬퍼: flag = 'msi'(진출/우승·금색) | 'win'(라운드 승리·파랑) | 'elim'(탈락·빨강)
+  const S = (short, seed, score, flag) => {
+    const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score;
+    if (flag) s[flag] = true; return s;
+  };
+  // 결선 스테이지 1 — 사다리(라운드당 매치 4→3→2→1). 각 라운드 최상위 매치 승자는 결선 스테이지 2로 이탈(연결선 없음).
+  const fs1 = {
+    totalRows: 7,
+    rounds: [
+      { matches: [
+        { title: 'R1 Q', time: '8/3', startRow: 0, a: S('NS', 'A조 1위', 2, 'msi'), b: S('T1', 'B조 1위', 1) },
+        { title: 'R1 M2', time: '8/3', startRow: 2, a: S('GEN', 'A조 2위', 0), b: S('HLE', 'B조 2위', 2, 'win') },
+        { title: 'R1 M3', time: '7/28', startRow: 4, a: S('DNS', 'A조 3위', 2, 'win'), b: S('BRO', 'B조 3위', 1) },
+        { title: 'R1 E', time: '7/28', startRow: 6, a: S('KRX', 'A조 4위', 2, 'win'), b: S('KT', 'B조 4위', 0, 'elim') },
+      ] },
+      { matches: [
+        { title: 'R2 Q', time: '8/4', startRow: 1, a: S('T1', 'R1 Q 패자', 2, 'msi'), b: S('HLE', 'R1 M2 승자', 1) },
+        { title: 'R2 M', time: '8/4', startRow: 3, a: S('GEN', 'R1 M2 패자', 2, 'win'), b: S('DNS', 'R1 M3 승자', 0) },
+        { title: 'R2 E', time: '8/4', startRow: 5, a: S('BRO', 'R1 M3 패자', 1, 'elim'), b: S('KRX', 'R1 E 승자', 2, 'win') },
+      ] },
+      { matches: [
+        { title: 'R3 Q', time: '8/10', startRow: 2, a: S('HLE', 'R2 Q 패자', 2, 'msi'), b: S('GEN', 'R2 M 승자', 1) },
+        { title: 'R3 E', time: '8/10', startRow: 4, a: S('DNS', 'R2 M 패자', 2, 'win'), b: S('KRX', 'R2 E 승자', 1, 'elim') },
+      ] },
+      { matches: [
+        { title: 'R4', time: '8/10', startRow: 3, a: S('GEN', 'R3 Q 패자', 0, 'elim'), b: S('DNS', 'R3 E 승자', 2, 'msi') },
+      ] },
+    ],
+    // [fromRound, fromMatch, fromSlot, toRound, toMatch, toSlot] — 같은 컬럼은 자동 무시.
+    connectors: [
+      [0, 0, 'b', 1, 0, 'a'], [0, 1, 'b', 1, 0, 'b'], [0, 1, 'a', 1, 1, 'a'], [0, 2, 'a', 1, 1, 'b'], [0, 2, 'b', 1, 2, 'a'], [0, 3, 'a', 1, 2, 'b'],
+      [1, 0, 'b', 2, 0, 'a'], [1, 1, 'a', 2, 0, 'b'], [1, 1, 'b', 2, 1, 'a'], [1, 2, 'b', 2, 1, 'b'],
+      [2, 0, 'b', 3, 0, 'a'], [2, 1, 'a', 3, 0, 'b'],
+    ],
+  };
+  // 결선 스테이지 2 — 3라운드(플로우). S1 R3·R4 진출팀이 1R, R2 진출팀이 2R, R1 진출팀이 결승.
+  const fs2 = {
+    rounds: [
+      { title: '1라운드', matches: [{ time: '8/11', a: S('HLE', 'S1 R3', 0), b: S('DNS', 'S1 R4', 3, 'win') }] },
+      { title: '2라운드', matches: [{ time: '8/17', a: S('T1', 'S1 R2', 1), b: S('DNS', '', 3, 'win') }] },
+      { title: '결승', matches: [{ time: '8/18', a: S('NS', 'S1 R1', 0), b: S('DNS', '', 3, 'msi') }] },
+    ],
+    connectors: [[0, 0, 'b', 1, 0, 'b'], [1, 0, 'b', 2, 0, 'b']],
+  };
+  // 예선 A·B조 순위(세트 승-패 · 비고=세트 평균 승리 시간). 각 조 5위 탈락(elim).
+  const qual = {
+    A: [
+      { code: 'NS', w: 4, l: 1 }, { code: 'GEN', w: 2, l: 3, note: '25:37' }, { code: 'DNS', w: 2, l: 3, note: '27:17' },
+      { code: 'KRX', w: 2, l: 3, note: '36:12' }, { code: 'DK', w: 0, l: 5, note: '전패', elim: true },
+    ],
+    B: [
+      { code: 'T1', w: 4, l: 1, note: '25:58' }, { code: 'HLE', w: 4, l: 1, note: '34:12' }, { code: 'BRO', w: 3, l: 2 },
+      { code: 'KT', w: 2, l: 3, note: '33:01' }, { code: 'BFX', w: 2, l: 3, note: '42:13', elim: true },
+    ],
+  };
+  data.standings.lck = data.standings.lck || {};
+  data.standings.lck['KeSPA'] = {
+    name: 'LoL KeSPA CUP', year: 2026,
+    format: '10팀 · 2개조 예선 → 결선 스테이지 1(사다리) → 결선 스테이지 2',
+    champion: 'DNS', qual, fs1, fs2,
+  };
+  console.log('LCK KeSPA CUP: 예선 2개조 + 결선 스테이지 1(사다리)·2 대진표 수기 반영 (우승 DNS)');
 }
 
 // Worlds 참가팀 시드 재계산 — LCK PO·LPL Split 3 블록이 Worlds 블록보다 뒤에 실행되므로,

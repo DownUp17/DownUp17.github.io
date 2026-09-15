@@ -1996,6 +1996,438 @@
             "note": ""
           }
         ]
+      },
+      "KeSPA": {
+        "name": "LoL KeSPA CUP",
+        "year": 2026,
+        "format": "10팀 · 2개조 예선 → 결선 스테이지 1(사다리) → 결선 스테이지 2",
+        "champion": "DNS",
+        "qual": {
+          "A": [
+            {
+              "code": "NS",
+              "w": 4,
+              "l": 1
+            },
+            {
+              "code": "GEN",
+              "w": 2,
+              "l": 3,
+              "note": "25:37"
+            },
+            {
+              "code": "DNS",
+              "w": 2,
+              "l": 3,
+              "note": "27:17"
+            },
+            {
+              "code": "KRX",
+              "w": 2,
+              "l": 3,
+              "note": "36:12"
+            },
+            {
+              "code": "DK",
+              "w": 0,
+              "l": 5,
+              "note": "전패",
+              "elim": true
+            }
+          ],
+          "B": [
+            {
+              "code": "T1",
+              "w": 4,
+              "l": 1,
+              "note": "25:58"
+            },
+            {
+              "code": "HLE",
+              "w": 4,
+              "l": 1,
+              "note": "34:12"
+            },
+            {
+              "code": "BRO",
+              "w": 3,
+              "l": 2
+            },
+            {
+              "code": "KT",
+              "w": 2,
+              "l": 3,
+              "note": "33:01"
+            },
+            {
+              "code": "BFX",
+              "w": 2,
+              "l": 3,
+              "note": "42:13",
+              "elim": true
+            }
+          ]
+        },
+        "fs1": {
+          "totalRows": 7,
+          "rounds": [
+            {
+              "matches": [
+                {
+                  "title": "R1 Q",
+                  "time": "8/3",
+                  "startRow": 0,
+                  "a": {
+                    "short": "NS",
+                    "seed": "A조 1위",
+                    "score": 2,
+                    "msi": true
+                  },
+                  "b": {
+                    "short": "T1",
+                    "seed": "B조 1위",
+                    "score": 1
+                  }
+                },
+                {
+                  "title": "R1 M2",
+                  "time": "8/3",
+                  "startRow": 2,
+                  "a": {
+                    "short": "GEN",
+                    "seed": "A조 2위",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "HLE",
+                    "seed": "B조 2위",
+                    "score": 2,
+                    "win": true
+                  }
+                },
+                {
+                  "title": "R1 M3",
+                  "time": "7/28",
+                  "startRow": 4,
+                  "a": {
+                    "short": "DNS",
+                    "seed": "A조 3위",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "BRO",
+                    "seed": "B조 3위",
+                    "score": 1
+                  }
+                },
+                {
+                  "title": "R1 E",
+                  "time": "7/28",
+                  "startRow": 6,
+                  "a": {
+                    "short": "KRX",
+                    "seed": "A조 4위",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "KT",
+                    "seed": "B조 4위",
+                    "score": 0,
+                    "elim": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "R2 Q",
+                  "time": "8/4",
+                  "startRow": 1,
+                  "a": {
+                    "short": "T1",
+                    "seed": "R1 Q 패자",
+                    "score": 2,
+                    "msi": true
+                  },
+                  "b": {
+                    "short": "HLE",
+                    "seed": "R1 M2 승자",
+                    "score": 1
+                  }
+                },
+                {
+                  "title": "R2 M",
+                  "time": "8/4",
+                  "startRow": 3,
+                  "a": {
+                    "short": "GEN",
+                    "seed": "R1 M2 패자",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "DNS",
+                    "seed": "R1 M3 승자",
+                    "score": 0
+                  }
+                },
+                {
+                  "title": "R2 E",
+                  "time": "8/4",
+                  "startRow": 5,
+                  "a": {
+                    "short": "BRO",
+                    "seed": "R1 M3 패자",
+                    "score": 1,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "KRX",
+                    "seed": "R1 E 승자",
+                    "score": 2,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "R3 Q",
+                  "time": "8/10",
+                  "startRow": 2,
+                  "a": {
+                    "short": "HLE",
+                    "seed": "R2 Q 패자",
+                    "score": 2,
+                    "msi": true
+                  },
+                  "b": {
+                    "short": "GEN",
+                    "seed": "R2 M 승자",
+                    "score": 1
+                  }
+                },
+                {
+                  "title": "R3 E",
+                  "time": "8/10",
+                  "startRow": 4,
+                  "a": {
+                    "short": "DNS",
+                    "seed": "R2 M 패자",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "KRX",
+                    "seed": "R2 E 승자",
+                    "score": 1,
+                    "elim": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "R4",
+                  "time": "8/10",
+                  "startRow": 3,
+                  "a": {
+                    "short": "GEN",
+                    "seed": "R3 Q 패자",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "DNS",
+                    "seed": "R3 E 승자",
+                    "score": 2,
+                    "msi": true
+                  }
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "b",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "b",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              1,
+              "a",
+              1,
+              1,
+              "a"
+            ],
+            [
+              0,
+              2,
+              "a",
+              1,
+              1,
+              "b"
+            ],
+            [
+              0,
+              2,
+              "b",
+              1,
+              2,
+              "a"
+            ],
+            [
+              0,
+              3,
+              "a",
+              1,
+              2,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "b",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "a",
+              2,
+              0,
+              "b"
+            ],
+            [
+              1,
+              1,
+              "b",
+              2,
+              1,
+              "a"
+            ],
+            [
+              1,
+              2,
+              "b",
+              2,
+              1,
+              "b"
+            ],
+            [
+              2,
+              0,
+              "b",
+              3,
+              0,
+              "a"
+            ],
+            [
+              2,
+              1,
+              "a",
+              3,
+              0,
+              "b"
+            ]
+          ]
+        },
+        "fs2": {
+          "rounds": [
+            {
+              "title": "1라운드",
+              "matches": [
+                {
+                  "time": "8/11",
+                  "a": {
+                    "short": "HLE",
+                    "seed": "S1 R3",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "DNS",
+                    "seed": "S1 R4",
+                    "score": 3,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "2라운드",
+              "matches": [
+                {
+                  "time": "8/17",
+                  "a": {
+                    "short": "T1",
+                    "seed": "S1 R2",
+                    "score": 1
+                  },
+                  "b": {
+                    "short": "DNS",
+                    "score": 3,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "title": "결승",
+              "matches": [
+                {
+                  "time": "8/18",
+                  "a": {
+                    "short": "NS",
+                    "seed": "S1 R1",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "DNS",
+                    "score": 3,
+                    "msi": true
+                  }
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "b",
+              1,
+              0,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "b",
+              2,
+              0,
+              "b"
+            ]
+          ]
+        }
       }
     },
     "lpl": {
@@ -10593,12 +11025,7 @@
                       "score": 0
                     },
                     "startRow": 1
-                  }
-                ]
-              },
-              {
-                "title": "",
-                "matches": [
+                  },
                   {
                     "id": "115570888977308387",
                     "title": "하위권 대진 - 결승",
@@ -10614,7 +11041,7 @@
                       "score": 3,
                       "msi": true
                     },
-                    "startRow": 3
+                    "startRow": 4
                   }
                 ]
               },
@@ -10690,12 +11117,7 @@
                       "msi": true
                     },
                     "startRow": 1
-                  }
-                ]
-              },
-              {
-                "title": "",
-                "matches": [
+                  },
                   {
                     "id": "115570888977308417",
                     "title": "하위권 대진 - 결승",
@@ -10711,7 +11133,7 @@
                       "score": 1,
                       "elim": true
                     },
-                    "startRow": 3
+                    "startRow": 4
                   }
                 ]
               }
@@ -10753,64 +11175,64 @@
                 0,
                 2,
                 "mid",
-                2,
-                0,
+                1,
+                1,
                 "a"
               ],
               [
                 1,
                 0,
                 "mid",
-                2,
-                0,
-                "b"
-              ],
-              [
-                3,
                 1,
-                "mid",
-                4,
-                0,
-                "a"
-              ],
-              [
-                3,
-                0,
-                "mid",
-                4,
-                0,
+                1,
                 "b"
               ],
               [
-                3,
-                0,
-                "mid",
-                3,
                 2,
-                "a"
-              ],
-              [
-                3,
                 1,
                 "mid",
                 3,
-                2,
-                "b"
-              ],
-              [
-                3,
-                2,
-                "mid",
-                5,
                 0,
                 "a"
               ],
               [
-                4,
+                2,
                 0,
                 "mid",
-                5,
+                3,
                 0,
+                "b"
+              ],
+              [
+                2,
+                0,
+                "mid",
+                2,
+                2,
+                "a"
+              ],
+              [
+                2,
+                1,
+                "mid",
+                2,
+                2,
+                "b"
+              ],
+              [
+                2,
+                2,
+                "mid",
+                3,
+                1,
+                "a"
+              ],
+              [
+                3,
+                0,
+                "mid",
+                3,
+                1,
                 "b"
               ]
             ]
@@ -10949,37 +11371,172 @@
       "teams": [
         {
           "code": "KOR",
-          "name": "대한민국"
-        },
-        {
-          "code": "TPE",
-          "name": "대만"
+          "name": "대한민국",
+          "group": "A"
         },
         {
           "code": "VIE",
-          "name": "베트남"
-        },
-        {
-          "code": "HKG",
-          "name": "홍콩"
+          "name": "베트남",
+          "group": "A"
         },
         {
           "code": "SAU",
-          "name": "사우디아라비아"
-        },
-        {
-          "code": "IND",
-          "name": "인도"
-        },
-        {
-          "code": "UAE",
-          "name": "아랍에미리트"
+          "name": "사우디아라비아",
+          "group": "A"
         },
         {
           "code": "MYS",
-          "name": "말레이시아"
+          "name": "말레이시아",
+          "group": "A"
+        },
+        {
+          "code": "TPE",
+          "name": "대만",
+          "group": "B"
+        },
+        {
+          "code": "HKG",
+          "name": "홍콩",
+          "group": "B"
+        },
+        {
+          "code": "IND",
+          "name": "인도",
+          "group": "B"
+        },
+        {
+          "code": "UAE",
+          "name": "아랍에미리트",
+          "group": "B"
         }
-      ]
+      ],
+      "placeholder": true,
+      "groups": {
+        "A": {
+          "matches": [
+            {
+              "id": "A1",
+              "a": "KOR",
+              "b": "VIE",
+              "format": "Bo3"
+            },
+            {
+              "id": "A2",
+              "a": "SAU",
+              "b": "MYS",
+              "format": "Bo3"
+            },
+            {
+              "id": "A3",
+              "a": "KOR",
+              "b": "SAU",
+              "format": "Bo3"
+            },
+            {
+              "id": "A4",
+              "a": "VIE",
+              "b": "MYS",
+              "format": "Bo3"
+            },
+            {
+              "id": "A5",
+              "a": "KOR",
+              "b": "MYS",
+              "format": "Bo3"
+            },
+            {
+              "id": "A6",
+              "a": "VIE",
+              "b": "SAU",
+              "format": "Bo3"
+            }
+          ]
+        },
+        "B": {
+          "matches": [
+            {
+              "id": "B1",
+              "a": "TPE",
+              "b": "HKG",
+              "format": "Bo3"
+            },
+            {
+              "id": "B2",
+              "a": "IND",
+              "b": "UAE",
+              "format": "Bo3"
+            },
+            {
+              "id": "B3",
+              "a": "TPE",
+              "b": "IND",
+              "format": "Bo3"
+            },
+            {
+              "id": "B4",
+              "a": "HKG",
+              "b": "UAE",
+              "format": "Bo3"
+            },
+            {
+              "id": "B5",
+              "a": "TPE",
+              "b": "UAE",
+              "format": "Bo3"
+            },
+            {
+              "id": "B6",
+              "a": "HKG",
+              "b": "IND",
+              "format": "Bo3"
+            }
+          ]
+        }
+      },
+      "knockout": {
+        "matches": [
+          {
+            "id": "SF1",
+            "a": null,
+            "b": null,
+            "format": "Bo3",
+            "prev": {
+              "a": "A:1",
+              "b": "B:2"
+            }
+          },
+          {
+            "id": "SF2",
+            "a": null,
+            "b": null,
+            "format": "Bo3",
+            "prev": {
+              "a": "B:1",
+              "b": "A:2"
+            }
+          },
+          {
+            "id": "FINAL",
+            "a": null,
+            "b": null,
+            "format": "Bo5",
+            "prev": {
+              "a": "SF1:W",
+              "b": "SF2:W"
+            }
+          },
+          {
+            "id": "BRONZE",
+            "a": null,
+            "b": null,
+            "format": "Bo5",
+            "prev": {
+              "a": "SF1:L",
+              "b": "SF2:L"
+            }
+          }
+        ]
+      }
     }
   }
 }
