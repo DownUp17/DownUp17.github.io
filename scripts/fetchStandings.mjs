@@ -190,16 +190,21 @@ function apply4TeamDELayout(bracket) {
 //   제목이 이 스킴과 맞지 않으면 원본(흐름 배치)을 그대로 반환한다.
 function lckPoStyleLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
+  // 상위 8강이 없고 상위 4강이 4개인 경우(CBLOL Copa 등): 앞 2개=UB R1, 뒤 2개=UB R2.
+  const hasUpper8 = bracket.rounds.some((r) => r.matches.some((m) => /상위권.*8강|UB\s*R1/i.test(m.title || '')));
   // 제목(+동일 제목 내 순서 k) → [목표 col, startRow]
   const targetFor = (title, k) => {
     const t = title || '';
     if (/상위권.*8강|UB\s*R1/i.test(t)) return [0, k === 0 ? 0 : 4];
-    if (/상위권.*4강|UB\s*R2/i.test(t)) return [1, k === 0 ? 0 : 4];
+    if (/상위권.*4강|UB\s*R2/i.test(t)) {
+      if (!hasUpper8) return k < 2 ? [0, k === 0 ? 0 : 4] : [1, k === 2 ? 0 : 4];
+      return [1, k === 0 ? 0 : 4];
+    }
     if (/상위권.*결승|UB\s*R3|결승\s*진출전/i.test(t)) return [2, 2];
     if (/하위권.*(1라운드|1R)|LB\s*R1/i.test(t)) return [0, 8];
     if (/하위권.*(8강|2라운드)|LB\s*R2/i.test(t)) return [1, 8];
     if (/하위권.*(4강|3라운드)|LB\s*R3/i.test(t)) return [2, 8];
-    if (/하위권.*결승|Lower\s*Final/i.test(t)) return [3, 8];
+    if (/하위권.*결승|패자.*결승|Lower\s*Final/i.test(t)) return [3, 8];
     if (/^결승$|Grand\s*Final|그랜드/i.test(t)) return [4, 5];
     return null;
   };
@@ -264,14 +269,15 @@ function lckPoStyleLayout(bracket) {
 function lecPoLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   const seen = {};
+  // 6팀 더블 엘리(상위 2라운드) — 명칭 무관(1·2라운드 또는 8강/4강), 같은 라운드=같은 컬럼.
   const targetFor = (title, k) => {
     const t = title || '';
-    if (/상위권.*1라운드/.test(t)) return [0, k === 0 ? 0 : 2];
-    if (/상위권.*2라운드/.test(t)) return [1, 1];
+    if (/^결승$/.test(t)) return [3, 3];                       // 그랜드 파이널
+    if (/상위권.*(1라운드|8강)/.test(t)) return [0, k === 0 ? 0 : 2];
+    if (/상위권.*(2라운드|4강)/.test(t)) return [1, 1];          // 상위 파이널
     if (/하위권.*1라운드/.test(t)) return [0, k === 0 ? 4 : 6];
-    if (/하위권.*2라운드/.test(t)) return [1, 5];
-    if (/하위권.*3라운드/.test(t)) return [2, 5];
-    if (/결승/.test(t)) return [3, 3];
+    if (/하위권.*(2라운드|8강)/.test(t)) return [1, 5];
+    if (/하위권.*(3라운드|4강|결승)/.test(t)) return [2, 5];      // 하위 파이널
     return null;
   };
   const cols = [[], [], [], []];
@@ -297,6 +303,93 @@ function lecPoLayout(bracket) {
     if (sp && dp) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
   }
   return fixDropElim({ totalRows: 8, rounds: rounds2, connectors });
+}
+
+// LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
+function knightsLayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  const seen = {};
+  const origPos = {};
+  const targetFor = (title, k) => {
+    const t = title || '';
+    if (/1라운드|1R/i.test(t)) return [0, k === 0 ? 0 : 2];
+    if (/2라운드|2R/i.test(t)) return [0, k === 0 ? 4 : 6];
+    if (/3라운드|3R/i.test(t)) return [1, k === 0 ? 1 : 5];
+    return null;
+  };
+  const cols = [[], []];
+  let ok = true;
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => {
+    origPos[`${ci}-${mi}`] = m.id;
+    const k = seen[m.title] || 0; seen[m.title] = k + 1;
+    const tgt = targetFor(m.title, k);
+    if (!tgt) { ok = false; return; }
+    cols[tgt[0]].push({ m, startRow: tgt[1] });
+  }));
+  if (!ok) return bracket;
+  const idPos = {};
+  const rounds2 = cols.map((arr, ci) => ({ title: '', matches: arr.map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }) }));
+  const connectors = [];
+  for (const c of bracket.connectors || []) {
+    const [sci, smi, mid, dci, dmi, slot] = c;
+    const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
+    if (sp && dp) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
+  }
+  return fixDropElim({ totalRows: 8, rounds: rounds2, connectors });
+}
+
+// 8팀 더블 엘리미네이션(상위권/하위권)을 MSI 브래킷 스테이지 모양(상위·하위 2섹션)으로 재배치.
+//   상위 섹션: 8강(4)·4강(2)·상위결승(1)·그랜드파이널(1) / 하위 섹션: 1R(2)·8강(2)·4강(1)·하위결승(1).
+//   섹션 내부 연결선 + 섹션 간(crossConnectors, 패자 강등·하위결승→GF)로 분리.
+function msi8DELayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  const seen = {};
+  const origPos = {};
+  // [sec, round, matchIdx, startRow]
+  // 명칭 무관(8강/4강/결승 또는 1·2·3라운드) 8팀 더블 엘리 매핑
+  const targetFor = (title, k) => {
+    const t = title || '';
+    if (/^결승$|그랜드|Grand/i.test(t)) return [0, 5, 0, 3];           // 그랜드 파이널
+    if (/상위권.*(8강|1라운드)/.test(t)) return [0, 0, k, [0, 2, 4, 6][k]];
+    if (/상위권.*(4강|2라운드)/.test(t)) return [0, 1, k, [1, 5][k]];
+    if (/상위권.*(결승|3라운드)/.test(t)) return [0, 2, 0, 3];
+    if (/하위권.*1라운드/.test(t)) return [1, 1, k, [0, 2][k]];
+    if (/하위권.*(8강|2라운드)/.test(t)) return [1, 2, k, [0, 2][k]];
+    if (/하위권.*(4강|3라운드)/.test(t)) return [1, 3, 0, 1];
+    if (/하위권.*(결승|4라운드)/.test(t)) return [1, 4, 0, 1];
+    return null;
+  };
+  // secMatches[sec][round] = [{m, mi, startRow}]
+  const secMatches = [[[], [], [], [], [], []], [[], [], [], [], []]];
+  let ok = true;
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => {
+    origPos[`${ci}-${mi}`] = m.id;
+    const k = seen[m.title] || 0; seen[m.title] = k + 1;
+    const tgt = targetFor(m.title, k);
+    if (!tgt) { ok = false; return; }
+    const [sec, round, matchIdx, startRow] = tgt;
+    secMatches[sec][round][matchIdx] = { m, startRow };
+  }));
+  if (!ok) return bracket;
+  const idPos = {}; // id → [sec, round, mi]
+  const sections = secMatches.map((rounds, sec) => ({
+    rounds: rounds.map((arr, round) => ({
+      title: '',
+      matches: (arr || []).filter(Boolean).map((x, mi) => { idPos[x.m.id] = [sec, round, mi]; return { ...x.m, startRow: x.startRow }; }),
+    })),
+    totalRows: sec === 0 ? 8 : 4,
+  }));
+  const crossConnectors = [];
+  for (const s of sections) s.connectors = [];
+  for (const c of bracket.connectors || []) {
+    const [sci, smi, mid, dci, dmi, slot] = c;
+    const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
+    if (!sp || !dp) continue;
+    if (sp[0] === dp[0]) sections[sp[0]].connectors.push([sp[1], sp[2], mid, dp[1], dp[2], slot]);
+    else crossConnectors.push([sp[0], sp[1], sp[2], 'mid', dp[0], dp[1], dp[2], slot]);
+  }
+  fixDropElim({ rounds: sections.flatMap((s) => s.rounds) });
+  return { sections, crossConnectors };
 }
 
 // 더블 엘리미네이션 탈락(elim) 보정 — 상위 대진 패배팀은 하위 대진으로 강등되므로 탈락이 아니다.
@@ -765,7 +858,16 @@ async function buildSplit(leagueId, slug) {
   const brackets = [];
   for (const s of st.stages) {
     const cols = (s.sections || []).flatMap((sec) => sec.columns || []);
-    if (cols.length) brackets.push({ slug: s.slug, name: s.name, bracket: fixDropElim(bracketFromColumns(cols)) });
+    if (!cols.length) continue;
+    let b = fixDropElim(bracketFromColumns(cols));
+    if (/knights/i.test(s.slug)) b = knightsLayout(b); // 기사의 길: 1·2R 한 컬럼
+    else if (s.slug === 'playoffs') {
+      const cnt = (re) => (b.rounds || []).flatMap((r) => r.matches).filter((m) => re.test(m.title || '')).length;
+      if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)
+      else if (cnt(/상위권.*결승/) >= 1) b = lckPoStyleLayout(b);  // 6팀 LCK PO식 (상위 8강/4강/결승, 3라운드 upper)
+      else if (cnt(/상위권.*(8강|1라운드)/) >= 2) b = lecPoLayout(b); // 6팀 LEC식 (상위 2라운드, 같은 라운드=같은 컬럼)
+    }
+    brackets.push({ slug: s.slug, name: s.name, bracket: b });
   }
   // 정규 순위가 없는 포맷(스위스 등)은 대진 참가팀으로 팀 목록을 만든다(최종순위 산출 전용, rows는 비워둠)
   let finalRows = rows;

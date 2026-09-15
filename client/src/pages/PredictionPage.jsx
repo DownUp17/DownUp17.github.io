@@ -56,6 +56,8 @@ const logoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.log
 const nameByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name]));
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && logoByShort[short] != null;
+// AG 참가국 → ISO 3166-1 alpha-2 (flagcdn 국기 이미지용)
+const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', HKG: 'hk', SAU: 'sa', IND: 'in', UAE: 'ae', MYS: 'my' };
 
 // 특정 대회(에디션)에서만 다른 팀명·태그·로고를 쓰던 팀 오버라이드.
 //   2026 LCK CUP까지 KRX는 팀명·태그 모두 DRX였고, GEN은 예전 로고를 사용.
@@ -1610,6 +1612,11 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
         const hasGroups = teams.some((t) => t.group === 'A' || t.group === 'B');
         const teamCard = (t) => (
           <div key={t.code} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+            {AG_FLAG[t.code] && (
+              <img src={`https://flagcdn.com/32x24/${AG_FLAG[t.code]}.png`} alt="" width={24} height={18}
+                className="shrink-0 rounded-[3px] object-cover" style={{ width: 24, height: 18 }}
+                onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            )}
             <span className="font-bold truncate text-white/90">{t.name}</span>
             {t.elo != null && <span className="text-[11px] text-white/40 shrink-0 ml-auto font-mono">Elo {t.elo}</span>}
           </div>
@@ -1964,7 +1971,7 @@ const pastSplitStages = (key, sub) => {
   if (!d) return null;
   const stages = [];
   if (d.rows?.length) stages.push(d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌');
-  for (const b of d.brackets || []) if (b.bracket?.rounds?.length) stages.push(bracketLabel(b));
+  for (const b of d.brackets || []) if (b.bracket?.rounds?.length || b.bracket?.sections?.length) stages.push(bracketLabel(b));
   if (d.finalStandings?.length) stages.push('최종 순위');
   return stages.length ? stages : null;
 };
@@ -1975,7 +1982,7 @@ const PastSplitView = ({ comp, sub, stage, onTeamClick }) => {
   const grouped = rows.some((r) => r.group);
   const regLabel = grouped ? '그룹 순위' : '정규시즌';
   const groupNames = grouped ? [...new Set(rows.map((r) => r.group))] : [null];
-  const bracketForStage = (data.brackets || []).find((b) => b.bracket?.rounds?.length && bracketLabel(b) === stage);
+  const bracketForStage = (data.brackets || []).find((b) => (b.bracket?.rounds?.length || b.bracket?.sections?.length) && bracketLabel(b) === stage);
   const teamOverride = PAST_TEAM_OVERRIDE[comp.key];
 
   return (
@@ -2021,6 +2028,8 @@ const PastSplitView = ({ comp, sub, stage, onTeamClick }) => {
           </div>
           {/swiss|스위스/i.test(bracketForStage.slug || bracketForStage.name) ? (
             <SwissBracket swiss={bracketForStage.bracket} onTeamClick={onTeamClick} />
+          ) : bracketForStage.bracket.sections ? (
+            <BracketGroup sections={bracketForStage.bracket.sections} crossConnectors={bracketForStage.bracket.crossConnectors} onTeamClick={onTeamClick} />
           ) : (
             <MsiBracket rounds={bracketForStage.bracket.rounds} totalRows={bracketForStage.bracket.totalRows} connectors={bracketForStage.bracket.connectors} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           )}
@@ -2213,7 +2222,7 @@ const PredictionPage = () => {
   const effFinished = !!(comp && (subStatus || comp.status) === 'finished');
   const defaultStage = (comp && (
     isPastSplit ? '최종 순위'
-      : (effFinished && stageList?.includes('최종 순위')) ? '최종 순위'
+      : (effFinished && Array.isArray(stageList) && stageList.includes('최종 순위')) ? '최종 순위'
         : (STAGE_DEFAULT[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_DEFAULT[comp.key]))
   )) || (stageList ? stageList[0] : null);
   const activeStage = showStages
