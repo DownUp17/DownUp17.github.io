@@ -322,25 +322,34 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
 
 // 스위스 스테이지를 DCGI 그룹 스테이지 모양(기록별 컬럼·카드)으로 렌더.
 //   bracketFromColumns 라운드(=컬럼)를 recordKey로 그룹핑해 DemaciaBracket에 넘긴다.
-const SwissBracket = ({ swiss, onTeamClick }) => {
+const SwissBracket = ({ swiss, onTeamClick, bo }) => {
   const winnerOf = (m) => (m.a?.win || m.a?.msi) ? m.a?.short : ((m.b?.win || m.b?.msi) ? m.b?.short : null);
   const msiSet = new Set(), elimSet = new Set();
   for (const r of swiss?.rounds || []) for (const m of r.matches || []) for (const s of [m.a, m.b]) {
     if (s?.short) { if (s.msi) msiSet.add(s.short); if (s.elim) elimSet.add(s.short); }
   }
+  // 기록(m-n) → Bo 표기. bo={ base, clinch, clinchAt }: 승 또는 패가 clinchAt이면 clinch(진출/탈락 걸린 경기).
+  const boFor = (recordKey) => {
+    if (!bo) return null;
+    const [w, l] = (recordKey || '').split('-').map(Number);
+    return (w === bo.clinchAt || l === bo.clinchAt) ? bo.clinch : bo.base;
+  };
   const columns = (swiss?.rounds || []).map((round) => {
     const byRec = {};
-    for (const m of round.matches || []) { const k = m.title || m.recordKey || ''; (byRec[k] = byRec[k] || []).push(m); }
+    for (const m of round.matches || []) { const k = m.recordKey || m.title || ''; (byRec[k] = byRec[k] || []).push(m); }
     return {
-      groups: Object.entries(byRec).map(([label, ms]) => ({
-        label,
-        matches: ms.map((m) => ({
-          id: m.id, name: '',
-          a: m.a?.short, b: m.b?.short,
-          winner: winnerOf(m),
-          scoreA: m.a?.score, scoreB: m.b?.score,
-        })),
-      })),
+      groups: Object.entries(byRec).map(([rec, ms]) => {
+        const boN = boFor(rec);
+        return {
+          label: boN ? `${rec} · Bo${boN}` : rec, // "m-n" (+ Bo)
+          matches: ms.map((m) => ({
+            id: m.id, name: '',
+            a: m.a?.short, b: m.b?.short,
+            winner: winnerOf(m),
+            scoreA: m.a?.score, scoreB: m.b?.score,
+          })),
+        };
+      }),
     };
   });
   return <DemaciaBracket columns={columns} teams={[]} msiSet={msiSet} elimSet={elimSet} onTeamClick={onTeamClick} />;
@@ -1335,7 +1344,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
             <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
           </div>
           {lcpCfg.bracketKey === 'swiss' ? (
-            <SwissBracket swiss={official.swiss} onTeamClick={onTeamClick} />
+            <SwissBracket swiss={official.swiss} bo={{ base: 3, clinch: 5, clinchAt: 2 }} onTeamClick={onTeamClick} />
           ) : (
             <MsiBracket
               rounds={official[lcpCfg.bracketKey].rounds}
@@ -1369,7 +1378,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
               <span className="text-xs text-white/40">경기 결과가 나오면 자동 갱신됩니다.</span>
             </div>
             {bracketKey === 'swiss' ? (
-              <SwissBracket swiss={br} onTeamClick={onTeamClick} />
+              <SwissBracket swiss={br} bo={{ base: 1, clinch: 3, clinchAt: 2 }} onTeamClick={onTeamClick} />
             ) : (
               <MsiBracket rounds={br.rounds} totalRows={br.totalRows} connectors={br.connectors} onTeamClick={onTeamClick} />
             )}
