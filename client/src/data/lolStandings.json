@@ -10519,6 +10519,7 @@
           "slug": "group_stage",
           "name": "그룹 스테이지",
           "bracket": {
+            "totalRows": 6,
             "rounds": [
               {
                 "title": "",
@@ -10536,7 +10537,8 @@
                       "short": "BLG",
                       "score": 3,
                       "win": true
-                    }
+                    },
+                    "startRow": 0
                   },
                   {
                     "id": "115570888977308369",
@@ -10551,7 +10553,25 @@
                       "short": "G2",
                       "score": 3,
                       "win": true
-                    }
+                    },
+                    "startRow": 2
+                  },
+                  {
+                    "id": "115846976541810692",
+                    "title": "하위권 대진 - 4강",
+                    "a": {
+                      "seed": "1라운드 패자",
+                      "short": "TSW",
+                      "score": 0,
+                      "elim": true
+                    },
+                    "b": {
+                      "seed": "1라운드 패자",
+                      "short": "BFX",
+                      "score": 3,
+                      "win": true
+                    },
+                    "startRow": 4
                   }
                 ]
               },
@@ -10571,23 +10591,8 @@
                       "seed": "1라운드 승자",
                       "short": "G2",
                       "score": 0
-                    }
-                  },
-                  {
-                    "id": "115846976541810692",
-                    "title": "하위권 대진 - 4강",
-                    "a": {
-                      "seed": "1라운드 패자",
-                      "short": "TSW",
-                      "score": 0,
-                      "elim": true
                     },
-                    "b": {
-                      "seed": "1라운드 패자",
-                      "short": "BFX",
-                      "score": 3,
-                      "win": true
-                    }
+                    "startRow": 1
                   }
                 ]
               },
@@ -10608,7 +10613,8 @@
                       "short": "G2",
                       "score": 3,
                       "msi": true
-                    }
+                    },
+                    "startRow": 3
                   }
                 ]
               },
@@ -10628,7 +10634,8 @@
                       "short": "GEN",
                       "score": 3,
                       "win": true
-                    }
+                    },
+                    "startRow": 0
                   },
                   {
                     "id": "115570888977308399",
@@ -10643,7 +10650,25 @@
                       "seed": "",
                       "short": "LOUD",
                       "score": 2
-                    }
+                    },
+                    "startRow": 2
+                  },
+                  {
+                    "id": "115846976541941770",
+                    "title": "하위권 대진 - 4강",
+                    "a": {
+                      "seed": "1라운드 패자",
+                      "short": "JDG",
+                      "score": 3,
+                      "win": true
+                    },
+                    "b": {
+                      "seed": "1라운드 패자",
+                      "short": "LOUD",
+                      "score": 0,
+                      "elim": true
+                    },
+                    "startRow": 4
                   }
                 ]
               },
@@ -10663,23 +10688,8 @@
                       "short": "GEN",
                       "score": 3,
                       "msi": true
-                    }
-                  },
-                  {
-                    "id": "115846976541941770",
-                    "title": "하위권 대진 - 4강",
-                    "a": {
-                      "seed": "1라운드 패자",
-                      "short": "JDG",
-                      "score": 3,
-                      "win": true
                     },
-                    "b": {
-                      "seed": "1라운드 패자",
-                      "short": "LOUD",
-                      "score": 0,
-                      "elim": true
-                    }
+                    "startRow": 1
                   }
                 ]
               },
@@ -10700,7 +10710,8 @@
                       "short": "LYON",
                       "score": 1,
                       "elim": true
-                    }
+                    },
+                    "startRow": 3
                   }
                 ]
               }
@@ -10726,21 +10737,21 @@
                 0,
                 1,
                 "mid",
-                1,
-                1,
+                0,
+                2,
                 "a"
               ],
               [
                 0,
                 0,
                 "mid",
-                1,
-                1,
+                0,
+                2,
                 "b"
               ],
               [
-                1,
-                1,
+                0,
+                2,
                 "mid",
                 2,
                 0,
@@ -10774,21 +10785,21 @@
                 3,
                 0,
                 "mid",
-                4,
-                1,
+                3,
+                2,
                 "a"
               ],
               [
                 3,
                 1,
                 "mid",
-                4,
-                1,
+                3,
+                2,
                 "b"
               ],
               [
-                4,
-                1,
+                3,
+                2,
                 "mid",
                 5,
                 0,
@@ -10817,13 +10828,13 @@
                     "id": "115570888977308423",
                     "title": "4강",
                     "a": {
-                      "seed": "4위",
+                      "seed": "B조 2위",
                       "short": "JDG",
                       "score": 0,
                       "elim": true
                     },
                     "b": {
-                      "seed": "1위",
+                      "seed": "A조 1위",
                       "short": "BLG",
                       "score": 3,
                       "win": true
@@ -10833,13 +10844,13 @@
                     "id": "115570888977308429",
                     "title": "4강",
                     "a": {
-                      "seed": "3위",
+                      "seed": "A조 2위",
                       "short": "G2",
                       "score": 3,
                       "win": true
                     },
                     "b": {
-                      "seed": "2위",
+                      "seed": "B조 1위",
                       "short": "GEN",
                       "score": 0,
                       "elim": true
@@ -10887,7 +10898,8 @@
                 "b"
               ]
             ]
-          }
+          },
+          "label": "녹아웃 스테이지"
         }
       ],
       "finalStandings": [

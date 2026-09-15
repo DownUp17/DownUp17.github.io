@@ -1972,6 +1972,7 @@ const PAST_TEAM_OVERRIDE = {
 };
 // 대진 슬러그/이름 → 짧은 탭 라벨
 const bracketLabel = (b) => {
+  if (b.label) return b.label; // 커스텀 라벨(예: FST 녹아웃 스테이지)
   const s = (b.slug || '') + ' ' + (b.name || '');
   if (/knights|기사/i.test(s)) return '기사의 길';
   if (/swiss|스위스/i.test(s)) return '스위스';
@@ -2037,7 +2038,7 @@ const PastSplitView = ({ comp, sub, stage, onTeamClick }) => {
       {bracketForStage && (
         <section>
           <div className="flex items-baseline gap-2 flex-wrap mb-4">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{bracketForStage.name}</h3>
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{bracketForStage.label || bracketForStage.name}</h3>
             <span className="text-xs text-white/40">실제 경기 결과</span>
           </div>
           {/swiss|스위스/i.test(bracketForStage.slug || bracketForStage.name) ? (

@@ -411,6 +411,47 @@ function msi8DELayout(bracket) {
   return { sections, crossConnectors };
 }
 
+// FST 그룹 스테이지(2개 그룹 · 각 4팀 더블 엘리) — 하위권 4강을 1라운드와 같은 컬럼(아래)에 배치.
+//   각 그룹: col(g*3)= 1라운드 2 + 하위권 4강 / col(g*3+1)= 상위권 결승 / col(g*3+2)= 하위권 결승.
+function fstGroupLayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  const flat = [];
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => flat.push({ m, key: `${ci}-${mi}` })));
+  const origPos = {}; flat.forEach((x) => { origPos[x.key] = x.m.id; });
+  // 하위권 결승에서 그룹 종료 → 그룹 분할
+  const groups = []; let cur = [];
+  for (const x of flat) { cur.push(x); if (/하위권.*결승/.test(x.m.title || '')) { groups.push(cur); cur = []; } }
+  if (cur.length) groups.push(cur);
+  const colMatches = {};
+  let ok = true;
+  groups.forEach((grp, g) => {
+    const base = g * 3; const gseen = {};
+    for (const { m } of grp) {
+      const t = m.title || ''; let col, sr;
+      if (/1라운드/.test(t)) { const k = gseen.r1 || 0; gseen.r1 = k + 1; col = base; sr = k === 0 ? 0 : 2; }
+      else if (/하위권.*4강/.test(t)) { col = base; sr = 4; }
+      else if (/상위권.*결승/.test(t)) { col = base + 1; sr = 1; }
+      else if (/하위권.*결승/.test(t)) { col = base + 2; sr = 3; }
+      else { ok = false; continue; }
+      (colMatches[col] = colMatches[col] || []).push({ m, startRow: sr });
+    }
+  });
+  if (!ok) return bracket;
+  const maxCol = Math.max(...Object.keys(colMatches).map(Number));
+  const idPos = {}; const rounds2 = [];
+  for (let ci = 0; ci <= maxCol; ci++) {
+    const arr = (colMatches[ci] || []).sort((a, b) => a.startRow - b.startRow);
+    rounds2.push({ title: '', matches: arr.map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }) });
+  }
+  const connectors = [];
+  for (const c of bracket.connectors || []) {
+    const [sci, smi, mid, dci, dmi, slot] = c;
+    const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
+    if (sp && dp) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
+  }
+  return fixDropElim({ totalRows: 6, rounds: rounds2, connectors });
+}
+
 // 더블 엘리미네이션 탈락(elim) 보정 — 상위 대진 패배팀은 하위 대진으로 강등되므로 탈락이 아니다.
 //   규칙: 어떤 팀이 이후(더 오른쪽) 컬럼에 다시 등장하면 그 슬롯의 elim(빨강)을 해제한다.
 //   (LCK PO의 clearUB2Elim과 동일 취지 — 실제로 어디에도 다시 안 나오는 팀만 탈락 표시)
@@ -1058,6 +1099,18 @@ try {
       rank: t.fst, team: t.short,
       note: t.fst === 1 ? '우승' : t.fst === 2 ? '준우승' : t.fst === 3 ? '3위' : '',
     }));
+    // 그룹 스테이지: 하위권 4강을 1라운드 컬럼으로 / 플레이오프: '녹아웃 스테이지'로 표기 + 4강 시드 라벨
+    const FST_SEED = { GEN: 'B조 1위', G2: 'A조 2위', BLG: 'A조 1위', JDG: 'B조 2위' };
+    for (const br of fstSplit.brackets) {
+      if (br.slug === 'group_stage') br.bracket = fstGroupLayout(br.bracket);
+      if (br.slug === 'playoffs') {
+        br.label = '녹아웃 스테이지';
+        for (const r of br.bracket.rounds || []) for (const m of r.matches || []) {
+          if (!/4강/.test(m.title || '')) continue;
+          for (const s of [m.a, m.b]) if (s?.short && FST_SEED[s.short]) s.seed = FST_SEED[s.short];
+        }
+      }
+    }
     data.standings.fst = { name: fstSplit.name || '2026 First Stand', brackets: fstSplit.brackets, finalStandings };
     console.log(`FST: 대진 ${fstSplit.brackets.length}개 · 우승 ${finalStandings[0]?.team}`);
   }
