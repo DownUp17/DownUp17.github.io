@@ -190,13 +190,18 @@ function apply4TeamDELayout(bracket) {
 //   제목이 이 스킴과 맞지 않으면 원본(흐름 배치)을 그대로 반환한다.
 function lckPoStyleLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
-  // 상위 8강이 없고 상위 4강이 4개인 경우(CBLOL Copa 등): 앞 2개=UB R1, 뒤 2개=UB R2.
-  const hasUpper8 = bracket.rounds.some((r) => r.matches.some((m) => /상위권.*8강|UB\s*R1/i.test(m.title || '')));
+  // 상위권 첫 라운드(8강/1라운드/UB R1) 존재 여부. 없고 상위 4강이 4개인 경우(CBLOL Copa 등): 앞 2개=UB R1, 뒤 2개=UB R2.
+  //   2025 LCK처럼 상위 1R이 접두어 없이 "1라운드"로 오는 케이스도 인식.
+  // '상위권 대진 - N라운드' 접두어 표기가 있으면 접두어 없는 plain "N라운드"는 상위권으로 보지 않는다
+  //   (LEC처럼 상위/하위가 섞인 다른 구조 오적용 방지). LCK/LCP 2025는 상위 라운드가 plain "N라운드"라 허용.
+  const hasPrefixedUpperR1 = bracket.rounds.some((r) => r.matches.some((m) => /상위권.*(8강|1라운드)/i.test(m.title || '')));
+  const isUpperR1 = (t) => /상위권.*(8강|1라운드)|UB\s*R1/i.test(t) || (!hasPrefixedUpperR1 && /^1라운드$/.test(t));
+  const hasUpper8 = bracket.rounds.some((r) => r.matches.some((m) => isUpperR1(m.title || '')));
   // 제목(+동일 제목 내 순서 k) → [목표 col, startRow]
   const targetFor = (title, k) => {
     const t = title || '';
-    if (/상위권.*8강|UB\s*R1/i.test(t)) return [0, k === 0 ? 0 : 4];
-    if (/상위권.*4강|UB\s*R2/i.test(t)) {
+    if (isUpperR1(t)) return [0, k === 0 ? 0 : 4];
+    if (/상위권.*(4강|2라운드)|UB\s*R2/i.test(t) || (!hasPrefixedUpperR1 && /^2라운드$/.test(t))) {
       if (!hasUpper8) return k < 2 ? [0, k === 0 ? 0 : 4] : [1, k === 2 ? 0 : 4];
       return [1, k === 0 ? 0 : 4];
     }
@@ -220,10 +225,14 @@ function lckPoStyleLayout(bracket) {
     cols[tgt[0]].push({ m, startRow: tgt[1] });
   }));
   if (!ok || cols.some((c, i) => (i < 3 ? c.length === 0 : false))) return bracket; // 구조 불일치 → 원본 유지
+  // 같은 컬럼에 동일 startRow가 겹치면 이 템플릿과 구조 불일치(예: 하위 8강 2경기) → 원본(flow) 유지
+  for (const c of cols) { const rowSeen = {}; for (const x of c) { if (rowSeen[x.startRow]) return bracket; rowSeen[x.startRow] = 1; } }
   const idPos = {};
+  // 각 컬럼은 startRow(위→아래)순으로 정렬 — 컬럼 내 매치 인덱스를 TMPL 좌표와 일치시킨다
+  //   (원본 라운드 순서가 연도마다 달라도 동일한 대진표 모양·연결선이 되도록).
   const rounds2 = cols.filter((c) => c.length).map((arr, ci) => ({
     title: '',
-    matches: arr.map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }),
+    matches: arr.slice().sort((a, b) => a.startRow - b.startRow).map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }),
   }));
   // 원본(origin 기반) 연결선을 새 좌표로 재매핑 — 각 dest 매치의 현재 슬롯 파악용
   const myConn = [];
@@ -2506,7 +2515,7 @@ console.log('lolStandings.json 갱신 완료');
       { key: 'lec', league: '98767991302996019', subs: [['Winter', 'lec_winter_2025'], ['Spring', 'lec_spring_2025'], ['Summer', 'lec_summer_2025']] },
       { key: 'lcp', league: '113476371197627891', subs: [['Split 1', 'lcp_split_1_2025'], ['Split 2', 'lcp_split_2_2025'], ['Split 3', 'lcp_split_3_2025']] },
       { key: 'lcs', league: '113470291645289904', subs: [['Split 1', 'lta_n_split_1_2025'], ['Split 2', 'lta_n_split_2_2025'], ['Split 3', 'lta_n_split_3_2025']] }, // LTA North
-      { key: 'cblol', league: '113475181634818701', subs: [['Split 1', 'lta_s_split_1_2025'], ['Split 2', 'lta_s_split_2_2025'], ['Split 3', 'lta_s_split_3_2025']] }, // LTA South
+      { key: 'cblol', league: '113475181634818701', subs: [['Etapa 1', 'lta_s_split_1_2025'], ['Etapa 2', 'lta_s_split_2_2025'], ['Etapa 3', 'lta_s_split_3_2025']] }, // LTA South (브라질계: Split→Etapa)
       { key: 'fst', league: '113464388705111224', single: 'first_stand_2025' },
       { key: 'msi', league: '98767991325878492', single: 'msi_2025' },
       { key: 'worlds', league: '98767975604431411', single: 'worlds_2025' },
@@ -2536,6 +2545,25 @@ console.log('lolStandings.json 갱신 완료');
         }
         if (labels.length) { std2025[c.key] = byS; subs2025[c.key] = labels; }
       }
+    }
+    // LTA 아메리카 스테이지(Cross-Conference 지역 결승전) — 북부(LCS)·남부(CBLOL)가 함께 겨루는 단계.
+    //   Split 1·3에만 존재. 두 리그의 해당 스플릿 대진에 '아메리카 스테이지'로 추가.
+    const LTA_CROSS_LEAGUE = '113475149040947852';
+    // 리그별 스플릿 라벨이 다름: LCS=Split, CBLOL(LTA Sul)=Etapa
+    const CROSS = [
+      { slug: 'lta_cross_split_1_2025', subs: { lcs: 'Split 1', cblol: 'Etapa 1' } },
+      { slug: 'lta_cross_split_3_2025', subs: { lcs: 'Split 3', cblol: 'Etapa 3' } },
+    ];
+    for (const c of CROSS) {
+      try {
+        const s = await buildSplit(LTA_CROSS_LEAGUE, c.slug);
+        const rf = (s?.brackets || []).find((b) => b.slug === 'regional_finals');
+        if (rf) {
+          const stage = { slug: 'americas_stage', name: '아메리카 스테이지', label: '아메리카 스테이지', bracket: rf.bracket };
+          for (const key of ['lcs', 'cblol']) { const sub = c.subs[key]; if (std2025[key]?.[sub]?.brackets) std2025[key][sub].brackets.push(stage); }
+          console.log(`2025 아메리카 스테이지(${c.slug}) 추가`);
+        }
+      } catch (e) { console.warn(`2025 아메리카 스테이지 ${c.slug} 실패: ${e.message}`); }
     }
     past = {
       updatedAt: data.updatedAt,

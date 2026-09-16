@@ -14,6 +14,9 @@ import demaciaLogo from '../assets/demacia.svg';
 import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
 import kespa2026Logo from '../assets/kespa2026.webp';
+import ltaNorthLogo from '../assets/lta-north.svg';
+import ltaSulLogo from '../assets/lta-sul.svg';
+import ltaLogo from '../assets/lta.svg';
 import drxLogo from '../assets/drx.svg';
 import gengSimpleLogo from '../assets/geng-simple.svg';
 
@@ -2185,6 +2188,12 @@ const COMP_DETAIL_LOGO = {
 const SUBTAB_DETAIL = {
   'lck|KeSPA CUP': { color: '#072148', logo: kespa2026Logo },
 };
+// 과거 연도 대회의 상세 헤더 로고·상징색 오버라이드 (`key|year`). 예: 2025 LCS = LTA North.
+// 과거 연도 상세 헤더 로고·상징색. bySub로 스플릿별 오버라이드(통합 스플릿=LTA).
+const PAST_DETAIL = {
+  'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo } } },
+  'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo } } },
+};
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
 const TAB_COLOR = { asiangames: '#ffb732' };
@@ -2346,6 +2355,10 @@ const PredictionPage = () => {
   const st = comp ? (statusMeta[subStatus || comp.status] || statusMeta.upcoming) : null;
   // 서브탭별 상세 헤더 오버라이드(로고·상징색) — 현재 연도만
   const subDetail = comp && activeSub && isCurrentYear ? SUBTAB_DETAIL[`${comp.key}|${activeSub}`] : null;
+  // 상세 헤더 로고·상징색: 현재 연도는 서브탭 오버라이드, 과거 연도는 연도별 오버라이드(예: 2025 LTA)
+  const pastDetailRaw = comp && !isCurrentYear ? PAST_DETAIL[`${comp.key}|${activeYear}`] : null;
+  const pastDetail = pastDetailRaw ? { ...pastDetailRaw, ...(pastDetailRaw.bySub?.[activeSub] || {}), tint: true } : null;
+  const headerDetail = subDetail || pastDetail;
 
   // 과거 연도 전체 데이터(순위표·대진·최종순위). 단일 대회는 sub=null.
   const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub, activeYear) : null;
@@ -2397,7 +2410,20 @@ const PredictionPage = () => {
   // 연도 옆 '대회 선택'(통합/분리 시 사용) — 현재 비활성.
   const subEvents = null; const activeEvent = null; const setActiveEvent = () => {};
 
-  const displayTitle = isCurrentYear ? title : title.replace(String(CURRENT_YEAR), String(activeYear));
+  // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
+  const PAST_COMP_NAME = {
+    'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA' },
+    'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA' },
+  };
+  const displayTitle = (() => {
+    if (isCurrentYear) return title;
+    const ov = PAST_COMP_NAME[`${comp?.key}|${activeYear}`];
+    if (ov) {
+      const lg = ov[activeSub] || ov.default;
+      return `${activeYear} ${lg}${activeSub && activeSub !== lg ? ` ${activeSub}` : ''}`;
+    }
+    return title.replace(String(CURRENT_YEAR), String(activeYear));
+  })();
   // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
   const stDisplay = !isCurrentYear ? statusMeta.finished : st;
 
@@ -2455,11 +2481,27 @@ const PredictionPage = () => {
             <>
               <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: subDetail?.color || comp.color }}>
-                    <img src={subDetail?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={{ filter: subDetail?.logo ? 'none' : (textOn(subDetail?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
+                  {(() => {
+                    const hd = headerDetail;
+                    // LTA 등 tint 로고: 상징색을 로고 색으로 사용(어두워 안 보이면 흰색), 배경은 상징색을 옅게.
+                    if (hd?.tint && hd.logo) {
+                      const c = (hd.color || '#888').replace('#', '');
+                      const lum = (parseInt(c.slice(0, 2), 16) * 0.299 + parseInt(c.slice(2, 4), 16) * 0.587 + parseInt(c.slice(4, 6), 16) * 0.114) / 255;
+                      const logoColor = lum > 0.22 ? hd.color : '#fff';
+                      return (
+                        <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: `${hd.color}2e` }}>
+                          <span aria-hidden style={{ width: 24, height: 24, display: 'block', backgroundColor: logoColor, WebkitMaskImage: `url(${hd.logo})`, maskImage: `url(${hd.logo})`, WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center', WebkitMaskSize: 'contain', maskSize: 'contain' }} />
+                        </div>
+                      );
+                    }
+                    return (
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: hd?.color || comp.color }}>
+                    <img src={hd?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
+                      style={{ filter: hd?.logo ? 'none' : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
+                    );
+                  })()}
                   <div>
                     <h2 className="text-xl font-black text-white">{displayTitle}</h2>
                     <p className="text-xs text-white/40">{comp.scope === 'intl' ? '국제 대회' : '지역 리그'}</p>
