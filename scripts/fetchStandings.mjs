@@ -2344,23 +2344,36 @@ try {
 //   (Worlds/DCGI처럼 실제 대진이 들어오기 전이라도 브래킷 구조를 TBD 슬롯으로 노출)
 {
   const ag = data.standings.asiangames || (data.standings.asiangames = {});
-  if (!ag.groups) { // API가 실제 조·대진 데이터를 제공하지 않은 경우 → 임시 대진표 생성
-    // 조 배정은 잠정(placeholder) — 실제 배정은 리포지토리 데이터로 대체된다.
+  if (!ag.groups || ag.placeholder) { // API 실제 데이터가 없거나(placeholder) 아직 임시일 때 → 임시 대진표 갱신
+    // 참가 8개국(조 배정 미정). 조 편성이 확정되지 않아 group·Elo·조별 대진은 비워 둔다.
     ag.teams = [
-      { code: 'KOR', name: '대한민국', group: 'A' }, { code: 'VIE', name: '베트남', group: 'A' },
-      { code: 'SAU', name: '사우디아라비아', group: 'A' }, { code: 'MYS', name: '말레이시아', group: 'A' },
-      { code: 'TPE', name: '대만', group: 'B' }, { code: 'HKG', name: '홍콩', group: 'B' },
-      { code: 'IND', name: '인도', group: 'B' }, { code: 'UAE', name: '아랍에미리트', group: 'B' },
+      { code: 'KOR', name: '대한민국' }, { code: 'VIE', name: '베트남' },
+      { code: 'SAU', name: '사우디아라비아' }, { code: 'MYS', name: '말레이시아' },
+      { code: 'TPE', name: '대만' }, { code: 'HKG', name: '홍콩' },
+      { code: 'IND', name: '인도' }, { code: 'UAE', name: '아랍에미리트' },
     ];
     ag.placeholder = true; // 임시 대진표임을 표시
-    // 조별 싱글 라운드로빈(4팀 → 6경기, Bo3). 팀 코드는 잠정 배정이나 결과는 미정(TBD 슬롯).
-    const rrPairs = [[0, 1], [2, 3], [0, 2], [1, 3], [0, 3], [1, 2]];
-    const groupBlock = (gk) => {
-      const codes = ag.teams.filter((t) => t.group === gk).map((t) => t.code);
-      const matches = rrPairs.map(([i, j], n) => ({ id: `${gk}${n + 1}`, a: codes[i], b: codes[j], format: 'Bo3' }));
-      return { matches };
+    // 국가대표 로스터(수기) → 각 선수 소속팀 GPR 평균 = 국가 레이팅(녹아웃 예측용).
+    const AG_ROSTERS = {
+      KOR: ['Zeus', 'Canyon', 'Zeka', 'Faker', 'Gumayusi', 'Keria'],
+      TPE: ['1Jiang', 'JunJia', 'HongQ', 'Doggo', 'ShiauC', 'Woody'],
+      VIE: ['Kiaya', 'Pun', 'Hizto', 'Dire', 'Eddie', 'Taki'],
     };
-    ag.groups = { A: groupBlock('A'), B: groupBlock('B') };
+    try {
+      const rmap = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'client', 'src', 'data', 'lolRosters.json'), 'utf8')).rosters;
+      const gmap = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'client', 'src', 'data', 'gprTeams.json'), 'utf8')).teams.map((t) => [t.short, t]));
+      const clubOf = (name) => { for (const [tm, ros] of Object.entries(rmap)) if ((ros.players || []).some((p) => p.name.toLowerCase() === name.toLowerCase())) return tm; return null; };
+      for (const t of ag.teams) {
+        const names = AG_ROSTERS[t.code]; if (!names) continue;
+        t.players = names;
+        const scores = names.map((n) => { const c = clubOf(n); return c && gmap[c] ? gmap[c].score : null; }).filter((s) => s != null);
+        if (scores.length) t.rating = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+      }
+      const rated = ag.teams.filter((t) => t.rating != null).map((t) => `${t.code} ${t.rating}`);
+      console.log(`Asian Games 국가 레이팅(소속팀 GPR 평균): ${rated.join(', ')}`);
+    } catch (e) { console.warn(`Asian Games 국가 레이팅 산출 실패(무시): ${e.message}`); }
+    // 조 편성 미정 → A/B조 팀·대진 비움(순위표는 '조 편성 미정'으로 표기).
+    ag.groups = { A: { matches: [] }, B: { matches: [] } };
     // 녹아웃: 4강(Bo3) · 결승/동메달(Bo5) — 팀 미정(각 조 순위 확정 후 채워짐).
     ag.knockout = {
       matches: [
@@ -2370,7 +2383,7 @@ try {
         { id: 'BRONZE', a: null, b: null, format: 'Bo5', prev: { a: 'SF1:L', b: 'SF2:L' } },
       ],
     };
-    console.log('Asian Games: 기본 참가팀 8개국 + 임시 대진표(조별 라운드로빈·녹아웃) 표시(조 배정·Elo 잠정)');
+    console.log('Asian Games: 참가 8개국(조 편성 미정) + 녹아웃 임시 대진표(TBD) 표시');
   }
 }
 
@@ -2522,10 +2535,10 @@ console.log('lolStandings.json 갱신 완료');
     }
   };
   for (const lg of Object.keys(data.standings)) walk(data.standings[lg], [lg]);
-  // 오래된 대회를 위에 표시 — 2026 대회 개최 순서(대략)로 정렬.
+  // 최신 대회를 위에 표시 — 2026 대회 개최 순서(대략)의 역순으로 정렬.
   const TITLE_ORDER = ['First Stand', 'LCK CUP', 'Lock-In', 'Copa', 'Versus', 'Split 1', 'Spring', 'Mid-Season', 'Split 2', 'Summer', 'KeSPA', 'Split 3', 'Worlds'];
   const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
-  for (const short of Object.keys(titles)) titles[short].sort((a, b) => ord(a.name) - ord(b.name));
+  for (const short of Object.keys(titles)) titles[short].sort((a, b) => ord(b.name) - ord(a.name));
   const titlesFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolTitles.json');
   fs.writeFileSync(titlesFile, JSON.stringify({ updatedAt: data.updatedAt, titles }, null, 2) + '\n');
   console.log(`우승 경력 자동 산출: ${Object.keys(titles).length}개 팀 (${Object.values(titles).reduce((n, a) => n + a.length, 0)}개 타이틀)`);

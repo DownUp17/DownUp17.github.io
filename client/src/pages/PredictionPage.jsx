@@ -1605,14 +1605,33 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
           </div>
         );
+        // 국가 레이팅(소속팀 GPR 평균) — 로스터가 있는 국가만. 없으면 예측 생략.
+        const ratingOf = (code) => teams.find((t) => t.code === code)?.rating;
+        // 시리즈(BoN) 승률: 게임 승률 p로 먼저 ceil(N/2)승 확률.
+        const seriesWin = (p, need) => {
+          const other = need; let prob = 0;
+          const C = (n, k) => { let r = 1; for (let i = 0; i < k; i++) r = r * (n - i) / (i + 1); return r; };
+          for (let l = 0; l < other; l++) prob += C(need - 1 + l, l) * Math.pow(p, need) * Math.pow(1 - p, l);
+          return prob;
+        };
         const matchCard = (m) => {
           const done = m.scoreA != null && m.scoreB != null && m.scoreA !== m.scoreB;
           const aWin = done && m.scoreA > m.scoreB;
           const bWin = done && m.scoreB > m.scoreA;
-          const slot = (code, score, win) => (
+          // 예측: 양 팀 모두 레이팅 보유(=KOR/TPE/VIE) & 미종료일 때만.
+          const ra = ratingOf(m.a), rb = ratingOf(m.b);
+          const predict = !done && m.a && m.b && ra != null && rb != null;
+          let pA = null, pB = null;
+          if (predict) {
+            const need = m.format === 'Bo5' ? 3 : 2;
+            const g = 1 / (1 + Math.pow(10, (rb - ra) / 400));
+            pA = Math.round(seriesWin(g, need) * 100); pB = 100 - pA;
+          }
+          const slot = (code, score, win, pct) => (
             <div className={`flex items-center gap-2 px-2.5 py-2 ${win ? 'bg-[rgba(96,165,250,0.14)]' : ''}`}>
               <span className={`text-xs truncate flex-1 ${win ? 'font-bold text-white' : 'text-white/70'}`}>{code ? nameOf(code) : 'TBD'}</span>
-              {score != null && <span className={`font-mono tabular-nums text-sm shrink-0 ${win ? 'text-[#60A5FA] font-black' : 'text-white/45'}`}>{score}</span>}
+              {score != null ? <span className={`font-mono tabular-nums text-sm shrink-0 ${win ? 'text-[#60A5FA] font-black' : 'text-white/45'}`}>{score}</span>
+                : pct != null ? <span className="font-mono tabular-nums text-xs shrink-0 text-white/55 font-black">{pct}%</span> : null}
             </div>
           );
           return (
@@ -1621,9 +1640,9 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 <span>{m.id}</span><span className="ml-auto text-white/30 normal-case font-normal">{m.format}</span>
               </span>
               <div className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-                {slot(m.a, m.scoreA, aWin)}
+                {slot(m.a, m.scoreA, aWin, pA)}
                 <div className="h-px bg-white/10" />
-                {slot(m.b, m.scoreB, bWin)}
+                {slot(m.b, m.scoreB, bWin, pB)}
               </div>
             </div>
           );
@@ -1645,7 +1664,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           <section className="flex flex-col gap-3">
             <div className="flex items-baseline gap-2 flex-wrap">
               <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
-              <span className="text-xs text-white/40">{teams.length}개국{official?.placeholder ? ' · 조 배정·Elo 잠정(임시 대진표)' : hasGroups ? '' : ' · 조 배정·Elo 추후 반영'}</span>
+              <span className="text-xs text-white/40">{teams.length}개국{official?.placeholder ? ' · 조 편성 미정' : hasGroups ? '' : ' · 조 배정·Elo 추후 반영'}</span>
             </div>
             {hasGroups ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1678,28 +1697,22 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                       <thead><tr className="text-white/40 text-xs border-b border-white/10">
                         <th className="text-center font-bold py-2 px-2 w-10">#</th>
                         <th className="text-left font-bold py-2 pr-2">국가</th>
-                        <th className="text-center font-bold py-2 px-2">Elo</th>
                         <th className="text-center font-bold py-2 px-2">승-패</th>
                         <th className="text-center font-bold py-2 px-2">세트</th>
                       </tr></thead>
                       <tbody>
-                        {rows.map((r, i) => (
-                          <tr key={r.code} className="border-b border-white/5" style={i < 2 ? { backgroundColor: 'rgba(96,165,250,0.10)' } : undefined}>
+                        {rows.length ? rows.map((r, i) => (
+                          <tr key={r.code} className="border-b border-white/5">
                             <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
                             <td className="py-2 pr-2 font-bold text-white/90">{nameOf(r.code)}</td>
-                            <td className="py-2 px-2 text-center text-white/50 font-mono">{eloOf(r.code) ?? '-'}</td>
                             <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
                             <td className="py-2 px-2 text-center font-mono text-white/50">{r.sw}-{r.sl}</td>
                           </tr>
-                        ))}
+                        )) : (
+                          <tr><td colSpan={4} className="py-4 text-center text-white/30 text-xs">조 편성 미정</td></tr>
+                        )}
                       </tbody>
                     </table>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider mb-3">{gk}조 대진</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {(grp?.matches || []).map(matchCard)}
                   </div>
                 </div>
               </div>
@@ -1731,8 +1744,16 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
               </div>
               <div className="flex gap-6 overflow-x-auto pb-3 items-stretch w-fit">
                 {col('4강', ['SF1', 'SF2'])}
-                {col('결승', ['FINAL'])}
-                {col('3·4위전', ['BRONZE'])}
+                <div className="flex flex-col gap-6 shrink-0 justify-center" style={{ width: 220 }}>
+                  <div>
+                    <div className="text-[11px] text-white/50 font-black tracking-wider px-1 mb-4">결승</div>
+                    {byId['FINAL'] && matchCard(byId['FINAL'])}
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-white/50 font-black tracking-wider px-1 mb-4">3·4위전</div>
+                    {byId['BRONZE'] && matchCard(byId['BRONZE'])}
+                  </div>
+                </div>
               </div>
               {legend}
             </section>

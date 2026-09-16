@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-15",
+  "updatedAt": "2026-09-16",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -11409,125 +11409,70 @@
         {
           "code": "KOR",
           "name": "대한민국",
-          "group": "A"
+          "players": [
+            "Zeus",
+            "Canyon",
+            "Zeka",
+            "Faker",
+            "Gumayusi",
+            "Keria"
+          ],
+          "rating": 1514
         },
         {
           "code": "VIE",
           "name": "베트남",
-          "group": "A"
+          "players": [
+            "Kiaya",
+            "Pun",
+            "Hizto",
+            "Dire",
+            "Eddie",
+            "Taki"
+          ],
+          "rating": 1339
         },
         {
           "code": "SAU",
-          "name": "사우디아라비아",
-          "group": "A"
+          "name": "사우디아라비아"
         },
         {
           "code": "MYS",
-          "name": "말레이시아",
-          "group": "A"
+          "name": "말레이시아"
         },
         {
           "code": "TPE",
           "name": "대만",
-          "group": "B"
+          "players": [
+            "1Jiang",
+            "JunJia",
+            "HongQ",
+            "Doggo",
+            "ShiauC",
+            "Woody"
+          ],
+          "rating": 1238
         },
         {
           "code": "HKG",
-          "name": "홍콩",
-          "group": "B"
+          "name": "홍콩"
         },
         {
           "code": "IND",
-          "name": "인도",
-          "group": "B"
+          "name": "인도"
         },
         {
           "code": "UAE",
-          "name": "아랍에미리트",
-          "group": "B"
+          "name": "아랍에미리트"
         }
       ],
       "placeholder": true,
       "groups": {
         "A": {
-          "matches": [
-            {
-              "id": "A1",
-              "a": "KOR",
-              "b": "VIE",
-              "format": "Bo3"
-            },
-            {
-              "id": "A2",
-              "a": "SAU",
-              "b": "MYS",
-              "format": "Bo3"
-            },
-            {
-              "id": "A3",
-              "a": "KOR",
-              "b": "SAU",
-              "format": "Bo3"
-            },
-            {
-              "id": "A4",
-              "a": "VIE",
-              "b": "MYS",
-              "format": "Bo3"
-            },
-            {
-              "id": "A5",
-              "a": "KOR",
-              "b": "MYS",
-              "format": "Bo3"
-            },
-            {
-              "id": "A6",
-              "a": "VIE",
-              "b": "SAU",
-              "format": "Bo3"
-            }
-          ]
+          "matches": []
         },
         "B": {
-          "matches": [
-            {
-              "id": "B1",
-              "a": "TPE",
-              "b": "HKG",
-              "format": "Bo3"
-            },
-            {
-              "id": "B2",
-              "a": "IND",
-              "b": "UAE",
-              "format": "Bo3"
-            },
-            {
-              "id": "B3",
-              "a": "TPE",
-              "b": "IND",
-              "format": "Bo3"
-            },
-            {
-              "id": "B4",
-              "a": "HKG",
-              "b": "UAE",
-              "format": "Bo3"
-            },
-            {
-              "id": "B5",
-              "a": "TPE",
-              "b": "UAE",
-              "format": "Bo3"
-            },
-            {
-              "id": "B6",
-              "a": "HKG",
-              "b": "IND",
-              "format": "Bo3"
-            }
-          ]
+          "matches": []
         }
       },
       "knockout": {

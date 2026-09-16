@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-15",
+  "updatedAt": "2026-09-16",
   "titles": {
     "HLE": [
       {
@@ -27,7 +27,7 @@
     ],
     "BLG": [
       {
-        "name": "2026 First Stand",
+        "name": "2026 LPL Split 2",
         "detail": "우승"
       },
       {
@@ -35,17 +35,17 @@
         "detail": "우승"
       },
       {
-        "name": "2026 LPL Split 2",
+        "name": "2026 First Stand",
         "detail": "우승"
       }
     ],
     "G2": [
       {
-        "name": "2026 LEC Versus",
+        "name": "2026 LEC Spring",
         "detail": "우승"
       },
       {
-        "name": "2026 LEC Spring",
+        "name": "2026 LEC Versus",
         "detail": "우승"
       }
     ],
@@ -57,7 +57,7 @@
     ],
     "TSW": [
       {
-        "name": "2026 LCP Split 1",
+        "name": "2026 LCP Split 3",
         "detail": "우승"
       },
       {
@@ -65,17 +65,17 @@
         "detail": "우승"
       },
       {
-        "name": "2026 LCP Split 3",
+        "name": "2026 LCP Split 1",
         "detail": "우승"
       }
     ],
     "LYON": [
       {
-        "name": "2026 LCS Lock-In",
+        "name": "2026 LCS Spring",
         "detail": "우승"
       },
       {
-        "name": "2026 LCS Spring",
+        "name": "2026 LCS Lock-In",
         "detail": "우승"
       }
     ],
