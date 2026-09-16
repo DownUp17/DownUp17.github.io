@@ -6,6 +6,7 @@ import sim from '../data/lolSim.json';
 import gpr from '../data/lolGpr.json';
 import gprTeams from '../data/gprTeams.json';
 import officialStandings from '../data/lolStandings.json';
+import pastEditionsData from '../data/lolPastEditions.json';
 import GprTable, { TeamLogo } from '../components/GprTable';
 import TeamPanel from '../components/TeamPanel';
 import { textOn, lighten } from '../utils/colorContrast';
@@ -517,7 +518,7 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
   }, [useGrid, rounds, connData]);
 
   return (
-    <div className={`pb-1${useGrid && wrapScroll ? ' msi-scroll' : ''}`} style={useGrid && wrapScroll ? { overflowX: 'auto' } : {}}>
+    <div className={`pb-1${useGrid && wrapScroll ? ' msi-scroll' : ''}`} style={useGrid && wrapScroll ? { overflowX: 'auto', overflowY: 'hidden' } : {}}>
       <div ref={wrapRef} style={{
         position: 'relative',
         display: 'flex',
@@ -2186,6 +2187,8 @@ const SUBTAB_DETAIL = {
   'lck|KeSPA CUP': { color: '#072148', logo: kespa2026Logo },
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
+// 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
+const TAB_COLOR = { asiangames: '#ffb732' };
 
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
@@ -2273,9 +2276,20 @@ const editionYears = (key) => COMP_EDITIONS[key] || [CURRENT_YEAR];
 // 과거 연도 결과: `${key}|${year}` → { finalResult: { champion, runnerUp, standings:[{rank,team,note}] } }
 // 여기에 항목을 추가하면 해당 연도 선택 시 ResultView 로 최종 순위가 자동 표시된다.
 // 예) 'worlds|2025': { finalResult: { champion: 'T1', runnerUp: 'BLG', standings: [{ rank: 1, team: 'T1' }] } },
-const PAST_EDITIONS = {};
+// 과거 에디션 결과 — lolPastEditions.json(API로 생성)에서 로드. `${key}|${year}[|${event}]` → { finalResult }.
+const PAST_EDITIONS = Object.fromEntries(
+  Object.entries(pastEditionsData.results || {}).map(([k, v]) => [k, { finalResult: v }])
+);
 // 특정 대회·연도에 세부 대회 선택(연도 오른쪽 드롭다운). DCGI 2025 = ASI / Demacia Cup(합쳐지기 전 두 대회).
-const YEAR_SUBEVENTS = { 'demacia|2025': ['ASI', 'Demacia Cup'] };
+//   + 생성된 2025 리그 세부대회(스플릿 등)를 자동 병합.
+const YEAR_SUBEVENTS = {
+  'demacia|2025': ['ASI', 'Demacia Cup'],
+  ...Object.fromEntries(
+    Object.entries(pastEditionsData.editions || {})
+      .filter(([, v]) => Array.isArray(v.subevents) && v.subevents.length)
+      .map(([k, v]) => [k, v.subevents])
+  ),
+};
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
@@ -2384,7 +2398,11 @@ const PredictionPage = () => {
   // 과거 연도 선택 시 제목의 연도 토큰을 교체(예: "2026 LCK" → "2024 LCK")
   const displayTitle = isCurrentYear
     ? title
-    : (activeEvent ? `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}` : title.replace(String(CURRENT_YEAR), String(activeYear)));
+    : activeEvent
+      ? (SUBEVENT_NAMES[activeEvent]
+          ? `${activeYear} ${SUBEVENT_NAMES[activeEvent]}`
+          : `${(comp?.name ?? '').replace(String(CURRENT_YEAR), String(activeYear))} ${activeEvent}`)
+      : (comp?.name ?? '').replace(String(CURRENT_YEAR), String(activeYear));
   // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
   const stDisplay = !isCurrentYear ? statusMeta.finished : st;
 
@@ -2402,6 +2420,8 @@ const PredictionPage = () => {
         <div className="flex flex-wrap gap-2 mb-8">
           {tabs.map((c) => {
             const active = c.key === activeKey;
+            // 탭(일반 대회) 상징색 — 에디션별 색과 별개로 탭에 쓸 색. (예: AG 탭은 #ffb732, 2026 상세는 유지)
+            const tabColor = TAB_COLOR[c.key] || c.color;
             return (
               <button
                 key={c.key}
@@ -2409,11 +2429,11 @@ const PredictionPage = () => {
                 className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-black border transition-all ${
                   active ? '' : 'text-white/60 border-white/15 hover:border-white/40 bg-transparent'
                 }`}
-                style={active ? { backgroundColor: c.color, borderColor: c.color, color: textOn(c.color) } : {}}
+                style={active ? { backgroundColor: tabColor, borderColor: tabColor, color: textOn(tabColor) } : {}}
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"
-                  style={{ width: 18, height: 18, filter: active ? (textOn(c.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none', opacity: active ? 0.9 : 1 }}
+                  style={{ width: 18, height: 18, filter: active ? (textOn(tabColor) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none', opacity: active ? 0.9 : 1 }}
                   onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                 {c.tabName || c.name.replace('2026 ', '')}
               </button>

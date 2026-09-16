@@ -1,0 +1,1223 @@
+{
+  "updatedAt": "2026-09-16",
+  "editions": {
+    "lck|2025": {
+      "subevents": [
+        "Cup",
+        "Split 2",
+        "Split 3"
+      ]
+    },
+    "lpl|2025": {
+      "subevents": [
+        "Split 1",
+        "Split 2",
+        "Split 3"
+      ]
+    },
+    "lec|2025": {
+      "subevents": [
+        "Winter",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "lcp|2025": {
+      "subevents": [
+        "Split 1",
+        "Split 2",
+        "Split 3"
+      ]
+    },
+    "lcs|2025": {
+      "subevents": [
+        "Split 1",
+        "Split 2",
+        "Split 3"
+      ]
+    },
+    "cblol|2025": {
+      "subevents": [
+        "Split 1",
+        "Split 2",
+        "Split 3"
+      ]
+    },
+    "fst|2025": {},
+    "msi|2025": {},
+    "worlds|2025": {}
+  },
+  "results": {
+    "lck|2025|Cup": {
+      "champion": "HLE",
+      "runnerUp": "GEN",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "HLE",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "GEN",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "DK",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "NS",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "T1",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "KT",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "KRX",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "BRO",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "DNS",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "BFX",
+          "note": ""
+        }
+      ]
+    },
+    "lck|2025|Split 2": {
+      "champion": "T1",
+      "runnerUp": "HLE",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "T1",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "HLE",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "KT",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "NS",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "DK",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "GEN",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "BFX",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "BRO",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "KRX",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "DNS",
+          "note": ""
+        }
+      ]
+    },
+    "lck|2025|Split 3": {
+      "champion": "GEN",
+      "runnerUp": "HLE",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "GEN",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "HLE",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "KT",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "T1",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "DK",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "BFX",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "NS",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "BRO",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "KRX",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "DNS",
+          "note": ""
+        }
+      ]
+    },
+    "lpl|2025|Split 1": {
+      "champion": "TES",
+      "runnerUp": "AL",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "TES",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "AL",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "JDG",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "BLG",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "TT",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "NIP",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "WBG",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "IG",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "LGD",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "OMG",
+          "note": ""
+        },
+        {
+          "rank": 11,
+          "team": "EDG",
+          "note": ""
+        },
+        {
+          "rank": 12,
+          "team": "RNG",
+          "note": ""
+        },
+        {
+          "rank": 13,
+          "team": "WE",
+          "note": ""
+        },
+        {
+          "rank": 14,
+          "team": "UP",
+          "note": ""
+        },
+        {
+          "rank": 15,
+          "team": "LNG",
+          "note": ""
+        },
+        {
+          "rank": 16,
+          "team": "FPX",
+          "note": ""
+        }
+      ]
+    },
+    "lpl|2025|Split 2": {
+      "champion": "AL",
+      "runnerUp": "BLG",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "AL",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "BLG",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "IG",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "WE",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "TES",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "WBG",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "JDG",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "FPX",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "TT",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "NIP",
+          "note": ""
+        },
+        {
+          "rank": 11,
+          "team": "LGD",
+          "note": ""
+        },
+        {
+          "rank": 12,
+          "team": "EDG",
+          "note": ""
+        },
+        {
+          "rank": 13,
+          "team": "UP",
+          "note": ""
+        },
+        {
+          "rank": 14,
+          "team": "RNG",
+          "note": ""
+        },
+        {
+          "rank": 15,
+          "team": "OMG",
+          "note": ""
+        },
+        {
+          "rank": 16,
+          "team": "LNG",
+          "note": ""
+        }
+      ]
+    },
+    "lpl|2025|Split 3": {
+      "champion": "IG",
+      "runnerUp": "JDG",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "IG",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "JDG",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "TES",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "WBG",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "BLG",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "AL",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "NIP",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "EDG",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "LGD",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "UP",
+          "note": ""
+        },
+        {
+          "rank": 11,
+          "team": "WE",
+          "note": ""
+        },
+        {
+          "rank": 12,
+          "team": "FPX",
+          "note": ""
+        },
+        {
+          "rank": 13,
+          "team": "TT",
+          "note": ""
+        },
+        {
+          "rank": 14,
+          "team": "LNG",
+          "note": ""
+        }
+      ]
+    },
+    "lec|2025|Winter": {
+      "champion": "KC",
+      "runnerUp": "G2",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "KC",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "G2",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "FNC",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "MKOI",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "GX",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "SHFT",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "VIT",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "TH",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "SK",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "RGE",
+          "note": ""
+        }
+      ]
+    },
+    "lec|2025|Spring": {
+      "champion": "MKOI",
+      "runnerUp": "G2",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "MKOI",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "G2",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "KC",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "FNC",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "TH",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "GX",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "VIT",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "SHFT",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "SK",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "RGE",
+          "note": ""
+        }
+      ]
+    },
+    "lec|2025|Summer": {
+      "champion": "G2",
+      "runnerUp": "MKOI",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "G2",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "MKOI",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "FNC",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "KC",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "GX",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "VIT",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "TH",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "SHFT",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "SK",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "NAVI",
+          "note": ""
+        }
+      ]
+    },
+    "lcp|2025|Split 1": {
+      "champion": "CFO",
+      "runnerUp": "PSG",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "CFO",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "PSG",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "MVK",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "GAM",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "TSW",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "SHG",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "DFM",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "CHF",
+          "note": ""
+        }
+      ]
+    },
+    "lcp|2025|Split 2": {
+      "champion": "CFO",
+      "runnerUp": "GAM",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "CFO",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "GAM",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "PSG",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "TSW",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "MVK",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "SHG",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "DFM",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "CHF",
+          "note": ""
+        }
+      ]
+    },
+    "lcp|2025|Split 3": {
+      "champion": "MVK",
+      "runnerUp": "CHF",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "MVK",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "CHF",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "CFO",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "TSW",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "PSG",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "GAM",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "DFM",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "SHG",
+          "note": ""
+        }
+      ]
+    },
+    "lcs|2025|Split 1": {
+      "champion": "FLY",
+      "runnerUp": "TLAW",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "FLY",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "TLAW",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "100T",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "DIG",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "SR",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "C9",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "DSG",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "LYON",
+          "note": ""
+        }
+      ]
+    },
+    "lcs|2025|Split 2": {
+      "champion": "FLY",
+      "runnerUp": "C9",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "FLY",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "C9",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "SR",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "TLAW",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "100T",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "DIG",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "LYON",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "DSG",
+          "note": ""
+        }
+      ]
+    },
+    "lcs|2025|Split 3": {
+      "champion": "100T",
+      "runnerUp": "SR",
+      "standings": [
+        {
+          "rank": 2,
+          "team": "100T",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "SR",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "C9",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "DSG",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "TLAW",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "LYON",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "DIG",
+          "note": ""
+        }
+      ]
+    },
+    "cblol|2025|Split 1": {
+      "champion": "LOUD",
+      "runnerUp": "PAIN",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "LOUD",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "PAIN",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "ISG",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "LEV",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "FUR",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "RED",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "VKS",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "FX",
+          "note": ""
+        }
+      ]
+    },
+    "cblol|2025|Split 2": {
+      "champion": "FUR",
+      "runnerUp": "PAIN",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "FUR",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "PAIN",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "ISG",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "VKS",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "LOUD",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "RED",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "LEV",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "FX",
+          "note": ""
+        }
+      ]
+    },
+    "cblol|2025|Split 3": {
+      "champion": "VKS",
+      "runnerUp": "RED",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "VKS",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "RED",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "PAIN",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "LOUD",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "FUR",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "LEV",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "FX",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "ISG",
+          "note": ""
+        }
+      ]
+    },
+    "fst|2025": {
+      "champion": "HLE",
+      "runnerUp": "KC",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "HLE",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "KC",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "CFO",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "TES",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "TLAW",
+          "note": ""
+        }
+      ]
+    },
+    "msi|2025": {
+      "champion": "GEN",
+      "runnerUp": "T1",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "GEN",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "T1",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "AL",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "BLG",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "FLY",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "CFO",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "G2",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "MKOI",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "GAM",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "FUR",
+          "note": ""
+        }
+      ]
+    },
+    "worlds|2025": {
+      "champion": "T1",
+      "runnerUp": "KT",
+      "standings": [
+        {
+          "rank": 1,
+          "team": "T1",
+          "note": "우승"
+        },
+        {
+          "rank": 2,
+          "team": "KT",
+          "note": "준우승"
+        },
+        {
+          "rank": 3,
+          "team": "TES",
+          "note": "3위"
+        },
+        {
+          "rank": 4,
+          "team": "GEN",
+          "note": ""
+        },
+        {
+          "rank": 5,
+          "team": "CFO",
+          "note": ""
+        },
+        {
+          "rank": 6,
+          "team": "AL",
+          "note": ""
+        },
+        {
+          "rank": 7,
+          "team": "HLE",
+          "note": ""
+        },
+        {
+          "rank": 8,
+          "team": "G2",
+          "note": ""
+        },
+        {
+          "rank": 9,
+          "team": "MKOI",
+          "note": ""
+        },
+        {
+          "rank": 10,
+          "team": "BLG",
+          "note": ""
+        },
+        {
+          "rank": 11,
+          "team": "FLY",
+          "note": ""
+        },
+        {
+          "rank": 12,
+          "team": "VKS",
+          "note": ""
+        },
+        {
+          "rank": 13,
+          "team": "TSW",
+          "note": ""
+        },
+        {
+          "rank": 14,
+          "team": "100T",
+          "note": ""
+        },
+        {
+          "rank": 15,
+          "team": "FNC",
+          "note": ""
+        },
+        {
+          "rank": 16,
+          "team": "PSG",
+          "note": ""
+        },
+        {
+          "rank": 17,
+          "team": "IG",
+          "note": ""
+        }
+      ]
+    }
+  }
+}

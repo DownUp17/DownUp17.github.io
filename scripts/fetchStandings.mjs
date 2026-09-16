@@ -952,7 +952,9 @@ async function buildSplit(leagueId, slug) {
   if (!finalRows.length) {
     finalRows = [];
     const seen = new Set();
-    for (const b of brackets) for (const r of b.bracket.rounds) for (const m of r.matches) for (const slot of [m.a, m.b]) {
+    // rounds/sections 구조 모두에서 매치 추출
+    const brMatches = (br) => (Array.isArray(br?.sections) ? br.sections.flatMap((s) => s.rounds || []) : (br?.rounds || [])).flatMap((r) => r.matches || []);
+    for (const b of brackets) for (const m of brMatches(b.bracket)) for (const slot of [m.a, m.b]) {
       if (slot?.short && !seen.has(slot.short)) { seen.add(slot.short); finalRows.push({ rank: finalRows.length + 1, team: slot.short, w: 0, l: 0 }); }
     }
   }
@@ -2202,8 +2204,8 @@ try {
         const outcome = (m) => winnerOf(m);
         const setSlot = (slot, short, seed) => { if (slot) { slot.seed = seed; if (short && !slot.short) slot.short = short; } };
         // 1R 팀 시드 배치 (경기 결과의 short가 이미 있으면 유지)
-        if (m1) { setSlot(m1.a, s1, `챔프포인트 2위`); setSlot(m1.b, s2, `챔프포인트 3위`); m1.title = '1라운드 M1'; }
-        if (m2) { setSlot(m2.a, s3, `챔프포인트 4위`); setSlot(m2.b, s4, `챔프포인트 5위`); m2.title = '1라운드 M2'; }
+        if (m1) { setSlot(m1.a, s1, `포인트 2위`); setSlot(m1.b, s2, `포인트 3위`); m1.title = '1라운드 M1'; }
+        if (m2) { setSlot(m2.a, s3, `포인트 4위`); setSlot(m2.b, s4, `포인트 5위`); m2.title = '1라운드 M2'; }
         // 2R 슬롯: 1R M1 패자 vs 1R M2 승자
         if (r2) {
           r2.title = '2라운드';
@@ -2485,6 +2487,50 @@ data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
 fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 console.log('lolStandings.json 갱신 완료');
+
+// ── 2025 과거 에디션 최종순위 (lolesports API) ─────────────────────────────
+//   과거 연도는 정적이므로 lolPastEditions.json 에 1회 생성 후 캐시(이미 있으면 생략).
+//   KeSPA CUP·ASI·Demacia Cup·AG는 API에 없어 제외. LCS/CBLOL 2025는 LTA North/South로 매핑.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  let past = { updatedAt: '', editions: {}, results: {} };
+  try { past = JSON.parse(fs.readFileSync(pastFile, 'utf8')); } catch { /* 최초 생성 */ }
+  const has2025 = Object.keys(past.results || {}).some((k) => k.includes('|2025'));
+  if (!has2025) {
+    const CFG = [
+      { key: 'lck', league: '98767991310872058', subs: [['Cup', 'lck_cup_2025'], ['Split 2', 'lck_split_2_2025'], ['Split 3', 'lck_split_3_2025']] },
+      { key: 'lpl', league: '98767991314006698', subs: [['Split 1', 'lpl_split_1_2025'], ['Split 2', 'lpl_split_2_2025'], ['Split 3', 'lpl_split_3_2025']] },
+      { key: 'lec', league: '98767991302996019', subs: [['Winter', 'lec_winter_2025'], ['Spring', 'lec_spring_2025'], ['Summer', 'lec_summer_2025']] },
+      { key: 'lcp', league: '113476371197627891', subs: [['Split 1', 'lcp_split_1_2025'], ['Split 2', 'lcp_split_2_2025'], ['Split 3', 'lcp_split_3_2025']] },
+      { key: 'lcs', league: '113470291645289904', subs: [['Split 1', 'lta_n_split_1_2025'], ['Split 2', 'lta_n_split_2_2025'], ['Split 3', 'lta_n_split_3_2025']] }, // LTA North
+      { key: 'cblol', league: '113475181634818701', subs: [['Split 1', 'lta_s_split_1_2025'], ['Split 2', 'lta_s_split_2_2025'], ['Split 3', 'lta_s_split_3_2025']] }, // LTA South
+      { key: 'fst', league: '113464388705111224', single: 'first_stand_2025' },
+      { key: 'msi', league: '98767991325878492', single: 'msi_2025' },
+      { key: 'worlds', league: '98767975604431411', single: 'worlds_2025' },
+    ];
+    const results = {}, editions = {};
+    const toResult = (fsArr) => ({ champion: fsArr[0]?.team || null, runnerUp: fsArr[1]?.team || null, standings: fsArr });
+    for (const c of CFG) {
+      if (c.single) {
+        try { const s = await buildSplit(c.league, c.single); if (s?.finalStandings?.length) results[`${c.key}|2025`] = toResult(s.finalStandings); }
+        catch (e) { console.warn(`2025 ${c.key} 실패: ${e.message}`); }
+        editions[`${c.key}|2025`] = {};
+      } else {
+        const subs = [];
+        for (const [label, slug] of c.subs) {
+          try { const s = await buildSplit(c.league, slug); if (s?.finalStandings?.length) { results[`${c.key}|2025|${label}`] = toResult(s.finalStandings); subs.push(label); } }
+          catch (e) { console.warn(`2025 ${c.key} ${label} 실패: ${e.message}`); }
+        }
+        if (subs.length) editions[`${c.key}|2025`] = { subevents: subs };
+      }
+    }
+    past = { updatedAt: data.updatedAt, editions: { ...(past.editions || {}), ...editions }, results: { ...(past.results || {}), ...results } };
+    fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+    console.log(`2025 과거 에디션 생성: ${Object.keys(results).length}개 대회 최종순위`);
+  } else {
+    console.log('2025 과거 에디션: 이미 존재 → 생략');
+  }
+}
 
 // ── 팀별 우승 경력 자동 산출 ──────────────────────────────────────────────
 //   앱이 추적하는 2026 대회의 우승팀(finalStandings 1위 · champion)을 모아 팀 상세 페이지용 lolTitles.json 생성.
