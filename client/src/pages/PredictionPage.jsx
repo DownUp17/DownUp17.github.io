@@ -19,6 +19,9 @@ import ltaSulLogo from '../assets/lta-sul.svg';
 import ltaLogo from '../assets/lta.svg';
 import drxLogo from '../assets/drx.svg';
 import gengSimpleLogo from '../assets/geng-simple.svg';
+import dnFreecsLogo from '../assets/dn-freecs.svg';
+import fpxLogo from '../assets/fpx.svg';
+import rngLogo from '../assets/rng.svg';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -57,10 +60,14 @@ const GroupSymbol = ({ group, size = 16 }) => (
 );
 
 // 팀 short → 로고 / 풀네임
-const logoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
-const nameByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name]));
+// GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo };
+const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
+const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up' };
+const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
-const knownTeam = (short) => short != null && logoByShort[short] != null;
+const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
 // AG 참가국 → ISO 3166-1 alpha-2 (flagcdn 국기 이미지용)
 const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', HKG: 'hk', SAU: 'sa', IND: 'in', UAE: 'ae', MYS: 'my' };
 
@@ -69,6 +76,13 @@ const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', HKG: 'hk', SAU: 'sa', IND: 'i
 const LCKCUP_TEAM_OVERRIDE = {
   KRX: { tag: 'DRX', name: 'DRX', logo: drxLogo },
   GEN: { logo: gengSimpleLogo },
+};
+// 2025 팀 표기(2026과 다른 부분): KRX→DRX, GEN 옛 로고, DNS→DN FREECS(DNF).
+const TEAM_OVERRIDE_2025 = {
+  KRX: { tag: 'DRX', name: 'DRX', logo: drxLogo },
+  GEN: { logo: gengSimpleLogo },
+  DNS: { tag: 'DNF', name: 'DN FREECS', logo: dnFreecsLogo },
+  WBG: { name: 'Weibo Gaming TapTap' },
 };
 // 팀 short → GPR 점수 (대진 확정·미진행 경기의 승부예측에 사용)
 const gprScoreByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.score]));
@@ -2098,14 +2112,14 @@ const pastSplitStagesFromData = (d) => {
   if (d.finalStandings?.length) stages.push('최종 순위');
   return stages.length ? stages : null;
 };
-const PastSplitView = ({ comp, data, stage, onTeamClick }) => {
+const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverrideProp }) => {
   if (!data) return <NotReady comp={comp} />;
   const rows = data.rows || [];
   const grouped = rows.some((r) => r.group);
   const regLabel = grouped ? '그룹 순위' : '정규시즌';
   const groupNames = grouped ? [...new Set(rows.map((r) => r.group))] : [null];
   const bracketForStage = (data.brackets || []).find((b) => (b.bracket?.rounds?.length || b.bracket?.sections?.length) && bracketLabel(b) === stage);
-  const teamOverride = PAST_TEAM_OVERRIDE[comp.key];
+  const teamOverride = teamOverrideProp || PAST_TEAM_OVERRIDE[comp.key];
 
   return (
     <div className="flex flex-col gap-8">
@@ -2357,12 +2371,22 @@ const PredictionPage = () => {
   const subDetail = comp && activeSub && isCurrentYear ? SUBTAB_DETAIL[`${comp.key}|${activeSub}`] : null;
   // 상세 헤더 로고·상징색: 현재 연도는 서브탭 오버라이드, 과거 연도는 연도별 오버라이드(예: 2025 LTA)
   const pastDetailRaw = comp && !isCurrentYear ? PAST_DETAIL[`${comp.key}|${activeYear}`] : null;
-  const pastDetail = pastDetailRaw ? { ...pastDetailRaw, ...(pastDetailRaw.bySub?.[activeSub] || {}), tint: true } : null;
+  const pastDetail = pastDetailRaw ? { ...pastDetailRaw, ...(pastDetailRaw.bySub?.[activeSub] || {}) } : null;
   const headerDetail = subDetail || pastDetail;
 
   // 과거 연도 전체 데이터(순위표·대진·최종순위). 단일 대회는 sub=null.
   const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub, activeYear) : null;
   const pastFull = !isCurrentYear && !!pastData;
+  // 2025 팀 표기 오버라이드: KRX→DRX(명칭·로고), GEN→옛 로고, DNS→DN FREECS. + LPL Split 1·2는 BLG→풀네임.
+  const pastTeamOverride = (() => {
+    if (activeYear !== 2025) return undefined;
+    const ov = { ...TEAM_OVERRIDE_2025 };
+    if (comp?.key === 'lpl') {
+      if (activeSub === 'Split 1' || activeSub === 'Split 2') ov.BLG = { name: 'Bilibili Gaming DreamSmart' };
+      if (activeSub === 'Split 1') ov.JDG = { name: 'JDG Intel Esports' };
+    }
+    return ov;
+  })();
 
   // 제목 접미사: 리그명이 sub에 중복되면 제거 (예: LPL+'Split 2' → "Split 2")
   const subSuffix = (() => {
@@ -2582,7 +2606,7 @@ const PredictionPage = () => {
 
               {!isCurrentYear ? (
                 pastFull ? (
-                  <PastSplitView comp={comp} data={pastData} stage={activeStage} onTeamClick={handleTeamClick} />
+                  <PastSplitView comp={comp} data={pastData} stage={activeStage} onTeamClick={handleTeamClick} teamOverride={pastTeamOverride} />
                 ) : (
                   <div className="py-16 text-center border-2 border-dashed border-white/10 rounded-3xl">
                     <Hourglass size={28} className="mx-auto text-white/30 mb-3" />
