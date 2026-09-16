@@ -938,7 +938,9 @@ async function buildSplit(leagueId, slug) {
     const cols = (s.sections || []).flatMap((sec) => sec.columns || []);
     if (!cols.length) continue;
     let b = fixDropElim(bracketFromColumns(cols));
-    if (/knights/i.test(s.slug)) b = knightsLayout(b); // 기사의 길: 1·2R 한 컬럼
+    // 기사의 길(1·2R 한 컬럼) 레이아웃은 실제 사다리(2·3라운드 존재)일 때만. 단일 컬럼 다경기(2025 Knights Rivals 등)는 기본 배치 유지.
+    const isKnightLadder = /knights/i.test(s.slug) && (b.rounds || []).flatMap((r) => r.matches).some((m) => /2라운드|2R|3라운드|3R/i.test(m.title || ''));
+    if (isKnightLadder) b = knightsLayout(b);
     else if (s.slug === 'playoffs') {
       const cnt = (re) => (b.rounds || []).flatMap((r) => r.matches).filter((m) => re.test(m.title || '')).length;
       if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)
@@ -2498,7 +2500,8 @@ console.log('lolStandings.json 갱신 완료');
   const has2025 = past.standings && past.standings['2025'];
   if (!has2025) {
     const CFG = [
-      { key: 'lck', league: '98767991310872058', subs: [['Cup', 'lck_cup_2025'], ['Split 2', 'lck_split_2_2025'], ['Split 3', 'lck_split_3_2025']] },
+      // LCK는 2026과 동일 포맷: LCK CUP(컵) · LCK(본선=split_3) · Road to MSI(split_2: 정규+MSI로 가는 길)
+      { key: 'lck', league: '98767991310872058', subs: [['LCK CUP', 'lck_cup_2025'], ['LCK', 'lck_split_3_2025'], ['Road to MSI', 'lck_split_2_2025']] },
       { key: 'lpl', league: '98767991314006698', subs: [['Split 1', 'lpl_split_1_2025'], ['Split 2', 'lpl_split_2_2025'], ['Split 3', 'lpl_split_3_2025']] },
       { key: 'lec', league: '98767991302996019', subs: [['Winter', 'lec_winter_2025'], ['Spring', 'lec_spring_2025'], ['Summer', 'lec_summer_2025']] },
       { key: 'lcp', league: '113476371197627891', subs: [['Split 1', 'lcp_split_1_2025'], ['Split 2', 'lcp_split_2_2025'], ['Split 3', 'lcp_split_3_2025']] },
@@ -2520,6 +2523,16 @@ console.log('lolStandings.json 갱신 완료');
         for (const [label, slug] of c.subs) {
           try { const s = await buildSplit(c.league, slug); if (s) { byS[label] = pick(s); labels.push(label); } }
           catch (e) { console.warn(`2025 ${c.key} ${label} 실패: ${e.message}`); }
+        }
+        // LPL: Split 3에 포함된 '대표 선발전'(regional_qualifier)을 2026처럼 별도 서브탭으로 분리.
+        if (c.key === 'lpl' && byS['Split 3']) {
+          const s3 = byS['Split 3'];
+          const rq = (s3.brackets || []).filter((b) => b.slug === 'regional_qualifier');
+          if (rq.length) {
+            s3.brackets = s3.brackets.filter((b) => b.slug !== 'regional_qualifier');
+            byS['대표 선발전'] = { name: '대표 선발전', rows: [], brackets: rq, finalStandings: [] };
+            labels.push('대표 선발전');
+          }
         }
         if (labels.length) { std2025[c.key] = byS; subs2025[c.key] = labels; }
       }

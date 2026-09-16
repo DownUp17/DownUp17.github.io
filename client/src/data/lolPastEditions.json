@@ -3,14 +3,15 @@
   "subtabs": {
     "2025": {
       "lck": [
-        "Cup",
-        "Split 2",
-        "Split 3"
+        "LCK CUP",
+        "LCK",
+        "Road to MSI"
       ],
       "lpl": [
         "Split 1",
         "Split 2",
-        "Split 3"
+        "Split 3",
+        "대표 선발전"
       ],
       "lec": [
         "Winter",
@@ -37,7 +38,7 @@
   "standings": {
     "2025": {
       "lck": {
-        "Cup": {
+        "LCK CUP": {
           "name": "LCK Cup 2025",
           "rows": [
             {
@@ -525,272 +526,7 @@
             }
           ]
         },
-        "Split 2": {
-          "name": "2025 스플릿 2",
-          "rows": [
-            {
-              "rank": 1,
-              "team": "GEN",
-              "w": 18,
-              "l": 0
-            },
-            {
-              "rank": 2,
-              "team": "HLE",
-              "w": 14,
-              "l": 4
-            },
-            {
-              "rank": 3,
-              "team": "T1",
-              "w": 11,
-              "l": 7
-            },
-            {
-              "rank": 4,
-              "team": "NS",
-              "w": 10,
-              "l": 8
-            },
-            {
-              "rank": 5,
-              "team": "KT",
-              "w": 11,
-              "l": 8
-            },
-            {
-              "rank": 6,
-              "team": "DK",
-              "w": 10,
-              "l": 9
-            },
-            {
-              "rank": 7,
-              "team": "BFX",
-              "w": 6,
-              "l": 12
-            },
-            {
-              "rank": 8,
-              "team": "BRO",
-              "w": 5,
-              "l": 13
-            },
-            {
-              "rank": 9,
-              "team": "KRX",
-              "w": 5,
-              "l": 13
-            },
-            {
-              "rank": 10,
-              "team": "DNS",
-              "w": 1,
-              "l": 17
-            }
-          ],
-          "brackets": [
-            {
-              "slug": "road_to_msi",
-              "name": "MSI로 가는 길",
-              "bracket": {
-                "rounds": [
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113503303285384349",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "2위",
-                          "short": "HLE",
-                          "score": 2
-                        },
-                        "b": {
-                          "seed": "1위",
-                          "short": "GEN",
-                          "score": 3,
-                          "msi": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113503303285384355",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "6위",
-                          "short": "DK",
-                          "score": 0,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "5위",
-                          "short": "KT",
-                          "score": 3,
-                          "win": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113503303285384361",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "2라운드 승자",
-                          "short": "KT",
-                          "score": 3,
-                          "win": true
-                        },
-                        "b": {
-                          "seed": "4위",
-                          "short": "NS",
-                          "score": 0,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113503303285449903",
-                        "title": "4라운드",
-                        "a": {
-                          "seed": "3라운드 승자",
-                          "short": "KT",
-                          "score": 1,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "3위",
-                          "short": "T1",
-                          "score": 3,
-                          "win": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113503303285449909",
-                        "title": "5라운드",
-                        "a": {
-                          "seed": "4라운드 승자",
-                          "short": "T1",
-                          "score": 3,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "1라운드 패자",
-                          "short": "HLE",
-                          "score": 0,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  }
-                ],
-                "connectors": [
-                  [
-                    1,
-                    0,
-                    "mid",
-                    2,
-                    0,
-                    "a"
-                  ],
-                  [
-                    2,
-                    0,
-                    "mid",
-                    3,
-                    0,
-                    "a"
-                  ],
-                  [
-                    3,
-                    0,
-                    "mid",
-                    4,
-                    0,
-                    "a"
-                  ],
-                  [
-                    0,
-                    0,
-                    "mid",
-                    4,
-                    0,
-                    "b"
-                  ]
-                ]
-              }
-            }
-          ],
-          "finalStandings": [
-            {
-              "rank": 1,
-              "team": "T1",
-              "note": "우승"
-            },
-            {
-              "rank": 2,
-              "team": "HLE",
-              "note": "준우승"
-            },
-            {
-              "rank": 3,
-              "team": "KT",
-              "note": "3위"
-            },
-            {
-              "rank": 4,
-              "team": "NS",
-              "note": ""
-            },
-            {
-              "rank": 5,
-              "team": "DK",
-              "note": ""
-            },
-            {
-              "rank": 6,
-              "team": "GEN",
-              "note": ""
-            },
-            {
-              "rank": 7,
-              "team": "BFX",
-              "note": ""
-            },
-            {
-              "rank": 8,
-              "team": "BRO",
-              "note": ""
-            },
-            {
-              "rank": 9,
-              "team": "KRX",
-              "note": ""
-            },
-            {
-              "rank": 10,
-              "team": "DNS",
-              "note": ""
-            }
-          ]
-        },
-        "Split 3": {
+        "LCK": {
           "name": "2025 스플릿 3",
           "rows": [
             {
@@ -1343,6 +1079,271 @@
             {
               "rank": 7,
               "team": "NS",
+              "note": ""
+            },
+            {
+              "rank": 8,
+              "team": "BRO",
+              "note": ""
+            },
+            {
+              "rank": 9,
+              "team": "KRX",
+              "note": ""
+            },
+            {
+              "rank": 10,
+              "team": "DNS",
+              "note": ""
+            }
+          ]
+        },
+        "Road to MSI": {
+          "name": "2025 스플릿 2",
+          "rows": [
+            {
+              "rank": 1,
+              "team": "GEN",
+              "w": 18,
+              "l": 0
+            },
+            {
+              "rank": 2,
+              "team": "HLE",
+              "w": 14,
+              "l": 4
+            },
+            {
+              "rank": 3,
+              "team": "T1",
+              "w": 11,
+              "l": 7
+            },
+            {
+              "rank": 4,
+              "team": "NS",
+              "w": 10,
+              "l": 8
+            },
+            {
+              "rank": 5,
+              "team": "KT",
+              "w": 11,
+              "l": 8
+            },
+            {
+              "rank": 6,
+              "team": "DK",
+              "w": 10,
+              "l": 9
+            },
+            {
+              "rank": 7,
+              "team": "BFX",
+              "w": 6,
+              "l": 12
+            },
+            {
+              "rank": 8,
+              "team": "BRO",
+              "w": 5,
+              "l": 13
+            },
+            {
+              "rank": 9,
+              "team": "KRX",
+              "w": 5,
+              "l": 13
+            },
+            {
+              "rank": 10,
+              "team": "DNS",
+              "w": 1,
+              "l": 17
+            }
+          ],
+          "brackets": [
+            {
+              "slug": "road_to_msi",
+              "name": "MSI로 가는 길",
+              "bracket": {
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "id": "113503303285384349",
+                        "title": "1라운드",
+                        "a": {
+                          "seed": "2위",
+                          "short": "HLE",
+                          "score": 2
+                        },
+                        "b": {
+                          "seed": "1위",
+                          "short": "GEN",
+                          "score": 3,
+                          "msi": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "id": "113503303285384355",
+                        "title": "2라운드",
+                        "a": {
+                          "seed": "6위",
+                          "short": "DK",
+                          "score": 0,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "5위",
+                          "short": "KT",
+                          "score": 3,
+                          "win": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "id": "113503303285384361",
+                        "title": "3라운드",
+                        "a": {
+                          "seed": "2라운드 승자",
+                          "short": "KT",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "4위",
+                          "short": "NS",
+                          "score": 0,
+                          "elim": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "id": "113503303285449903",
+                        "title": "4라운드",
+                        "a": {
+                          "seed": "3라운드 승자",
+                          "short": "KT",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "3위",
+                          "short": "T1",
+                          "score": 3,
+                          "win": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "id": "113503303285449909",
+                        "title": "5라운드",
+                        "a": {
+                          "seed": "4라운드 승자",
+                          "short": "T1",
+                          "score": 3,
+                          "msi": true
+                        },
+                        "b": {
+                          "seed": "1라운드 패자",
+                          "short": "HLE",
+                          "score": 0,
+                          "elim": true
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    1,
+                    0,
+                    "mid",
+                    2,
+                    0,
+                    "a"
+                  ],
+                  [
+                    2,
+                    0,
+                    "mid",
+                    3,
+                    0,
+                    "a"
+                  ],
+                  [
+                    3,
+                    0,
+                    "mid",
+                    4,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    0,
+                    "mid",
+                    4,
+                    0,
+                    "b"
+                  ]
+                ]
+              }
+            }
+          ],
+          "finalStandings": [
+            {
+              "rank": 1,
+              "team": "T1",
+              "note": "우승"
+            },
+            {
+              "rank": 2,
+              "team": "HLE",
+              "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "KT",
+              "note": "3위"
+            },
+            {
+              "rank": 4,
+              "team": "NS",
+              "note": ""
+            },
+            {
+              "rank": 5,
+              "team": "DK",
+              "note": ""
+            },
+            {
+              "rank": 6,
+              "team": "GEN",
+              "note": ""
+            },
+            {
+              "rank": 7,
+              "team": "BFX",
               "note": ""
             },
             {
@@ -2129,7 +2130,6 @@
               "slug": "playoff_play_in_knights_rival",
               "name": "플레이오프 플레이-인: Knights Rivals",
               "bracket": {
-                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -2148,8 +2148,7 @@
                           "short": "IG",
                           "score": 3,
                           "msi": true
-                        },
-                        "startRow": 0
+                        }
                       },
                       {
                         "id": "114278164472093039",
@@ -2165,8 +2164,7 @@
                           "short": "FPX",
                           "score": 3,
                           "msi": true
-                        },
-                        "startRow": 2
+                        }
                       },
                       {
                         "id": "114278164472093045",
@@ -2182,8 +2180,7 @@
                           "short": "WE",
                           "score": 3,
                           "msi": true
-                        },
-                        "startRow": 2
+                        }
                       },
                       {
                         "id": "114278164472093051",
@@ -2199,14 +2196,9 @@
                           "short": "WBG",
                           "score": 3,
                           "msi": true
-                        },
-                        "startRow": 2
+                        }
                       }
                     ]
-                  },
-                  {
-                    "title": "",
-                    "matches": []
                   }
                 ],
                 "connectors": []
@@ -2885,7 +2877,6 @@
               "slug": "playoff_play_in_knights_rival",
               "name": "플레이오프 플레이-인: Knights Rivals",
               "bracket": {
-                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -2904,8 +2895,7 @@
                           "short": "FPX",
                           "score": 2,
                           "elim": true
-                        },
-                        "startRow": 0
+                        }
                       },
                       {
                         "id": "114692101032635987",
@@ -2921,8 +2911,7 @@
                           "short": "WE",
                           "score": 1,
                           "elim": true
-                        },
-                        "startRow": 2
+                        }
                       },
                       {
                         "id": "114692101032635993",
@@ -2938,8 +2927,7 @@
                           "short": "WBG",
                           "score": 3,
                           "msi": true
-                        },
-                        "startRow": 2
+                        }
                       },
                       {
                         "id": "114692101032635999",
@@ -2955,14 +2943,9 @@
                           "short": "JDG",
                           "score": 3,
                           "msi": true
-                        },
-                        "startRow": 2
+                        }
                       }
                     ]
-                  },
-                  {
-                    "title": "",
-                    "matches": []
                   }
                 ],
                 "connectors": []
@@ -3449,7 +3432,85 @@
                   ]
                 ]
               }
+            }
+          ],
+          "finalStandings": [
+            {
+              "rank": 1,
+              "team": "IG",
+              "note": "우승"
             },
+            {
+              "rank": 2,
+              "team": "JDG",
+              "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "TES",
+              "note": "3위"
+            },
+            {
+              "rank": 4,
+              "team": "WBG",
+              "note": ""
+            },
+            {
+              "rank": 5,
+              "team": "BLG",
+              "note": ""
+            },
+            {
+              "rank": 6,
+              "team": "AL",
+              "note": ""
+            },
+            {
+              "rank": 7,
+              "team": "NIP",
+              "note": ""
+            },
+            {
+              "rank": 8,
+              "team": "EDG",
+              "note": ""
+            },
+            {
+              "rank": 9,
+              "team": "LGD",
+              "note": ""
+            },
+            {
+              "rank": 10,
+              "team": "UP",
+              "note": ""
+            },
+            {
+              "rank": 11,
+              "team": "WE",
+              "note": ""
+            },
+            {
+              "rank": 12,
+              "team": "FPX",
+              "note": ""
+            },
+            {
+              "rank": 13,
+              "team": "TT",
+              "note": ""
+            },
+            {
+              "rank": 14,
+              "team": "LNG",
+              "note": ""
+            }
+          ]
+        },
+        "대표 선발전": {
+          "name": "대표 선발전",
+          "rows": [],
+          "brackets": [
             {
               "slug": "regional_qualifier",
               "name": "대표 선발전",
@@ -3534,78 +3595,7 @@
               }
             }
           ],
-          "finalStandings": [
-            {
-              "rank": 1,
-              "team": "IG",
-              "note": "우승"
-            },
-            {
-              "rank": 2,
-              "team": "JDG",
-              "note": "준우승"
-            },
-            {
-              "rank": 3,
-              "team": "TES",
-              "note": "3위"
-            },
-            {
-              "rank": 4,
-              "team": "WBG",
-              "note": ""
-            },
-            {
-              "rank": 5,
-              "team": "BLG",
-              "note": ""
-            },
-            {
-              "rank": 6,
-              "team": "AL",
-              "note": ""
-            },
-            {
-              "rank": 7,
-              "team": "NIP",
-              "note": ""
-            },
-            {
-              "rank": 8,
-              "team": "EDG",
-              "note": ""
-            },
-            {
-              "rank": 9,
-              "team": "LGD",
-              "note": ""
-            },
-            {
-              "rank": 10,
-              "team": "UP",
-              "note": ""
-            },
-            {
-              "rank": 11,
-              "team": "WE",
-              "note": ""
-            },
-            {
-              "rank": 12,
-              "team": "FPX",
-              "note": ""
-            },
-            {
-              "rank": 13,
-              "team": "TT",
-              "note": ""
-            },
-            {
-              "rank": 14,
-              "team": "LNG",
-              "note": ""
-            }
-          ]
+          "finalStandings": []
         }
       },
       "lec": {

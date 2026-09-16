@@ -2381,11 +2381,13 @@ const PredictionPage = () => {
     : null;
   const showStages = !!stageList;
   const effFinished = !!(comp && (subStatus || comp.status) === 'finished');
-  const defaultStage = (comp && (
+  const rawDefaultStage = comp && (
     (pastFull || isPastSplit) ? '최종 순위'
       : (effFinished && Array.isArray(stageList) && stageList.includes('최종 순위')) ? '최종 순위'
         : (STAGE_DEFAULT[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_DEFAULT[comp.key]))
-  )) || (stageList ? stageList[0] : null);
+  );
+  // 기본 스테이지가 실제 목록에 없으면 첫 스테이지로 (예: 최종순위 없는 대표 선발전)
+  const defaultStage = (rawDefaultStage && stageList?.includes(rawDefaultStage)) ? rawDefaultStage : (stageList ? stageList[0] : null);
   const activeStage = showStages
     ? (stageList.includes(searchParams.get('stage')) ? searchParams.get('stage') : defaultStage)
     : null;
