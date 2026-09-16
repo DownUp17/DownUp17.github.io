@@ -2086,8 +2086,8 @@ const bracketLabel = (b) => {
   return b.name || '대진';
 };
 // 과거 스플릿의 스테이지 탭 목록(정규/그룹 → 각 대진 → 최종 순위)
-const pastSplitStages = (key, sub) => {
-  const d = sub ? officialStandings.standings[key]?.[sub] : officialStandings.standings[key];
+// 완료된 스플릿의 단계 목록 — 데이터 객체({rows,brackets,finalStandings})에서 산출.
+const pastSplitStagesFromData = (d) => {
   if (!d) return null;
   const stages = [];
   if (d.rows?.length) stages.push(d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌');
@@ -2095,8 +2095,7 @@ const pastSplitStages = (key, sub) => {
   if (d.finalStandings?.length) stages.push('최종 순위');
   return stages.length ? stages : null;
 };
-const PastSplitView = ({ comp, sub, stage, onTeamClick }) => {
-  const data = sub ? officialStandings.standings[comp.key]?.[sub] : officialStandings.standings[comp.key];
+const PastSplitView = ({ comp, data, stage, onTeamClick }) => {
   if (!data) return <NotReady comp={comp} />;
   const rows = data.rows || [];
   const grouped = rows.some((r) => r.group);
@@ -2276,20 +2275,21 @@ const editionYears = (key) => COMP_EDITIONS[key] || [CURRENT_YEAR];
 // 과거 연도 결과: `${key}|${year}` → { finalResult: { champion, runnerUp, standings:[{rank,team,note}] } }
 // 여기에 항목을 추가하면 해당 연도 선택 시 ResultView 로 최종 순위가 자동 표시된다.
 // 예) 'worlds|2025': { finalResult: { champion: 'T1', runnerUp: 'BLG', standings: [{ rank: 1, team: 'T1' }] } },
-// 과거 에디션 결과 — lolPastEditions.json(API로 생성)에서 로드. `${key}|${year}[|${event}]` → { finalResult }.
-const PAST_EDITIONS = Object.fromEntries(
-  Object.entries(pastEditionsData.results || {}).map(([k, v]) => [k, { finalResult: v }])
-);
-// 특정 대회·연도에 세부 대회 선택(연도 오른쪽 드롭다운). DCGI 2025 = ASI / Demacia Cup(합쳐지기 전 두 대회).
-//   + 생성된 2025 리그 세부대회(스플릿 등)를 자동 병합.
-const YEAR_SUBEVENTS = {
-  'demacia|2025': ['ASI', 'Demacia Cup'],
-  ...Object.fromEntries(
-    Object.entries(pastEditionsData.editions || {})
-      .filter(([, v]) => Array.isArray(v.subevents) && v.subevents.length)
-      .map(([k, v]) => [k, v.subevents])
-  ),
+// 과거 연도 전체 데이터(순위표·대진·최종순위) — lolPastEditions.json(API로 생성).
+// 연도 → 리그 → (서브탭 있으면) 서브탭별 데이터 / (없으면) 단일 데이터.
+const PAST_STANDINGS = pastEditionsData.standings || {};
+const PAST_SUBTABS = pastEditionsData.subtabs || {};
+// 과거 연도의 리그 서브탭 목록(없으면 단일 대회).
+const pastSubTabs = (key, year) => PAST_SUBTABS[String(year)]?.[key] || null;
+// 과거 연도의 리그 데이터 해석. 서브탭이 있으면 sub별, 없으면 단일.
+const resolvePastData = (key, sub, year) => {
+  const lg = PAST_STANDINGS[String(year)]?.[key];
+  if (!lg) return null;
+  return sub ? lg[sub] : lg;
 };
+// 연도 옆 '대회 선택'(통합/분리 시 사용) — 사용자가 켜라고 하기 전까지 비활성.
+const YEAR_SUBEVENTS = {};
+const SUBEVENTS_ENABLED = false;
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
@@ -2321,20 +2321,37 @@ const PredictionPage = () => {
 
   const isGpr = activeKey === 'gpr';
   const comp = useMemo(() => comps.find((c) => c.key === activeKey), [comps, activeKey]);
-  const subTabs = comp ? SUBTABS[comp.key] : null;
+  // 대회 연도(에디션) 선택 — 서브탭/데이터 해석보다 먼저 필요. `?year=` 로 유지(현재 연도는 생략)
+  const years = comp ? editionYears(comp.key) : [CURRENT_YEAR];
+  const yearParam = Number(searchParams.get('year'));
+  const activeYear = years.includes(yearParam) ? yearParam : CURRENT_YEAR;
+  const isCurrentYear = activeYear === CURRENT_YEAR;
+  const setActiveYear = (y) =>
+    setSearchParams((p) => {
+      const n = new URLSearchParams(p);
+      if (y === CURRENT_YEAR) n.delete('year'); else n.set('year', String(y));
+      n.delete('sub'); n.delete('stage'); // 연도마다 서브탭 구성이 달라 초기화
+      return n;
+    }, { replace: true });
+
+  // 서브탭 — 연도별. 현재 연도는 SUBTABS, 과거 연도는 생성된 목록(없으면 단일 대회).
+  const subTabs = comp ? (isCurrentYear ? SUBTABS[comp.key] : pastSubTabs(comp.key, activeYear)) : null;
   const subParam = searchParams.get('sub');
-  const activeSub = subTabs
-    ? (subParam && subTabs.includes(subParam) ? subParam : (SUBTAB_DEFAULT[comp.key] || subTabs[0]))
-    : null;
-  const setActiveSub = (s) => setSearchParams({ sub: s }, { replace: true });
-  const subUpcoming = !!(comp && activeSub && SUB_UPCOMING[comp.key]?.includes(activeSub));
-  // 세부 대회별 상태 오버라이드가 있으면 리그 전체 상태(comp.status) 대신 그 값으로 배지를 표시
-  const subStatus = comp && activeSub ? SUB_STATUS[`${comp.key}|${activeSub}`] : null;
+  const defaultSub = comp && subTabs ? (isCurrentYear ? (SUBTAB_DEFAULT[comp.key] || subTabs[0]) : subTabs[0]) : null;
+  const activeSub = subTabs ? (subParam && subTabs.includes(subParam) ? subParam : defaultSub) : null;
+  const setActiveSub = (s) => setSearchParams((p) => { const n = new URLSearchParams(p); n.set('sub', s); n.delete('stage'); return n; }, { replace: true });
+  const subUpcoming = !!(comp && activeSub && isCurrentYear && SUB_UPCOMING[comp.key]?.includes(activeSub));
+  // 세부 대회별 상태 오버라이드(현재 연도만). 과거 연도는 '종료'.
+  const subStatus = comp && activeSub && isCurrentYear ? SUB_STATUS[`${comp.key}|${activeSub}`] : null;
   const st = comp ? (statusMeta[subStatus || comp.status] || statusMeta.upcoming) : null;
-  // 서브탭별 상세 헤더 오버라이드(로고·상징색)
-  const subDetail = comp && activeSub ? SUBTAB_DETAIL[`${comp.key}|${activeSub}`] : null;
-  // 제목 접미사: 점(·) 없이 공백으로 이어붙이되, 리그명이 sub에 중복되면 제거
-  // 예) LPL+'Split 2' → "Split 2", LCK+'LCK' → "", LCK+'LCK CUP' → "CUP"
+  // 서브탭별 상세 헤더 오버라이드(로고·상징색) — 현재 연도만
+  const subDetail = comp && activeSub && isCurrentYear ? SUBTAB_DETAIL[`${comp.key}|${activeSub}`] : null;
+
+  // 과거 연도 전체 데이터(순위표·대진·최종순위). 단일 대회는 sub=null.
+  const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub, activeYear) : null;
+  const pastFull = !isCurrentYear && !!pastData;
+
+  // 제목 접미사: 리그명이 sub에 중복되면 제거 (예: LPL+'Split 2' → "Split 2")
   const subSuffix = (() => {
     if (!subTabs || !activeSub) return '';
     const lg = comp.name.replace('2026 ', '');
@@ -2342,7 +2359,6 @@ const PredictionPage = () => {
     const t = activeSub.startsWith(lg + ' ') ? activeSub.slice(lg.length + 1) : activeSub;
     return ` ${t}`;
   })();
-  // CBLOL 예외 표기: "CBLOL 2026" 기준, Copa는 앞에 → "Copa CBLOL 2026", 그 외 세부는 뒤에
   const title = (() => {
     if (comp?.key === 'lck' && activeSub === 'KeSPA CUP') return '2026 LoL KeSPA CUP';
     if (comp?.key === 'cblol') {
@@ -2353,18 +2369,20 @@ const PredictionPage = () => {
     }
     return `${comp?.name ?? ''}${subSuffix}`;
   })();
-  // 세부대회 내 단계 선택(LCK→LCK, LPL→Split 3 등)
-  // stage 목록: 서브탭이 있으면 `key|sub`으로, 서브탭이 없는 대회는 key만으로도 조회
-  const isPastComp = comp && comp.key === 'fst'; // 서브탭 없는 종료 대회(대진+최종순위)
-  const isPastSplit = comp && (PAST_SPLIT_SUBS.has(`${comp.key}|${activeSub}`) || isPastComp);
+
+  // 단계(스테이지) 목록 — 과거 연도는 pastData 기반, 현재 연도는 기존 로직.
+  const isPastComp = comp && comp.key === 'fst' && isCurrentYear; // 현재연도 FST(서브탭 없는 종료 대회)
+  const isPastSplit = comp && isCurrentYear && (PAST_SPLIT_SUBS.has(`${comp.key}|${activeSub}`) || isPastComp);
+  const curSplitData = isPastSplit ? (isPastComp ? officialStandings.standings[comp.key] : officialStandings.standings[comp.key]?.[activeSub]) : null;
   const stageList = comp
-    ? (isPastSplit ? pastSplitStages(comp.key, isPastComp ? null : activeSub) : (STAGE_TABS[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_TABS[comp.key])))
+    ? (pastFull ? pastSplitStagesFromData(pastData)
+      : isPastSplit ? pastSplitStagesFromData(curSplitData)
+        : (STAGE_TABS[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_TABS[comp.key])))
     : null;
   const showStages = !!stageList;
-  // 종료된 대회(세부탭 종료 상태)는 최종 순위 단계를 기본으로 노출
   const effFinished = !!(comp && (subStatus || comp.status) === 'finished');
   const defaultStage = (comp && (
-    isPastSplit ? '최종 순위'
+    (pastFull || isPastSplit) ? '최종 순위'
       : (effFinished && Array.isArray(stageList) && stageList.includes('최종 순위')) ? '최종 순위'
         : (STAGE_DEFAULT[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_DEFAULT[comp.key]))
   )) || (stageList ? stageList[0] : null);
@@ -2374,35 +2392,10 @@ const PredictionPage = () => {
   const setActiveStage = (s) =>
     setSearchParams((p) => { const n = new URLSearchParams(p); n.set('stage', s); return n; }, { replace: true });
 
-  // 대회 연도(에디션) 선택 — 대회명 오른쪽 드롭다운. `?year=` 로 유지(현재 연도는 파라미터 생략)
-  const years = comp ? editionYears(comp.key) : [CURRENT_YEAR];
-  const yearParam = Number(searchParams.get('year'));
-  const activeYear = years.includes(yearParam) ? yearParam : CURRENT_YEAR;
-  const isCurrentYear = activeYear === CURRENT_YEAR;
-  const setActiveYear = (y) =>
-    setSearchParams((p) => {
-      const n = new URLSearchParams(p);
-      if (y === CURRENT_YEAR) n.delete('year'); else n.set('year', String(y));
-      return n;
-    }, { replace: true });
-  // 특정 대회·연도의 세부 대회 선택(예: DCGI 2025 = ASI / Demacia Cup) — 연도 오른쪽 드롭다운
-  const subEvents = comp && !isCurrentYear ? YEAR_SUBEVENTS[`${comp.key}|${activeYear}`] : null;
-  const eventParam = searchParams.get('event');
-  const activeEvent = subEvents ? (subEvents.includes(eventParam) ? eventParam : subEvents[0]) : null;
-  const setActiveEvent = (e) =>
-    setSearchParams((p) => { const n = new URLSearchParams(p); n.set('event', e); return n; }, { replace: true });
-  // 과거 연도 결과 데이터(있으면 ResultView, 없으면 준비 중 안내). 세부 대회가 있으면 그 키로 조회.
-  const pastEdition = comp && !isCurrentYear
-    ? PAST_EDITIONS[activeEvent ? `${comp.key}|${activeYear}|${activeEvent}` : `${comp.key}|${activeYear}`]
-    : null;
-  // 과거 연도 선택 시 제목의 연도 토큰을 교체(예: "2026 LCK" → "2024 LCK")
-  const displayTitle = isCurrentYear
-    ? title
-    : activeEvent
-      ? (SUBEVENT_NAMES[activeEvent]
-          ? `${activeYear} ${SUBEVENT_NAMES[activeEvent]}`
-          : `${(comp?.name ?? '').replace(String(CURRENT_YEAR), String(activeYear))} ${activeEvent}`)
-      : (comp?.name ?? '').replace(String(CURRENT_YEAR), String(activeYear));
+  // 연도 옆 '대회 선택'(통합/분리 시 사용) — 현재 비활성.
+  const subEvents = null; const activeEvent = null; const setActiveEvent = () => {};
+
+  const displayTitle = isCurrentYear ? title : title.replace(String(CURRENT_YEAR), String(activeYear));
   // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
   const stDisplay = !isCurrentYear ? statusMeta.finished : st;
 
@@ -2503,8 +2496,8 @@ const PredictionPage = () => {
                 </span>
               </div>
 
-              {/* 세부 대회 선택 (현재 시즌에만; 과거 연도는 최종 결과만 표시) */}
-              {isCurrentYear && subTabs && (
+              {/* 세부 대회(서브탭) 선택 — 현재·과거 연도 모두 */}
+              {subTabs && (
                 <div className="flex flex-wrap gap-2 mb-6">
                   {subTabs.map((s) => {
                     const on = s === activeSub;
@@ -2523,8 +2516,8 @@ const PredictionPage = () => {
                 </div>
               )}
 
-              {/* 단계 선택 (LCK→LCK 전용) */}
-              {isCurrentYear && showStages && (
+              {/* 단계 선택 */}
+              {showStages && (
                 <div className="inline-flex bg-white/5 rounded-xl p-1 mb-6 border border-white/10">
                   {stageList.map((s) => {
                     const on = s === activeStage;
@@ -2544,17 +2537,17 @@ const PredictionPage = () => {
               )}
 
               {!isCurrentYear ? (
-                pastEdition ? (
-                  <ResultView comp={{ ...comp, ...pastEdition }} />
+                pastFull ? (
+                  <PastSplitView comp={comp} data={pastData} stage={activeStage} onTeamClick={handleTeamClick} />
                 ) : (
                   <div className="py-16 text-center border-2 border-dashed border-white/10 rounded-3xl">
                     <Hourglass size={28} className="mx-auto text-white/30 mb-3" />
-                    <p className="text-white/50 font-bold mb-1">{activeYear}{activeEvent ? ` ${activeEvent}` : ''} 결과 준비 중</p>
+                    <p className="text-white/50 font-bold mb-1">{activeYear} 결과 준비 중</p>
                     <p className="text-white/30 text-sm">이전 연도 대회 결과를 곧 게재합니다.</p>
                   </div>
                 )
               ) : isPastSplit ? (
-                <PastSplitView comp={comp} sub={isPastComp ? null : activeSub} stage={activeStage} onTeamClick={handleTeamClick} />
+                <PastSplitView comp={comp} data={curSplitData} stage={activeStage} onTeamClick={handleTeamClick} />
               ) : isContentTbd(comp.key, activeSub) ? (
                 <div className="py-20 text-center border-2 border-dashed border-white/10 rounded-3xl">
                   <Hourglass size={32} className="mx-auto text-white/30 mb-4" />

@@ -2493,9 +2493,9 @@ console.log('lolStandings.json 갱신 완료');
 //   KeSPA CUP·ASI·Demacia Cup·AG는 API에 없어 제외. LCS/CBLOL 2025는 LTA North/South로 매핑.
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
-  let past = { updatedAt: '', editions: {}, results: {} };
+  let past = { updatedAt: '', subtabs: {}, standings: {} };
   try { past = JSON.parse(fs.readFileSync(pastFile, 'utf8')); } catch { /* 최초 생성 */ }
-  const has2025 = Object.keys(past.results || {}).some((k) => k.includes('|2025'));
+  const has2025 = past.standings && past.standings['2025'];
   if (!has2025) {
     const CFG = [
       { key: 'lck', league: '98767991310872058', subs: [['Cup', 'lck_cup_2025'], ['Split 2', 'lck_split_2_2025'], ['Split 3', 'lck_split_3_2025']] },
@@ -2508,25 +2508,30 @@ console.log('lolStandings.json 갱신 완료');
       { key: 'msi', league: '98767991325878492', single: 'msi_2025' },
       { key: 'worlds', league: '98767975604431411', single: 'worlds_2025' },
     ];
-    const results = {}, editions = {};
-    const toResult = (fsArr) => ({ champion: fsArr[0]?.team || null, runnerUp: fsArr[1]?.team || null, standings: fsArr });
+    // 전체 데이터(순위표·대진·최종순위)를 buildSplit 출력 그대로 저장 → 프론트 PastSplitView가 2026처럼 렌더.
+    const pick = (s) => ({ name: s.name, rows: s.rows, brackets: s.brackets, finalStandings: s.finalStandings });
+    const std2025 = {}, subs2025 = {};
     for (const c of CFG) {
       if (c.single) {
-        try { const s = await buildSplit(c.league, c.single); if (s?.finalStandings?.length) results[`${c.key}|2025`] = toResult(s.finalStandings); }
+        try { const s = await buildSplit(c.league, c.single); if (s) std2025[c.key] = pick(s); }
         catch (e) { console.warn(`2025 ${c.key} 실패: ${e.message}`); }
-        editions[`${c.key}|2025`] = {};
       } else {
-        const subs = [];
+        const byS = {}, labels = [];
         for (const [label, slug] of c.subs) {
-          try { const s = await buildSplit(c.league, slug); if (s?.finalStandings?.length) { results[`${c.key}|2025|${label}`] = toResult(s.finalStandings); subs.push(label); } }
+          try { const s = await buildSplit(c.league, slug); if (s) { byS[label] = pick(s); labels.push(label); } }
           catch (e) { console.warn(`2025 ${c.key} ${label} 실패: ${e.message}`); }
         }
-        if (subs.length) editions[`${c.key}|2025`] = { subevents: subs };
+        if (labels.length) { std2025[c.key] = byS; subs2025[c.key] = labels; }
       }
     }
-    past = { updatedAt: data.updatedAt, editions: { ...(past.editions || {}), ...editions }, results: { ...(past.results || {}), ...results } };
+    past = {
+      updatedAt: data.updatedAt,
+      subtabs: { ...(past.subtabs || {}), '2025': subs2025 },
+      standings: { ...(past.standings || {}), '2025': std2025 },
+    };
     fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
-    console.log(`2025 과거 에디션 생성: ${Object.keys(results).length}개 대회 최종순위`);
+    const nComp = Object.keys(std2025).length;
+    console.log(`2025 과거 에디션 생성: ${nComp}개 리그 (전체 순위표·대진·최종순위)`);
   } else {
     console.log('2025 과거 에디션: 이미 존재 → 생략');
   }
