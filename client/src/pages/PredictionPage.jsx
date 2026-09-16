@@ -2490,7 +2490,7 @@ const PredictionPage = () => {
                       const logoColor = lum > 0.22 ? hd.color : '#fff';
                       return (
                         <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: `${hd.color}2e` }}>
-                          <span aria-hidden style={{ width: 24, height: 24, display: 'block', backgroundColor: logoColor, WebkitMaskImage: `url(${hd.logo})`, maskImage: `url(${hd.logo})`, WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center', WebkitMaskSize: 'contain', maskSize: 'contain' }} />
+                          <span aria-hidden style={{ width: 24, height: 24, display: 'block', backgroundColor: logoColor, WebkitMaskImage: `url("${hd.logo}")`, maskImage: `url("${hd.logo}")`, WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center', WebkitMaskSize: 'contain', maskSize: 'contain' }} />
                         </div>
                       );
                     }
