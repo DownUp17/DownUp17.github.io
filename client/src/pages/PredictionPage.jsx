@@ -2383,7 +2383,7 @@ const PredictionPage = () => {
     const ov = { ...TEAM_OVERRIDE_2025 };
     if (comp?.key === 'lpl') {
       if (activeSub === 'Split 1' || activeSub === 'Split 2') ov.BLG = { name: 'Bilibili Gaming DreamSmart' };
-      if (activeSub === 'Split 1') ov.JDG = { name: 'JDG Intel Esports' };
+      if (activeSub === 'Split 1') ov.JDG = { name: 'Beijing JDG Intel Esports' };
     }
     return ov;
   })();
