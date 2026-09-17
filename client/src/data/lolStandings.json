@@ -3740,11 +3740,14 @@
                   "title": "1라운드 M1",
                   "a": {
                     "seed": "포인트 2위",
-                    "short": "TES"
+                    "short": "TES",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "포인트 3위",
-                    "short": "IG"
+                    "short": "IG",
+                    "score": 1
                   },
                   "time": "9/17 (목) 18:00",
                   "startRow": 0
@@ -3772,7 +3775,8 @@
                   "id": "116957100120526836",
                   "title": "2라운드",
                   "a": {
-                    "seed": "1R M1 패자"
+                    "seed": "1R M1 패자",
+                    "short": "IG"
                   },
                   "b": {
                     "seed": "1R M2 승자"
@@ -10219,7 +10223,7 @@
         },
         {
           "seed": "LPL #3",
-          "label": "LPL #3",
+          "short": "TES",
           "stage": "swiss"
         },
         {
