@@ -366,6 +366,25 @@ function knightsLayout(bracket) {
   return fixDropElim({ totalRows: 8, rounds: rounds2, connectors });
 }
 
+// Road to MSI(상위 6팀 사다리) — 2026과 동일한 컴팩트 템플릿(4컬럼·연결선)으로 재배치.
+//   API는 1~5라운드를 5개 컬럼으로 주지만, 3·4라운드를 한 컬럼에 합쳐 2026 모양과 일치시킨다.
+function roadToMsiLayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  const byTitle = {};
+  for (const r of bracket.rounds) for (const m of r.matches) if (m.title) byTitle[m.title] = m;
+  const need = ['1라운드', '2라운드', '3라운드', '4라운드', '5라운드'];
+  if (!need.every((t) => byTitle[t])) return bracket;
+  const cols = [
+    [{ m: byTitle['1라운드'], sr: 4 }],
+    [{ m: byTitle['2라운드'], sr: 3 }],
+    [{ m: byTitle['3라운드'], sr: 0 }, { m: byTitle['4라운드'], sr: 2 }],
+    [{ m: byTitle['5라운드'], sr: 1 }],
+  ];
+  const rounds = cols.map((arr) => ({ title: '', matches: arr.map((x) => ({ ...x.m, startRow: x.sr })) }));
+  const connectors = [[0, 0, 'a', 1, 0, 'b'], [1, 0, 'a', 2, 1, 'b'], [2, 0, 'b', 3, 0, 'a'], [2, 1, 'mid', 3, 0, 'b']];
+  return fixDropElim({ totalRows: 6, rounds, connectors });
+}
+
 // 8팀 더블 엘리미네이션(상위권/하위권)을 MSI 브래킷 스테이지 모양(상위·하위 2섹션)으로 재배치.
 //   상위 섹션: 8강(4)·4강(2)·상위결승(1)·그랜드파이널(1) / 하위 섹션: 1R(2)·8강(2)·4강(1)·하위결승(1).
 //   섹션 내부 연결선 + 섹션 간(crossConnectors, 패자 강등·하위결승→GF)로 분리.
@@ -950,6 +969,7 @@ async function buildSplit(leagueId, slug) {
     // 기사의 길(1·2R 한 컬럼) 레이아웃은 실제 사다리(2·3라운드 존재)일 때만. 단일 컬럼 다경기(2025 Knights Rivals 등)는 기본 배치 유지.
     const isKnightLadder = /knights/i.test(s.slug) && (b.rounds || []).flatMap((r) => r.matches).some((m) => /2라운드|2R|3라운드|3R/i.test(m.title || ''));
     if (isKnightLadder) b = knightsLayout(b);
+    else if (s.slug === 'road_to_msi') b = roadToMsiLayout(b); // Road to MSI: 2026과 동일 템플릿
     else if (s.slug === 'playoffs') {
       const cnt = (re) => (b.rounds || []).flatMap((r) => r.matches).filter((m) => re.test(m.title || '')).length;
       if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16",
+  "updatedAt": "2026-09-17",
   "subtabs": {
     "2025": {
       "lck": [
@@ -1152,6 +1152,7 @@
               "slug": "road_to_msi",
               "name": "MSI로 가는 길",
               "bracket": {
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -1169,7 +1170,8 @@
                           "short": "GEN",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -1190,7 +1192,8 @@
                           "short": "KT",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 3
                       }
                     ]
                   },
@@ -1211,13 +1214,9 @@
                           "short": "NS",
                           "score": 0,
                           "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        },
+                        "startRow": 0
+                      },
                       {
                         "id": "113503303285449903",
                         "title": "4라운드",
@@ -1232,7 +1231,8 @@
                           "short": "T1",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       }
                     ]
                   },
@@ -1253,41 +1253,42 @@
                           "short": "HLE",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 1
                       }
                     ]
                   }
                 ],
                 "connectors": [
                   [
+                    0,
+                    0,
+                    "a",
                     1,
                     0,
-                    "mid",
-                    2,
+                    "b"
+                  ],
+                  [
+                    1,
                     0,
-                    "a"
+                    "a",
+                    2,
+                    1,
+                    "b"
                   ],
                   [
                     2,
                     0,
-                    "mid",
+                    "b",
                     3,
                     0,
                     "a"
                   ],
                   [
+                    2,
+                    1,
+                    "mid",
                     3,
-                    0,
-                    "mid",
-                    4,
-                    0,
-                    "a"
-                  ],
-                  [
-                    0,
-                    0,
-                    "mid",
-                    4,
                     0,
                     "b"
                   ]

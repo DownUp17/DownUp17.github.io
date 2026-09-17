@@ -17,9 +17,13 @@ import kespa2026Logo from '../assets/kespa2026.webp';
 import ltaNorthLogo from '../assets/lta-north.svg';
 import ltaSulLogo from '../assets/lta-sul.svg';
 import ltaLogo from '../assets/lta.svg';
+import asiLogo from '../assets/asi.svg';
+import demaciaCupLogo from '../assets/demacia-cup.webp';
 import drxLogo from '../assets/drx.svg';
 import gengSimpleLogo from '../assets/geng-simple.svg';
 import dnFreecsLogo from '../assets/dn-freecs.svg';
+import brionLogo from '../assets/brion.svg';
+import brionOkLogo from '../assets/brion-ok.svg';
 import fpxLogo from '../assets/fpx.svg';
 import rngLogo from '../assets/rng.svg';
 
@@ -76,6 +80,7 @@ const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', HKG: 'hk', SAU: 'sa', IND: 'i
 const LCKCUP_TEAM_OVERRIDE = {
   KRX: { tag: 'DRX', name: 'DRX', logo: drxLogo },
   GEN: { logo: gengSimpleLogo },
+  BRO: { name: 'BRION', logo: brionLogo },
 };
 // 2025 팀 표기(2026과 다른 부분): KRX→DRX, GEN 옛 로고, DNS→DN FREECS(DNF).
 const TEAM_OVERRIDE_2025 = {
@@ -83,6 +88,7 @@ const TEAM_OVERRIDE_2025 = {
   GEN: { logo: gengSimpleLogo },
   DNS: { tag: 'DNF', name: 'DN FREECS', logo: dnFreecsLogo },
   WBG: { name: 'Weibo Gaming TapTap' },
+  BRO: { name: 'OKSavingsBank BRION', logo: brionOkLogo },
 };
 // 팀 short → GPR 점수 (대진 확정·미진행 경기의 승부예측에 사용)
 const gprScoreByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.score]));
@@ -2208,6 +2214,11 @@ const PAST_DETAIL = {
   'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo } } },
   'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo } } },
 };
+// 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
+const EVENT_DETAIL = {
+  'demacia|2025|ASI': { color: '#7927ff', logo: asiLogo },
+  'demacia|2025|Demacia Cup': { color: '#D32F2F', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전
+};
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
 const TAB_COLOR = { asiangames: '#ffb732' };
@@ -2310,9 +2321,8 @@ const resolvePastData = (key, sub, year) => {
   if (!lg) return null;
   return sub ? lg[sub] : lg;
 };
-// 연도 옆 '대회 선택'(통합/분리 시 사용) — 사용자가 켜라고 하기 전까지 비활성.
-const YEAR_SUBEVENTS = {};
-const SUBEVENTS_ENABLED = false;
+// 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
+const YEAR_SUBEVENTS = { 'demacia|2025': ['ASI', 'Demacia Cup'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
@@ -2356,6 +2366,11 @@ const PredictionPage = () => {
       n.delete('sub'); n.delete('stage'); // 연도마다 서브탭 구성이 달라 초기화
       return n;
     }, { replace: true });
+  // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025 = ASI/Demacia Cup. 지정 케이스에만 노출.
+  const subEvents = comp && !isCurrentYear ? YEAR_SUBEVENTS[`${comp.key}|${activeYear}`] : null;
+  const eventParam = searchParams.get('event');
+  const activeEvent = subEvents ? (subEvents.includes(eventParam) ? eventParam : subEvents[0]) : null;
+  const setActiveEvent = (e) => setSearchParams((p) => { const n = new URLSearchParams(p); n.set('event', e); return n; }, { replace: true });
 
   // 서브탭 — 연도별. 현재 연도는 SUBTABS, 과거 연도는 생성된 목록(없으면 단일 대회).
   const subTabs = comp ? (isCurrentYear ? SUBTABS[comp.key] : pastSubTabs(comp.key, activeYear)) : null;
@@ -2372,7 +2387,8 @@ const PredictionPage = () => {
   // 상세 헤더 로고·상징색: 현재 연도는 서브탭 오버라이드, 과거 연도는 연도별 오버라이드(예: 2025 LTA)
   const pastDetailRaw = comp && !isCurrentYear ? PAST_DETAIL[`${comp.key}|${activeYear}`] : null;
   const pastDetail = pastDetailRaw ? { ...pastDetailRaw, ...(pastDetailRaw.bySub?.[activeSub] || {}) } : null;
-  const headerDetail = subDetail || pastDetail;
+  const eventDetail = comp && !isCurrentYear && activeEvent ? EVENT_DETAIL[`${comp.key}|${activeYear}|${activeEvent}`] : null;
+  const headerDetail = subDetail || eventDetail || pastDetail;
 
   // 과거 연도 전체 데이터(순위표·대진·최종순위). 단일 대회는 sub=null.
   const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub, activeYear) : null;
@@ -2431,9 +2447,6 @@ const PredictionPage = () => {
   const setActiveStage = (s) =>
     setSearchParams((p) => { const n = new URLSearchParams(p); n.set('stage', s); return n; }, { replace: true });
 
-  // 연도 옆 '대회 선택'(통합/분리 시 사용) — 현재 비활성.
-  const subEvents = null; const activeEvent = null; const setActiveEvent = () => {};
-
   // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
   const PAST_COMP_NAME = {
     'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA' },
@@ -2441,6 +2454,7 @@ const PredictionPage = () => {
   };
   const displayTitle = (() => {
     if (isCurrentYear) return title;
+    if (activeEvent) return `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}`;
     const ov = PAST_COMP_NAME[`${comp?.key}|${activeYear}`];
     if (ov) {
       const lg = ov[activeSub] || ov.default;
@@ -2521,7 +2535,7 @@ const PredictionPage = () => {
                     return (
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: hd?.color || comp.color }}>
                     <img src={hd?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={{ filter: hd?.logo ? 'none' : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
+                      style={{ filter: hd?.logo ? (hd.invert ? 'brightness(0) invert(1)' : 'none') : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                     );
