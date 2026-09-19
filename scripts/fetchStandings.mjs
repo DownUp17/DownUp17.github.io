@@ -2308,6 +2308,31 @@ try {
 } catch (e) {
   console.warn(`DEMACIA API 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
+// DCGI LPL 시드 자동 채움 — 대표 선발전 결과: 5시드=2라운드 패자, 6시드=1라운드 M2 패자.
+try {
+  const dem = data.standings.demacia;
+  const lplQual = data.standings.lpl?.['대표 선발전']?.qualifier;
+  if (dem?.qualifiers && lplQual?.rounds) {
+    const loserByTitle = (frag) => {
+      for (const r of lplQual.rounds) for (const m of r.matches) {
+        if (!(m.title || '').includes(frag)) continue;
+        const win = (m.a?.win || m.a?.msi) ? m.a?.short
+          : (m.b?.win || m.b?.msi) ? m.b?.short
+            : (m.a?.score > m.b?.score ? m.a?.short : (m.b?.score > m.a?.score ? m.b?.short : null));
+        if (!win) return null;
+        return win === m.a?.short ? m.b?.short : m.a?.short;
+      }
+      return null;
+    };
+    const seedFill = { 'LPL #6': loserByTitle('1라운드 M2'), 'LPL #5': loserByTitle('2라운드') };
+    let filled = 0;
+    for (const qf of dem.qualifiers) {
+      const t = seedFill[qf.seed];
+      if (t && !qf.short) { qf.short = t; filled++; }
+    }
+    if (filled) console.log(`DCGI LPL 시드 자동 채움: ${filled}팀 (${Object.entries(seedFill).filter(([, v]) => v).map(([k, v]) => `${k}=${v}`).join(', ')})`);
+  }
+} catch (e) { console.warn(`DCGI LPL 시드 자동 채움 실패(무시): ${e.message}`); }
 
 // Asian Games(국가 대항전) 대회 정보 — 사용자가 asiangames-data_2026 리포지토리에서 직접 관리.
 //   8개국 2개조 싱글 라운드로빈(Bo3) → 4강 · 3·4위전 · 결승. 각 국가 Elo도 리포지토리에서 제공.
