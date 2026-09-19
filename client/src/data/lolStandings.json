@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-09-19",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -3757,11 +3757,15 @@
                   "title": "1라운드 M2",
                   "a": {
                     "seed": "포인트 4위",
-                    "short": "WE"
+                    "short": "WE",
+                    "score": 1,
+                    "elim": true
                   },
                   "b": {
                     "seed": "포인트 5위",
-                    "short": "JDG"
+                    "short": "JDG",
+                    "score": 3,
+                    "win": true
                   },
                   "time": "9/18 (금) 18:00",
                   "startRow": 4
@@ -3779,7 +3783,8 @@
                     "short": "IG"
                   },
                   "b": {
-                    "seed": "1R M2 승자"
+                    "seed": "1R M2 승자",
+                    "short": "JDG"
                   },
                   "time": "9/19 (토) 18:00",
                   "startRow": 2
@@ -5217,14 +5222,17 @@
                   "title": "하위권 대진 - 2라운드",
                   "a": {
                     "seed": "하위권 대진 - 1라운드 승자",
-                    "short": "NAVI"
+                    "short": "NAVI",
+                    "score": 1,
+                    "elim": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 1라운드 승자",
-                    "short": "MKOI"
+                    "short": "MKOI",
+                    "score": 3,
+                    "win": true
                   },
-                  "startRow": 5,
-                  "time": "9/19 00:00"
+                  "startRow": 5
                 }
               ]
             },
@@ -5235,7 +5243,8 @@
                   "id": "115548681803406327",
                   "title": "하위권 대진 - 3라운드",
                   "a": {
-                    "seed": "하위권 대진 - 2라운드 승자"
+                    "seed": "하위권 대진 - 2라운드 승자",
+                    "short": "MKOI"
                   },
                   "b": {
                     "seed": "상위권 대진 - 2라운드 패자",
@@ -5333,6 +5342,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 4,
+            "team": "NAVI",
+            "note": ""
+          },
           {
             "rank": 5,
             "team": "VIT",
@@ -7688,14 +7702,17 @@
                   "title": "하위권 대진 - 1라운드",
                   "a": {
                     "seed": "상위권 대진 - 8강 패자",
-                    "short": "SEN"
+                    "short": "SR",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "상위권 대진 - 8강 패자",
-                    "short": "SR"
+                    "short": "SEN",
+                    "score": 2,
+                    "elim": true
                   },
-                  "startRow": 8,
-                  "time": "9/19 05:00"
+                  "startRow": 8
                 }
               ]
             },
@@ -7737,7 +7754,8 @@
                     "seed": ""
                   },
                   "b": {
-                    "seed": "하위권 대진 - 1라운드 승자"
+                    "seed": "하위권 대진 - 1라운드 승자",
+                    "short": "SR"
                   },
                   "startRow": 8,
                   "time": "9/26 05:00"
@@ -7892,6 +7910,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 6,
+            "team": "SEN",
+            "note": ""
+          },
           {
             "rank": 7,
             "team": "DSG",

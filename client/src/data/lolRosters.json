@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-09-19",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -518,19 +518,19 @@
           "starter": true
         },
         {
-          "name": "Zephyr",
-          "firstName": "Hyeoksu",
-          "lastName": "Hwang",
-          "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769090492602_image6-2026-01-22T150110.156.png",
-          "starter": false
-        },
-        {
           "name": "Grizzly",
           "firstName": "Seunghoon",
           "lastName": "Jo",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "name": "Zephyr",
+          "firstName": "Hyeoksu",
+          "lastName": "Hwang",
+          "role": "jungle",
+          "image": "http://static.lolesports.com/players/1769090492602_image6-2026-01-22T150110.156.png",
           "starter": false
         },
         {
@@ -542,19 +542,19 @@
           "starter": true
         },
         {
-          "name": "Daystar",
-          "firstName": "Ji-Myeong",
-          "lastName": "Yoo",
-          "role": "mid",
-          "image": "http://static.lolesports.com/players/1769091448891_LCK_BFX_Daystar_F.PNG",
-          "starter": false
-        },
-        {
           "name": "MG",
           "firstName": "Jihoon",
           "lastName": "Lee",
           "role": "mid",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "name": "Daystar",
+          "firstName": "Ji-Myeong",
+          "lastName": "Yoo",
+          "role": "mid",
+          "image": "http://static.lolesports.com/players/1769091448891_LCK_BFX_Daystar_F.PNG",
           "starter": false
         },
         {
@@ -619,19 +619,19 @@
           "starter": true
         },
         {
-          "name": "Winner",
-          "firstName": "JOOSUNG",
-          "lastName": "Woo",
-          "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769088522766_image6-2026-01-22T142810.865.png",
-          "starter": false
-        },
-        {
           "name": "Vincenzo",
           "firstName": "Seungmin",
           "lastName": "Ha",
           "role": "jungle",
           "image": "http://static.lolesports.com/players/1778842840049_LCK_DRX_Vincenzo_F.PNG",
+          "starter": false
+        },
+        {
+          "name": "Winner",
+          "firstName": "JOOSUNG",
+          "lastName": "Woo",
+          "role": "jungle",
+          "image": "http://static.lolesports.com/players/1769088522766_image6-2026-01-22T142810.865.png",
           "starter": false
         },
         {
@@ -728,19 +728,19 @@
           "starter": true
         },
         {
-          "name": "Tempester",
-          "firstName": "Yeongwoong",
-          "lastName": "Oh",
-          "role": "mid",
-          "image": "http://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
-          "starter": false
-        },
-        {
           "name": "Pungyeon",
           "firstName": "Lee",
           "lastName": "Jonghyuk",
           "role": "mid",
           "image": "http://static.lolesports.com/players/1769232251135_Pungyeon.png",
+          "starter": false
+        },
+        {
+          "name": "Tempester",
+          "firstName": "Yeongwoong",
+          "lastName": "Oh",
+          "role": "mid",
+          "image": "http://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
           "starter": false
         },
         {
@@ -954,19 +954,19 @@
           "starter": true
         },
         {
-          "name": "Life",
-          "firstName": "Jeongmin",
-          "lastName": "Kim",
-          "role": "support",
-          "image": "http://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
-          "starter": false
-        },
-        {
           "name": "Quantum ",
           "firstName": "Son",
           "lastName": "Junghwan",
           "role": "support",
           "image": "http://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
+          "starter": false
+        },
+        {
+          "name": "Life",
+          "firstName": "Jeongmin",
+          "lastName": "Kim",
+          "role": "support",
+          "image": "http://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
           "starter": false
         }
       ]
@@ -983,19 +983,19 @@
           "starter": true
         },
         {
-          "name": "Flandre",
-          "firstName": "Xuan-jun",
-          "lastName": "Li",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/1768348080942_flandre.png",
-          "starter": false
-        },
-        {
           "name": "Wenbo",
           "firstName": "Wenbo",
           "lastName": "Yang",
           "role": "top",
           "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "name": "Flandre",
+          "firstName": "Xuan-jun",
+          "lastName": "Li",
+          "role": "top",
+          "image": "http://static.lolesports.com/players/1768348080942_flandre.png",
           "starter": false
         },
         {
