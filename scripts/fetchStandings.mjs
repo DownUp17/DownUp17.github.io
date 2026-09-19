@@ -2237,12 +2237,22 @@ try {
         // 1R 팀 시드 배치 (경기 결과의 short가 이미 있으면 유지)
         if (m1) { setSlot(m1.a, s1, `포인트 2위`); setSlot(m1.b, s2, `포인트 3위`); m1.title = '1라운드 M1'; }
         if (m2) { setSlot(m2.a, s3, `포인트 4위`); setSlot(m2.b, s4, `포인트 5위`); m2.title = '1라운드 M2'; }
-        // 2R 슬롯: 1R M1 패자 vs 1R M2 승자
+        // 2R 슬롯: 1R M1 패자 vs 1R M2 승자. API의 실제 경기 결과(점수·승패)는 팀 기준으로 보존.
         if (r2) {
           r2.title = '2라운드';
           const m1o = outcome(m1), m2o = outcome(m2);
-          r2.a = { seed: '1R M1 패자', ...(m1o.l ? { short: m1o.l } : {}) };
-          r2.b = { seed: '1R M2 승자', ...(m2o.w ? { short: m2o.w } : {}) };
+          // API 원본 슬롯(순서 무관)을 팀 약칭 기준으로 매핑 — 완료 경기의 score/win/elim 유지.
+          const resByShort = {};
+          for (const s of [r2.a, r2.b]) if (s?.short) resByShort[s.short] = s;
+          const rebuild = (seed, short) => {
+            const src = short ? resByShort[short] : null;
+            const o = { seed };
+            if (short) o.short = short;
+            if (src) { if (src.score != null) o.score = src.score; if (src.win) o.win = true; if (src.msi) o.msi = true; if (src.elim) o.elim = true; }
+            return o;
+          };
+          r2.a = rebuild('1R M1 패자', m1o.l);
+          r2.b = rebuild('1R M2 승자', m2o.w);
         }
       }
       data.standings.lpl['대표 선발전'] = {

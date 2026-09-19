@@ -3780,11 +3780,15 @@
                   "title": "2라운드",
                   "a": {
                     "seed": "1R M1 패자",
-                    "short": "IG"
+                    "short": "IG",
+                    "score": 3,
+                    "msi": true
                   },
                   "b": {
                     "seed": "1R M2 승자",
-                    "short": "JDG"
+                    "short": "JDG",
+                    "score": 1,
+                    "elim": true
                   },
                   "time": "9/19 (토) 18:00",
                   "startRow": 2
@@ -9634,7 +9638,8 @@
       "qualifiers": [
         {
           "seed": "LPL #5",
-          "label": "LPL #5"
+          "label": "LPL #5",
+          "short": "JDG"
         },
         {
           "seed": "LPL #6",
@@ -10252,7 +10257,7 @@
         },
         {
           "seed": "LPL #4",
-          "label": "LPL #4",
+          "short": "IG",
           "stage": "swiss"
         },
         {
