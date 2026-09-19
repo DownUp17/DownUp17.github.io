@@ -5248,14 +5248,17 @@
                   "title": "하위권 대진 - 3라운드",
                   "a": {
                     "seed": "하위권 대진 - 2라운드 승자",
-                    "short": "MKOI"
+                    "short": "MKOI",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "상위권 대진 - 2라운드 패자",
-                    "short": "KC"
+                    "short": "KC",
+                    "score": 0,
+                    "elim": true
                   },
-                  "startRow": 5,
-                  "time": "9/20 00:00"
+                  "startRow": 5
                 }
               ]
             },
@@ -5270,7 +5273,8 @@
                     "short": "G2"
                   },
                   "b": {
-                    "seed": "하위권 대진 - 3라운드 승자"
+                    "seed": "하위권 대진 - 3라운드 승자",
+                    "short": "MKOI"
                   },
                   "startRow": 3,
                   "time": "9/21 00:00"
@@ -5346,6 +5350,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 3,
+            "team": "KC",
+            "note": "3위"
+          },
           {
             "rank": 4,
             "team": "NAVI",
@@ -8946,14 +8955,17 @@
                   "title": "하위권 대진 - 1라운드",
                   "a": {
                     "seed": "상위권 대진 - 8강 패자",
-                    "short": "RED"
+                    "short": "RED",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "상위권 대진 - 8강 패자",
-                    "short": "VKS"
+                    "short": "VKS",
+                    "score": 0,
+                    "elim": true
                   },
-                  "startRow": 8,
-                  "time": "9/20 01:00"
+                  "startRow": 8
                 }
               ]
             },
@@ -9000,7 +9012,8 @@
                     "short": "PAIN"
                   },
                   "b": {
-                    "seed": "하위권 대진 - 1라운드 승자"
+                    "seed": "하위권 대진 - 1라운드 승자",
+                    "short": "RED"
                   },
                   "startRow": 8,
                   "time": "9/21 01:00"
@@ -9158,6 +9171,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 6,
+            "team": "VKS",
+            "note": ""
+          },
           {
             "rank": 7,
             "team": "FX",
