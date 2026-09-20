@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-19",
+  "updatedAt": "2026-09-20",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -7737,14 +7737,16 @@
                   "title": "상위권 대진 - 4강",
                   "a": {
                     "seed": "",
-                    "short": "LYON"
+                    "short": "LYON",
+                    "score": 1
                   },
                   "b": {
                     "seed": "상위권 대진 - 8강 승자",
-                    "short": "C9"
+                    "short": "C9",
+                    "score": 3,
+                    "win": true
                   },
-                  "startRow": 0,
-                  "time": "9/20 05:00"
+                  "startRow": 0
                 },
                 {
                   "id": "115565004607949393",
@@ -7782,7 +7784,8 @@
                   "id": "115565004607949405",
                   "title": "상위권 대진 - 결승",
                   "a": {
-                    "seed": "상위권 대진 - 4강 승자"
+                    "seed": "상위권 대진 - 4강 승자",
+                    "short": "C9"
                   },
                   "b": {
                     "seed": "상위권 대진 - 4강 승자"
@@ -11502,7 +11505,7 @@
             "ShiauC",
             "Woody"
           ],
-          "rating": 1240
+          "rating": 1237
         },
         {
           "code": "HKG",
