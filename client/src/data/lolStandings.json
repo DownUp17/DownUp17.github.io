@@ -7766,14 +7766,16 @@
                   "title": "상위권 대진 - 4강",
                   "a": {
                     "seed": "상위권 대진 - 8강 승자",
-                    "short": "FLY"
+                    "short": "FLY",
+                    "score": 0
                   },
                   "b": {
                     "seed": "",
-                    "short": "TLAW"
+                    "short": "TLAW",
+                    "score": 3,
+                    "win": true
                   },
-                  "startRow": 4,
-                  "time": "9/21 05:00"
+                  "startRow": 4
                 },
                 {
                   "id": "115565004607949411",
@@ -7801,7 +7803,8 @@
                     "short": "C9"
                   },
                   "b": {
-                    "seed": "상위권 대진 - 4강 승자"
+                    "seed": "상위권 대진 - 4강 승자",
+                    "short": "TLAW"
                   },
                   "startRow": 2,
                   "time": "9/28 05:00"
