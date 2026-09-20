@@ -2795,10 +2795,47 @@ console.log('lolStandings.json 갱신 완료');
     }
   };
   for (const lg of Object.keys(data.standings)) walk(data.standings[lg], [lg]);
-  // 최신 대회를 위에 표시 — 2026 대회 개최 순서(대략)의 역순으로 정렬.
-  const TITLE_ORDER = ['First Stand', 'LCK CUP', 'Lock-In', 'Copa', 'Versus', 'Split 1', 'Spring', 'Mid-Season', 'Split 2', 'Summer', 'KeSPA', 'Split 3', 'Worlds'];
+
+  // 과거 에디션(2025 이하) 우승 경력 — 기준: 선발전 제외, 최종순위 1위 = 우승.
+  try {
+    const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const DISP = { lck: 'LCK', lpl: 'LPL', lec: 'LEC', lcs: 'LCS', lcp: 'LCP', cblol: 'CBLOL' };
+    const isSeonbal = (sub) => /선발전/.test(sub || ''); // '선발전' · '대표 선발전' 제외
+    const champOf = (node) => (Array.isArray(node?.finalStandings) && node.finalStandings[0]?.team) || null;
+    // 대회 표기 — 프론트 표시와 최대한 일치(2025 LTA 재편·CBLOL Etapa·LCK CUP 등).
+    const compName = (year, lg, sub) => {
+      if (lg === 'fst') return `${year} First Stand`;
+      if (lg === 'msi') return `${year} Mid-Season Invitational`;
+      if (lg === 'worlds') return `${year} Worlds`;
+      if (String(year) === '2025' && lg === 'lcs') return sub === 'Split 1' ? `${year} LTA Split 1` : `${year} LTA North ${sub}`;
+      if (String(year) === '2025' && lg === 'cblol') return sub === 'Etapa 1' ? `${year} LTA Etapa 1` : `${year} LTA Sul ${sub}`;
+      if (lg === 'cblol') return sub === 'Copa' ? `Copa CBLOL ${year}` : `CBLOL ${year} ${sub}`;
+      if (lg === 'lck' && sub === 'LCK CUP') return `${year} LCK CUP`;
+      if (lg === 'lck' && sub === 'KeSPA CUP') return `${year} LoL KeSPA CUP`;
+      const disp = DISP[lg] || lg.toUpperCase();
+      const subPart = (sub && sub !== disp) ? ` ${sub}` : '';
+      return `${year} ${disp}${subPart}`;
+    };
+    for (const [year, lgs] of Object.entries(past.standings || {})) {
+      for (const [lg, v] of Object.entries(lgs || {})) {
+        if (v && Array.isArray(v.finalStandings)) {          // 단일 대회(msi/worlds/fst)
+          add(champOf(v), compName(year, lg, null));
+        } else if (v && typeof v === 'object') {             // 서브탭형 리그
+          for (const [sub, node] of Object.entries(v)) {
+            if (isSeonbal(sub)) continue;                    // 선발전 제외
+            add(champOf(node), compName(year, lg, sub));
+          }
+        }
+      }
+    }
+  } catch (e) { console.warn(`과거 우승 경력 산출 실패(무시): ${e.message}`); }
+
+  // 정렬 — 최신 연도 위로, 같은 연도 내에서는 대회 개최 순서(대략)의 역순.
+  const TITLE_ORDER = ['First Stand', 'LCK CUP', 'Lock-In', 'Lock In', 'Copa', 'Versus', 'Winter', 'Split 1', 'Etapa 1', 'Spring', 'Road to MSI', 'Mid-Season', 'Split 2', 'Etapa 2', 'Summer', '시즌 파이널', 'KeSPA', 'Split 3', 'Etapa 3', 'Worlds'];
   const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
-  for (const short of Object.keys(titles)) titles[short].sort((a, b) => ord(b.name) - ord(a.name));
+  const yearOf = (name) => { const m = name.match(/\b(20\d{2})\b/); return m ? Number(m[1]) : 0; };
+  for (const short of Object.keys(titles)) titles[short].sort((a, b) => (yearOf(b.name) - yearOf(a.name)) || (ord(b.name) - ord(a.name)));
   const titlesFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolTitles.json');
   fs.writeFileSync(titlesFile, JSON.stringify({ updatedAt: data.updatedAt, titles }, null, 2) + '\n');
   console.log(`우승 경력 자동 산출: ${Object.keys(titles).length}개 팀 (${Object.values(titles).reduce((n, a) => n + a.length, 0)}개 타이틀)`);
