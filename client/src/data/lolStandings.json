@@ -9025,14 +9025,17 @@
                   "title": "하위권 대진 - 2라운드",
                   "a": {
                     "seed": "",
-                    "short": "PAIN"
+                    "short": "PAIN",
+                    "score": 1,
+                    "elim": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 1라운드 승자",
-                    "short": "RED"
+                    "short": "RED",
+                    "score": 3,
+                    "win": true
                   },
-                  "startRow": 8,
-                  "time": "9/21 01:00"
+                  "startRow": 8
                 }
               ]
             },
@@ -9061,7 +9064,8 @@
                     "short": "FUR"
                   },
                   "b": {
-                    "seed": "하위권 대진 - 2라운드 승자"
+                    "seed": "하위권 대진 - 2라운드 승자",
+                    "short": "RED"
                   },
                   "startRow": 8,
                   "time": "9/27 01:00"
@@ -9187,6 +9191,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 5,
+            "team": "PAIN",
+            "note": ""
+          },
           {
             "rank": 6,
             "team": "VKS",
@@ -10297,12 +10306,12 @@
         },
         {
           "seed": "LEC #1",
-          "label": "LEC #1",
+          "short": "G2",
           "stage": "swiss"
         },
         {
           "seed": "LEC #2",
-          "label": "LEC #2",
+          "short": "MKOI",
           "stage": "swiss"
         },
         {

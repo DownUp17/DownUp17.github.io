@@ -121,13 +121,9 @@
         "detail": "우승"
       }
     ],
-    "VKS": [
+    "PAIN": [
       {
         "name": "CBLOL 2026 Split 2",
-        "detail": "우승"
-      },
-      {
-        "name": "2025 LTA Sul Etapa 3",
         "detail": "우승"
       }
     ],
@@ -198,6 +194,12 @@
     "100T": [
       {
         "name": "2025 LTA North Split 3",
+        "detail": "우승"
+      }
+    ],
+    "VKS": [
+      {
+        "name": "2025 LTA Sul Etapa 3",
         "detail": "우승"
       }
     ]
