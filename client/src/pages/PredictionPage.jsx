@@ -2105,9 +2105,21 @@ const bracketLabel = (b) => {
   const s = (b.slug || '') + ' ' + (b.name || '');
   if (/knights|기사/i.test(s)) return '기사의 길';
   if (/swiss|스위스/i.test(s)) return '스위스';
-  if (/play_?in|플레이[\s-]?인/i.test(s)) return '플레이-인';
+  if (/play_?in|플레이[\s-]?인/i.test(s)) return /group|그룹/i.test(s) ? '플레이-인 그룹' : '플레이-인';
   if (/playoff|플레이오프/i.test(s)) return '플레이오프';
   return b.name || '대진';
+};
+// 과거 스플릿 대진 스테이지 목록(라벨·bracket). 라벨이 겹치면 뒤에 번호를 붙여 유일화 → 탭 중복/오매칭 방지.
+const pastBracketStages = (d) => {
+  const out = [];
+  const used = {};
+  for (const b of d?.brackets || []) {
+    if (!(b.bracket?.rounds?.length || b.bracket?.sections?.length)) continue;
+    let lb = bracketLabel(b);
+    if (used[lb]) { used[lb] += 1; lb = `${lb} ${used[lb]}`; } else used[lb] = 1;
+    out.push({ label: lb, bracket: b });
+  }
+  return out;
 };
 // 과거 스플릿의 스테이지 탭 목록(정규/그룹 → 각 대진 → 최종 순위)
 // 완료된 스플릿의 단계 목록 — 데이터 객체({rows,brackets,finalStandings})에서 산출.
@@ -2115,7 +2127,7 @@ const pastSplitStagesFromData = (d) => {
   if (!d) return null;
   const stages = [];
   if (d.rows?.length) stages.push(d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌');
-  for (const b of d.brackets || []) if (b.bracket?.rounds?.length || b.bracket?.sections?.length) stages.push(bracketLabel(b));
+  for (const s of pastBracketStages(d)) stages.push(s.label);
   if (d.finalStandings?.length) stages.push('최종 순위');
   return stages.length ? stages : null;
 };
@@ -2125,7 +2137,7 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
   const grouped = rows.some((r) => r.group);
   const regLabel = grouped ? '그룹 순위' : '정규시즌';
   const groupNames = grouped ? [...new Set(rows.map((r) => r.group))] : [null];
-  const bracketForStage = (data.brackets || []).find((b) => (b.bracket?.rounds?.length || b.bracket?.sections?.length) && bracketLabel(b) === stage);
+  const bracketForStage = pastBracketStages(data).find((s) => s.label === stage)?.bracket;
   const teamOverride = teamOverrideProp || PAST_TEAM_OVERRIDE[comp.key];
 
   return (
