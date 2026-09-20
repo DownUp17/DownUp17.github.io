@@ -1,7 +1,7 @@
 // client/src/pages/PredictionPage.jsx
 import React, { useMemo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { Target, Trophy, ExternalLink, Crown, Hourglass } from 'lucide-react';
+import { Target, Trophy, ExternalLink, Crown, Hourglass, ChevronDown } from 'lucide-react';
 import sim from '../data/lolSim.json';
 import gpr from '../data/lolGpr.json';
 import gprTeams from '../data/gprTeams.json';
@@ -2332,6 +2332,54 @@ const YEAR_SUBEVENTS = { 'demacia|2025': ['ASI', 'Demacia Cup'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
+// 연도 선택 드롭다운 — 네이티브 select는 항목이 많으면 브라우저가 위로 펼쳐서, 항상 아래로 펼치는 커스텀 구현.
+const YearDropdown = ({ years, value, onChange }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
+  }, [open]);
+  return (
+    <div className="relative ml-1" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-label="대회 연도 선택"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-sm font-black bg-white/10 border border-white/20 text-white hover:border-white/40 focus:outline-none focus:border-[#C8963E] cursor-pointer"
+      >
+        {value}
+        <ChevronDown size={14} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div
+          role="listbox"
+          className="absolute top-full left-0 mt-1 z-50 max-h-64 overflow-y-auto rounded-lg border border-white/20 bg-[#1e2328] shadow-xl msi-scroll"
+        >
+          {years.map((y) => (
+            <button
+              key={y}
+              type="button"
+              role="option"
+              aria-selected={y === value}
+              onClick={() => { onChange(y); setOpen(false); }}
+              className={`block w-full text-left px-4 py-1.5 text-sm font-black whitespace-nowrap ${
+                y === value ? 'bg-[#C8963E] text-[#1e2328]' : 'text-white hover:bg-white/10'
+              }`}
+            >
+              {y}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const PredictionPage = () => {
   const comps = sim.competitions;
   const tabs = [GPR_TAB, ...comps];
@@ -2551,18 +2599,7 @@ const PredictionPage = () => {
                     <p className="text-xs text-white/40">{comp.scope === 'intl' ? '국제 대회' : '지역 리그'}</p>
                   </div>
                   {years.length > 1 && (
-                    <select
-                      value={activeYear}
-                      onChange={(e) => setActiveYear(Number(e.target.value))}
-                      aria-label="대회 연도 선택"
-                      className="ml-1 px-2.5 py-1.5 rounded-lg text-sm font-black bg-white/10 border border-white/20 text-white hover:border-white/40 focus:outline-none focus:border-[#C8963E] cursor-pointer"
-                    >
-                      {years.map((y) => (
-                        <option key={y} value={y} className="bg-[#1e2328] text-white">
-                          {y}
-                        </option>
-                      ))}
-                    </select>
+                    <YearDropdown years={years} value={activeYear} onChange={setActiveYear} />
                   )}
                   {subEvents && (
                     <select
