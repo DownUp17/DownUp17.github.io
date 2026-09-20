@@ -14,6 +14,7 @@ import demaciaLogo from '../assets/demacia.svg';
 import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
 import kespa2026Logo from '../assets/kespa2026.webp';
+import kespa2025Logo from '../assets/kespa2025.webp';
 import ltaNorthLogo from '../assets/lta-north.svg';
 import ltaSulLogo from '../assets/lta-sul.svg';
 import ltaLogo from '../assets/lta.svg';
@@ -27,6 +28,9 @@ import brionOkLogo from '../assets/brion-ok.svg';
 import fpxLogo from '../assets/fpx.svg';
 import rngLogo from '../assets/rng.svg';
 import rogueLogo from '../assets/rogue.svg';
+import teamLiquidLogo from '../assets/team-liquid.svg';
+import losRatonesLogo from '../assets/los-ratones.svg';
+import karmineCorpBlueLogo from '../assets/karmine-corp-blue.webp';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -66,15 +70,17 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
 // AG 참가국 → ISO 3166-1 alpha-2 (flagcdn 국기 이미지용)
-const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', HKG: 'hk', SAU: 'sa', IND: 'in', UAE: 'ae', MYS: 'my' };
+const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', JPN: 'jp', HKG: 'hk', SAU: 'sa', IND: 'in', UAE: 'ae', MYS: 'my' };
+// 국가 대표(국기 로고) 팀 — KeSPA CUP 등에서 국가로 출전. flagcdn 국기 이미지를 로고로 사용.
+const nationFlag = (code) => (AG_FLAG[code] ? `https://flagcdn.com/48x36/${AG_FLAG[code]}.png` : null);
 
 // 특정 대회(에디션)에서만 다른 팀명·태그·로고를 쓰던 팀 오버라이드.
 //   2026 LCK CUP까지 KRX는 팀명·태그 모두 DRX였고, GEN은 예전 로고를 사용.
@@ -90,7 +96,11 @@ const TEAM_OVERRIDE_2025 = {
   DNS: { tag: 'DNF', name: 'DN FREECS', logo: dnFreecsLogo },
   WBG: { name: 'Weibo Gaming TapTap' },
   BRO: { name: 'OKSavingsBank BRION', logo: brionOkLogo },
+  TLAW: { tag: 'TL', name: 'Team Liquid', logo: teamLiquidLogo }, // 2025 시즌까지 Team Liquid(TL)
+  IG: { name: 'Invictus Gaming' }, // Meituan 스폰서 표기는 2026 LPL Split 3부터 — 그 이전 연도는 Invictus Gaming
 };
+// 2026 LPL Split 3부터 IG는 'Invictus Gaming Meituan'(nameByShort 기본값). Split 3 이전(Split 1·2)만 옛 표기로 되돌린다.
+const LPL_PRE_MEITUAN_OVERRIDE = { IG: { name: 'Invictus Gaming' } };
 // 팀 short → GPR 점수 (대진 확정·미진행 경기의 승부예측에 사용)
 const gprScoreByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.score]));
 
@@ -175,11 +185,13 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
   const [connPaths, setConnPaths] = useState([]);
   const [svgSize, setSvgSize] = useState({ w: 0, h: 0 });
   const matchDisplayName = (m) => m.id === 'GF' ? 'Grand Final' : m.id;
-  const toSlot = (v, isWinner, score) => {
+  // flag: 명시적 슬롯 색('msi'|'win'|'elim'|'' = 색 없음). undefined면 전역 set·승자 여부로 폴백.
+  const toSlot = (v, isWinner, score, flag) => {
     const short = resolveShort(v);
     const slot = short ? { short } : { label: 'TBD' };
     if (short) {
-      if (msiSet?.has(short)) slot.msi = true;
+      if (flag !== undefined) { if (flag) slot[flag] = true; }
+      else if (msiSet?.has(short)) slot.msi = true;
       else if (isWinner) slot.win = true;
       else if (elimSet?.has(short)) slot.elim = true;
     }
@@ -200,9 +212,9 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
         </span>
         )}
         <div data-card-id={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-          <MsiSlot s={toSlot(m.a, aWin, m.scoreA)} onTeamClick={onTeamClick} />
+          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag)} onTeamClick={onTeamClick} />
           <div className="h-px bg-white/10" />
-          <MsiSlot s={toSlot(m.b, bWin, m.scoreB)} onTeamClick={onTeamClick} />
+          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag)} onTeamClick={onTeamClick} />
         </div>
       </div>
     );
@@ -356,6 +368,11 @@ const SwissBracket = ({ swiss, onTeamClick, bo }) => {
   for (const r of swiss?.rounds || []) for (const m of r.matches || []) for (const s of [m.a, m.b]) {
     if (s?.short) { if (s.msi) msiSet.add(s.short); if (s.elim) elimSet.add(s.short); }
   }
+  // 16팀 스위스(2023~ Worlds): 2승 매치 승자=진출(금색), 2패 매치 패자=탈락(빨강), 그 외 매치 승자=라운드 승리(파랑).
+  const distinct = new Set();
+  for (const r of swiss?.rounds || []) for (const m of r.matches || []) for (const s of [m.a, m.b]) if (s?.short) distinct.add(s.short);
+  const is16 = distinct.size === 16;
+  const CLINCH = 3; // 3승 진출 / 3패 탈락 → 직전(2승·2패) 매치가 진출/탈락 결정전
   // recordKey가 없으면(라운드별로만 구분된 스위스: LCS Lock-In 등) 진행 결과로 각 매치의 기록(m-n)을 계산.
   const teamWL = {}, recOf = {};
   for (const round of swiss?.rounds || []) {
@@ -384,12 +401,21 @@ const SwissBracket = ({ swiss, onTeamClick, bo }) => {
         const boN = boFor(rec, ms[0]);
         return {
           label: boN ? `${rec} · Bo${boN}` : rec, // "m-n" (+ Bo)
-          matches: ms.map((m) => ({
-            id: m.id, name: '',
-            a: m.a?.short, b: m.b?.short,
-            winner: winnerOf(m),
-            scoreA: m.a?.score, scoreB: m.b?.score,
-          })),
+          matches: ms.map((m) => {
+            const a = m.a?.short, b = m.b?.short, w = winnerOf(m);
+            let aFlag, bFlag;
+            if (is16) {
+              const [W, L] = (m.recordKey || recOf[m.id] || '0-0').split('-').map(Number);
+              const loser = w ? (w === a ? b : a) : null;
+              aFlag = ''; bFlag = '';
+              if (w) {
+                if (W === CLINCH - 1) { if (w === a) aFlag = 'msi'; else bFlag = 'msi'; }            // 2승 매치 승자 = 진출
+                else if (W < CLINCH - 1 && L < CLINCH - 1) { if (w === a) aFlag = 'win'; else bFlag = 'win'; } // 그 외 매치 승자 = 라운드 승리
+              }
+              if (loser && L === CLINCH - 1) { if (loser === a) aFlag = 'elim'; else bFlag = 'elim'; }  // 2패 매치 패자 = 탈락
+            }
+            return { id: m.id, name: '', a, b, winner: w, scoreA: m.a?.score, scoreB: m.b?.score, aFlag, bFlag };
+          }),
         };
       }),
     };
@@ -2125,6 +2151,7 @@ const pastBracketStages = (d) => {
 // 완료된 스플릿의 단계 목록 — 데이터 객체({rows,brackets,finalStandings})에서 산출.
 const pastSplitStagesFromData = (d) => {
   if (!d) return null;
+  if (d.kespa) return ['예선', '본선', '결선']; // KeSPA CUP: 예선(3조)·본선(LCQ)·결선(더블엘리)
   const stages = [];
   if (d.rows?.length) stages.push(d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌');
   for (const s of pastBracketStages(d)) stages.push(s.label);
@@ -2139,6 +2166,118 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
   const groupNames = grouped ? [...new Set(rows.map((r) => r.group))] : [null];
   const bracketForStage = pastBracketStages(data).find((s) => s.label === stage)?.bracket;
   const teamOverride = teamOverrideProp || PAST_TEAM_OVERRIDE[comp.key];
+
+  // KeSPA CUP 커스텀 렌더 — 예선(3조·H2H) / 본선(LCQ·세트득실) / 결선(4팀 더블엘리)
+  if (data.kespa) {
+    const disp = (code) => teamOverride?.[code]?.tag || code;
+    const logoOf = (code) => nationFlag(code) || teamOverride?.[code]?.logo || logoByShort[code];
+    const click = (code) => ((knownTeam(code) && onTeamClick) ? () => onTeamClick(code) : undefined);
+    const TeamCell = ({ code }) => (
+      <span className="inline-flex items-center gap-2 font-bold text-white/90"><TeamLogo src={logoOf(code)} size={18} />{disp(code)}</span>
+    );
+    const fmt = <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm"><span className="text-white/50">형식: <strong className="text-white/80">{data.name} · 예선(3개조) → 본선(LCQ) → 결선(더블 엘리) · 종료</strong></span></div>;
+    if (stage === '예선') {
+      const groupTable = (gk, list) => (
+        <div key={gk} className="flex flex-col gap-2">
+          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{gk}조</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="text-white/40 text-xs border-b border-white/10">
+                <th className="text-center font-bold py-2 px-2 w-9">#</th>
+                <th className="text-left font-bold py-2 pr-2">팀</th>
+                <th className="text-center font-bold py-2 px-2 w-9">승</th>
+                <th className="text-center font-bold py-2 px-2 w-9">패</th>
+                <th className="text-center font-bold py-2 px-2">H2H</th>
+              </tr></thead>
+              <tbody>
+                {list.map((r, i) => (
+                  <tr key={r.code} className="border-b border-white/5"
+                    style={{ cursor: knownTeam(r.code) ? 'pointer' : undefined, backgroundColor: i === 0 ? 'rgba(96,165,250,0.12)' : i === 1 ? 'rgba(74,222,128,0.10)' : undefined }}
+                    onClick={click(r.code)}>
+                    <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
+                    <td className="py-2 pr-2"><TeamCell code={r.code} /></td>
+                    <td className="py-2 px-2 text-center font-mono">{r.w}</td>
+                    <td className="py-2 px-2 text-center font-mono">{r.l}</td>
+                    <td className="py-2 px-2 text-center font-mono text-white/50 text-xs">{r.h2h || ''}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+      return (
+        <div className="flex flex-col gap-8">
+          {fmt}
+          <section className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {groupTable('A', data.qual.A)}{groupTable('B', data.qual.B)}{groupTable('C', data.qual.C)}
+            </div>
+            <div className="flex flex-wrap gap-4 text-[11px] text-white/50">
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.5)' }} /> 결선 진출(조 1위)</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(74,222,128,0.4)' }} /> 본선 진출(조 2위)</span>
+            </div>
+          </section>
+        </div>
+      );
+    }
+    if (stage === '본선') {
+      return (
+        <div className="flex flex-col gap-8">
+          {fmt}
+          <section className="flex flex-col gap-4">
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">본선 (LCQ)</h3>
+              <span className="text-xs text-white/40">각 조 2위 3팀 싱글 라운드로빈 · 1위 결선 진출</span>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead><tr className="text-white/40 text-xs border-b border-white/10">
+                  <th className="text-center font-bold py-2 px-2 w-9">#</th>
+                  <th className="text-left font-bold py-2 pr-2">팀</th>
+                  <th className="text-center font-bold py-2 px-2 w-9">승</th>
+                  <th className="text-center font-bold py-2 px-2 w-9">패</th>
+                  <th className="text-center font-bold py-2 px-2">세트 득실</th>
+                  <th className="text-center font-bold py-2 px-2">득실차</th>
+                </tr></thead>
+                <tbody>
+                  {data.lcq.map((r, i) => {
+                    const gd = (r.gw || 0) - (r.gl || 0);
+                    return (
+                      <tr key={r.code} className="border-b border-white/5"
+                        style={{ cursor: knownTeam(r.code) ? 'pointer' : undefined, backgroundColor: i === 0 ? 'rgba(96,165,250,0.12)' : undefined }}
+                        onClick={click(r.code)}>
+                        <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
+                        <td className="py-2 pr-2"><TeamCell code={r.code} /></td>
+                        <td className="py-2 px-2 text-center font-mono">{r.w}</td>
+                        <td className="py-2 px-2 text-center font-mono">{r.l}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/60">{r.gw}-{r.gl}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/60">{gd > 0 ? `+${gd}` : gd}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="text-[11px] text-white/50"><span className="inline-flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.5)' }} /> 결선 진출</span></div>
+          </section>
+        </div>
+      );
+    }
+    return (
+      <div className="flex flex-col gap-8">
+        {fmt}
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">결선</h3>
+            <span className="text-xs text-white/40">4팀 더블 엘리미네이션{data.champion ? ` · 우승 ${disp(data.champion)}` : ''}</span>
+          </div>
+          <MsiBracket rounds={data.knockout.rounds} totalRows={data.knockout.totalRows} connectors={data.knockout.connectors} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          <BracketLegend />
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-8">
@@ -2220,12 +2359,14 @@ const COMP_DETAIL_LOGO = {
 // 서브탭별 상세 헤더 오버라이드(로고·상징색) — 리그 안의 별도 대회(예: KeSPA CUP)에 사용.
 const SUBTAB_DETAIL = {
   'lck|KeSPA CUP': { color: '#072148', logo: kespa2026Logo },
+  'lck|LCK CUP': { color: '#2a45b3' },
 };
 // 과거 연도 대회의 상세 헤더 로고·상징색 오버라이드 (`key|year`). 예: 2025 LCS = LTA North.
 // 과거 연도 상세 헤더 로고·상징색. bySub로 스플릿별 오버라이드(통합 스플릿=LTA).
 const PAST_DETAIL = {
   'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo } } },
   'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo } } },
+  'lck|2025': { bySub: { 'LCK CUP': { color: '#7f6b00' }, 'KeSPA CUP': { color: '#072148', logo: kespa2025Logo } } },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
@@ -2686,7 +2827,7 @@ const PredictionPage = () => {
                   </div>
                 )
               ) : isPastSplit ? (
-                <PastSplitView comp={comp} data={curSplitData} stage={activeStage} onTeamClick={handleTeamClick} />
+                <PastSplitView comp={comp} data={curSplitData} stage={activeStage} onTeamClick={handleTeamClick} teamOverride={comp.key === 'lpl' && (activeSub === 'Split 1' || activeSub === 'Split 2') ? LPL_PRE_MEITUAN_OVERRIDE : undefined} />
               ) : isContentTbd(comp.key, activeSub) ? (
                 <div className="py-20 text-center border-2 border-dashed border-white/10 rounded-3xl">
                   <Hourglass size={32} className="mx-auto text-white/30 mb-4" />

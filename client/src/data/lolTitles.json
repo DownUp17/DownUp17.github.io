@@ -13,10 +13,6 @@
       {
         "name": "2025 First Stand",
         "detail": "우승"
-      },
-      {
-        "name": "2024 LCK Summer",
-        "detail": "우승"
       }
     ],
     "GEN": [
@@ -30,30 +26,6 @@
       },
       {
         "name": "2025 Mid-Season Invitational",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 Mid-Season Invitational",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 LCK Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2022 LCK Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2020 LCK Summer",
         "detail": "우승"
       }
     ],
@@ -87,11 +59,7 @@
         "detail": "우승"
       },
       {
-        "name": "2024 LPL Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 LPL Spring",
+        "name": "2025 LPL Split 3",
         "detail": "우승"
       }
     ],
@@ -106,66 +74,6 @@
       },
       {
         "name": "2025 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 LEC 시즌 파이널",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 LEC Winter",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 LEC 시즌 파이널",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 LEC Winter",
-        "detail": "우승"
-      },
-      {
-        "name": "2022 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2020 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2020 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2019 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2019 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2017 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2016 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2016 LEC Spring",
         "detail": "우승"
       }
     ],
@@ -237,170 +145,6 @@
       {
         "name": "2025 LTA Etapa 1",
         "detail": "우승"
-      },
-      {
-        "name": "CBLOL 2024 Split 1",
-        "detail": "우승"
-      },
-      {
-        "name": "CBLOL 2023 Split 2",
-        "detail": "우승"
-      },
-      {
-        "name": "CBLOL 2023 Split 1",
-        "detail": "우승"
-      },
-      {
-        "name": "CBLOL 2022 Split 2",
-        "detail": "우승"
-      }
-    ],
-    "FNC": [
-      {
-        "name": "2018 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2018 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2017 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2015 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2015 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2014 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2013 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2013 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2011 Worlds",
-        "detail": "우승"
-      }
-    ],
-    "XEN": [
-      {
-        "name": "2012 LCK Spring",
-        "detail": "우승"
-      }
-    ],
-    "AZF": [
-      {
-        "name": "2012 LCK Summer",
-        "detail": "우승"
-      }
-    ],
-    "SKTK": [
-      {
-        "name": "2013 LCK Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2013 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2013 LCK Winter",
-        "detail": "우승"
-      }
-    ],
-    "TSM": [
-      {
-        "name": "2020 LCS Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2017 LCS Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2017 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2016 LCS Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2015 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2013 LCS Spring",
-        "detail": "우승"
-      }
-    ],
-    "C9": [
-      {
-        "name": "2023 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2022 LCS Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LCS Mid-Season Showdown",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2020 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2014 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2013 LCS Summer",
-        "detail": "우승"
-      }
-    ],
-    "SSW": [
-      {
-        "name": "2014 Worlds",
-        "detail": "우승"
-      },
-      {
-        "name": "2014 LCK Spring",
-        "detail": "우승"
-      }
-    ],
-    "SSB": [
-      {
-        "name": "2014 LCK Summer",
-        "detail": "우승"
-      }
-    ],
-    "ALL": [
-      {
-        "name": "2014 LEC Summer",
-        "detail": "우승"
-      }
-    ],
-    "LMQ": [
-      {
-        "name": "2014 LCS Summer",
-        "detail": "우승"
       }
     ],
     "T1": [
@@ -409,299 +153,7 @@
         "detail": "우승"
       },
       {
-        "name": "2025 LCK Road to MSI",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 Worlds",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 Worlds",
-        "detail": "우승"
-      },
-      {
-        "name": "2022 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2019 LCK Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2019 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2017 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2016 Worlds",
-        "detail": "우승"
-      },
-      {
-        "name": "2016 Mid-Season Invitational",
-        "detail": "우승"
-      },
-      {
-        "name": "2016 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2015 Worlds",
-        "detail": "우승"
-      },
-      {
-        "name": "2015 LCK Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2015 LCK Spring",
-        "detail": "우승"
-      }
-    ],
-    "CLG": [
-      {
-        "name": "2015 LCS Summer",
-        "detail": "우승"
-      }
-    ],
-    "EDG": [
-      {
-        "name": "2021 Worlds",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LPL Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2015 Mid-Season Invitational",
-        "detail": "우승"
-      }
-    ],
-    "ROX": [
-      {
-        "name": "2016 LCK Summer",
-        "detail": "우승"
-      }
-    ],
-    "IMT": [
-      {
-        "name": "2016 LCS Spring",
-        "detail": "우승"
-      }
-    ],
-    "LZ": [
-      {
-        "name": "2017 LCK Summer",
-        "detail": "우승"
-      }
-    ],
-    "KRX": [
-      {
-        "name": "2022 Worlds",
-        "detail": "우승"
-      },
-      {
-        "name": "2018 LCK Spring",
-        "detail": "우승"
-      }
-    ],
-    "KT": [
-      {
-        "name": "2018 LCK Summer",
-        "detail": "우승"
-      }
-    ],
-    "FOX2": [
-      {
-        "name": "2018 LCS Spring",
-        "detail": "우승"
-      }
-    ],
-    "TLAW": [
-      {
-        "name": "2024 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2022 LCS Lock In",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LCS Lock In",
-        "detail": "우승"
-      },
-      {
-        "name": "2019 LCS Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2019 LCS Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2018 LCS Summer",
-        "detail": "우승"
-      }
-    ],
-    "BFX": [
-      {
-        "name": "2020 LCK Split 1",
-        "detail": "우승"
-      }
-    ],
-    "JDG": [
-      {
-        "name": "2023 LPL Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 Mid-Season Invitational",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 LPL Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2022 LPL Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2020 LPL Spring",
-        "detail": "우승"
-      }
-    ],
-    "LGD": [
-      {
-        "name": "2020 LPL Summer",
-        "detail": "우승"
-      }
-    ],
-    "KBM": [
-      {
-        "name": "CBLOL 2020 Split 1",
-        "detail": "우승"
-      }
-    ],
-    "INTZ": [
-      {
-        "name": "CBLOL 2020 Split 2",
-        "detail": "우승"
-      }
-    ],
-    "DK": [
-      {
-        "name": "2021 LCK Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LCK Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2020 Worlds",
-        "detail": "우승"
-      }
-    ],
-    "RNG": [
-      {
-        "name": "2022 Mid-Season Invitational",
-        "detail": "우승"
-      },
-      {
-        "name": "2022 LPL Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 Mid-Season Invitational",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LPL Spring",
-        "detail": "우승"
-      }
-    ],
-    "MKOI": [
-      {
-        "name": "2025 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2023 LEC Spring",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LEC Spring",
-        "detail": "우승"
-      }
-    ],
-    "100T": [
-      {
-        "name": "2025 LTA North Split 3",
-        "detail": "우승"
-      },
-      {
-        "name": "2021 LCS Summer",
-        "detail": "우승"
-      }
-    ],
-    "PAIN": [
-      {
-        "name": "CBLOL 2024 Split 2",
-        "detail": "우승"
-      },
-      {
-        "name": "CBLOL 2021 Split 1",
-        "detail": "우승"
-      }
-    ],
-    "RED": [
-      {
-        "name": "CBLOL 2022 Split 1",
-        "detail": "우승"
-      },
-      {
-        "name": "CBLOL 2021 Split 2",
-        "detail": "우승"
-      }
-    ],
-    "RGE": [
-      {
-        "name": "2022 LEC Summer",
-        "detail": "우승"
-      }
-    ],
-    "EG": [
-      {
-        "name": "2022 LCS Spring",
-        "detail": "우승"
-      }
-    ],
-    "NRG": [
-      {
-        "name": "2023 LCS Summer",
-        "detail": "우승"
-      }
-    ],
-    "FLY": [
-      {
-        "name": "2025 LTA North Split 2",
-        "detail": "우승"
-      },
-      {
-        "name": "2025 LTA Split 1",
-        "detail": "우승"
-      },
-      {
-        "name": "2024 LCS Summer",
+        "name": "2025 LoL KeSPA CUP",
         "detail": "우승"
       }
     ],
@@ -711,9 +163,9 @@
         "detail": "우승"
       }
     ],
-    "IG": [
+    "MKOI": [
       {
-        "name": "2025 LPL Split 3",
+        "name": "2025 LEC Spring",
         "detail": "우승"
       }
     ],
@@ -730,6 +182,22 @@
     "MVK": [
       {
         "name": "2025 LCP Split 3",
+        "detail": "우승"
+      }
+    ],
+    "FLY": [
+      {
+        "name": "2025 LTA North Split 2",
+        "detail": "우승"
+      },
+      {
+        "name": "2025 LTA Split 1",
+        "detail": "우승"
+      }
+    ],
+    "100T": [
+      {
+        "name": "2025 LTA North Split 3",
         "detail": "우승"
       }
     ]
