@@ -2459,9 +2459,11 @@ const PredictionPage = () => {
   // 과거 연도 전체 데이터(순위표·대진·최종순위). 단일 대회는 sub=null.
   const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub, activeYear) : null;
   const pastFull = !isCurrentYear && !!pastData;
-  // 2025 팀 표기 오버라이드: KRX→DRX(명칭·로고), GEN→옛 로고, DNS→DN FREECS. + LPL Split 1·2는 BLG→풀네임.
+  // 팀 표기 오버라이드: KRX→DRX(명칭·로고), GEN→옛 로고, DNS→DN FREECS 등. + LPL Split 1·2는 BLG→풀네임.
+  //   2026(현재)에서 바뀐 최신 브랜딩이 2024 이하 과거 대회로 새어나가지 않도록, 가장 예전 브랜딩(2025 오버라이드)을
+  //   2025 이하 모든 과거 연도에 적용한다.
   const pastTeamOverride = (() => {
-    if (activeYear !== 2025) return undefined;
+    if (activeYear > 2025) return undefined;
     const ov = { ...TEAM_OVERRIDE_2025 };
     if (comp?.key === 'lpl') {
       if (activeSub === 'Split 1' || activeSub === 'Split 2') ov.BLG = { name: 'Bilibili Gaming DreamSmart' };
