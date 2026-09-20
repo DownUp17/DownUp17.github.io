@@ -7,15 +7,19 @@
         "detail": "우승"
       },
       {
-        "name": "2025 LCK CUP",
+        "name": "2025 First Stand",
         "detail": "우승"
       },
       {
-        "name": "2025 First Stand",
+        "name": "2025 LCK CUP",
         "detail": "우승"
       }
     ],
     "GEN": [
+      {
+        "name": "2026 LCK",
+        "detail": "우승"
+      },
       {
         "name": "2026 LCK CUP",
         "detail": "우승"
@@ -51,11 +55,11 @@
         "detail": "우승"
       },
       {
-        "name": "2026 LPL Split 1",
+        "name": "2026 First Stand",
         "detail": "우승"
       },
       {
-        "name": "2026 First Stand",
+        "name": "2026 LPL Split 1",
         "detail": "우승"
       },
       {
@@ -105,12 +109,6 @@
         "detail": "우승"
       }
     ],
-    "SEN": [
-      {
-        "name": "2026 LCS Summer",
-        "detail": "우승"
-      }
-    ],
     "FUR": [
       {
         "name": "CBLOL 2026 Split 1",
@@ -118,12 +116,6 @@
       },
       {
         "name": "2025 LTA Sul Etapa 2",
-        "detail": "우승"
-      }
-    ],
-    "PAIN": [
-      {
-        "name": "CBLOL 2026 Split 2",
         "detail": "우승"
       }
     ],
@@ -139,11 +131,11 @@
     ],
     "T1": [
       {
-        "name": "2025 Worlds",
+        "name": "2025 LoL KeSPA CUP",
         "detail": "우승"
       },
       {
-        "name": "2025 LoL KeSPA CUP",
+        "name": "2025 Worlds",
         "detail": "우승"
       }
     ],
@@ -183,6 +175,10 @@
     ],
     "FLY": [
       {
+        "name": "2025 LTA North Playoffs",
+        "detail": "우승"
+      },
+      {
         "name": "2025 LTA North Split 2",
         "detail": "우승"
       },
@@ -191,15 +187,9 @@
         "detail": "우승"
       }
     ],
-    "100T": [
-      {
-        "name": "2025 LTA North Split 3",
-        "detail": "우승"
-      }
-    ],
     "VKS": [
       {
-        "name": "2025 LTA Sul Etapa 3",
+        "name": "2025 LTA Sul Playoffs",
         "detail": "우승"
       }
     ]

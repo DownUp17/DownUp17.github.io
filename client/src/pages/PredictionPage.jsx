@@ -31,6 +31,9 @@ import rogueLogo from '../assets/rogue.svg';
 import teamLiquidLogo from '../assets/team-liquid.svg';
 import losRatonesLogo from '../assets/los-ratones.svg';
 import karmineCorpBlueLogo from '../assets/karmine-corp-blue.webp';
+import teamBdsLogo from '../assets/team-bds.svg';
+import hundredThievesLogo from '../assets/100-thieves.svg';
+import fluxo2025Logo from '../assets/fluxo-2025.svg';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -70,10 +73,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
@@ -98,6 +101,7 @@ const TEAM_OVERRIDE_2025 = {
   BRO: { name: 'OKSavingsBank BRION', logo: brionOkLogo },
   TLAW: { tag: 'TL', name: 'Team Liquid', logo: teamLiquidLogo }, // 2025 시즌까지 Team Liquid(TL)
   IG: { name: 'Invictus Gaming' }, // Meituan 스폰서 표기는 2026 LPL Split 3부터 — 그 이전 연도는 Invictus Gaming
+  SHFT: { tag: 'BDS', name: 'Team BDS', logo: teamBdsLogo }, // 2025 시즌까지 Team BDS(BDS)
 };
 // 2026 LPL Split 3부터 IG는 'Invictus Gaming Meituan'(nameByShort 기본값). Split 3 이전(Split 1·2)만 옛 표기로 되돌린다.
 const LPL_PRE_MEITUAN_OVERRIDE = { IG: { name: 'Invictus Gaming' } };
@@ -2364,9 +2368,10 @@ const SUBTAB_DETAIL = {
 // 과거 연도 대회의 상세 헤더 로고·상징색 오버라이드 (`key|year`). 예: 2025 LCS = LTA North.
 // 과거 연도 상세 헤더 로고·상징색. bySub로 스플릿별 오버라이드(통합 스플릿=LTA).
 const PAST_DETAIL = {
-  'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo } } },
-  'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo } } },
+  'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo }, '아메리카 스테이지': { color: '#b2a27e', logo: ltaLogo } } },
+  'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo }, '아메리카 스테이지': { color: '#b2a27e', logo: ltaLogo } } },
   'lck|2025': { bySub: { 'LCK CUP': { color: '#7f6b00' }, 'KeSPA CUP': { color: '#072148', logo: kespa2025Logo } } },
+  'fst|2025': { color: '#45002c' },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
@@ -2375,7 +2380,7 @@ const EVENT_DETAIL = {
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
-const TAB_COLOR = { asiangames: '#ffb732' };
+const TAB_COLOR = { asiangames: '#ffb732', fst: '#ece5e7' };
 
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
@@ -2610,6 +2615,8 @@ const PredictionPage = () => {
       if (activeSub === 'Split 1' || activeSub === 'Split 2') ov.BLG = { name: 'Bilibili Gaming DreamSmart' };
       if (activeSub === 'Split 1') ov.JDG = { name: 'Beijing JDG Intel Esports' };
     }
+    // Fluxo: 이름은 2025 시즌부터 Fluxo W7M(2024 이하만 'Fluxo'), 로고는 2025 시즌까지 옛 로고.
+    if (activeYear <= 2025) ov.FX = { logo: fluxo2025Logo, ...(activeYear <= 2024 ? { name: 'Fluxo' } : {}) };
     return ov;
   })();
 
@@ -2658,8 +2665,8 @@ const PredictionPage = () => {
 
   // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
   const PAST_COMP_NAME = {
-    'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA' },
-    'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA' },
+    'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA', 'Playoffs': 'LTA', '아메리카 스테이지': '아메리카 스테이지' },
+    'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA', 'Playoffs': 'LTA', '아메리카 스테이지': '아메리카 스테이지' },
   };
   const displayTitle = (() => {
     if (isCurrentYear) return title;

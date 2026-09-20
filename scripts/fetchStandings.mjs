@@ -868,7 +868,7 @@ function cupFinalStandings(rows, playin, playoffs) {
 
 // 범용 최종순위 — 여러 대진(스위스/플레이-인/플레이오프)을 낮은→높은 중요도 순으로 받아,
 //   가장 깊이(=우승에 가까운 라운드) 도달한 팀부터 정렬. 대진 밖 팀은 정규순위 순.
-function splitFinalStandings(rows, bracketsOrdered) {
+function splitFinalStandings(rows, bracketsOrdered, finished) {
   const wl = (m) => {
     const a = m.a, b = m.b;
     if (a?.win || a?.msi) return { w: a.short, l: b?.short };
@@ -932,7 +932,8 @@ function splitFinalStandings(rows, bracketsOrdered) {
   // 대회 종료 여부: 마지막 대진의 최종(최장경로) 경기 승자가 결정됐으면 종료.
   const finalMatch = results.at(-1)?.finalMatch;
   const done = !!(finalMatch && wl(finalMatch).w);
-  if (done) return full;
+  // 종료된 대회는 결승 슬롯이 API에 미기재(예: LTA 지역결승이 아메리카 스테이지로 분리)여도 전체 순위를 그대로 노출.
+  if (done || finished) return full;
   // 진행 중: 아직 탈락하지 않은(=최종순위 미확정) 대진 생존팀은 제외하고, 확정된 팀만 반환.
   const eliminated = new Set(), inBracket = new Set();
   for (const b of bracketsOrdered || []) for (const m of allMatches(b)) for (const s of [m.a, m.b]) {
@@ -997,8 +998,8 @@ async function buildSplit(leagueId, slug) {
   }
   // 선발전(regional_qualifier/finals)은 별도 진출전이라 스플릿 최종순위 산출에서 제외(마지막 브래킷이 순위를 지배하는 문제 방지).
   const fsBrackets = brackets.filter((b) => !/regional_qualifier|regional_finals/.test(b.slug || '')).map((b) => b.bracket);
-  const finalStandings = finalRows.length ? splitFinalStandings(finalRows, fsBrackets) : [];
   const finished = tour.endDate < new Date().toISOString().slice(0, 10);
+  const finalStandings = finalRows.length ? splitFinalStandings(finalRows, fsBrackets, finished) : [];
   return { name: st.name, rows, brackets, finalStandings, finished };
 }
 
@@ -2565,6 +2566,7 @@ if (data.standings.worlds?.qualifiers) {
 // 진행중/종료 스플릿의 최종순위 — 대진(플레이오프 등) 진행에 따라 자동 산출·갱신.
 //   미종료 대회는 현재 대진 기준 잠정 순위(생존팀이 상위). 종료되면 확정.
 const FINAL_STANDINGS_SUBS = [
+  { key: 'lck', sub: 'LCK', brackets: ['playin', 'playoffs'] },
   { key: 'lec', sub: 'Summer', brackets: ['playoffs'] },
   { key: 'lcs', sub: 'Summer', brackets: ['playoffs'] },
   { key: 'cblol', sub: 'Split 2', brackets: ['playoffs'] },
@@ -2574,7 +2576,7 @@ const FINAL_STANDINGS_SUBS = [
 for (const fsub of FINAL_STANDINGS_SUBS) {
   const node = data.standings[fsub.key]?.[fsub.sub];
   if (!node) continue;
-  const brs = fsub.brackets.map((b) => node[b]).filter((x) => x?.rounds?.length);
+  const brs = fsub.brackets.map((b) => node[b]).filter((x) => x?.rounds?.length || x?.sections?.length);
   if (!brs.length) continue;
   node.finalStandings = splitFinalStandings(node.rows || [], brs);
   console.log(`${fsub.key.toUpperCase()} ${fsub.sub} 최종순위: 1위 ${node.finalStandings[0]?.team}`);
@@ -2636,9 +2638,11 @@ console.log('lolStandings.json 갱신 완료');
     //   Split 1·3에만 존재. 두 리그의 해당 스플릿 대진에 '아메리카 스테이지'로 추가.
     const LTA_CROSS_LEAGUE = '113475149040947852';
     // 리그별 스플릿 라벨이 다름: LCS=Split, CBLOL(LTA Sul)=Etapa
+    //   split_1: 통합 스플릿(LTA)이라 해당 스플릿 대진에 스테이지로 추가.
+    //   split_3: 플레이오프와 별개 대회이므로 '아메리카 스테이지' 서브탭으로 분리(Split 선택하듯 전환).
     const CROSS = [
-      { slug: 'lta_cross_split_1_2025', subs: { lcs: 'Split 1', cblol: 'Etapa 1' } },
-      { slug: 'lta_cross_split_3_2025', subs: { lcs: 'Split 3', cblol: 'Etapa 3' } },
+      { slug: 'lta_cross_split_1_2025', subs: { lcs: 'Split 1', cblol: 'Etapa 1' }, separate: false },
+      { slug: 'lta_cross_split_3_2025', subs: { lcs: 'Split 3', cblol: 'Etapa 3' }, separate: true },
     ];
     for (const c of CROSS) {
       try {
@@ -2646,8 +2650,21 @@ console.log('lolStandings.json 갱신 완료');
         const rf = (s?.brackets || []).find((b) => b.slug === 'regional_finals');
         if (rf) {
           const stage = { slug: 'americas_stage', name: '아메리카 스테이지', label: '아메리카 스테이지', bracket: rf.bracket };
-          for (const key of ['lcs', 'cblol']) { const sub = c.subs[key]; if (std2025[key]?.[sub]?.brackets) std2025[key][sub].brackets.push(stage); }
-          console.log(`2025 아메리카 스테이지(${c.slug}) 추가`);
+          if (c.separate) {
+            // 스플릿 자체(플레이오프)는 'Playoffs'로 개명, 아메리카 스테이지는 별도 서브탭으로 분리(Split 선택하듯 전환).
+            for (const key of ['lcs', 'cblol']) {
+              const sub = c.subs[key]; // 'Split 3' / 'Etapa 3'
+              if (!std2025[key]?.[sub]) continue;
+              std2025[key]['Playoffs'] = std2025[key][sub];
+              delete std2025[key][sub];
+              const idx = subs2025[key].indexOf(sub); if (idx >= 0) subs2025[key][idx] = 'Playoffs';
+              std2025[key]['아메리카 스테이지'] = { name: '아메리카 스테이지', rows: [], brackets: [stage], finalStandings: [] };
+              subs2025[key].push('아메리카 스테이지');
+            }
+          } else {
+            for (const key of ['lcs', 'cblol']) { const sub = c.subs[key]; if (std2025[key]?.[sub]?.brackets) std2025[key][sub].brackets.push(stage); }
+          }
+          console.log(`2025 아메리카 스테이지(${c.slug}) ${c.separate ? '서브탭 분리' : '스테이지 추가'}`);
         }
       } catch (e) { console.warn(`2025 아메리카 스테이지 ${c.slug} 실패: ${e.message}`); }
     }
@@ -2833,7 +2850,8 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'lck' && sub === 'KeSPA CUP') return '2026 LoL KeSPA CUP';
     if (lg === 'cblol' && sub === 'Copa') return 'Copa CBLOL 2026'; // 앱 표기와 동일
     if (lg === 'cblol') return `CBLOL 2026 ${sub}`;
-    return `2026 ${LEAGUE_LABEL[lg] || lg.toUpperCase()} ${sub}`;
+    const lab = LEAGUE_LABEL[lg] || lg.toUpperCase();
+    return sub === lab ? `2026 ${lab}` : `2026 ${lab} ${sub}`; // sub이 리그명과 같으면 중복 제거(예: LCK)
   };
   const titles = {};
   const add = (short, name) => {
@@ -2855,7 +2873,8 @@ console.log('lolStandings.json 갱신 완료');
   const SKIP_KEYS = ['rows', 'players', 'teams', 'rounds', 'sections', 'connectors', 'qual', 'fs1', 'fs2', 'finalStandings', 'standings', 'knockout', 'groups', 'playin', 'playoffs', 'swiss', 'bracket', 'qualifier'];
   const walk = (obj, segs) => {
     if (!obj || typeof obj !== 'object') return;
-    if (Array.isArray(obj.finalStandings) && obj.finalStandings[0]?.team) add(obj.finalStandings[0].team, titleFor(segs));
+    // 우승 확정(note '우승')인 완료 대회만 반영 — 진행 중 대회의 잠정 순위 1위(생존팀 제외 후 상위)를 우승으로 오등록하지 않도록.
+    if (Array.isArray(obj.finalStandings) && obj.finalStandings[0]?.team && obj.finalStandings[0]?.note === '우승') add(obj.finalStandings[0].team, titleFor(segs));
     if (typeof obj.champion === 'string') add(obj.champion, titleFor(segs));
     // MSI/Worlds는 최종 순위 대신 결승 대진 결과로 우승자 판정 (플레이-인·스위스 제외).
     const seg = segs[segs.length - 1];
@@ -2906,7 +2925,9 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`과거 우승 경력 산출 실패(무시): ${e.message}`); }
 
   // 정렬 — 최신 연도 위로, 같은 연도 내에서는 대회 개최 순서(대략)의 역순.
-  const TITLE_ORDER = ['First Stand', 'LCK CUP', 'Lock-In', 'Lock In', 'Copa', 'Versus', 'Winter', 'Split 1', 'Etapa 1', 'Spring', 'Road to MSI', 'Mid-Season', 'Split 2', 'Etapa 2', 'Summer', '시즌 파이널', 'KeSPA', 'Split 3', 'Etapa 3', 'Worlds'];
+  // 개최 순서(이른 대회 → 늦은 대회). 최신순 정렬 시 뒤쪽(늦은 대회)이 위로 온다.
+  //   LCK CUP·첫 스플릿(LPL Split 1 등)은 First Stand보다 먼저 진행 → First Stand 앞에 배치.
+  const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Split 1', 'Etapa 1', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Split 2', 'Etapa 2', 'Summer', '시즌 파이널', 'Split 3', 'Etapa 3', 'Copa', 'Worlds', 'KeSPA'];
   const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
   const yearOf = (name) => { const m = name.match(/\b(20\d{2})\b/); return m ? Number(m[1]) : 0; };
   for (const short of Object.keys(titles)) titles[short].sort((a, b) => (yearOf(b.name) - yearOf(a.name)) || (ord(b.name) - ord(a.name)));

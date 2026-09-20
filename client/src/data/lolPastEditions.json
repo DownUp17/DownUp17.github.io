@@ -257,12 +257,14 @@
       "lcs": [
         "Split 1",
         "Split 2",
-        "Split 3"
+        "Playoffs",
+        "아메리카 스테이지"
       ],
       "cblol": [
         "Etapa 1",
         "Etapa 2",
-        "Etapa 3"
+        "Playoffs",
+        "아메리카 스테이지"
       ]
     }
   },
@@ -52341,7 +52343,7 @@
             }
           ]
         },
-        "Split 3": {
+        "Playoffs": {
           "name": "2025 스플릿 3",
           "rows": [],
           "brackets": [
@@ -52788,7 +52790,55 @@
                   ]
                 ]
               }
+            }
+          ],
+          "finalStandings": [
+            {
+              "rank": 1,
+              "team": "FLY",
+              "note": "우승"
             },
+            {
+              "rank": 2,
+              "team": "100T",
+              "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "SR",
+              "note": "3위"
+            },
+            {
+              "rank": 4,
+              "team": "C9",
+              "note": ""
+            },
+            {
+              "rank": 5,
+              "team": "DSG",
+              "note": ""
+            },
+            {
+              "rank": 6,
+              "team": "TLAW",
+              "note": ""
+            },
+            {
+              "rank": 7,
+              "team": "LYON",
+              "note": ""
+            },
+            {
+              "rank": 8,
+              "team": "DIG",
+              "note": ""
+            }
+          ]
+        },
+        "아메리카 스테이지": {
+          "name": "아메리카 스테이지",
+          "rows": [],
+          "brackets": [
             {
               "slug": "americas_stage",
               "name": "아메리카 스테이지",
@@ -52964,43 +53014,7 @@
               }
             }
           ],
-          "finalStandings": [
-            {
-              "rank": 2,
-              "team": "100T",
-              "note": "준우승"
-            },
-            {
-              "rank": 3,
-              "team": "SR",
-              "note": "3위"
-            },
-            {
-              "rank": 4,
-              "team": "C9",
-              "note": ""
-            },
-            {
-              "rank": 5,
-              "team": "DSG",
-              "note": ""
-            },
-            {
-              "rank": 6,
-              "team": "TLAW",
-              "note": ""
-            },
-            {
-              "rank": 7,
-              "team": "LYON",
-              "note": ""
-            },
-            {
-              "rank": 8,
-              "team": "DIG",
-              "note": ""
-            }
-          ]
+          "finalStandings": []
         }
       },
       "cblol": {
@@ -54004,7 +54018,7 @@
             }
           ]
         },
-        "Etapa 3": {
+        "Playoffs": {
           "name": "2025 스플릿 3",
           "rows": [],
           "brackets": [
@@ -54455,7 +54469,55 @@
                   ]
                 ]
               }
+            }
+          ],
+          "finalStandings": [
+            {
+              "rank": 1,
+              "team": "VKS",
+              "note": "우승"
             },
+            {
+              "rank": 2,
+              "team": "RED",
+              "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "PAIN",
+              "note": "3위"
+            },
+            {
+              "rank": 4,
+              "team": "LOUD",
+              "note": ""
+            },
+            {
+              "rank": 5,
+              "team": "FUR",
+              "note": ""
+            },
+            {
+              "rank": 6,
+              "team": "LEV",
+              "note": ""
+            },
+            {
+              "rank": 7,
+              "team": "FX",
+              "note": ""
+            },
+            {
+              "rank": 8,
+              "team": "ISG",
+              "note": ""
+            }
+          ]
+        },
+        "아메리카 스테이지": {
+          "name": "아메리카 스테이지",
+          "rows": [],
+          "brackets": [
             {
               "slug": "americas_stage",
               "name": "아메리카 스테이지",
@@ -54631,48 +54693,7 @@
               }
             }
           ],
-          "finalStandings": [
-            {
-              "rank": 1,
-              "team": "VKS",
-              "note": "우승"
-            },
-            {
-              "rank": 2,
-              "team": "RED",
-              "note": "준우승"
-            },
-            {
-              "rank": 3,
-              "team": "PAIN",
-              "note": "3위"
-            },
-            {
-              "rank": 4,
-              "team": "LOUD",
-              "note": ""
-            },
-            {
-              "rank": 5,
-              "team": "FUR",
-              "note": ""
-            },
-            {
-              "rank": 6,
-              "team": "LEV",
-              "note": ""
-            },
-            {
-              "rank": 7,
-              "team": "FX",
-              "note": ""
-            },
-            {
-              "rank": 8,
-              "team": "ISG",
-              "note": ""
-            }
-          ]
+          "finalStandings": []
         }
       },
       "fst": {

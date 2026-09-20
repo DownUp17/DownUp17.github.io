@@ -1459,7 +1459,59 @@
               "b"
             ]
           ]
-        }
+        },
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "GEN",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "HLE",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "T1",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "DK",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "KT",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "BFX",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "BRO",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "NS",
+            "note": ""
+          },
+          {
+            "rank": 9,
+            "team": "KRX",
+            "note": ""
+          },
+          {
+            "rank": 10,
+            "team": "DNS",
+            "note": ""
+          }
+        ]
       },
       "LCK CUP": {
         "stage": "2026 LCK CUP · 종료 · 우승 GEN",
