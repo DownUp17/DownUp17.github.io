@@ -2344,6 +2344,26 @@ try {
   }
 } catch (e) { console.warn(`DCGI LPL 시드 자동 채움 실패(무시): ${e.message}`); }
 
+// DCGI LEC/LCS/CBLOL 시드 자동 채움 — 각 리그 현 시즌(마지막) 스플릿 플레이오프 최종순위 N위 = 시드 #N.
+//   현재 스플릿은 LEAGUES(라이브 추적 대상)에서 파생 → 시즌 진행에 따라 자동 갱신.
+try {
+  const dem = data.standings.demacia;
+  if (dem?.qualifiers) {
+    const curSub = Object.fromEntries(LEAGUES.map((l) => [l.key, l.sub]));
+    let filled = 0; const done = [];
+    for (const qf of dem.qualifiers) {
+      if (qf.short) continue;
+      const m = (qf.seed || '').match(/^(LEC|LCS|CBLOL) #(\d+)$/);
+      if (!m) continue;
+      const key = m[1].toLowerCase(), rank = +m[2];
+      const fs = data.standings[key]?.[curSub[key]]?.finalStandings;
+      const row = fs?.find((r) => r.rank === rank);
+      if (row?.team) { qf.short = row.team; filled++; done.push(`${qf.seed}=${row.team}`); }
+    }
+    if (filled) console.log(`DCGI LEC/LCS/CBLOL 시드 자동 채움: ${filled}팀 (${done.join(', ')})`);
+  }
+} catch (e) { console.warn(`DCGI LEC/LCS/CBLOL 시드 자동 채움 실패(무시): ${e.message}`); }
+
 // Asian Games(국가 대항전) 대회 정보 — 사용자가 asiangames-data_2026 리포지토리에서 직접 관리.
 //   8개국 2개조 싱글 라운드로빈(Bo3) → 4강 · 3·4위전 · 결승. 각 국가 Elo도 리포지토리에서 제공.
 try {
@@ -2630,6 +2650,99 @@ console.log('lolStandings.json 갱신 완료');
     console.log(`2025 과거 에디션 생성: ${nComp}개 리그 (전체 순위표·대진·최종순위)`);
   } else {
     console.log('2025 과거 에디션: 이미 존재 → 생략');
+  }
+}
+
+// ── 과거 에디션 전체 확장 (대회별 API 최대치) ───────────────────────────────
+//   각 리그의 모든 과거 토너먼트를 순회해 연도별 생성. 2025(특수·LTA 재편)·2026(현재 시즌) 제외.
+//   LCK 2012~ · LEC/LCS 2013~ · LPL/CBLOL 2020~ · MSI 2015~ · Worlds 2011~.
+//   정적 데이터라 연도·리그별 1회 생성 후 캐시. 옛 팀 브랜딩은 이후 오버라이드로 정정.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  let past = { updatedAt: '', subtabs: {}, standings: {} };
+  try { past = JSON.parse(fs.readFileSync(pastFile, 'utf8')); } catch { /* 최초 생성 */ }
+  past.subtabs = past.subtabs || {}; past.standings = past.standings || {};
+
+  const SPLIT_LEAGUES = {
+    lck: '98767991310872058', lpl: '98767991314006698', lec: '98767991302996019',
+    lcs: '98767991299243165', cblol: '98767991332355509',
+  };
+  const SINGLE_LEAGUES = { msi: '98767991325878492', worlds: '98767975604431411' };
+  const SKIP_YEARS = new Set(['2025', '2026']); // 2025=특수(LTA), 2026=현재 시즌
+
+  // 슬러그 → 서브탭 라벨(연도마다 명명이 제각각이라 휴리스틱으로 정규화).
+  const deriveLabel = (slug) => {
+    const s = slug.toLowerCase();
+    if (/season_finals/.test(s)) return '시즌 파이널';
+    if (/lock[_-]?in/.test(s)) return 'Lock In';
+    if (/regional_finals|regional_qualifier/.test(s)) return '선발전';
+    if (/(^|_)mss(_|$)|mid_?season_?showdown/.test(s)) return 'Mid-Season Showdown';
+    if (/winter/.test(s)) return 'Winter';
+    if (/spring/.test(s)) return 'Spring';
+    if (/summer/.test(s)) return 'Summer';
+    if (/split_?3|split3/.test(s)) return 'Split 3';
+    if (/split_?2|split2/.test(s)) return 'Split 2';
+    if (/split_?1|split1/.test(s)) return 'Split 1';
+    return slug;
+  };
+  const pick = (s) => ({ name: s.name, rows: s.rows, brackets: s.brackets, finalStandings: s.finalStandings });
+  const nonEmpty = (s) => !!s && ((s.rows && s.rows.length) || (s.brackets && s.brackets.length));
+
+  let changed = false;
+  // 리그별 서브탭형 대회 (LCK/LPL/LEC/LCS/CBLOL)
+  for (const [key, leagueId] of Object.entries(SPLIT_LEAGUES)) {
+    let tours = [];
+    try { tours = (await api('getTournamentsForLeague', { leagueId })).data.leagues[0].tournaments || []; }
+    catch (e) { console.warn(`${key} 토너먼트 목록 실패: ${e.message}`); continue; }
+    const byYear = {}; // 연도 → 토너먼트[](시작일 오름차순 = 서브탭 자연 순서)
+    for (const t of tours.slice().sort((a, b) => (a.startDate < b.startDate ? -1 : 1))) {
+      const year = t.startDate.slice(0, 4);
+      if (SKIP_YEARS.has(year)) continue;
+      (byYear[year] = byYear[year] || []).push(t);
+    }
+    for (const [year, list] of Object.entries(byYear)) {
+      if (past.standings[year]?.[key]) continue; // 이미 생성됨
+      const byS = {}, labels = [];
+      for (const t of list) {
+        try {
+          const s = await buildSplit(leagueId, t.slug);
+          if (!nonEmpty(s)) continue;
+          let label = deriveLabel(t.slug);
+          while (byS[label]) label += ' '; // 라벨 충돌 회피
+          byS[label] = pick(s); labels.push(label);
+        } catch (e) { console.warn(`${year} ${key} ${t.slug} 실패: ${e.message}`); }
+      }
+      if (!labels.length) continue;
+      (past.subtabs[year] = past.subtabs[year] || {})[key] = labels;
+      (past.standings[year] = past.standings[year] || {})[key] = byS;
+      changed = true;
+      console.log(`${year} ${key.toUpperCase()} 생성: ${labels.join(', ')}`);
+    }
+  }
+  // 단일 대회 (MSI·Worlds) — 연도별 단일 데이터
+  for (const [key, leagueId] of Object.entries(SINGLE_LEAGUES)) {
+    let tours = [];
+    try { tours = (await api('getTournamentsForLeague', { leagueId })).data.leagues[0].tournaments || []; }
+    catch (e) { console.warn(`${key} 토너먼트 목록 실패: ${e.message}`); continue; }
+    for (const t of tours) {
+      const year = t.startDate.slice(0, 4);
+      if (SKIP_YEARS.has(year)) continue;
+      if (past.standings[year]?.[key]) continue;
+      try {
+        const s = await buildSplit(leagueId, t.slug);
+        if (!nonEmpty(s)) continue;
+        (past.standings[year] = past.standings[year] || {})[key] = pick(s);
+        changed = true;
+        console.log(`${year} ${key.toUpperCase()} 생성`);
+      } catch (e) { console.warn(`${year} ${key} ${t.slug} 실패: ${e.message}`); }
+    }
+  }
+  if (changed) {
+    past.updatedAt = data.updatedAt;
+    fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+    console.log('과거 에디션 전체 확장 저장 완료');
+  } else {
+    console.log('과거 에디션 전체 확장: 추가 없음');
   }
 }
 

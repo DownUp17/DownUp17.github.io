@@ -2306,7 +2306,12 @@ const COMP_EDITIONS = {
   demacia: [2026, 2025],
   worlds: [2026, 2025],
 };
-const editionYears = (key) => COMP_EDITIONS[key] || [CURRENT_YEAR];
+// 선택 가능한 연도 = 수기 기준(COMP_EDITIONS: demacia/fst 등 특수 2025) + 생성된 과거 데이터의 모든 연도.
+const editionYears = (key) => {
+  const years = new Set(COMP_EDITIONS[key] || [CURRENT_YEAR]);
+  for (const y of Object.keys(PAST_STANDINGS)) if (PAST_STANDINGS[y]?.[key]) years.add(Number(y));
+  return [...years].sort((a, b) => b - a);
+};
 // 과거 연도 결과: `${key}|${year}` → { finalResult: { champion, runnerUp, standings:[{rank,team,note}] } }
 // 여기에 항목을 추가하면 해당 연도 선택 시 ResultView 로 최종 순위가 자동 표시된다.
 // 예) 'worlds|2025': { finalResult: { champion: 'T1', runnerUp: 'BLG', standings: [{ rank: 1, team: 'T1' }] } },
