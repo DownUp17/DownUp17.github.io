@@ -65,6 +65,10 @@
     ],
     "G2": [
       {
+        "name": "2026 LEC Summer",
+        "detail": "우승"
+      },
+      {
         "name": "2026 LEC Spring",
         "detail": "우승"
       },
@@ -74,16 +78,6 @@
       },
       {
         "name": "2025 LEC Summer",
-        "detail": "우승"
-      }
-    ],
-    "KC": [
-      {
-        "name": "2026 LEC Summer",
-        "detail": "우승"
-      },
-      {
-        "name": "2025 LEC Winter",
         "detail": "우승"
       }
     ],
@@ -160,6 +154,12 @@
     "TES": [
       {
         "name": "2025 LPL Split 1",
+        "detail": "우승"
+      }
+    ],
+    "KC": [
+      {
+        "name": "2025 LEC Winter",
         "detail": "우승"
       }
     ],

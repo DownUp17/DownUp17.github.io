@@ -5270,14 +5270,17 @@
                   "title": "결승",
                   "a": {
                     "seed": "상위권 대진 - 2라운드 승자",
-                    "short": "G2"
+                    "short": "G2",
+                    "score": 3,
+                    "msi": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 3라운드 승자",
-                    "short": "MKOI"
+                    "short": "MKOI",
+                    "score": 0,
+                    "elim": true
                   },
-                  "startRow": 3,
-                  "time": "9/21 00:00"
+                  "startRow": 3
                 }
               ]
             }
@@ -5350,6 +5353,16 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 1,
+            "team": "G2",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "MKOI",
+            "note": "준우승"
+          },
           {
             "rank": 3,
             "team": "KC",
