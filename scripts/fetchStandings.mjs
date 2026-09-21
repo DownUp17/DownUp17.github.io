@@ -333,6 +333,64 @@ function lecPoLayout(bracket) {
   return fixDropElim({ totalRows: 8, rounds: rounds2, connectors: valid });
 }
 
+// 8팀 더블 엘리미네이션(예선 1라운드 + 상위 2라운드 + 하위 3라운드) — LEC 2025 서머·LPL 2025 Split1형.
+//   시드 1~4는 상위 브래킷(상위 1R→상위 결승), 시드 5~8은 예선(plain "1라운드")에서 시작해
+//   승자만 하위 브래킷 첫 라운드로 합류(패자는 즉시 탈락). 라운드명(1/2/3라운드·8강/4강)에 무관하게 구조로 판별.
+//   그리드(totalRows=10): col0 상위1R(상단 sr0·2)+예선(하단 sr6·8) / col1 상위결승(sr1)+하위1R(sr6·8) /
+//     col2 하위2R(sr7) / col3 하위결승(sr7) / col4 결승(sr4).
+//   연결선은 원본(id 기반)을 새 좌표로 재매핑하되, 상위1R→하위1R 패자 강등선은 다른 템플릿과 동일하게 생략.
+function lec8DELayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  const all = [];
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => all.push({ m, ci, mi, t: m.title || '' })));
+  const gf = all.filter((x) => /^결승$/.test(x.t));
+  const upF = all.filter((x) => /상위권.*결승/.test(x.t));
+  const upR1 = all.filter((x) => /상위권/.test(x.t) && !/결승/.test(x.t));
+  const prelim = all.filter((x) => /^1라운드$/.test(x.t));
+  const loF = all.filter((x) => /하위권.*결승/.test(x.t));
+  const loNon = all.filter((x) => /하위권/.test(x.t) && !/결승/.test(x.t));
+  // 하위 비결승 라운드를 제목별로 묶어 2경기 그룹=하위 첫 라운드, 1경기 그룹=하위 두번째 라운드로 분리
+  const loByTitle = {};
+  for (const x of loNon) (loByTitle[x.t] = loByTitle[x.t] || []).push(x);
+  const loGroups = Object.values(loByTitle);
+  const loFirst = loGroups.find((g) => g.length === 2) || [];
+  const loSecond = loGroups.find((g) => g.length === 1) || [];
+  // 구조 검증 — 예선 2 · 상위1R 2 · 상위결승 1 · 하위첫 2 · 하위둘째 1 · 하위결승 1 · 결승 1
+  if (gf.length !== 1 || upF.length !== 1 || upR1.length !== 2 || prelim.length !== 2 ||
+      loGroups.length !== 2 || loFirst.length !== 2 || loSecond.length !== 1 || loF.length !== 1) return bracket;
+  const byOrder = (arr) => arr.slice().sort((a, b) => a.ci - b.ci || a.mi - b.mi);
+  // cols[col] = [{ m, sr }]
+  const cols = [[], [], [], [], []];
+  const put = (col, sr, m) => cols[col].push({ m, sr });
+  byOrder(upR1).forEach((x, i) => put(0, i === 0 ? 0 : 2, x.m));
+  byOrder(prelim).forEach((x, i) => put(0, i === 0 ? 6 : 8, x.m));
+  put(1, 1, upF[0].m);
+  byOrder(loFirst).forEach((x, i) => put(1, i === 0 ? 6 : 8, x.m));
+  put(2, 7, loSecond[0].m);
+  put(3, 7, loF[0].m);
+  put(4, 4, gf[0].m);
+  // 원본 좌표(ci-mi)→id, 새 좌표(id→[col, idx])
+  const origPos = {};
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => { origPos[`${ci}-${mi}`] = m.id; }));
+  const idPos = {};
+  const rounds2 = cols.map((arr, ci) => ({
+    title: '',
+    matches: arr.slice().sort((a, b) => a.sr - b.sr).map((o, mi) => { idPos[o.m.id] = [ci, mi]; return { ...o.m, startRow: o.sr }; }),
+  }));
+  // 상위1R→하위1R 패자 강등선은 생략(다른 DE 템플릿과 동일) — 해당 id쌍만 제외하고 원본 연결선 재매핑
+  const upR1Ids = new Set(upR1.map((x) => x.m.id));
+  const loFirstIds = new Set(loFirst.map((x) => x.m.id));
+  const connectors = [];
+  for (const c of bracket.connectors || []) {
+    const [sci, smi, mid, dci, dmi, slot] = c;
+    const sId = origPos[`${sci}-${smi}`], dId = origPos[`${dci}-${dmi}`];
+    if (upR1Ids.has(sId) && loFirstIds.has(dId)) continue; // 강등선 생략
+    const sp = idPos[sId], dp = idPos[dId];
+    if (sp && dp && sp[0] !== dp[0]) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
+  }
+  return fixDropElim({ totalRows: 10, rounds: rounds2, connectors });
+}
+
 // LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
 function knightsLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
@@ -771,7 +829,9 @@ async function buildLeague(lg) {
     if (cols?.length) {
       const raw = bracketFromColumns(cols);
       // LEC는 상위 1R=1v4/2v3 구조(라운드별 컬럼), LCS/CBLOL은 LCK PO식(시드 1·2 부전승)
-      playoffs = lg.key === 'lec' ? lecPoLayout(raw) : lckPoStyleLayout(raw);
+      //   단, LEC가 8팀(예선 1R + 상위 2R + 하위 3R) 포맷이면 전용 그리드(lec8DELayout) 우선.
+      const lec8 = lg.key === 'lec' ? lec8DELayout(raw) : raw;
+      playoffs = lec8 !== raw ? lec8 : (lg.key === 'lec' ? lecPoLayout(raw) : lckPoStyleLayout(raw));
       // 진행 중 대진: 미진행 경기에 예정 일정(KST) 표기
       const times = await fetchScheduleTimes(lg.id);
       attachSchedule(playoffs, times);
@@ -973,7 +1033,9 @@ async function buildSplit(leagueId, slug) {
     else if (s.slug === 'road_to_msi') b = roadToMsiLayout(b); // Road to MSI: 2026과 동일 템플릿
     else if (s.slug === 'playoffs') {
       const cnt = (re) => (b.rounds || []).flatMap((r) => r.matches).filter((m) => re.test(m.title || '')).length;
+      const lec8 = lec8DELayout(b); // 8팀(예선 1R + 상위 2R + 하위 3R) — 매칭 시 그리드로 재배치, 아니면 원본 반환
       if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)
+      else if (lec8 !== b) b = lec8;                               // 8팀 LEC/LPL식 (예선 1라운드 + 상위 2R + 하위 3R)
       else if (cnt(/상위권.*결승/) >= 1) b = lckPoStyleLayout(b);  // 6팀 LCK PO식 (상위 8강/4강/결승, 3라운드 upper)
       else if (cnt(/상위권.*(8강|1라운드)/) >= 2) b = lecPoLayout(b); // 6팀 LEC식 (상위 2라운드, 같은 라운드=같은 컬럼)
     }
@@ -2446,11 +2508,12 @@ try {
   const ag = data.standings.asiangames || (data.standings.asiangames = {});
   if (!ag.groups || ag.placeholder) { // API 실제 데이터가 없거나(placeholder) 아직 임시일 때 → 임시 대진표 갱신
     // 참가 8개국(조 배정 미정). 조 편성이 확정되지 않아 group·Elo·조별 대진은 비워 둔다.
+    // 조 편성: A조 = 베트남·말레이시아·사우디아라비아·아랍에미리트 / B조 = 대한민국·중화 타이베이·인도·홍콩
     ag.teams = [
-      { code: 'KOR', name: '대한민국' }, { code: 'VIE', name: '베트남' },
-      { code: 'SAU', name: '사우디아라비아' }, { code: 'MYS', name: '말레이시아' },
-      { code: 'TPE', name: '대만' }, { code: 'HKG', name: '홍콩' },
-      { code: 'IND', name: '인도' }, { code: 'UAE', name: '아랍에미리트' },
+      { code: 'KOR', name: '대한민국', group: 'B' }, { code: 'VIE', name: '베트남', group: 'A' },
+      { code: 'SAU', name: '사우디아라비아', group: 'A' }, { code: 'MYS', name: '말레이시아', group: 'A' },
+      { code: 'TPE', name: '중화 타이베이', group: 'B' }, { code: 'HKG', name: '홍콩', group: 'B' },
+      { code: 'IND', name: '인도', group: 'B' }, { code: 'UAE', name: '아랍에미리트', group: 'A' },
     ];
     ag.placeholder = true; // 임시 대진표임을 표시
     // 국가대표 로스터(수기) → 각 선수 소속팀 GPR 평균 = 국가 레이팅(녹아웃 예측용).
@@ -2631,6 +2694,64 @@ console.log('lolStandings.json 갱신 완료');
             labels.push('대표 선발전');
           }
         }
+        // LEC Summer 2025: '1라운드'(하위 시드전)를 '크로스 플레이'로 분리, 나머지는 6팀 더블엘리 PO로 재배치. 그룹 라벨 '그룹 스테이지'.
+        if (c.key === 'lec' && byS['Summer']) {
+          const sm = byS['Summer'];
+          const S = (short, score, flag, seed) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
+          const crossPlay = { slug: 'cross_play', name: '크로스 플레이', bracket: { rounds: [{ title: '', matches: [
+            { title: '크로스 플레이', a: S('SHFT', 0, 'elim'), b: S('GX', 3, 'win') },
+            { title: '크로스 플레이', a: S('VIT', 3, 'win'), b: S('TH', 1, 'elim') },
+          ] }] } };
+          const po = { slug: 'playoffs', name: '플레이오프', bracket: {
+            totalRows: 10,
+            rounds: [
+              { matches: [
+                { title: '상위권 1라운드', startRow: 0, a: S('G2', 3, 'win'), b: S('KC', 1) },
+                { title: '상위권 1라운드', startRow: 2, a: S('MKOI', 3, 'win'), b: S('FNC', 2) },
+                { title: '하위권 1라운드', startRow: 6, a: S('FNC', 3, 'win'), b: S('GX', 0, 'elim') },
+                { title: '하위권 1라운드', startRow: 8, a: S('KC', null, 'win'), b: S('VIT', null, 'elim') },
+              ] },
+              { matches: [
+                { title: '상위권 결승', startRow: 1, a: S('G2', 3, 'win'), b: S('MKOI', 1) },
+                { title: '하위권 2라운드', startRow: 7, a: S('FNC', 3, 'win'), b: S('KC', 1, 'elim') },
+              ] },
+              { matches: [
+                { title: '하위권 결승', startRow: 7, a: S('MKOI', 3, 'win'), b: S('FNC', 1, 'elim') },
+              ] },
+              { matches: [
+                { title: '결승', startRow: 4, a: S('G2', 3, 'msi'), b: S('MKOI', 0, 'elim') },
+              ] },
+            ],
+            connectors: [
+              [0, 0, 'a', 1, 0, 'a'], [0, 1, 'a', 1, 0, 'b'],
+              [0, 2, 'a', 1, 1, 'a'], [0, 3, 'a', 1, 1, 'b'],
+              [1, 0, 'a', 3, 0, 'a'], [1, 0, 'b', 2, 0, 'b'],
+              [1, 1, 'a', 2, 0, 'a'], [2, 0, 'a', 3, 0, 'b'],
+            ],
+          } };
+          sm.brackets = [crossPlay, po];
+          sm.regLabel = '그룹 스테이지';
+          sm.finalStandings = splitFinalStandings(sm.rows || [], [crossPlay.bracket, po.bracket], true);
+        }
+        // LTA Split 2/Etapa 2 2025: round_1=포지셔닝 페이즈(rows), round_2=그룹 페이즈(A/B조), round_3=크로스 그룹 배틀.
+        if ((c.key === 'lcs' && byS['Split 2']) || (c.key === 'cblol' && byS['Etapa 2'])) {
+          const sub = c.key === 'lcs' ? 'Split 2' : 'Etapa 2';
+          const slug = c.subs.find(([l]) => l === sub)?.[1];
+          const node = byS[sub];
+          node.regLabel = '포지셔닝 페이즈';
+          for (const b of node.brackets || []) if (b.slug === 'round_3') { b.name = '크로스 그룹 배틀'; b.label = '크로스 그룹 배틀'; }
+          try {
+            const tj = await api('getTournamentsForLeague', { leagueId: c.league });
+            const tour = (tj.data.leagues[0].tournaments || []).find((t) => t.slug === slug);
+            const st = tour && (await api('getStandingsV3', { tournamentId: tour.id })).data?.standings?.[0];
+            const gStage = (st?.stages || []).find((s) => s.slug === 'round_2');
+            const groupRows = [];
+            for (const sec of gStage?.sections || []) for (const r of sec.rankings || []) for (const t of r.teams) {
+              groupRows.push({ rank: r.ordinal, team: t.code, w: t.record.wins, l: t.record.losses, group: sec.name });
+            }
+            if (groupRows.length) node.groupRows = groupRows;
+          } catch (e) { console.warn(`LTA 그룹 페이즈 ${slug} 실패: ${e.message}`); }
+        }
         if (labels.length) { std2025[c.key] = byS; subs2025[c.key] = labels; }
       }
     }
@@ -2651,15 +2772,11 @@ console.log('lolStandings.json 갱신 완료');
         if (rf) {
           const stage = { slug: 'americas_stage', name: '아메리카 스테이지', label: '아메리카 스테이지', bracket: rf.bracket };
           if (c.separate) {
-            // 스플릿 자체(플레이오프)는 'Playoffs'로 개명, 아메리카 스테이지는 별도 서브탭으로 분리(Split 선택하듯 전환).
+            // 지역 스플릿(Split 3/Etapa 3)은 그대로 두고, LTA Cross(아메리카 스테이지)를 'Playoffs' 서브탭으로 분리.
             for (const key of ['lcs', 'cblol']) {
-              const sub = c.subs[key]; // 'Split 3' / 'Etapa 3'
-              if (!std2025[key]?.[sub]) continue;
-              std2025[key]['Playoffs'] = std2025[key][sub];
-              delete std2025[key][sub];
-              const idx = subs2025[key].indexOf(sub); if (idx >= 0) subs2025[key][idx] = 'Playoffs';
-              std2025[key]['아메리카 스테이지'] = { name: '아메리카 스테이지', rows: [], brackets: [stage], finalStandings: [] };
-              subs2025[key].push('아메리카 스테이지');
+              if (!std2025[key]) continue;
+              std2025[key]['Playoffs'] = { name: 'Playoffs', rows: [], brackets: [stage], finalStandings: [] };
+              subs2025[key].push('Playoffs');
             }
           } else {
             for (const key of ['lcs', 'cblol']) { const sub = c.subs[key]; if (std2025[key]?.[sub]?.brackets) std2025[key][sub].brackets.push(stage); }

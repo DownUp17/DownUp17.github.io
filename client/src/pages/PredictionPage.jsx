@@ -1719,7 +1719,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           <section className="flex flex-col gap-3">
             <div className="flex items-baseline gap-2 flex-wrap">
               <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
-              <span className="text-xs text-white/40">{teams.length}개국{official?.placeholder ? ' · 조 편성 미정' : hasGroups ? '' : ' · 조 배정·Elo 추후 반영'}</span>
+              <span className="text-xs text-white/40">{teams.length}개국{hasGroups ? '' : official?.placeholder ? ' · 조 편성 미정' : ' · 조 배정·Elo 추후 반영'}</span>
             </div>
             {hasGroups ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1775,7 +1775,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           };
           if (!official?.groups) return wrap(<section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">조별 정보가 아직 확정되지 않았습니다.</section>);
           return wrap(
-            <section className="flex flex-col gap-8">
+            <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {groupBlock('A')}
               {groupBlock('B')}
             </section>
@@ -2157,7 +2157,8 @@ const pastSplitStagesFromData = (d) => {
   if (!d) return null;
   if (d.kespa) return ['예선', '본선', '결선']; // KeSPA CUP: 예선(3조)·본선(LCQ)·결선(더블엘리)
   const stages = [];
-  if (d.rows?.length) stages.push(d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌');
+  if (d.rows?.length) stages.push(d.regLabel || (d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌'));
+  if (d.groupRows?.length) stages.push('그룹 페이즈'); // LTA Split 2: 포지셔닝 페이즈 뒤 A/B조 그룹 페이즈
   for (const s of pastBracketStages(d)) stages.push(s.label);
   if (d.finalStandings?.length) stages.push('최종 순위');
   return stages.length ? stages : null;
@@ -2166,7 +2167,7 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
   if (!data) return <NotReady comp={comp} />;
   const rows = data.rows || [];
   const grouped = rows.some((r) => r.group);
-  const regLabel = grouped ? '그룹 순위' : '정규시즌';
+  const regLabel = data.regLabel || (grouped ? '그룹 순위' : '정규시즌');
   const groupNames = grouped ? [...new Set(rows.map((r) => r.group))] : [null];
   const bracketForStage = pastBracketStages(data).find((s) => s.label === stage)?.bracket;
   const teamOverride = teamOverrideProp || PAST_TEAM_OVERRIDE[comp.key];
@@ -2318,6 +2319,24 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
         </section>
       )}
 
+      {stage === '그룹 페이즈' && data.groupRows?.length > 0 && (
+        <section className="flex flex-col gap-5">
+          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">그룹 페이즈</h3>
+          {[...new Set(data.groupRows.map((r) => r.group))].map((g, gi) => {
+            const grpRows = data.groupRows.filter((r) => r.group === g).map((r) => ({
+              short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
+            }));
+            const badge = PAST_GROUP_BADGES[gi % PAST_GROUP_BADGES.length];
+            return (
+              <div key={g}>
+                <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: badge.color, backgroundColor: badge.bg }}>{g}</span>
+                <StandingsTable rows={grpRows} color={comp.color} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+              </div>
+            );
+          })}
+        </section>
+      )}
+
       {bracketForStage && (
         <section>
           <div className="flex items-baseline gap-2 flex-wrap mb-4">
@@ -2368,8 +2387,8 @@ const SUBTAB_DETAIL = {
 // 과거 연도 대회의 상세 헤더 로고·상징색 오버라이드 (`key|year`). 예: 2025 LCS = LTA North.
 // 과거 연도 상세 헤더 로고·상징색. bySub로 스플릿별 오버라이드(통합 스플릿=LTA).
 const PAST_DETAIL = {
-  'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo }, '아메리카 스테이지': { color: '#b2a27e', logo: ltaLogo } } },
-  'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo }, '아메리카 스테이지': { color: '#b2a27e', logo: ltaLogo } } },
+  'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo } } },
+  'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo } } },
   'lck|2025': { bySub: { 'LCK CUP': { color: '#7f6b00' }, 'KeSPA CUP': { color: '#072148', logo: kespa2025Logo } } },
   'fst|2025': { color: '#45002c' },
 };
@@ -2380,7 +2399,8 @@ const EVENT_DETAIL = {
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
-const TAB_COLOR = { asiangames: '#ffb732', fst: '#ece5e7' };
+// 탭 상징색 오버라이드 — 비우면 각 대회 comp.color(가장 최근 에디션 색)를 그대로 탭에 사용.
+const TAB_COLOR = {};
 
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
@@ -2592,7 +2612,11 @@ const PredictionPage = () => {
   const setActiveSub = (s) => setSearchParams((p) => { const n = new URLSearchParams(p); n.set('sub', s); n.delete('stage'); return n; }, { replace: true });
   const subUpcoming = !!(comp && activeSub && isCurrentYear && SUB_UPCOMING[comp.key]?.includes(activeSub));
   // 세부 대회별 상태 오버라이드(현재 연도만). 과거 연도는 '종료'.
-  const subStatus = comp && activeSub && isCurrentYear ? SUB_STATUS[`${comp.key}|${activeSub}`] : null;
+  // 상태 자동 판정 — 해당 세부대회의 최종 대진(플레이오프 등)에서 우승이 확정되면 '종료'로 자동 전환.
+  //   (SUB_STATUS 수기 값보다 우선. 우승 미확정이면 수기 값 사용.)
+  const curSubDataForStatus = comp && activeSub && isCurrentYear ? officialStandings.standings[comp.key]?.[activeSub] : null;
+  const subAutoFinished = curSubDataForStatus?.finalStandings?.[0]?.note === '우승';
+  const subStatus = comp && activeSub && isCurrentYear ? (subAutoFinished ? 'finished' : SUB_STATUS[`${comp.key}|${activeSub}`]) : null;
   const st = comp ? (statusMeta[subStatus || comp.status] || statusMeta.upcoming) : null;
   // 서브탭별 상세 헤더 오버라이드(로고·상징색) — 현재 연도만
   const subDetail = comp && activeSub && isCurrentYear ? SUBTAB_DETAIL[`${comp.key}|${activeSub}`] : null;
@@ -2665,8 +2689,8 @@ const PredictionPage = () => {
 
   // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
   const PAST_COMP_NAME = {
-    'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA', 'Playoffs': 'LTA', '아메리카 스테이지': '아메리카 스테이지' },
-    'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA', 'Playoffs': 'LTA', '아메리카 스테이지': '아메리카 스테이지' },
+    'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA', 'Playoffs': 'LTA' },
+    'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA', 'Playoffs': 'LTA' },
   };
   const displayTitle = (() => {
     if (isCurrentYear) return title;

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-09-21",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -11541,6 +11541,7 @@
         {
           "code": "KOR",
           "name": "대한민국",
+          "group": "B",
           "players": [
             "Zeus",
             "Canyon",
@@ -11554,6 +11555,7 @@
         {
           "code": "VIE",
           "name": "베트남",
+          "group": "A",
           "players": [
             "Kiaya",
             "Pun",
@@ -11566,15 +11568,18 @@
         },
         {
           "code": "SAU",
-          "name": "사우디아라비아"
+          "name": "사우디아라비아",
+          "group": "A"
         },
         {
           "code": "MYS",
-          "name": "말레이시아"
+          "name": "말레이시아",
+          "group": "A"
         },
         {
           "code": "TPE",
-          "name": "대만",
+          "name": "중화 타이베이",
+          "group": "B",
           "players": [
             "1Jiang",
             "JunJia",
@@ -11587,15 +11592,18 @@
         },
         {
           "code": "HKG",
-          "name": "홍콩"
+          "name": "홍콩",
+          "group": "B"
         },
         {
           "code": "IND",
-          "name": "인도"
+          "name": "인도",
+          "group": "B"
         },
         {
           "code": "UAE",
-          "name": "아랍에미리트"
+          "name": "아랍에미리트",
+          "group": "A"
         }
       ],
       "placeholder": true,
