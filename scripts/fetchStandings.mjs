@@ -440,37 +440,38 @@ function lckCupLayout(bracket) {
   return fixDropElim({ totalRows: 10, rounds: rounds2, connectors });
 }
 
-// 2025 LTA 컨퍼런스 스테이지(8팀 더블 엘리, rounds 4·4·3·1) — 사용자 지정 4컬럼 배치(북/남부 공통 구조).
-//   col0: 상위1R#0·#1 + 하위1R#0 / col1: 상위2R#0 + 하위2R#0 + 상위3R /
-//   col2: 상위1R#2·#3 + 하위1R#1 + 하위3R / col3: 상위2R#1 + 하위2R#1.
-//   각 컬럼은 SPEC 순서대로 위→아래(먼저 지정한 경기가 위). 연결선은 원본(id 기반)을 새 좌표로 재매핑.
+// 2025 LTA 컨퍼런스 스테이지(8팀 더블 엘리, 상위 4팀 아메리카 스테이지 진출, rounds 4·4·3·1) —
+//   같은 라운드를 같은 x컬럼에 두는 표준 더블 엘리 그리드. 상위조는 상단, 하위조는 하단.
+//   col0 상위1R×4(sr0·2·4·6) / col1 상위2R(sr1·5)+하위1R(sr8·10) /
+//   col2 상위3R(sr3)+하위2R(sr8·10) / col3 하위3R(sr9).  (상위3R·하위3R 두 경기의 4팀이 진출)
+//   원본 라운드=컬럼이 이미 일치하므로 startRow만 부여하고, 상위→하위 강등선은 앱 공통 관례대로 생략.
 function ltaConferenceLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   if (bracket.rounds.map((r) => r.matches.length).join(',') !== '4,4,3,1') return bracket;
   const at = (ci, mi) => bracket.rounds[ci]?.matches[mi];
   if (!/상위권 대진 - 1라운드/.test(at(0, 0)?.title || '')) return bracket;
   if (!/하위권 대진 - 3라운드/.test(at(3, 0)?.title || '')) return bracket;
-  // 각 컬럼 = [원본 ci, 원본 mi, startRow] 목록(위→아래)
-  const SPEC = [
-    [[0, 0, 1], [0, 1, 4], [1, 2, 7]],
-    [[1, 0, 1], [2, 1, 4], [2, 0, 7]],
-    [[0, 2, 0], [0, 3, 3], [1, 3, 6], [3, 0, 9]],
-    [[1, 1, 3], [2, 2, 6]],
+  // startRow[roundIdx][matchIdx] — 라운드 내 상위 경기가 앞(상단), 하위 경기가 뒤(하단) 순서로 이미 정렬됨
+  const SR = [
+    [0, 2, 4, 6],   // 상위 1R ×4
+    [1, 5, 8, 10],  // 상위 2R(0·1) 상단 · 하위 1R(2·3) 하단
+    [3, 8, 10],     // 상위 3R(0) 상단 · 하위 2R(1·2) 하단
+    [9],            // 하위 3R
   ];
-  const origPos = {};
-  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => { origPos[`${ci}-${mi}`] = m.id; }));
-  const idPos = {};
-  const rounds2 = SPEC.map((col, ci) => ({
+  const rounds2 = bracket.rounds.map((r, ci) => ({
     title: '',
-    matches: col.map(([oci, omi, sr], mi) => { const m = at(oci, omi); idPos[m.id] = [ci, mi]; return { ...m, startRow: sr }; }),
+    matches: r.matches.map((m, mi) => ({ ...m, startRow: SR[ci][mi] })),
   }));
+  // 상위→하위 강등선은 생략, 나머지(승자 진출선)만 유지. 컬럼=원본 라운드라 좌표 그대로 사용.
+  const roleOf = {};
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => { roleOf[`${ci}-${mi}`] = /상위권/.test(m.title || '') ? 'up' : 'lo'; }));
   const connectors = [];
   for (const c of bracket.connectors || []) {
     const [sci, smi, mid, dci, dmi, slot] = c;
-    const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
-    if (sp && dp && sp[0] !== dp[0]) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
+    if (roleOf[`${sci}-${smi}`] === 'up' && roleOf[`${dci}-${dmi}`] === 'lo') continue; // 강등선 생략
+    connectors.push([sci, smi, mid, dci, dmi, slot]);
   }
-  return fixDropElim({ totalRows: 11, rounds: rounds2, connectors });
+  return fixDropElim({ totalRows: 12, rounds: rounds2, connectors });
 }
 
 // LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
