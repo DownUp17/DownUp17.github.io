@@ -34,6 +34,7 @@ import karmineCorpBlueLogo from '../assets/karmine-corp-blue.webp';
 import teamBdsLogo from '../assets/team-bds.svg';
 import hundredThievesLogo from '../assets/100-thieves.svg';
 import fluxo2025Logo from '../assets/fluxo-2025.svg';
+import isurusLogo from '../assets/isurus.webp';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -73,10 +74,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
@@ -182,7 +183,7 @@ const BracketLegend = ({ goldLabel = '우승/진출' }) => (
 // DEMACIA 브래킷 — 컬럼당 여러 브래킷 그룹을 세로로 배치. MsiSlot 재사용으로 다른 대진표와 일관.
 //   msiSet(진출/우승) = 금색, 매치 승자 = 파랑, elimSet = 빨강.
 //   connectors: [srcMatchId, destMatchId, destSlot('a'|'b')] — 매치 카드 간 SVG 연결선.
-const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamClick }) => {
+const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamClick, teamOverride }) => {
   const teamMap = Object.fromEntries((teams || []).map((t) => [t.slot, t]));
   const resolveShort = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
   const wrapRef = useRef(null);
@@ -216,9 +217,9 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
         </span>
         )}
         <div data-card-id={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag)} onTeamClick={onTeamClick} />
+          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag)} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           <div className="h-px bg-white/10" />
-          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag)} onTeamClick={onTeamClick} />
+          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag)} onTeamClick={onTeamClick} teamOverride={teamOverride} />
         </div>
       </div>
     );
@@ -366,7 +367,7 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
 
 // 스위스 스테이지를 DCGI 그룹 스테이지 모양(기록별 컬럼·카드)으로 렌더.
 //   bracketFromColumns 라운드(=컬럼)를 recordKey로 그룹핑해 DemaciaBracket에 넘긴다.
-const SwissBracket = ({ swiss, onTeamClick, bo }) => {
+const SwissBracket = ({ swiss, onTeamClick, bo, teamOverride }) => {
   const winnerOf = (m) => (m.a?.win || m.a?.msi) ? m.a?.short : ((m.b?.win || m.b?.msi) ? m.b?.short : null);
   const msiSet = new Set(), elimSet = new Set();
   for (const r of swiss?.rounds || []) for (const m of r.matches || []) for (const s of [m.a, m.b]) {
@@ -424,7 +425,7 @@ const SwissBracket = ({ swiss, onTeamClick, bo }) => {
       }),
     };
   });
-  return <DemaciaBracket columns={columns} teams={[]} msiSet={msiSet} elimSet={elimSet} onTeamClick={onTeamClick} />;
+  return <DemaciaBracket columns={columns} teams={[]} msiSet={msiSet} elimSet={elimSet} onTeamClick={onTeamClick} teamOverride={teamOverride} />;
 };
 
 // 그룹 스테이지 완전 탈락 집합 계산.
@@ -670,7 +671,7 @@ const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', 
 };
 
 // 섹션 간 연결선을 그리는 브래킷 그룹 컨테이너
-const BracketGroup = ({ sections, crossConnectors, onTeamClick }) => {
+const BracketGroup = ({ sections, crossConnectors, onTeamClick, teamOverride }) => {
   const wrapRef = useRef(null);
   const [crossPaths, setCrossPaths] = useState([]);
 
@@ -760,7 +761,7 @@ const BracketGroup = ({ sections, crossConnectors, onTeamClick }) => {
         {sections.map((sec, si) => (
           <div key={si}>
             {sec.name && <p className="text-xs font-black text-white/55 mb-3 pb-2 border-b border-white/10">{sec.name}</p>}
-            <MsiBracket rounds={sec.rounds} totalRows={sec.totalRows} connectors={sec.connectors} cardPrefix={`s${si}-`} wrapScroll={false} onTeamClick={onTeamClick} />
+            <MsiBracket rounds={sec.rounds} totalRows={sec.totalRows} connectors={sec.connectors} cardPrefix={`s${si}-`} wrapScroll={false} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           </div>
         ))}
       </div>
@@ -1202,6 +1203,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
   // MSI는 별개 토너먼트라 지역 리그 전적(현재순위) 표는 숨긴다 (참가팀·대진표만 표기)
   // LCP Split 3 종료 → 스위스 순위표의 진출/우승 확률 컬럼 제거
   const lcpFinished = lcpSplit3 && subFinished;
+  const lplFinished = lplSplit3 && subFinished; // LPL Split 3 종료 → 럼블 스테이지 순위표의 진출/우승 확률 컬럼 제거
   const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
     || (isLckCup && stage !== '그룹 스테이지') // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
     || (isLecSummer && !lecCfg?.pred && stage !== '플레이오프') // LEC/LCS/CBLOL: 정규시즌·플레이오프(참가팀)에서 순위표 표기
@@ -1283,6 +1285,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
               최종 순위는 플레이오프 결승 종료 후 확정됩니다.
             </p>
           )}
+          <div className={(isPeerGroupNames(groups.map((g) => g.name)) || isLckCup) && groups.length > 1 ? PARALLEL_GRID : 'contents'}>
           {groups.map((grp) => (
             <div key={grp.name || 'all'}>
               {grp.name && (
@@ -1291,9 +1294,10 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || finalDataStage ? { minimal: true } : lckFinished ? { diff: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : liveBracketStage ? { diff: true, champ: true } : lcpFinished ? { diff: true } : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} elimSet={stageElimSet} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || finalDataStage ? { minimal: true } : lckFinished ? { diff: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : liveBracketStage ? { diff: true, champ: true } : (lcpFinished || lplFinished) ? { diff: true } : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} elimSet={stageElimSet} />
             </div>
           ))}
+          </div>
         </section>
       )}
 
@@ -2125,6 +2129,10 @@ const PAST_GROUP_BADGES = [
   { color: '#9CA3AF', bg: 'rgba(156,163,175,0.15)' },
   { color: '#7EC8E8', bg: 'rgba(62,150,200,0.2)' },
 ];
+// 조별 우열이 없는(=A조/B조/C조·1조/2조식) 이름이면 순위표를 병렬 배치. (레전드/라이즈 등 우열 조는 세로 유지)
+const isPeerGroupNames = (names) => { const g = (names || []).filter(Boolean); return g.length > 1 && g.every((n) => /^[A-Za-z0-9]+조$/.test(n)); };
+// 병렬 그리드 클래스
+const PARALLEL_GRID = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
 // 종료 대회별 팀 로고/표기 오버라이드 (당시 로고 사용). FST 당시 GEN은 예전 로고.
 const PAST_TEAM_OVERRIDE = {
   fst: { GEN: { logo: gengSimpleLogo } },
@@ -2155,10 +2163,11 @@ const pastBracketStages = (d) => {
 // 완료된 스플릿의 단계 목록 — 데이터 객체({rows,brackets,finalStandings})에서 산출.
 const pastSplitStagesFromData = (d) => {
   if (!d) return null;
+  if (d.roadToMsi) return null; // Road to MSI: 세부 스테이지 탭 없이 참가팀 성적 + 대진 한 화면에 표기
   if (d.kespa) return ['예선', '본선', '결선']; // KeSPA CUP: 예선(3조)·본선(LCQ)·결선(더블엘리)
   const stages = [];
   if (d.rows?.length) stages.push(d.regLabel || (d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌'));
-  if (d.groupRows?.length) stages.push('그룹 페이즈'); // LTA Split 2: 포지셔닝 페이즈 뒤 A/B조 그룹 페이즈
+  for (const ph of d.phaseStages || []) if (ph.rows?.length) stages.push(ph.label); // 추가 순위 스테이지(예: 그룹 페이즈·럼블 스테이지)
   for (const s of pastBracketStages(d)) stages.push(s.label);
   if (d.finalStandings?.length) stages.push('최종 순위');
   return stages.length ? stages : null;
@@ -2171,6 +2180,30 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
   const groupNames = grouped ? [...new Set(rows.map((r) => r.group))] : [null];
   const bracketForStage = pastBracketStages(data).find((s) => s.label === stage)?.bracket;
   const teamOverride = teamOverrideProp || PAST_TEAM_OVERRIDE[comp.key];
+
+  // Road to MSI 커스텀 렌더 — 2026처럼 세부 스테이지 탭 없이 참가팀 성적(정규시즌 순위) + 사다리 대진을 함께 표기.
+  if (data.roadToMsi) {
+    const rtm = (data.brackets || []).find((b) => b.slug === 'road_to_msi' || /road/i.test(b.slug || ''));
+    const stdRows = rows.map((r) => ({ short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0) }));
+    return (
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm"><span className="text-white/50">형식: <strong className="text-white/80">{data.name} · 정규시즌 → MSI로 가는 길 · 종료</strong></span></div>
+        {stdRows.length > 0 && (
+          <section className="flex flex-col gap-4">
+            <div className="flex items-baseline gap-2 flex-wrap"><h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3><span className="text-xs text-white/40">정규시즌 순위</span></div>
+            <StandingsTable rows={stdRows} color={comp.color} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          </section>
+        )}
+        {rtm && (
+          <section>
+            <div className="flex items-baseline gap-2 flex-wrap mb-4"><h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">MSI로 가는 길</h3><span className="text-xs text-white/40">실제 경기 결과</span></div>
+            <MsiBracket rounds={rtm.bracket.rounds} totalRows={rtm.bracket.totalRows} connectors={rtm.bracket.connectors} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+            <BracketLegend goldLabel="MSI 진출" />
+          </section>
+        )}
+      </div>
+    );
+  }
 
   // KeSPA CUP 커스텀 렌더 — 예선(3조·H2H) / 본선(LCQ·세트득실) / 결선(4팀 더블엘리)
   if (data.kespa) {
@@ -2302,7 +2335,8 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
 
       {stage === regLabel && rows.length > 0 && (
         <section className="flex flex-col gap-5">
-          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{grouped ? '그룹 순위' : '정규시즌 순위'}</h3>
+          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{grouped ? (data.regLabel || '그룹 순위') : '정규시즌 순위'}</h3>
+          <div className={(isPeerGroupNames(groupNames) || data.parallelGroups) ? PARALLEL_GRID : 'flex flex-col gap-5'}>
           {groupNames.map((g, gi) => {
             const grpRows = rows.filter((r) => g == null || r.group === g).map((r) => ({
               short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
@@ -2316,26 +2350,33 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
               </div>
             );
           })}
+          </div>
         </section>
       )}
 
-      {stage === '그룹 페이즈' && data.groupRows?.length > 0 && (
-        <section className="flex flex-col gap-5">
-          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">그룹 페이즈</h3>
-          {[...new Set(data.groupRows.map((r) => r.group))].map((g, gi) => {
-            const grpRows = data.groupRows.filter((r) => r.group === g).map((r) => ({
-              short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
-            }));
-            const badge = PAST_GROUP_BADGES[gi % PAST_GROUP_BADGES.length];
-            return (
-              <div key={g}>
-                <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: badge.color, backgroundColor: badge.bg }}>{g}</span>
-                <StandingsTable rows={grpRows} color={comp.color} onTeamClick={onTeamClick} teamOverride={teamOverride} />
-              </div>
-            );
-          })}
-        </section>
-      )}
+      {(data.phaseStages || []).map((ph) => stage === ph.label && ph.rows?.length > 0 && (() => {
+        const names = [...new Set(ph.rows.map((r) => r.group))];
+        const parallel = isPeerGroupNames(names);
+        return (
+          <section key={ph.label} className="flex flex-col gap-5">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{ph.label}</h3>
+            <div className={parallel ? PARALLEL_GRID : 'flex flex-col gap-5'}>
+              {names.map((g, gi) => {
+                const grpRows = ph.rows.filter((r) => r.group === g).map((r) => ({
+                  short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
+                }));
+                const badge = PAST_GROUP_BADGES[gi % PAST_GROUP_BADGES.length];
+                return (
+                  <div key={g}>
+                    {g && <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: badge.color, backgroundColor: badge.bg }}>{g}</span>}
+                    <StandingsTable rows={grpRows} color={comp.color} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })())}
 
       {bracketForStage && (
         <section>
@@ -2344,9 +2385,9 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
             <span className="text-xs text-white/40">실제 경기 결과</span>
           </div>
           {/swiss|스위스/i.test(bracketForStage.slug || bracketForStage.name) ? (
-            <SwissBracket swiss={bracketForStage.bracket} onTeamClick={onTeamClick} />
+            <SwissBracket swiss={bracketForStage.bracket} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           ) : bracketForStage.bracket.sections ? (
-            <BracketGroup sections={bracketForStage.bracket.sections} crossConnectors={bracketForStage.bracket.crossConnectors} onTeamClick={onTeamClick} />
+            <BracketGroup sections={bracketForStage.bracket.sections} crossConnectors={bracketForStage.bracket.crossConnectors} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           ) : (
             <MsiBracket rounds={bracketForStage.bracket.rounds} totalRows={bracketForStage.bracket.totalRows} connectors={bracketForStage.bracket.connectors} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           )}
@@ -2641,6 +2682,9 @@ const PredictionPage = () => {
     }
     // Fluxo: 이름은 2025 시즌부터 Fluxo W7M(2024 이하만 'Fluxo'), 로고는 2025 시즌까지 옛 로고.
     if (activeYear <= 2025) ov.FX = { logo: fluxo2025Logo, ...(activeYear <= 2024 ? { name: 'Fluxo' } : {}) };
+    // TL(TLAW): 2025 Split 1까지 'Team Liquid Honda', 그 이후는 'Team Liquid'(TEAM_OVERRIDE_2025 기본값).
+    if (ov.TLAW && (activeYear < 2025 || (activeYear === 2025 && comp?.key === 'lcs' && activeSub === 'Split 1')))
+      ov.TLAW = { ...ov.TLAW, name: 'Team Liquid Honda' };
     return ov;
   })();
 
@@ -2667,11 +2711,14 @@ const PredictionPage = () => {
   const isPastComp = comp && comp.key === 'fst' && isCurrentYear; // 현재연도 FST(서브탭 없는 종료 대회)
   const isPastSplit = comp && isCurrentYear && (PAST_SPLIT_SUBS.has(`${comp.key}|${activeSub}`) || isPastComp);
   const curSplitData = isPastSplit ? (isPastComp ? officialStandings.standings[comp.key] : officialStandings.standings[comp.key]?.[activeSub]) : null;
-  const stageList = comp
+  const stageListRaw = comp
     ? (pastFull ? pastSplitStagesFromData(pastData)
       : isPastSplit ? pastSplitStagesFromData(curSplitData)
         : (STAGE_TABS[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_TABS[comp.key])))
     : null;
+  // Road to MSI·선발전(대표 선발전)은 최종 순위 단계를 표기하지 않는다.
+  const noFinalStageSub = activeSub === 'Road to MSI' || /선발전/.test(activeSub || '');
+  const stageList = (stageListRaw && noFinalStageSub) ? stageListRaw.filter((s) => s !== '최종 순위') : stageListRaw;
   const showStages = !!stageList;
   const effFinished = !!(comp && (subStatus || comp.status) === 'finished');
   const rawDefaultStage = comp && (
