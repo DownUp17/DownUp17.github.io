@@ -1757,7 +1757,8 @@
       "tabName": "EWC",
       "color": "#f74e16",
       "scope": "intl",
-      "status": "upcoming"
+      "status": "finished",
+      "ready": true
     },
     {
       "key": "asiangames",

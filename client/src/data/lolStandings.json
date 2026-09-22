@@ -11659,6 +11659,561 @@
           }
         ]
       }
+    },
+    "ewc": {
+      "stage": "16팀 · 4개조 더블 엘리(조별 2팀 진출) → 8강 싱글 엘리(+3위 결정전)",
+      "champion": "DK",
+      "groups": {
+        "A": {
+          "rounds": [
+            {
+              "matches": [
+                {
+                  "title": "1경기",
+                  "a": {
+                    "short": "G2",
+                    "seed": "1시드",
+                    "score": 1,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "FUR",
+                    "seed": "4시드",
+                    "score": 0
+                  }
+                },
+                {
+                  "title": "2경기",
+                  "a": {
+                    "short": "AL",
+                    "seed": "2시드",
+                    "score": 1,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "DK",
+                    "seed": "3시드",
+                    "score": 0
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "승자전",
+                  "a": {
+                    "short": "G2",
+                    "seed": "1경기 승자",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "AL",
+                    "seed": "2경기 승자",
+                    "score": 1,
+                    "msi": true
+                  }
+                },
+                {
+                  "title": "패자전",
+                  "a": {
+                    "short": "FUR",
+                    "seed": "1경기 패자",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "DK",
+                    "seed": "2경기 패자",
+                    "score": 2,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "최종전",
+                  "a": {
+                    "short": "G2",
+                    "seed": "승자전 패자",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "DK",
+                    "seed": "패자전 승자",
+                    "score": 2,
+                    "msi": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "B": {
+          "rounds": [
+            {
+              "matches": [
+                {
+                  "title": "1경기",
+                  "a": {
+                    "short": "TS",
+                    "seed": "1시드",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "SEN",
+                    "seed": "4시드",
+                    "score": 1,
+                    "win": true
+                  }
+                },
+                {
+                  "title": "2경기",
+                  "a": {
+                    "short": "GEN",
+                    "seed": "2시드",
+                    "score": 1,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "KC",
+                    "seed": "3시드",
+                    "score": 0
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "승자전",
+                  "a": {
+                    "short": "SEN",
+                    "seed": "1경기 승자",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "GEN",
+                    "seed": "2경기 승자",
+                    "score": 1,
+                    "msi": true
+                  }
+                },
+                {
+                  "title": "패자전",
+                  "a": {
+                    "short": "TS",
+                    "seed": "1경기 패자",
+                    "score": 1,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "KC",
+                    "seed": "2경기 패자",
+                    "score": 2,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "최종전",
+                  "a": {
+                    "short": "SEN",
+                    "seed": "승자전 패자",
+                    "score": 0,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "KC",
+                    "seed": "패자전 승자",
+                    "score": 1,
+                    "msi": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "C": {
+          "rounds": [
+            {
+              "matches": [
+                {
+                  "title": "1경기",
+                  "a": {
+                    "short": "BLG",
+                    "seed": "1시드",
+                    "score": 1,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "MKOI",
+                    "seed": "4시드",
+                    "score": 0
+                  }
+                },
+                {
+                  "title": "2경기",
+                  "a": {
+                    "short": "T1",
+                    "seed": "2시드",
+                    "score": 1,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "GAM",
+                    "seed": "3시드",
+                    "score": 0
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "승자전",
+                  "a": {
+                    "short": "BLG",
+                    "seed": "1경기 승자",
+                    "score": 1,
+                    "msi": true
+                  },
+                  "b": {
+                    "short": "T1",
+                    "seed": "2경기 승자",
+                    "score": 0
+                  }
+                },
+                {
+                  "title": "패자전",
+                  "a": {
+                    "short": "MKOI",
+                    "seed": "1경기 패자",
+                    "score": 1,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "GAM",
+                    "seed": "2경기 패자",
+                    "score": 2,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "최종전",
+                  "a": {
+                    "short": "T1",
+                    "seed": "승자전 패자",
+                    "score": 2,
+                    "msi": true
+                  },
+                  "b": {
+                    "short": "GAM",
+                    "seed": "패자전 승자",
+                    "score": 0,
+                    "elim": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "D": {
+          "rounds": [
+            {
+              "matches": [
+                {
+                  "title": "1경기",
+                  "a": {
+                    "short": "HLE",
+                    "seed": "1시드",
+                    "score": 1,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "LOS",
+                    "seed": "4시드",
+                    "score": 0
+                  }
+                },
+                {
+                  "title": "2경기",
+                  "a": {
+                    "short": "LYON",
+                    "seed": "2시드",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "JDG",
+                    "seed": "3시드",
+                    "score": 1,
+                    "win": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "승자전",
+                  "a": {
+                    "short": "HLE",
+                    "seed": "1경기 승자",
+                    "score": 1,
+                    "msi": true
+                  },
+                  "b": {
+                    "short": "JDG",
+                    "seed": "2경기 승자",
+                    "score": 0
+                  }
+                },
+                {
+                  "title": "패자전",
+                  "a": {
+                    "short": "LOS",
+                    "seed": "1경기 패자",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "LYON",
+                    "seed": "2경기 패자",
+                    "score": 0,
+                    "elim": true
+                  }
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "최종전",
+                  "a": {
+                    "short": "JDG",
+                    "seed": "승자전 패자",
+                    "score": 2,
+                    "msi": true
+                  },
+                  "b": {
+                    "short": "LOS",
+                    "seed": "패자전 승자",
+                    "score": 0,
+                    "elim": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "playoff": {
+        "bracket": {
+          "totalRows": 8,
+          "rounds": [
+            {
+              "matches": [
+                {
+                  "title": "8강 1경기",
+                  "a": {
+                    "short": "HLE",
+                    "seed": "D조 1위",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "T1",
+                    "seed": "C조 2위",
+                    "score": 2,
+                    "win": true
+                  },
+                  "startRow": 0
+                },
+                {
+                  "title": "8강 2경기",
+                  "a": {
+                    "short": "AL",
+                    "seed": "A조 1위",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "KC",
+                    "seed": "B조 2위",
+                    "score": 2,
+                    "win": true
+                  },
+                  "startRow": 2
+                },
+                {
+                  "title": "8강 3경기",
+                  "a": {
+                    "short": "GEN",
+                    "seed": "B조 1위",
+                    "score": 2,
+                    "win": true
+                  },
+                  "b": {
+                    "short": "JDG",
+                    "seed": "D조 2위",
+                    "score": 0
+                  },
+                  "startRow": 4
+                },
+                {
+                  "title": "8강 4경기",
+                  "a": {
+                    "short": "BLG",
+                    "seed": "C조 1위",
+                    "score": 1
+                  },
+                  "b": {
+                    "short": "DK",
+                    "seed": "A조 2위",
+                    "score": 2,
+                    "win": true
+                  },
+                  "startRow": 6
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "4강 1경기",
+                  "a": {
+                    "short": "T1",
+                    "seed": "8강 승자",
+                    "score": 1
+                  },
+                  "b": {
+                    "short": "KC",
+                    "seed": "8강 승자",
+                    "score": 2,
+                    "win": true
+                  },
+                  "startRow": 1
+                },
+                {
+                  "title": "4강 2경기",
+                  "a": {
+                    "short": "GEN",
+                    "seed": "8강 승자",
+                    "score": 1
+                  },
+                  "b": {
+                    "short": "DK",
+                    "seed": "8강 승자",
+                    "score": 2,
+                    "win": true
+                  },
+                  "startRow": 5
+                }
+              ]
+            },
+            {
+              "matches": [
+                {
+                  "title": "결승",
+                  "a": {
+                    "short": "KC",
+                    "seed": "4강 승자",
+                    "score": 0
+                  },
+                  "b": {
+                    "short": "DK",
+                    "seed": "4강 승자",
+                    "score": 3,
+                    "msi": true
+                  },
+                  "startRow": 3
+                }
+              ]
+            }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "b",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "b",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              2,
+              "a",
+              1,
+              1,
+              "a"
+            ],
+            [
+              0,
+              3,
+              "b",
+              1,
+              1,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "b",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "b",
+              2,
+              0,
+              "b"
+            ]
+          ]
+        },
+        "third": {
+          "rounds": [
+            {
+              "matches": [
+                {
+                  "title": "3위 결정전",
+                  "a": {
+                    "short": "T1",
+                    "seed": "4강 1경기 패자",
+                    "score": 1,
+                    "elim": true
+                  },
+                  "b": {
+                    "short": "GEN",
+                    "seed": "4강 2경기 패자",
+                    "score": 2,
+                    "win": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   }
 }

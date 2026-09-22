@@ -44,7 +44,7 @@ const statusMeta = {
 };
 
 // 본문 추후 제공 대회 (정보 미준비)
-const CONTENT_TBD = new Set(['ewc']); // EWC: 대회 정보 미제공 → '추후 제공 예정' 표기
+const CONTENT_TBD = new Set([]);
 const isContentTbd = (key, sub) =>
   CONTENT_TBD.has(key) || (sub ? CONTENT_TBD.has(`${key}|${sub}`) : false);
 // 완료된 과거 스플릿(정규/그룹 순위 + 대진 + 최종순위를 PastSplitView로 표시)
@@ -1205,7 +1205,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
   // LCP Split 3 종료 → 스위스 순위표의 진출/우승 확률 컬럼 제거
   const lcpFinished = lcpSplit3 && subFinished;
   const lplFinished = lplSplit3 && subFinished; // LPL Split 3 종료 → 럼블 스테이지 순위표의 진출/우승 확률 컬럼 제거
-  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || lplQualifier
+  const hideStandings = (lplSplit3 && stage && stage !== '럼블 스테이지') || (lcpSplit3 && !lcpCfg?.pred) || comp.key === 'msi' || comp.key === 'ewc' || lplQualifier
     || (isLckCup && stage !== '그룹 스테이지') // CUP: 그룹 스테이지에서만 조 순위표, 나머지는 대진/최종순위
     || (isLecSummer && !lecCfg?.pred && stage !== '플레이오프') // LEC/LCS/CBLOL: 정규시즌·플레이오프(참가팀)에서 순위표 표기
     || (comp.key === 'lck' && sub === 'KeSPA CUP') // KeSPA는 전용 예선 순위표·대진표만 표기
@@ -1820,6 +1820,52 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           );
         }
         return null;
+      })()}
+
+      {/* EWC — 4개조 그룹 스테이지(더블 엘리) + 8강 플레이오프(+3위전) */}
+      {(() => {
+        if (comp.key !== 'ewc') return null;
+        const ewc = official;
+        if (!ewc?.groups) return null;
+        if (stage === '그룹 스테이지') {
+          return (
+            <section className="flex flex-col gap-5">
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">그룹 스테이지</h3>
+                <span className="text-xs text-white/40">4개조 · 4팀 더블 엘리미네이션 · 조별 2팀 플레이오프 진출</span>
+              </div>
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-6">
+                {['A', 'B', 'C', 'D'].map((g) => ewc.groups[g] && (
+                  <div key={g}>
+                    <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: '#E8C77E', backgroundColor: 'rgba(200,150,62,0.2)' }}>{g}조</span>
+                    <MsiBracket rounds={ewc.groups[g].rounds} onTeamClick={onTeamClick} />
+                  </div>
+                ))}
+              </div>
+              <BracketLegend goldLabel="플레이오프 진출" />
+            </section>
+          );
+        }
+        return (
+          <section className="flex flex-col gap-8">
+            <div>
+              <div className="flex items-baseline gap-2 flex-wrap mb-4">
+                <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">플레이오프</h3>
+                <span className="text-xs text-white/40">8팀 싱글 엘리미네이션{ewc.champion ? ` · 우승 ${ewc.champion}` : ''}</span>
+              </div>
+              <MsiBracket rounds={ewc.playoff.bracket.rounds} totalRows={ewc.playoff.bracket.totalRows} connectors={ewc.playoff.bracket.connectors} onTeamClick={onTeamClick} />
+            </div>
+            {ewc.playoff.third && (
+              <div>
+                <div className="flex items-baseline gap-2 flex-wrap mb-4">
+                  <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">3위 결정전</h3>
+                </div>
+                <MsiBracket rounds={ewc.playoff.third.rounds} onTeamClick={onTeamClick} />
+              </div>
+            )}
+            <BracketLegend goldLabel="우승" />
+          </section>
+        );
       })()}
 
       {/* LPL 대표 선발전 — 대진 탭 */}
@@ -2505,6 +2551,7 @@ const STAGE_TABS = {
   'lcp|Split 3': ['스위스 스테이지', '플레이-인 스테이지', '플레이오프', '최종 순위'],
   worlds: ['플레이-인', '스위스 스테이지', '녹아웃 스테이지'],
   asiangames: ['그룹 스테이지', '녹아웃 스테이지'],
+  ewc: ['그룹 스테이지', '플레이오프'],
   msi: ['플레이-인 스테이지', '브래킷 스테이지'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
@@ -2516,6 +2563,7 @@ const STAGE_DEFAULT = {
   'lec|Summer': '플레이오프',
   'lcs|Summer': '플레이오프',
   'cblol|Split 2': '플레이오프',
+  ewc: '플레이오프',
   msi: '브래킷 스테이지',
 };
 
@@ -2797,7 +2845,7 @@ const PredictionPage = () => {
                 className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-black border transition-all ${
                   active ? '' : 'text-white/60 border-white/15 hover:border-white/40 bg-transparent'
                 }`}
-                style={active ? (COMP_GRADIENT[c.key] ? { backgroundImage: COMP_GRADIENT[c.key], borderColor: tabColor, color: '#fff' } : { backgroundColor: tabColor, borderColor: tabColor, color: textOn(tabColor) }) : {}}
+                style={active ? (COMP_GRADIENT[c.key] ? { backgroundImage: COMP_GRADIENT[c.key], borderColor: 'transparent', color: '#fff' } : { backgroundColor: tabColor, borderColor: tabColor, color: textOn(tabColor) }) : {}}
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"

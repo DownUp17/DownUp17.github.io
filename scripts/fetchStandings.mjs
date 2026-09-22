@@ -2650,6 +2650,75 @@ try {
   }
 }
 
+// 2026 Esports World Cup (EWC) — API 미제공 · 수기. 16팀 · 4개조 더블 엘리(조별 2팀 진출) → 8강 싱글 엘리(+3위전). 우승 DK.
+{
+  const S = (short, seed, score, flag) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
+  // 4팀 더블 엘리 조별 대진(플로우): 1·2경기 → 승자전·패자전 → 최종전. 승자전 승자=1위·최종전 승자=2위(msi=진출).
+  const grp = (r) => ({ rounds: [
+    { matches: [{ title: '1경기', ...r.g1 }, { title: '2경기', ...r.g2 }] },
+    { matches: [{ title: '승자전', ...r.wf }, { title: '패자전', ...r.lb }] },
+    { matches: [{ title: '최종전', ...r.ff }] },
+  ] });
+  const groups = {
+    A: grp({
+      g1: { a: S('G2', '1시드', 1, 'win'), b: S('FUR', '4시드', 0) },
+      g2: { a: S('AL', '2시드', 1, 'win'), b: S('DK', '3시드', 0) },
+      wf: { a: S('G2', '1경기 승자', 0), b: S('AL', '2경기 승자', 1, 'msi') },
+      lb: { a: S('FUR', '1경기 패자', 0, 'elim'), b: S('DK', '2경기 패자', 2, 'win') },
+      ff: { a: S('G2', '승자전 패자', 0, 'elim'), b: S('DK', '패자전 승자', 2, 'msi') },
+    }),
+    B: grp({
+      g1: { a: S('TS', '1시드', 0), b: S('SEN', '4시드', 1, 'win') },
+      g2: { a: S('GEN', '2시드', 1, 'win'), b: S('KC', '3시드', 0) },
+      wf: { a: S('SEN', '1경기 승자', 0), b: S('GEN', '2경기 승자', 1, 'msi') },
+      lb: { a: S('TS', '1경기 패자', 1, 'elim'), b: S('KC', '2경기 패자', 2, 'win') },
+      ff: { a: S('SEN', '승자전 패자', 0, 'elim'), b: S('KC', '패자전 승자', 1, 'msi') },
+    }),
+    C: grp({
+      g1: { a: S('BLG', '1시드', 1, 'win'), b: S('MKOI', '4시드', 0) },
+      g2: { a: S('T1', '2시드', 1, 'win'), b: S('GAM', '3시드', 0) },
+      wf: { a: S('BLG', '1경기 승자', 1, 'msi'), b: S('T1', '2경기 승자', 0) },
+      lb: { a: S('MKOI', '1경기 패자', 1, 'elim'), b: S('GAM', '2경기 패자', 2, 'win') },
+      ff: { a: S('T1', '승자전 패자', 2, 'msi'), b: S('GAM', '패자전 승자', 0, 'elim') },
+    }),
+    D: grp({
+      g1: { a: S('HLE', '1시드', 1, 'win'), b: S('LOS', '4시드', 0) },
+      g2: { a: S('LYON', '2시드', 0), b: S('JDG', '3시드', 1, 'win') },
+      wf: { a: S('HLE', '1경기 승자', 1, 'msi'), b: S('JDG', '2경기 승자', 0) },
+      lb: { a: S('LOS', '1경기 패자', 2, 'win'), b: S('LYON', '2경기 패자', 0, 'elim') },
+      ff: { a: S('JDG', '승자전 패자', 2, 'msi'), b: S('LOS', '패자전 승자', 0, 'elim') },
+    }),
+  };
+  // 플레이오프 — 8팀 싱글 엘리(2026 Worlds 레이아웃) + 3위 결정전.
+  const seBracket = applySingleElimLayout({
+    rounds: [
+      { matches: [
+        { title: '8강 1경기', a: S('HLE', 'D조 1위', 0), b: S('T1', 'C조 2위', 2, 'win') },
+        { title: '8강 2경기', a: S('AL', 'A조 1위', 0), b: S('KC', 'B조 2위', 2, 'win') },
+        { title: '8강 3경기', a: S('GEN', 'B조 1위', 2, 'win'), b: S('JDG', 'D조 2위', 0) },
+        { title: '8강 4경기', a: S('BLG', 'C조 1위', 1), b: S('DK', 'A조 2위', 2, 'win') },
+      ] },
+      { matches: [
+        { title: '4강 1경기', a: S('T1', '8강 승자', 1), b: S('KC', '8강 승자', 2, 'win') },
+        { title: '4강 2경기', a: S('GEN', '8강 승자', 1), b: S('DK', '8강 승자', 2, 'win') },
+      ] },
+      { matches: [
+        { title: '결승', a: S('KC', '4강 승자', 0), b: S('DK', '4강 승자', 3, 'msi') },
+      ] },
+    ],
+    connectors: [
+      [0, 0, 'b', 1, 0, 'a'], [0, 1, 'b', 1, 0, 'b'], [0, 2, 'a', 1, 1, 'a'], [0, 3, 'b', 1, 1, 'b'],
+      [1, 0, 'b', 2, 0, 'a'], [1, 1, 'b', 2, 0, 'b'],
+    ],
+  });
+  const third = { rounds: [{ matches: [{ title: '3위 결정전', a: S('T1', '4강 1경기 패자', 1, 'elim'), b: S('GEN', '4강 2경기 패자', 2, 'win') }] }] };
+  data.standings.ewc = {
+    stage: '16팀 · 4개조 더블 엘리(조별 2팀 진출) → 8강 싱글 엘리(+3위 결정전)',
+    champion: 'DK', groups, playoff: { bracket: seBracket, third },
+  };
+  console.log('EWC 2026: 4개조 그룹 스테이지 + 8강 플레이오프(+3위전) 수기 반영 (우승 DK)');
+}
+
 // 2026 LoL KeSPA CUP — lolesports API 미제공 종료 대회(수기 관리).
 //   예선(A·B조 라운드로빈) → 결선 스테이지 1(사다리) → 결선 스테이지 2. MsiBracket 그리드/플로우로 표기.
 {
