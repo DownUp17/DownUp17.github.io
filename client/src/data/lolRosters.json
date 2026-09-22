@@ -938,6 +938,14 @@
           "starter": true
         },
         {
+          "name": "Revenge",
+          "firstName": "Yoon",
+          "lastName": "Jeong-bin",
+          "role": "bottom",
+          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
           "name": "Enosh",
           "firstName": "Kyujun",
           "lastName": "Kwak",
