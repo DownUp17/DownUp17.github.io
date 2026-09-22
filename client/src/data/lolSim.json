@@ -1752,6 +1752,14 @@
       "tabName": "MSI"
     },
     {
+      "key": "ewc",
+      "name": "2026 Esports World Cup",
+      "tabName": "EWC",
+      "color": "#f74e16",
+      "scope": "intl",
+      "status": "upcoming"
+    },
+    {
       "key": "asiangames",
       "name": "20th Asian Games Aichi-Nagoya 2026 Esports League of Legends",
       "tabName": "AG",

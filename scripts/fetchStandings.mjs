@@ -440,36 +440,51 @@ function lckCupLayout(bracket) {
   return fixDropElim({ totalRows: 10, rounds: rounds2, connectors });
 }
 
-// 2025 LTA 컨퍼런스 스테이지(8팀 더블 엘리, 상위 4팀 아메리카 스테이지 진출, rounds 4·4·3·1) —
-//   같은 라운드를 같은 x컬럼에 두는 표준 더블 엘리 그리드. 상위조는 상단, 하위조는 하단.
-//   col0 상위1R×4(sr0·2·4·6) / col1 상위2R(sr1·5)+하위1R(sr8·10) /
-//   col2 상위3R(sr3)+하위2R(sr8·10) / col3 하위3R(sr9).  (상위3R·하위3R 두 경기의 4팀이 진출)
-//   원본 라운드=컬럼이 이미 일치하므로 startRow만 부여하고, 상위→하위 강등선은 앱 공통 관례대로 생략.
+// 2025 LTA 컨퍼런스 스테이지(8팀 더블 엘리, rounds 4·4·3·1) — 상위조 상단·하위조 하단 그리드.
+//   2라운드(상위 2R·하위 2R) 승자 4팀이 PO(아메리카 스테이지) 진출.
+//   col0 상위1R×4 / col1 상위2R(진출)+하위1R / col2 하위2R(진출) /
+//   col3 상위3R+하위3R(진출 4팀 시드 결정전 — 따로 분리).
+//   상위→하위 강등선은 앱 공통 관례대로 생략, 시드 결정전 패자 elim 플래그 제거.
 function ltaConferenceLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   if (bracket.rounds.map((r) => r.matches.length).join(',') !== '4,4,3,1') return bracket;
   const at = (ci, mi) => bracket.rounds[ci]?.matches[mi];
   if (!/상위권 대진 - 1라운드/.test(at(0, 0)?.title || '')) return bracket;
   if (!/하위권 대진 - 3라운드/.test(at(3, 0)?.title || '')) return bracket;
-  // startRow[roundIdx][matchIdx] — 라운드 내 상위 경기가 앞(상단), 하위 경기가 뒤(하단) 순서로 이미 정렬됨
-  const SR = [
-    [0, 2, 4, 6],   // 상위 1R ×4
-    [1, 5, 8, 10],  // 상위 2R(0·1) 상단 · 하위 1R(2·3) 하단
-    [3, 8, 10],     // 상위 3R(0) 상단 · 하위 2R(1·2) 하단
-    [9],            // 하위 3R
-  ];
-  const rounds2 = bracket.rounds.map((r, ci) => ({
-    title: '',
-    matches: r.matches.map((m, mi) => ({ ...m, startRow: SR[ci][mi] })),
-  }));
-  // 상위→하위 강등선은 생략, 나머지(승자 진출선)만 유지. 컬럼=원본 라운드라 좌표 그대로 사용.
+  // 원본 [ci,mi] → [새 col, startRow]. 상위조 상단·하위조 하단.
+  //   2라운드(상위 2R·하위 2R) 승자 4팀이 PO(아메리카 스테이지) 진출.
+  //   3라운드(상위 3R·하위 3R)는 진출팀 시드 결정전 → 마지막 컬럼(col3)으로 따로 분리.
+  const MAP = {
+    '0-0': [0, 0], '0-1': [0, 2], '0-2': [0, 4], '0-3': [0, 6],   // 상위 1R ×4
+    '1-0': [1, 1], '1-1': [1, 5],                                 // 상위 2R (진출 확정)
+    '1-2': [1, 8], '1-3': [1, 10],                                // 하위 1R
+    '2-1': [2, 8], '2-2': [2, 10],                                // 하위 2R (진출 확정)
+    '2-0': [3, 3],                                                // 상위 3R (시드 결정)
+    '3-0': [3, 9],                                                // 하위 3R (시드 결정)
+  };
+  const cols = [[], [], [], []];
   const roleOf = {};
-  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => { roleOf[`${ci}-${mi}`] = /상위권/.test(m.title || '') ? 'up' : 'lo'; }));
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => {
+    roleOf[m.id] = /상위권/.test(m.title || '') ? 'up' : 'lo';
+    const [col, sr] = MAP[`${ci}-${mi}`];
+    cols[col].push({ m, sr });
+  }));
+  const idPos = {};
+  const rounds2 = cols.map((arr, ci) => ({
+    title: '',
+    matches: arr.slice().sort((a, b) => a.sr - b.sr).map((o, mi) => { idPos[o.m.id] = [ci, mi]; return { ...o.m, startRow: o.sr }; }),
+  }));
+  // 시드 결정전(3라운드) 패자는 탈락이 아니라 하위 시드로 진출 → elim 플래그 제거
+  for (const r of rounds2) for (const m of r.matches) if (/3라운드/.test(m.title || '')) for (const s of [m.a, m.b]) if (s?.elim) delete s.elim;
+  const origPos = {};
+  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => { origPos[`${ci}-${mi}`] = m.id; }));
   const connectors = [];
   for (const c of bracket.connectors || []) {
     const [sci, smi, mid, dci, dmi, slot] = c;
-    if (roleOf[`${sci}-${smi}`] === 'up' && roleOf[`${dci}-${dmi}`] === 'lo') continue; // 강등선 생략
-    connectors.push([sci, smi, mid, dci, dmi, slot]);
+    const sId = origPos[`${sci}-${smi}`], dId = origPos[`${dci}-${dmi}`];
+    if (roleOf[sId] === 'up' && roleOf[dId] === 'lo') continue; // 상위→하위 강등선 생략
+    const sp = idPos[sId], dp = idPos[dId];
+    if (sp && dp && sp[0] !== dp[0]) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
   }
   return fixDropElim({ totalRows: 12, rounds: rounds2, connectors });
 }
@@ -2858,6 +2873,14 @@ console.log('lolStandings.json 갱신 완료');
           if (!byS[s1]) continue;
           for (const b of byS[s1].brackets || []) if (b.slug === 'north_qualifier' || b.slug === 'south_qualifier') { b.name = '컨퍼런스 스테이지'; b.label = '컨퍼런스 스테이지'; b.bracket = ltaConferenceLayout(b.bracket); }
         }
+        // LTA Split 3/Etapa 3 2025: 1라운드 → '픽 앤 플레이 페이즈', 2라운드 → '엘리미네이션 페이즈'.
+        for (const s3 of ['Split 3', 'Etapa 3']) {
+          if (!byS[s3]) continue;
+          for (const b of byS[s3].brackets || []) {
+            if (b.slug === 'round_1') { b.name = '픽 앤 플레이 페이즈'; b.label = '픽 앤 플레이 페이즈'; }
+            if (b.slug === 'round_2') { b.name = '엘리미네이션 페이즈'; b.label = '엘리미네이션 페이즈'; }
+          }
+        }
         // LPL Split 2 2025: 럼블 스테이지(등봉 그룹 10팀 / 열반 그룹 6팀)가 buildSplit에서 누락 → 별도 순위 스테이지로 추가.
         //   스테이지 명칭도 변경: 그룹 순위→그룹 스테이지 / 선발전 시리즈→정상 승격전 / 플레이오프→녹아웃 스테이지.
         if (c.key === 'lpl' && byS['Split 2']) {
@@ -2877,7 +2900,7 @@ console.log('lolStandings.json 갱신 완료');
             for (const sec of rStage?.sections || []) for (const r of sec.rankings || []) for (const t of r.teams) {
               rumbleRows.push({ rank: r.ordinal, team: t.code, w: t.record.wins, l: t.record.losses, group: GNAME[sec.name] || sec.name });
             }
-            if (rumbleRows.length) node.phaseStages = [...(node.phaseStages || []), { label: '럼블 스테이지', rows: rumbleRows }];
+            if (rumbleRows.length) node.phaseStages = [...(node.phaseStages || []), { label: '럼블 스테이지', rows: rumbleRows, after: '정상 승격전' }];
           } catch (e) { console.warn(`LPL 럼블 스테이지 실패: ${e.message}`); }
         }
         if (labels.length) { std2025[c.key] = byS; subs2025[c.key] = labels; }

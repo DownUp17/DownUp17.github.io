@@ -15,6 +15,7 @@ import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
+import ewcLogo from '../assets/ewc.svg';
 import ltaNorthLogo from '../assets/lta-north.svg';
 import ltaSulLogo from '../assets/lta-sul.svg';
 import ltaLogo from '../assets/lta.svg';
@@ -43,7 +44,7 @@ const statusMeta = {
 };
 
 // 본문 추후 제공 대회 (정보 미준비)
-const CONTENT_TBD = new Set([]);
+const CONTENT_TBD = new Set(['ewc']); // EWC: 대회 정보 미제공 → '추후 제공 예정' 표기
 const isContentTbd = (key, sub) =>
   CONTENT_TBD.has(key) || (sub ? CONTENT_TBD.has(`${key}|${sub}`) : false);
 // 완료된 과거 스플릿(정규/그룹 순위 + 대진 + 최종순위를 PastSplitView로 표시)
@@ -1285,7 +1286,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
               최종 순위는 플레이오프 결승 종료 후 확정됩니다.
             </p>
           )}
-          <div className={(isPeerGroupNames(groups.map((g) => g.name)) || isLckCup) && groups.length > 1 ? PARALLEL_GRID : 'contents'}>
+          <div className={(isPeerGroupNames(groups.map((g) => g.name)) || isLckCup) && groups.length > 1 ? parallelGrid(groups.length) : 'contents'}>
           {groups.map((grp) => (
             <div key={grp.name || 'all'}>
               {grp.name && (
@@ -2131,8 +2132,10 @@ const PAST_GROUP_BADGES = [
 ];
 // 조별 우열이 없는(=A조/B조/C조·1조/2조식) 이름이면 순위표를 병렬 배치. (레전드/라이즈 등 우열 조는 세로 유지)
 const isPeerGroupNames = (names) => { const g = (names || []).filter(Boolean); return g.length > 1 && g.every((n) => /^[A-Za-z0-9]+조$/.test(n)); };
-// 병렬 그리드 클래스
-const PARALLEL_GRID = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+// 병렬 그리드 클래스 — 조가 2개면 가로를 2열로 꽉 채우고(빈 3열 자리 없음), 3개 이상이면 3열.
+const parallelGrid = (n) => (n <= 2
+  ? 'grid grid-cols-1 md:grid-cols-2 gap-6'
+  : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6');
 // 종료 대회별 팀 로고/표기 오버라이드 (당시 로고 사용). FST 당시 GEN은 예전 로고.
 const PAST_TEAM_OVERRIDE = {
   fst: { GEN: { logo: gengSimpleLogo } },
@@ -2167,8 +2170,10 @@ const pastSplitStagesFromData = (d) => {
   if (d.kespa) return ['예선', '본선', '결선']; // KeSPA CUP: 예선(3조)·본선(LCQ)·결선(더블엘리)
   const stages = [];
   if (d.rows?.length) stages.push(d.regLabel || (d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌'));
-  for (const ph of d.phaseStages || []) if (ph.rows?.length) stages.push(ph.label); // 추가 순위 스테이지(예: 그룹 페이즈·럼블 스테이지)
-  for (const s of pastBracketStages(d)) stages.push(s.label);
+  // 추가 순위 스테이지(예: 그룹 페이즈·럼블 스테이지). after 지정 시 해당 대진 스테이지 뒤에 삽입, 없으면 순위 바로 뒤.
+  const afterMap = {};
+  for (const ph of d.phaseStages || []) if (ph.rows?.length) { if (ph.after) (afterMap[ph.after] = afterMap[ph.after] || []).push(ph.label); else stages.push(ph.label); }
+  for (const s of pastBracketStages(d)) { stages.push(s.label); for (const l of (afterMap[s.label] || [])) stages.push(l); }
   if (d.finalStandings?.length) stages.push('최종 순위');
   return stages.length ? stages : null;
 };
@@ -2184,7 +2189,10 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
   // Road to MSI 커스텀 렌더 — 2026처럼 세부 스테이지 탭 없이 참가팀 성적(정규시즌 순위) + 사다리 대진을 함께 표기.
   if (data.roadToMsi) {
     const rtm = (data.brackets || []).find((b) => b.slug === 'road_to_msi' || /road/i.test(b.slug || ''));
-    const stdRows = rows.map((r) => ({ short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0) }));
+    // 참가 팀 = 대진에 등장하는 팀만 (정규시즌 전체가 아니라 Road to MSI 진출 팀).
+    const partSet = new Set();
+    for (const r of (rtm?.bracket?.rounds || [])) for (const m of (r.matches || [])) for (const s of [m.a, m.b]) if (s?.short) partSet.add(s.short);
+    const stdRows = rows.filter((r) => partSet.size === 0 || partSet.has(r.team)).map((r) => ({ short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0) }));
     return (
       <div className="flex flex-col gap-8">
         <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm"><span className="text-white/50">형식: <strong className="text-white/80">{data.name} · 정규시즌 → MSI로 가는 길 · 종료</strong></span></div>
@@ -2336,7 +2344,7 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
       {stage === regLabel && rows.length > 0 && (
         <section className="flex flex-col gap-5">
           <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{grouped ? (data.regLabel || '그룹 순위') : '정규시즌 순위'}</h3>
-          <div className={(isPeerGroupNames(groupNames) || data.parallelGroups) ? PARALLEL_GRID : 'flex flex-col gap-5'}>
+          <div className={(isPeerGroupNames(groupNames) || data.parallelGroups) ? parallelGrid(groupNames.length) : 'flex flex-col gap-5'}>
           {groupNames.map((g, gi) => {
             const grpRows = rows.filter((r) => g == null || r.group === g).map((r) => ({
               short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
@@ -2360,7 +2368,7 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
         return (
           <section key={ph.label} className="flex flex-col gap-5">
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{ph.label}</h3>
-            <div className={parallel ? PARALLEL_GRID : 'flex flex-col gap-5'}>
+            <div className={parallel ? parallelGrid(names.length) : 'flex flex-col gap-5'}>
               {names.map((g, gi) => {
                 const grpRows = ph.rows.filter((r) => r.group === g).map((r) => ({
                   short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
@@ -2414,6 +2422,7 @@ const COMP_LOGO = {
   demacia: demaciaLogo,
   worlds: 'https://static.lolesports.com/leagues/1592594612171_WorldsDarkBG.png',
   asiangames: asiangamesLogo,
+  ewc: ewcLogo,
 };
 // 대회 상세(헤더)에서 탭 기본 로고 대신 쓸 에디션별 로고. 없으면 COMP_LOGO 사용.
 //   AG는 탭에는 기본 아시안게임 로고, 상세에는 해당 에디션(2026 Aichi-Nagoya) 로고를 표기.
@@ -2432,6 +2441,8 @@ const PAST_DETAIL = {
   'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo } } },
   'lck|2025': { bySub: { 'LCK CUP': { color: '#7f6b00' }, 'KeSPA CUP': { color: '#072148', logo: kespa2025Logo } } },
   'fst|2025': { color: '#45002c' },
+  'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
+  'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
@@ -2442,6 +2453,8 @@ const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
 // 탭 상징색 오버라이드 — 비우면 각 대회 comp.color(가장 최근 에디션 색)를 그대로 탭에 사용.
 const TAB_COLOR = {};
+// 대회 상징색 그라데이션 (탭·헤더 로고 박스) — 좌→우. 지정 시 단색 대신 그라데이션 사용.
+const COMP_GRADIENT = { ewc: 'linear-gradient(90deg, #f74e16, #d1b36f)' };
 
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
@@ -2524,6 +2537,7 @@ const COMP_EDITIONS = {
   msi: [2026, 2025],
   demacia: [2026, 2025],
   worlds: [2026, 2025],
+  ewc: [2026, 2025, 2024],
 };
 // 선택 가능한 연도 = 수기 기준(COMP_EDITIONS: demacia/fst 등 특수 2025) + 생성된 과거 데이터의 모든 연도.
 const editionYears = (key) => {
@@ -2656,8 +2670,14 @@ const PredictionPage = () => {
   // 상태 자동 판정 — 해당 세부대회의 최종 대진(플레이오프 등)에서 우승이 확정되면 '종료'로 자동 전환.
   //   (SUB_STATUS 수기 값보다 우선. 우승 미확정이면 수기 값 사용.)
   const curSubDataForStatus = comp && activeSub && isCurrentYear ? officialStandings.standings[comp.key]?.[activeSub] : null;
-  const subAutoFinished = curSubDataForStatus?.finalStandings?.[0]?.note === '우승';
-  const subStatus = comp && activeSub && isCurrentYear ? (subAutoFinished ? 'finished' : SUB_STATUS[`${comp.key}|${activeSub}`]) : null;
+  // 선발전(대표 선발전)처럼 finalStandings 없이 qualifier 대진만 있는 경우: 대진 완료 여부로 상태 자동 판정.
+  const qMatches = (curSubDataForStatus?.qualifier?.rounds || []).flatMap((r) => r.matches || []);
+  const isDecided = (m) => !!(m.a?.win || m.b?.win || m.a?.msi || m.b?.msi || (m.a?.score != null && m.b?.score != null && m.a.score !== m.b.score));
+  const qDone = qMatches.length > 0 && qMatches.every(isDecided);
+  const qStarted = qMatches.some(isDecided);
+  const subAutoFinished = curSubDataForStatus?.finalStandings?.[0]?.note === '우승' || qDone;
+  const subAutoStatus = subAutoFinished ? 'finished' : (qStarted ? 'ongoing' : null);
+  const subStatus = comp && activeSub && isCurrentYear ? (subAutoStatus || SUB_STATUS[`${comp.key}|${activeSub}`]) : null;
   const st = comp ? (statusMeta[subStatus || comp.status] || statusMeta.upcoming) : null;
   // 서브탭별 상세 헤더 오버라이드(로고·상징색) — 현재 연도만
   const subDetail = comp && activeSub && isCurrentYear ? SUBTAB_DETAIL[`${comp.key}|${activeSub}`] : null;
@@ -2769,20 +2789,23 @@ const PredictionPage = () => {
             // 탭(일반 대회) 상징색 — 에디션별 색과 별개로 탭에 쓸 색. (예: AG 탭은 #ffb732, 2026 상세는 유지)
             const tabColor = TAB_COLOR[c.key] || c.color;
             return (
+              <React.Fragment key={c.key}>
+              {/* 데스크탑에서 FST부터 아랫줄로 — 국제 대회(FST~Worlds)를 두 번째 줄에 배치 */}
+              {c.key === 'fst' && <div className="hidden md:block basis-full h-0" aria-hidden />}
               <button
-                key={c.key}
                 onClick={() => setActiveKey(c.key)}
                 className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-black border transition-all ${
                   active ? '' : 'text-white/60 border-white/15 hover:border-white/40 bg-transparent'
                 }`}
-                style={active ? { backgroundColor: tabColor, borderColor: tabColor, color: textOn(tabColor) } : {}}
+                style={active ? (COMP_GRADIENT[c.key] ? { backgroundImage: COMP_GRADIENT[c.key], borderColor: tabColor, color: '#fff' } : { backgroundColor: tabColor, borderColor: tabColor, color: textOn(tabColor) }) : {}}
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"
-                  style={{ width: 18, height: 18, filter: active ? (textOn(tabColor) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none', opacity: active ? 0.9 : 1 }}
+                  style={{ width: 18, height: 18, filter: c.key === 'ewc' ? 'brightness(0) invert(1)' : (active ? (textOn(tabColor) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none'), opacity: active ? 0.9 : 1 }}
                   onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                 {c.tabName || c.name.replace('2026 ', '')}
               </button>
+              </React.Fragment>
             );
           })}
         </div>
@@ -2820,7 +2843,7 @@ const PredictionPage = () => {
                       );
                     }
                     return (
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: hd?.color || comp.color }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={(!hd && COMP_GRADIENT[comp.key]) ? { backgroundImage: COMP_GRADIENT[comp.key] } : { backgroundColor: hd?.color || comp.color }}>
                     <img src={hd?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
                       style={{ filter: hd?.logo ? (hd.invert ? 'brightness(0) invert(1)' : 'none') : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
