@@ -489,6 +489,34 @@ function ltaConferenceLayout(bracket) {
   return fixDropElim({ totalRows: 12, rounds: rounds2, connectors });
 }
 
+// 2025 LTA Split 3 / Etapa 3 round_2 (rounds 4·3·1·1·1) — 사용자 지정 세로 배치.
+//   컬럼(=원본 라운드)은 유지하고 startRow만 조정:
+//   하위 8강을 하위 1라운드와 같은 높이(sr6·10)에, 하위 4강·하위 결승을 두 하위 8강 사이(sr8)에 둔다.
+//   상위 4강(sr0·2)·상위 결승(sr1) 상단, 결승(sr4) 중앙. 연결선은 원본 유지.
+function ltaRound2Layout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  if (bracket.rounds.map((r) => r.matches.length).join(',') !== '4,3,1,1,1') return bracket;
+  const titles = bracket.rounds.flatMap((r) => r.matches.map((m) => m.title || ''));
+  if (!titles.some((t) => /상위권 대진 - 4강/.test(t)) || !titles.some((t) => /하위권 대진 - 8강/.test(t))) return bracket;
+  const cnt = {};
+  const srOf = (t) => {
+    const i = cnt[t] = (cnt[t] || 0); cnt[t] = i + 1;
+    if (/상위권 대진 - 4강/.test(t)) return i === 0 ? 0 : 2;
+    if (/하위권 대진 - 1라운드/.test(t)) return i === 0 ? 6 : 10;
+    if (/상위권 대진 - 결승/.test(t)) return 1;
+    if (/하위권 대진 - 8강/.test(t)) return i === 0 ? 6 : 10;   // 하위 1라운드와 같은 높이
+    if (/하위권 대진 - 4강/.test(t)) return 8;                    // 두 하위 8강 사이
+    if (/하위권 대진 - 결승/.test(t)) return 8;                   // 두 하위 8강 사이
+    if (/^결승$/.test(t)) return 4;
+    return 0;
+  };
+  const rounds2 = bracket.rounds.map((r) => ({
+    title: '',
+    matches: r.matches.map((m) => ({ ...m, startRow: srOf(m.title || '') })),
+  }));
+  return fixDropElim({ totalRows: 12, rounds: rounds2, connectors: bracket.connectors });
+}
+
 // LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
 function knightsLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
@@ -1139,6 +1167,7 @@ async function buildSplit(leagueId, slug) {
       else if (cnt(/상위권.*결승/) >= 1) b = lckPoStyleLayout(b);  // 6팀 LCK PO식 (상위 8강/4강/결승, 3라운드 upper)
       else if (cnt(/상위권.*(8강|1라운드)/) >= 2) b = lecPoLayout(b); // 6팀 LEC식 (상위 2라운드, 같은 라운드=같은 컬럼)
     }
+    else { const lta2 = ltaRound2Layout(b); if (lta2 !== b) b = lta2; } // 2025 LTA Split3/Etapa3 round_2 세로 배치
     // 8팀 싱글 엘리미네이션(8강 4 → 4강 2 → 결승 1)은 2026 Worlds 녹아웃과 동일 그리드로 통일.
     if (!b.sections && !b.totalRows && Array.isArray(b.rounds)) {
       const sz = b.rounds.map((r) => (r.matches || []).length);
@@ -2942,13 +2971,27 @@ console.log('lolStandings.json 갱신 완료');
           if (!byS[s1]) continue;
           for (const b of byS[s1].brackets || []) if (b.slug === 'north_qualifier' || b.slug === 'south_qualifier') { b.name = '컨퍼런스 스테이지'; b.label = '컨퍼런스 스테이지'; b.bracket = ltaConferenceLayout(b.bracket); }
         }
-        // LTA Split 3/Etapa 3 2025: 1라운드 → '픽 앤 플레이 페이즈', 2라운드 → '엘리미네이션 페이즈'.
+        // LTA Split 3/Etapa 3 2025: 픽 앤 플레이 페이즈(round_1)를 매치 결과 기반 순위표로 변환(승-패·세트 득실·상대). 엘리미네이션 페이즈(round_2)는 대진 유지.
         for (const s3 of ['Split 3', 'Etapa 3']) {
-          if (!byS[s3]) continue;
-          for (const b of byS[s3].brackets || []) {
-            if (b.slug === 'round_1') { b.name = '픽 앤 플레이 페이즈'; b.label = '픽 앤 플레이 페이즈'; }
-            if (b.slug === 'round_2') { b.name = '엘리미네이션 페이즈'; b.label = '엘리미네이션 페이즈'; }
+          const node = byS[s3];
+          if (!node) continue;
+          const r1 = (node.brackets || []).find((b) => b.slug === 'round_1');
+          if (r1) {
+            const ms = (r1.bracket.rounds || []).flatMap((r) => r.matches || []);
+            const st = {};
+            const get = (t) => (st[t] = st[t] || { team: t, w: 0, l: 0, gw: 0, gl: 0, opps: [] });
+            for (const m of ms) {
+              const a = m.a?.short, b = m.b?.short; if (!a || !b) continue;
+              const sa = m.a?.score || 0, sb = m.b?.score || 0;
+              const A = get(a), B = get(b);
+              A.gw += sa; A.gl += sb; B.gw += sb; B.gl += sa; A.opps.push(b); B.opps.push(a);
+              if (sa > sb) { A.w++; B.l++; } else if (sb > sa) { B.w++; A.l++; }
+            }
+            const rows = Object.values(st).sort((x, y) => (y.w - x.w) || ((y.gw - y.gl) - (x.gw - x.gl)) || (y.gw - x.gw)).map((r, i) => ({ ...r, rank: i + 1 }));
+            node.phaseStages = [...(node.phaseStages || []), { label: '픽 앤 플레이 페이즈', rows, showOpponents: true }];
+            node.brackets = (node.brackets || []).filter((b) => b.slug !== 'round_1');
           }
+          for (const b of node.brackets || []) if (b.slug === 'round_2') { b.name = '엘리미네이션 페이즈'; b.label = '엘리미네이션 페이즈'; }
         }
         // LPL Split 2 2025: 럼블 스테이지(등봉 그룹 10팀 / 열반 그룹 6팀)가 buildSplit에서 누락 → 별도 순위 스테이지로 추가.
         //   스테이지 명칭도 변경: 그룹 순위→그룹 스테이지 / 선발전 시리즈→정상 승격전 / 플레이오프→녹아웃 스테이지.

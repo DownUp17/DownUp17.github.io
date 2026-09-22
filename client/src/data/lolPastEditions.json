@@ -52461,218 +52461,10 @@
           "rows": [],
           "brackets": [
             {
-              "slug": "round_1",
-              "name": "픽 앤 플레이 페이즈",
-              "bracket": {
-                "rounds": [
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113487190606716456",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "DSG",
-                          "score": 0
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "FLY",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487190606716460",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "LYON",
-                          "score": 0
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "C9",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487190606716464",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "100T",
-                          "score": 0
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "TLAW",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487190606716468",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "DIG",
-                          "score": 0
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "SR",
-                          "score": 2,
-                          "msi": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113487190606782008",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "FLY",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "100T",
-                          "score": 0
-                        }
-                      },
-                      {
-                        "id": "113487190606782012",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "TLAW",
-                          "score": 1
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "LYON",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487190606782016",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "C9",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "DIG",
-                          "score": 0
-                        }
-                      },
-                      {
-                        "id": "113487190606782020",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "SR",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "DSG",
-                          "score": 1
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113487190606782024",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "100T",
-                          "score": 1,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "SR",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487190606782028",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "LYON",
-                          "score": 0,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "FLY",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487190606782032",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "TLAW",
-                          "score": 0,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "C9",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487190606782036",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "DSG",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "DIG",
-                          "score": 1,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  }
-                ],
-                "connectors": []
-              },
-              "label": "픽 앤 플레이 페이즈"
-            },
-            {
               "slug": "round_2",
               "name": "엘리미네이션 페이즈",
               "bracket": {
+                "totalRows": 12,
                 "rounds": [
                   {
                     "title": "",
@@ -52690,7 +52482,8 @@
                           "seed": "",
                           "short": "C9",
                           "score": 2
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "113487190606782044",
@@ -52705,7 +52498,8 @@
                           "short": "FLY",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       },
                       {
                         "id": "113487190606782048",
@@ -52721,7 +52515,8 @@
                           "short": "DSG",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 6
                       },
                       {
                         "id": "113487190606782052",
@@ -52737,7 +52532,8 @@
                           "short": "LYON",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 10
                       }
                     ]
                   },
@@ -52757,7 +52553,8 @@
                           "short": "FLY",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 1
                       },
                       {
                         "id": "113487190606782060",
@@ -52773,7 +52570,8 @@
                           "short": "TLAW",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 6
                       },
                       {
                         "id": "113487190606782064",
@@ -52789,7 +52587,8 @@
                           "short": "C9",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 10
                       }
                     ]
                   },
@@ -52810,7 +52609,8 @@
                           "short": "C9",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -52831,7 +52631,8 @@
                           "short": "SR",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -52848,7 +52649,8 @@
                         "b": {
                           "seed": "상위권 대진 - 결승 승자",
                           "short": "FLY"
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   }
@@ -52947,6 +52749,118 @@
               "rank": 8,
               "team": "DIG",
               "note": ""
+            }
+          ],
+          "phaseStages": [
+            {
+              "label": "픽 앤 플레이 페이즈",
+              "rows": [
+                {
+                  "team": "FLY",
+                  "w": 3,
+                  "l": 0,
+                  "gw": 6,
+                  "gl": 0,
+                  "opps": [
+                    "DSG",
+                    "100T",
+                    "LYON"
+                  ],
+                  "rank": 1
+                },
+                {
+                  "team": "C9",
+                  "w": 3,
+                  "l": 0,
+                  "gw": 6,
+                  "gl": 0,
+                  "opps": [
+                    "LYON",
+                    "DIG",
+                    "TLAW"
+                  ],
+                  "rank": 2
+                },
+                {
+                  "team": "SR",
+                  "w": 3,
+                  "l": 0,
+                  "gw": 6,
+                  "gl": 2,
+                  "opps": [
+                    "DIG",
+                    "DSG",
+                    "100T"
+                  ],
+                  "rank": 3
+                },
+                {
+                  "team": "TLAW",
+                  "w": 1,
+                  "l": 2,
+                  "gw": 3,
+                  "gl": 4,
+                  "opps": [
+                    "100T",
+                    "LYON",
+                    "C9"
+                  ],
+                  "rank": 4
+                },
+                {
+                  "team": "DSG",
+                  "w": 1,
+                  "l": 2,
+                  "gw": 3,
+                  "gl": 5,
+                  "opps": [
+                    "FLY",
+                    "SR",
+                    "DIG"
+                  ],
+                  "rank": 5
+                },
+                {
+                  "team": "LYON",
+                  "w": 1,
+                  "l": 2,
+                  "gw": 2,
+                  "gl": 5,
+                  "opps": [
+                    "C9",
+                    "TLAW",
+                    "FLY"
+                  ],
+                  "rank": 6
+                },
+                {
+                  "team": "100T",
+                  "w": 0,
+                  "l": 3,
+                  "gw": 1,
+                  "gl": 6,
+                  "opps": [
+                    "TLAW",
+                    "FLY",
+                    "SR"
+                  ],
+                  "rank": 7
+                },
+                {
+                  "team": "DIG",
+                  "w": 0,
+                  "l": 3,
+                  "gw": 1,
+                  "gl": 6,
+                  "opps": [
+                    "SR",
+                    "C9",
+                    "DSG"
+                  ],
+                  "rank": 8
+                }
+              ],
+              "showOpponents": true
             }
           ]
         },
@@ -54168,218 +54082,10 @@
           "rows": [],
           "brackets": [
             {
-              "slug": "round_1",
-              "name": "픽 앤 플레이 페이즈",
-              "bracket": {
-                "rounds": [
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113487198986997952",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "FX",
-                          "score": 0
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "FUR",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487198986997956",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "LEV",
-                          "score": 0
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "PAIN",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487198987063496",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "RED",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "ISG",
-                          "score": 1
-                        }
-                      },
-                      {
-                        "id": "113487198987063500",
-                        "title": "1라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "VKS",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "LOUD",
-                          "score": 1
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113487198987063504",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "FUR",
-                          "score": 1
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "PAIN",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487198987063508",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "ISG",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "FX",
-                          "score": 1
-                        }
-                      },
-                      {
-                        "id": "113487198987063512",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "VKS",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "LEV",
-                          "score": 0
-                        }
-                      },
-                      {
-                        "id": "113487198987063516",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "RED",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "LOUD",
-                          "score": 1
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "113487198987063520",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "FUR",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "VKS",
-                          "score": 1,
-                          "elim": true
-                        }
-                      },
-                      {
-                        "id": "113487198987063524",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "ISG",
-                          "score": 0,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "LOUD",
-                          "score": 2,
-                          "msi": true
-                        }
-                      },
-                      {
-                        "id": "113487198987129064",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "LEV",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "FX",
-                          "score": 0,
-                          "elim": true
-                        }
-                      },
-                      {
-                        "id": "113487198987129068",
-                        "title": "3라운드",
-                        "a": {
-                          "seed": "",
-                          "short": "RED",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "PAIN",
-                          "score": 0,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  }
-                ],
-                "connectors": []
-              },
-              "label": "픽 앤 플레이 페이즈"
-            },
-            {
               "slug": "round_2",
               "name": "엘리미네이션 페이즈",
               "bracket": {
+                "totalRows": 12,
                 "rounds": [
                   {
                     "title": "",
@@ -54397,7 +54103,8 @@
                           "short": "VKS",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "113487198987129076",
@@ -54412,7 +54119,8 @@
                           "short": "PAIN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       },
                       {
                         "id": "113487198987129080",
@@ -54428,7 +54136,8 @@
                           "short": "LOUD",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 6
                       },
                       {
                         "id": "113487198987129084",
@@ -54444,7 +54153,8 @@
                           "short": "ISG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 10
                       }
                     ]
                   },
@@ -54464,7 +54174,8 @@
                           "seed": "상위권 대진 - 4강 승자",
                           "short": "PAIN",
                           "score": 1
-                        }
+                        },
+                        "startRow": 1
                       },
                       {
                         "id": "113487198987129092",
@@ -54480,7 +54191,8 @@
                           "short": "FUR",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 6
                       },
                       {
                         "id": "113487198987129096",
@@ -54496,7 +54208,8 @@
                           "short": "RED",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 10
                       }
                     ]
                   },
@@ -54517,7 +54230,8 @@
                           "short": "RED",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -54538,7 +54252,8 @@
                           "short": "PAIN",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -54559,7 +54274,8 @@
                           "short": "RED",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   }
@@ -54658,6 +54374,118 @@
               "rank": 8,
               "team": "ISG",
               "note": ""
+            }
+          ],
+          "phaseStages": [
+            {
+              "label": "픽 앤 플레이 페이즈",
+              "rows": [
+                {
+                  "team": "RED",
+                  "w": 3,
+                  "l": 0,
+                  "gw": 6,
+                  "gl": 2,
+                  "opps": [
+                    "ISG",
+                    "LOUD",
+                    "PAIN"
+                  ],
+                  "rank": 1
+                },
+                {
+                  "team": "FUR",
+                  "w": 2,
+                  "l": 1,
+                  "gw": 5,
+                  "gl": 3,
+                  "opps": [
+                    "FX",
+                    "PAIN",
+                    "VKS"
+                  ],
+                  "rank": 2
+                },
+                {
+                  "team": "VKS",
+                  "w": 2,
+                  "l": 1,
+                  "gw": 5,
+                  "gl": 3,
+                  "opps": [
+                    "LOUD",
+                    "LEV",
+                    "FUR"
+                  ],
+                  "rank": 3
+                },
+                {
+                  "team": "PAIN",
+                  "w": 2,
+                  "l": 1,
+                  "gw": 4,
+                  "gl": 3,
+                  "opps": [
+                    "LEV",
+                    "FUR",
+                    "RED"
+                  ],
+                  "rank": 4
+                },
+                {
+                  "team": "LOUD",
+                  "w": 1,
+                  "l": 2,
+                  "gw": 4,
+                  "gl": 4,
+                  "opps": [
+                    "VKS",
+                    "RED",
+                    "ISG"
+                  ],
+                  "rank": 5
+                },
+                {
+                  "team": "ISG",
+                  "w": 1,
+                  "l": 2,
+                  "gw": 3,
+                  "gl": 5,
+                  "opps": [
+                    "RED",
+                    "FX",
+                    "LOUD"
+                  ],
+                  "rank": 6
+                },
+                {
+                  "team": "LEV",
+                  "w": 1,
+                  "l": 2,
+                  "gw": 2,
+                  "gl": 4,
+                  "opps": [
+                    "PAIN",
+                    "VKS",
+                    "FX"
+                  ],
+                  "rank": 7
+                },
+                {
+                  "team": "FX",
+                  "w": 0,
+                  "l": 3,
+                  "gw": 1,
+                  "gl": 6,
+                  "opps": [
+                    "FUR",
+                    "ISG",
+                    "LEV"
+                  ],
+                  "rank": 8
+                }
+              ],
+              "showOpponents": true
             }
           ]
         },

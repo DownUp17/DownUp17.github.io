@@ -1853,16 +1853,18 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">플레이오프</h3>
                 <span className="text-xs text-white/40">8팀 싱글 엘리미네이션{ewc.champion ? ` · 우승 ${ewc.champion}` : ''}</span>
               </div>
-              <MsiBracket rounds={ewc.playoff.bracket.rounds} totalRows={ewc.playoff.bracket.totalRows} connectors={ewc.playoff.bracket.connectors} onTeamClick={onTeamClick} />
+              {(() => {
+                // 결승과 3위 결정전을 같은 마지막 x컬럼에 배치(결승 상단·3위전 하단)
+                const b = ewc.playoff.bracket;
+                const thirdMatch = ewc.playoff.third?.rounds?.[0]?.matches?.[0];
+                const rounds = thirdMatch
+                  ? b.rounds.map((r, i) => (i === b.rounds.length - 1
+                    ? { ...r, matches: [...r.matches, { ...thirdMatch, startRow: 6 }] }
+                    : r))
+                  : b.rounds;
+                return <MsiBracket rounds={rounds} totalRows={b.totalRows} connectors={b.connectors} onTeamClick={onTeamClick} />;
+              })()}
             </div>
-            {ewc.playoff.third && (
-              <div>
-                <div className="flex items-baseline gap-2 flex-wrap mb-4">
-                  <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">3위 결정전</h3>
-                </div>
-                <MsiBracket rounds={ewc.playoff.third.rounds} onTeamClick={onTeamClick} />
-              </div>
-            )}
             <BracketLegend goldLabel="우승" />
           </section>
         );
@@ -2409,6 +2411,43 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
       )}
 
       {(data.phaseStages || []).map((ph) => stage === ph.label && ph.rows?.length > 0 && (() => {
+        // 상대 로고 표시형 순위표(예: LTA 픽 앤 플레이 페이즈) — 승-패·세트 득실차·만난 상대 로고.
+        if (ph.showOpponents) {
+          const disp = (c) => teamOverride?.[c]?.tag || c;
+          const logoOf = (c) => teamOverride?.[c]?.logo || logoByShort[c];
+          return (
+            <section key={ph.label} className="flex flex-col gap-4">
+              <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{ph.label}</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead><tr className="text-white/40 text-xs border-b border-white/10">
+                    <th className="text-center font-bold py-2 px-2 w-9">#</th>
+                    <th className="text-left font-bold py-2 pr-2">팀</th>
+                    <th className="text-center font-bold py-2 px-2">승-패</th>
+                    <th className="text-center font-bold py-2 px-2">득실차</th>
+                    <th className="text-right font-bold py-2 px-2">상대</th>
+                  </tr></thead>
+                  <tbody>
+                    {ph.rows.map((r) => {
+                      const gd = (r.gw || 0) - (r.gl || 0);
+                      return (
+                        <tr key={r.team} className="border-b border-white/5"
+                          style={{ cursor: knownTeam(r.team) ? 'pointer' : undefined }}
+                          onClick={(knownTeam(r.team) && onTeamClick) ? () => onTeamClick(r.team) : undefined}>
+                          <td className="py-2 px-2 text-center text-white/50 font-mono">{r.rank}</td>
+                          <td className="py-2 pr-2"><span className="inline-flex items-center gap-2 font-bold text-white/90"><TeamLogo src={logoOf(r.team)} size={18} />{disp(r.team)}</span></td>
+                          <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
+                          <td className="py-2 px-2 text-center font-mono text-white/60">{gd > 0 ? `+${gd}` : gd}</td>
+                          <td className="py-2 px-2"><span className="flex items-center gap-1.5 justify-end">{(r.opps || []).map((o, i) => <TeamLogo key={i} src={logoOf(o)} size={16} />)}</span></td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          );
+        }
         const names = [...new Set(ph.rows.map((r) => r.group))];
         const parallel = isPeerGroupNames(names);
         return (
