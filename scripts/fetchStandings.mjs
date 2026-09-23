@@ -3074,6 +3074,15 @@ console.log('lolStandings.json 갱신 완료');
         }
         // LCK CUP 2025: 그룹(내셔 남작/장로 드래곤)이 우열 조가 아니므로 순위표를 병렬 배치.
         if (c.key === 'lck' && byS['LCK CUP']) byS['LCK CUP'].parallelGroups = true;
+        // LCP Finals 2025 플레이오프: 1라운드 승자(TSW·PSG 등)가 진출(금색)로 오표기 → 라운드 승리(파랑)로 교정.
+        //   (bracketFromColumns가 1R 승자의 이후 진출을 놓쳐 msi로 표기하는 버그. 우승은 결승 승자만.)
+        if (c.key === 'lcp' && byS['Finals']) {
+          const po = (byS['Finals'].brackets || []).find((b) => b.slug === 'playoffs');
+          for (const r of po?.bracket?.rounds || []) for (const m of r.matches) {
+            if (!/^1라운드$/.test(m.title || '')) continue;
+            for (const s of [m.a, m.b]) if (s?.msi) { delete s.msi; s.win = true; }
+          }
+        }
         // Road to MSI 2025: 라운드 재지정(GEN/HLE=3R, DK/KT=1R, NS/KT=2R) + 2026처럼 세부탭 없이 참가팀 성적+대진 표기.
         if (c.key === 'lck' && byS['Road to MSI']) {
           const rm = byS['Road to MSI'];
@@ -3214,7 +3223,17 @@ console.log('lolStandings.json 갱신 완료');
           const pr = (fin.brackets || []).filter((b) => b.slug === 'promotion_and_relegation');
           if (pr.length) {
             fin.brackets = fin.brackets.filter((b) => b.slug !== 'promotion_and_relegation');
-            byS['승강전'] = { name: '승강전', rows: [], brackets: pr, finalStandings: [] };
+            // 승강전 = Free-for-All(사다리) + Regional Merit(MVKE vs DINO 단판)로 분리.
+            const prb = pr[0].bracket || { rounds: [] };
+            const isRM = (m) => { const s = [m.a?.short, m.b?.short]; return s.includes('MVK') && s.includes('DINO'); };
+            const rmMatches = [];
+            const ffaRounds = (prb.rounds || []).map((r) => {
+              const keep = []; for (const m of r.matches || []) (isRM(m) ? rmMatches : keep).push(m);
+              return { ...r, matches: keep };
+            });
+            const brackets = [{ slug: 'free_for_all', name: 'Free-for-All', label: 'Free-for-All', bracket: { rounds: ffaRounds, connectors: prb.connectors || [] } }];
+            if (rmMatches.length) brackets.push({ slug: 'regional_merit', name: 'Regional Merit', label: 'Regional Merit', bracket: { rounds: [{ title: '', matches: rmMatches }], connectors: [] } });
+            byS['승강전'] = { name: '승강전', rows: [], brackets, finalStandings: [] };
             labels.push('승강전');
           }
           // 최종순위 — 플레이오프(결승 CFO 3-0 TSW / 하위권 결승 TSW 3-1 PSG …) + 그룹 시드(SHG > CHF) 기준으로 보정.

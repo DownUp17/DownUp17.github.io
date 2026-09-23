@@ -44719,6 +44719,7 @@
               "slug": "play_ins",
               "name": "플레이-인",
               "bracket": {
+                "totalRows": 7,
                 "rounds": [
                   {
                     "title": "",
@@ -44737,7 +44738,8 @@
                           "short": "NS",
                           "score": 2,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "113939330671349607",
@@ -44753,7 +44755,8 @@
                           "short": "KRX",
                           "score": 2,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       }
                     ]
                   },
@@ -44773,7 +44776,8 @@
                           "short": "T1",
                           "score": 2,
                           "msi": true
-                        }
+                        },
+                        "startRow": 1
                       },
                       {
                         "id": "113939330671349613",
@@ -44788,7 +44792,8 @@
                           "short": "HLE",
                           "score": 2,
                           "msi": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   },
@@ -44809,7 +44814,8 @@
                           "short": "KRX",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -44824,28 +44830,12 @@
                     "a"
                   ],
                   [
-                    0,
-                    1,
-                    "mid",
-                    1,
-                    1,
-                    "a"
-                  ],
-                  [
                     1,
                     0,
                     "mid",
                     2,
                     0,
                     "a"
-                  ],
-                  [
-                    1,
-                    1,
-                    "mid",
-                    2,
-                    0,
-                    "b"
                   ]
                 ]
               }
@@ -45217,6 +45207,7 @@
               "slug": "play_ins",
               "name": "플레이-인",
               "bracket": {
+                "totalRows": 7,
                 "rounds": [
                   {
                     "title": "",
@@ -45234,7 +45225,8 @@
                           "seed": "",
                           "short": "BRO",
                           "score": 2
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "113503500599535492",
@@ -45246,7 +45238,8 @@
                         "b": {
                           "seed": "",
                           "short": "DK"
-                        }
+                        },
+                        "startRow": 2
                       }
                     ]
                   },
@@ -45266,7 +45259,8 @@
                           "seed": "1라운드 승자",
                           "short": "NS",
                           "score": 1
-                        }
+                        },
+                        "startRow": 1
                       },
                       {
                         "id": "113503500599535504",
@@ -45282,7 +45276,8 @@
                           "short": "DK",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   },
@@ -45303,7 +45298,8 @@
                           "short": "NS",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -45311,14 +45307,6 @@
                 "connectors": [
                   [
                     0,
-                    1,
-                    "mid",
-                    1,
-                    0,
-                    "a"
-                  ],
-                  [
-                    0,
                     0,
                     "mid",
                     1,
@@ -45331,22 +45319,6 @@
                     "mid",
                     1,
                     1,
-                    "a"
-                  ],
-                  [
-                    0,
-                    1,
-                    "mid",
-                    1,
-                    1,
-                    "b"
-                  ],
-                  [
-                    1,
-                    1,
-                    "mid",
-                    2,
-                    0,
                     "a"
                   ],
                   [
@@ -45356,6 +45328,14 @@
                     2,
                     0,
                     "b"
+                  ],
+                  [
+                    1,
+                    1,
+                    "mid",
+                    2,
+                    0,
+                    "a"
                   ]
                 ]
               }
@@ -46860,6 +46840,7 @@
               "slug": "qualifying_series",
               "name": "정상 승격전",
               "bracket": {
+                "totalRows": 7,
                 "rounds": [
                   {
                     "title": "",
@@ -46877,7 +46858,8 @@
                           "seed": "",
                           "short": "LGD",
                           "score": 0
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "114195681706504654",
@@ -46892,7 +46874,8 @@
                           "seed": "",
                           "short": "WE",
                           "score": 0
-                        }
+                        },
+                        "startRow": 2
                       }
                     ]
                   },
@@ -46912,7 +46895,8 @@
                           "seed": "1라운드 승자",
                           "short": "UP",
                           "score": 1
-                        }
+                        },
+                        "startRow": 1
                       },
                       {
                         "id": "114195681706504660",
@@ -46928,7 +46912,8 @@
                           "short": "WE",
                           "score": 2,
                           "win": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   },
@@ -46949,7 +46934,8 @@
                           "short": "WE",
                           "score": 2,
                           "msi": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -46965,19 +46951,19 @@
                   ],
                   [
                     0,
-                    1,
-                    "mid",
-                    1,
-                    0,
-                    "b"
-                  ],
-                  [
-                    0,
                     0,
                     "mid",
                     1,
                     1,
                     "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
                   ],
                   [
                     0,
@@ -49975,7 +49961,7 @@
           "brackets": [
             {
               "slug": "qualifying_series",
-              "name": "퀄리파잉 시리즈",
+              "name": "선발전 시리즈",
               "bracket": {
                 "totalRows": 7,
                 "rounds": [
@@ -50292,7 +50278,7 @@
           "brackets": [
             {
               "slug": "regional_qualifier",
-              "name": "퀄리파잉 시리즈",
+              "name": "대표 선발전",
               "bracket": {
                 "totalRows": 7,
                 "rounds": [
@@ -50562,62 +50548,62 @@
               "team": "CFO",
               "w": 3,
               "l": 0,
-              "group": "컨텐더 그룹"
+              "group": "도전자 그룹"
             },
             {
               "rank": 2,
               "team": "TSW",
               "w": 2,
               "l": 1,
-              "group": "컨텐더 그룹"
+              "group": "도전자 그룹"
             },
             {
               "rank": 3,
               "team": "GAM",
               "w": 1,
               "l": 2,
-              "group": "컨텐더 그룹"
+              "group": "도전자 그룹"
             },
             {
               "rank": 4,
               "team": "PSG",
               "w": 0,
               "l": 3,
-              "group": "컨텐더 그룹"
+              "group": "도전자 그룹"
             },
             {
               "rank": 1,
               "team": "MVK",
               "w": 3,
               "l": 0,
-              "group": "브레이크아웃 그룹"
+              "group": "급상승 그룹"
             },
             {
               "rank": 2,
               "team": "SHG",
               "w": 2,
               "l": 1,
-              "group": "브레이크아웃 그룹"
+              "group": "급상승 그룹"
             },
             {
               "rank": 3,
               "team": "DFM",
               "w": 1,
               "l": 2,
-              "group": "브레이크아웃 그룹"
+              "group": "급상승 그룹"
             },
             {
               "rank": 4,
               "team": "CHF",
               "w": 0,
               "l": 3,
-              "group": "브레이크아웃 그룹"
+              "group": "급상승 그룹"
             }
           ],
           "brackets": [
             {
               "slug": "tiebreaker",
-              "name": "그룹 브레이커",
+              "name": "타이브레이커",
               "bracket": {
                 "rounds": [
                   {
@@ -50663,7 +50649,7 @@
             },
             {
               "slug": "group_seeding_bracket",
-              "name": "그룹 시딩 브래킷",
+              "name": "조별 시드 배정 대진",
               "bracket": {
                 "totalRows": 7,
                 "rounds": [
@@ -50978,7 +50964,7 @@
                           "seed": "",
                           "short": "TSW",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "",
@@ -50994,7 +50980,7 @@
                           "seed": "",
                           "short": "PSG",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "",
@@ -51292,8 +51278,9 @@
           "rows": [],
           "brackets": [
             {
-              "slug": "promotion_and_relegation",
-              "name": "승강전",
+              "slug": "free_for_all",
+              "name": "Free-for-All",
+              "label": "Free-for-All",
               "bracket": {
                 "rounds": [
                   {
@@ -51372,22 +51359,6 @@
                           "score": 1,
                           "elim": true
                         }
-                      },
-                      {
-                        "id": "115218726392632701",
-                        "title": "결승",
-                        "a": {
-                          "seed": "",
-                          "short": "DINO",
-                          "score": 1,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "MVK",
-                          "score": 3,
-                          "msi": true
-                        }
                       }
                     ]
                   }
@@ -51418,6 +51389,37 @@
                     "a"
                   ]
                 ]
+              }
+            },
+            {
+              "slug": "regional_merit",
+              "name": "Regional Merit",
+              "label": "Regional Merit",
+              "bracket": {
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "id": "115218726392632701",
+                        "title": "결승",
+                        "a": {
+                          "seed": "",
+                          "short": "DINO",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "",
+                          "short": "MVK",
+                          "score": 3,
+                          "msi": true
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "connectors": []
               }
             }
           ],
@@ -54692,7 +54694,6 @@
       },
       "fst": {
         "name": "2025",
-        "regLabel": "라운드 로빈",
         "rows": [
           {
             "rank": 1,
@@ -54728,7 +54729,7 @@
         "brackets": [
           {
             "slug": "round_2",
-            "name": "녹아웃",
+            "name": "2라운드",
             "bracket": {
               "rounds": [
                 {
