@@ -3842,7 +3842,7 @@ console.log('lolStandings.json 갱신 완료');
   // 정렬 — 최신 연도 위로, 같은 연도 내에서는 대회 개최 순서(대략)의 역순.
   // 개최 순서(이른 대회 → 늦은 대회). 최신순 정렬 시 뒤쪽(늦은 대회)이 위로 온다.
   //   LCK CUP·첫 스플릿(LPL Split 1 등)은 First Stand보다 먼저 진행 → First Stand 앞에 배치.
-  const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Split 1', 'Etapa 1', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Split 2', 'Etapa 2', 'Summer', '시즌 파이널', 'Split 3', 'Etapa 3', 'Playoffs', 'Copa', 'Worlds', 'KeSPA'];
+  const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Kickoff', 'Split 1', 'Etapa 1', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Mid Season', 'Split 2', 'Etapa 2', 'Summer', '시즌 파이널', 'Season Finals', 'Split 3', 'Etapa 3', 'Playoffs', 'Copa', 'Worlds', 'KeSPA'];
   const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
   const yearOf = (name) => { const m = name.match(/\b(20\d{2})\b/); return m ? Number(m[1]) : 0; };
   for (const short of Object.keys(titles)) titles[short].sort((a, b) => (yearOf(b.name) - yearOf(a.name)) || (ord(b.name) - ord(a.name)));
