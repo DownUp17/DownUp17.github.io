@@ -2240,7 +2240,7 @@
           "firstName": "Sangmin",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "http://static.lolesports.com/players/1790204959636_loki.png",
           "starter": true
         },
         {
@@ -2256,7 +2256,7 @@
           "firstName": "Edward",
           "lastName": "Ra",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1674833868099_IMT_TACTICAL.png",
+          "image": "http://static.lolesports.com/players/1790204905338_tac.png",
           "starter": true
         },
         {
@@ -2371,27 +2371,19 @@
       "id": "98926509883054987",
       "players": [
         {
-          "name": "Dardoch",
-          "firstName": "Joshua",
-          "lastName": "Hartnett",
+          "name": "Photon",
+          "firstName": "Gyutae",
+          "lastName": "Kyeong",
           "role": "top",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
-          "starter": true
+          "image": "http://static.lolesports.com/players/1769149727754_AME_LCS26S1_DIG_PHOTON.png",
+          "starter": false
         },
         {
           "name": "Denathor",
           "firstName": "Noah",
           "lastName": "Erikson",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1643734200321_silhouette_transparent.png",
-          "starter": true
-        },
-        {
-          "name": "Photon",
-          "firstName": "Gyutae",
-          "lastName": "Kyeong",
-          "role": "top",
-          "image": "http://static.lolesports.com/players/1769149727754_AME_LCS26S1_DIG_PHOTON.png",
+          "image": "http://static.lolesports.com/players/1790204881186_edna.png",
           "starter": false
         },
         {
@@ -2403,28 +2395,12 @@
           "starter": false
         },
         {
-          "name": "Palafox",
-          "firstName": "Cristian",
-          "lastName": "Palafox",
-          "role": "mid",
-          "image": "http://static.lolesports.com/players/1769149668465_AME_LCS26S1_DIG_PALAFOX.png",
-          "starter": true
-        },
-        {
           "name": "FBI",
           "firstName": "Ian",
           "lastName": "Huang",
           "role": "bottom",
           "image": "http://static.lolesports.com/players/1753349110894_image6224.png",
-          "starter": true
-        },
-        {
-          "name": "IgNar",
-          "firstName": "Dong Geun",
-          "lastName": "Lee",
-          "role": "support",
-          "image": "http://static.lolesports.com/players/1705026333045_ignar.png",
-          "starter": true
+          "starter": false
         }
       ]
     },
@@ -2513,7 +2489,7 @@
           "firstName": "Tristan",
           "lastName": "Stidam",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1674831529697_C9_ZEYZAL.png",
+          "image": "http://static.lolesports.com/players/1790204939755_zeyzal.png",
           "starter": true
         }
       ]
