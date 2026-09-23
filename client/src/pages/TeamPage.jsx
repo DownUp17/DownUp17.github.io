@@ -117,15 +117,21 @@ const TeamPage = () => {
           <div className="mt-10">
             <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">우승 경력</h2>
             <div className="flex flex-col gap-2">
-              {titles.map((t, i) => (
-                <div
-                  key={i}
-                  className="p-3 rounded-xl"
-                  style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
-                >
-                  <span className="font-bold text-white/90 text-sm">{t.name}</span>
-                </div>
-              ))}
+              {titles.map((t, i) => {
+                const fg = t.gradient ? '#fff' : (t.color ? textOn(t.color) : 'rgba(255,255,255,0.9)');
+                const bg = t.gradient
+                  ? { backgroundImage: t.gradient }
+                  : { backgroundColor: t.color || 'rgba(255,255,255,0.04)' };
+                return (
+                  <div
+                    key={i}
+                    className="p-3 rounded-xl"
+                    style={{ ...bg, border: '1px solid rgba(255,255,255,0.12)' }}
+                  >
+                    <span className="font-bold text-sm" style={{ color: fg }}>{t.name}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

@@ -1,196 +1,242 @@
 {
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-23",
   "titles": {
     "HLE": [
       {
         "name": "2026 Mid-Season Invitational",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#fe0000"
       },
       {
         "name": "2025 First Stand",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#45002c"
       },
       {
         "name": "2025 LCK CUP",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#7f6b00"
       }
     ],
     "GEN": [
       {
         "name": "2026 LCK",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#1c192a"
       },
       {
         "name": "2026 LCK CUP",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#2a45b3"
       },
       {
         "name": "2025 LCK",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#1c192a"
       },
       {
         "name": "2025 Mid-Season Invitational",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#fe0000"
       }
     ],
     "DNS": [
       {
         "name": "2026 LoL KeSPA CUP",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#072148"
       }
     ],
     "AL": [
       {
         "name": "2026 LPL Split 3",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D32F2F"
       },
       {
         "name": "2025 LPL Split 2",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D32F2F"
       }
     ],
     "BLG": [
       {
         "name": "2026 LPL Split 2",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D32F2F"
       },
       {
         "name": "2026 First Stand",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#ff5500"
       },
       {
         "name": "2026 LPL Split 1",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D32F2F"
       },
       {
         "name": "2025 LPL Split 3",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D32F2F"
       }
     ],
     "G2": [
       {
         "name": "2026 LEC Summer",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#00E0B0"
       },
       {
         "name": "2026 LEC Spring",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#00E0B0"
       },
       {
         "name": "2026 LEC Versus",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#00E0B0"
       },
       {
         "name": "2025 LEC Summer",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#00E0B0"
       }
     ],
     "TSW": [
       {
         "name": "2026 LCP Split 3",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#F08040"
       },
       {
         "name": "2026 LCP Split 2",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#F08040"
       },
       {
         "name": "2026 LCP Split 1",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#F08040"
       }
     ],
     "LYON": [
       {
         "name": "2026 LCS Spring",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#eeece7"
       },
       {
         "name": "2026 LCS Lock-In",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#eeece7"
       }
     ],
     "FUR": [
       {
         "name": "CBLOL 2026 Split 1",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#0b0718"
       },
       {
         "name": "2025 LTA Sul Etapa 2",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D94F30"
       }
     ],
     "LOUD": [
       {
         "name": "Copa CBLOL 2026",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#0b0718"
       },
       {
         "name": "2025 LTA Etapa 1",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#b2a27e"
+      }
+    ],
+    "DK": [
+      {
+        "name": "2026 Esports World Cup",
+        "detail": "우승",
+        "gradient": "linear-gradient(90deg, #f74e16, #d1b36f)"
       }
     ],
     "T1": [
       {
         "name": "2025 LoL KeSPA CUP",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#072148"
       },
       {
         "name": "2025 Worlds",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#dddddd"
       }
     ],
     "TES": [
       {
         "name": "2025 LPL Split 1",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D32F2F"
       }
     ],
     "KC": [
       {
         "name": "2025 LEC Winter",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#00E0B0"
       }
     ],
     "MKOI": [
       {
         "name": "2025 LEC Spring",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#00E0B0"
       }
     ],
     "CFO": [
       {
-        "name": "2025 LCP Split 2",
-        "detail": "우승"
+        "name": "2025 LCP Kickoff",
+        "detail": "우승",
+        "color": "#F08040"
       },
       {
-        "name": "2025 LCP Split 1",
-        "detail": "우승"
+        "name": "2025 LCP Mid",
+        "detail": "우승",
+        "color": "#F08040"
       }
     ],
     "MVK": [
       {
-        "name": "2025 LCP Split 3",
-        "detail": "우승"
+        "name": "2025 LCP Finals",
+        "detail": "우승",
+        "color": "#F08040"
       }
     ],
     "FLY": [
       {
         "name": "2025 LTA North Split 3",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#3483F0"
       },
       {
         "name": "2025 LTA North Split 2",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#3483F0"
       },
       {
         "name": "2025 LTA Split 1",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#b2a27e"
       }
     ],
     "VKS": [
       {
         "name": "2025 LTA Sul Etapa 3",
-        "detail": "우승"
+        "detail": "우승",
+        "color": "#D94F30"
       }
     ]
   }

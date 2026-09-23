@@ -36,6 +36,10 @@ import teamBdsLogo from '../assets/team-bds.svg';
 import hundredThievesLogo from '../assets/100-thieves.svg';
 import fluxo2025Logo from '../assets/fluxo-2025.svg';
 import isurusLogo from '../assets/isurus.webp';
+import psgTalonLogo from '../assets/psg-talon.svg';
+import talonEsportsLogo from '../assets/talon-esports.svg';
+import mvkeLogo from '../assets/mvke.webp';
+import chiefsLogo from '../assets/chiefs.svg';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -75,10 +79,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
@@ -2792,6 +2796,11 @@ const PredictionPage = () => {
     // TL(TLAW): 2025 Split 1까지 'Team Liquid Honda', 그 이후는 'Team Liquid'(TEAM_OVERRIDE_2025 기본값).
     if (ov.TLAW && (activeYear < 2025 || (activeYear === 2025 && comp?.key === 'lcs' && activeSub === 'Split 1')))
       ov.TLAW = { ...ov.TLAW, name: 'Team Liquid Honda' };
+    // PSG: 평소 'PSG Talon'이지만 2025 LCP Kickoff 당시엔 'Talon Esports'(TLN).
+    if (comp?.key === 'lcp' && activeYear === 2025 && activeSub === 'Kickoff')
+      ov.PSG = { tag: 'TLN', name: 'Talon Esports', logo: talonEsportsLogo };
+    // MVK: 2025 이하 모든 시즌은 MVKE(MGN Vikings Esports). 2026부터 기본 'MVK Esports'.
+    if (activeYear <= 2025) ov.MVK = { tag: 'MVKE', name: 'MGN Vikings Esports', logo: mvkeLogo };
     return ov;
   })();
 
@@ -2846,9 +2855,15 @@ const PredictionPage = () => {
     'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA', 'Playoffs': 'LTA' },
     'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA', 'Playoffs': 'LTA' },
   };
+  // 서브탭 버튼은 짧게(Kickoff/Mid/Finals), 제목은 정식 명칭으로 표기.
+  const SUB_TITLE_NAME = {
+    'lcp|2025': { Kickoff: 'Season Kickoff', Mid: 'Mid Season', Finals: 'Season Finals' },
+  };
   const displayTitle = (() => {
     if (isCurrentYear) return title;
     if (activeEvent) return `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}`;
+    const subMap = SUB_TITLE_NAME[`${comp?.key}|${activeYear}`];
+    if (subMap && subMap[activeSub]) return `${activeYear} ${comp.name.replace('2026 ', '')} ${subMap[activeSub]}`;
     const ov = PAST_COMP_NAME[`${comp?.key}|${activeYear}`];
     if (ov) {
       const lg = ov[activeSub] || ov.default;
