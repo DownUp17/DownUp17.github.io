@@ -52071,6 +52071,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 12,
                 "rounds": [
                   {
                     "title": "",
@@ -52088,7 +52089,8 @@
                           "short": "FLY",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "114217030657972305",
@@ -52103,7 +52105,42 @@
                           "short": "C9",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "id": "114217030657972317",
+                        "title": "하위권 대진 - 8강",
+                        "a": {
+                          "seed": "",
+                          "short": "DIG",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 4강 패자",
+                          "short": "TLAW",
+                          "score": 3,
+                          "win": true
+                        },
+                        "startRow": 6
+                      },
+                      {
+                        "id": "114217030657972323",
+                        "title": "하위권 대진 - 8강",
+                        "a": {
+                          "seed": "상위권 대진 - 4강 패자",
+                          "short": "SR",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "",
+                          "short": "100T",
+                          "score": 0,
+                          "elim": true
+                        },
+                        "startRow": 10
                       }
                     ]
                   },
@@ -52123,45 +52160,9 @@
                           "short": "FLY",
                           "score": 3,
                           "win": true
-                        }
-                      },
-                      {
-                        "id": "114217030657972317",
-                        "title": "하위권 대진 - 8강",
-                        "a": {
-                          "seed": "",
-                          "short": "DIG",
-                          "score": 1,
-                          "elim": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 4강 패자",
-                          "short": "TLAW",
-                          "score": 3,
-                          "win": true
-                        }
+                        "startRow": 1
                       },
-                      {
-                        "id": "114217030657972323",
-                        "title": "하위권 대진 - 8강",
-                        "a": {
-                          "seed": "상위권 대진 - 4강 패자",
-                          "short": "SR",
-                          "score": 3,
-                          "win": true
-                        },
-                        "b": {
-                          "seed": "",
-                          "short": "100T",
-                          "score": 0,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
                       {
                         "id": "114217030657972329",
                         "title": "하위권 대진 - 4강",
@@ -52176,7 +52177,8 @@
                           "short": "TLAW",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -52197,7 +52199,8 @@
                           "short": "C9",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -52218,7 +52221,8 @@
                           "short": "FLY",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   }
@@ -52242,23 +52246,23 @@
                   ],
                   [
                     0,
+                    3,
+                    "mid",
                     1,
+                    1,
+                    "a"
+                  ],
+                  [
+                    0,
+                    2,
                     "mid",
                     1,
                     1,
                     "b"
                   ],
                   [
-                    0,
-                    0,
-                    "mid",
                     1,
-                    2,
-                    "a"
-                  ],
-                  [
                     1,
-                    2,
                     "mid",
                     2,
                     0,
@@ -52266,7 +52270,7 @@
                   ],
                   [
                     1,
-                    1,
+                    0,
                     "mid",
                     2,
                     0,
@@ -52285,22 +52289,6 @@
                     0,
                     "mid",
                     3,
-                    0,
-                    "b"
-                  ],
-                  [
-                    3,
-                    0,
-                    "mid",
-                    4,
-                    0,
-                    "a"
-                  ],
-                  [
-                    1,
-                    0,
-                    "mid",
-                    4,
                     0,
                     "b"
                   ]
@@ -53050,6 +53038,31 @@
               "rank": 1,
               "team": "FLY",
               "note": "우승"
+            },
+            {
+              "rank": 2,
+              "team": "VKS",
+              "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "100T",
+              "note": "3위"
+            },
+            {
+              "rank": 4,
+              "team": "RED",
+              "note": ""
+            },
+            {
+              "rank": 5,
+              "team": "SR",
+              "note": ""
+            },
+            {
+              "rank": 6,
+              "team": "PAIN",
+              "note": ""
             }
           ]
         }
@@ -53709,6 +53722,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 12,
                 "rounds": [
                   {
                     "title": "",
@@ -53726,7 +53740,8 @@
                           "short": "PAIN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "114217106692001444",
@@ -53741,7 +53756,42 @@
                           "seed": "",
                           "short": "VKS",
                           "score": 0
-                        }
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "id": "114217106692001456",
+                        "title": "하위권 대진 - 8강",
+                        "a": {
+                          "seed": "",
+                          "short": "RED",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 4강 패자",
+                          "short": "VKS",
+                          "score": 3,
+                          "win": true
+                        },
+                        "startRow": 6
+                      },
+                      {
+                        "id": "114217106692001462",
+                        "title": "하위권 대진 - 8강",
+                        "a": {
+                          "seed": "",
+                          "short": "ISG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 4강 패자",
+                          "short": "LOUD",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "startRow": 10
                       }
                     ]
                   },
@@ -53761,45 +53811,9 @@
                           "short": "PAIN",
                           "score": 3,
                           "win": true
-                        }
-                      },
-                      {
-                        "id": "114217106692001456",
-                        "title": "하위권 대진 - 8강",
-                        "a": {
-                          "seed": "",
-                          "short": "RED",
-                          "score": 1,
-                          "elim": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 4강 패자",
-                          "short": "VKS",
-                          "score": 3,
-                          "win": true
-                        }
+                        "startRow": 1
                       },
-                      {
-                        "id": "114217106692001462",
-                        "title": "하위권 대진 - 8강",
-                        "a": {
-                          "seed": "",
-                          "short": "ISG",
-                          "score": 3,
-                          "win": true
-                        },
-                        "b": {
-                          "seed": "상위권 대진 - 4강 패자",
-                          "short": "LOUD",
-                          "score": 1,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
                       {
                         "id": "114217106692001468",
                         "title": "하위권 대진 - 4강",
@@ -53814,7 +53828,8 @@
                           "short": "ISG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -53835,7 +53850,8 @@
                           "short": "ISG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -53856,7 +53872,8 @@
                           "short": "PAIN",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   }
@@ -53880,23 +53897,23 @@
                   ],
                   [
                     0,
-                    1,
-                    "mid",
-                    1,
-                    1,
-                    "b"
-                  ],
-                  [
-                    0,
-                    0,
-                    "mid",
-                    1,
                     2,
+                    "mid",
+                    1,
+                    1,
+                    "a"
+                  ],
+                  [
+                    0,
+                    3,
+                    "mid",
+                    1,
+                    1,
                     "b"
                   ],
                   [
                     1,
-                    1,
+                    0,
                     "mid",
                     2,
                     0,
@@ -53904,14 +53921,14 @@
                   ],
                   [
                     1,
-                    2,
+                    1,
                     "mid",
                     2,
                     0,
                     "b"
                   ],
                   [
-                    1,
+                    2,
                     0,
                     "mid",
                     3,
@@ -53919,26 +53936,10 @@
                     "a"
                   ],
                   [
-                    2,
-                    0,
-                    "mid",
-                    3,
-                    0,
-                    "b"
-                  ],
-                  [
-                    3,
-                    0,
-                    "mid",
-                    4,
-                    0,
-                    "a"
-                  ],
-                  [
                     1,
                     0,
                     "mid",
-                    4,
+                    3,
                     0,
                     "b"
                   ]
@@ -54688,6 +54689,31 @@
               "rank": 1,
               "team": "FLY",
               "note": "우승"
+            },
+            {
+              "rank": 2,
+              "team": "VKS",
+              "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "100T",
+              "note": "3위"
+            },
+            {
+              "rank": 4,
+              "team": "RED",
+              "note": ""
+            },
+            {
+              "rank": 5,
+              "team": "SR",
+              "note": ""
+            },
+            {
+              "rank": 6,
+              "team": "PAIN",
+              "note": ""
             }
           ]
         }

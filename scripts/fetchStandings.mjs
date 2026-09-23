@@ -1335,15 +1335,16 @@ async function buildSplit(leagueId, slug) {
       const cnt = (re) => (b.rounds || []).flatMap((r) => r.matches).filter((m) => re.test(m.title || '')).length;
       const lec8 = lec8DELayout(b); // 8팀(예선 1R + 상위 2R + 하위 3R) — 매칭 시 그리드로 재배치, 아니면 원본 반환
       const lckCup = lckCupLayout(b); // 2025 LCK CUP식(상위 1·2·3R + 하위권 대진 2경기 + 결승)
+      const lta2 = ltaPlayoffs2Layout(b); // 2025 LTA Split2/Etapa2 PO(상위4강/하위8강, rounds 2·3·1·1·1)
       if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)
       else if (lec8 !== b) b = lec8;                               // 8팀 LEC/LPL식 (예선 1라운드 + 상위 2R + 하위 3R)
       else if (lckCup !== b) b = lckCup;                           // 2025 LCK CUP식 (상위 3R + 하위권 대진 2경기)
+      else if (lta2 !== b) b = lta2;                               // 2025 LTA Split2/Etapa2 PO (상위4강/하위8강 컴팩트)
       else if (cnt(/상위권.*결승/) >= 1) b = lckPoStyleLayout(b);  // 6팀 LCK PO식 (상위 8강/4강/결승, 3라운드 upper)
       else if (cnt(/상위권.*(8강|1라운드)/) >= 2) b = lecPoLayout(b); // 6팀 LEC식 (상위 2라운드, 같은 라운드=같은 컬럼)
     }
     else { // 구조 매칭 시 전용 그리드로 재배치(각 함수가 자체 구조 검증 → 미매칭이면 원본 반환)
       let x = ltaRound2Layout(b);                       // 2025 LTA Split3/Etapa3 round_2
-      if (x === b) x = ltaPlayoffs2Layout(b);           // 2025 LTA Split2/Etapa2 PO(상위4강/하위8강)
       if (x === b) x = lcpQualifyingLayout(b);          // 2025 LCP 퀄리파잉 시리즈(regional_qualifier)
       if (x === b) x = de4Layout(b);                    // 4팀 더블 엘리(2팀 진출): MSI PI·LCP 그룹 시딩·FST 그룹 등 공통 템플릿
       if (x !== b) b = x;
@@ -3276,7 +3277,22 @@ console.log('lolStandings.json 갱신 완료');
             else if (gf.b?.win || gf.b?.msi) champ = gf.b.short;
             else if (gf.a?.score != null && gf.b?.score != null && gf.a.score !== gf.b.score) champ = gf.a.score > gf.b.score ? gf.a.short : gf.b.short;
           }
-          const finalStandings = champ ? [{ rank: 1, team: champ, note: '우승' }] : [];
+          // 아메리카 스테이지(더블 엘리) 탈락 라운드 기준으로 최종순위 산출 — 늦게 탈락할수록 상위, 동라운드는 세트 승수로 정렬.
+          const elimAt = {}; // team → { round, gw }(마지막 패배 시점)
+          rounds.forEach((r, ri) => {
+            for (const m of r.matches || []) {
+              if (m.a?.score == null || m.b?.score == null || m.a.score === m.b.score) continue;
+              const aWin = m.a.score > m.b.score;
+              const w = aWin ? m.a : m.b, l = aWin ? m.b : m.a;
+              if (l.short) elimAt[l.short] = { round: ri, gw: l.score || 0 };
+              if (w.short) delete elimAt[w.short]; // 이후 라운드 진출 = 해당 시점 탈락 아님
+            }
+          });
+          if (champ) delete elimAt[champ];
+          const ordered = Object.entries(elimAt).sort((a, b) => (b[1].round - a[1].round) || (b[1].gw - a[1].gw));
+          const finalStandings = champ
+            ? [{ rank: 1, team: champ, note: '우승' }, ...ordered.map(([team], i) => ({ rank: i + 2, team, note: i === 0 ? '준우승' : (i === 1 ? '3위' : '') }))]
+            : [];
           if (c.separate) {
             // 지역 스플릿(Split 3/Etapa 3)은 그대로 두고, LTA Cross(아메리카 스테이지)를 'Playoffs' 서브탭으로 분리.
             for (const key of ['lcs', 'cblol']) {
