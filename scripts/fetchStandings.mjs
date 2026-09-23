@@ -685,7 +685,11 @@ function ltaPlayoffs2Layout(bracket) {
 //   그룹은 좌우로 나열(그룹 g → base=g*3). 명칭 무관 — 플래그(진출 msi·탈락 elim)로 역할을 구조적으로 판별.
 //     결정전=진출+탈락 동시 보유 / 진출2R=진출만 / 탈락2R=탈락만 / 1R=둘 다 없음.
 //   적용 대상: 2025 MSI PI, 2025 LCP Finals 그룹 시딩(2조), 2026 FST 그룹 스테이지(2조), 2026 EWC 그룹 스테이지 등.
-function de4Layout(bracket) {
+//   여러 그룹이 함께 나열되면(compact) 2컬럼으로 압축: 패자전(탈락2R)을 1R 컬럼에, 결정전(패자조 결승)을 승자전(승자조 결승) 컬럼에.
+//     single(1그룹 단독): col base 1R×2 / base+1 진출2R+탈락2R / base+2 결정전  (3컬럼, MSI PI식)
+//     compact(여러 그룹): col base 1R×2 + 탈락2R / base+1 진출2R + 결정전         (2컬럼)
+//   opts.compact 미지정 시 그룹이 2개 이상이면 자동 compact.
+function de4Layout(bracket, opts = {}) {
   if (!bracket?.rounds?.length || bracket.sections) return bracket;
   const flat = bracket.rounds.flatMap((r) => r.matches);
   if (flat.length < 5 || flat.length % 5 !== 0) return bracket;
@@ -696,6 +700,8 @@ function de4Layout(bracket) {
   const groups = []; let cur = [];
   for (const m of flat) { cur.push(m); if (isDecider(m)) { groups.push(cur); cur = []; } }
   if (cur.length) return bracket;
+  const compact = opts.compact ?? (groups.length > 1);
+  const perGroup = compact ? 2 : 3;
   const cols = [];
   const push = (m, col, sr) => { (cols[col] = cols[col] || []).push({ m, sr }); };
   const roles = [];
@@ -707,10 +713,15 @@ function de4Layout(bracket) {
     const elim = grp.find((m) => m !== dec && hasElim(m) && !hasMsi(m));   // 탈락2R(패자조)
     const r1 = grp.filter((m) => m !== dec && m !== adv && m !== elim);    // 1R ×2
     if (!dec || !adv || !elim || r1.length !== 2) return bracket;
-    const base = g * 3;
-    push(r1[0], base, 0); push(r1[1], base, 2);
-    push(adv, base + 1, 1); push(elim, base + 1, 5);
-    push(dec, base + 2, 5);
+    const base = g * perGroup;
+    if (compact) {
+      push(r1[0], base, 0); push(r1[1], base, 2); push(elim, base, 4);     // 1R×2 + 탈락2R(패자전)
+      push(adv, base + 1, 1); push(dec, base + 1, 4);                      // 진출2R(승자전) + 결정전
+    } else {
+      push(r1[0], base, 0); push(r1[1], base, 2);
+      push(adv, base + 1, 1); push(elim, base + 1, 5);
+      push(dec, base + 2, 5);
+    }
     roles.push({ r1, adv, elim, dec });
   }
   const pos = new Map();
@@ -730,7 +741,7 @@ function de4Layout(bracket) {
     if (advL) link(adv, dec, advL.short);
     if (elimW) link(elim, dec, elimW.short);
   }
-  return fixDropElim({ totalRows: 7, rounds: rounds2, connectors });
+  return fixDropElim({ totalRows: compact ? 6 : 7, rounds: rounds2, connectors });
 }
 
 // LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
@@ -2870,7 +2881,7 @@ try {
     { matches: [{ title: '1경기', ...r.g1 }, { title: '2경기', ...r.g2 }] },
     { matches: [{ title: '승자전', ...r.wf }, { title: '패자전', ...r.lb }] },
     { matches: [{ title: '최종전', ...r.ff }] },
-  ] });
+  ] }, { compact: true }); // 4개 조가 함께 나열 → 2컬럼 압축
   const groups = {
     A: grp({
       g1: { a: S('G2', '1시드', 1, 'win'), b: S('FUR', '4시드', 0) },
@@ -3323,6 +3334,30 @@ console.log('lolStandings.json 갱신 완료');
         }
       } catch (e) { console.warn(`2025 아메리카 스테이지 ${c.slug} 실패: ${e.message}`); }
     }
+    // LCP 2025 Kickoff/Mid 대진명 커스텀 표기: '선발전 시리즈'·'대표 선발전' → '퀄리파잉 시리즈'.
+    //   Finals: '타이브레이커'→'그룹 브레이커', '조별 시드 배정 대진'→'그룹 시딩 브래킷', 그룹 라벨 '도전자 그룹'→'컨텐더 그룹'·'급상승 그룹'→'브레이크아웃 그룹'.
+    //   (원본 API 라벨을 그대로 노출하면 리그 성격이 잘 드러나지 않아 표기만 교체 — 매 생성 시 재적용되도록 여기서 처리)
+    for (const subKey of ['Kickoff', 'Mid']) {
+      const b = (std2025.lcp?.[subKey]?.brackets || []).find((x) => x.slug === 'qualifying_series' || x.slug === 'regional_qualifier');
+      if (b) b.name = '퀄리파잉 시리즈';
+    }
+    if (std2025.lcp?.Finals) {
+      const fin = std2025.lcp.Finals;
+      const tb = (fin.brackets || []).find((x) => x.slug === 'tiebreaker');
+      if (tb) tb.name = '그룹 브레이커';
+      const gsb = (fin.brackets || []).find((x) => x.slug === 'group_seeding_bracket');
+      if (gsb) gsb.name = '그룹 시딩 브래킷';
+      for (const row of fin.rows || []) {
+        if (row.group === '도전자 그룹') row.group = '컨텐더 그룹';
+        else if (row.group === '급상승 그룹') row.group = '브레이크아웃 그룹';
+      }
+    }
+    // FST 2025 표기: 정규시즌(라운드로빈 순위표) → '라운드 로빈', '2라운드'(녹아웃 브래킷) → '녹아웃'.
+    if (std2025.fst) {
+      std2025.fst.regLabel = '라운드 로빈';
+      const r2 = (std2025.fst.brackets || []).find((x) => x.slug === 'round_2');
+      if (r2) r2.name = '녹아웃';
+    }
     past = {
       updatedAt: data.updatedAt,
       subtabs: { ...(past.subtabs || {}), '2025': subs2025 },
@@ -3333,6 +3368,45 @@ console.log('lolStandings.json 갱신 완료');
     console.log(`2025 과거 에디션 생성: ${nComp}개 리그 (전체 순위표·대진·최종순위)`);
   } else {
     console.log('2025 과거 에디션: 이미 존재 → 생략');
+  }
+}
+
+// ── 2025 과거 에디션 표기 커스텀 오버라이드 (매 실행마다 재적용) ─────────────
+//   위 생성 블록은 최초 1회만 실행되어 캐시되므로, 캐시된 데이터에 남아있을 수 있는
+//   원본(API) 라벨을 매 실행마다 우리 표기로 강제 교정한다. 스케줄 Action이 3시간마다
+//   이 파일을 커밋·푸시하므로, 로컬에서 수동으로 JSON을 고쳐도 다음 자동 갱신 때 되돌아가는
+//   문제를 막기 위해 반드시 스크립트 쪽에 표기를 박아둔다 (JSON 직접 수정 금지).
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  let past;
+  try { past = JSON.parse(fs.readFileSync(pastFile, 'utf8')); } catch { past = null; }
+  if (past?.standings?.['2025']) {
+    let changed = false;
+    const std2025 = past.standings['2025'];
+    for (const subKey of ['Kickoff', 'Mid']) {
+      const b = (std2025.lcp?.[subKey]?.brackets || []).find((x) => x.slug === 'qualifying_series' || x.slug === 'regional_qualifier');
+      if (b && b.name !== '퀄리파잉 시리즈') { b.name = '퀄리파잉 시리즈'; changed = true; }
+    }
+    if (std2025.lcp?.Finals) {
+      const fin = std2025.lcp.Finals;
+      const tb = (fin.brackets || []).find((x) => x.slug === 'tiebreaker');
+      if (tb && tb.name !== '그룹 브레이커') { tb.name = '그룹 브레이커'; changed = true; }
+      const gsb = (fin.brackets || []).find((x) => x.slug === 'group_seeding_bracket');
+      if (gsb && gsb.name !== '그룹 시딩 브래킷') { gsb.name = '그룹 시딩 브래킷'; changed = true; }
+      for (const row of fin.rows || []) {
+        if (row.group === '도전자 그룹') { row.group = '컨텐더 그룹'; changed = true; }
+        else if (row.group === '급상승 그룹') { row.group = '브레이크아웃 그룹'; changed = true; }
+      }
+    }
+    if (std2025.fst) {
+      if (std2025.fst.regLabel !== '라운드 로빈') { std2025.fst.regLabel = '라운드 로빈'; changed = true; }
+      const r2 = (std2025.fst.brackets || []).find((x) => x.slug === 'round_2');
+      if (r2 && r2.name !== '녹아웃') { r2.name = '녹아웃'; changed = true; }
+    }
+    if (changed) {
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2025 과거 에디션 표기 오버라이드 재적용 완료');
+    }
   }
 }
 

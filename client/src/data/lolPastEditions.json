@@ -49961,7 +49961,7 @@
           "brackets": [
             {
               "slug": "qualifying_series",
-              "name": "선발전 시리즈",
+              "name": "퀄리파잉 시리즈",
               "bracket": {
                 "totalRows": 7,
                 "rounds": [
@@ -50278,7 +50278,7 @@
           "brackets": [
             {
               "slug": "regional_qualifier",
-              "name": "대표 선발전",
+              "name": "퀄리파잉 시리즈",
               "bracket": {
                 "totalRows": 7,
                 "rounds": [
@@ -50548,62 +50548,62 @@
               "team": "CFO",
               "w": 3,
               "l": 0,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 2,
               "team": "TSW",
               "w": 2,
               "l": 1,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 3,
               "team": "GAM",
               "w": 1,
               "l": 2,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 4,
               "team": "PSG",
               "w": 0,
               "l": 3,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 1,
               "team": "MVK",
               "w": 3,
               "l": 0,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             },
             {
               "rank": 2,
               "team": "SHG",
               "w": 2,
               "l": 1,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             },
             {
               "rank": 3,
               "team": "DFM",
               "w": 1,
               "l": 2,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             },
             {
               "rank": 4,
               "team": "CHF",
               "w": 0,
               "l": 3,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             }
           ],
           "brackets": [
             {
               "slug": "tiebreaker",
-              "name": "타이브레이커",
+              "name": "그룹 브레이커",
               "bracket": {
                 "rounds": [
                   {
@@ -50649,9 +50649,9 @@
             },
             {
               "slug": "group_seeding_bracket",
-              "name": "조별 시드 배정 대진",
+              "name": "그룹 시딩 브래킷",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -50687,6 +50687,23 @@
                           "score": 0
                         },
                         "startRow": 2
+                      },
+                      {
+                        "id": "113503233403360965",
+                        "title": "2라운드",
+                        "a": {
+                          "seed": "1라운드 패자",
+                          "short": "MVK",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "1라운드 패자",
+                          "short": "TSW",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -50710,28 +50727,6 @@
                         "startRow": 1
                       },
                       {
-                        "id": "113503233403360965",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "1라운드 패자",
-                          "short": "MVK",
-                          "score": 1,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "1라운드 패자",
-                          "short": "TSW",
-                          "score": 2,
-                          "win": true
-                        },
-                        "startRow": 5
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
                         "id": "113503233403360969",
                         "title": "3라운드",
                         "a": {
@@ -50746,7 +50741,7 @@
                           "score": 2,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 4
                       }
                     ]
                   },
@@ -50784,6 +50779,23 @@
                           "score": 1
                         },
                         "startRow": 2
+                      },
+                      {
+                        "id": "113503233403360985",
+                        "title": "2라운드",
+                        "a": {
+                          "seed": "1라운드 패자",
+                          "short": "CHF",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "1라운드 패자",
+                          "short": "SHG",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -50807,28 +50819,6 @@
                         "startRow": 1
                       },
                       {
-                        "id": "113503233403360985",
-                        "title": "2라운드",
-                        "a": {
-                          "seed": "1라운드 패자",
-                          "short": "CHF",
-                          "score": 1,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "1라운드 패자",
-                          "short": "SHG",
-                          "score": 2,
-                          "win": true
-                        },
-                        "startRow": 5
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
                         "id": "113503233403360989",
                         "title": "3라운드",
                         "a": {
@@ -50843,7 +50833,7 @@
                           "score": 2,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 4
                       }
                     ]
                   }
@@ -50859,14 +50849,6 @@
                   ],
                   [
                     0,
-                    0,
-                    "mid",
-                    1,
-                    1,
-                    "a"
-                  ],
-                  [
-                    0,
                     1,
                     "mid",
                     1,
@@ -50875,74 +50857,34 @@
                   ],
                   [
                     0,
-                    1,
+                    2,
                     "mid",
                     1,
                     1,
-                    "b"
+                    "a"
                   ],
                   [
-                    1,
-                    0,
-                    "mid",
                     2,
                     0,
+                    "mid",
+                    3,
+                    0,
                     "b"
                   ],
                   [
-                    1,
-                    1,
-                    "mid",
                     2,
+                    1,
+                    "mid",
+                    3,
                     0,
                     "a"
                   ],
                   [
-                    3,
-                    0,
+                    2,
+                    2,
                     "mid",
-                    4,
-                    0,
-                    "b"
-                  ],
-                  [
-                    3,
-                    0,
-                    "mid",
-                    4,
-                    1,
-                    "a"
-                  ],
-                  [
                     3,
                     1,
-                    "mid",
-                    4,
-                    0,
-                    "a"
-                  ],
-                  [
-                    3,
-                    1,
-                    "mid",
-                    4,
-                    1,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    5,
-                    0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    1,
-                    "mid",
-                    5,
-                    0,
                     "a"
                   ]
                 ]
@@ -54755,7 +54697,7 @@
         "brackets": [
           {
             "slug": "round_2",
-            "name": "2라운드",
+            "name": "녹아웃",
             "bracket": {
               "rounds": [
                 {
@@ -54864,7 +54806,8 @@
             "team": "TLAW",
             "note": ""
           }
-        ]
+        ],
+        "regLabel": "라운드 로빈"
       },
       "msi": {
         "name": "2025",
