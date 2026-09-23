@@ -603,27 +603,6 @@ function regridByObject(bracket, cols, totalRows) {
   return fixDropElim({ totalRows, rounds: rounds2, connectors });
 }
 
-// 2025 LCP Finals 그룹 시딩 브래킷(2개조, rounds 2·2·1·2·2·1) — 조별 2컬럼 배치.
-//   각 조: col_a(1라운드 ×2 + 탈락팀 존재 2라운드), col_b(진출팀 존재 2라운드 + 3라운드).
-//   두 조를 좌우로 나란히(조1: col0·1, 조2: col2·3).
-function lcpGroupSeedingLayout(bracket) {
-  if (!bracket?.rounds?.length) return bracket;
-  if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,2,1,2,2,1') return bracket;
-  const cols = [[], [], [], []];
-  const push = (m, col, sr) => cols[col].push({ m, sr });
-  for (let g = 0; g < 2; g++) {
-    const r1 = bracket.rounds[g * 3], r2 = bracket.rounds[g * 3 + 1], r3 = bracket.rounds[g * 3 + 2];
-    if (r1.matches.length !== 2 || r2.matches.length !== 2 || r3.matches.length !== 1) return bracket;
-    const c0 = g * 2, c1 = g * 2 + 1;
-    const adv = r2.matches.find((m) => m.a?.msi || m.b?.msi);     // 진출팀 존재
-    const elim = r2.matches.find((m) => m !== adv);               // 탈락팀 존재
-    if (!adv || !elim) return bracket;
-    push(r1.matches[0], c0, 0); push(r1.matches[1], c0, 2); push(elim, c0, 4);
-    push(adv, c1, 1); push(r3.matches[0], c1, 4);
-  }
-  return regridByObject(bracket, cols, 6);
-}
-
 // 2025 LCP 퀄리파잉 시리즈(regional_qualifier 포함, rounds 2·2·2·1·1) — 사용자 지정 세로 배치.
 //   c0 1R(sr0·2) / c1 2R(1R와 같은 행 sr0·2)+하위권[2,1](낮은 행 sr5) / c2 3R(1·2R 사이 sr1)+하위권[3,0](sr5) / c3 4R(sr3).
 //   3R과 결승 앞 하위권 대진은 같은 컬럼(c2), 하위권은 1·2R보다 낮은 행, 3R은 1R·2R 행 사이.
@@ -696,6 +675,61 @@ function ltaPlayoffs2Layout(bracket) {
   push(at(3, 0), 2, 8);                             // 하위 결승 (두 하위 8강 사이)
   push(at(4, 0), 3, 4);                             // 결승
   return regridByObject(bracket, cols, 12);
+}
+
+// 4팀 더블 엘리미네이션(2팀 진출) 공통 템플릿 — 2025 MSI 플레이-인 배치 기준.
+//   그룹당 5경기(1R×2, 진출2R=승자조, 탈락2R=패자조, 3R=결정전)를 3컬럼으로:
+//     col base   1R×2(sr0·2)
+//     col base+1 진출2R(두 1R 사이 sr1) + 탈락2R(하위 sr5)
+//     col base+2 3R(하위 sr5)
+//   그룹은 좌우로 나열(그룹 g → base=g*3). 명칭 무관(1·2·3라운드 / 상위·하위 대진 등) — 제목·플래그로 역할 판별.
+//   적용 대상: 2025 MSI PI, 2025 LCP Finals 그룹 시딩(2조), 2026 FST 그룹 스테이지(2조) 등.
+function de4Layout(bracket) {
+  if (!bracket?.rounds?.length || bracket.sections) return bracket;
+  const flat = bracket.rounds.flatMap((r) => r.matches);
+  if (flat.length < 5 || flat.length % 5 !== 0) return bracket;
+  const isDecider = (m) => /3라운드/.test(m.title || '') || /하위권.*결승/.test(m.title || '');
+  // 결정전(3R) 경계로 그룹 분할 — 각 그룹은 결정전으로 끝나야 함
+  const groups = []; let cur = [];
+  for (const m of flat) { cur.push(m); if (isDecider(m)) { groups.push(cur); cur = []; } }
+  if (cur.length) return bracket;
+  const cols = [];
+  const push = (m, col, sr) => { (cols[col] = cols[col] || []).push({ m, sr }); };
+  const roles = [];
+  for (let g = 0; g < groups.length; g++) {
+    const grp = groups[g];
+    if (grp.length !== 5) return bracket;
+    const r1 = grp.filter((m) => /1라운드/.test(m.title || ''));
+    const dec = grp.find(isDecider);
+    const rest = grp.filter((m) => m !== dec && !r1.includes(m));
+    if (r1.length !== 2 || !dec || rest.length !== 2) return bracket;
+    const adv = rest.find((m) => m.a?.msi || m.b?.msi);   // 진출2R(승자조)
+    const elim = rest.find((m) => m !== adv);              // 탈락2R(패자조)
+    if (!adv || !elim) return bracket;
+    const base = g * 3;
+    push(r1[0], base, 0); push(r1[1], base, 2);
+    push(adv, base + 1, 1); push(elim, base + 1, 5);
+    push(dec, base + 2, 5);
+    roles.push({ r1, adv, elim, dec });
+  }
+  const pos = new Map();
+  const rounds2 = cols.map((arr, ci) => ({
+    title: '',
+    matches: (arr || []).slice().sort((a, b) => a.sr - b.sr).map((o, mi) => { pos.set(o.m, [ci, mi]); return { ...o.m, startRow: o.sr }; }),
+  }));
+  // 연결선 팀 추적 재구성(1R→진출2R·탈락2R, 진출2R 패자·탈락2R 승자→3R).
+  const winnerOf = (m) => { const a = m.a?.score, b = m.b?.score; if (a != null && b != null) return a > b ? m.a : m.b; if (m.a?.win || m.a?.msi) return m.a; if (m.b?.win || m.b?.msi) return m.b; return null; };
+  const slotIn = (m, short) => (m.a?.short === short ? 'a' : (m.b?.short === short ? 'b' : null));
+  const connectors = [];
+  const link = (src, dst, short) => { if (!short) return; const sp = pos.get(src), dp = pos.get(dst), sl = slotIn(dst, short); if (sp && dp && sl && sp[0] !== dp[0]) connectors.push([sp[0], sp[1], 'mid', dp[0], dp[1], sl]); };
+  for (const { r1, adv, elim, dec } of roles) {
+    for (const m of r1) { const w = winnerOf(m); const l = w ? (w === m.a ? m.b : m.a) : null; if (w) link(m, adv, w.short); if (l) link(m, elim, l.short); }
+    const advW = winnerOf(adv), advL = advW ? (advW === adv.a ? adv.b : adv.a) : null;
+    const elimW = winnerOf(elim);
+    if (advL) link(adv, dec, advL.short);
+    if (elimW) link(elim, dec, elimW.short);
+  }
+  return fixDropElim({ totalRows: 7, rounds: rounds2, connectors });
 }
 
 // LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
@@ -802,47 +836,6 @@ function msi8DELayout(bracket) {
   }
   fixDropElim({ rounds: sections.flatMap((s) => s.rounds) });
   return { sections, crossConnectors };
-}
-
-// FST 그룹 스테이지(2개 그룹 · 각 4팀 더블 엘리) — 하위권 4강을 1라운드와 같은 컬럼(아래)에 배치.
-//   각 그룹: col(g*3)= 1라운드 2 + 하위권 4강 / col(g*3+1)= 상위권 결승 / col(g*3+2)= 하위권 결승.
-function fstGroupLayout(bracket) {
-  if (!bracket?.rounds?.length) return bracket;
-  const flat = [];
-  bracket.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => flat.push({ m, key: `${ci}-${mi}` })));
-  const origPos = {}; flat.forEach((x) => { origPos[x.key] = x.m.id; });
-  // 하위권 결승에서 그룹 종료 → 그룹 분할
-  const groups = []; let cur = [];
-  for (const x of flat) { cur.push(x); if (/하위권.*결승/.test(x.m.title || '')) { groups.push(cur); cur = []; } }
-  if (cur.length) groups.push(cur);
-  const colMatches = {};
-  let ok = true;
-  groups.forEach((grp, g) => {
-    const base = g * 2; const gseen = {};
-    for (const { m } of grp) {
-      const t = m.title || ''; let col, sr;
-      if (/1라운드/.test(t)) { const k = gseen.r1 || 0; gseen.r1 = k + 1; col = base; sr = k === 0 ? 0 : 2; }
-      else if (/하위권.*4강/.test(t)) { col = base; sr = 4; }
-      else if (/상위권.*결승/.test(t)) { col = base + 1; sr = 1; }   // 상위 결승
-      else if (/하위권.*결승/.test(t)) { col = base + 1; sr = 4; }   // 하위 결승 (상위 결승과 같은 컬럼)
-      else { ok = false; continue; }
-      (colMatches[col] = colMatches[col] || []).push({ m, startRow: sr });
-    }
-  });
-  if (!ok) return bracket;
-  const maxCol = Math.max(...Object.keys(colMatches).map(Number));
-  const idPos = {}; const rounds2 = [];
-  for (let ci = 0; ci <= maxCol; ci++) {
-    const arr = (colMatches[ci] || []).sort((a, b) => a.startRow - b.startRow);
-    rounds2.push({ title: '', matches: arr.map((x, mi) => { idPos[x.m.id] = [ci, mi]; return { ...x.m, startRow: x.startRow }; }) });
-  }
-  const connectors = [];
-  for (const c of bracket.connectors || []) {
-    const [sci, smi, mid, dci, dmi, slot] = c;
-    const sp = idPos[origPos[`${sci}-${smi}`]], dp = idPos[origPos[`${dci}-${dmi}`]];
-    if (sp && dp) connectors.push([sp[0], sp[1], mid, dp[0], dp[1], slot]);
-  }
-  return fixDropElim({ totalRows: 6, rounds: rounds2, connectors });
 }
 
 // 더블 엘리미네이션 탈락(elim) 보정 — 상위 대진 패배팀은 하위 대진으로 강등되므로 탈락이 아니다.
@@ -1352,7 +1345,7 @@ async function buildSplit(leagueId, slug) {
       let x = ltaRound2Layout(b);                       // 2025 LTA Split3/Etapa3 round_2
       if (x === b) x = ltaPlayoffs2Layout(b);           // 2025 LTA Split2/Etapa2 PO(상위4강/하위8강)
       if (x === b) x = lcpQualifyingLayout(b);          // 2025 LCP 퀄리파잉 시리즈(regional_qualifier)
-      if (x === b) x = lcpGroupSeedingLayout(b);        // 2025 LCP Finals 그룹 시딩 브래킷
+      if (x === b) x = de4Layout(b);                    // 4팀 더블 엘리(2팀 진출): MSI PI·LCP 그룹 시딩·FST 그룹 등 공통 템플릿
       if (x !== b) b = x;
     }
     // 8팀 싱글 엘리미네이션(8강 4 → 4강 2 → 결승 1)은 2026 Worlds 녹아웃과 동일 그리드로 통일.
@@ -1540,7 +1533,7 @@ try {
     // 그룹 스테이지: 하위권 4강을 1라운드 컬럼으로 / 플레이오프: '녹아웃 스테이지'로 표기 + 4강 시드 라벨
     const FST_SEED = { GEN: 'B조 1위', G2: 'A조 2위', BLG: 'A조 1위', JDG: 'B조 2위' };
     for (const br of fstSplit.brackets) {
-      if (br.slug === 'group_stage') br.bracket = fstGroupLayout(br.bracket);
+      if (br.slug === 'group_stage') br.bracket = de4Layout(br.bracket); // 4팀 더블 엘리(2팀 진출) 공통 템플릿(MSI PI식)
       if (br.slug === 'playoffs') {
         br.label = '녹아웃 스테이지';
         for (const r of br.bracket.rounds || []) for (const m of r.matches || []) {
