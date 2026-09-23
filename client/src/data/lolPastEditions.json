@@ -49975,9 +49975,9 @@
           "brackets": [
             {
               "slug": "qualifying_series",
-              "name": "선발전 시리즈",
+              "name": "퀄리파잉 시리즈",
               "bracket": {
-                "totalRows": 11,
+                "totalRows": 7,
                 "rounds": [
                   {
                     "title": "",
@@ -49989,7 +49989,7 @@
                           "seed": "3위",
                           "short": "MVK",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "",
@@ -50006,7 +50006,7 @@
                           "seed": "",
                           "short": "GAM",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4위",
@@ -50035,7 +50035,7 @@
                           "short": "PSG",
                           "score": 1
                         },
-                        "startRow": 4
+                        "startRow": 0
                       },
                       {
                         "id": "113476466603430722",
@@ -50051,7 +50051,7 @@
                           "score": 2,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 2
                       },
                       {
                         "id": "113476466603430732",
@@ -50068,7 +50068,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 9
+                        "startRow": 5
                       }
                     ]
                   },
@@ -50089,7 +50089,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       },
                       {
                         "id": "113476466603430736",
@@ -50106,7 +50106,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 9
+                        "startRow": 5
                       }
                     ]
                   },
@@ -50128,7 +50128,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -50173,6 +50173,22 @@
                     3,
                     0,
                     "b"
+                  ],
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    1,
+                    "a"
                   ]
                 ]
               }
@@ -50276,9 +50292,9 @@
           "brackets": [
             {
               "slug": "regional_qualifier",
-              "name": "대표 선발전",
+              "name": "퀄리파잉 시리즈",
               "bracket": {
-                "totalRows": 11,
+                "totalRows": 7,
                 "rounds": [
                   {
                     "title": "",
@@ -50296,7 +50312,7 @@
                           "seed": "",
                           "short": "PSG",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 0
                       },
@@ -50313,7 +50329,7 @@
                           "seed": "",
                           "short": "GAM",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 2
                       }
@@ -50336,7 +50352,7 @@
                           "score": 2,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 0
                       },
                       {
                         "id": "113503075100894441",
@@ -50352,7 +50368,7 @@
                           "short": "TSW",
                           "score": 0
                         },
-                        "startRow": 6
+                        "startRow": 2
                       },
                       {
                         "id": "113503075100894451",
@@ -50369,7 +50385,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 9
+                        "startRow": 5
                       }
                     ]
                   },
@@ -50390,7 +50406,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       },
                       {
                         "id": "113503075100894457",
@@ -50407,7 +50423,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 9
+                        "startRow": 5
                       }
                     ]
                   },
@@ -50429,7 +50445,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -50474,6 +50490,22 @@
                     3,
                     0,
                     "b"
+                  ],
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    1,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "a"
                   ]
                 ]
               }
@@ -50530,62 +50562,62 @@
               "team": "CFO",
               "w": 3,
               "l": 0,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 2,
               "team": "TSW",
               "w": 2,
               "l": 1,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 3,
               "team": "GAM",
               "w": 1,
               "l": 2,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 4,
               "team": "PSG",
               "w": 0,
               "l": 3,
-              "group": "도전자 그룹"
+              "group": "컨텐더 그룹"
             },
             {
               "rank": 1,
               "team": "MVK",
               "w": 3,
               "l": 0,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             },
             {
               "rank": 2,
               "team": "SHG",
               "w": 2,
               "l": 1,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             },
             {
               "rank": 3,
               "team": "DFM",
               "w": 1,
               "l": 2,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             },
             {
               "rank": 4,
               "team": "CHF",
               "w": 0,
               "l": 3,
-              "group": "급상승 그룹"
+              "group": "브레이크아웃 그룹"
             }
           ],
           "brackets": [
             {
               "slug": "tiebreaker",
-              "name": "타이브레이커",
+              "name": "그룹 브레이커",
               "bracket": {
                 "rounds": [
                   {
@@ -50631,7 +50663,7 @@
             },
             {
               "slug": "group_seeding_bracket",
-              "name": "조별 시드 배정 대진",
+              "name": "그룹 시딩 브래킷",
               "bracket": {
                 "totalRows": 6,
                 "rounds": [

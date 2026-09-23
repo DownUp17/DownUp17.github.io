@@ -625,8 +625,8 @@ function lcpGroupSeedingLayout(bracket) {
 }
 
 // 2025 LCP 퀄리파잉 시리즈(regional_qualifier 포함, rounds 2·2·2·1·1) — 사용자 지정 세로 배치.
-//   c0 1R(상단 sr0·2) / c1 2R(sr4·6)+하위권[2,1](하단 sr9) / c2 3R(1R·2R 사이 sr3)+하위권[3,0](하단 sr9) / c3 4R(sr5).
-//   3라운드와 결승 앞 하위권 대진을 같은 컬럼(c2)에, 하위권은 1·2R보다 낮은 행에, 3R은 1R·2R 사이 행에.
+//   c0 1R(sr0·2) / c1 2R(1R와 같은 행 sr0·2)+하위권[2,1](낮은 행 sr5) / c2 3R(1·2R 사이 sr1)+하위권[3,0](sr5) / c3 4R(sr3).
+//   3R과 결승 앞 하위권 대진은 같은 컬럼(c2), 하위권은 1·2R보다 낮은 행, 3R은 1R·2R 행 사이.
 function lcpQualifyingLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,2,2,1,1') return bracket;
@@ -637,11 +637,42 @@ function lcpQualifyingLayout(bracket) {
   if (!r2upper || !r2lower || !isLower(r3.matches[0]) || isLower(r4.matches[0])) return bracket;
   const cols = [[], [], [], []];
   const push = (m, col, sr) => cols[col].push({ m, sr });
-  push(r0.matches[0], 0, 0); push(r0.matches[1], 0, 2);
-  push(r1.matches[0], 1, 4); push(r1.matches[1], 1, 6); push(r2lower, 1, 9);
-  push(r2upper, 2, 3); push(r3.matches[0], 2, 9);
-  push(r4.matches[0], 3, 5);
-  return regridByObject(bracket, cols, 11);
+  push(r0.matches[0], 0, 0); push(r0.matches[1], 0, 2);      // 1R
+  push(r1.matches[0], 1, 0); push(r1.matches[1], 1, 2);      // 2R (1R와 같은 행)
+  push(r2lower, 1, 5);                                       // 하위권 대진(첫) — 1·2R보다 낮은 행
+  push(r2upper, 2, 1);                                       // 3R (1R·2R 행 사이)
+  push(r3.matches[0], 2, 5);                                 // 하위권 대진(결승 앞) — 낮은 행
+  push(r4.matches[0], 3, 3);                                 // 4R
+  const out = regridByObject(bracket, cols, 7);
+  // 색 보정: 결승(4라운드) 승자만 진출(금색 msi), 나머지 라운드 승자는 라운드 승리(파랑 win).
+  //   원본은 1라운드→2라운드 연결선 누락으로 1R 승자가 진출(금색)로 오표기됨.
+  for (const r of out.rounds) for (const m of r.matches) {
+    if (/^4라운드$|^결승$/.test(m.title || '')) continue;
+    for (const s of [m.a, m.b]) if (s?.msi) { delete s.msi; s.win = true; }
+  }
+  // 누락된 1라운드→2라운드 연결선을 팀 추적으로 추가.
+  const winner = (m) => {
+    const a = m.a?.score, b = m.b?.score;
+    if (a != null && b != null) return a > b ? m.a : m.b;
+    if (m.a?.win || m.a?.msi) return m.a; if (m.b?.win || m.b?.msi) return m.b; return null;
+  };
+  const findPos = (re, short) => {
+    for (let ci = 0; ci < out.rounds.length; ci++) {
+      const ms = out.rounds[ci].matches;
+      for (let mi = 0; mi < ms.length; mi++) {
+        const m = ms[mi];
+        if (re.test(m.title || '') && (m.a?.short === short || m.b?.short === short)) return [ci, mi, m.a?.short === short ? 'a' : 'b'];
+      }
+    }
+    return null;
+  };
+  out.rounds.forEach((r, ci) => r.matches.forEach((m, mi) => {
+    if (!/^1라운드$/.test(m.title || '')) return;
+    const w = winner(m); if (!w?.short) return;
+    const dst = findPos(/^2라운드$/, w.short);
+    if (dst && dst[0] !== ci) out.connectors.push([ci, mi, 'mid', dst[0], dst[1], dst[2]]);
+  }));
+  return out;
 }
 
 // 2025 LTA Split2/Etapa2 PO(6팀 더블 엘리, rounds 2·3·1·1·1 · 상위4강/하위8강) — 컴팩트 그리드.
