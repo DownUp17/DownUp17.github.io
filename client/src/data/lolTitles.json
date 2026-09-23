@@ -35,6 +35,11 @@
         "color": "#1c192a"
       },
       {
+        "name": "2025 Esports World Cup",
+        "detail": "우승",
+        "color": "#eaeaea"
+      },
+      {
         "name": "2025 Mid-Season Invitational",
         "detail": "우승",
         "color": "#fe0000"
@@ -237,6 +242,21 @@
         "name": "2025 LTA Sul Etapa 3",
         "detail": "우승",
         "color": "#D94F30"
+      }
+    ],
+    "IG": [
+      {
+        "name": "2025 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)"
+      }
+    ],
+    "BFX": [
+      {
+        "name": "2025 Asia Invitational",
+        "detail": "우승",
+        "color": "#7927ff"
       }
     ]
   }

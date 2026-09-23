@@ -2275,6 +2275,51 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
     );
   }
 
+  // EWC 커스텀 렌더 — 그룹 스테이지(2개조 더블 엘리) / 플레이오프(8팀 싱글 엘리 + 3위전). 2026 라이브 렌더와 동일 형식.
+  if (data.groups && data.playoff) {
+    const groupKeys = Object.keys(data.groups);
+    if (stage === '그룹 스테이지') {
+      return (
+        <section className="flex flex-col gap-5">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">그룹 스테이지</h3>
+            <span className="text-xs text-white/40">{groupKeys.length}개조 · 4팀 더블 엘리미네이션 · 조별 2팀 플레이오프 진출</span>
+          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-6">
+            {groupKeys.map((g) => data.groups[g] && (
+              <div key={g}>
+                <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: '#E8C77E', backgroundColor: 'rgba(200,150,62,0.2)' }}>{g}조</span>
+                <MsiBracket rounds={data.groups[g].rounds} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+              </div>
+            ))}
+          </div>
+          <BracketLegend goldLabel="플레이오프 진출" />
+        </section>
+      );
+    }
+    return (
+      <section className="flex flex-col gap-8">
+        <div>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">플레이오프</h3>
+            <span className="text-xs text-white/40">8팀 싱글 엘리미네이션{data.champion ? ` · 우승 ${data.champion}` : ''}</span>
+          </div>
+          {(() => {
+            const b = data.playoff.bracket;
+            const thirdMatch = data.playoff.third?.rounds?.[0]?.matches?.[0];
+            const rounds = thirdMatch
+              ? b.rounds.map((r, i) => (i === b.rounds.length - 1
+                ? { ...r, matches: [...r.matches, { ...thirdMatch, startRow: 6 }] }
+                : r))
+              : b.rounds;
+            return <MsiBracket rounds={rounds} totalRows={b.totalRows} connectors={b.connectors} onTeamClick={onTeamClick} teamOverride={teamOverride} />;
+          })()}
+        </div>
+        <BracketLegend goldLabel="우승" />
+      </section>
+    );
+  }
+
   // KeSPA CUP 커스텀 렌더 — 예선(3조·H2H) / 본선(LCQ·세트득실) / 결선(4팀 더블엘리)
   if (data.kespa) {
     const disp = (code) => teamOverride?.[code]?.tag || code;
@@ -2548,7 +2593,7 @@ const PAST_DETAIL = {
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
   'demacia|2025|ASI': { color: '#7927ff', logo: asiLogo },
-  'demacia|2025|Demacia Cup': { color: '#D32F2F', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전
+  'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
@@ -2791,7 +2836,7 @@ const PredictionPage = () => {
   const headerDetail = subDetail || eventDetail || pastDetail;
 
   // 과거 연도 전체 데이터(순위표·대진·최종순위). 단일 대회는 sub=null.
-  const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub, activeYear) : null;
+  const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub || activeEvent, activeYear) : null;
   const pastFull = !isCurrentYear && !!pastData;
   // 팀 표기 오버라이드: KRX→DRX(명칭·로고), GEN→옛 로고, DNS→DN FREECS 등. + LPL Split 1·2는 BLG→풀네임.
   //   2026(현재)에서 바뀐 최신 브랜딩이 2024 이하 과거 대회로 새어나가지 않도록, 가장 예전 브랜딩(2025 오버라이드)을
@@ -2813,6 +2858,8 @@ const PredictionPage = () => {
       ov.PSG = { tag: 'TLN', name: 'Talon Esports', logo: talonEsportsLogo };
     // MVK: 2025 이하 모든 시즌은 MVKE(MGN Vikings Esports). 2026부터 기본 'MVK Esports'.
     if (activeYear <= 2025) ov.MVK = { tag: 'MVKE', name: 'MGN Vikings Esports', logo: mvkeLogo };
+    // EWC의 AL: 2025 이하는 이름 'AL'(로고는 AG.AL 로고 유지), 2026부터 AGAL(AG.AL) — EWC_TEAM_OVERRIDE.
+    if (comp?.key === 'ewc' && activeYear <= 2025) ov.AL = { name: 'AL', logo: agalEwcLogo };
     return ov;
   })();
 
@@ -2840,7 +2887,7 @@ const PredictionPage = () => {
   const isPastSplit = comp && isCurrentYear && (PAST_SPLIT_SUBS.has(`${comp.key}|${activeSub}`) || isPastComp);
   const curSplitData = isPastSplit ? (isPastComp ? officialStandings.standings[comp.key] : officialStandings.standings[comp.key]?.[activeSub]) : null;
   const stageListRaw = comp
-    ? (pastFull ? pastSplitStagesFromData(pastData)
+    ? (pastFull ? (comp.key === 'ewc' ? STAGE_TABS.ewc : pastSplitStagesFromData(pastData))
       : isPastSplit ? pastSplitStagesFromData(curSplitData)
         : (STAGE_TABS[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_TABS[comp.key])))
     : null;
@@ -2850,7 +2897,7 @@ const PredictionPage = () => {
   const showStages = !!stageList;
   const effFinished = !!(comp && (subStatus || comp.status) === 'finished');
   const rawDefaultStage = comp && (
-    (pastFull || isPastSplit) ? '최종 순위'
+    (pastFull || isPastSplit) ? (comp.key === 'ewc' ? (STAGE_DEFAULT.ewc || '플레이오프') : '최종 순위')
       : (effFinished && Array.isArray(stageList) && stageList.includes('최종 순위')) ? '최종 순위'
         : (STAGE_DEFAULT[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_DEFAULT[comp.key]))
   );
@@ -2957,7 +3004,7 @@ const PredictionPage = () => {
                       );
                     }
                     return (
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={(!hd && COMP_GRADIENT[comp.key]) ? { backgroundImage: COMP_GRADIENT[comp.key] } : { backgroundColor: hd?.color || comp.color }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={hd?.gradient ? { backgroundImage: hd.gradient } : (!hd && COMP_GRADIENT[comp.key]) ? { backgroundImage: COMP_GRADIENT[comp.key] } : { backgroundColor: hd?.color || comp.color }}>
                     <img src={hd?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
                       style={{ filter: hd?.logo ? (hd.invert ? 'brightness(0) invert(1)' : 'none') : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
