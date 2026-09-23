@@ -45,6 +45,8 @@ import infernoEsportsLogo from '../assets/inferno-esports.webp';
 import savingOceLogo from '../assets/saving-oce.webp';
 import agalEwcLogo from '../assets/agal-ewc.webp';
 import mibrLosEwcLogo from '../assets/mibr-los-ewc.webp';
+import frkLogo from '../assets/frk.webp';
+import zsmLogo from '../assets/zsm.webp';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -84,7 +86,7 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
 const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE' };
@@ -1852,7 +1854,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 {['A', 'B', 'C', 'D'].map((g) => ewc.groups[g] && (
                   <div key={g}>
                     <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: '#E8C77E', backgroundColor: 'rgba(200,150,62,0.2)' }}>{g}조</span>
-                    <MsiBracket rounds={ewc.groups[g].rounds} onTeamClick={onTeamClick} teamOverride={EWC_TEAM_OVERRIDE} />
+                    <MsiBracket rounds={ewc.groups[g].rounds} totalRows={ewc.groups[g].totalRows} connectors={ewc.groups[g].connectors} onTeamClick={onTeamClick} teamOverride={EWC_TEAM_OVERRIDE} />
                   </div>
                 ))}
               </div>
