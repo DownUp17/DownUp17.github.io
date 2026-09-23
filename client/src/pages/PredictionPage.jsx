@@ -2532,6 +2532,8 @@ const PAST_DETAIL = {
   'fst|2025': { color: '#45002c' },
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
   'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
+  'msi|2025': { color: '#fe0000' }, // MSI 기본색은 #191919로 변경, 2025 상징색은 유지
+  'worlds|2025': { color: '#0e2bf4' },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
@@ -2652,7 +2654,7 @@ const resolvePastData = (key, sub, year) => {
   return sub ? lg[sub] : lg;
 };
 // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
-const YEAR_SUBEVENTS = { 'demacia|2025': ['ASI', 'Demacia Cup'] };
+const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
@@ -2899,7 +2901,7 @@ const PredictionPage = () => {
                 className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-black border transition-all ${
                   active ? '' : 'text-white/60 border-white/15 hover:border-white/40 bg-transparent'
                 }`}
-                style={active ? (COMP_GRADIENT[c.key] ? { backgroundImage: COMP_GRADIENT[c.key], borderColor: 'transparent', color: '#fff' } : { backgroundColor: tabColor, borderColor: tabColor, color: textOn(tabColor) }) : {}}
+                style={active ? (COMP_GRADIENT[c.key] ? { backgroundImage: COMP_GRADIENT[c.key], backgroundOrigin: 'border-box', backgroundClip: 'border-box', borderColor: 'transparent', color: '#fff' } : { backgroundColor: tabColor, borderColor: tabColor, color: textOn(tabColor) }) : {}}
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"

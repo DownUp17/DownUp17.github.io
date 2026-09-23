@@ -120,13 +120,13 @@ const TeamPage = () => {
               {titles.map((t, i) => {
                 const fg = t.gradient ? '#fff' : (t.color ? textOn(t.color) : 'rgba(255,255,255,0.9)');
                 const bg = t.gradient
-                  ? { backgroundImage: t.gradient }
+                  ? { backgroundImage: t.gradient, backgroundOrigin: 'border-box', backgroundClip: 'border-box' }
                   : { backgroundColor: t.color || 'rgba(255,255,255,0.04)' };
                 return (
                   <div
                     key={i}
                     className="p-3 rounded-xl"
-                    style={{ ...bg, border: '1px solid rgba(255,255,255,0.12)' }}
+                    style={{ ...bg, border: `1px solid ${t.gradient ? 'transparent' : 'rgba(255,255,255,0.12)'}` }}
                   >
                     <span className="font-bold text-sm" style={{ color: fg }}>{t.name}</span>
                   </div>

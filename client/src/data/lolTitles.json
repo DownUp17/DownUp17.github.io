@@ -5,7 +5,7 @@
       {
         "name": "2026 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#fe0000"
+        "color": "#191919"
       },
       {
         "name": "2025 First Stand",
@@ -149,11 +149,6 @@
         "name": "Copa CBLOL 2026",
         "detail": "우승",
         "color": "#0b0718"
-      },
-      {
-        "name": "2025 LTA Etapa 1",
-        "detail": "우승",
-        "color": "#b2a27e"
       }
     ],
     "DK": [
@@ -198,24 +193,34 @@
     ],
     "CFO": [
       {
-        "name": "2025 LCP Kickoff",
+        "name": "2025 LCP Season Kickoff",
         "detail": "우승",
         "color": "#F08040"
       },
       {
-        "name": "2025 LCP Mid",
+        "name": "2025 LCP Mid Season",
+        "detail": "우승",
+        "color": "#F08040"
+      },
+      {
+        "name": "2025 LCP Season Finals",
         "detail": "우승",
         "color": "#F08040"
       }
     ],
-    "MVK": [
+    "TLAW": [
       {
-        "name": "2025 LCP Finals",
+        "name": "2025 LTA Split 1",
         "detail": "우승",
-        "color": "#F08040"
+        "color": "#b2a27e"
       }
     ],
     "FLY": [
+      {
+        "name": "2025 LTA Playoffs",
+        "detail": "우승",
+        "color": "#b2a27e"
+      },
       {
         "name": "2025 LTA North Split 3",
         "detail": "우승",
@@ -225,11 +230,6 @@
         "name": "2025 LTA North Split 2",
         "detail": "우승",
         "color": "#3483F0"
-      },
-      {
-        "name": "2025 LTA Split 1",
-        "detail": "우승",
-        "color": "#b2a27e"
       }
     ],
     "VKS": [
