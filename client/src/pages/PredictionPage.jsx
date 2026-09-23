@@ -43,6 +43,8 @@ import chiefsLogo from '../assets/chiefs.svg';
 import qtdIgLogo from '../assets/qtd-ig.svg';
 import infernoEsportsLogo from '../assets/inferno-esports.webp';
 import savingOceLogo from '../assets/saving-oce.webp';
+import agalEwcLogo from '../assets/agal-ewc.webp';
+import mibrLosEwcLogo from '../assets/mibr-los-ewc.webp';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -96,6 +98,11 @@ const nationFlag = (code) => (AG_FLAG[code] ? `https://flagcdn.com/48x36/${AG_FL
 
 // 특정 대회(에디션)에서만 다른 팀명·태그·로고를 쓰던 팀 오버라이드.
 //   2026 LCK CUP까지 KRX는 팀명·태그 모두 DRX였고, GEN은 예전 로고를 사용.
+// EWC에서 AL(Anyone's Legend)은 AG.AL(AGAL) 소속으로 참가.
+const EWC_TEAM_OVERRIDE = {
+  AL: { tag: 'AGAL', name: 'AG.AL', logo: agalEwcLogo },
+  LOS: { tag: 'ML', name: 'MIBR.LOS', logo: mibrLosEwcLogo },
+};
 const LCKCUP_TEAM_OVERRIDE = {
   KRX: { tag: 'DRX', name: 'DRX', logo: drxLogo },
   GEN: { logo: gengSimpleLogo },
@@ -1845,7 +1852,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 {['A', 'B', 'C', 'D'].map((g) => ewc.groups[g] && (
                   <div key={g}>
                     <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: '#E8C77E', backgroundColor: 'rgba(200,150,62,0.2)' }}>{g}조</span>
-                    <MsiBracket rounds={ewc.groups[g].rounds} onTeamClick={onTeamClick} />
+                    <MsiBracket rounds={ewc.groups[g].rounds} onTeamClick={onTeamClick} teamOverride={EWC_TEAM_OVERRIDE} />
                   </div>
                 ))}
               </div>
@@ -1869,7 +1876,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                     ? { ...r, matches: [...r.matches, { ...thirdMatch, startRow: 6 }] }
                     : r))
                   : b.rounds;
-                return <MsiBracket rounds={rounds} totalRows={b.totalRows} connectors={b.connectors} onTeamClick={onTeamClick} />;
+                return <MsiBracket rounds={rounds} totalRows={b.totalRows} connectors={b.connectors} onTeamClick={onTeamClick} teamOverride={EWC_TEAM_OVERRIDE} />;
               })()}
             </div>
             <BracketLegend goldLabel="우승" />

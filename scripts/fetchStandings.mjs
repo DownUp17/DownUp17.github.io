@@ -682,14 +682,17 @@ function ltaPlayoffs2Layout(bracket) {
 //     col base   1R×2(sr0·2)
 //     col base+1 진출2R(두 1R 사이 sr1) + 탈락2R(하위 sr5)
 //     col base+2 3R(하위 sr5)
-//   그룹은 좌우로 나열(그룹 g → base=g*3). 명칭 무관(1·2·3라운드 / 상위·하위 대진 등) — 제목·플래그로 역할 판별.
-//   적용 대상: 2025 MSI PI, 2025 LCP Finals 그룹 시딩(2조), 2026 FST 그룹 스테이지(2조) 등.
+//   그룹은 좌우로 나열(그룹 g → base=g*3). 명칭 무관 — 플래그(진출 msi·탈락 elim)로 역할을 구조적으로 판별.
+//     결정전=진출+탈락 동시 보유 / 진출2R=진출만 / 탈락2R=탈락만 / 1R=둘 다 없음.
+//   적용 대상: 2025 MSI PI, 2025 LCP Finals 그룹 시딩(2조), 2026 FST 그룹 스테이지(2조), 2026 EWC 그룹 스테이지 등.
 function de4Layout(bracket) {
   if (!bracket?.rounds?.length || bracket.sections) return bracket;
   const flat = bracket.rounds.flatMap((r) => r.matches);
   if (flat.length < 5 || flat.length % 5 !== 0) return bracket;
-  const isDecider = (m) => /3라운드/.test(m.title || '') || /하위권.*결승/.test(m.title || '');
-  // 결정전(3R) 경계로 그룹 분할 — 각 그룹은 결정전으로 끝나야 함
+  const hasMsi = (m) => m.a?.msi || m.b?.msi;
+  const hasElim = (m) => m.a?.elim || m.b?.elim;
+  const isDecider = (m) => hasMsi(m) && hasElim(m);   // 결정전(3R): 진출·탈락 동시 보유
+  // 결정전 경계로 그룹 분할 — 각 그룹은 결정전으로 끝나야 함
   const groups = []; let cur = [];
   for (const m of flat) { cur.push(m); if (isDecider(m)) { groups.push(cur); cur = []; } }
   if (cur.length) return bracket;
@@ -699,13 +702,11 @@ function de4Layout(bracket) {
   for (let g = 0; g < groups.length; g++) {
     const grp = groups[g];
     if (grp.length !== 5) return bracket;
-    const r1 = grp.filter((m) => /1라운드/.test(m.title || ''));
     const dec = grp.find(isDecider);
-    const rest = grp.filter((m) => m !== dec && !r1.includes(m));
-    if (r1.length !== 2 || !dec || rest.length !== 2) return bracket;
-    const adv = rest.find((m) => m.a?.msi || m.b?.msi);   // 진출2R(승자조)
-    const elim = rest.find((m) => m !== adv);              // 탈락2R(패자조)
-    if (!adv || !elim) return bracket;
+    const adv = grp.find((m) => m !== dec && hasMsi(m) && !hasElim(m));    // 진출2R(승자조)
+    const elim = grp.find((m) => m !== dec && hasElim(m) && !hasMsi(m));   // 탈락2R(패자조)
+    const r1 = grp.filter((m) => m !== dec && m !== adv && m !== elim);    // 1R ×2
+    if (!dec || !adv || !elim || r1.length !== 2) return bracket;
     const base = g * 3;
     push(r1[0], base, 0); push(r1[1], base, 2);
     push(adv, base + 1, 1); push(elim, base + 1, 5);
@@ -2863,8 +2864,9 @@ try {
 // 2026 Esports World Cup (EWC) — API 미제공 · 수기. 16팀 · 4개조 더블 엘리(조별 2팀 진출) → 8강 싱글 엘리(+3위전). 우승 DK.
 {
   const S = (short, seed, score, flag) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
-  // 4팀 더블 엘리 조별 대진(플로우): 1·2경기 → 승자전·패자전 → 최종전. 승자전 승자=1위·최종전 승자=2위(msi=진출).
-  const grp = (r) => ({ rounds: [
+  // 4팀 더블 엘리 조별 대진: 1·2경기 → 승자전·패자전 → 최종전. 승자전 승자=1위·최종전 승자=2위(msi=진출).
+  //   de4Layout(4팀 더블 엘리 공통 템플릿)으로 배치 — MSI PI·FST·LCP 그룹과 동일한 모양.
+  const grp = (r) => de4Layout({ rounds: [
     { matches: [{ title: '1경기', ...r.g1 }, { title: '2경기', ...r.g2 }] },
     { matches: [{ title: '승자전', ...r.wf }, { title: '패자전', ...r.lb }] },
     { matches: [{ title: '최종전', ...r.ff }] },

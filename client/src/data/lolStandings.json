@@ -11677,8 +11677,10 @@
       "champion": "DK",
       "groups": {
         "A": {
+          "totalRows": 7,
           "rounds": [
             {
+              "title": "",
               "matches": [
                 {
                   "title": "1경기",
@@ -11692,7 +11694,8 @@
                     "short": "FUR",
                     "seed": "4시드",
                     "score": 0
-                  }
+                  },
+                  "startRow": 0
                 },
                 {
                   "title": "2경기",
@@ -11706,11 +11709,13 @@
                     "short": "DK",
                     "seed": "3시드",
                     "score": 0
-                  }
+                  },
+                  "startRow": 2
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "승자전",
@@ -11724,7 +11729,8 @@
                     "seed": "2경기 승자",
                     "score": 1,
                     "msi": true
-                  }
+                  },
+                  "startRow": 1
                 },
                 {
                   "title": "패자전",
@@ -11739,11 +11745,13 @@
                     "seed": "2경기 패자",
                     "score": 2,
                     "win": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "최종전",
@@ -11758,15 +11766,68 @@
                     "seed": "패자전 승자",
                     "score": 2,
                     "msi": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              0,
+              "mid",
+              1,
+              1,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              1,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "mid",
+              2,
+              0,
+              "b"
+            ]
           ]
         },
         "B": {
+          "totalRows": 7,
           "rounds": [
             {
+              "title": "",
               "matches": [
                 {
                   "title": "1경기",
@@ -11780,7 +11841,8 @@
                     "seed": "4시드",
                     "score": 1,
                     "win": true
-                  }
+                  },
+                  "startRow": 0
                 },
                 {
                   "title": "2경기",
@@ -11794,11 +11856,13 @@
                     "short": "KC",
                     "seed": "3시드",
                     "score": 0
-                  }
+                  },
+                  "startRow": 2
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "승자전",
@@ -11812,7 +11876,8 @@
                     "seed": "2경기 승자",
                     "score": 1,
                     "msi": true
-                  }
+                  },
+                  "startRow": 1
                 },
                 {
                   "title": "패자전",
@@ -11827,11 +11892,13 @@
                     "seed": "2경기 패자",
                     "score": 2,
                     "win": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "최종전",
@@ -11846,15 +11913,68 @@
                     "seed": "패자전 승자",
                     "score": 1,
                     "msi": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              0,
+              "mid",
+              1,
+              1,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              1,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "mid",
+              2,
+              0,
+              "b"
+            ]
           ]
         },
         "C": {
+          "totalRows": 7,
           "rounds": [
             {
+              "title": "",
               "matches": [
                 {
                   "title": "1경기",
@@ -11868,7 +11988,8 @@
                     "short": "MKOI",
                     "seed": "4시드",
                     "score": 0
-                  }
+                  },
+                  "startRow": 0
                 },
                 {
                   "title": "2경기",
@@ -11882,11 +12003,13 @@
                     "short": "GAM",
                     "seed": "3시드",
                     "score": 0
-                  }
+                  },
+                  "startRow": 2
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "승자전",
@@ -11900,7 +12023,8 @@
                     "short": "T1",
                     "seed": "2경기 승자",
                     "score": 0
-                  }
+                  },
+                  "startRow": 1
                 },
                 {
                   "title": "패자전",
@@ -11915,11 +12039,13 @@
                     "seed": "2경기 패자",
                     "score": 2,
                     "win": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "최종전",
@@ -11934,15 +12060,68 @@
                     "seed": "패자전 승자",
                     "score": 0,
                     "elim": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              0,
+              "mid",
+              1,
+              1,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              1,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "mid",
+              2,
+              0,
+              "b"
+            ]
           ]
         },
         "D": {
+          "totalRows": 7,
           "rounds": [
             {
+              "title": "",
               "matches": [
                 {
                   "title": "1경기",
@@ -11956,7 +12135,8 @@
                     "short": "LOS",
                     "seed": "4시드",
                     "score": 0
-                  }
+                  },
+                  "startRow": 0
                 },
                 {
                   "title": "2경기",
@@ -11970,11 +12150,13 @@
                     "seed": "3시드",
                     "score": 1,
                     "win": true
-                  }
+                  },
+                  "startRow": 2
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "승자전",
@@ -11988,7 +12170,8 @@
                     "short": "JDG",
                     "seed": "2경기 승자",
                     "score": 0
-                  }
+                  },
+                  "startRow": 1
                 },
                 {
                   "title": "패자전",
@@ -12003,11 +12186,13 @@
                     "seed": "2경기 패자",
                     "score": 0,
                     "elim": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             },
             {
+              "title": "",
               "matches": [
                 {
                   "title": "최종전",
@@ -12022,10 +12207,61 @@
                     "seed": "패자전 승자",
                     "score": 0,
                     "elim": true
-                  }
+                  },
+                  "startRow": 5
                 }
               ]
             }
+          ],
+          "connectors": [
+            [
+              0,
+              0,
+              "mid",
+              1,
+              0,
+              "a"
+            ],
+            [
+              0,
+              0,
+              "mid",
+              1,
+              1,
+              "a"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              0,
+              "b"
+            ],
+            [
+              0,
+              1,
+              "mid",
+              1,
+              1,
+              "b"
+            ],
+            [
+              1,
+              0,
+              "mid",
+              2,
+              0,
+              "a"
+            ],
+            [
+              1,
+              1,
+              "mid",
+              2,
+              0,
+              "b"
+            ]
           ]
         }
       },
