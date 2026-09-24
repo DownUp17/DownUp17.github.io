@@ -38593,6 +38593,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -38611,7 +38612,8 @@
                           "short": "NIP",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "112449598160932394",
@@ -38627,7 +38629,8 @@
                           "short": "FPX",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38648,7 +38651,8 @@
                           "short": "JDG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "112449598160932406",
@@ -38664,7 +38668,8 @@
                           "short": "AL",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38685,7 +38690,8 @@
                           "short": "WBG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "112449598160932418",
@@ -38701,7 +38707,8 @@
                           "short": "AL",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38721,7 +38728,8 @@
                           "seed": "3라운드 승자",
                           "short": "WBG",
                           "score": 0
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "112449598160932430",
@@ -38736,7 +38744,25 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "112449598160932442",
+                        "title": "하위권 대진 - 4강",
+                        "a": {
+                          "seed": "4라운드 패자",
+                          "short": "WBG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "4라운드 패자",
+                          "short": "LNG",
+                          "score": 2,
+                          "elim": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -38756,29 +38782,9 @@
                           "seed": "4라운드 승자",
                           "short": "TES",
                           "score": 1
-                        }
-                      },
-                      {
-                        "id": "112449598160932442",
-                        "title": "하위권 대진 - 4강",
-                        "a": {
-                          "seed": "4라운드 패자",
-                          "short": "WBG",
-                          "score": 3,
-                          "win": true
                         },
-                        "b": {
-                          "seed": "4라운드 패자",
-                          "short": "LNG",
-                          "score": 2,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "112449598160932448",
                         "title": "하위권 대진 - 결승",
@@ -38793,7 +38799,8 @@
                           "short": "WBG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -38814,7 +38821,8 @@
                           "short": "WBG",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -38886,15 +38894,7 @@
                   ],
                   [
                     3,
-                    0,
-                    "mid",
-                    4,
-                    1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    1,
+                    2,
                     "mid",
                     4,
                     1,
@@ -38913,22 +38913,6 @@
                     1,
                     "mid",
                     5,
-                    0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
-                    "a"
-                  ],
-                  [
-                    5,
-                    0,
-                    "mid",
-                    6,
                     0,
                     "b"
                   ]
@@ -39021,6 +39005,132 @@
               "rank": 17,
               "team": "RNG",
               "note": ""
+            }
+          ],
+          "phaseStages": [
+            {
+              "label": "럼블 스테이지",
+              "rows": [
+                {
+                  "rank": 1,
+                  "team": "BLG",
+                  "w": 7,
+                  "l": 1,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 2,
+                  "team": "LNG",
+                  "w": 7,
+                  "l": 1,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 3,
+                  "team": "TES",
+                  "w": 6,
+                  "l": 2,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 4,
+                  "team": "WBG",
+                  "w": 5,
+                  "l": 3,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 5,
+                  "team": "JDG",
+                  "w": 4,
+                  "l": 4,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 6,
+                  "team": "AL",
+                  "w": 3,
+                  "l": 5,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 7,
+                  "team": "FPX",
+                  "w": 3,
+                  "l": 5,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 8,
+                  "team": "LGD",
+                  "w": 1,
+                  "l": 7,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 9,
+                  "team": "NIP",
+                  "w": 0,
+                  "l": 8,
+                  "group": "등봉 그룹"
+                },
+                {
+                  "rank": 1,
+                  "team": "OMG",
+                  "w": 6,
+                  "l": 1,
+                  "group": "열반 그룹"
+                },
+                {
+                  "rank": 2,
+                  "team": "RA",
+                  "w": 5,
+                  "l": 2,
+                  "group": "열반 그룹"
+                },
+                {
+                  "rank": 3,
+                  "team": "TT",
+                  "w": 5,
+                  "l": 2,
+                  "group": "열반 그룹"
+                },
+                {
+                  "rank": 4,
+                  "team": "IG",
+                  "w": 4,
+                  "l": 3,
+                  "group": "열반 그룹"
+                },
+                {
+                  "rank": 5,
+                  "team": "EDG",
+                  "w": 3,
+                  "l": 4,
+                  "group": "열반 그룹"
+                },
+                {
+                  "rank": 6,
+                  "team": "UP",
+                  "w": 2,
+                  "l": 5,
+                  "group": "열반 그룹"
+                },
+                {
+                  "rank": 7,
+                  "team": "WE",
+                  "w": 2,
+                  "l": 5,
+                  "group": "열반 그룹"
+                },
+                {
+                  "rank": 8,
+                  "team": "RNG",
+                  "w": 1,
+                  "l": 6,
+                  "group": "열반 그룹"
+                }
+              ]
             }
           ]
         },

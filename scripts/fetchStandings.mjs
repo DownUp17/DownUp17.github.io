@@ -776,13 +776,15 @@ function lplSpring24Layout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,2,2,2,2,1,1') return bracket;
   const at = (ci, mi) => bracket.rounds[ci]?.matches[mi];
+  // 명칭 무관(Spring: 상위권 1·2라운드/하위권 1·2라운드, Summer: 4라운드/상위권 결승/하위권 4강·결승) — 상위/하위로 역할 판별
+  const isLo = (m) => /하위권/.test(m.title || '');
   const up1 = bracket.rounds[3].matches;
-  if (!up1.every((m) => /상위권.*1라운드/.test(m.title || ''))) return bracket;
-  const up2 = bracket.rounds[4].matches.find((m) => /상위권.*2라운드/.test(m.title || ''));
-  const lo1 = bracket.rounds[4].matches.find((m) => /하위권.*1라운드/.test(m.title || ''));
-  const lo2 = bracket.rounds[5].matches.find((m) => /하위권.*2라운드/.test(m.title || ''));
+  if (up1.some(isLo)) return bracket;
+  const up2 = bracket.rounds[4].matches.find((m) => !isLo(m));
+  const lo1 = bracket.rounds[4].matches.find(isLo);
+  const lo2 = bracket.rounds[5].matches.find(isLo);
   const gf = bracket.rounds[6].matches[0];
-  if (!up2 || !lo1 || !lo2 || !gf) return bracket;
+  if (!up2 || !lo1 || !lo2 || !gf || isLo(gf)) return bracket;
   const cols = [[], [], [], [], [], []];
   const push = (m, col, sr) => cols[col].push({ m, sr });
   push(at(0, 0), 0, 0); push(at(0, 1), 0, 4);   // 1라운드
@@ -3555,6 +3557,31 @@ console.log('lolStandings.json 갱신 완료');
   } else {
     console.log('과거 에디션 전체 확장: 추가 없음');
   }
+}
+
+// ── 2024 LPL Summer 럼블 스테이지(등봉/열반) — buildSplit이 순위형 스테이지를 누락 → phaseStage로 보강 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const node = past.standings?.['2024']?.lpl?.Summer;
+    if (node && !(node.phaseStages || []).some((p) => p.label === '럼블 스테이지')) {
+      const tj = await api('getTournamentsForLeague', { leagueId: '98767991314006698' });
+      const tour = (tj.data.leagues[0].tournaments || []).find((t) => t.slug === 'lpl_summer_2024');
+      const st = tour && (await api('getStandingsV3', { tournamentId: tour.id })).data?.standings?.[0];
+      const rStage = (st?.stages || []).find((s) => s.slug === 'rumble_stage');
+      const GNAME = { 'Group Ascend': '등봉 그룹', 'Group Nirvana': '열반 그룹' };
+      const rows = [];
+      for (const sec of rStage?.sections || []) for (const r of sec.rankings || []) for (const t of r.teams) {
+        rows.push({ rank: r.ordinal, team: t.code, w: t.record.wins, l: t.record.losses, group: GNAME[sec.name] || sec.name });
+      }
+      if (rows.length) {
+        node.phaseStages = [...(node.phaseStages || []), { label: '럼블 스테이지', rows }];
+        fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+        console.log(`2024 LPL Summer 럼블 스테이지 추가 (${rows.length}팀)`);
+      }
+    }
+  } catch (e) { console.warn(`2024 LPL 럼블 스테이지 실패(무시): ${e.message}`); }
 }
 
 // ── 2025 LoL KeSPA CUP (API 미제공 · 수기) → 과거 에디션 lck 서브탭 주입 ─────────
