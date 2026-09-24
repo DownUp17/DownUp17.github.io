@@ -194,7 +194,7 @@
         "Winter",
         "Spring",
         "Summer",
-        "시즌 파이널"
+        "Season Finals"
       ],
       "lcs": [
         "Spring",
@@ -220,11 +220,12 @@
         "Winter",
         "Spring",
         "Summer",
-        "시즌 파이널"
+        "Season Finals"
       ],
       "lcs": [
         "Spring",
-        "Summer"
+        "Summer",
+        "Championship"
       ],
       "cblol": [
         "Split 1",
@@ -33275,7 +33276,7 @@
             }
           ]
         },
-        "시즌 파이널": {
+        "Season Finals": {
           "name": "Season Finals 2023",
           "rows": [],
           "brackets": [
@@ -41019,7 +41020,7 @@
             }
           ]
         },
-        "시즌 파이널": {
+        "Season Finals": {
           "name": "Season Finals 2024",
           "rows": [],
           "brackets": [
@@ -41255,17 +41256,17 @@
           "finalStandings": [
             {
               "rank": 1,
-              "team": "MKOI",
+              "team": "G2",
               "note": "우승"
             },
             {
               "rank": 2,
-              "team": "G2",
+              "team": "FNC",
               "note": "준우승"
             },
             {
               "rank": 3,
-              "team": "FNC",
+              "team": "MKOI",
               "note": "3위"
             },
             {
@@ -41664,10 +41665,16 @@
               "l": 6
             }
           ],
+          "brackets": [],
+          "finalStandings": []
+        },
+        "Championship": {
+          "name": "LCS Championship 2024",
+          "rows": [],
           "brackets": [
             {
               "slug": "playoffs",
-              "name": "플레이오프",
+              "name": "LCS Championship",
               "bracket": {
                 "totalRows": 10,
                 "rounds": [
@@ -41944,7 +41951,8 @@
                     "b"
                   ]
                 ]
-              }
+              },
+              "label": "LCS Championship"
             }
           ],
           "finalStandings": [

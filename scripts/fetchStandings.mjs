@@ -3489,7 +3489,7 @@ console.log('lolStandings.json 갱신 완료');
   // 슬러그 → 서브탭 라벨(연도마다 명명이 제각각이라 휴리스틱으로 정규화).
   const deriveLabel = (slug) => {
     const s = slug.toLowerCase();
-    if (/season_finals/.test(s)) return '시즌 파이널';
+    if (/season_finals/.test(s)) return 'Season Finals';
     if (/lock[_-]?in/.test(s)) return 'Lock In';
     if (/regional_finals|regional_qualifier/.test(s)) return '선발전';
     if (/(^|_)mss(_|$)|mid_?season_?showdown/.test(s)) return 'Mid-Season Showdown';
@@ -3585,6 +3585,51 @@ console.log('lolStandings.json 갱신 완료');
       }
     }
   } catch (e) { console.warn(`2024 LPL 럼블 스테이지 실패(무시): ${e.message}`); }
+}
+
+// ── 2024 LCS Championship — Summer 플레이오프가 곧 LCS Championship → 'Championship' 서브탭으로 분리 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const lcs = past.standings?.['2024']?.lcs;
+    const sm = lcs?.Summer;
+    const po = (sm?.brackets || []).find((b) => b.slug === 'playoffs');
+    if (sm && po && !lcs.Championship) {
+      sm.brackets = sm.brackets.filter((b) => b !== po);
+      lcs.Championship = { name: 'LCS Championship 2024', rows: [], brackets: [{ ...po, name: 'LCS Championship', label: 'LCS Championship' }], finalStandings: sm.finalStandings || [] };
+      sm.finalStandings = [];
+      const subs = past.subtabs['2024'].lcs;
+      if (!subs.includes('Championship')) subs.push('Championship');
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2024 LCS Championship 서브탭 분리');
+    }
+  } catch (e) { console.warn(`2024 LCS Championship 분리 실패(무시): ${e.message}`); }
+}
+
+// ── 2024 LEC Season Finals 최종순위 — 대진(더블 엘리) 탈락 시점 기준으로 재산출 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const node = past.standings?.['2024']?.lec?.['Season Finals'];
+    const rounds = node?.brackets?.[0]?.bracket?.rounds || [];
+    const gf = rounds[rounds.length - 1]?.matches?.slice(-1)[0];
+    if (gf && gf.a?.score != null && gf.b?.score != null) {
+      const champ = gf.a.score > gf.b.score ? gf.a.short : gf.b.short;
+      const elimAt = {};
+      rounds.forEach((r, ri) => { for (const m of r.matches || []) {
+        if (m.a?.score == null || m.b?.score == null || m.a.score === m.b.score) continue;
+        const aWin = m.a.score > m.b.score; const w = aWin ? m.a : m.b, l = aWin ? m.b : m.a;
+        elimAt[l.short] = { round: ri, gw: l.score || 0 }; delete elimAt[w.short];
+      } });
+      delete elimAt[champ];
+      const ordered = Object.entries(elimAt).sort((a, b) => (b[1].round - a[1].round) || (b[1].gw - a[1].gw));
+      node.finalStandings = [{ rank: 1, team: champ, note: '우승' }, ...ordered.map(([team], i) => ({ rank: i + 2, team, note: i === 0 ? '준우승' : (i === 1 ? '3위' : '') }))];
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log(`2024 LEC Season Finals 최종순위: ${node.finalStandings.map((f) => f.team).join(',')}`);
+    }
+  } catch (e) { console.warn(`2024 LEC Season Finals 보정 실패(무시): ${e.message}`); }
 }
 
 // ── 2025 LoL KeSPA CUP (API 미제공 · 수기) → 과거 에디션 lck 서브탭 주입 ─────────
@@ -3907,7 +3952,7 @@ console.log('lolStandings.json 갱신 완료');
       return `${year} ${disp}${subPart}`;
     };
     for (const [year, lgs] of Object.entries(past.standings || {})) {
-      if (year !== '2025') continue; // 우선 2025·2026 대회만 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
+      if (year !== '2025' && year !== '2024') continue; // 2024~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
       for (const [lg, v] of Object.entries(lgs || {})) {
         if (lg === 'ewc' && v?.champion) {                    // EWC(그룹+플레이오프 구조) — champion 필드로 우승 반영
           add(v.champion, `${year} Esports World Cup`, compStyle(year, 'ewc', null));

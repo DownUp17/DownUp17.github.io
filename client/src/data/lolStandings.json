@@ -4817,7 +4817,7 @@
             "slug": "playoffs",
             "name": "플레이오프",
             "bracket": {
-              "totalRows": 8,
+              "totalRows": 12,
               "rounds": [
                 {
                   "title": "",
@@ -4869,7 +4869,7 @@
                         "score": 3,
                         "win": true
                       },
-                      "startRow": 4
+                      "startRow": 6
                     },
                     {
                       "id": "115548668059589376",
@@ -4886,7 +4886,7 @@
                         "score": 3,
                         "win": true
                       },
-                      "startRow": 6
+                      "startRow": 10
                     }
                   ]
                 },
@@ -4924,7 +4924,7 @@
                         "score": 0,
                         "elim": true
                       },
-                      "startRow": 5
+                      "startRow": 8
                     }
                   ]
                 },
@@ -4946,7 +4946,7 @@
                         "score": 0,
                         "elim": true
                       },
-                      "startRow": 5
+                      "startRow": 8
                     }
                   ]
                 },
@@ -4968,7 +4968,7 @@
                         "score": 2,
                         "elim": true
                       },
-                      "startRow": 3
+                      "startRow": 4
                     }
                   ]
                 }
@@ -7400,7 +7400,7 @@
             "slug": "playoffs",
             "name": "플레이오프",
             "bracket": {
-              "totalRows": 8,
+              "totalRows": 12,
               "rounds": [
                 {
                   "title": "",
@@ -7452,7 +7452,7 @@
                         "score": 0,
                         "elim": true
                       },
-                      "startRow": 4
+                      "startRow": 6
                     },
                     {
                       "id": "115564793879469312",
@@ -7469,7 +7469,7 @@
                         "score": 3,
                         "win": true
                       },
-                      "startRow": 6
+                      "startRow": 10
                     }
                   ]
                 },
@@ -7481,14 +7481,14 @@
                       "title": "상위권 대진 - 4강",
                       "a": {
                         "seed": "상위권 대진 - 8강 승자",
-                        "short": "C9",
-                        "score": 0
-                      },
-                      "b": {
-                        "seed": "상위권 대진 - 8강 승자",
                         "short": "LYON",
                         "score": 3,
                         "win": true
+                      },
+                      "b": {
+                        "seed": "상위권 대진 - 8강 승자",
+                        "short": "C9",
+                        "score": 0
                       },
                       "startRow": 1
                     },
@@ -7507,7 +7507,7 @@
                         "score": 3,
                         "win": true
                       },
-                      "startRow": 5
+                      "startRow": 8
                     }
                   ]
                 },
@@ -7529,7 +7529,7 @@
                         "score": 0,
                         "elim": true
                       },
-                      "startRow": 5
+                      "startRow": 8
                     }
                   ]
                 },
@@ -7540,18 +7540,18 @@
                       "id": "115564793879469330",
                       "title": "결승",
                       "a": {
-                        "seed": "상위권 대진 - 4강 승자",
-                        "short": "LYON",
-                        "score": 3,
-                        "msi": true
-                      },
-                      "b": {
                         "seed": "하위권 대진 - 3라운드 승자",
                         "short": "TLAW",
                         "score": 0,
                         "elim": true
                       },
-                      "startRow": 3
+                      "b": {
+                        "seed": "상위권 대진 - 4강 승자",
+                        "short": "LYON",
+                        "score": 3,
+                        "msi": true
+                      },
+                      "startRow": 4
                     }
                   ]
                 }
@@ -7559,7 +7559,7 @@
               "connectors": [
                 [
                   0,
-                  0,
+                  1,
                   "mid",
                   1,
                   0,
@@ -7567,7 +7567,7 @@
                 ],
                 [
                   0,
-                  1,
+                  0,
                   "mid",
                   1,
                   0,
@@ -7606,7 +7606,7 @@
                   "b"
                 ],
                 [
-                  1,
+                  2,
                   0,
                   "mid",
                   3,
@@ -7614,7 +7614,7 @@
                   "a"
                 ],
                 [
-                  2,
+                  1,
                   0,
                   "mid",
                   3,
@@ -8266,7 +8266,7 @@
             "slug": "playoffs",
             "name": "플레이오프",
             "bracket": {
-              "totalRows": 8,
+              "totalRows": 12,
               "rounds": [
                 {
                   "title": "",
@@ -8318,7 +8318,7 @@
                         "score": 3,
                         "win": true
                       },
-                      "startRow": 4
+                      "startRow": 6
                     },
                     {
                       "id": "115564689066907732",
@@ -8335,7 +8335,7 @@
                         "score": 3,
                         "win": true
                       },
-                      "startRow": 6
+                      "startRow": 10
                     }
                   ]
                 },
@@ -8373,7 +8373,7 @@
                         "score": 1,
                         "elim": true
                       },
-                      "startRow": 5
+                      "startRow": 8
                     }
                   ]
                 },
@@ -8384,18 +8384,18 @@
                       "id": "115564689066907744",
                       "title": "하위권 대진 - 결승",
                       "a": {
-                        "seed": "하위권 대진 - 2라운드 승자",
-                        "short": "LYON",
-                        "score": 3,
-                        "win": true
-                      },
-                      "b": {
                         "seed": "상위권 대진 - 4강 패자",
                         "short": "SEN",
                         "score": 1,
                         "elim": true
                       },
-                      "startRow": 5
+                      "b": {
+                        "seed": "하위권 대진 - 2라운드 승자",
+                        "short": "LYON",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 8
                     }
                   ]
                 },
@@ -8417,7 +8417,7 @@
                         "score": 3,
                         "msi": true
                       },
-                      "startRow": 3
+                      "startRow": 4
                     }
                   ]
                 }
@@ -8457,7 +8457,7 @@
                 ],
                 [
                   1,
-                  1,
+                  0,
                   "mid",
                   2,
                   0,
@@ -8465,7 +8465,7 @@
                 ],
                 [
                   1,
-                  0,
+                  1,
                   "mid",
                   2,
                   0,
