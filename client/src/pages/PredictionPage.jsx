@@ -2686,7 +2686,7 @@ const COMP_EDITIONS = {
   lpl: [2026, 2025],
   lec: [2026, 2025],
   lcs: [2026, 2025],
-  lcp: [2026, 2025],
+  lcp: [2026, 2025, 2024],
   cblol: [2026, 2025],
   fst: [2026, 2025],
   msi: [2026, 2025],
@@ -2708,15 +2708,21 @@ const editionYears = (key) => {
 const PAST_STANDINGS = pastEditionsData.standings || {};
 const PAST_SUBTABS = pastEditionsData.subtabs || {};
 // 과거 연도의 리그 서브탭 목록(없으면 단일 대회).
-const pastSubTabs = (key, year) => PAST_SUBTABS[String(year)]?.[key] || null;
+// 대회 선택형(예: 2024 LCP=PCS/VCS)은 이벤트별 서브탭 목록({ev:[...]}) → 선택된 이벤트 기준.
+const pastSubTabs = (key, year, ev) => {
+  const v = PAST_SUBTABS[String(year)]?.[key];
+  if (v && !Array.isArray(v)) return (ev && v[ev]) || null;
+  return v || null;
+};
 // 과거 연도의 리그 데이터 해석. 서브탭이 있으면 sub별, 없으면 단일.
-const resolvePastData = (key, sub, year) => {
+const resolvePastData = (key, sub, year, ev) => {
   const lg = PAST_STANDINGS[String(year)]?.[key];
   if (!lg) return null;
-  return sub ? lg[sub] : lg;
+  const base = (ev && lg[ev]) ? lg[ev] : lg; // 대회 선택(이벤트) → 해당 이벤트 데이터
+  return sub ? base[sub] : base;
 };
 // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
-const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'] };
+const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'VCS'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
@@ -2815,7 +2821,7 @@ const PredictionPage = () => {
   const setActiveEvent = (e) => setSearchParams((p) => { const n = new URLSearchParams(p); n.set('event', e); return n; }, { replace: true });
 
   // 서브탭 — 연도별. 현재 연도는 SUBTABS, 과거 연도는 생성된 목록(없으면 단일 대회).
-  const subTabs = comp ? (isCurrentYear ? SUBTABS[comp.key] : pastSubTabs(comp.key, activeYear)) : null;
+  const subTabs = comp ? (isCurrentYear ? SUBTABS[comp.key] : pastSubTabs(comp.key, activeYear, activeEvent)) : null;
   const subParam = searchParams.get('sub');
   const defaultSub = comp && subTabs ? (isCurrentYear ? (SUBTAB_DEFAULT[comp.key] || subTabs[0]) : subTabs[0]) : null;
   const activeSub = subTabs ? (subParam && subTabs.includes(subParam) ? subParam : defaultSub) : null;
@@ -2843,7 +2849,7 @@ const PredictionPage = () => {
   const headerDetail = subDetail || eventDetail || pastDetail;
 
   // 과거 연도 전체 데이터(순위표·대진·최종순위). 단일 대회는 sub=null.
-  const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub || activeEvent, activeYear) : null;
+  const pastData = comp && !isCurrentYear ? resolvePastData(comp.key, activeSub, activeYear, activeEvent) : null;
   const pastFull = !isCurrentYear && !!pastData;
   // 팀 표기 오버라이드: KRX→DRX(명칭·로고), GEN→옛 로고, DNS→DN FREECS 등. + LPL Split 1·2는 BLG→풀네임.
   //   2026(현재)에서 바뀐 최신 브랜딩이 2024 이하 과거 대회로 새어나가지 않도록, 가장 예전 브랜딩(2025 오버라이드)을
@@ -2946,7 +2952,7 @@ const PredictionPage = () => {
   };
   const displayTitle = (() => {
     if (isCurrentYear) return title;
-    if (activeEvent) return `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}`;
+    if (activeEvent) return `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}${activeSub ? ` ${activeSub}` : ''}`;
     const subMap = SUB_TITLE_NAME[`${comp?.key}|${activeYear}`];
     if (subMap && subMap[activeSub]) return `${activeYear} ${comp.name.replace('2026 ', '')} ${subMap[activeSub]}`;
     const ov = PAST_COMP_NAME[`${comp?.key}|${activeYear}`];

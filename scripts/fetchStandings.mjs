@@ -3587,6 +3587,33 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 LPL 럼블 스테이지 실패(무시): ${e.message}`); }
 }
 
+// ── 2024 LCP 전신(PCS·VCS) — LCP 2024에서 대회 선택(PCS/VCS) → Spring/Summer 서브탭 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const EV = { PCS: ['104366947889790212', [['Spring', 'pcs_spring_2024'], ['Summer', 'pcs_summer_2024']]], VCS: ['107213827295848783', [['Spring', 'vcs_spring_2024'], ['Summer', 'vcs_summer_2024']]] };
+    const std = (past.standings['2024'] = past.standings['2024'] || {});
+    const sub = (past.subtabs['2024'] = past.subtabs['2024'] || {});
+    if (!std.lcp) {
+      const lcp = {}, subs = {};
+      for (const [ev, [leagueId, list]] of Object.entries(EV)) {
+        for (const [label, slug] of list) {
+          try {
+            const s = await buildSplit(leagueId, slug);
+            if (s) { (lcp[ev] = lcp[ev] || {})[label] = { name: s.name, rows: s.rows, brackets: s.brackets, finalStandings: s.finalStandings }; (subs[ev] = subs[ev] || []).push(label); }
+          } catch (e) { console.warn(`2024 ${ev} ${label} 실패: ${e.message}`); }
+        }
+      }
+      if (Object.keys(lcp).length) {
+        std.lcp = lcp; sub.lcp = subs;
+        fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+        console.log(`2024 LCP(PCS·VCS) 생성: ${Object.entries(subs).map(([k, v]) => `${k}[${v.join(',')}]`).join(' ')}`);
+      }
+    }
+  } catch (e) { console.warn(`2024 PCS·VCS 생성 실패(무시): ${e.message}`); }
+}
+
 // ── 2024 LCS Championship — Summer 플레이오프가 곧 LCS Championship → 'Championship' 서브탭으로 분리 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -3961,6 +3988,11 @@ console.log('lolStandings.json 갱신 완료');
         } else if (v && typeof v === 'object') {             // 서브탭형 리그
           for (const [sub, node] of Object.entries(v)) {
             if (isSeonbal(sub) || sub === 'Road to MSI') continue; // 선발전·Road to MSI 제외
+            if (lg === 'lcp' && (sub === 'PCS' || sub === 'VCS') && node && !node.finalStandings) {
+              // 대회 선택형(2024 PCS·VCS) — 이벤트 → 스플릿 2단 구조
+              for (const [sp, n2] of Object.entries(node)) add(champOf(n2), `${year} ${sub} ${sp}`, compStyle(year, lg, sp));
+              continue;
+            }
             add(champOf(node), compName(year, lg, sub), compStyle(year, lg, sub));
           }
         }
