@@ -962,19 +962,19 @@
           "starter": true
         },
         {
-          "name": "Quantum ",
-          "firstName": "Son",
-          "lastName": "Junghwan",
-          "role": "support",
-          "image": "http://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
-          "starter": false
-        },
-        {
           "name": "Life",
           "firstName": "Jeongmin",
           "lastName": "Kim",
           "role": "support",
           "image": "http://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
+          "starter": false
+        },
+        {
+          "name": "Quantum ",
+          "firstName": "Son",
+          "lastName": "Junghwan",
+          "role": "support",
+          "image": "http://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
           "starter": false
         }
       ]
@@ -2593,6 +2593,14 @@
           "lastName": "Tran Duy ",
           "role": "top",
           "image": "http://static.lolesports.com/players/1769231292377_Kiaya.png",
+          "starter": false
+        },
+        {
+          "name": "Tiphat",
+          "firstName": "Tien Phat",
+          "lastName": "Nguyen",
+          "role": "jungle",
+          "image": "http://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
