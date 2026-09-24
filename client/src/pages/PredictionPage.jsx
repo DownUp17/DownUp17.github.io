@@ -50,6 +50,7 @@ import zsmLogo from '../assets/zsm.webp';
 import bnkFearxLogo from '../assets/bnk-fearx-2024.svg';
 import fearxLogo from '../assets/fearx.svg';
 import kwangdongFreecsLogo from '../assets/kwangdong-freecs.svg';
+import madLionsKoiLogo from '../assets/mad-lions-koi.svg';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -2883,6 +2884,8 @@ const PredictionPage = () => {
     else if (activeYear === 2024 && activeSub === 'Summer') ov.BFX = { tag: 'FOX', name: 'BNK FearX', logo: bnkFearxLogo };
     // DNS: 2024 이하는 KWANGDONG FREECS(KDF). 2025는 DN FREECS(DNF, TEAM_OVERRIDE_2025), 2026부터 DN SOOPers.
     if (activeYear <= 2024) ov.DNS = { tag: 'KDF', name: 'KWANGDONG FREECS', logo: kwangdongFreecsLogo };
+    // MKOI: 2024까지 MAD Lions KOI(MDK). 2025부터 기본 Movistar KOI.
+    if (activeYear <= 2024) ov.MKOI = { tag: 'MDK', name: 'MAD Lions KOI', logo: madLionsKoiLogo };
     return ov;
   })();
 

@@ -661,11 +661,13 @@ function ltaPlayoffs2Layout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,3,1,1,1') return bracket;
   const at = (ci, mi) => bracket.rounds[ci]?.matches[mi];
-  if (!/상위권 대진 - 4강/.test(at(0, 0)?.title || '')) return bracket;
-  const upFinal = bracket.rounds[1].matches.find((m) => /상위권 대진 - 결승/.test(m.title || ''));
-  const loQF = bracket.rounds[1].matches.filter((m) => /하위권 대진 - 8강/.test(m.title || ''));
+  // 명칭 무관(상위권/하위권 대진, 승자/패자 대진 등) — 상위·하위 역할로 판별.
+  const isLo = (m) => /하위권|패자/.test(m.title || '');
+  if (bracket.rounds[0].matches.some(isLo)) return bracket;
+  const upFinal = bracket.rounds[1].matches.find((m) => !isLo(m));
+  const loQF = bracket.rounds[1].matches.filter(isLo);
   if (!upFinal || loQF.length !== 2) return bracket;
-  if (!/하위권 대진 - 4강/.test(at(2, 0)?.title || '') || !/하위권 대진 - 결승/.test(at(3, 0)?.title || '')) return bracket;
+  if (!isLo(at(2, 0)) || !isLo(at(3, 0)) || isLo(at(4, 0))) return bracket;
   const cols = [[], [], [], []];
   const push = (m, col, sr) => cols[col].push({ m, sr });
   push(at(0, 0), 0, 0); push(at(0, 1), 0, 2);       // 상위 4강
@@ -1413,6 +1415,7 @@ async function buildSplit(leagueId, slug) {
     }
     else { // 구조 매칭 시 전용 그리드로 재배치(각 함수가 자체 구조 검증 → 미매칭이면 원본 반환)
       let x = ltaRound2Layout(b);                       // 2025 LTA Split3/Etapa3 round_2
+      if (x === b) x = ltaPlayoffs2Layout(b);           // 6팀 DE(상위4강/하위8강) — LEC 시즌 파이널(regional_finals) 등
       if (x === b) x = lcpQualifyingLayout(b);          // 2025 LCP 퀄리파잉 시리즈(regional_qualifier)
       if (x === b) x = de4Layout(b);                    // 4팀 더블 엘리(2팀 진출): MSI PI·LCP 그룹 시딩·FST 그룹 등 공통 템플릿
       if (x !== b) b = x;
