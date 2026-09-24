@@ -20384,6 +20384,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -20402,7 +20403,8 @@
                           "short": "IG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "105793730781835486",
@@ -20418,7 +20420,8 @@
                           "short": "LNG",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -20439,7 +20442,8 @@
                           "short": "FPX",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "105793730781835498",
@@ -20455,7 +20459,8 @@
                           "short": "WE",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -20476,7 +20481,8 @@
                           "short": "JDG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "105793730781835510",
@@ -20492,7 +20498,8 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -20512,7 +20519,8 @@
                           "seed": "1위",
                           "short": "RNG",
                           "score": 0
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "105793730781835522",
@@ -20527,7 +20535,25 @@
                           "short": "EDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "105793730781835534",
+                        "title": "하위권 대진 - 1라운드",
+                        "a": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "RNG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "TES",
+                          "score": 2,
+                          "elim": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -20547,29 +20573,9 @@
                           "seed": "상위권 대진 - 1라운드 승자",
                           "short": "EDG",
                           "score": 2
-                        }
-                      },
-                      {
-                        "id": "105793730781835534",
-                        "title": "하위권 대진 - 1라운드",
-                        "a": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "RNG",
-                          "score": 3,
-                          "win": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "TES",
-                          "score": 2,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "105793730781901076",
                         "title": "하위권 대진 - 2라운드",
@@ -20584,7 +20590,8 @@
                           "short": "EDG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -20605,7 +20612,8 @@
                           "short": "RNG",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -20677,26 +20685,10 @@
                   ],
                   [
                     3,
-                    0,
+                    2,
                     "mid",
                     4,
                     1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    1,
-                    "mid",
-                    4,
-                    1,
-                    "b"
-                  ],
-                  [
-                    4,
-                    1,
-                    "mid",
-                    5,
-                    0,
                     "a"
                   ],
                   [
@@ -20705,21 +20697,13 @@
                     "mid",
                     5,
                     0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
                     "a"
                   ],
                   [
-                    5,
-                    0,
+                    4,
+                    1,
                     "mid",
-                    6,
+                    5,
                     0,
                     "b"
                   ]
@@ -20926,6 +20910,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -20944,7 +20929,8 @@
                           "short": "LNG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "106433122689341356",
@@ -20960,7 +20946,8 @@
                           "short": "OMG",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -20981,7 +20968,8 @@
                           "short": "TES",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "106433122689341368",
@@ -20997,7 +20985,8 @@
                           "short": "WE",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -21018,7 +21007,8 @@
                           "short": "RNG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "106433122689341380",
@@ -21034,7 +21024,8 @@
                           "short": "RA",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -21054,7 +21045,8 @@
                           "short": "FPX",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "106433122689341392",
@@ -21069,7 +21061,25 @@
                           "short": "WE",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "106433122689341404",
+                        "title": "하위권 대진 - 1라운드",
+                        "a": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "EDG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "LNG",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -21089,29 +21099,9 @@
                           "seed": "상위권 대진 - 1라운드 승자",
                           "short": "WE",
                           "score": 0
-                        }
-                      },
-                      {
-                        "id": "106433122689341404",
-                        "title": "하위권 대진 - 1라운드",
-                        "a": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "EDG",
-                          "score": 3,
-                          "win": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "LNG",
-                          "score": 1,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "106433122689341410",
                         "title": "하위권 대진 - 2라운드",
@@ -21126,7 +21116,8 @@
                           "short": "EDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -21147,7 +21138,8 @@
                           "short": "EDG",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -21219,15 +21211,7 @@
                   ],
                   [
                     3,
-                    1,
-                    "mid",
-                    4,
-                    1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    0,
+                    2,
                     "mid",
                     4,
                     1,
@@ -21246,22 +21230,6 @@
                     1,
                     "mid",
                     5,
-                    0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
-                    "a"
-                  ],
-                  [
-                    5,
-                    0,
-                    "mid",
-                    6,
                     0,
                     "b"
                   ]
@@ -25506,6 +25474,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -25524,7 +25493,8 @@
                           "short": "RA",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "107417779634305472",
@@ -25540,7 +25510,8 @@
                           "short": "FPX",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -25561,7 +25532,8 @@
                           "short": "BLG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "107417779634305484",
@@ -25577,7 +25549,8 @@
                           "short": "EDG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -25598,7 +25571,8 @@
                           "short": "LNG",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "107417779634305496",
@@ -25614,7 +25588,8 @@
                           "short": "JDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -25634,7 +25609,8 @@
                           "seed": "1위",
                           "short": "NIP",
                           "score": 2
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "107417779634305508",
@@ -25649,7 +25625,25 @@
                           "short": "RNG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "107417779634305520",
+                        "title": "하위권 대진 - 1라운드",
+                        "a": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "NIP",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "JDG",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -25669,29 +25663,9 @@
                           "short": "RNG",
                           "score": 3,
                           "win": true
-                        }
-                      },
-                      {
-                        "id": "107417779634305520",
-                        "title": "하위권 대진 - 1라운드",
-                        "a": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "NIP",
-                          "score": 3,
-                          "win": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "JDG",
-                          "score": 1,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "107417779634305526",
                         "title": "하위권 대진 - 2라운드",
@@ -25706,7 +25680,8 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -25727,7 +25702,8 @@
                           "short": "TES",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -25799,26 +25775,10 @@
                   ],
                   [
                     3,
-                    0,
+                    2,
                     "mid",
                     4,
                     1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    1,
-                    "mid",
-                    4,
-                    1,
-                    "b"
-                  ],
-                  [
-                    4,
-                    1,
-                    "mid",
-                    5,
-                    0,
                     "a"
                   ],
                   [
@@ -25827,21 +25787,13 @@
                     "mid",
                     5,
                     0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
                     "a"
                   ],
                   [
-                    5,
-                    0,
+                    4,
+                    1,
                     "mid",
-                    6,
+                    5,
                     0,
                     "b"
                   ]
@@ -26048,6 +26000,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -26066,7 +26019,8 @@
                           "short": "FPX",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "108431300957905485",
@@ -26082,7 +26036,8 @@
                           "short": "LNG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -26103,7 +26058,8 @@
                           "short": "EDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "108431300957971033",
@@ -26119,7 +26075,8 @@
                           "short": "LNG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -26140,7 +26097,8 @@
                           "short": "RNG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "108431300957971045",
@@ -26156,7 +26114,8 @@
                           "short": "NIP",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -26176,7 +26135,8 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "108431300957971057",
@@ -26191,7 +26151,25 @@
                           "short": "JDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "108431300957971069",
+                        "title": "하위권 대진 - 1라운드",
+                        "a": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "LNG",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "EDG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -26211,29 +26189,9 @@
                           "short": "JDG",
                           "score": 3,
                           "win": true
-                        }
-                      },
-                      {
-                        "id": "108431300957971069",
-                        "title": "하위권 대진 - 1라운드",
-                        "a": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "LNG",
-                          "score": 1,
-                          "elim": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "EDG",
-                          "score": 3,
-                          "win": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "108431300957971075",
                         "title": "하위권 대진 - 2라운드",
@@ -26248,7 +26206,8 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -26269,7 +26228,8 @@
                           "short": "TES",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -26341,26 +26301,10 @@
                   ],
                   [
                     3,
-                    1,
+                    2,
                     "mid",
                     4,
                     1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    0,
-                    "mid",
-                    4,
-                    1,
-                    "b"
-                  ],
-                  [
-                    4,
-                    1,
-                    "mid",
-                    5,
-                    0,
                     "a"
                   ],
                   [
@@ -26369,21 +26313,13 @@
                     "mid",
                     5,
                     0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
                     "a"
                   ],
                   [
-                    5,
-                    0,
+                    4,
+                    1,
                     "mid",
-                    6,
+                    5,
                     0,
                     "b"
                   ]
@@ -29863,6 +29799,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -29881,7 +29818,8 @@
                           "short": "BFX",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "109625510279844669",
@@ -29897,7 +29835,8 @@
                           "short": "DK",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -29917,7 +29856,8 @@
                           "short": "T1",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "109625510279844681",
@@ -29932,7 +29872,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -29952,7 +29893,8 @@
                           "short": "T1",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       },
                       {
                         "id": "109625510279844693",
@@ -29968,7 +29910,8 @@
                           "short": "KT",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -29989,7 +29932,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -30010,7 +29954,8 @@
                           "short": "T1",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -30206,6 +30151,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -30224,7 +30170,8 @@
                           "short": "HLE",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "110371551279082022",
@@ -30240,7 +30187,8 @@
                           "short": "DK",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -30260,7 +30208,8 @@
                           "seed": "1위",
                           "short": "KT",
                           "score": 2
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "110371551279082034",
@@ -30275,7 +30224,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -30295,7 +30245,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       },
                       {
                         "id": "110371551279147582",
@@ -30311,7 +30262,8 @@
                           "short": "KT",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -30332,7 +30284,8 @@
                           "short": "T1",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -30353,7 +30306,8 @@
                           "short": "GEN",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -30704,6 +30658,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -30722,7 +30677,8 @@
                           "short": "RNG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "109669600530214201",
@@ -30738,7 +30694,8 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -30759,7 +30716,8 @@
                           "short": "RNG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "109669600530214213",
@@ -30775,7 +30733,8 @@
                           "short": "OMG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -30796,7 +30755,8 @@
                           "short": "WBG",
                           "score": 0,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "109669600530214225",
@@ -30812,7 +30772,8 @@
                           "short": "LNG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -30832,7 +30793,8 @@
                           "short": "JDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "109669600530214237",
@@ -30847,7 +30809,25 @@
                           "short": "EDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "109669600530214249",
+                        "title": "하위권 대진 - 1라운드",
+                        "a": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "BLG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "OMG",
+                          "score": 2,
+                          "elim": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -30867,29 +30847,9 @@
                           "seed": "상위권 대진 - 1라운드 승자",
                           "short": "EDG",
                           "score": 0
-                        }
-                      },
-                      {
-                        "id": "109669600530214249",
-                        "title": "하위권 대진 - 1라운드",
-                        "a": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "BLG",
-                          "score": 3,
-                          "win": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "OMG",
-                          "score": 2,
-                          "elim": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "109669600530214255",
                         "title": "하위권 대진 - 2라운드",
@@ -30904,7 +30864,8 @@
                           "short": "EDG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -30925,7 +30886,8 @@
                           "short": "BLG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -30997,26 +30959,10 @@
                   ],
                   [
                     3,
-                    0,
+                    2,
                     "mid",
                     4,
                     1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    1,
-                    "mid",
-                    4,
-                    1,
-                    "b"
-                  ],
-                  [
-                    4,
-                    1,
-                    "mid",
-                    5,
-                    0,
                     "a"
                   ],
                   [
@@ -31025,21 +30971,13 @@
                     "mid",
                     5,
                     0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
                     "a"
                   ],
                   [
-                    5,
-                    0,
+                    4,
+                    1,
                     "mid",
-                    6,
+                    5,
                     0,
                     "b"
                   ]
@@ -31246,6 +31184,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -31264,7 +31203,8 @@
                           "short": "EDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "110428848767941157",
@@ -31280,7 +31220,8 @@
                           "short": "RNG",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -31301,7 +31242,8 @@
                           "short": "OMG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "110428848767941169",
@@ -31317,7 +31259,8 @@
                           "short": "WBG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -31338,7 +31281,8 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "110428848767941181",
@@ -31354,7 +31298,8 @@
                           "short": "LNG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -31374,7 +31319,8 @@
                           "short": "BLG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "110428848767941193",
@@ -31389,7 +31335,25 @@
                           "short": "JDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "110428848767941205",
+                        "title": "하위권 대진 - 1라운드",
+                        "a": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "TES",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "LNG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -31409,29 +31373,9 @@
                           "short": "JDG",
                           "score": 3,
                           "win": true
-                        }
-                      },
-                      {
-                        "id": "110428848767941205",
-                        "title": "하위권 대진 - 1라운드",
-                        "a": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "TES",
-                          "score": 1,
-                          "elim": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "LNG",
-                          "score": 3,
-                          "win": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "110428848767941211",
                         "title": "하위권 대진 - 2라운드",
@@ -31446,7 +31390,8 @@
                           "short": "LNG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -31467,7 +31412,8 @@
                           "short": "LNG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -31539,15 +31485,7 @@
                   ],
                   [
                     3,
-                    0,
-                    "mid",
-                    4,
-                    1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    1,
+                    2,
                     "mid",
                     4,
                     1,
@@ -31566,22 +31504,6 @@
                     1,
                     "mid",
                     5,
-                    0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
-                    "a"
-                  ],
-                  [
-                    5,
-                    0,
-                    "mid",
-                    6,
                     0,
                     "b"
                   ]
@@ -37207,6 +37129,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -37225,7 +37148,8 @@
                           "short": "HLE",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "111561337007371259",
@@ -37241,7 +37165,8 @@
                           "short": "KT",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -37261,7 +37186,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "111561337007371271",
@@ -37276,7 +37202,8 @@
                           "seed": "2위",
                           "short": "T1",
                           "score": 0
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -37296,7 +37223,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       },
                       {
                         "id": "111561337007371283",
@@ -37312,7 +37240,8 @@
                           "short": "T1",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -37333,7 +37262,8 @@
                           "short": "HLE",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -37354,7 +37284,8 @@
                           "short": "GEN",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -37550,6 +37481,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -37568,7 +37500,8 @@
                           "short": "DK",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "112435564214584388",
@@ -37584,7 +37517,8 @@
                           "short": "T1",
                           "score": 3,
                           "msi": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -37604,7 +37538,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "112435564214584400",
@@ -37619,7 +37554,8 @@
                           "short": "HLE",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -37639,7 +37575,8 @@
                           "short": "GEN",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 2
                       },
                       {
                         "id": "112435564214584412",
@@ -37655,7 +37592,8 @@
                           "short": "DK",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -37676,7 +37614,8 @@
                           "short": "HLE",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -37697,7 +37636,8 @@
                           "short": "GEN",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -38048,6 +37988,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
+                "totalRows": 10,
                 "rounds": [
                   {
                     "title": "",
@@ -38066,7 +38007,8 @@
                           "short": "WE",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "111561319410825175",
@@ -38082,7 +38024,8 @@
                           "short": "WBG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38103,7 +38046,8 @@
                           "short": "NIP",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "111561319410825187",
@@ -38119,7 +38063,8 @@
                           "short": "LNG",
                           "score": 2,
                           "elim": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38140,7 +38085,8 @@
                           "short": "NIP",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "111561319410825199",
@@ -38156,7 +38102,8 @@
                           "short": "JDG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38176,7 +38123,8 @@
                           "short": "BLG",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 0
                       },
                       {
                         "id": "111561319410825211",
@@ -38191,7 +38139,25 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 4
+                      },
+                      {
+                        "id": "111561319410825223",
+                        "title": "하위권 대진 - 1라운드",
+                        "a": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "NIP",
+                          "score": 2,
+                          "elim": true
+                        },
+                        "b": {
+                          "seed": "상위권 대진 - 1라운드 패자",
+                          "short": "JDG",
+                          "score": 3,
+                          "win": true
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -38211,29 +38177,9 @@
                           "short": "BLG",
                           "score": 3,
                           "win": true
-                        }
-                      },
-                      {
-                        "id": "111561319410825223",
-                        "title": "하위권 대진 - 1라운드",
-                        "a": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "NIP",
-                          "score": 2,
-                          "elim": true
                         },
-                        "b": {
-                          "seed": "상위권 대진 - 1라운드 패자",
-                          "short": "JDG",
-                          "score": 3,
-                          "win": true
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
+                        "startRow": 2
+                      },
                       {
                         "id": "111561319410825229",
                         "title": "하위권 대진 - 2라운드",
@@ -38248,7 +38194,8 @@
                           "short": "TES",
                           "score": 3,
                           "win": true
-                        }
+                        },
+                        "startRow": 8
                       }
                     ]
                   },
@@ -38269,7 +38216,8 @@
                           "short": "TES",
                           "score": 1,
                           "elim": true
-                        }
+                        },
+                        "startRow": 5
                       }
                     ]
                   }
@@ -38341,26 +38289,10 @@
                   ],
                   [
                     3,
-                    0,
+                    2,
                     "mid",
                     4,
                     1,
-                    "a"
-                  ],
-                  [
-                    3,
-                    1,
-                    "mid",
-                    4,
-                    1,
-                    "b"
-                  ],
-                  [
-                    4,
-                    1,
-                    "mid",
-                    5,
-                    0,
                     "a"
                   ],
                   [
@@ -38369,21 +38301,13 @@
                     "mid",
                     5,
                     0,
-                    "b"
-                  ],
-                  [
-                    4,
-                    0,
-                    "mid",
-                    6,
-                    0,
                     "a"
                   ],
                   [
-                    5,
-                    0,
+                    4,
+                    1,
                     "mid",
-                    6,
+                    5,
                     0,
                     "b"
                   ]

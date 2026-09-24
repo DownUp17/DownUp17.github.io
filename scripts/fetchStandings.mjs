@@ -744,6 +744,56 @@ function de4Layout(bracket, opts = {}) {
   return fixDropElim({ totalRows: compact ? 6 : 7, rounds: rounds2, connectors });
 }
 
+// 2023~2024 LCK 플레이오프(6팀, rounds 2·2·2·1·1 · 3라운드=승자조+패자조 2경기) — 사용자 지정 세로 배치.
+//   컬럼(=라운드)은 유지하고 startRow만 조정:
+//     승자조 3라운드를 1·2라운드 대진 사이(sr2)에, 패자조 3라운드는 하위(sr8)에, 4라운드는 패자조 3라운드와 같은 행(sr8).
+//   col0 1R(sr0·4) / col1 2R(sr0·4) / col2 승자조3R(sr2)+패자조3R(sr8) / col3 4R(sr8) / col4 결승(sr5).
+function lckPo2024Layout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,2,2,1,1') return bracket;
+  const [r0, r1, r2, r3, r4] = bracket.rounds;
+  if (!r2.matches.every((m) => /3라운드/.test(m.title || ''))) return bracket; // 3라운드 두 경기(승자조·패자조)
+  const winnerOf = (m) => { const a = m.a?.score, b = m.b?.score; if (a != null && b != null) return a > b ? m.a : m.b; if (m.a?.win || m.a?.msi) return m.a; if (m.b?.win || m.b?.msi) return m.b; return null; };
+  const w2 = new Set(r1.matches.map((m) => winnerOf(m)?.short).filter(Boolean)); // 2라운드 승자들
+  const upperR3 = r2.matches.find((m) => w2.has(m.a?.short) && w2.has(m.b?.short)); // 승자조 3라운드
+  const lowerR3 = r2.matches.find((m) => m !== upperR3);                            // 패자조 3라운드
+  if (!upperR3 || !lowerR3) return bracket;
+  const SR = new Map();
+  SR.set(r0.matches[0], 0); SR.set(r0.matches[1], 4);   // 1라운드
+  SR.set(r1.matches[0], 0); SR.set(r1.matches[1], 4);   // 2라운드
+  SR.set(upperR3, 2);                                    // 승자조 3라운드 (1·2라운드 사이)
+  SR.set(lowerR3, 8);                                    // 패자조 3라운드 (하위)
+  SR.set(r3.matches[0], 8);                              // 4라운드 (패자조 3라운드와 같은 행)
+  SR.set(r4.matches[0], 5);                              // 결승
+  const rounds2 = bracket.rounds.map((r) => ({ title: '', matches: r.matches.map((m) => ({ ...m, startRow: SR.get(m) })) }));
+  return fixDropElim({ totalRows: 10, rounds: rounds2, connectors: bracket.connectors });
+}
+
+// 2021~2024 LPL Spring/Summer형 PO(rounds 2·2·2·2·2·1·1, 게이트웨이 1~3라운드 + 상위/하위 대진) — 사용자 지정 압축.
+//   하위 대진을 상위 대진과 같은 컬럼으로: col3 상위1R×2 + 하위1R / col4 상위2R + 하위2R / col5 결승.
+//   상위2R는 두 상위1R 사이 행(sr2), 하위2R는 하위1R와 같은 행(sr8). 게이트웨이(1·2·3라운드)는 col0·1·2.
+function lplSpring24Layout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,2,2,2,2,1,1') return bracket;
+  const at = (ci, mi) => bracket.rounds[ci]?.matches[mi];
+  const up1 = bracket.rounds[3].matches;
+  if (!up1.every((m) => /상위권.*1라운드/.test(m.title || ''))) return bracket;
+  const up2 = bracket.rounds[4].matches.find((m) => /상위권.*2라운드/.test(m.title || ''));
+  const lo1 = bracket.rounds[4].matches.find((m) => /하위권.*1라운드/.test(m.title || ''));
+  const lo2 = bracket.rounds[5].matches.find((m) => /하위권.*2라운드/.test(m.title || ''));
+  const gf = bracket.rounds[6].matches[0];
+  if (!up2 || !lo1 || !lo2 || !gf) return bracket;
+  const cols = [[], [], [], [], [], []];
+  const push = (m, col, sr) => cols[col].push({ m, sr });
+  push(at(0, 0), 0, 0); push(at(0, 1), 0, 4);   // 1라운드
+  push(at(1, 0), 1, 0); push(at(1, 1), 1, 4);   // 2라운드
+  push(at(2, 0), 2, 0); push(at(2, 1), 2, 4);   // 3라운드
+  push(up1[0], 3, 0); push(up1[1], 3, 4); push(lo1, 3, 8);   // 상위1R×2 + 하위1R (하단)
+  push(up2, 4, 2); push(lo2, 4, 8);                          // 상위2R(상위1R 사이) + 하위2R(하위1R와 같은 행)
+  push(gf, 5, 5);                                            // 결승
+  return regridByObject(bracket, cols, 10);
+}
+
 // LPL 기사의 길(Knights Rivals) — 1·2라운드를 같은 컬럼(1R 상단, 2R 하단), 3라운드를 다음 컬럼에.
 function knightsLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
@@ -1348,10 +1398,14 @@ async function buildSplit(leagueId, slug) {
       const lec8 = lec8DELayout(b); // 8팀(예선 1R + 상위 2R + 하위 3R) — 매칭 시 그리드로 재배치, 아니면 원본 반환
       const lckCup = lckCupLayout(b); // 2025 LCK CUP식(상위 1·2·3R + 하위권 대진 2경기 + 결승)
       const lta2 = ltaPlayoffs2Layout(b); // 2025 LTA Split2/Etapa2 PO(상위4강/하위8강, rounds 2·3·1·1·1)
+      const lckPo24 = lckPo2024Layout(b); // 2023~2024 LCK PO(rounds 2·2·2·1·1, 3라운드=승자조+패자조)
+      const lplSp = lplSpring24Layout(b); // 2021~2024 LPL Spring/Summer형(rounds 2·2·2·2·2·1·1)
       if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)
       else if (lec8 !== b) b = lec8;                               // 8팀 LEC/LPL식 (예선 1라운드 + 상위 2R + 하위 3R)
       else if (lckCup !== b) b = lckCup;                           // 2025 LCK CUP식 (상위 3R + 하위권 대진 2경기)
       else if (lta2 !== b) b = lta2;                               // 2025 LTA Split2/Etapa2 PO (상위4강/하위8강 컴팩트)
+      else if (lplSp !== b) b = lplSp;                             // 2021~2024 LPL Spring/Summer형 (상위/하위 대진 압축)
+      else if (lckPo24 !== b) b = lckPo24;                         // 2023~2024 LCK PO (승자조 3R 중앙·패자조 3R/4R 하위)
       else if (cnt(/상위권.*결승/) >= 1) b = lckPoStyleLayout(b);  // 6팀 LCK PO식 (상위 8강/4강/결승, 3라운드 upper)
       else if (cnt(/상위권.*(8강|1라운드)/) >= 2) b = lecPoLayout(b); // 6팀 LEC식 (상위 2라운드, 같은 라운드=같은 컬럼)
     }

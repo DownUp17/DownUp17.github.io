@@ -47,6 +47,10 @@ import agalEwcLogo from '../assets/agal-ewc.webp';
 import mibrLosEwcLogo from '../assets/mibr-los-ewc.webp';
 import frkLogo from '../assets/frk.webp';
 import zsmLogo from '../assets/zsm.webp';
+import bnkFearxLogo from '../assets/bnk-fearx-2024.svg';
+import fearxLogo from '../assets/fearx.svg';
+import kwangdongFreecsLogo from '../assets/kwangdong-freecs.svg';
+import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
   finished: { label: '종료', color: '#34D399', bg: 'rgba(52,211,153,0.15)' },
@@ -86,10 +90,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
@@ -2862,6 +2866,11 @@ const PredictionPage = () => {
     if (activeYear <= 2025) ov.MVK = { tag: 'MVKE', name: 'MGN Vikings Esports', logo: mvkeLogo };
     // EWC의 AL: 2025 이하는 이름 'AL'(로고는 AG.AL 로고 유지), 2026부터 AGAL(AG.AL) — EWC_TEAM_OVERRIDE.
     if (comp?.key === 'ewc' && activeYear <= 2025) ov.AL = { name: 'AL', logo: agalEwcLogo };
+    // BFX: 2024 Spring까지 FearX(FOX), 2024 Summer는 BNK FearX(FOX), 2025부터 기본 BNK FEARX.
+    if (activeYear < 2024 || (activeYear === 2024 && activeSub === 'Spring')) ov.BFX = { tag: 'FOX', name: 'FearX', logo: fearxLogo };
+    else if (activeYear === 2024 && activeSub === 'Summer') ov.BFX = { tag: 'FOX', name: 'BNK FearX', logo: bnkFearxLogo };
+    // DNS: 2024 이하는 KWANGDONG FREECS(KDF). 2025는 DN FREECS(DNF, TEAM_OVERRIDE_2025), 2026부터 DN SOOPers.
+    if (activeYear <= 2024) ov.DNS = { tag: 'KDF', name: 'KWANGDONG FREECS', logo: kwangdongFreecsLogo };
     return ov;
   })();
 
