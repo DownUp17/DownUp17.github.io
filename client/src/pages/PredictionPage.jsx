@@ -2851,9 +2851,21 @@ const PredictionPage = () => {
     if (activeYear > 2025) return undefined;
     const ov = { ...TEAM_OVERRIDE_2025 };
     if (comp?.key === 'lpl') {
-      if (activeSub === 'Split 1' || activeSub === 'Split 2') ov.BLG = { name: 'Bilibili Gaming DreamSmart' };
-      if (activeSub === 'Split 1') ov.JDG = { name: 'Beijing JDG Intel Esports' };
+      // BLG: 2024 Summer부터 2025 Split 2까지 'Bilibili Gaming Dreamsmart'.
+      if ((activeYear === 2024 && activeSub === 'Summer') || (activeYear === 2025 && (activeSub === 'Split 1' || activeSub === 'Split 2')))
+        ov.BLG = { name: 'Bilibili Gaming Dreamsmart' };
+      if (activeYear === 2025 && activeSub === 'Split 1') ov.JDG = { name: 'Beijing JDG Intel Esports' };
     }
+    // JDG: 2024 LPL Spring까지 'JDG Intel Esports Club', 2024 LPL Summer·선발전은 'JDG Intel Esports'
+    //   (2025 Split 1의 'Beijing JDG Intel Esports'와 다름).
+    if (activeYear < 2024 || (activeYear === 2024 && comp?.key === 'lpl' && activeSub === 'Spring')) ov.JDG = { name: 'JDG Intel Esports Club' };
+    else if (activeYear === 2024) ov.JDG = { name: 'JDG Intel Esports' };
+    // EDG: 2024 이하는 'Edward Gaming Hycan'.
+    if (activeYear <= 2024) ov.EDG = { name: 'Edward Gaming Hycan' };
+    // WBG: 2024 LPL Spring까지 'Weibo Gaming Faw Audi'(2025는 'Weibo Gaming TapTap', TEAM_OVERRIDE_2025).
+    if (activeYear < 2024 || (activeYear === 2024 && comp?.key === 'lpl' && activeSub === 'Spring')) ov.WBG = { name: 'Weibo Gaming Faw Audi' };
+    // LNG: 2025 LPL Split 1까지 'LNG Ninebot Esports'.
+    if (activeYear < 2025 || (activeYear === 2025 && comp?.key === 'lpl' && activeSub === 'Split 1')) ov.LNG = { name: 'LNG Ninebot Esports' };
     // Fluxo: 이름은 2025 시즌부터 Fluxo W7M(2024 이하만 'Fluxo'), 로고는 2025 시즌까지 옛 로고.
     if (activeYear <= 2025) ov.FX = { logo: fluxo2025Logo, ...(activeYear <= 2024 ? { name: 'Fluxo' } : {}) };
     // TL(TLAW): 2025 Split 1까지 'Team Liquid Honda', 그 이후는 'Team Liquid'(TEAM_OVERRIDE_2025 기본값).
