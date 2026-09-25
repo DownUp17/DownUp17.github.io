@@ -60,6 +60,8 @@ import nrg2024SpringLogo from '../assets/nrg-2024-spring.svg';
 import frankEsportsLogo from '../assets/frank-esports.webp';
 import taipeiJTeamLogo from '../assets/taipei-j-team.webp';
 import westPointEsportsLogo from '../assets/west-point-esports.webp';
+import ljlLogo from '../assets/ljl.webp';
+import chineseTaipeiFlag from '../assets/chinese-taipei-flag.svg';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -110,7 +112,8 @@ const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
 // AG 참가국 → ISO 3166-1 alpha-2 (flagcdn 국기 이미지용)
 const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', JPN: 'jp', HKG: 'hk', SAU: 'sa', IND: 'in', UAE: 'ae', MYS: 'my' };
 // 국가 대표(국기 로고) 팀 — KeSPA CUP 등에서 국가로 출전. flagcdn 국기 이미지를 로고로 사용.
-const nationFlag = (code) => (AG_FLAG[code] ? `https://flagcdn.com/48x36/${AG_FLAG[code]}.png` : null);
+//   TPE(중화 타이베이)는 flagcdn 대신 지정된 로고를 항상 사용.
+const nationFlag = (code) => (code === 'TPE' ? chineseTaipeiFlag : (AG_FLAG[code] ? `https://flagcdn.com/48x36/${AG_FLAG[code]}.png` : null));
 
 // 특정 대회(에디션)에서만 다른 팀명·태그·로고를 쓰던 팀 오버라이드.
 //   2026 LCK CUP까지 KRX는 팀명·태그 모두 DRX였고, GEN은 예전 로고를 사용.
@@ -2246,6 +2249,7 @@ const pastSplitStagesFromData = (d) => {
   if (!d) return null;
   if (d.roadToMsi) return null; // Road to MSI: 세부 스테이지 탭 없이 참가팀 성적 + 대진 한 화면에 표기
   if (d.kespa) return ['예선', '본선', '결선']; // KeSPA CUP: 예선(3조)·본선(LCQ)·결선(더블엘리)
+  if (d.kespa24) return ['조별리그', '퀄리피케이션 스테이지', '녹아웃 스테이지', '최종 순위']; // 2024 KeSPA CUP
   const stages = [];
   if (d.rows?.length) stages.push(d.regLabel || (d.rows.some((r) => r.group) ? '그룹 순위' : '정규시즌'));
   // 추가 순위 스테이지(예: 그룹 페이즈·럼블 스테이지). after 지정 시 해당 대진 스테이지 뒤에 삽입, 없으면 순위 바로 뒤.
@@ -2332,6 +2336,95 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
           })()}
         </div>
         <BracketLegend goldLabel="우승" />
+      </section>
+    );
+  }
+
+  // 2024 KeSPA CUP 커스텀 렌더 — 조별리그(2개조·세트 평균 시간) / 퀄리피케이션(사다리) / 녹아웃(4팀 싱글 엘리) / 최종 순위
+  if (data.kespa24) {
+    // 국가 대표팀(TPE·VIE)은 국기 로고 — 대진 슬롯에도 적용
+    const ov = { ...(teamOverride || {}), TPE: { name: '중화 타이베이', logo: nationFlag('TPE') }, VIE: { name: '베트남', logo: nationFlag('VIE') } };
+    const disp = (c) => ov[c]?.tag || c;
+    const logoOf = (c) => ov[c]?.logo || logoByShort[c];
+    const legend = (gold) => (
+      <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-white/50">
+        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(232,199,126,0.7)' }} /> {gold}</span>
+        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(96,165,250,0.6)' }} /> 라운드 승리</span>
+        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded" style={{ backgroundColor: 'rgba(248,113,113,0.6)' }} /> 탈락</span>
+      </div>
+    );
+    if (stage === '조별리그') {
+      const groupTable = (gk, rows) => (
+        <div key={gk} className="flex flex-col gap-2">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">{gk}조</h3>
+            <span className="text-xs text-white/40">싱글 라운드로빈 · 상위 4팀 퀄리피케이션 진출</span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="text-white/40 text-xs border-b border-white/10">
+                <th className="text-center font-bold py-2 px-2 w-10">#</th>
+                <th className="text-left font-bold py-2 pr-2">팀</th>
+                <th className="text-center font-bold py-2 px-2">승-패</th>
+                <th className="text-center font-bold py-2 px-2">세트 평균 시간</th>
+              </tr></thead>
+              <tbody>
+                {rows.map((r, i) => (
+                  <tr key={r.code} className="border-b border-white/5"
+                    style={{ cursor: knownTeam(r.code) ? 'pointer' : undefined, backgroundColor: i < 4 ? 'rgba(96,165,250,0.08)' : undefined }}
+                    onClick={(knownTeam(r.code) && onTeamClick) ? () => onTeamClick(r.code) : undefined}>
+                    <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
+                    <td className="py-2 pr-2"><span className="inline-flex items-center gap-2 font-bold text-white/90"><TeamLogo src={logoOf(r.code)} size={16} />{disp(r.code)}</span></td>
+                    <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
+                    <td className="py-2 px-2 text-center font-mono text-white/40 text-xs">{r.time || ''}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+      return (
+        <section className="flex flex-col gap-6">
+          <div className={parallelGrid(2)}>
+            {groupTable('A', data.qual.A)}
+            {groupTable('B', data.qual.B)}
+          </div>
+          <p className="text-[11px] text-white/40">각 조 상위 4팀(총 8팀)이 퀄리피케이션 스테이지에 진출합니다. 세트 평균 시간은 동률 시 순위 비교 기준입니다.</p>
+        </section>
+      );
+    }
+    if (stage === '퀄리피케이션 스테이지') {
+      return (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">퀄리피케이션 스테이지</h3>
+            <span className="text-xs text-white/40">사다리 방식 · 각 라운드 최상위 매치 승자 녹아웃 진출</span>
+          </div>
+          <MsiBracket rounds={data.fs1.rounds} totalRows={data.fs1.totalRows} connectors={data.fs1.connectors} onTeamClick={onTeamClick} teamOverride={ov} />
+          {legend('녹아웃 스테이지 진출')}
+        </section>
+      );
+    }
+    if (stage === '녹아웃 스테이지') {
+      return (
+        <section>
+          <div className="flex items-baseline gap-2 flex-wrap mb-4">
+            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">녹아웃 스테이지</h3>
+            <span className="text-xs text-white/40">4팀 싱글 엘리미네이션{data.champion ? ` · 우승 ${disp(data.champion)}` : ''}</span>
+          </div>
+          <MsiBracket rounds={data.fs2.rounds} connectors={data.fs2.connectors} onTeamClick={onTeamClick} teamOverride={ov} />
+          {legend('우승')}
+        </section>
+      );
+    }
+    return (
+      <section className="flex flex-col gap-4">
+        <div className="flex items-baseline gap-2 flex-wrap">
+          <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">최종 순위</h3>
+          <span className="text-xs text-white/40">우승 {disp(data.champion)}</span>
+        </div>
+        <StandingsTable rows={data.finalStandings.map((f) => ({ short: f.team, rank: f.rank }))} color={comp.color} cols={{ minimal: true }} onTeamClick={onTeamClick} teamOverride={ov} />
       </section>
     );
   }
@@ -2600,6 +2693,7 @@ const PAST_DETAIL = {
   'lcs|2025': { color: '#3483F0', logo: ltaNorthLogo, bySub: { 'Split 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo } } },
   'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo } } },
   'lck|2025': { bySub: { 'LCK CUP': { color: '#7f6b00' }, 'KeSPA CUP': { color: '#072148', logo: kespa2025Logo } } },
+  'lck|2024': { bySub: { 'KeSPA CUP': { color: '#072148' } } },
   'fst|2025': { color: '#45002c' },
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
   'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
@@ -2614,6 +2708,7 @@ const EVENT_DETAIL = {
   'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
   'lcp|2024|VCS': { color: '#f0fea6', logo: vcsLogo }, // 검은 로고 그대로 표시
   'lcp|2024|PCS': { color: '#101725', logo: pcsLogo },
+  'lcp|2024|LJL': { color: '#ed1b30', logo: ljlLogo },
   'cblol|2020|LLA': { color: '#ff6528' },
   'cblol|2021|LLA': { color: '#ff6528' },
   'cblol|2022|LLA': { color: '#ff6528' },
@@ -2911,7 +3006,8 @@ const PredictionPage = () => {
     if (comp?.key === 'ewc' && activeYear <= 2025) ov.AL = { name: 'AL', logo: agalEwcLogo };
     // BFX: 2024 Spring까지 FearX(FOX), 2024 Summer는 BNK FearX(FOX), 2025부터 기본 BNK FEARX.
     if (activeYear < 2024 || (activeYear === 2024 && activeSub === 'Spring')) ov.BFX = { tag: 'FOX', name: 'FearX', logo: fearxLogo };
-    else if (activeYear === 2024 && activeSub === 'Summer') ov.BFX = { tag: 'FOX', name: 'BNK FearX', logo: bnkFearxLogo };
+    // 2024 KeSPA CUP(12월, Worlds 이후)도 Summer 당시 팀명(BNK FearX)으로 표기.
+    else if (activeYear === 2024 && (activeSub === 'Summer' || activeSub === '선발전' || activeSub === 'KeSPA CUP')) ov.BFX = { tag: 'FOX', name: 'BNK FearX', logo: bnkFearxLogo };
     // DNS: 2024 이하는 KWANGDONG FREECS(KDF). 2025는 DN FREECS(DNF, TEAM_OVERRIDE_2025), 2026부터 DN SOOPers.
     if (activeYear <= 2024) ov.DNS = { tag: 'KDF', name: 'KWANGDONG FREECS', logo: kwangdongFreecsLogo };
     // MKOI: 2024까지 MAD Lions KOI(MDK). 2025부터 기본 Movistar KOI.

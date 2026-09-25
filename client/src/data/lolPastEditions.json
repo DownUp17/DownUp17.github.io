@@ -235,7 +235,8 @@
       "lck": [
         "Spring",
         "Summer",
-        "선발전"
+        "선발전",
+        "KeSPA CUP"
       ],
       "lpl": [
         "Spring",
@@ -31613,7 +31614,7 @@
                           "seed": "3위",
                           "short": "KT",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "",
@@ -31630,7 +31631,7 @@
                           "seed": "",
                           "short": "HLE",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4위",
@@ -31826,6 +31827,22 @@
                     4,
                     0,
                     "b"
+                  ],
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    1,
+                    "a"
                   ]
                 ]
               }
@@ -31971,7 +31988,7 @@
                           "seed": "3위",
                           "short": "HLE",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 0
                       },
@@ -31982,7 +31999,7 @@
                           "seed": "",
                           "short": "T1",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4위",
@@ -32178,6 +32195,22 @@
                     4,
                     0,
                     "b"
+                  ],
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    1,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "a"
                   ]
                 ]
               }
@@ -39579,7 +39612,7 @@
                           "seed": "3위",
                           "short": "HLE",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 0
                       },
@@ -39590,7 +39623,7 @@
                           "seed": "",
                           "short": "DK",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4위",
@@ -39786,6 +39819,22 @@
                     4,
                     0,
                     "b"
+                  ],
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    1,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "a"
                   ]
                 ]
               }
@@ -39931,7 +39980,7 @@
                           "seed": "3위",
                           "short": "DK",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 0
                       },
@@ -39948,7 +39997,7 @@
                           "seed": "4위",
                           "short": "T1",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 4
                       }
@@ -40138,6 +40187,22 @@
                     4,
                     0,
                     "b"
+                  ],
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    1,
+                    "a"
                   ]
                 ]
               }
@@ -40303,6 +40368,452 @@
             {
               "rank": 4,
               "team": "KT",
+              "note": ""
+            }
+          ]
+        },
+        "KeSPA CUP": {
+          "name": "LoL KeSPA CUP",
+          "kespa24": true,
+          "champion": "BRO",
+          "qual": {
+            "A": [
+              {
+                "code": "BRO",
+                "w": 3,
+                "l": 2,
+                "time": "24:32"
+              },
+              {
+                "code": "TPE",
+                "w": 3,
+                "l": 2,
+                "time": "31:01"
+              },
+              {
+                "code": "KT",
+                "w": 3,
+                "l": 2,
+                "time": "31:12"
+              },
+              {
+                "code": "KRX",
+                "w": 3,
+                "l": 2,
+                "time": "33:28"
+              },
+              {
+                "code": "BFX",
+                "w": 2,
+                "l": 3
+              },
+              {
+                "code": "DNS",
+                "w": 1,
+                "l": 4
+              }
+            ],
+            "B": [
+              {
+                "code": "GEN",
+                "w": 5,
+                "l": 0
+              },
+              {
+                "code": "DK",
+                "w": 4,
+                "l": 1
+              },
+              {
+                "code": "HLE",
+                "w": 3,
+                "l": 2
+              },
+              {
+                "code": "NS",
+                "w": 2,
+                "l": 3
+              },
+              {
+                "code": "VIE",
+                "w": 1,
+                "l": 4
+              },
+              {
+                "code": "T1",
+                "w": 0,
+                "l": 5
+              }
+            ]
+          },
+          "fs1": {
+            "totalRows": 7,
+            "rounds": [
+              {
+                "matches": [
+                  {
+                    "title": "R1 M4",
+                    "startRow": 0,
+                    "a": {
+                      "short": "BRO",
+                      "seed": "A조 1위",
+                      "score": "L"
+                    },
+                    "b": {
+                      "short": "GEN",
+                      "seed": "B조 1위",
+                      "score": "W",
+                      "msi": true
+                    }
+                  },
+                  {
+                    "title": "R1 M3",
+                    "startRow": 2,
+                    "a": {
+                      "short": "TPE",
+                      "seed": "A조 2위",
+                      "score": "L"
+                    },
+                    "b": {
+                      "short": "DK",
+                      "seed": "B조 2위",
+                      "score": "W",
+                      "win": true
+                    }
+                  },
+                  {
+                    "title": "R1 M2",
+                    "startRow": 4,
+                    "a": {
+                      "short": "KT",
+                      "seed": "A조 3위",
+                      "score": "W",
+                      "win": true
+                    },
+                    "b": {
+                      "short": "HLE",
+                      "seed": "B조 3위",
+                      "score": "L"
+                    }
+                  },
+                  {
+                    "title": "R1 M1",
+                    "startRow": 6,
+                    "a": {
+                      "short": "KRX",
+                      "seed": "A조 4위",
+                      "score": "L",
+                      "elim": true
+                    },
+                    "b": {
+                      "short": "NS",
+                      "seed": "B조 4위",
+                      "score": "W",
+                      "win": true
+                    }
+                  }
+                ]
+              },
+              {
+                "matches": [
+                  {
+                    "title": "R2 M1 (M5)",
+                    "startRow": 1,
+                    "a": {
+                      "short": "BRO",
+                      "seed": "M4 패자",
+                      "score": "W",
+                      "msi": true
+                    },
+                    "b": {
+                      "short": "DK",
+                      "seed": "M3 승자",
+                      "score": "L"
+                    }
+                  },
+                  {
+                    "title": "R2 M3 (M7)",
+                    "startRow": 3,
+                    "a": {
+                      "short": "TPE",
+                      "seed": "M3 패자",
+                      "score": "W",
+                      "win": true
+                    },
+                    "b": {
+                      "short": "KT",
+                      "seed": "M2 승자",
+                      "score": "L"
+                    }
+                  },
+                  {
+                    "title": "R2 M2 (M6)",
+                    "startRow": 5,
+                    "a": {
+                      "short": "HLE",
+                      "seed": "M2 패자",
+                      "score": "W",
+                      "win": true
+                    },
+                    "b": {
+                      "short": "NS",
+                      "seed": "M1 승자",
+                      "score": "L",
+                      "elim": true
+                    }
+                  }
+                ]
+              },
+              {
+                "matches": [
+                  {
+                    "title": "R3 M2 (M9)",
+                    "startRow": 2,
+                    "a": {
+                      "short": "DK",
+                      "seed": "M5 패자",
+                      "score": "W",
+                      "msi": true
+                    },
+                    "b": {
+                      "short": "TPE",
+                      "seed": "M7 승자",
+                      "score": "L"
+                    }
+                  },
+                  {
+                    "title": "R3 M1 (M8)",
+                    "startRow": 4,
+                    "a": {
+                      "short": "KT",
+                      "seed": "M7 패자",
+                      "score": "L",
+                      "elim": true
+                    },
+                    "b": {
+                      "short": "HLE",
+                      "seed": "M6 승자",
+                      "score": "W",
+                      "win": true
+                    }
+                  }
+                ]
+              },
+              {
+                "matches": [
+                  {
+                    "title": "R4 (M10)",
+                    "startRow": 3,
+                    "a": {
+                      "short": "TPE",
+                      "seed": "M9 패자",
+                      "score": "L",
+                      "elim": true
+                    },
+                    "b": {
+                      "short": "HLE",
+                      "seed": "M8 승자",
+                      "score": "W",
+                      "msi": true
+                    }
+                  }
+                ]
+              }
+            ],
+            "connectors": [
+              [
+                0,
+                0,
+                "a",
+                1,
+                0,
+                "a"
+              ],
+              [
+                0,
+                1,
+                "b",
+                1,
+                0,
+                "b"
+              ],
+              [
+                0,
+                1,
+                "a",
+                1,
+                1,
+                "a"
+              ],
+              [
+                0,
+                2,
+                "a",
+                1,
+                1,
+                "b"
+              ],
+              [
+                0,
+                2,
+                "b",
+                1,
+                2,
+                "a"
+              ],
+              [
+                0,
+                3,
+                "b",
+                1,
+                2,
+                "b"
+              ],
+              [
+                1,
+                0,
+                "b",
+                2,
+                0,
+                "a"
+              ],
+              [
+                1,
+                1,
+                "a",
+                2,
+                0,
+                "b"
+              ],
+              [
+                1,
+                1,
+                "b",
+                2,
+                1,
+                "a"
+              ],
+              [
+                1,
+                2,
+                "a",
+                2,
+                1,
+                "b"
+              ],
+              [
+                2,
+                0,
+                "b",
+                3,
+                0,
+                "a"
+              ],
+              [
+                2,
+                1,
+                "b",
+                3,
+                0,
+                "b"
+              ]
+            ]
+          },
+          "fs2": {
+            "rounds": [
+              {
+                "matches": [
+                  {
+                    "title": "4강 1경기",
+                    "time": "12/7",
+                    "a": {
+                      "short": "BRO",
+                      "seed": "2시드",
+                      "score": 2,
+                      "win": true
+                    },
+                    "b": {
+                      "short": "HLE",
+                      "seed": "4시드",
+                      "score": 1
+                    }
+                  },
+                  {
+                    "title": "4강 2경기",
+                    "time": "12/7",
+                    "a": {
+                      "short": "GEN",
+                      "seed": "1시드",
+                      "score": 1
+                    },
+                    "b": {
+                      "short": "DK",
+                      "seed": "3시드",
+                      "score": 2,
+                      "win": true
+                    }
+                  }
+                ]
+              },
+              {
+                "matches": [
+                  {
+                    "title": "결승",
+                    "time": "12/8",
+                    "a": {
+                      "short": "BRO",
+                      "seed": "4강 승자",
+                      "score": 3,
+                      "msi": true
+                    },
+                    "b": {
+                      "short": "DK",
+                      "seed": "4강 승자",
+                      "score": 1,
+                      "elim": true
+                    }
+                  }
+                ]
+              }
+            ],
+            "connectors": [
+              [
+                0,
+                0,
+                "a",
+                1,
+                0,
+                "a"
+              ],
+              [
+                0,
+                1,
+                "b",
+                1,
+                0,
+                "b"
+              ]
+            ]
+          },
+          "finalStandings": [
+            {
+              "rank": 1,
+              "team": "BRO",
+              "note": "우승"
+            },
+            {
+              "rank": 2,
+              "team": "DK",
+              "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "GEN",
+              "note": ""
+            },
+            {
+              "rank": 4,
+              "team": "HLE",
               "note": ""
             }
           ]

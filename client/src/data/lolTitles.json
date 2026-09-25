@@ -64,7 +64,8 @@
       {
         "name": "2026 LoL KeSPA CUP",
         "detail": "우승",
-        "color": "#072148"
+        "color": "#8f7cf6",
+        "gradient": "linear-gradient(180deg, #8f7cf6, #6176eb)"
       }
     ],
     "AL": [
@@ -213,6 +214,14 @@
         "gradient": "linear-gradient(90deg, #f74e16, #d1b36f)"
       }
     ],
+    "BRO": [
+      {
+        "name": "2024 LoL KeSPA CUP",
+        "detail": "우승",
+        "color": "#8f7cf6",
+        "gradient": "linear-gradient(180deg, #8f7cf6, #6176eb)"
+      }
+    ],
     "TLAW": [
       {
         "name": "2025 LTA Split 1",
@@ -277,7 +286,8 @@
       {
         "name": "2025 LoL KeSPA CUP",
         "detail": "우승",
-        "color": "#072148"
+        "color": "#8f7cf6",
+        "gradient": "linear-gradient(180deg, #8f7cf6, #6176eb)"
       },
       {
         "name": "2025 Worlds",

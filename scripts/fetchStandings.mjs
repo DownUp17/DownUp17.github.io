@@ -767,8 +767,22 @@ function lckPo2024Layout(bracket) {
   SR.set(lowerR3, 8);                                    // 패자조 3라운드 (하위)
   SR.set(r3.matches[0], 8);                              // 4라운드 (패자조 3라운드와 같은 행)
   SR.set(r4.matches[0], 5);                              // 결승
-  const rounds2 = bracket.rounds.map((r) => ({ title: '', matches: r.matches.map((m) => ({ ...m, startRow: SR.get(m) })) }));
-  return fixDropElim({ totalRows: 10, rounds: rounds2, connectors: bracket.connectors });
+  const rounds2 = bracket.rounds.map((r) => ({ title: '', matches: r.matches.map((m) => ({ ...m, startRow: SR.get(m), a: { ...m.a }, b: { ...m.b } })) }));
+  // 원본에 1라운드→2라운드 연결선이 없어 1R 승자가 진출(금색)로 오표기됨 → 결승 외 msi는 라운드 승리(파랑)로 교정.
+  for (let ci = 0; ci < rounds2.length - 1; ci++) for (const m of rounds2[ci].matches) {
+    for (const s of [m.a, m.b]) if (s?.msi) { delete s.msi; s.win = true; }
+  }
+  // 누락된 1라운드→2라운드 연결선을 팀 추적으로 추가(1R 승자가 뛰는 2R 경기·슬롯).
+  const connectors = [...(bracket.connectors || [])];
+  rounds2[0].matches.forEach((m, mi) => {
+    const w = winnerOf(m); if (!w?.short) return;
+    const di = rounds2[1].matches.findIndex((x) => x.a?.short === w.short || x.b?.short === w.short);
+    if (di < 0) return;
+    const d = rounds2[1].matches[di];
+    const has = connectors.some((c) => c[0] === 0 && c[1] === mi && c[3] === 1 && c[4] === di);
+    if (!has) connectors.push([0, mi, 'mid', 1, di, d.a?.short === w.short ? 'a' : 'b']);
+  });
+  return fixDropElim({ totalRows: 10, rounds: rounds2, connectors });
 }
 
 // 2021~2024 LPL Spring/Summer형 PO(rounds 2·2·2·2·2·1·1, 게이트웨이 1~3라운드 + 상위/하위 대진) — 사용자 지정 압축.
@@ -3769,6 +3783,75 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2025 KeSPA CUP 주입 실패(무시): ${e.message}`); }
 }
 
+// ── 2024 LoL KeSPA CUP (API 미제공 · 수기) → 과거 에디션 lck 서브탭 주입 ─────────
+//   12팀(LCK 10 + 중화 타이베이·베트남). 조별리그(6팀 2개조 싱글RR·상위 4팀) →
+//   퀄리피케이션 스테이지(2026 결선 스테이지 1과 같은 사다리 · 라운드별 최상위 매치 승자 진출) → 녹아웃(4팀 싱글 엘리). 우승 BRO.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const S = (short, seed, score, flag) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
+    const kespa24 = {
+      name: 'LoL KeSPA CUP', kespa24: true, champion: 'BRO',
+      // 조별리그 — 승-패 + 세트 평균 시간(동률 시 순위 비교 기준).
+      qual: {
+        A: [{ code: 'BRO', w: 3, l: 2, time: '24:32' }, { code: 'TPE', w: 3, l: 2, time: '31:01' }, { code: 'KT', w: 3, l: 2, time: '31:12' }, { code: 'KRX', w: 3, l: 2, time: '33:28' }, { code: 'BFX', w: 2, l: 3 }, { code: 'DNS', w: 1, l: 4 }],
+        B: [{ code: 'GEN', w: 5, l: 0 }, { code: 'DK', w: 4, l: 1 }, { code: 'HLE', w: 3, l: 2 }, { code: 'NS', w: 2, l: 3 }, { code: 'VIE', w: 1, l: 4 }, { code: 'T1', w: 0, l: 5 }],
+      },
+      // 퀄리피케이션 스테이지 — 사다리(2026 결선 스테이지 1과 동일 배치). 결과는 승/패만 공개.
+      fs1: {
+        totalRows: 7,
+        rounds: [
+          { matches: [
+            { title: 'R1 M4', startRow: 0, a: S('BRO', 'A조 1위', 'L'), b: S('GEN', 'B조 1위', 'W', 'msi') },
+            { title: 'R1 M3', startRow: 2, a: S('TPE', 'A조 2위', 'L'), b: S('DK', 'B조 2위', 'W', 'win') },
+            { title: 'R1 M2', startRow: 4, a: S('KT', 'A조 3위', 'W', 'win'), b: S('HLE', 'B조 3위', 'L') },
+            { title: 'R1 M1', startRow: 6, a: S('KRX', 'A조 4위', 'L', 'elim'), b: S('NS', 'B조 4위', 'W', 'win') },
+          ] },
+          { matches: [
+            { title: 'R2 M1 (M5)', startRow: 1, a: S('BRO', 'M4 패자', 'W', 'msi'), b: S('DK', 'M3 승자', 'L') },
+            { title: 'R2 M3 (M7)', startRow: 3, a: S('TPE', 'M3 패자', 'W', 'win'), b: S('KT', 'M2 승자', 'L') },
+            { title: 'R2 M2 (M6)', startRow: 5, a: S('HLE', 'M2 패자', 'W', 'win'), b: S('NS', 'M1 승자', 'L', 'elim') },
+          ] },
+          { matches: [
+            { title: 'R3 M2 (M9)', startRow: 2, a: S('DK', 'M5 패자', 'W', 'msi'), b: S('TPE', 'M7 승자', 'L') },
+            { title: 'R3 M1 (M8)', startRow: 4, a: S('KT', 'M7 패자', 'L', 'elim'), b: S('HLE', 'M6 승자', 'W', 'win') },
+          ] },
+          { matches: [
+            { title: 'R4 (M10)', startRow: 3, a: S('TPE', 'M9 패자', 'L', 'elim'), b: S('HLE', 'M8 승자', 'W', 'msi') },
+          ] },
+        ],
+        connectors: [
+          [0, 0, 'a', 1, 0, 'a'], [0, 1, 'b', 1, 0, 'b'], [0, 1, 'a', 1, 1, 'a'], [0, 2, 'a', 1, 1, 'b'], [0, 2, 'b', 1, 2, 'a'], [0, 3, 'b', 1, 2, 'b'],
+          [1, 0, 'b', 2, 0, 'a'], [1, 1, 'a', 2, 0, 'b'], [1, 1, 'b', 2, 1, 'a'], [1, 2, 'a', 2, 1, 'b'],
+          [2, 0, 'b', 3, 0, 'a'], [2, 1, 'b', 3, 0, 'b'],
+        ],
+      },
+      // 녹아웃 스테이지 — 4팀 싱글 엘리(4강 Bo3 → 결승 Bo5).
+      fs2: {
+        rounds: [
+          { matches: [
+            { title: '4강 1경기', time: '12/7', a: S('BRO', '2시드', 2, 'win'), b: S('HLE', '4시드', 1) },
+            { title: '4강 2경기', time: '12/7', a: S('GEN', '1시드', 1), b: S('DK', '3시드', 2, 'win') },
+          ] },
+          { matches: [
+            { title: '결승', time: '12/8', a: S('BRO', '4강 승자', 3, 'msi'), b: S('DK', '4강 승자', 1, 'elim') },
+          ] },
+        ],
+        connectors: [[0, 0, 'a', 1, 0, 'a'], [0, 1, 'b', 1, 0, 'b']],
+      },
+      finalStandings: [{ rank: 1, team: 'BRO', note: '우승' }, { rank: 2, team: 'DK', note: '준우승' }, { rank: 3, team: 'GEN', note: '' }, { rank: 4, team: 'HLE', note: '' }],
+    };
+    if (past.standings?.['2024']?.lck) {
+      past.standings['2024'].lck['KeSPA CUP'] = kespa24;
+      const subs = past.subtabs['2024'].lck;
+      if (!subs.includes('KeSPA CUP')) subs.push('KeSPA CUP');
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2024 LoL KeSPA CUP 주입 완료 (조별리그 → 퀄리피케이션 → 녹아웃 · 우승 BRO)');
+    }
+  } catch (e) { console.warn(`2024 KeSPA CUP 주입 실패(무시): ${e.message}`); }
+}
+
 // ── 2025 Esports World Cup (EWC) — API 미제공 · 수기 → 과거 에디션 주입 ─────────
 //   8팀 2개조 더블 엘리(조별 2팀 진출) → 8팀 싱글 엘리 플레이오프(4팀은 MSI 시드로 플레이오프 직행) + 3위전. 우승 GEN.
 {
@@ -3984,7 +4067,7 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'fst') return { color: y === '2025' ? '#45002c' : '#ff5500' };
     if (lg === 'lck') {
       if (sub === 'LCK CUP') return { color: y === '2025' ? '#7f6b00' : '#2a45b3' };
-      if (sub === 'KeSPA CUP') return { color: '#072148' };
+      if (sub === 'KeSPA CUP') return { color: '#8f7cf6', gradient: 'linear-gradient(180deg, #8f7cf6, #6176eb)' };
       return { color: COMP_COLOR.lck };
     }
     if (lg === 'lcs') { if (y === '2025' && (sub === 'Split 1' || sub === 'Playoffs')) return { color: '#b2a27e' }; return { color: y === '2025' ? '#3483F0' : COMP_COLOR.lcs }; }
