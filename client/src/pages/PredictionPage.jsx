@@ -51,6 +51,12 @@ import bnkFearxLogo from '../assets/bnk-fearx-2024.svg';
 import fearxLogo from '../assets/fearx.svg';
 import kwangdongFreecsLogo from '../assets/kwangdong-freecs.svg';
 import madLionsKoiLogo from '../assets/mad-lions-koi.svg';
+import vcsLogo from '../assets/vcs.svg';
+import pcsLogo from '../assets/pcs.webp';
+import c9_2024Logo from '../assets/c9-2024.svg';
+import nrgLogo from '../assets/nrg-2024.svg';
+import imtLogo from '../assets/imt-2024.svg';
+import nrg2024SpringLogo from '../assets/nrg-2024-spring.svg';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -91,10 +97,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
@@ -2283,9 +2289,9 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
   }
 
   // EWC 커스텀 렌더 — 그룹 스테이지(2개조 더블 엘리) / 플레이오프(8팀 싱글 엘리 + 3위전). 2026 라이브 렌더와 동일 형식.
-  if (data.groups && data.playoff) {
-    const groupKeys = Object.keys(data.groups);
-    if (stage === '그룹 스테이지') {
+  if (data.playoff) {
+    const groupKeys = Object.keys(data.groups || {});
+    if (stage === '그룹 스테이지' && groupKeys.length) {
       return (
         <section className="flex flex-col gap-5">
           <div className="flex items-baseline gap-2 flex-wrap">
@@ -2595,12 +2601,15 @@ const PAST_DETAIL = {
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
   'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
   'msi|2025': { color: '#fe0000' }, // MSI 기본색은 #191919로 변경, 2025 상징색은 유지
+  'msi|2024': { color: '#000000' },
   'worlds|2025': { color: '#0e2bf4' },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
   'demacia|2025|ASI': { color: '#7927ff', logo: asiLogo },
   'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
+  'lcp|2024|VCS': { color: '#f0fea6', logo: vcsLogo, invert: true }, // 검은 로고 → 흰색 반전
+  'lcp|2024|PCS': { color: '#101725', logo: pcsLogo },
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
@@ -2892,6 +2901,10 @@ const PredictionPage = () => {
     if (activeYear <= 2024) ov.DNS = { tag: 'KDF', name: 'KWANGDONG FREECS', logo: kwangdongFreecsLogo };
     // MKOI: 2024까지 MAD Lions KOI(MDK). 2025부터 기본 Movistar KOI.
     if (activeYear <= 2024) ov.MKOI = { tag: 'MDK', name: 'MAD Lions KOI', logo: madLionsKoiLogo };
+    // C9: 2024까지 이름 'Cloud9', 옛 로고. 2025부터 기본 Cloud9 Kia.
+    if (activeYear <= 2024) ov.C9 = { name: 'Cloud9', logo: c9_2024Logo };
+    // NRG: 2024 Spring까지 옛 워드마크 로고(그 외는 EXTRA_LOGOS 기본 크레스트 로고).
+    if (activeYear === 2024 && comp?.key === 'lcs' && activeSub === 'Spring') ov.NRG = { logo: nrg2024SpringLogo };
     return ov;
   })();
 
@@ -2919,7 +2932,7 @@ const PredictionPage = () => {
   const isPastSplit = comp && isCurrentYear && (PAST_SPLIT_SUBS.has(`${comp.key}|${activeSub}`) || isPastComp);
   const curSplitData = isPastSplit ? (isPastComp ? officialStandings.standings[comp.key] : officialStandings.standings[comp.key]?.[activeSub]) : null;
   const stageListRaw = comp
-    ? (pastFull ? (comp.key === 'ewc' ? STAGE_TABS.ewc : pastSplitStagesFromData(pastData))
+    ? (pastFull ? (comp.key === 'ewc' ? (Object.keys(pastData?.groups || {}).length ? STAGE_TABS.ewc : ['플레이오프']) : pastSplitStagesFromData(pastData))
       : isPastSplit ? pastSplitStagesFromData(curSplitData)
         : (STAGE_TABS[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_TABS[comp.key])))
     : null;

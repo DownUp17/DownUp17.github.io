@@ -3622,8 +3622,10 @@ console.log('lolStandings.json 갱신 완료');
     const lcs = past.standings?.['2024']?.lcs;
     const sm = lcs?.Summer;
     const po = (sm?.brackets || []).find((b) => b.slug === 'playoffs');
+    // Summer에도 플레이오프는 그대로 두고(최종순위는 Championship에만 → 우승 경력 중복 방지), Championship 서브탭에 복제.
+    const champPo = lcs?.Championship?.brackets?.[0];
+    if (sm && !po && champPo) { sm.brackets = [...(sm.brackets || []), { ...champPo, name: '플레이오프', label: '플레이오프' }]; fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('2024 LCS Summer 플레이오프 복원'); }
     if (sm && po && !lcs.Championship) {
-      sm.brackets = sm.brackets.filter((b) => b !== po);
       lcs.Championship = { name: 'LCS Championship 2024', rows: [], brackets: [{ ...po, name: 'LCS Championship', label: 'LCS Championship' }], finalStandings: sm.finalStandings || [] };
       sm.finalStandings = [];
       const subs = past.subtabs['2024'].lcs;
@@ -3778,6 +3780,33 @@ console.log('lolStandings.json 갱신 완료');
     };
     fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
     console.log('2025 EWC 주입 완료 (2개조 그룹 스테이지 + 8강 플레이오프(+3위전) · 우승 GEN)');
+    // 2024 EWC — 8팀 싱글 엘리(그룹 스테이지·3위전 없음). 우승 T1.
+    const se24 = applySingleElimLayout({
+      rounds: [
+        { matches: [
+          { title: '8강 1경기', a: S('BLG', '', 1), b: S('T1', '', 2, 'win') },
+          { title: '8강 2경기', a: S('TLAW', '', 2, 'win'), b: S('FNC', '', 0) },
+          { title: '8강 3경기', a: S('GEN', '', 0), b: S('TES', '', 2, 'win') },
+          { title: '8강 4경기', a: S('G2', '', 2, 'win'), b: S('FLY', '', 1) },
+        ] },
+        { matches: [
+          { title: '4강 1경기', a: S('T1', '8강 승자', 2, 'win'), b: S('TLAW', '8강 승자', 1) },
+          { title: '4강 2경기', a: S('TES', '8강 승자', 2, 'win'), b: S('G2', '8강 승자', 0) },
+        ] },
+        { matches: [
+          { title: '결승', a: S('T1', '4강 승자', 3, 'msi'), b: S('TES', '4강 승자', 1, 'elim') },
+        ] },
+      ],
+      connectors: [
+        [0, 0, 'b', 1, 0, 'a'], [0, 1, 'a', 1, 0, 'b'], [0, 2, 'b', 1, 1, 'a'], [0, 3, 'a', 1, 1, 'b'],
+        [1, 0, 'a', 2, 0, 'a'], [1, 1, 'a', 2, 0, 'b'],
+      ],
+    });
+    (past.standings['2024'] = past.standings['2024'] || {}).ewc = {
+      stage: '8팀 싱글 엘리미네이션', champion: 'T1', playoff: { bracket: se24 },
+    };
+    fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+    console.log('2024 EWC 주입 완료 (8강 싱글 엘리 · 우승 T1)');
   } catch (e) { console.warn(`2025 EWC 주입 실패(무시): ${e.message}`); }
 }
 
@@ -3914,7 +3943,7 @@ console.log('lolStandings.json 갱신 완료');
     }
     if (lg === 'lcs') { if (y === '2025' && (sub === 'Split 1' || sub === 'Playoffs')) return { color: '#b2a27e' }; return { color: y === '2025' ? '#3483F0' : COMP_COLOR.lcs }; }
     if (lg === 'cblol') { if (y === '2025' && (sub === 'Etapa 1' || sub === 'Playoffs')) return { color: '#b2a27e' }; return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol }; }
-    if (lg === 'msi') return { color: y === '2025' ? '#fe0000' : COMP_COLOR.msi }; // 2025 상징색은 기존 색 유지
+    if (lg === 'msi') return { color: y === '2025' ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 2025·2024 상징색은 개별 유지
     if (lg === 'worlds' && y === '2025') return { color: '#0e2bf4' };
     return { color: COMP_COLOR[lg] || '#888' };
   };
@@ -4003,7 +4032,7 @@ console.log('lolStandings.json 갱신 완료');
   // 정렬 — 최신 연도 위로, 같은 연도 내에서는 대회 개최 순서(대략)의 역순.
   // 개최 순서(이른 대회 → 늦은 대회). 최신순 정렬 시 뒤쪽(늦은 대회)이 위로 온다.
   //   LCK CUP·첫 스플릿(LPL Split 1 등)은 First Stand보다 먼저 진행 → First Stand 앞에 배치.
-  const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Kickoff', 'Split 1', 'Etapa 1', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Mid Season', 'Split 2', 'Etapa 2', 'Summer', '시즌 파이널', 'Season Finals', 'Split 3', 'Etapa 3', 'Playoffs', 'Copa', 'Worlds', 'KeSPA'];
+  const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Kickoff', 'Split 1', 'Etapa 1', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Mid Season', 'Split 2', 'Etapa 2', 'Summer', 'Esports World Cup', '시즌 파이널', 'Season Finals', 'Split 3', 'Etapa 3', 'Playoffs', 'Copa', 'Worlds', 'KeSPA'];
   const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
   const yearOf = (name) => { const m = name.match(/\b(20\d{2})\b/); return m ? Number(m[1]) : 0; };
   for (const short of Object.keys(titles)) titles[short].sort((a, b) => (yearOf(b.name) - yearOf(a.name)) || (ord(b.name) - ord(a.name)));

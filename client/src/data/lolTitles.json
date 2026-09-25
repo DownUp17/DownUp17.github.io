@@ -52,7 +52,7 @@
       {
         "name": "2024 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#191919"
+        "color": "#000000"
       },
       {
         "name": "2024 LCK Spring",
@@ -269,6 +269,11 @@
         "name": "2024 Worlds",
         "detail": "우승",
         "color": "#dddddd"
+      },
+      {
+        "name": "2024 Esports World Cup",
+        "detail": "우승",
+        "color": "#eaeaea"
       }
     ],
     "PSG": [
