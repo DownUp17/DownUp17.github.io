@@ -254,6 +254,20 @@
         "color": "#0b0718"
       }
     ],
+    "EST": [
+      {
+        "name": "2024 LLA Opening",
+        "detail": "우승",
+        "color": "#ff6528"
+      }
+    ],
+    "R7": [
+      {
+        "name": "2024 LLA Closing",
+        "detail": "우승",
+        "color": "#ff6528"
+      }
+    ],
     "T1": [
       {
         "name": "2025 LoL KeSPA CUP",
@@ -268,7 +282,7 @@
       {
         "name": "2024 Worlds",
         "detail": "우승",
-        "color": "#dddddd"
+        "color": "#010a42"
       },
       {
         "name": "2024 Esports World Cup",

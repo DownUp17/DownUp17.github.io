@@ -3614,6 +3614,39 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 PCS·VCS 생성 실패(무시): ${e.message}`); }
 }
 
+// ── CBLOL 2020~2024 대회 선택(CBLOL / LLA) — LLA(라틴 아메리카 리그)는 2024년까지 존재 ──
+//   standings[year].cblol = { CBLOL: {Split 1,…}, LLA: {Opening, Closing, 승강전} } · subtabs도 이벤트별.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const LLA_ID = '101382741235120470';
+    const tours = (await api('getTournamentsForLeague', { leagueId: LLA_ID })).data.leagues[0].tournaments || [];
+    const lab = (slug) => (/promotion/.test(slug) ? '승강전' : /closing/.test(slug) ? 'Closing' : 'Opening');
+    let changed = false;
+    for (const year of ['2020', '2021', '2022', '2023', '2024']) {
+      const cur = past.standings?.[year]?.cblol;
+      if (!cur || cur.CBLOL) continue; // 없음 / 이미 이벤트형
+      const lla = {}, llaSubs = [];
+      const list = tours.filter((t) => t.slug.includes(year)).sort((a, b) => (a.startDate < b.startDate ? -1 : 1));
+      for (const t of list) {
+        try {
+          const s = await buildSplit(LLA_ID, t.slug);
+          if (!s || !((s.rows || []).length || (s.brackets || []).length)) continue;
+          const l = lab(t.slug);
+          lla[l] = { name: s.name, rows: s.rows, brackets: s.brackets, finalStandings: s.finalStandings };
+          llaSubs.push(l);
+        } catch (e) { console.warn(`${year} LLA ${t.slug} 실패: ${e.message}`); }
+      }
+      past.standings[year].cblol = { CBLOL: cur, ...(llaSubs.length ? { LLA: lla } : {}) };
+      past.subtabs[year].cblol = { CBLOL: past.subtabs[year].cblol, ...(llaSubs.length ? { LLA: llaSubs } : {}) };
+      changed = true;
+      console.log(`${year} CBLOL 대회 선택: CBLOL / LLA[${llaSubs.join(',')}]`);
+    }
+    if (changed) fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+  } catch (e) { console.warn(`CBLOL/LLA 대회 선택 생성 실패(무시): ${e.message}`); }
+}
+
 // ── 2024 LCS Championship — Summer 플레이오프가 곧 LCS Championship → 'Championship' 서브탭으로 분리 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -3942,9 +3975,14 @@ console.log('lolStandings.json 갱신 완료');
       return { color: COMP_COLOR.lck };
     }
     if (lg === 'lcs') { if (y === '2025' && (sub === 'Split 1' || sub === 'Playoffs')) return { color: '#b2a27e' }; return { color: y === '2025' ? '#3483F0' : COMP_COLOR.lcs }; }
-    if (lg === 'cblol') { if (y === '2025' && (sub === 'Etapa 1' || sub === 'Playoffs')) return { color: '#b2a27e' }; return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol }; }
+    if (lg === 'cblol') {
+      if (sub === 'Opening' || sub === 'Closing' || sub === '승강전') return { color: '#ff6528' }; // LLA(라틴 아메리카 리그)
+      if (y === '2025' && (sub === 'Etapa 1' || sub === 'Playoffs')) return { color: '#b2a27e' };
+      return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol };
+    }
     if (lg === 'msi') return { color: y === '2025' ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 2025·2024 상징색은 개별 유지
     if (lg === 'worlds' && y === '2025') return { color: '#0e2bf4' };
+    if (lg === 'worlds' && y === '2024') return { color: '#010a42' };
     return { color: COMP_COLOR[lg] || '#888' };
   };
   const add = (short, name, style) => {
@@ -4017,9 +4055,13 @@ console.log('lolStandings.json 갱신 완료');
         } else if (v && typeof v === 'object') {             // 서브탭형 리그
           for (const [sub, node] of Object.entries(v)) {
             if (isSeonbal(sub) || sub === 'Road to MSI') continue; // 선발전·Road to MSI 제외
-            if (lg === 'lcp' && (sub === 'PCS' || sub === 'VCS') && node && !node.finalStandings) {
-              // 대회 선택형(2024 PCS·VCS) — 이벤트 → 스플릿 2단 구조
-              for (const [sp, n2] of Object.entries(node)) add(champOf(n2), `${year} ${sub} ${sp}`, compStyle(year, lg, sp));
+            if ((lg === 'lcp' || lg === 'cblol') && node && !node.finalStandings && !node.rows && !node.brackets) {
+              // 대회 선택형(2024 PCS·VCS / ~2024 CBLOL·LLA) — 이벤트 → 스플릿 2단 구조
+              for (const [sp, n2] of Object.entries(node)) {
+                if (isSeonbal(sp) || sp === '승강전') continue;
+                const nm = sub === 'CBLOL' ? compName(year, lg, sp) : `${year} ${sub} ${sp}`;
+                add(champOf(n2), nm, compStyle(year, lg, sp));
+              }
               continue;
             }
             add(champOf(node), compName(year, lg, sub), compStyle(year, lg, sub));

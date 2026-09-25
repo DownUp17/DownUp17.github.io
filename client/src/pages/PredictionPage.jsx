@@ -2603,6 +2603,7 @@ const PAST_DETAIL = {
   'msi|2025': { color: '#fe0000' }, // MSI 기본색은 #191919로 변경, 2025 상징색은 유지
   'msi|2024': { color: '#000000' },
   'worlds|2025': { color: '#0e2bf4' },
+  'worlds|2024': { color: '#010a42' },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
@@ -2610,6 +2611,11 @@ const EVENT_DETAIL = {
   'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
   'lcp|2024|VCS': { color: '#f0fea6', logo: vcsLogo, invert: true }, // 검은 로고 → 흰색 반전
   'lcp|2024|PCS': { color: '#101725', logo: pcsLogo },
+  'cblol|2020|LLA': { color: '#ff6528' },
+  'cblol|2021|LLA': { color: '#ff6528' },
+  'cblol|2022|LLA': { color: '#ff6528' },
+  'cblol|2023|LLA': { color: '#ff6528' },
+  'cblol|2024|LLA': { color: '#ff6528' },
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
@@ -2824,7 +2830,13 @@ const PredictionPage = () => {
       return n;
     }, { replace: true });
   // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025 = ASI/Demacia Cup. 지정 케이스에만 노출.
-  const subEvents = comp && !isCurrentYear ? YEAR_SUBEVENTS[`${comp.key}|${activeYear}`] : null;
+  // 대회 선택 목록 — 수기 지정(YEAR_SUBEVENTS) 또는 이벤트형 서브탭 데이터({CBLOL:[…], LLA:[…]})의 키.
+  const subEvents = comp && !isCurrentYear
+    ? (YEAR_SUBEVENTS[`${comp.key}|${activeYear}`] || (() => {
+      const v = PAST_SUBTABS[String(activeYear)]?.[comp.key];
+      return v && !Array.isArray(v) ? Object.keys(v) : null;
+    })())
+    : null;
   const eventParam = searchParams.get('event');
   const activeEvent = subEvents ? (subEvents.includes(eventParam) ? eventParam : subEvents[0]) : null;
   const setActiveEvent = (e) => setSearchParams((p) => { const n = new URLSearchParams(p); n.set('event', e); return n; }, { replace: true });
