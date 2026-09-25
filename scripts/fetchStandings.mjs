@@ -3592,24 +3592,33 @@ console.log('lolStandings.json 갱신 완료');
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
   try {
     const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
-    const EV = { PCS: ['104366947889790212', [['Spring', 'pcs_spring_2024'], ['Summer', 'pcs_summer_2024']]], VCS: ['107213827295848783', [['Spring', 'vcs_spring_2024'], ['Summer', 'vcs_summer_2024']]] };
+    // 순서 = 대회 선택 표시 순서(PCS·LJL·LCO·VCS). 없는 이벤트만 추가 생성.
+    const EV = {
+      PCS: ['104366947889790212', [['Spring', 'pcs_spring_2024'], ['Summer', 'pcs_summer_2024']]],
+      LJL: ['98767991349978712', [['Spring', 'ljl_spring_2024'], ['Summer', 'ljl_summer_2024']]],
+      LCO: ['105709090213554609', [['Spring', 'lco_spring_2024'], ['Summer', 'lco_summer_2024']]],
+      VCS: ['107213827295848783', [['Spring', 'vcs_spring_2024'], ['Summer', 'vcs_summer_2024']]],
+    };
     const std = (past.standings['2024'] = past.standings['2024'] || {});
     const sub = (past.subtabs['2024'] = past.subtabs['2024'] || {});
-    if (!std.lcp) {
-      const lcp = {}, subs = {};
-      for (const [ev, [leagueId, list]] of Object.entries(EV)) {
-        for (const [label, slug] of list) {
-          try {
-            const s = await buildSplit(leagueId, slug);
-            if (s) { (lcp[ev] = lcp[ev] || {})[label] = { name: s.name, rows: s.rows, brackets: s.brackets, finalStandings: s.finalStandings }; (subs[ev] = subs[ev] || []).push(label); }
-          } catch (e) { console.warn(`2024 ${ev} ${label} 실패: ${e.message}`); }
-        }
+    const lcp = std.lcp || {}, subs = sub.lcp || {};
+    let changed = false;
+    for (const [ev, [leagueId, list]] of Object.entries(EV)) {
+      if (lcp[ev]) continue;
+      for (const [label, slug] of list) {
+        try {
+          const s = await buildSplit(leagueId, slug);
+          if (s) { (lcp[ev] = lcp[ev] || {})[label] = { name: s.name, rows: s.rows, brackets: s.brackets, finalStandings: s.finalStandings }; (subs[ev] = subs[ev] || []).push(label); changed = true; }
+        } catch (e) { console.warn(`2024 ${ev} ${label} 실패: ${e.message}`); }
       }
-      if (Object.keys(lcp).length) {
-        std.lcp = lcp; sub.lcp = subs;
-        fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
-        console.log(`2024 LCP(PCS·VCS) 생성: ${Object.entries(subs).map(([k, v]) => `${k}[${v.join(',')}]`).join(' ')}`);
-      }
+    }
+    if (changed) {
+      // 표시 순서대로 재정렬
+      const order = Object.keys(EV).filter((k) => lcp[k]);
+      std.lcp = Object.fromEntries(order.map((k) => [k, lcp[k]]));
+      sub.lcp = Object.fromEntries(order.map((k) => [k, subs[k]]));
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log(`2024 LCP 대회 선택 생성: ${order.map((k) => `${k}[${sub.lcp[k].join(',')}]`).join(' ')}`);
     }
   } catch (e) { console.warn(`2024 PCS·VCS 생성 실패(무시): ${e.message}`); }
 }
@@ -3657,6 +3666,10 @@ console.log('lolStandings.json 갱신 완료');
     const po = (sm?.brackets || []).find((b) => b.slug === 'playoffs');
     // Summer에도 플레이오프는 그대로 두고(최종순위는 Championship에만 → 우승 경력 중복 방지), Championship 서브탭에 복제.
     const champPo = lcs?.Championship?.brackets?.[0];
+    if (sm && !(sm.finalStandings || []).length && lcs?.Championship?.finalStandings?.length) {
+      sm.finalStandings = lcs.Championship.finalStandings; // Summer 우승 = Championship 우승(FLY) — 우승 경력에 Summer·Championship 모두 반영
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+    }
     if (sm && !po && champPo) { sm.brackets = [...(sm.brackets || []), { ...champPo, name: '플레이오프', label: '플레이오프' }]; fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('2024 LCS Summer 플레이오프 복원'); }
     if (sm && po && !lcs.Championship) {
       lcs.Championship = { name: 'LCS Championship 2024', rows: [], brackets: [{ ...po, name: 'LCS Championship', label: 'LCS Championship' }], finalStandings: sm.finalStandings || [] };

@@ -57,6 +57,9 @@ import c9_2024Logo from '../assets/c9-2024.svg';
 import nrgLogo from '../assets/nrg-2024.svg';
 import imtLogo from '../assets/imt-2024.svg';
 import nrg2024SpringLogo from '../assets/nrg-2024-spring.svg';
+import frankEsportsLogo from '../assets/frank-esports.webp';
+import taipeiJTeamLogo from '../assets/taipei-j-team.webp';
+import westPointEsportsLogo from '../assets/west-point-esports.webp';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -97,10 +100,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 const knownTeam = (short) => short != null && baseLogoByShort[short] != null;
@@ -2609,7 +2612,7 @@ const PAST_DETAIL = {
 const EVENT_DETAIL = {
   'demacia|2025|ASI': { color: '#7927ff', logo: asiLogo },
   'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
-  'lcp|2024|VCS': { color: '#f0fea6', logo: vcsLogo, invert: true }, // 검은 로고 → 흰색 반전
+  'lcp|2024|VCS': { color: '#f0fea6', logo: vcsLogo }, // 검은 로고 그대로 표시
   'lcp|2024|PCS': { color: '#101725', logo: pcsLogo },
   'cblol|2020|LLA': { color: '#ff6528' },
   'cblol|2021|LLA': { color: '#ff6528' },
@@ -2737,7 +2740,7 @@ const resolvePastData = (key, sub, year, ev) => {
   return sub ? base[sub] : base;
 };
 // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
-const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'VCS'] };
+const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LJL', 'LCO', 'VCS'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 

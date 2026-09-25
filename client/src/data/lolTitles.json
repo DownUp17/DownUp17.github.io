@@ -245,6 +245,11 @@
         "name": "2024 LCS Championship",
         "detail": "우승",
         "color": "#eeece7"
+      },
+      {
+        "name": "2024 LCS Summer",
+        "detail": "우승",
+        "color": "#eeece7"
       }
     ],
     "PAIN": [
@@ -298,6 +303,30 @@
       },
       {
         "name": "2024 PCS Spring",
+        "detail": "우승",
+        "color": "#F08040"
+      }
+    ],
+    "SHG": [
+      {
+        "name": "2024 LJL Summer",
+        "detail": "우승",
+        "color": "#F08040"
+      },
+      {
+        "name": "2024 LJL Spring",
+        "detail": "우승",
+        "color": "#F08040"
+      }
+    ],
+    "GZ": [
+      {
+        "name": "2024 LCO Summer",
+        "detail": "우승",
+        "color": "#F08040"
+      },
+      {
+        "name": "2024 LCO Spring",
         "detail": "우승",
         "color": "#F08040"
       }
