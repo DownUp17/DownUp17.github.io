@@ -62,6 +62,7 @@ import taipeiJTeamLogo from '../assets/taipei-j-team.webp';
 import westPointEsportsLogo from '../assets/west-point-esports.webp';
 import ljlLogo from '../assets/ljl.webp';
 import chineseTaipeiFlag from '../assets/chinese-taipei-flag.svg';
+import lcoLogo from '../assets/lco.webp';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -1744,8 +1745,8 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
         const hasGroups = teams.some((t) => t.group === 'A' || t.group === 'B');
         const teamCard = (t) => (
           <div key={t.code} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
-            {AG_FLAG[t.code] && (
-              <img src={`https://flagcdn.com/32x24/${AG_FLAG[t.code]}.png`} alt="" width={24} height={18}
+            {(t.code === 'TPE' || AG_FLAG[t.code]) && (
+              <img src={t.code === 'TPE' ? chineseTaipeiFlag : `https://flagcdn.com/32x24/${AG_FLAG[t.code]}.png`} alt="" width={24} height={18}
                 className="shrink-0 rounded-[3px] object-cover" style={{ width: 24, height: 18 }}
                 onError={(e) => { e.currentTarget.style.display = 'none'; }} />
             )}
@@ -2708,7 +2709,8 @@ const EVENT_DETAIL = {
   'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
   'lcp|2024|VCS': { color: '#f0fea6', logo: vcsLogo }, // 검은 로고 그대로 표시
   'lcp|2024|PCS': { color: '#101725', logo: pcsLogo },
-  'lcp|2024|LJL': { color: '#ed1b30', logo: ljlLogo },
+  'lcp|2024|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
+  'lcp|2024|LCO': { color: '#0f3341', logo: lcoLogo },
   'cblol|2020|LLA': { color: '#ff6528' },
   'cblol|2021|LLA': { color: '#ff6528' },
   'cblol|2022|LLA': { color: '#ff6528' },

@@ -274,8 +274,8 @@
           "Summer"
         ],
         "LCO": [
-          "Spring",
-          "Summer"
+          "Split 1",
+          "Split 2"
         ],
         "VCS": [
           "Spring",
@@ -50220,8 +50220,8 @@
           }
         },
         "LCO": {
-          "Spring": {
-            "name": "Spring 2024",
+          "Split 1": {
+            "name": "Split 1 2024",
             "rows": [
               {
                 "rank": 1,
@@ -50545,8 +50545,8 @@
               }
             ]
           },
-          "Summer": {
-            "name": "Summer 2024",
+          "Split 2": {
+            "name": "Split 2 2024",
             "rows": [
               {
                 "rank": 1,
