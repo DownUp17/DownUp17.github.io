@@ -3637,6 +3637,32 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 PCS·VCS 생성 실패(무시): ${e.message}`); }
 }
 
+// ── 2024 LJL·LCO — 상위팀이 PCS 플레이오프로 진출 → 각 스플릿 플레이오프 다음에 'PCS PO' 스테이지(같은 스플릿 PCS 플레이오프 대진) ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const lcp = past.standings?.['2024']?.lcp;
+    let changed = false;
+    for (const ev of ['LJL', 'LCO']) {
+      for (const [sp, node] of Object.entries(lcp?.[ev] || {})) {
+        if (!node?.brackets || node.brackets.some((b) => b.slug === 'pcs_playoffs')) continue;
+        const pcsSp = { 'Split 1': 'Spring', 'Split 2': 'Summer' }[sp] || sp; // LCO는 Split 1/2 표기 → PCS Spring/Summer
+        const pcsPo = (lcp?.PCS?.[pcsSp]?.brackets || []).find((b) => b.slug === 'playoffs');
+        if (!pcsPo) continue;
+        const i = node.brackets.findIndex((b) => b.slug === 'playoffs');
+        const stage = { ...pcsPo, slug: 'pcs_playoffs', name: 'PCS PO', label: 'PCS PO' };
+        node.brackets.splice(i >= 0 ? i + 1 : node.brackets.length, 0, stage);
+        changed = true;
+      }
+    }
+    if (changed) {
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2024 LJL·LCO PCS PO 스테이지 추가');
+    }
+  } catch (e) { console.warn(`2024 LJL·LCO PCS PO 추가 실패(무시): ${e.message}`); }
+}
+
 // ── CBLOL 2020~2024 대회 선택(CBLOL / LLA) — LLA(라틴 아메리카 리그)는 2024년까지 존재 ──
 //   standings[year].cblol = { CBLOL: {Split 1,…}, LLA: {Opening, Closing, 승강전} } · subtabs도 이벤트별.
 {

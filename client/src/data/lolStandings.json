@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25",
+  "updatedAt": "2026-09-26",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -7834,14 +7834,17 @@
                   "title": "하위권 대진 - 2라운드",
                   "a": {
                     "seed": "",
-                    "short": "FLY"
+                    "short": "FLY",
+                    "score": 2,
+                    "elim": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 1라운드 승자",
-                    "short": "SR"
+                    "short": "SR",
+                    "score": 3,
+                    "win": true
                   },
-                  "startRow": 8,
-                  "time": "9/26 05:00"
+                  "startRow": 8
                 }
               ]
             },
@@ -7870,7 +7873,8 @@
                     "short": "LYON"
                   },
                   "b": {
-                    "seed": "하위권 대진 - 2라운드 승자"
+                    "seed": "하위권 대진 - 2라운드 승자",
+                    "short": "SR"
                   },
                   "startRow": 8,
                   "time": "9/27 05:00"
@@ -7996,6 +8000,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 5,
+            "team": "FLY",
+            "note": ""
+          },
           {
             "rank": 6,
             "team": "SEN",
@@ -9777,7 +9786,8 @@
         },
         {
           "seed": "LCS #5",
-          "label": "LCS #5"
+          "label": "LCS #5",
+          "short": "FLY"
         },
         {
           "seed": "LCP #4",
