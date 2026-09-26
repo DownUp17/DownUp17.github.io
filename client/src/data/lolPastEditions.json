@@ -48820,7 +48820,7 @@
                       ]
                     },
                     {
-                      "name": "플레이-인 2",
+                      "name": "최종진출전",
                       "rounds": [
                         {
                           "title": "",
@@ -49173,60 +49173,61 @@
                   {
                     "rank": 1,
                     "team": "CFO",
-                    "w": 2,
-                    "l": 1,
-                    "group": "A조"
+                    "w": 8,
+                    "l": 2,
+                    "group": "컨텐더 그룹"
                   },
                   {
                     "rank": 2,
                     "team": "PSG",
-                    "w": 3,
-                    "l": 0,
-                    "group": "A조"
+                    "w": 7,
+                    "l": 3,
+                    "group": "컨텐더 그룹"
                   },
                   {
                     "rank": 3,
                     "team": "FAK",
-                    "w": 0,
-                    "l": 3,
-                    "group": "A조"
+                    "w": 6,
+                    "l": 4,
+                    "group": "컨텐더 그룹"
                   },
                   {
                     "rank": 4,
                     "team": "BYG",
-                    "w": 1,
-                    "l": 2,
-                    "group": "A조"
+                    "w": 6,
+                    "l": 4,
+                    "group": "컨텐더 그룹"
                   },
                   {
                     "rank": 1,
                     "team": "DCG",
-                    "w": 3,
-                    "l": 0,
-                    "group": "B조"
+                    "w": 6,
+                    "l": 4,
+                    "group": "브레이크아웃 그룹"
                   },
                   {
                     "rank": 2,
                     "team": "JT",
-                    "w": 2,
-                    "l": 1,
-                    "group": "B조"
+                    "w": 5,
+                    "l": 5,
+                    "group": "브레이크아웃 그룹"
                   },
                   {
                     "rank": 3,
                     "team": "HPS",
-                    "w": 1,
-                    "l": 2,
-                    "group": "B조"
+                    "w": 2,
+                    "l": 8,
+                    "group": "브레이크아웃 그룹"
                   },
                   {
                     "rank": 4,
                     "team": "WP",
                     "w": 0,
-                    "l": 3,
-                    "group": "B조"
+                    "l": 10,
+                    "group": "브레이크아웃 그룹"
                   }
-                ]
+                ],
+                "cumulative": true
               }
             ]
           },
@@ -49524,7 +49525,7 @@
                       ]
                     },
                     {
-                      "name": "플레이-인 2",
+                      "name": "최종진출전",
                       "rounds": [
                         {
                           "title": "",
@@ -49872,53 +49873,54 @@
                   {
                     "rank": 1,
                     "team": "PSG",
-                    "w": 3,
+                    "w": 9,
                     "l": 1,
-                    "group": "A조"
+                    "group": "컨텐더 그룹"
                   },
                   {
                     "rank": 2,
                     "team": "DCG",
-                    "w": 2,
-                    "l": 2,
-                    "group": "A조"
+                    "w": 6,
+                    "l": 4,
+                    "group": "컨텐더 그룹"
                   },
                   {
                     "rank": 3,
                     "team": "CFO",
-                    "w": 1,
-                    "l": 3,
-                    "group": "A조"
+                    "w": 6,
+                    "l": 4,
+                    "group": "컨텐더 그룹"
                   },
                   {
                     "rank": 1,
                     "team": "FAK",
-                    "w": 3,
-                    "l": 0,
-                    "group": "B조"
+                    "w": 6,
+                    "l": 3,
+                    "group": "브레이크아웃 그룹"
                   },
                   {
                     "rank": 2,
                     "team": "JT",
-                    "w": 2,
-                    "l": 1,
-                    "group": "B조"
+                    "w": 3,
+                    "l": 6,
+                    "group": "브레이크아웃 그룹"
                   },
                   {
                     "rank": 3,
                     "team": "WP",
-                    "w": 0,
-                    "l": 3,
-                    "group": "B조"
+                    "w": 2,
+                    "l": 7,
+                    "group": "브레이크아웃 그룹"
                   },
                   {
                     "rank": 4,
                     "team": "HPS",
                     "w": 1,
-                    "l": 2,
-                    "group": "B조"
+                    "l": 8,
+                    "group": "브레이크아웃 그룹"
                   }
-                ]
+                ],
+                "cumulative": true
               }
             ]
           }
@@ -53284,6 +53286,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -53301,7 +53304,8 @@
                             "short": "MVK",
                             "score": 2,
                             "win": true
-                          }
+                          },
+                          "startRow": 0
                         },
                         {
                           "id": "112194832533538989",
@@ -53316,7 +53320,8 @@
                             "short": "TS",
                             "score": 2,
                             "win": true
-                          }
+                          },
+                          "startRow": 2
                         }
                       ]
                     },
@@ -53336,7 +53341,8 @@
                             "seed": "1라운드 승자",
                             "short": "TS",
                             "score": 1
-                          }
+                          },
+                          "startRow": 1
                         },
                         {
                           "id": "112194832533539001",
@@ -53352,7 +53358,8 @@
                             "short": "GAM",
                             "score": 3,
                             "win": true
-                          }
+                          },
+                          "startRow": 5
                         }
                       ]
                     },
@@ -53373,7 +53380,8 @@
                             "short": "TS",
                             "score": 0,
                             "elim": true
-                          }
+                          },
+                          "startRow": 5
                         }
                       ]
                     },
@@ -53394,7 +53402,8 @@
                             "short": "MVK",
                             "score": 1,
                             "elim": true
-                          }
+                          },
+                          "startRow": 3
                         }
                       ]
                     }
@@ -53562,6 +53571,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -53580,7 +53590,8 @@
                             "short": "TF",
                             "score": 0,
                             "elim": true
-                          }
+                          },
+                          "startRow": 0
                         }
                       ]
                     },
@@ -53600,7 +53611,8 @@
                             "short": "MVK",
                             "score": 3,
                             "win": true
-                          }
+                          },
+                          "startRow": 0
                         },
                         {
                           "id": "112552584942803644",
@@ -53615,7 +53627,25 @@
                             "short": "GAM",
                             "score": 3,
                             "win": true
-                          }
+                          },
+                          "startRow": 2
+                        },
+                        {
+                          "id": "112552584942803662",
+                          "title": "하위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "상위권 대진 - 1라운드 패자",
+                            "short": "TW",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 1라운드 패자",
+                            "short": "TS",
+                            "score": 2,
+                            "elim": true
+                          },
+                          "startRow": 5
                         }
                       ]
                     },
@@ -53635,29 +53665,9 @@
                             "seed": "상위권 대진 - 1라운드 승자",
                             "short": "MVK",
                             "score": 2
-                          }
-                        },
-                        {
-                          "id": "112552584942803662",
-                          "title": "하위권 대진 - 1라운드",
-                          "a": {
-                            "seed": "상위권 대진 - 1라운드 패자",
-                            "short": "TW",
-                            "score": 3,
-                            "win": true
                           },
-                          "b": {
-                            "seed": "상위권 대진 - 1라운드 패자",
-                            "short": "TS",
-                            "score": 2,
-                            "elim": true
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "title": "",
-                      "matches": [
+                          "startRow": 1
+                        },
                         {
                           "id": "112552584942803668",
                           "title": "하위권 대진 - 2라운드",
@@ -53672,7 +53682,8 @@
                             "short": "MVK",
                             "score": 3,
                             "win": true
-                          }
+                          },
+                          "startRow": 5
                         }
                       ]
                     },
@@ -53693,7 +53704,8 @@
                             "short": "GAM",
                             "score": 3,
                             "msi": true
-                          }
+                          },
+                          "startRow": 3
                         }
                       ]
                     }
@@ -53725,19 +53737,11 @@
                     ],
                     [
                       1,
-                      0,
+                      2,
                       "mid",
                       2,
                       1,
                       "a"
-                    ],
-                    [
-                      1,
-                      1,
-                      "mid",
-                      2,
-                      1,
-                      "b"
                     ],
                     [
                       2,
@@ -53752,22 +53756,6 @@
                       0,
                       "mid",
                       3,
-                      0,
-                      "b"
-                    ],
-                    [
-                      3,
-                      0,
-                      "mid",
-                      4,
-                      0,
-                      "a"
-                    ],
-                    [
-                      2,
-                      0,
-                      "mid",
-                      4,
                       0,
                       "b"
                     ]
