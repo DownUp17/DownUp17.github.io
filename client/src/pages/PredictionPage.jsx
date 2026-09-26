@@ -15,6 +15,7 @@ import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
 import asiangames2022Logo from '../assets/asiangames2022.svg';
 import koi2023Logo from '../assets/koi-2023.webp';
+import losGrandes2023Split1Logo from '../assets/los-grandes-2023-split1.webp';
 import excelLogo from '../assets/excel.svg';
 import astralisLogo from '../assets/astralis.svg';
 import goldenGuardiansLogo from '../assets/golden-guardians.svg';
@@ -2769,6 +2770,10 @@ const EVENT_DETAIL = {
   'lcp|2024|PCS': { color: '#101725', logo: pcsLogo },
   'lcp|2024|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2024|LCO': { color: '#0f3341', logo: lcoLogo },
+  'lcp|2023|VCS': { color: '#f0fea6', logo: vcsLogo },
+  'lcp|2023|PCS': { color: '#101725', logo: pcsLogo },
+  'lcp|2023|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
+  'lcp|2023|LCO': { color: '#0f3341', logo: lcoLogo },
   'cblol|2020|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2021|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2022|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
@@ -2863,7 +2868,7 @@ const COMP_EDITIONS = {
   lpl: [2026, 2025],
   lec: [2026, 2025],
   lcs: [2026, 2025],
-  lcp: [2026, 2025, 2024],
+  lcp: [2026, 2025, 2024, 2023],
   cblol: [2026, 2025],
   fst: [2026, 2025],
   msi: [2026, 2025],
@@ -2900,7 +2905,7 @@ const resolvePastData = (key, sub, year, ev) => {
   return sub ? base[sub] : base;
 };
 // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
-const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LJL', 'LCO', 'VCS'] };
+const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LJL', 'LCO', 'VCS'], 'lcp|2023': ['PCS', 'LJL', 'LCO', 'VCS'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
@@ -3091,6 +3096,8 @@ const PredictionPage = () => {
     if (activeYear === 2023 && comp?.key === 'lcs' && activeSub === 'Summer') ov.EG = { name: 'Evil Geniuses LG' };
     // GX(GIANTX): 2023 이하는 Excel(XL).
     if (activeYear <= 2023) ov.GX = { tag: 'XL', name: 'Excel', logo: excelLogo };
+    // PAIN: 2024 이하는 태그 PNG.
+    if (activeYear <= 2024) ov.PAIN = { ...(ov.PAIN || {}), tag: 'PNG' };
     // RGE(Rogue): 2023 시즌은 KOI(KOI).
     if (activeYear === 2023) ov.RGE = { tag: 'KOI', name: 'KOI', logo: koi2023Logo };
     // BLG: 2023 이하는 'Bilibili Gaming Pingan Bank'.
@@ -3121,6 +3128,10 @@ const PredictionPage = () => {
     ov.ISGG = { tag: 'ISG', name: 'Isurus', logo: isurus2Logo };
     // LOUD: 2024 이하는 약칭 LLL.
     if (activeYear <= 2024) ov.LOUD = { tag: 'LLL' };
+    // LOS: 2023은 'Los Grandes'(Split 1은 옛 로고).
+    if (activeYear === 2023) ov.LOS = { name: 'Los Grandes', ...(comp?.key === 'cblol' && activeSub === 'Split 1' ? { logo: losGrandes2023Split1Logo } : {}) };
+    // INTZ: 약칭 ITZ.
+    ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
     if (comp?.key === 'lcp' && activeYear === 2024) ov.ANCX = { tag: 'ANC', name: 'Antic Esports', logo: anticEsportsLogo };
     return ov;
