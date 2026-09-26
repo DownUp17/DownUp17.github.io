@@ -4277,6 +4277,58 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2025 Demacia Cup 주입 실패(무시): ${e.message}`); }
 }
 
+// ── 2024 Demacia Cup (DCGI) — API 미제공 · 수기 ─────────
+//   20팀. 그룹 스테이지(16팀 · 4팀 4개조 싱글RR · 조 1위만 진출) → 녹아웃(직행 4팀 + 조 1위 4팀 = 8팀 싱글 엘리). 우승 AL.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const S = (short, seed, score, flag) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
+    const R = (rank, team, w, l, group) => ({ rank, team, w, l, group });
+    const rows = [
+      R(1, 'EDG', 3, 0, 'A조'), R(2, 'LGD', 2, 1, 'A조'), R(3, 'BLGJ', 1, 2, 'A조'), R(4, 'FPX', 0, 3, 'A조'),
+      R(1, 'AL', 3, 0, 'B조'), R(2, 'OMG', 2, 1, 'B조'), R(3, 'UP', 1, 2, 'B조'), R(4, 'SG', 0, 3, 'B조'),
+      R(1, 'TT', 3, 0, 'C조'), R(2, 'JDG', 2, 1, 'C조'), R(3, 'WE', 1, 2, 'C조'), R(4, 'BLD', 0, 3, 'C조'),
+      R(1, 'IG', 3, 0, 'D조'), R(2, 'NIP', 2, 1, 'D조'), R(3, 'LGDYT', 1, 2, 'D조'), R(4, 'RNG', 0, 3, 'D조'),
+    ];
+    // 녹아웃 — 8팀 싱글 엘리(2026 Worlds 레이아웃). 직행 4팀(WBG·BLG·LNG·TES) + 조 1위 4팀.
+    const knockout = applySingleElimLayout({
+      rounds: [
+        { matches: [
+          { title: '8강 1경기', a: S('WBG', '', 2, 'win'), b: S('EDG', 'A조 1위', 0) },
+          { title: '8강 2경기', a: S('BLG', '', 0), b: S('AL', 'B조 1위', 2, 'win') },
+          { title: '8강 3경기', a: S('LNG', '', 1), b: S('TT', 'C조 1위', 2, 'win') },
+          { title: '8강 4경기', a: S('TES', '', 2, 'win'), b: S('IG', 'D조 1위', 0) },
+        ] },
+        { matches: [
+          { title: '4강 1경기', a: S('WBG', '8강 승자', 1), b: S('AL', '8강 승자', 3, 'win') },
+          { title: '4강 2경기', a: S('TT', '8강 승자', 0), b: S('TES', '8강 승자', 3, 'win') },
+        ] },
+        { matches: [
+          { title: '결승', a: S('AL', '4강 승자', 3, 'msi'), b: S('TES', '4강 승자', 1, 'elim') },
+        ] },
+      ],
+      connectors: [
+        [0, 0, 'a', 1, 0, 'a'], [0, 1, 'b', 1, 0, 'b'], [0, 2, 'b', 1, 1, 'a'], [0, 3, 'a', 1, 1, 'b'],
+        [1, 0, 'b', 2, 0, 'a'], [1, 1, 'b', 2, 0, 'b'],
+      ],
+    });
+    (past.standings['2024'] = past.standings['2024'] || {}).demacia = {
+      name: 'Demacia Cup', regLabel: '그룹 스테이지', parallelGroups: true,
+      rows,
+      brackets: [{ slug: 'knockout', name: '녹아웃 스테이지', label: '녹아웃 스테이지', bracket: knockout }],
+      finalStandings: [
+        { rank: 1, team: 'AL', note: '우승' }, { rank: 2, team: 'TES', note: '준우승' },
+        { rank: 3, team: 'WBG', note: '4강' }, { rank: 4, team: 'TT', note: '4강' },
+        { rank: 5, team: 'EDG', note: '8강' }, { rank: 6, team: 'BLG', note: '8강' },
+        { rank: 7, team: 'LNG', note: '8강' }, { rank: 8, team: 'IG', note: '8강' },
+      ],
+    };
+    fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+    console.log('2024 Demacia Cup 주입 완료 (그룹 4개조 → 녹아웃 8강 · 우승 AL)');
+  } catch (e) { console.warn(`2024 Demacia Cup 주입 실패(무시): ${e.message}`); }
+}
+
 // ── 팀별 우승 경력 자동 산출 ──────────────────────────────────────────────
 //   앱이 추적하는 2026 대회의 우승팀(finalStandings 1위 · champion)을 모아 팀 상세 페이지용 lolTitles.json 생성.
 {
@@ -4305,7 +4357,7 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'lcp' && event === 'PCS') return { color: '#101725' }; // LCP 전신(2024) 대만/홍콩/마카오 리그
     if (lg === 'lcp' && event === 'LJL') return { color: '#ed1b30' }; // LCP 전신(2024) 일본 리그
     if (lg === 'lcp' && event === 'LCO') return { color: '#0f3341' }; // LCP 전신(2024) 오세아니아 리그
-    if (lg === 'demacia') return sub === 'Demacia Cup' ? { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)' } : (sub === 'ASI' ? { color: '#7927ff' } : { color: COMP_COLOR.demacia });
+    if (lg === 'demacia') return (!sub || sub === 'Demacia Cup') ? { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)' } : (sub === 'ASI' ? { color: '#7927ff' } : { color: COMP_COLOR.demacia });
     if (lg === 'ewc') return y === '2026' ? { gradient: 'linear-gradient(90deg, #f74e16, #d1b36f)' } : { color: '#eaeaea' };
     if (lg === 'fst') return { color: y === '2025' ? '#45002c' : '#ff5500' };
     if (lg === 'lck') {
@@ -4378,7 +4430,7 @@ console.log('lolStandings.json 갱신 완료');
       if (lg === 'cblol') return sub === 'Copa' ? `Copa CBLOL ${year}` : `CBLOL ${year} ${sub}`;
       if (lg === 'lck' && sub === 'LCK CUP') return `${year} LCK CUP`;
       if (lg === 'lck' && sub === 'KeSPA CUP') return `${year} LoL KeSPA CUP`;
-      if (lg === 'demacia') return sub === 'Demacia Cup' ? `${year} Demacia Cup` : (sub === 'ASI' ? `${year} Asia Invitational` : `${year} ${sub}`);
+      if (lg === 'demacia') return (!sub || sub === 'Demacia Cup') ? `${year} Demacia Cup` : (sub === 'ASI' ? `${year} Asia Invitational` : `${year} ${sub}`);
       if (String(year) === '2025' && lg === 'lcp') { const M = { Kickoff: 'Season Kickoff', Mid: 'Mid Season', Finals: 'Season Finals' }; if (M[sub]) return `${year} LCP ${M[sub]}`; }
       const disp = DISP[lg] || lg.toUpperCase();
       const subPart = (sub && sub !== disp) ? ` ${sub}` : '';

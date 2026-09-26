@@ -78,6 +78,12 @@
         "name": "2025 LPL Split 2",
         "detail": "우승",
         "color": "#D32F2F"
+      },
+      {
+        "name": "2024 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)"
       }
     ],
     "BLG": [

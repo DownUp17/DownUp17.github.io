@@ -2729,6 +2729,7 @@ const PAST_DETAIL = {
   'cblol|2025': { color: '#D94F30', logo: ltaSulLogo, bySub: { 'Etapa 1': { color: '#b2a27e', logo: ltaLogo }, 'Playoffs': { color: '#b2a27e', logo: ltaLogo } } },
   'lck|2025': { bySub: { 'LCK CUP': { color: '#7f6b00' }, 'KeSPA CUP': { color: '#072148', logo: kespa2025Logo } } },
   'lck|2024': { bySub: { 'KeSPA CUP': { color: '#072148' } } },
+  'demacia|2024': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 2025 Demacia Cup과 동일
   'fst|2025': { color: '#45002c' },
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
   'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
@@ -2839,7 +2840,7 @@ const COMP_EDITIONS = {
   cblol: [2026, 2025],
   fst: [2026, 2025],
   msi: [2026, 2025],
-  demacia: [2026, 2025],
+  demacia: [2026, 2025, 2024],
   worlds: [2026, 2025],
   ewc: [2026, 2025, 2024],
 };
@@ -3046,6 +3047,8 @@ const PredictionPage = () => {
     if (activeYear <= 2024) ov.MVK = { tag: 'VKE', name: 'Vikings Esports', logo: mvkeLogo };
     else if (activeYear === 2025) ov.MVK = { tag: 'MVKE', name: 'MGN Vikings Esports', logo: mvkeLogo };
     // VCS 2024 이하: Team Secret(TS)·Team Whales(TW) — 2025에 합병해 TSW(클릭 시 TSW로 연결, TEAM_LINK).
+    // 2024 Demacia Cup 참가 2군·기타 팀 명칭
+    if (comp?.key === 'demacia' && activeYear === 2024) Object.assign(ov, { BLGJ: { name: 'Bilibili Gaming Junior' }, SG: { name: 'Super Gaming' }, BLD: { name: 'Blood' }, LGDYT: { name: 'LGD Gaming Young Team' }, FPX: { name: 'FunPlus Phoenix' }, RNG: { name: 'Royal Never Give Up' } });
     if (activeYear <= 2024) { ov.TS = { ...(ov.TS || {}), name: 'Team Secret' }; ov.TW = { ...(ov.TW || {}), name: 'Team Whales' }; ov.MBE = { ...(ov.MBE || {}), name: 'MGN Blue Esports' }; }
     // EWC의 AL: 2025 이하는 이름 'AL'(로고는 AG.AL 로고 유지), 2026부터 AGAL(AG.AL) — EWC_TEAM_OVERRIDE.
     if (comp?.key === 'ewc' && activeYear <= 2025) ov.AL = { name: 'AL', logo: agalEwcLogo };
@@ -3122,6 +3125,7 @@ const PredictionPage = () => {
 
   // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
   const PAST_COMP_NAME = {
+    'demacia|2024': { default: 'Demacia Cup' }, // 2024는 Demacia Cup 단독(통합 DCGI 이전)
     'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA', 'Playoffs': 'LTA' },
     'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA', 'Playoffs': 'LTA' },
   };

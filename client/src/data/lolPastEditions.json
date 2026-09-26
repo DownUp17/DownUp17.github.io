@@ -53889,6 +53889,343 @@
             ]
           }
         }
+      },
+      "demacia": {
+        "name": "Demacia Cup",
+        "regLabel": "그룹 스테이지",
+        "parallelGroups": true,
+        "rows": [
+          {
+            "rank": 1,
+            "team": "EDG",
+            "w": 3,
+            "l": 0,
+            "group": "A조"
+          },
+          {
+            "rank": 2,
+            "team": "LGD",
+            "w": 2,
+            "l": 1,
+            "group": "A조"
+          },
+          {
+            "rank": 3,
+            "team": "BLGJ",
+            "w": 1,
+            "l": 2,
+            "group": "A조"
+          },
+          {
+            "rank": 4,
+            "team": "FPX",
+            "w": 0,
+            "l": 3,
+            "group": "A조"
+          },
+          {
+            "rank": 1,
+            "team": "AL",
+            "w": 3,
+            "l": 0,
+            "group": "B조"
+          },
+          {
+            "rank": 2,
+            "team": "OMG",
+            "w": 2,
+            "l": 1,
+            "group": "B조"
+          },
+          {
+            "rank": 3,
+            "team": "UP",
+            "w": 1,
+            "l": 2,
+            "group": "B조"
+          },
+          {
+            "rank": 4,
+            "team": "SG",
+            "w": 0,
+            "l": 3,
+            "group": "B조"
+          },
+          {
+            "rank": 1,
+            "team": "TT",
+            "w": 3,
+            "l": 0,
+            "group": "C조"
+          },
+          {
+            "rank": 2,
+            "team": "JDG",
+            "w": 2,
+            "l": 1,
+            "group": "C조"
+          },
+          {
+            "rank": 3,
+            "team": "WE",
+            "w": 1,
+            "l": 2,
+            "group": "C조"
+          },
+          {
+            "rank": 4,
+            "team": "BLD",
+            "w": 0,
+            "l": 3,
+            "group": "C조"
+          },
+          {
+            "rank": 1,
+            "team": "IG",
+            "w": 3,
+            "l": 0,
+            "group": "D조"
+          },
+          {
+            "rank": 2,
+            "team": "NIP",
+            "w": 2,
+            "l": 1,
+            "group": "D조"
+          },
+          {
+            "rank": 3,
+            "team": "LGDYT",
+            "w": 1,
+            "l": 2,
+            "group": "D조"
+          },
+          {
+            "rank": 4,
+            "team": "RNG",
+            "w": 0,
+            "l": 3,
+            "group": "D조"
+          }
+        ],
+        "brackets": [
+          {
+            "slug": "knockout",
+            "name": "녹아웃 스테이지",
+            "label": "녹아웃 스테이지",
+            "bracket": {
+              "totalRows": 8,
+              "rounds": [
+                {
+                  "matches": [
+                    {
+                      "title": "8강 1경기",
+                      "a": {
+                        "short": "WBG",
+                        "score": 2,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "EDG",
+                        "seed": "A조 1위",
+                        "score": 0
+                      },
+                      "startRow": 0
+                    },
+                    {
+                      "title": "8강 2경기",
+                      "a": {
+                        "short": "BLG",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "AL",
+                        "seed": "B조 1위",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 2
+                    },
+                    {
+                      "title": "8강 3경기",
+                      "a": {
+                        "short": "LNG",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "TT",
+                        "seed": "C조 1위",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 4
+                    },
+                    {
+                      "title": "8강 4경기",
+                      "a": {
+                        "short": "TES",
+                        "score": 2,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "IG",
+                        "seed": "D조 1위",
+                        "score": 0
+                      },
+                      "startRow": 6
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "4강 1경기",
+                      "a": {
+                        "short": "WBG",
+                        "seed": "8강 승자",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "AL",
+                        "seed": "8강 승자",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 1
+                    },
+                    {
+                      "title": "4강 2경기",
+                      "a": {
+                        "short": "TT",
+                        "seed": "8강 승자",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "TES",
+                        "seed": "8강 승자",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 5
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "결승",
+                      "a": {
+                        "short": "AL",
+                        "seed": "4강 승자",
+                        "score": 3,
+                        "msi": true
+                      },
+                      "b": {
+                        "short": "TES",
+                        "seed": "4강 승자",
+                        "score": 1,
+                        "elim": true
+                      },
+                      "startRow": 3
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "a",
+                  1,
+                  0,
+                  "a"
+                ],
+                [
+                  0,
+                  1,
+                  "b",
+                  1,
+                  0,
+                  "b"
+                ],
+                [
+                  0,
+                  2,
+                  "b",
+                  1,
+                  1,
+                  "a"
+                ],
+                [
+                  0,
+                  3,
+                  "a",
+                  1,
+                  1,
+                  "b"
+                ],
+                [
+                  1,
+                  0,
+                  "b",
+                  2,
+                  0,
+                  "a"
+                ],
+                [
+                  1,
+                  1,
+                  "b",
+                  2,
+                  0,
+                  "b"
+                ]
+              ]
+            }
+          }
+        ],
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "AL",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "TES",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "WBG",
+            "note": "4강"
+          },
+          {
+            "rank": 4,
+            "team": "TT",
+            "note": "4강"
+          },
+          {
+            "rank": 5,
+            "team": "EDG",
+            "note": "8강"
+          },
+          {
+            "rank": 6,
+            "team": "BLG",
+            "note": "8강"
+          },
+          {
+            "rank": 7,
+            "team": "LNG",
+            "note": "8강"
+          },
+          {
+            "rank": 8,
+            "team": "IG",
+            "note": "8강"
+          }
+        ]
       }
     },
     "2025": {
