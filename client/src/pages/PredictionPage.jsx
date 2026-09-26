@@ -22,6 +22,11 @@ import goldenGuardiansLogo from '../assets/golden-guardians.svg';
 import clgLogo from '../assets/clg.webp';
 import evilGeniusesLogo from '../assets/evil-geniuses.svg';
 import tsmLogo from '../assets/tsm.webp';
+import impunityEsportsLogo from '../assets/impunity-esports.webp';
+import dewishTeamLogo from '../assets/dewish-team.webp';
+import psgTalon2024Logo from '../assets/psg-talon-2024.svg';
+import sem9WpeLogo from '../assets/sem9-wpe.webp';
+import sbtcEsportsLogo from '../assets/sbtc-esports.webp';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
 import ewcLogo from '../assets/ewc.svg';
@@ -150,10 +155,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo, AST: astralisLogo, GG: goldenGuardiansLogo, CLG: clgLogo, EG: evilGeniusesLogo, TSM: tsmLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo, AST: astralisLogo, GG: goldenGuardiansLogo, CLG: clgLogo, EG: evilGeniusesLogo, TSM: tsmLogo, IMP: impunityEsportsLogo, DWT: dewishTeamLogo, SBTE: sbtcEsportsLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming', AST: 'Astralis', GG: 'Golden Guardians', CLG: 'CLG', EG: 'Evil Geniuses', TSM: 'TSM' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming', AST: 'Astralis', GG: 'Golden Guardians', CLG: 'CLG', EG: 'Evil Geniuses', TSM: 'TSM', IMP: 'Impunity Esports', DWT: 'Dewish Team', SBTE: 'SBTC Esports' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 // 과거 팀 코드 → 현재 팀 연결(클릭 시 현재 팀 페이지로). 예: VCS의 Team Secret(TS)·Team Whales(TW) → TSW, MGN Blue Esports(MBE) → MVK, Rogue(RGE) → NAVI.
@@ -864,6 +869,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride,
   const hasPiPlus = minimal ? false : (cols ? !!cols.piPlus : rows.some((r) => r.prob?.piPlus != null));
   const hasAdvance = minimal ? false : (cols ? !!cols.advance : rows.some((r) => r.prob));
   const hasChamp = minimal ? false : (cols ? !!cols.champ : rows.some((r) => r.prob));
+  const hasRemark = !minimal && rows.some((r) => r.remark); // 비고(예: 몰수패) — 값이 있는 표에만 표시
   const hasWorlds = minimal ? false : (cols ? !!cols.worlds : rows.some((r) => r.prob?.worlds != null));
   // 확률 셀 (소수 2자리) — 값 + 막대 바
   const prob = (v, c, strong) => (
@@ -889,6 +895,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride,
             <th className="text-center font-bold py-2 px-2 w-10">#</th>
             <th className="text-left font-bold py-2 pr-2">팀</th>
             {!minimal && <th className="text-center font-bold py-2 px-2">승-패</th>}
+            {hasRemark && <th className="text-center font-bold py-2 px-2">비고</th>}
             {showDiff && <th className="text-center font-bold py-2 px-2">득실차</th>}
             {hasPiPlus && <th className="text-right font-bold py-2 px-2">{cols?.labels?.piPlus || 'PI+ 진출'}</th>}
             {hasAdvance && <th className="text-right font-bold py-2 px-2">{cols?.labels?.advance || 'PO 진출'}</th>}
@@ -930,6 +937,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride,
                   )}
                 </td>
                 {!minimal && <td className={`py-2 px-2 text-center font-mono ${elim ? 'text-white/30' : 'text-white/70'}`}>{t.games ? `${t.w}-${t.l}` : '-'}</td>}
+                {hasRemark && <td className="py-2 px-2 text-center text-xs font-bold text-red-400/80 whitespace-nowrap">{t.remark || ''}</td>}
                 {showDiff && (
                   <td className="py-2 px-2 text-center font-mono"
                     style={{ color: elim ? 'rgba(255,255,255,0.3)' : (t.gd > 0 ? '#34D399' : t.gd < 0 ? '#F87171' : '#9CA3AF') }}>
@@ -2328,7 +2336,7 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
     // 참가 팀 = 대진에 등장하는 팀만 (정규시즌 전체가 아니라 Road to MSI 진출 팀).
     const partSet = new Set();
     for (const r of (rtm?.bracket?.rounds || [])) for (const m of (r.matches || [])) for (const s of [m.a, m.b]) if (s?.short) partSet.add(s.short);
-    const stdRows = rows.filter((r) => partSet.size === 0 || partSet.has(r.team)).map((r) => ({ short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0) }));
+    const stdRows = rows.filter((r) => partSet.size === 0 || partSet.has(r.team)).map((r) => ({ short: r.team, rank: r.rank, w: r.w, l: r.l, remark: r.remark, games: (r.w || 0) + (r.l || 0) }));
     return (
       <div className="flex flex-col gap-8">
         <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm"><span className="text-white/50">형식: <strong className="text-white/80">{data.name} · 정규시즌 → MSI로 가는 길 · 종료</strong></span></div>
@@ -2617,7 +2625,7 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
           <div className={(isPeerGroupNames(groupNames) || data.parallelGroups) ? parallelGrid(groupNames.length) : 'flex flex-col gap-5'}>
           {groupNames.map((g, gi) => {
             const grpRows = rows.filter((r) => g == null || r.group === g).map((r) => ({
-              short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
+              short: r.team, rank: r.rank, w: r.w, l: r.l, remark: r.remark, games: (r.w || 0) + (r.l || 0),
               gd: r.gw != null && r.gl != null ? r.gw - r.gl : null,
             }));
             const badge = PAST_GROUP_BADGES[gi % PAST_GROUP_BADGES.length];
@@ -2678,7 +2686,7 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
             <div className={parallel ? parallelGrid(names.length) : 'flex flex-col gap-5'}>
               {names.map((g, gi) => {
                 const grpRows = ph.rows.filter((r) => r.group === g).map((r) => ({
-                  short: r.team, rank: r.rank, w: r.w, l: r.l, games: (r.w || 0) + (r.l || 0),
+                  short: r.team, rank: r.rank, w: r.w, l: r.l, remark: r.remark, games: (r.w || 0) + (r.l || 0),
                 }));
                 const badge = PAST_GROUP_BADGES[gi % PAST_GROUP_BADGES.length];
                 return (
@@ -2771,9 +2779,8 @@ const EVENT_DETAIL = {
   'lcp|2024|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2024|LCO': { color: '#0f3341', logo: lcoLogo },
   'lcp|2023|VCS': { color: '#f0fea6', logo: vcsLogo },
-  'lcp|2023|PCS': { color: '#101725', logo: pcsLogo },
+  'lcp|2023|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2023|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
-  'lcp|2023|LCO': { color: '#0f3341', logo: lcoLogo },
   'cblol|2020|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2021|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2022|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
@@ -2905,7 +2912,7 @@ const resolvePastData = (key, sub, year, ev) => {
   return sub ? base[sub] : base;
 };
 // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
-const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LJL', 'LCO', 'VCS'], 'lcp|2023': ['PCS', 'LJL', 'LCO', 'VCS'] };
+const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LJL', 'LCO', 'VCS'], 'lcp|2023': ['PCS', 'LJL', 'VCS'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
@@ -3130,6 +3137,14 @@ const PredictionPage = () => {
     if (activeYear <= 2024) ov.LOUD = { tag: 'LLL' };
     // LOS: 2023은 'Los Grandes'(Split 1은 옛 로고).
     if (activeYear === 2023) ov.LOS = { name: 'Los Grandes', ...(comp?.key === 'cblol' && activeSub === 'Split 1' ? { logo: losGrandes2023Split1Logo } : {}) };
+    // PSG: 2024 이하 로고.
+    if (activeYear <= 2024) ov.PSG = { ...(ov.PSG || {}), logo: psgTalon2024Logo };
+    // BYG: 2023 Spring까지 'Mega Bank Beyond Gaming'.
+    if (activeYear < 2023 || (activeYear === 2023 && activeSub === 'Spring')) ov.BYG = { ...(ov.BYG || {}), name: 'Mega Bank Beyond Gaming' };
+    // WP: 2023 Spring까지 SEM9 WPE(S9W).
+    if (activeYear < 2023 || (activeYear === 2023 && activeSub === 'Spring')) ov.WP = { tag: 'S9W', name: 'SEM9 WPE', logo: sem9WpeLogo };
+    // SBTE: 약칭 SE.
+    ov.SBTE = { ...(ov.SBTE || {}), tag: 'SE' };
     // INTZ: 약칭 ITZ.
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.

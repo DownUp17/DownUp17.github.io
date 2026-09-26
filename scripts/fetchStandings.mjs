@@ -3873,7 +3873,7 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 PCS·VCS 생성 실패(무시): ${e.message}`); }
 }
 
-// ── 2023 LCP 전신(PCS·LJL·LCO·VCS) — 2024와 동일 구조. PCS 2023은 플레이오프가 별도 토너먼트 → 브래킷·최종순위 병합 ──
+// ── 2023 LCP 전신(PCS·LJL·VCS, LCO 제외) — 2024와 동일 구조. PCS 2023은 플레이오프가 별도 토너먼트 → 브래킷·최종순위 병합 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
   try {
@@ -3881,7 +3881,6 @@ console.log('lolStandings.json 갱신 완료');
     const EV = {
       PCS: ['104366947889790212', [['Spring', 'pcs_spring_2023', 'pcs_spring_playoffs_2023'], ['Summer', 'pcs_summer_2023', 'pcs_summer_playoffs_2023']]],
       LJL: ['98767991349978712', [['Spring', 'ljl_spring_2023'], ['Summer', 'ljl_summer_2023']]],
-      LCO: ['105709090213554609', [['Split 1', 'lco_split_1_2023'], ['Split 2', 'lco_split_2_2023']]],
       VCS: ['107213827295848783', [['Spring', 'vcs_spring_2023'], ['Summer', 'vcs_summer_2023']]],
     };
     const std = (past.standings['2023'] = past.standings['2023'] || {});
@@ -3914,6 +3913,16 @@ console.log('lolStandings.json 갱신 완료');
       console.log(`2023 LCP 대회 선택 생성: ${order.map((k) => `${k}[${sub.lcp[k].join(',')}]`).join(' ')}`);
     }
   } catch (e) { console.warn(`2023 LCP 전신 생성 실패(무시): ${e.message}`); }
+}
+
+// ── 2023 VCS Summer 정규시즌 비고: SE(SBTE) 몰수패 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const row = past.standings?.['2023']?.lcp?.VCS?.Summer?.rows?.find((r) => r.team === 'SBTE');
+    if (row && row.remark !== '몰수패') { row.remark = '몰수패'; fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('2023 VCS Summer SE 몰수패 비고 반영'); }
+  } catch (e) { console.warn(`2023 VCS Summer 비고 실패(무시): ${e.message}`); }
 }
 
 // ── 2024 PCS 플레이오프 스테이지 1·2 + LJL·LCO 'PCS PO 1·2' ──

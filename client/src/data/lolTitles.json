@@ -288,14 +288,14 @@
       {
         "name": "2023 LCS Spring",
         "detail": "우승",
-        "color": "#6460ff"
+        "color": "#eeece7"
       }
     ],
     "NRG": [
       {
         "name": "2023 LCS Summer",
         "detail": "우승",
-        "color": "#6460ff"
+        "color": "#eeece7"
       }
     ],
     "R7": [
@@ -383,18 +383,6 @@
         "name": "2023 LJL Spring",
         "detail": "우승",
         "color": "#ed1b30"
-      }
-    ],
-    "CHF": [
-      {
-        "name": "2023 LCO Split 2",
-        "detail": "우승",
-        "color": "#0f3341"
-      },
-      {
-        "name": "2023 LCO Split 1",
-        "detail": "우승",
-        "color": "#0f3341"
       }
     ],
     "GAM": [
