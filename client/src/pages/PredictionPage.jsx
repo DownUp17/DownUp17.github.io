@@ -2849,7 +2849,8 @@ const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['P
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 
 // 연도 선택 드롭다운 — 네이티브 select는 항목이 많으면 브라우저가 위로 펼쳐서, 항상 아래로 펼치는 커스텀 구현.
-const YearDropdown = ({ years, value, onChange }) => {
+// 연도·세부 대회 선택에 공용 사용(ariaLabel로 구분).
+const YearDropdown = ({ years, value, onChange, ariaLabel = '대회 연도 선택' }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
@@ -2863,7 +2864,7 @@ const YearDropdown = ({ years, value, onChange }) => {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        aria-label="대회 연도 선택"
+        aria-label={ariaLabel}
         aria-haspopup="listbox"
         aria-expanded={open}
         className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-sm font-black bg-white/10 border border-white/20 text-white hover:border-white/40 focus:outline-none focus:border-[#C8963E] cursor-pointer"
@@ -2974,7 +2975,7 @@ const PredictionPage = () => {
   const pastDetailRaw = comp && !isCurrentYear ? PAST_DETAIL[`${comp.key}|${activeYear}`] : null;
   const pastDetail = pastDetailRaw ? { ...pastDetailRaw, ...(pastDetailRaw.bySub?.[activeSub] || {}) } : null;
   // LJL·LCO의 'PCS PO' 스테이지 선택 시 헤더는 PCS(로고·상징색·대회명)로 표기.
-  const pcsPoView = !!(comp?.key === 'lcp' && !isCurrentYear && (activeEvent === 'LJL' || activeEvent === 'LCO') && searchParams.get('stage') === 'PCS PO');
+  const pcsPoView = !!(comp?.key === 'lcp' && !isCurrentYear && (activeEvent === 'LJL' || activeEvent === 'LCO') && /^PCS PO/.test(searchParams.get('stage') || ''));
   const eventDetail = comp && !isCurrentYear && activeEvent ? EVENT_DETAIL[`${comp.key}|${activeYear}|${pcsPoView ? 'PCS' : activeEvent}`] : null;
   const headerDetail = subDetail || eventDetail || pastDetail;
 
@@ -3191,18 +3192,7 @@ const PredictionPage = () => {
                     <YearDropdown years={years} value={activeYear} onChange={setActiveYear} />
                   )}
                   {subEvents && (
-                    <select
-                      value={activeEvent}
-                      onChange={(e) => setActiveEvent(e.target.value)}
-                      aria-label="세부 대회 선택"
-                      className="px-2.5 py-1.5 rounded-lg text-sm font-black bg-white/10 border border-white/20 text-white hover:border-white/40 focus:outline-none focus:border-[#C8963E] cursor-pointer"
-                    >
-                      {subEvents.map((ev) => (
-                        <option key={ev} value={ev} className="bg-[#1e2328] text-white">
-                          {ev}
-                        </option>
-                      ))}
-                    </select>
+                    <YearDropdown years={subEvents} value={activeEvent} onChange={setActiveEvent} ariaLabel="세부 대회 선택" />
                   )}
                 </div>
                 <span className="px-3 py-1 rounded-lg text-xs font-black" style={{ color: stDisplay.color, backgroundColor: stDisplay.bg }}>
