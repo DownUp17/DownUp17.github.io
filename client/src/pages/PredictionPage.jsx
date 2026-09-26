@@ -87,6 +87,13 @@ import kabumEsportsLogo from '../assets/kabum-esports.webp';
 import libertyLogo from '../assets/liberty.svg';
 import fluxo2024Logo from '../assets/fluxo-2024.svg';
 import intzLogo from '../assets/intz.webp';
+import llaLogo from '../assets/lla.webp';
+import movistarR7Logo from '../assets/movistar-r7.svg';
+import infinityLogo from '../assets/infinity.webp';
+import isurus2Logo from '../assets/isurus-2.webp';
+import estralEsportsLogo from '../assets/estral-esports.svg';
+import sixKarmaLogo from '../assets/six-karma.webp';
+import allKnightsLogo from '../assets/all-knights.webp';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -127,14 +134,14 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 // 과거 팀 코드 → 현재 팀 연결(클릭 시 현재 팀 페이지로). 예: VCS의 Team Secret(TS)·Team Whales(TW) → TSW, MGN Blue Esports(MBE) → MVK.
-const TEAM_LINK = { TS: 'TSW', TW: 'TSW', MBE: 'MVK' };
+const TEAM_LINK = { TS: 'TSW', TW: 'TSW', MBE: 'MVK', R7: 'LYON' }; // R7(Movistar R7) → 현재 LYON
 const linkTeam = (short) => TEAM_LINK[short] || short;
 const knownTeam = (short) => short != null && baseLogoByShort[linkTeam(short)] != null;
 // AG 참가국 → ISO 3166-1 alpha-2 (flagcdn 국기 이미지용)
@@ -2738,11 +2745,11 @@ const EVENT_DETAIL = {
   'lcp|2024|PCS': { color: '#101725', logo: pcsLogo },
   'lcp|2024|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2024|LCO': { color: '#0f3341', logo: lcoLogo },
-  'cblol|2020|LLA': { color: '#ff6528' },
-  'cblol|2021|LLA': { color: '#ff6528' },
-  'cblol|2022|LLA': { color: '#ff6528' },
-  'cblol|2023|LLA': { color: '#ff6528' },
-  'cblol|2024|LLA': { color: '#ff6528' },
+  'cblol|2020|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
+  'cblol|2021|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
+  'cblol|2022|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
+  'cblol|2023|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
+  'cblol|2024|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
 };
 const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 에디션 상세 색(comp.color)과 별개로 탭에만 적용. AG 일반 색은 #ffb732(2026 상세는 유지).
@@ -3058,6 +3065,8 @@ const PredictionPage = () => {
     if (activeYear <= 2024) ov.QTD = { tag: 'SG', name: 'Sengoku Gaming', logo: sengokuGaming2024Logo };
     // SHG: 2024 LCP LJL Spring까지 옛 로고.
     if (comp?.key === 'lcp' && activeYear === 2024 && activeEvent === 'LJL' && activeSub === 'Spring') ov.SHG = { logo: shg2024SpringLogo };
+    // ISGG(Isurus): 약칭 ISG로 표기.
+    ov.ISGG = { tag: 'ISG', name: 'Isurus', logo: isurus2Logo };
     // LOUD: 2024 이하는 약칭 LLL.
     if (activeYear <= 2024) ov.LOUD = { tag: 'LLL' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.

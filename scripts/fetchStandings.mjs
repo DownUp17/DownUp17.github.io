@@ -693,15 +693,35 @@ function ltaPlayoffs2Layout(bracket) {
 //   opts.compact 미지정 시 그룹이 2개 이상이면 자동 compact.
 function de4Layout(bracket, opts = {}) {
   if (!bracket?.rounds?.length || bracket.sections) return bracket;
-  const flat = bracket.rounds.flatMap((r) => r.matches);
+  // 슬롯까지 복사(1R 색 보정이 원본을 건드리지 않게)
+  const flat = bracket.rounds.flatMap((r) => r.matches.map((m) => ({ ...m, a: { ...m.a }, b: { ...m.b } })));
   if (flat.length < 5 || flat.length % 5 !== 0) return bracket;
   const hasMsi = (m) => m.a?.msi || m.b?.msi;
   const hasElim = (m) => m.a?.elim || m.b?.elim;
   const isDecider = (m) => hasMsi(m) && hasElim(m);   // 결정전(3R): 진출·탈락 동시 보유
-  // 결정전 경계로 그룹 분할 — 각 그룹은 결정전으로 끝나야 함
-  const groups = []; let cur = [];
-  for (const m of flat) { cur.push(m); if (isDecider(m)) { groups.push(cur); cur = []; } }
-  if (cur.length) return bracket;
+  // 팀 연결로 그룹(조) 분할 — 조별로 묶여 있든, 라운드별로 섞여 있든(2024 Worlds PI) 동일하게 처리.
+  const parent = new Map();
+  const find = (x) => { while (parent.get(x) !== x) x = parent.get(x); return x; };
+  const unite = (x, y) => { if (!parent.has(x)) parent.set(x, x); if (!parent.has(y)) parent.set(y, y); parent.set(find(x), find(y)); };
+  if (flat.some((m) => !m.a?.short || !m.b?.short)) return bracket;
+  // 결정전(최종전)을 뺀 1·2라운드로 조를 묶는다 — 2024 Worlds PI처럼 최종전이 조를 교차해도 조가 섞이지 않게.
+  for (const m of flat) if (!isDecider(m)) unite(m.a.short, m.b.short);
+  const byRoot = new Map();
+  for (const m of flat) if (!isDecider(m)) { const r = find(m.a.short); if (!byRoot.has(r)) byRoot.set(r, []); byRoot.get(r).push(m); } // 등장 순서 = 라운드 순서
+  const groups = [...byRoot.values()];
+  if (groups.some((g) => g.length !== 4)) return bracket;
+  // 각 최종전을 패자전 승자가 속한 조에 배정(교차 최종전 대응)
+  const winnerShort = (m) => { const x = m.a?.score, y = m.b?.score; if (x != null && y != null) return (x > y ? m.a : m.b).short; return m.a?.win || m.a?.msi ? m.a.short : (m.b?.win || m.b?.msi ? m.b.short : null); };
+  for (const d of flat.filter(isDecider)) {
+    const g = groups.find((grp) => grp.some((m) => hasElim(m) && !hasMsi(m) && [d.a.short, d.b.short].includes(winnerShort(m))));
+    if (!g || g.length !== 4) return bracket;
+    g.push(d);
+  }
+  if (groups.some((g) => g.length !== 5)) return bracket;
+  // 각 조의 첫 두 경기(1라운드) 승자가 진출(msi)로 오표기된 경우 → 라운드 승리(win)로 교정
+  for (const g of groups) for (const m of g.slice(0, 2)) for (const s of [m.a, m.b]) if (s.msi) { delete s.msi; s.win = true; }
+  if (!groups.every((g) => g.filter(isDecider).length === 1)) return bracket;
+  // 연결선은 아래에서 팀 추적으로 재구성(원본 연결선 미사용)
   const compact = opts.compact ?? (groups.length > 1);
   const perGroup = compact ? 2 : 3;
   const cols = [];
@@ -735,15 +755,16 @@ function de4Layout(bracket, opts = {}) {
   const winnerOf = (m) => { const a = m.a?.score, b = m.b?.score; if (a != null && b != null) return a > b ? m.a : m.b; if (m.a?.win || m.a?.msi) return m.a; if (m.b?.win || m.b?.msi) return m.b; return null; };
   const slotIn = (m, short) => (m.a?.short === short ? 'a' : (m.b?.short === short ? 'b' : null));
   const connectors = [];
-  const link = (src, dst, short) => { if (!short) return; const sp = pos.get(src), dp = pos.get(dst), sl = slotIn(dst, short); if (sp && dp && sl && sp[0] !== dp[0]) connectors.push([sp[0], sp[1], 'mid', dp[0], dp[1], sl]); };
+  const link = (src, dst, short) => { if (!short) return; const sp = pos.get(src), dp = pos.get(dst), sl = slotIn(dst, short); if (sp && dp && sl && dp[0] > sp[0]) connectors.push([sp[0], sp[1], 'mid', dp[0], dp[1], sl]); }; // 역방향(교차 조) 선은 생략
   for (const { r1, adv, elim, dec } of roles) {
     for (const m of r1) { const w = winnerOf(m); const l = w ? (w === m.a ? m.b : m.a) : null; if (w) link(m, adv, w.short); if (l) link(m, elim, l.short); }
     const advW = winnerOf(adv), advL = advW ? (advW === adv.a ? adv.b : adv.a) : null;
     const elimW = winnerOf(elim);
-    if (advL) link(adv, dec, advL.short);
+    if (advL) { const dd = roles.map((r) => r.dec).find((x) => slotIn(x, advL.short)) || dec; link(adv, dd, advL.short); } // 교차 최종전이면 해당 조의 최종전으로
     if (elimW) link(elim, dec, elimW.short);
   }
-  return fixDropElim({ totalRows: compact ? 6 : 7, rounds: rounds2, connectors });
+  // fixDropElim 미적용: 원본 탈락 표시가 정확하고, 교차 최종전에서 다른 조 컬럼에 다시 나오는 팀의 탈락을 잘못 지우기 때문.
+  return { totalRows: compact ? 6 : 7, rounds: rounds2, connectors };
 }
 
 // 2023~2024 LCK 플레이오프(6팀, rounds 2·2·2·1·1 · 3라운드=승자조+패자조 2경기) — 사용자 지정 세로 배치.
@@ -1575,7 +1596,12 @@ async function buildSplit(leagueId, slug) {
       else if (cnt(/상위권.*(8강|1라운드)/) >= 2) b = lecPoLayout(b); // 6팀 LEC식 (상위 2라운드, 같은 라운드=같은 컬럼)
     }
     else { // 구조 매칭 시 전용 그리드로 재배치(각 함수가 자체 구조 검증 → 미매칭이면 원본 반환)
-      let x = ltaRound2Layout(b);                       // 2025 LTA Split3/Etapa3 round_2
+      // 8팀 더블 엘리(상위 1R 4경기) → MSI 브래킷 스테이지 템플릿(2섹션). slug가 playoffs가 아닌 경우(2024 MSI bracket_stage 등)
+      const up1Cnt = (b.rounds || []).flatMap((r) => r.matches).filter((m) => /상위권.*(8강|1라운드)/.test(m.title || '')).length;
+      const allM = (b.rounds || []).flatMap((r) => r.matches);
+      const is8DE = up1Cnt === 4 && allM.length === 14 && allM.some((m) => /^결승$/.test(m.title || '')); // 8팀 DE + 결승(14경기)만
+      let x = is8DE ? msi8DELayout(b) : b;
+      if (x === b) x = ltaRound2Layout(b);              // 2025 LTA Split3/Etapa3 round_2
       if (x === b) x = ltaPlayoffs2Layout(b);           // 6팀 DE(상위4강/하위8강) — LEC 시즌 파이널(regional_finals) 등
       if (x === b) x = pcsPo2Layout(b);                 // 2024 PCS PO 2(rounds 2·2·3·1·1·1)
       if (x === b) x = de4FinalLayout(b);               // 4팀 더블 엘리 + 결승(rounds 2·2·1·1)
