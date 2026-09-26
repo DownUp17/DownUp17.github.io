@@ -2942,12 +2942,15 @@ const PredictionPage = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [selectedRaw, setSelectedRaw] = useState(null);
   const handleTeamClick = (rawShort) => {
     const short = linkTeam(rawShort); // 과거 코드(TS·TW 등) → 현재 팀
-    if (selectedTeam === short) {
+    // 연결된 팀이라도 원래 코드가 다르면(예: TS → TW) 이동하지 않고 선택만 갱신
+    if (selectedTeam === short && selectedRaw === rawShort) {
       navigate(`/lol/prediction/team/${short}`);
     } else {
       setSelectedTeam(short);
+      setSelectedRaw(rawShort);
     }
   };
 

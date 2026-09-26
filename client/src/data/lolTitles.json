@@ -58,6 +58,16 @@
         "name": "2024 LCK Spring",
         "detail": "우승",
         "color": "#1c192a"
+      },
+      {
+        "name": "2023 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a"
+      },
+      {
+        "name": "2023 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a"
       }
     ],
     "DNS": [
@@ -158,6 +168,21 @@
         "name": "2024 LEC Winter",
         "detail": "우승",
         "color": "#00E0B0"
+      },
+      {
+        "name": "2023 LEC Season Finals",
+        "detail": "우승",
+        "color": "#00E0B0"
+      },
+      {
+        "name": "2023 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0"
+      },
+      {
+        "name": "2023 LEC Winter",
+        "detail": "우승",
+        "color": "#00E0B0"
       }
     ],
     "TSW": [
@@ -211,6 +236,16 @@
         "name": "CBLOL 2024 Split 1",
         "detail": "우승",
         "color": "#0b0718"
+      },
+      {
+        "name": "CBLOL 2023 Split 2",
+        "detail": "우승",
+        "color": "#0b0718"
+      },
+      {
+        "name": "CBLOL 2023 Split 1",
+        "detail": "우승",
+        "color": "#0b0718"
       }
     ],
     "DK": [
@@ -218,6 +253,95 @@
         "name": "2026 Esports World Cup",
         "detail": "우승",
         "gradient": "linear-gradient(90deg, #f74e16, #d1b36f)"
+      }
+    ],
+    "JDG": [
+      {
+        "name": "2023 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F"
+      },
+      {
+        "name": "2023 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#fe0000"
+      },
+      {
+        "name": "2023 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F"
+      }
+    ],
+    "MKOI": [
+      {
+        "name": "2025 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0"
+      },
+      {
+        "name": "2023 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0"
+      }
+    ],
+    "C9": [
+      {
+        "name": "2023 LCS Spring",
+        "detail": "우승",
+        "color": "#eeece7"
+      }
+    ],
+    "NRG": [
+      {
+        "name": "2023 LCS Summer",
+        "detail": "우승",
+        "color": "#eeece7"
+      }
+    ],
+    "R7": [
+      {
+        "name": "2024 LLA Closing",
+        "detail": "우승",
+        "color": "#ff6528"
+      },
+      {
+        "name": "2023 LLA Opening",
+        "detail": "우승",
+        "color": "#ff6528"
+      },
+      {
+        "name": "2023 LLA Closing",
+        "detail": "우승",
+        "color": "#ff6528"
+      }
+    ],
+    "T1": [
+      {
+        "name": "2025 LoL KeSPA CUP",
+        "detail": "우승",
+        "color": "#8f7cf6",
+        "gradient": "linear-gradient(180deg, #8f7cf6, #6176eb)"
+      },
+      {
+        "name": "2025 Worlds",
+        "detail": "우승",
+        "color": "#0e2bf4"
+      },
+      {
+        "name": "2024 Worlds",
+        "detail": "우승",
+        "color": "#010a42"
+      },
+      {
+        "name": "2024 Esports World Cup",
+        "detail": "우승",
+        "color": "#eaeaea"
+      },
+      {
+        "name": "2023 Worlds",
+        "detail": "우승",
+        "color": "#220401",
+        "gradient": "linear-gradient(90deg, #410602, #220401, #120200)"
       }
     ],
     "BRO": [
@@ -281,36 +405,6 @@
         "color": "#ff6528"
       }
     ],
-    "R7": [
-      {
-        "name": "2024 LLA Closing",
-        "detail": "우승",
-        "color": "#ff6528"
-      }
-    ],
-    "T1": [
-      {
-        "name": "2025 LoL KeSPA CUP",
-        "detail": "우승",
-        "color": "#8f7cf6",
-        "gradient": "linear-gradient(180deg, #8f7cf6, #6176eb)"
-      },
-      {
-        "name": "2025 Worlds",
-        "detail": "우승",
-        "color": "#0e2bf4"
-      },
-      {
-        "name": "2024 Worlds",
-        "detail": "우승",
-        "color": "#010a42"
-      },
-      {
-        "name": "2024 Esports World Cup",
-        "detail": "우승",
-        "color": "#eaeaea"
-      }
-    ],
     "PSG": [
       {
         "name": "2024 PCS Summer",
@@ -369,13 +463,6 @@
     "KC": [
       {
         "name": "2025 LEC Winter",
-        "detail": "우승",
-        "color": "#00E0B0"
-      }
-    ],
-    "MKOI": [
-      {
-        "name": "2025 LEC Spring",
         "detail": "우승",
         "color": "#00E0B0"
       }

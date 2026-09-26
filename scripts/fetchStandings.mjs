@@ -3940,7 +3940,8 @@ console.log('lolStandings.json 갱신 완료');
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
   try {
     const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
-    const node = past.standings?.['2024']?.lec?.['Season Finals'];
+    for (const [yr, lgs] of Object.entries(past.standings || {})) {
+    const node = lgs?.lec?.['Season Finals']; // 모든 연도 LEC Season Finals(2023 SHFT 오표기 등)
     const rounds = node?.brackets?.[0]?.bracket?.rounds || [];
     const gf = rounds[rounds.length - 1]?.matches?.slice(-1)[0];
     if (gf && gf.a?.score != null && gf.b?.score != null) {
@@ -3955,7 +3956,8 @@ console.log('lolStandings.json 갱신 완료');
       const ordered = Object.entries(elimAt).sort((a, b) => (b[1].round - a[1].round) || (b[1].gw - a[1].gw));
       node.finalStandings = [{ rank: 1, team: champ, note: '우승' }, ...ordered.map(([team], i) => ({ rank: i + 2, team, note: i === 0 ? '준우승' : (i === 1 ? '3위' : '') }))];
       fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
-      console.log(`2024 LEC Season Finals 최종순위: ${node.finalStandings.map((f) => f.team).join(',')}`);
+      console.log(`${yr} LEC Season Finals 최종순위: ${node.finalStandings.map((f) => f.team).join(',')}`);
+    }
     }
   } catch (e) { console.warn(`2024 LEC Season Finals 보정 실패(무시): ${e.message}`); }
 }
@@ -4438,7 +4440,7 @@ console.log('lolStandings.json 갱신 완료');
       return `${year} ${disp}${subPart}`;
     };
     for (const [year, lgs] of Object.entries(past.standings || {})) {
-      if (year !== '2025' && year !== '2024') continue; // 2024~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
+      if (!['2023', '2024', '2025'].includes(year)) continue; // 2023~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
       for (const [lg, v] of Object.entries(lgs || {})) {
         if (lg === 'ewc' && v?.champion) {                    // EWC(그룹+플레이오프 구조) — champion 필드로 우승 반영
           add(v.champion, `${year} Esports World Cup`, compStyle(year, 'ewc', null));

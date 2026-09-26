@@ -115,7 +115,7 @@ const TeamPage = () => {
         {/* 우승 경력 */}
         {titles.length > 0 && (
           <div className="mt-10">
-            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">우승 경력(2024-)</h2>
+            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">우승 경력(2023-)</h2>
             <div className="flex flex-col gap-2">
               {titles.map((t, i) => {
                 const fg = t.gradient ? '#fff' : (t.color ? textOn(t.color) : 'rgba(255,255,255,0.9)');
