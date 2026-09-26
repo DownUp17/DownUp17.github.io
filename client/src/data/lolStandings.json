@@ -7870,14 +7870,17 @@
                   "title": "하위권 대진 - 4강",
                   "a": {
                     "seed": "",
-                    "short": "LYON"
+                    "short": "LYON",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 2라운드 승자",
-                    "short": "SR"
+                    "short": "SR",
+                    "score": 1,
+                    "elim": true
                   },
-                  "startRow": 8,
-                  "time": "9/27 05:00"
+                  "startRow": 8
                 }
               ]
             },
@@ -7891,7 +7894,8 @@
                     "seed": "상위권 대진 - 결승 패자"
                   },
                   "b": {
-                    "seed": "하위권 대진 - 4강 승자"
+                    "seed": "하위권 대진 - 4강 승자",
+                    "short": "LYON"
                   },
                   "startRow": 8,
                   "time": "10/4 05:00"
@@ -8000,6 +8004,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 4,
+            "team": "SR",
+            "note": ""
+          },
           {
             "rank": 5,
             "team": "FLY",
@@ -9127,14 +9136,17 @@
                   "title": "하위권 대진 - 4강",
                   "a": {
                     "seed": "",
-                    "short": "FUR"
+                    "short": "FUR",
+                    "score": 3,
+                    "win": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 2라운드 승자",
-                    "short": "RED"
+                    "short": "RED",
+                    "score": 2,
+                    "elim": true
                   },
-                  "startRow": 8,
-                  "time": "9/27 01:00"
+                  "startRow": 8
                 }
               ]
             },
@@ -9148,7 +9160,8 @@
                     "seed": "상위권 대진 - 결승 패자"
                   },
                   "b": {
-                    "seed": "하위권 대진 - 4강 승자"
+                    "seed": "하위권 대진 - 4강 승자",
+                    "short": "FUR"
                   },
                   "startRow": 8,
                   "time": "10/4 01:00"
@@ -9257,6 +9270,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 4,
+            "team": "RED",
+            "note": ""
+          },
           {
             "rank": 5,
             "team": "PAIN",
