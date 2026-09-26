@@ -4331,6 +4331,61 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 Demacia Cup 주입 실패(무시): ${e.message}`); }
 }
 
+// ── 2022 항저우 아시안게임(2023년 개최) LoL — API 미제공 · 수기 → 과거 에디션 '2023'(연도 선택 기준) ─────────
+//   그룹 스테이지(3팀 4개조 싱글RR · D조 2팀 · 조 1위 진출) → 녹아웃(직행 4국 + 조 1위 4국 · 싱글 엘리 + 동메달 결정전). 금 대한민국.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const S = (short, seed, score, flag) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
+    const R = (rank, team, w, l, group) => ({ rank, team, w, l, group });
+    const rows = [
+      R(1, 'KOR', 2, 0, 'A조'), R(2, 'HKG', 1, 1, 'A조'), R(3, 'KAZ', 0, 2, 'A조'),
+      R(1, 'VIE', 2, 0, 'B조'), R(2, 'JPN', 1, 1, 'B조'), R(3, 'PSE', 0, 2, 'B조'),
+      R(1, 'TPE', 2, 0, 'C조'), R(2, 'UAE', 1, 1, 'C조'), R(3, 'MDV', 0, 2, 'C조'),
+      R(1, 'MAC', 1, 0, 'D조'), R(2, 'THA', 0, 1, 'D조'),
+    ];
+    const ko = applySingleElimLayout({
+      rounds: [
+        { matches: [
+          { title: '8강 1경기', time: '9/27', a: S('SAU', '', 0), b: S('KOR', 'A조 1위', 2, 'win') },
+          { title: '8강 2경기', time: '9/27', a: S('CHN', '', 2, 'win'), b: S('MAC', 'D조 1위', 0) },
+          { title: '8강 3경기', time: '9/27', a: S('MYS', '', 0), b: S('TPE', 'C조 1위', 2, 'win') },
+          { title: '8강 4경기', time: '9/27', a: S('IND', '', 0), b: S('VIE', 'B조 1위', 2, 'win') },
+        ] },
+        { matches: [
+          { title: '4강 1경기', time: '9/28', a: S('KOR', '8강 승자', 2, 'win'), b: S('CHN', '8강 승자', 0) },
+          { title: '4강 2경기', time: '9/28', a: S('TPE', '8강 승자', 2, 'win'), b: S('VIE', '8강 승자', 0) },
+        ] },
+        { matches: [
+          { title: '결승전', time: '9/29', a: S('KOR', '4강 승자', 2, 'msi'), b: S('TPE', '4강 승자', 0, 'elim') },
+        ] },
+      ],
+      connectors: [
+        [0, 0, 'b', 1, 0, 'a'], [0, 1, 'a', 1, 0, 'b'], [0, 2, 'b', 1, 1, 'a'], [0, 3, 'b', 1, 1, 'b'],
+        [1, 0, 'a', 2, 0, 'a'], [1, 1, 'a', 2, 0, 'b'],
+      ],
+    });
+    // 동메달 결정전 — 결승과 같은 마지막 컬럼 하단(EWC 3위전과 동일 배치)
+    ko.rounds[ko.rounds.length - 1].matches.push({ title: '동메달 결정전', time: '9/29', startRow: 6, a: S('CHN', '4강 패자', 2, 'win'), b: S('VIE', '4강 패자', 1, 'elim') });
+    // 2023년 개최 → 연도 선택은 2023(대회명은 '2022 항저우' 유지). 예전 '2022' 키는 제거.
+    if (past.standings['2022']?.asiangames) { delete past.standings['2022'].asiangames; if (!Object.keys(past.standings['2022']).length) delete past.standings['2022']; }
+    (past.standings['2023'] = past.standings['2023'] || {}).asiangames = {
+      name: '항저우 아시안게임', regLabel: '그룹 스테이지', parallelGroups: true,
+      rows,
+      brackets: [{ slug: 'knockout', name: '녹아웃 스테이지', label: '녹아웃 스테이지', bracket: ko }],
+      finalStandings: [
+        { rank: 1, team: 'KOR', note: '우승' }, { rank: 2, team: 'TPE', note: '준우승' },
+        { rank: 3, team: 'CHN', note: '3위' }, { rank: 4, team: 'VIE', note: '' },
+        { rank: 5, team: 'SAU', note: '' }, { rank: 6, team: 'MAC', note: '' },
+        { rank: 7, team: 'MYS', note: '' }, { rank: 8, team: 'IND', note: '' },
+      ],
+    };
+    fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+    console.log('2022 항저우 AG 주입 완료 (그룹 4개조 → 녹아웃 8강+동메달전 · 금 대한민국)');
+  } catch (e) { console.warn(`2022 AG 주입 실패(무시): ${e.message}`); }
+}
+
 // ── 팀별 우승 경력 자동 산출 ──────────────────────────────────────────────
 //   앱이 추적하는 2026 대회의 우승팀(finalStandings 1위 · champion)을 모아 팀 상세 페이지용 lolTitles.json 생성.
 {

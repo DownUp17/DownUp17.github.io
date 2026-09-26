@@ -344,6 +344,13 @@
         "gradient": "linear-gradient(90deg, #410602, #220401, #120200)"
       }
     ],
+    "KOR": [
+      {
+        "name": "2023 ASIANGAMES",
+        "detail": "우승",
+        "color": "#079a3e"
+      }
+    ],
     "BRO": [
       {
         "name": "2024 LoL KeSPA CUP",

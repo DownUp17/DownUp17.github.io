@@ -39399,6 +39399,332 @@
             "note": ""
           }
         ]
+      },
+      "asiangames": {
+        "name": "항저우 아시안게임",
+        "regLabel": "그룹 스테이지",
+        "parallelGroups": true,
+        "rows": [
+          {
+            "rank": 1,
+            "team": "KOR",
+            "w": 2,
+            "l": 0,
+            "group": "A조"
+          },
+          {
+            "rank": 2,
+            "team": "HKG",
+            "w": 1,
+            "l": 1,
+            "group": "A조"
+          },
+          {
+            "rank": 3,
+            "team": "KAZ",
+            "w": 0,
+            "l": 2,
+            "group": "A조"
+          },
+          {
+            "rank": 1,
+            "team": "VIE",
+            "w": 2,
+            "l": 0,
+            "group": "B조"
+          },
+          {
+            "rank": 2,
+            "team": "JPN",
+            "w": 1,
+            "l": 1,
+            "group": "B조"
+          },
+          {
+            "rank": 3,
+            "team": "PSE",
+            "w": 0,
+            "l": 2,
+            "group": "B조"
+          },
+          {
+            "rank": 1,
+            "team": "TPE",
+            "w": 2,
+            "l": 0,
+            "group": "C조"
+          },
+          {
+            "rank": 2,
+            "team": "UAE",
+            "w": 1,
+            "l": 1,
+            "group": "C조"
+          },
+          {
+            "rank": 3,
+            "team": "MDV",
+            "w": 0,
+            "l": 2,
+            "group": "C조"
+          },
+          {
+            "rank": 1,
+            "team": "MAC",
+            "w": 1,
+            "l": 0,
+            "group": "D조"
+          },
+          {
+            "rank": 2,
+            "team": "THA",
+            "w": 0,
+            "l": 1,
+            "group": "D조"
+          }
+        ],
+        "brackets": [
+          {
+            "slug": "knockout",
+            "name": "녹아웃 스테이지",
+            "label": "녹아웃 스테이지",
+            "bracket": {
+              "totalRows": 8,
+              "rounds": [
+                {
+                  "matches": [
+                    {
+                      "title": "8강 1경기",
+                      "time": "9/27",
+                      "a": {
+                        "short": "SAU",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "KOR",
+                        "seed": "A조 1위",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 0
+                    },
+                    {
+                      "title": "8강 2경기",
+                      "time": "9/27",
+                      "a": {
+                        "short": "CHN",
+                        "score": 2,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "MAC",
+                        "seed": "D조 1위",
+                        "score": 0
+                      },
+                      "startRow": 2
+                    },
+                    {
+                      "title": "8강 3경기",
+                      "time": "9/27",
+                      "a": {
+                        "short": "MYS",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "TPE",
+                        "seed": "C조 1위",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 4
+                    },
+                    {
+                      "title": "8강 4경기",
+                      "time": "9/27",
+                      "a": {
+                        "short": "IND",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "VIE",
+                        "seed": "B조 1위",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 6
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "4강 1경기",
+                      "time": "9/28",
+                      "a": {
+                        "short": "KOR",
+                        "seed": "8강 승자",
+                        "score": 2,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "CHN",
+                        "seed": "8강 승자",
+                        "score": 0
+                      },
+                      "startRow": 1
+                    },
+                    {
+                      "title": "4강 2경기",
+                      "time": "9/28",
+                      "a": {
+                        "short": "TPE",
+                        "seed": "8강 승자",
+                        "score": 2,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "VIE",
+                        "seed": "8강 승자",
+                        "score": 0
+                      },
+                      "startRow": 5
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "결승전",
+                      "time": "9/29",
+                      "a": {
+                        "short": "KOR",
+                        "seed": "4강 승자",
+                        "score": 2,
+                        "msi": true
+                      },
+                      "b": {
+                        "short": "TPE",
+                        "seed": "4강 승자",
+                        "score": 0,
+                        "elim": true
+                      },
+                      "startRow": 3
+                    },
+                    {
+                      "title": "동메달 결정전",
+                      "time": "9/29",
+                      "startRow": 6,
+                      "a": {
+                        "short": "CHN",
+                        "seed": "4강 패자",
+                        "score": 2,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "VIE",
+                        "seed": "4강 패자",
+                        "score": 1,
+                        "elim": true
+                      }
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "b",
+                  1,
+                  0,
+                  "a"
+                ],
+                [
+                  0,
+                  1,
+                  "a",
+                  1,
+                  0,
+                  "b"
+                ],
+                [
+                  0,
+                  2,
+                  "b",
+                  1,
+                  1,
+                  "a"
+                ],
+                [
+                  0,
+                  3,
+                  "b",
+                  1,
+                  1,
+                  "b"
+                ],
+                [
+                  1,
+                  0,
+                  "a",
+                  2,
+                  0,
+                  "a"
+                ],
+                [
+                  1,
+                  1,
+                  "a",
+                  2,
+                  0,
+                  "b"
+                ]
+              ]
+            }
+          }
+        ],
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "KOR",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "TPE",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "CHN",
+            "note": "3위"
+          },
+          {
+            "rank": 4,
+            "team": "VIE",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "SAU",
+            "note": ""
+          },
+          {
+            "rank": 6,
+            "team": "MAC",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "MYS",
+            "note": ""
+          },
+          {
+            "rank": 8,
+            "team": "IND",
+            "note": ""
+          }
+        ]
       }
     },
     "2024": {

@@ -13,6 +13,7 @@ import { textOn, lighten } from '../utils/colorContrast';
 import demaciaLogo from '../assets/demacia.svg';
 import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
+import asiangames2022Logo from '../assets/asiangames2022.svg';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
 import ewcLogo from '../assets/ewc.svg';
@@ -98,6 +99,9 @@ import lgdYoungTeamLogo from '../assets/lgd-young-team.webp';
 import blgJuniorLogo from '../assets/blg-junior.webp';
 import bloodLogo from '../assets/blood.webp';
 import superGamingLogo from '../assets/super-gaming.webp';
+import liivSandboxLogo from '../assets/liiv-sandbox.svg';
+import t1_2023Logo from '../assets/t1-2023.svg';
+import brionOk2024SpringLogo from '../assets/brion-ok-2024-spring.svg';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -149,7 +153,9 @@ const TEAM_LINK = { TS: 'TSW', TW: 'TSW', MBE: 'MVK', R7: 'LYON' }; // R7(Movist
 const linkTeam = (short) => TEAM_LINK[short] || short;
 const knownTeam = (short) => short != null && baseLogoByShort[linkTeam(short)] != null;
 // AG 참가국 → ISO 3166-1 alpha-2 (flagcdn 국기 이미지용)
-const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', JPN: 'jp', HKG: 'hk', SAU: 'sa', IND: 'in', UAE: 'ae', MYS: 'my' };
+const AG_FLAG = { KOR: 'kr', TPE: 'tw', VIE: 'vn', JPN: 'jp', HKG: 'hk', SAU: 'sa', IND: 'in', UAE: 'ae', MYS: 'my', CHN: 'cn', KAZ: 'kz', PSE: 'ps', MDV: 'mv', MAC: 'mo', THA: 'th' };
+// 국가 코드 → 한국어 국가명(과거 AG 에디션 표기용)
+const AG_NATION_NAME = { KOR: '대한민국', TPE: '중화 타이베이', VIE: '베트남', JPN: '일본', HKG: '홍콩', SAU: '사우디아라비아', IND: '인도', UAE: '아랍에미리트', MYS: '말레이시아', CHN: '중국', KAZ: '카자흐스탄', PSE: '팔레스타인', MDV: '몰디브', MAC: '마카오', THA: '태국' };
 // 국가 대표(국기 로고) 팀 — KeSPA CUP 등에서 국가로 출전. flagcdn 국기 이미지를 로고로 사용.
 //   TPE(중화 타이베이)는 flagcdn 대신 지정된 로고를 항상 사용.
 const nationFlag = (code) => (code === 'TPE' ? chineseTaipeiFlag : (AG_FLAG[code] ? `https://flagcdn.com/48x36/${AG_FLAG[code]}.png` : null));
@@ -2744,6 +2750,7 @@ const PAST_DETAIL = {
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000' },
   'worlds|2023': { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' },
+  'asiangames|2023': { color: '#b223ba', gradient: 'linear-gradient(90deg, #dd0b7c, #b223ba, #433feb)', logo: asiangames2022Logo },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {
@@ -2764,7 +2771,11 @@ const tabLogo = (key) => (key === 'gpr' ? LOLESPORTS_LOGO : COMP_LOGO[key]);
 // 탭 상징색 오버라이드 — 비우면 각 대회 comp.color(가장 최근 에디션 색)를 그대로 탭에 사용.
 const TAB_COLOR = {};
 // 대회 상징색 그라데이션 (탭·헤더 로고 박스) — 좌→우. 지정 시 단색 대신 그라데이션 사용.
-const COMP_GRADIENT = { ewc: 'linear-gradient(90deg, #f74e16, #d1b36f)' };
+// 2026 AG: 4색, 색 사이 경계(블렌드 중간점)를 10%·30%·85%에 두기 위해 color hint 사용.
+const COMP_GRADIENT = {
+  ewc: 'linear-gradient(90deg, #f74e16, #d1b36f)',
+  asiangames: 'linear-gradient(90deg, #4e3e93 0%, 10%, #eb3b46 20%, 30%, #d5b100 57.5%, 85%, #079a3e 100%)',
+};
 
 // 지역 리그별 세부 대회 (2026 기준)
 const SUBTABS = {
@@ -2850,6 +2861,7 @@ const COMP_EDITIONS = {
   demacia: [2026, 2025, 2024],
   worlds: [2026, 2025],
   ewc: [2026, 2025, 2024],
+  asiangames: [2026, 2023], // 2022 항저우 AG는 코로나로 2023년 개최 → 연도 선택은 2023(대회명은 2022 유지)
 };
 // 선택 가능한 연도 = 수기 기준(COMP_EDITIONS: demacia/fst 등 특수 2025) + 생성된 과거 데이터의 모든 연도.
 const editionYears = (key) => {
@@ -3059,11 +3071,20 @@ const PredictionPage = () => {
     // VCS 2024 이하: Team Secret(TS)·Team Whales(TW) — 2025에 합병해 TSW(클릭 시 TSW로 연결, TEAM_LINK).
     // 2024 Demacia Cup 참가 2군·기타 팀 명칭
     if (comp?.key === 'demacia' && activeYear === 2024) Object.assign(ov, { BLGJ: { name: 'Bilibili Gaming Junior' }, SG: { name: 'Super Gaming' }, BLD: { name: 'Blood' }, LGDYT: { name: 'LGD Gaming Young Team' }, FPX: { name: 'FunPlus Phoenix' }, RNG: { name: 'Royal Never Give Up' } });
+    // 과거 AG(2022 항저우 등): 국가 코드 → 한국어 국가명(약칭·풀네임 모두) + 국기
+    if (comp?.key === 'asiangames') for (const [c, n] of Object.entries(AG_NATION_NAME)) ov[c] = { tag: n, name: n, logo: nationFlag(c) };
     if (activeYear <= 2024) { ov.TS = { ...(ov.TS || {}), name: 'Team Secret' }; ov.TW = { ...(ov.TW || {}), name: 'Team Whales' }; ov.MBE = { ...(ov.MBE || {}), name: 'MGN Blue Esports' }; }
     // EWC의 AL: 2025 이하는 이름 'AL'(로고는 AG.AL 로고 유지), 2026부터 AGAL(AG.AL) — EWC_TEAM_OVERRIDE.
     if (comp?.key === 'ewc' && activeYear <= 2025) ov.AL = { name: 'AL', logo: agalEwcLogo };
-    // BFX: 2024 Spring까지 FearX(FOX), 2024 Summer는 BNK FearX(FOX), 2025부터 기본 BNK FEARX.
-    if (activeYear < 2024 || (activeYear === 2024 && activeSub === 'Spring')) ov.BFX = { tag: 'FOX', name: 'FearX', logo: fearxLogo };
+    // T1: 2023까지 옛 로고.
+    if (activeYear <= 2023) ov.T1 = { logo: t1_2023Logo };
+    // BLG: 2023 이하는 'Bilibili Gaming Pingan Bank'.
+    if (activeYear <= 2023) ov.BLG = { name: 'Bilibili Gaming Pingan Bank' };
+    // BRO: 2024 LCK Spring까지 옛 OK BRION 로고(이름은 TEAM_OVERRIDE_2025 유지).
+    if (activeYear < 2024 || (activeYear === 2024 && comp?.key === 'lck' && activeSub === 'Spring')) ov.BRO = { ...ov.BRO, logo: brionOk2024SpringLogo };
+    // BFX: 2023까지 Liiv SANDBOX(LSB), 2024 Spring은 FearX(FOX), 2024 Summer는 BNK FearX(FOX), 2025부터 기본 BNK FEARX.
+    if (activeYear <= 2023) ov.BFX = { tag: 'LSB', name: 'Liiv SANDBOX', logo: liivSandboxLogo };
+    else if (activeYear === 2024 && activeSub === 'Spring') ov.BFX = { tag: 'FOX', name: 'FearX', logo: fearxLogo };
     // 2024 KeSPA CUP(12월, Worlds 이후)도 Summer 당시 팀명(BNK FearX)으로 표기.
     else if (activeYear === 2024 && (activeSub === 'Summer' || activeSub === '선발전' || activeSub === 'KeSPA CUP')) ov.BFX = { tag: 'FOX', name: 'BNK FearX', logo: bnkFearxLogo };
     // DNS: 2024 이하는 KWANGDONG FREECS(KDF). 2025는 DN FREECS(DNF, TEAM_OVERRIDE_2025), 2026부터 DN SOOPers.
@@ -3146,6 +3167,7 @@ const PredictionPage = () => {
   const displayTitle = (() => {
     if (isCurrentYear) return title;
     if (pcsPoView) return `${activeYear} PCS ${({ 'Split 1': 'Spring', 'Split 2': 'Summer' })[activeSub] || activeSub} Playoffs`;
+    if (comp?.key === 'asiangames' && activeYear === 2023) return '19th Asian Games Hangzhou 2022 Esports League of Legends'; // 2023년 개최, 대회명은 2022
     if (activeEvent) return `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}${activeSub ? ` ${activeSub}` : ''}`;
     const subMap = SUB_TITLE_NAME[`${comp?.key}|${activeYear}`];
     if (subMap && subMap[activeSub]) return `${activeYear} ${comp.name.replace('2026 ', '')} ${subMap[activeSub]}`;
