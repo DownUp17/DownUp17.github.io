@@ -903,6 +903,24 @@ function lcs23PoLayout(bracket) {
   ], 14);
 }
 
+// 2023 LJL Summer PO(rounds 4·3·1·1·1): 상위 결승은 하위 3라운드 컬럼, 하위 2R은 하위 1R과 같은 행, 하위 3R·결승은 하위 1R 사이 행
+function ljl23PoLayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  if (bracket.rounds.map((r) => r.matches.length).join(',') !== '4,3,1,1,1') return bracket;
+  const all = bracket.rounds.flatMap((r) => r.matches);
+  const f = (re) => all.filter((m) => re.test(m.title || ''));
+  const u1 = f(/상위권.*1라운드/), uf = f(/상위권.*결승/), l1 = f(/하위권.*1라운드/), l2 = f(/하위권.*2라운드/);
+  const l3 = f(/하위권.*3라운드/), lf = f(/하위권.*결승/), gf = f(/^결승$/);
+  if (u1.length !== 2 || uf.length !== 1 || l1.length !== 2 || l2.length !== 2 || l3.length !== 1 || lf.length !== 1 || gf.length !== 1) return bracket;
+  return regridByObject(bracket, [
+    [{ m: u1[0], sr: 0 }, { m: u1[1], sr: 2 }, { m: l1[0], sr: 6 }, { m: l1[1], sr: 10 }],
+    [{ m: l2[0], sr: 6 }, { m: l2[1], sr: 10 }],
+    [{ m: uf[0], sr: 1 }, { m: l3[0], sr: 8 }],
+    [{ m: lf[0], sr: 8 }],
+    [{ m: gf[0], sr: 4 }],
+  ], 12);
+}
+
 function lec23PoLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,1,1') return bracket;
@@ -1632,10 +1650,12 @@ async function buildSplit(leagueId, slug) {
       const vcsS = vcsSummerLayout(b);    // 2024 VCS Summer(rounds 1·2·2·1·1)
       const tp = thirdPlaceLayout(b);     // 4팀 싱글 엘리 + 3위 결정전(rounds 2·1·1) — 2024 LJL Spring 등
       const lcs23 = lcs23PoLayout(b);    // 2023 LCS Summer PO(rounds 2·4·3·1·1·1)
+      const ljl23 = ljl23PoLayout(b);    // 2023 LJL Summer PO(rounds 4·3·1·1·1)
       const lec23 = lec23PoLayout(b);    // 2023 LEC PO(상위1R+하위1R / 하위2R / 결승)
       const cb24 = cblol24Layout(b);      // 2024 CBLOL Split 1(1~5라운드, rounds 2·2·3·1·1·1)
       if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)
       else if (lcs23 !== b) b = lcs23;                             // 2023 LCS Summer PO
+      else if (ljl23 !== b) b = ljl23;                             // 2023 LJL Summer PO
       else if (lec8 !== b) b = lec8;                               // 8팀 LEC/LPL식 (예선 1라운드 + 상위 2R + 하위 3R)
       else if (lckCup !== b) b = lckCup;                           // 2025 LCK CUP식 (상위 3R + 하위권 대진 2경기)
       else if (lta2 !== b) b = lta2;                               // 2025 LTA Split2/Etapa2 PO (상위4강/하위8강 컴팩트)
@@ -1662,6 +1682,7 @@ async function buildSplit(leagueId, slug) {
       if (x === b) x = de4FinalLayout(b);               // 4팀 더블 엘리 + 결승(rounds 2·2·1·1)
       if (x === b) x = vcsSummerLayout(b);              // 2024 VCS Summer(rounds 1·2·2·1·1)
       if (x === b) x = lcs23PoLayout(b);                // 2023 LCS Summer PO(rounds 2·4·3·1·1·1)
+      if (x === b) x = ljl23PoLayout(b);                // 2023 LJL Summer PO(rounds 4·3·1·1·1)
       if (x === b) x = lec23PoLayout(b);                // 2023 LEC PO(rounds 2·1·1)
       if (x === b) x = thirdPlaceLayout(b);             // 4팀 싱글 엘리 + 3위 결정전(rounds 2·1·1)
       if (x === b) x = cblol24Layout(b);                // 2024 CBLOL Split 1(rounds 2·2·3·1·1·1)
@@ -3923,6 +3944,32 @@ console.log('lolStandings.json 갱신 완료');
     const row = past.standings?.['2023']?.lcp?.VCS?.Summer?.rows?.find((r) => r.team === 'SBTE');
     if (row && row.remark !== '몰수패') { row.remark = '몰수패'; fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('2023 VCS Summer SE 몰수패 비고 반영'); }
   } catch (e) { console.warn(`2023 VCS Summer 비고 실패(무시): ${e.message}`); }
+}
+
+// ── 2023 LJL Spring 플레이오프 — 다른 대진표와 같은 격자형(startRow·연결선) UI ──
+//   1라운드(4v5·3v6) 승자 → 2라운드(1위·2위와 대결) → 결승. 1라운드 승자 msi 표시 → win.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const bk = past.standings?.['2023']?.lcp?.LJL?.Spring?.brackets?.find((b) => b.slug === 'playoffs')?.bracket;
+    if (bk && bk.totalRows == null && bk.rounds?.length === 3) {
+      const [r1, r2, r3] = bk.rounds;
+      // 2라운드 순서 기준으로 1라운드를 정렬해 연결선이 교차하지 않게.
+      const r1s = r2.matches.map((m2) => r1.matches.find((m1) => [m1.a.short, m1.b.short].includes(m2.a.short))).filter(Boolean);
+      for (const m of r1s) for (const s of ['a', 'b']) if (m[s].msi) { delete m[s].msi; m[s].win = true; }
+      for (const m of r2.matches) if (!m.a.seed) m.a.seed = '1라운드 승자';
+      bk.totalRows = 4;
+      bk.rounds = [
+        { ...r1, matches: r1s.map((m, i) => ({ ...m, startRow: i * 2 })) },
+        { ...r2, matches: r2.matches.map((m, i) => ({ ...m, startRow: i * 2 })) },
+        { ...r3, matches: r3.matches.map((m) => ({ ...m, startRow: 1 })) },
+      ];
+      bk.connectors = [[0, 0, 'mid', 1, 0, 'a'], [0, 1, 'mid', 1, 1, 'a'], [1, 0, 'mid', 2, 0, 'a'], [1, 1, 'mid', 2, 0, 'b']];
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2023 LJL Spring 플레이오프 격자형 대진표 반영');
+    }
+  } catch (e) { console.warn(`2023 LJL Spring 대진표 변환 실패(무시): ${e.message}`); }
 }
 
 // ── 2024 PCS 플레이오프 스테이지 1·2 + LJL·LCO 'PCS PO 1·2' ──
