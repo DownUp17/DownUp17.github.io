@@ -94,6 +94,10 @@ import isurus2Logo from '../assets/isurus-2.webp';
 import estralEsportsLogo from '../assets/estral-esports.svg';
 import sixKarmaLogo from '../assets/six-karma.webp';
 import allKnightsLogo from '../assets/all-knights.webp';
+import lgdYoungTeamLogo from '../assets/lgd-young-team.webp';
+import blgJuniorLogo from '../assets/blg-junior.webp';
+import bloodLogo from '../assets/blood.webp';
+import superGamingLogo from '../assets/super-gaming.webp';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -134,10 +138,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 // 과거 팀 코드 → 현재 팀 연결(클릭 시 현재 팀 페이지로). 예: VCS의 Team Secret(TS)·Team Whales(TW) → TSW, MGN Blue Esports(MBE) → MVK.
@@ -1902,7 +1906,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">그룹 스테이지</h3>
                 <span className="text-xs text-white/40">4개조 · 4팀 더블 엘리미네이션 · 조별 2팀 플레이오프 진출</span>
               </div>
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">{/* A·B조 한 줄, C·D조 그 아래(두 조일 때와 같은 형식) */}
                 {['A', 'B', 'C', 'D'].map((g) => ewc.groups[g] && (
                   <div key={g}>
                     <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: '#E8C77E', backgroundColor: 'rgba(200,150,62,0.2)' }}>{g}조</span>
@@ -2249,7 +2253,8 @@ const PAST_GROUP_BADGES = [
 // 조별 우열이 없는(=A조/B조/C조·1조/2조식) 이름이면 순위표를 병렬 배치. (레전드/라이즈 등 우열 조는 세로 유지)
 const isPeerGroupNames = (names) => { const g = (names || []).filter(Boolean); return g.length > 1 && g.every((n) => /^[A-Za-z0-9]+조$/.test(n)); };
 // 병렬 그리드 클래스 — 조가 2개면 가로를 2열로 꽉 채우고(빈 3열 자리 없음), 3개 이상이면 3열.
-const parallelGrid = (n) => (n <= 2
+//   조가 4개(A~D조)면 두 조일 때처럼 2열로 두고 A·B조 아래에 C·D조를 같은 형식으로 배치(2×2).
+const parallelGrid = (n) => (n <= 2 || n === 4
   ? 'grid grid-cols-1 md:grid-cols-2 gap-6'
   : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6');
 // 종료 대회별 팀 로고/표기 오버라이드 (당시 로고 사용). FST 당시 GEN은 예전 로고.
@@ -2340,11 +2345,11 @@ const PastSplitView = ({ comp, data, stage, onTeamClick, teamOverride: teamOverr
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">그룹 스테이지</h3>
             <span className="text-xs text-white/40">{groupKeys.length}개조 · 4팀 더블 엘리미네이션 · 조별 2팀 플레이오프 진출</span>
           </div>
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">{/* A·B조 한 줄, C·D조 그 아래(두 조일 때와 같은 형식) */}
             {groupKeys.map((g) => data.groups[g] && (
               <div key={g}>
                 <span className="inline-block text-xs font-black px-2 py-0.5 rounded mb-2" style={{ color: '#E8C77E', backgroundColor: 'rgba(200,150,62,0.2)' }}>{g}조</span>
-                <MsiBracket rounds={data.groups[g].rounds} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+                <MsiBracket rounds={data.groups[g].rounds} totalRows={data.groups[g].totalRows} connectors={data.groups[g].connectors} onTeamClick={onTeamClick} teamOverride={teamOverride} />
               </div>
             ))}
           </div>
@@ -2737,6 +2742,8 @@ const PAST_DETAIL = {
   'msi|2024': { color: '#000000' },
   'worlds|2025': { color: '#0e2bf4' },
   'worlds|2024': { color: '#010a42' },
+  'msi|2023': { color: '#fe0000' },
+  'worlds|2023': { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
 const EVENT_DETAIL = {

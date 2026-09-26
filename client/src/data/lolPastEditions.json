@@ -65953,7 +65953,7 @@
         "champion": "GEN",
         "groups": {
           "A": {
-            "totalRows": 7,
+            "totalRows": 6,
             "rounds": [
               {
                 "title": "",
@@ -65987,6 +65987,22 @@
                       "score": 0
                     },
                     "startRow": 2
+                  },
+                  {
+                    "title": "패자전",
+                    "a": {
+                      "short": "FUR",
+                      "seed": "1경기 패자",
+                      "score": 1,
+                      "win": true
+                    },
+                    "b": {
+                      "short": "C9",
+                      "seed": "2경기 패자",
+                      "score": 0,
+                      "elim": true
+                    },
+                    "startRow": 4
                   }
                 ]
               },
@@ -66009,27 +66025,6 @@
                     "startRow": 1
                   },
                   {
-                    "title": "패자전",
-                    "a": {
-                      "short": "FUR",
-                      "seed": "1경기 패자",
-                      "score": 1,
-                      "win": true
-                    },
-                    "b": {
-                      "short": "C9",
-                      "seed": "2경기 패자",
-                      "score": 0,
-                      "elim": true
-                    },
-                    "startRow": 5
-                  }
-                ]
-              },
-              {
-                "title": "",
-                "matches": [
-                  {
                     "title": "최종전",
                     "a": {
                       "short": "FLY",
@@ -66043,7 +66038,7 @@
                       "score": 0,
                       "elim": true
                     },
-                    "startRow": 5
+                    "startRow": 4
                   }
                 ]
               }
@@ -66059,14 +66054,6 @@
               ],
               [
                 0,
-                0,
-                "mid",
-                1,
-                1,
-                "a"
-              ],
-              [
-                0,
                 1,
                 "mid",
                 1,
@@ -66075,32 +66062,16 @@
               ],
               [
                 0,
-                1,
-                "mid",
-                1,
-                1,
-                "b"
-              ],
-              [
-                1,
-                0,
-                "mid",
                 2,
-                0,
-                "a"
-              ],
-              [
-                1,
-                1,
                 "mid",
-                2,
-                0,
+                1,
+                1,
                 "b"
               ]
             ]
           },
           "B": {
-            "totalRows": 7,
+            "totalRows": 6,
             "rounds": [
               {
                 "title": "",
@@ -66134,6 +66105,22 @@
                       "score": 0
                     },
                     "startRow": 2
+                  },
+                  {
+                    "title": "패자전",
+                    "a": {
+                      "short": "CFO",
+                      "seed": "1경기 패자",
+                      "score": 1,
+                      "win": true
+                    },
+                    "b": {
+                      "short": "GAM",
+                      "seed": "2경기 패자",
+                      "score": 0,
+                      "elim": true
+                    },
+                    "startRow": 4
                   }
                 ]
               },
@@ -66156,27 +66143,6 @@
                     "startRow": 1
                   },
                   {
-                    "title": "패자전",
-                    "a": {
-                      "short": "CFO",
-                      "seed": "1경기 패자",
-                      "score": 1,
-                      "win": true
-                    },
-                    "b": {
-                      "short": "GAM",
-                      "seed": "2경기 패자",
-                      "score": 0,
-                      "elim": true
-                    },
-                    "startRow": 5
-                  }
-                ]
-              },
-              {
-                "title": "",
-                "matches": [
-                  {
                     "title": "최종전",
                     "a": {
                       "short": "MKOI",
@@ -66190,7 +66156,7 @@
                       "score": 0,
                       "elim": true
                     },
-                    "startRow": 5
+                    "startRow": 4
                   }
                 ]
               }
@@ -66206,14 +66172,6 @@
               ],
               [
                 0,
-                0,
-                "mid",
-                1,
-                1,
-                "a"
-              ],
-              [
-                0,
                 1,
                 "mid",
                 1,
@@ -66222,26 +66180,10 @@
               ],
               [
                 0,
-                1,
-                "mid",
-                1,
-                1,
-                "b"
-              ],
-              [
-                1,
-                0,
-                "mid",
                 2,
-                0,
-                "a"
-              ],
-              [
-                1,
-                1,
                 "mid",
-                2,
-                0,
+                1,
+                1,
                 "b"
               ]
             ]

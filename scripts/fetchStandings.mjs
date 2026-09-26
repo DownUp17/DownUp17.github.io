@@ -4102,7 +4102,7 @@ console.log('lolStandings.json 갱신 완료');
       { matches: [{ title: '1경기', ...r.g1 }, { title: '2경기', ...r.g2 }] },
       { matches: [{ title: '승자전', ...r.wf }, { title: '패자전', ...r.lb }] },
       { matches: [{ title: '최종전', ...r.ff }] },
-    ] });
+    ] }, { compact: true }); // 여러 조가 함께 나열 → 2컬럼 압축
     const groups = {
       A: grp({
         g1: { a: S('G2', '2시드', 1, 'win'), b: S('FUR', '3시드', 0) },
@@ -4371,7 +4371,8 @@ console.log('lolStandings.json 갱신 완료');
       if (y === '2025' && (sub === 'Etapa 1' || sub === 'Playoffs')) return { color: '#b2a27e' };
       return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol };
     }
-    if (lg === 'msi') return { color: y === '2025' ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 2025·2024 상징색은 개별 유지
+    if (lg === 'msi') return { color: (y === '2025' || y === '2023') ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 연도별 상징색
+    if (lg === 'worlds' && y === '2023') return { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' };
     if (lg === 'worlds' && y === '2025') return { color: '#0e2bf4' };
     if (lg === 'worlds' && y === '2024') return { color: '#010a42' };
     return { color: COMP_COLOR[lg] || '#888' };
