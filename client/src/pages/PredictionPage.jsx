@@ -2785,6 +2785,7 @@ const EVENT_DETAIL = {
   'lcp|2023|VCS': { color: '#f0fea6', logo: vcsLogo },
   'lcp|2023|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2023|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
+  'lcp|2023|LCO': { color: '#0f3341', logo: lcoLogo },
   'cblol|2020|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2021|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2022|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
@@ -2916,7 +2917,7 @@ const resolvePastData = (key, sub, year, ev) => {
   return sub ? base[sub] : base;
 };
 // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
-const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LJL', 'LCO', 'VCS'], 'lcp|2023': ['PCS', 'LJL', 'VCS'] };
+const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LCO', 'LJL', 'VCS'], 'lcp|2023': ['PCS', 'LCO', 'LJL', 'VCS'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 

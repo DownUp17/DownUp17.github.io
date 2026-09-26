@@ -3863,11 +3863,11 @@ console.log('lolStandings.json 갱신 완료');
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
   try {
     const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
-    // 순서 = 대회 선택 표시 순서(PCS·LJL·LCO·VCS). 없는 이벤트만 추가 생성.
+    // 순서 = 대회 선택 표시 순서(PCS·LCO·LJL·VCS). 없는 이벤트만 추가 생성.
     const EV = {
       PCS: ['104366947889790212', [['Spring', 'pcs_spring_2024'], ['Summer', 'pcs_summer_2024']]],
-      LJL: ['98767991349978712', [['Spring', 'ljl_spring_2024'], ['Summer', 'ljl_summer_2024']]],
       LCO: ['105709090213554609', [['Spring', 'lco_spring_2024'], ['Summer', 'lco_summer_2024']]],
+      LJL: ['98767991349978712', [['Spring', 'ljl_spring_2024'], ['Summer', 'ljl_summer_2024']]],
       VCS: ['107213827295848783', [['Spring', 'vcs_spring_2024'], ['Summer', 'vcs_summer_2024']]],
     };
     const std = (past.standings['2024'] = past.standings['2024'] || {});
@@ -3883,7 +3883,7 @@ console.log('lolStandings.json 갱신 완료');
         } catch (e) { console.warn(`2024 ${ev} ${label} 실패: ${e.message}`); }
       }
     }
-    if (changed) {
+    if (changed || Object.keys(lcp).join() !== Object.keys(EV).filter((k) => lcp[k]).join()) {
       // 표시 순서대로 재정렬
       const order = Object.keys(EV).filter((k) => lcp[k]);
       std.lcp = Object.fromEntries(order.map((k) => [k, lcp[k]]));
@@ -3894,13 +3894,14 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 PCS·VCS 생성 실패(무시): ${e.message}`); }
 }
 
-// ── 2023 LCP 전신(PCS·LJL·VCS, LCO 제외) — 2024와 동일 구조. PCS 2023은 플레이오프가 별도 토너먼트 → 브래킷·최종순위 병합 ──
+// ── 2023 LCP 전신(PCS·LCO·LJL·VCS) — 2024와 동일 구조. PCS 2023은 플레이오프가 별도 토너먼트 → 브래킷·최종순위 병합 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
   try {
     const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
     const EV = {
       PCS: ['104366947889790212', [['Spring', 'pcs_spring_2023', 'pcs_spring_playoffs_2023'], ['Summer', 'pcs_summer_2023', 'pcs_summer_playoffs_2023']]],
+      LCO: ['105709090213554609', [['Split 1', 'lco_split_1_2023'], ['Split 2', 'lco_split_2_2023']]],
       LJL: ['98767991349978712', [['Spring', 'ljl_spring_2023'], ['Summer', 'ljl_summer_2023']]],
       VCS: ['107213827295848783', [['Spring', 'vcs_spring_2023'], ['Summer', 'vcs_summer_2023']]],
     };
@@ -3944,6 +3945,28 @@ console.log('lolStandings.json 갱신 완료');
     const row = past.standings?.['2023']?.lcp?.VCS?.Summer?.rows?.find((r) => r.team === 'SBTE');
     if (row && row.remark !== '몰수패') { row.remark = '몰수패'; fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('2023 VCS Summer SE 몰수패 비고 반영'); }
   } catch (e) { console.warn(`2023 VCS Summer 비고 실패(무시): ${e.message}`); }
+}
+
+// ── 2023 Worlds: 플레이-인 그룹 + 플레이-인 토너먼트 → '플레이-인' 하나로 묶고, 토너먼트 매치는 하단 '최종 진출전' ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const node = past.standings?.['2023']?.worlds;
+    const g = node?.brackets?.find((b) => b.slug === 'play_in_groups');
+    const e = node?.brackets?.find((b) => b.slug === 'play_in_elim');
+    if (g?.bracket?.totalRows && e) {
+      const fins = (e.bracket.rounds || []).flatMap((r) => r.matches);
+      // 두 조(A조 1·2열 / B조 3·4열) 아래 가운데 = 2열·3열에 한 경기씩 같은 행
+      const row = g.bracket.totalRows + 1;
+      fins.forEach((m, i) => g.bracket.rounds[1 + i].matches.push({ ...m, title: '최종 진출전', startRow: row }));
+      g.bracket.totalRows = row + 2;
+      g.slug = 'play_ins'; g.name = '플레이-인';
+      node.brackets = node.brackets.filter((b) => b !== e);
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2023 Worlds 플레이-인 통합(최종 진출전 하단)');
+    }
+  } catch (e) { console.warn(`2023 Worlds 플레이-인 통합 실패(무시): ${e.message}`); }
 }
 
 // ── 2023 LJL Spring 플레이오프 — 다른 대진표와 같은 격자형(startRow·연결선) UI ──
@@ -4665,6 +4688,7 @@ console.log('lolStandings.json 갱신 완료');
               // 대회 선택형(2024 PCS·VCS / ~2024 CBLOL·LLA) — 이벤트 → 스플릿 2단 구조
               for (const [sp, n2] of Object.entries(node)) {
                 if (isSeonbal(sp) || sp === '승강전') continue;
+                if (lg === 'lcp' && ((sub === 'LCO' && (year === '2023' || year === '2024')) || (sub === 'LJL' && year === '2024'))) continue; // 우승 경력 제외(사용자 지정)
                 const nm = sub === 'CBLOL' ? compName(year, lg, sp) : `${year} ${sub} ${sp}`;
                 add(champOf(n2), nm, compStyle(year, lg, sp, sub));
               }
