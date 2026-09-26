@@ -785,20 +785,24 @@ function lckPo2024Layout(bracket) {
   return fixDropElim({ totalRows: 10, rounds: rounds2, connectors });
 }
 
-// 4팀 더블 엘리 + 결승(rounds 2·2·1·1: 1라운드 / 2라운드(승자전·패자전) / 하위권 결승 / 결승) — 2024 VCS Spring PO 등.
+// 4팀 더블 엘리 + 결승(rounds 2·2·1·1: 1라운드 / 2라운드(승자전·패자전) / 하위권 결승(또는 3라운드) / 결승) — 2024 VCS Spring·LJL Summer PO 등.
 //   col0 1R×2(sr0·2) / col1 탈락팀 없는 2R(1R 사이 sr1) + 탈락팀 있는 2R(1R보다 아래 sr5)
 //   / col2 하위권 결승(하위 sr5) / col3 결승(sr3).
 function de4FinalLayout(bracket) {
   if (!bracket?.rounds?.length) return bracket;
   if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,2,1,1') return bracket;
   const [r0, r1, r2, r3] = bracket.rounds;
-  if (!/하위권.*결승|패자.*결승/.test(r2.matches[0].title || '') || !/^결승$/.test(r3.matches[0].title || '')) return bracket;
+  if (!/하위권.*결승|패자.*결승|^3라운드$/.test(r2.matches[0].title || '') || !/^결승$/.test(r3.matches[0].title || '')) return bracket;
   // 1·2라운드가 plain '1라운드'·'2라운드'인 경우만(이미 재배치된 LTA 아메리카 스테이지 등 오적용 방지)
   if (!r0.matches.every((m) => /^1라운드$/.test(m.title || '')) || !r1.matches.every((m) => /^2라운드$/.test(m.title || ''))) return bracket;
   const hasElim = (m) => m.a?.elim || m.b?.elim;
   const lo = r1.matches.find(hasElim);            // 탈락팀 있는 2라운드(패자전)
   const up = r1.matches.find((m) => m !== lo);    // 나머지 2라운드(승자전)
   if (!lo || !up) return bracket;
+  // 진짜 더블 엘리만: 패자전에 1라운드 패자가 내려와 있어야 함(2019 LEC 같은 계단식 제외)
+  const wOf = (m) => { const x = m.a?.score, y = m.b?.score; if (x != null && y != null) return x > y ? m.a : m.b; return m.a?.win ? m.a : (m.b?.win ? m.b : null); };
+  const r1Losers = new Set(r0.matches.map((m) => { const w = wOf(m); return w ? (w === m.a ? m.b : m.a)?.short : null; }).filter(Boolean));
+  if (![lo.a?.short, lo.b?.short].some((t) => r1Losers.has(t))) return bracket;
   const cols = [[], [], [], []];
   const push = (m, col, sr) => cols[col].push({ m, sr });
   push(r0.matches[0], 0, 0); push(r0.matches[1], 0, 2);   // 1라운드
@@ -807,6 +811,53 @@ function de4FinalLayout(bracket) {
   push(r2.matches[0], 2, 5);                                // 하위권 결승 — 하위
   push(r3.matches[0], 3, 3);                                // 결승
   return regridByObject(bracket, cols, 7);
+}
+
+// 2024 CBLOL Split 1 PO(rounds 2·2·3·1·1·1, 1~5라운드 + 결승) — 사용자 지정 배치.
+//   3라운드 3경기 중 탈락팀 있는 2경기(하위)는 1라운드 컬럼(하단 sr8·12), 나머지 1경기(상위)는 5라운드 컬럼(1R 사이 sr2).
+//   col0 1R×2(sr0·4)+하위3R×2(sr8·12) / col1 2R×2(sr0·4) / col2 4R(하위3R 사이 sr10)
+//   / col3 상위3R(sr2)+5R(하위3R 사이 sr10) / col4 결승(sr6). 오른쪽→왼쪽 역방향 연결선은 생략.
+function cblol24Layout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,2,3,1,1,1') return bracket;
+  const [r0, r1, r2, r3, r4, r5] = bracket.rounds;
+  const T = (r, re) => r.matches.every((m) => re.test(m.title || ''));
+  if (!T(r0, /^1라운드$/) || !T(r1, /^2라운드$/) || !T(r2, /^3라운드$/) || !T(r3, /^4라운드$/) || !T(r4, /^5라운드$/) || !T(r5, /^결승$/)) return bracket;
+  const hasElim = (m) => m.a?.elim || m.b?.elim;
+  const lo3 = r2.matches.filter(hasElim), up3 = r2.matches.filter((m) => !hasElim(m));
+  if (lo3.length !== 2 || up3.length !== 1) return bracket;
+  const cols = [[], [], [], [], []];
+  const push = (m, col, sr) => cols[col].push({ m, sr });
+  push(r0.matches[0], 0, 0); push(r0.matches[1], 0, 4);   // 1라운드
+  push(lo3[0], 0, 8); push(lo3[1], 0, 12);                // 하위 3라운드(탈락팀 존재) — 1라운드 컬럼
+  push(r1.matches[0], 1, 0); push(r1.matches[1], 1, 4);   // 2라운드
+  push(r3.matches[0], 2, 10);                             // 4라운드 — 하위 3R 사이
+  push(up3[0], 3, 2);                                     // 상위 3라운드 — 1라운드 사이, 5라운드 컬럼
+  push(r4.matches[0], 3, 10);                             // 5라운드 — 하위 3R 사이
+  push(r5.matches[0], 4, 6);                              // 결승
+  const out = regridByObject(bracket, cols, 14);
+  out.connectors = out.connectors.filter((c) => c[3] > c[0]); // 역방향(오른쪽→왼쪽) 선 제외
+  return out;
+}
+
+// 4팀 싱글 엘리 + 3위 결정전(rounds 2·1·1: 1라운드 / 1R 패자끼리 3위전 / 1R 승자끼리 결승) — 2024 LJL Spring PO 등.
+//   3위 결정전을 결승과 같은 컬럼(아래)에 배치: col0 1R×2(sr0·2) / col1 결승(sr1) + 3위 결정전(sr4).
+//   경기명이 '2라운드'로 오는 경우 '3위 결정전'으로 표기.
+function thirdPlaceLayout(bracket) {
+  if (!bracket?.rounds?.length) return bracket;
+  if (bracket.rounds.map((r) => r.matches.length).join(',') !== '2,1,1') return bracket;
+  const [r0, r1, r2] = bracket.rounds;
+  if (!/^결승$/.test(r2.matches[0].title || '')) return bracket;
+  const winnerOf = (m) => { const a = m.a?.score, b = m.b?.score; if (a != null && b != null) return a > b ? m.a : m.b; if (m.a?.win || m.a?.msi) return m.a; if (m.b?.win || m.b?.msi) return m.b; return null; };
+  const w = new Set(), l = new Set();
+  for (const m of r0.matches) { const x = winnerOf(m); if (!x) return bracket; w.add(x.short); l.add((x === m.a ? m.b : m.a)?.short); }
+  const third = r1.matches[0], gf = r2.matches[0];
+  const teams = (m) => [m.a?.short, m.b?.short];
+  if (!teams(third).every((t) => l.has(t)) || !teams(gf).every((t) => w.has(t))) return bracket; // 3위전=1R 패자끼리, 결승=1R 승자끼리
+  const thirdM = /3위/.test(third.title || '') ? third : { ...third, title: '3위 결정전' };
+  const out = regridByObject(bracket, [[{ m: r0.matches[0], sr: 0 }, { m: r0.matches[1], sr: 2 }], [{ m: gf, sr: 1 }, { m: third, sr: 4 }]], 6);
+  out.rounds[1].matches = out.rounds[1].matches.map((m) => (m.a?.short === third.a?.short && m.b?.short === third.b?.short ? { ...m, title: thirdM.title } : m));
+  return out;
 }
 
 // 2024 VCS Summer PO(rounds 1·2·2·1·1: 1라운드 → 상위 1·2라운드 / 하위 1·2라운드 → 결승) — 사용자 지정 배치.
@@ -1507,10 +1558,14 @@ async function buildSplit(leagueId, slug) {
       const pcs2 = pcsPo2Layout(b);       // 2024 PCS 플레이오프 스테이지 2(rounds 2·2·3·1·1·1)
       const de4f = de4FinalLayout(b);     // 4팀 더블 엘리 + 결승(rounds 2·2·1·1) — 2024 VCS Spring 등
       const vcsS = vcsSummerLayout(b);    // 2024 VCS Summer(rounds 1·2·2·1·1)
+      const tp = thirdPlaceLayout(b);     // 4팀 싱글 엘리 + 3위 결정전(rounds 2·1·1) — 2024 LJL Spring 등
+      const cb24 = cblol24Layout(b);      // 2024 CBLOL Split 1(1~5라운드, rounds 2·2·3·1·1·1)
       if (cnt(/상위권.*(8강|1라운드)/) >= 4) b = msi8DELayout(b);  // 8팀 더블 엘리 → MSI 브래킷 스테이지(2섹션)
       else if (lec8 !== b) b = lec8;                               // 8팀 LEC/LPL식 (예선 1라운드 + 상위 2R + 하위 3R)
       else if (lckCup !== b) b = lckCup;                           // 2025 LCK CUP식 (상위 3R + 하위권 대진 2경기)
       else if (lta2 !== b) b = lta2;                               // 2025 LTA Split2/Etapa2 PO (상위4강/하위8강 컴팩트)
+      else if (cb24 !== b) b = cb24;                               // 2024 CBLOL Split 1
+      else if (tp !== b) b = tp;                                   // 3위 결정전을 결승과 같은 컬럼에
       else if (vcsS !== b) b = vcsS;                               // 2024 VCS Summer
       else if (de4f !== b) b = de4f;                               // 4팀 DE + 결승
       else if (pcs2 !== b) b = pcs2;                               // 2024 PCS PO 2
@@ -1525,6 +1580,8 @@ async function buildSplit(leagueId, slug) {
       if (x === b) x = pcsPo2Layout(b);                 // 2024 PCS PO 2(rounds 2·2·3·1·1·1)
       if (x === b) x = de4FinalLayout(b);               // 4팀 더블 엘리 + 결승(rounds 2·2·1·1)
       if (x === b) x = vcsSummerLayout(b);              // 2024 VCS Summer(rounds 1·2·2·1·1)
+      if (x === b) x = thirdPlaceLayout(b);             // 4팀 싱글 엘리 + 3위 결정전(rounds 2·1·1)
+      if (x === b) x = cblol24Layout(b);                // 2024 CBLOL Split 1(rounds 2·2·3·1·1·1)
       if (x === b) x = lcpQualifyingLayout(b);          // 2025 LCP 퀄리파잉 시리즈(regional_qualifier)
       if (x === b) x = de4Layout(b);                    // 4팀 더블 엘리(2팀 진출): MSI PI·LCP 그룹 시딩·FST 그룹 등 공통 템플릿
       if (x !== b) b = x;

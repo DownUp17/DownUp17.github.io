@@ -83,6 +83,10 @@ import cerberusEsportsLogo from '../assets/cerberus-esports.webp';
 import mgnBlueEsportsLogo from '../assets/mgn-blue-esports.webp';
 import teamFlashLogo from '../assets/team-flash.webp';
 import rainbowWarriorsLogo from '../assets/rainbow-warriors.webp';
+import kabumEsportsLogo from '../assets/kabum-esports.webp';
+import libertyLogo from '../assets/liberty.svg';
+import fluxo2024Logo from '../assets/fluxo-2024.svg';
+import intzLogo from '../assets/intz.webp';
 import rareAtomLogo from '../assets/rare-atom.webp';
 
 const statusMeta = {
@@ -123,10 +127,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 // 과거 팀 코드 → 현재 팀 연결(클릭 시 현재 팀 페이지로). 예: VCS의 Team Secret(TS)·Team Whales(TW) → TSW, MGN Blue Esports(MBE) → MVK.
@@ -3022,7 +3026,9 @@ const PredictionPage = () => {
     // LNG: 2025 LPL Split 1까지 'LNG Ninebot Esports'.
     if (activeYear < 2025 || (activeYear === 2025 && comp?.key === 'lpl' && activeSub === 'Split 1')) ov.LNG = { name: 'LNG Ninebot Esports' };
     // Fluxo: 이름은 2025 시즌부터 Fluxo W7M(2024 이하만 'Fluxo'), 로고는 2025 시즌까지 옛 로고.
-    if (activeYear <= 2025) ov.FX = { logo: fluxo2025Logo, ...(activeYear <= 2024 ? { name: 'Fluxo' } : {}) };
+    //   2024 이하는 이름 'Fluxo' + 2024 로고, 2025는 2025 로고.
+    if (activeYear <= 2024) ov.FX = { name: 'Fluxo', logo: fluxo2024Logo };
+    else if (activeYear === 2025) ov.FX = { logo: fluxo2025Logo };
     // TL(TLAW): 2025 Split 1까지 'Team Liquid Honda', 그 이후는 'Team Liquid'(TEAM_OVERRIDE_2025 기본값).
     if (ov.TLAW && (activeYear < 2025 || (activeYear === 2025 && comp?.key === 'lcs' && activeSub === 'Split 1')))
       ov.TLAW = { ...ov.TLAW, name: 'Team Liquid Honda' };
@@ -3052,6 +3058,8 @@ const PredictionPage = () => {
     if (activeYear <= 2024) ov.QTD = { tag: 'SG', name: 'Sengoku Gaming', logo: sengokuGaming2024Logo };
     // SHG: 2024 LCP LJL Spring까지 옛 로고.
     if (comp?.key === 'lcp' && activeYear === 2024 && activeEvent === 'LJL' && activeSub === 'Spring') ov.SHG = { logo: shg2024SpringLogo };
+    // LOUD: 2024 이하는 약칭 LLL.
+    if (activeYear <= 2024) ov.LOUD = { tag: 'LLL' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
     if (comp?.key === 'lcp' && activeYear === 2024) ov.ANCX = { tag: 'ANC', name: 'Antic Esports', logo: anticEsportsLogo };
     return ov;
