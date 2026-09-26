@@ -40588,6 +40588,7 @@
                 "slug": "groups",
                 "name": "그룹",
                 "bracket": {
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -40605,7 +40606,8 @@
                             "seed": "4위",
                             "short": "PCE",
                             "score": 0
-                          }
+                          },
+                          "startRow": 0
                         },
                         {
                           "id": "109680637846804718",
@@ -40620,7 +40622,25 @@
                             "short": "PGG",
                             "score": 2,
                             "win": true
-                          }
+                          },
+                          "startRow": 2
+                        },
+                        {
+                          "id": "109680637846804730",
+                          "title": "2라운드",
+                          "a": {
+                            "seed": "1라운드 패자",
+                            "short": "PCE",
+                            "score": 0,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "1라운드 패자",
+                            "short": "MEC",
+                            "score": 2,
+                            "win": true
+                          },
+                          "startRow": 4
                         }
                       ]
                     },
@@ -40640,29 +40660,9 @@
                             "seed": "1라운드 승자",
                             "short": "DW",
                             "score": 0
-                          }
-                        },
-                        {
-                          "id": "109680637846804730",
-                          "title": "2라운드",
-                          "a": {
-                            "seed": "1라운드 패자",
-                            "short": "PCE",
-                            "score": 0,
-                            "elim": true
                           },
-                          "b": {
-                            "seed": "1라운드 패자",
-                            "short": "MEC",
-                            "score": 2,
-                            "win": true
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "title": "",
-                      "matches": [
+                          "startRow": 1
+                        },
                         {
                           "id": "109680637846804736",
                           "title": "3라운드",
@@ -40677,7 +40677,8 @@
                             "short": "MEC",
                             "score": 0,
                             "elim": true
-                          }
+                          },
+                          "startRow": 4
                         }
                       ]
                     },
@@ -40698,7 +40699,8 @@
                             "short": "DW",
                             "score": 2,
                             "msi": true
-                          }
+                          },
+                          "startRow": 2
                         }
                       ]
                     },
@@ -40718,7 +40720,8 @@
                             "seed": "4위",
                             "short": "KNG",
                             "score": 0
-                          }
+                          },
+                          "startRow": 0
                         },
                         {
                           "id": "109680637846804748",
@@ -40733,7 +40736,25 @@
                             "seed": "3위",
                             "short": "GZ",
                             "score": 1
-                          }
+                          },
+                          "startRow": 2
+                        },
+                        {
+                          "id": "109680637846804760",
+                          "title": "2라운드",
+                          "a": {
+                            "seed": "1라운드 패자",
+                            "short": "GZ",
+                            "score": 1,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "1라운드 패자",
+                            "short": "KNG",
+                            "score": 2,
+                            "win": true
+                          },
+                          "startRow": 4
                         }
                       ]
                     },
@@ -40753,29 +40774,9 @@
                             "short": "CHF",
                             "score": 2,
                             "win": true
-                          }
-                        },
-                        {
-                          "id": "109680637846804760",
-                          "title": "2라운드",
-                          "a": {
-                            "seed": "1라운드 패자",
-                            "short": "GZ",
-                            "score": 1,
-                            "elim": true
                           },
-                          "b": {
-                            "seed": "1라운드 패자",
-                            "short": "KNG",
-                            "score": 2,
-                            "win": true
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "title": "",
-                      "matches": [
+                          "startRow": 1
+                        },
                         {
                           "id": "109680637846804766",
                           "title": "3라운드",
@@ -40790,7 +40791,8 @@
                             "short": "KNG",
                             "score": 0,
                             "elim": true
-                          }
+                          },
+                          "startRow": 4
                         }
                       ]
                     },
@@ -40811,7 +40813,8 @@
                             "short": "TB",
                             "score": 2,
                             "msi": true
-                          }
+                          },
+                          "startRow": 2
                         }
                       ]
                     }
@@ -40835,15 +40838,7 @@
                     ],
                     [
                       0,
-                      0,
-                      "mid",
-                      1,
-                      1,
-                      "a"
-                    ],
-                    [
-                      0,
-                      1,
+                      2,
                       "mid",
                       1,
                       1,
@@ -40866,19 +40861,27 @@
                       "b"
                     ],
                     [
-                      1,
-                      0,
-                      "mid",
                       3,
                       0,
+                      "mid",
+                      4,
+                      0,
                       "a"
                     ],
                     [
-                      2,
-                      0,
-                      "mid",
                       3,
+                      1,
+                      "mid",
+                      4,
                       0,
+                      "b"
+                    ],
+                    [
+                      3,
+                      2,
+                      "mid",
+                      4,
+                      1,
                       "b"
                     ],
                     [
@@ -40894,54 +40897,6 @@
                       1,
                       "mid",
                       5,
-                      0,
-                      "b"
-                    ],
-                    [
-                      4,
-                      1,
-                      "mid",
-                      5,
-                      1,
-                      "a"
-                    ],
-                    [
-                      4,
-                      0,
-                      "mid",
-                      5,
-                      1,
-                      "b"
-                    ],
-                    [
-                      5,
-                      0,
-                      "mid",
-                      6,
-                      0,
-                      "a"
-                    ],
-                    [
-                      5,
-                      1,
-                      "mid",
-                      6,
-                      0,
-                      "b"
-                    ],
-                    [
-                      5,
-                      0,
-                      "mid",
-                      7,
-                      0,
-                      "a"
-                    ],
-                    [
-                      6,
-                      0,
-                      "mid",
-                      7,
                       0,
                       "b"
                     ]
@@ -40952,6 +40907,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -40969,7 +40925,8 @@
                             "seed": "1위",
                             "short": "DW",
                             "score": 0
-                          }
+                          },
+                          "startRow": 0
                         },
                         {
                           "id": "109680656935819923",
@@ -40984,7 +40941,25 @@
                             "seed": "3위",
                             "short": "PGG",
                             "score": 0
-                          }
+                          },
+                          "startRow": 2
+                        },
+                        {
+                          "id": "109680656935819935",
+                          "title": "3라운드",
+                          "a": {
+                            "seed": "1라운드 패자",
+                            "short": "DW",
+                            "score": 2,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "1라운드 패자",
+                            "short": "PGG",
+                            "score": 0,
+                            "elim": true
+                          },
+                          "startRow": 4
                         }
                       ]
                     },
@@ -41004,29 +40979,9 @@
                             "seed": "1라운드 승자",
                             "short": "CHF",
                             "score": 2
-                          }
-                        },
-                        {
-                          "id": "109680656935819935",
-                          "title": "3라운드",
-                          "a": {
-                            "seed": "1라운드 패자",
-                            "short": "DW",
-                            "score": 2,
-                            "win": true
                           },
-                          "b": {
-                            "seed": "1라운드 패자",
-                            "short": "PGG",
-                            "score": 0,
-                            "elim": true
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "title": "",
-                      "matches": [
+                          "startRow": 1
+                        },
                         {
                           "id": "109680656935819941",
                           "title": "4라운드",
@@ -41041,7 +40996,8 @@
                             "short": "DW",
                             "score": 0,
                             "elim": true
-                          }
+                          },
+                          "startRow": 4
                         }
                       ]
                     },
@@ -41062,7 +41018,8 @@
                             "short": "CHF",
                             "score": 3,
                             "msi": true
-                          }
+                          },
+                          "startRow": 2
                         }
                       ]
                     }
@@ -41086,15 +41043,7 @@
                     ],
                     [
                       0,
-                      0,
-                      "mid",
-                      1,
-                      1,
-                      "a"
-                    ],
-                    [
-                      0,
-                      1,
+                      2,
                       "mid",
                       1,
                       1,
@@ -41113,27 +41062,343 @@
                       1,
                       "mid",
                       2,
-                      0,
-                      "b"
-                    ],
-                    [
-                      1,
-                      0,
-                      "mid",
-                      3,
-                      0,
-                      "a"
-                    ],
-                    [
-                      2,
-                      0,
-                      "mid",
-                      3,
                       0,
                       "b"
                     ]
                   ]
                 }
+              },
+              {
+                "slug": "pcs_po",
+                "name": "PCS PO",
+                "bracket": {
+                  "totalRows": 14,
+                  "rounds": [
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110017385378227294",
+                          "title": "상위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "8위",
+                            "short": "CHF",
+                            "score": 0
+                          },
+                          "b": {
+                            "seed": "1위",
+                            "short": "CFO",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 0
+                        },
+                        {
+                          "id": "110017385380586596",
+                          "title": "상위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "2위",
+                            "short": "IMP",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "7위",
+                            "short": "TB",
+                            "score": 0
+                          },
+                          "startRow": 4
+                        },
+                        {
+                          "id": "110017385380586614",
+                          "title": "하위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "5위",
+                            "short": "BYG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 1라운드 패자",
+                            "short": "CHF",
+                            "score": 1,
+                            "elim": true
+                          },
+                          "startRow": 8
+                        },
+                        {
+                          "id": "110017385380586620",
+                          "title": "하위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "6위",
+                            "short": "DCG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 1라운드 패자",
+                            "short": "TB",
+                            "score": 0,
+                            "elim": true
+                          },
+                          "startRow": 12
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110017385380586602",
+                          "title": "상위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "상위권 대진 - 1라운드 승자",
+                            "short": "CFO",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "3위",
+                            "short": "FAK",
+                            "score": 2
+                          },
+                          "startRow": 0
+                        },
+                        {
+                          "id": "110017385380586608",
+                          "title": "상위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "상위권 대진 - 1라운드 승자",
+                            "short": "IMP",
+                            "score": 2
+                          },
+                          "b": {
+                            "seed": "4위",
+                            "short": "PSG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 4
+                        },
+                        {
+                          "id": "110017385380586632",
+                          "title": "하위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "하위권 대진 - 1라운드 승자",
+                            "short": "DCG",
+                            "score": 2,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 2라운드 패자",
+                            "short": "FAK",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 8
+                        },
+                        {
+                          "id": "110017385380586638",
+                          "title": "하위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "하위권 대진 - 1라운드 승자",
+                            "short": "BYG",
+                            "score": 2,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 2라운드 패자",
+                            "short": "IMP",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 12
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110017385380586626",
+                          "title": "상위권 대진 - 결승",
+                          "a": {
+                            "seed": "상위권 대진 - 2라운드 승자",
+                            "short": "CFO",
+                            "score": 2
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 2라운드 승자",
+                            "short": "PSG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 2
+                        },
+                        {
+                          "id": "110017385380586644",
+                          "title": "하위권 대진 - 3라운드",
+                          "a": {
+                            "seed": "하위권 대진 - 2라운드 승자",
+                            "short": "IMP",
+                            "score": 0,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "하위권 대진 - 2라운드 승자",
+                            "short": "FAK",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 10
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110017385380586650",
+                          "title": "하위권 대진 - 결승",
+                          "a": {
+                            "seed": "하위권 대진 - 3라운드 승자",
+                            "short": "FAK",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 결승 패자",
+                            "short": "CFO",
+                            "score": 1,
+                            "elim": true
+                          },
+                          "startRow": 10
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110017385380586656",
+                          "title": "결승",
+                          "a": {
+                            "seed": "하위권 대진 - 결승 승자",
+                            "short": "FAK",
+                            "score": 0,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 결승 승자",
+                            "short": "PSG",
+                            "score": 3,
+                            "msi": true
+                          },
+                          "startRow": 6
+                        }
+                      ]
+                    }
+                  ],
+                  "connectors": [
+                    [
+                      0,
+                      0,
+                      "mid",
+                      1,
+                      0,
+                      "a"
+                    ],
+                    [
+                      0,
+                      1,
+                      "mid",
+                      1,
+                      1,
+                      "a"
+                    ],
+                    [
+                      1,
+                      0,
+                      "mid",
+                      2,
+                      0,
+                      "a"
+                    ],
+                    [
+                      1,
+                      1,
+                      "mid",
+                      2,
+                      0,
+                      "b"
+                    ],
+                    [
+                      0,
+                      3,
+                      "mid",
+                      1,
+                      2,
+                      "a"
+                    ],
+                    [
+                      0,
+                      2,
+                      "mid",
+                      1,
+                      3,
+                      "a"
+                    ],
+                    [
+                      1,
+                      3,
+                      "mid",
+                      2,
+                      1,
+                      "a"
+                    ],
+                    [
+                      1,
+                      2,
+                      "mid",
+                      2,
+                      1,
+                      "b"
+                    ],
+                    [
+                      2,
+                      1,
+                      "mid",
+                      3,
+                      0,
+                      "a"
+                    ],
+                    [
+                      2,
+                      0,
+                      "mid",
+                      3,
+                      0,
+                      "b"
+                    ],
+                    [
+                      3,
+                      0,
+                      "mid",
+                      4,
+                      0,
+                      "a"
+                    ],
+                    [
+                      2,
+                      0,
+                      "mid",
+                      4,
+                      0,
+                      "b"
+                    ]
+                  ]
+                },
+                "label": "PCS PO"
               }
             ],
             "finalStandings": [
@@ -41459,6 +41724,338 @@
                     ]
                   ]
                 }
+              },
+              {
+                "slug": "pcs_po",
+                "name": "PCS PO",
+                "bracket": {
+                  "totalRows": 14,
+                  "rounds": [
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110847390580017280",
+                          "title": "상위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "7위",
+                            "short": "CHF",
+                            "score": 1
+                          },
+                          "b": {
+                            "seed": "4위",
+                            "short": "DCG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 0
+                        },
+                        {
+                          "id": "110847390580148358",
+                          "title": "상위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "8위",
+                            "short": "TB",
+                            "score": 0
+                          },
+                          "b": {
+                            "seed": "3위",
+                            "short": "BYG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 4
+                        },
+                        {
+                          "id": "110847390580148376",
+                          "title": "하위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "5위",
+                            "short": "CFO",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 1라운드 패자",
+                            "short": "TB",
+                            "score": 0,
+                            "elim": true
+                          },
+                          "startRow": 8
+                        },
+                        {
+                          "id": "110847390580148382",
+                          "title": "하위권 대진 - 1라운드",
+                          "a": {
+                            "seed": "6위",
+                            "short": "FAK",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 1라운드 패자",
+                            "short": "CHF",
+                            "score": 1,
+                            "elim": true
+                          },
+                          "startRow": 12
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110847390580148364",
+                          "title": "상위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "상위권 대진 - 1라운드 승자",
+                            "short": "DCG",
+                            "score": 0
+                          },
+                          "b": {
+                            "seed": "1위",
+                            "short": "PSG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 0
+                        },
+                        {
+                          "id": "110847390580148370",
+                          "title": "상위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "상위권 대진 - 1라운드 승자",
+                            "short": "BYG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "2위",
+                            "short": "JT",
+                            "score": 0
+                          },
+                          "startRow": 4
+                        },
+                        {
+                          "id": "110847390580148394",
+                          "title": "하위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "하위권 대진 - 1라운드 승자",
+                            "short": "CFO",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 2라운드 패자",
+                            "short": "DCG",
+                            "score": 1,
+                            "elim": true
+                          },
+                          "startRow": 8
+                        },
+                        {
+                          "id": "110847390580148400",
+                          "title": "하위권 대진 - 2라운드",
+                          "a": {
+                            "seed": "하위권 대진 - 1라운드 승자",
+                            "short": "FAK",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 2라운드 패자",
+                            "short": "JT",
+                            "score": 0,
+                            "elim": true
+                          },
+                          "startRow": 12
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110847390580148388",
+                          "title": "상위권 대진 - 결승",
+                          "a": {
+                            "seed": "상위권 대진 - 2라운드 승자",
+                            "short": "BYG",
+                            "score": 2
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 2라운드 승자",
+                            "short": "PSG",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 2
+                        },
+                        {
+                          "id": "110847390580148406",
+                          "title": "하위권 대진 - 3라운드",
+                          "a": {
+                            "seed": "하위권 대진 - 2라운드 승자",
+                            "short": "FAK",
+                            "score": 2,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "하위권 대진 - 2라운드 승자",
+                            "short": "CFO",
+                            "score": 3,
+                            "win": true
+                          },
+                          "startRow": 10
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110847390580148412",
+                          "title": "하위권 대진 - 결승",
+                          "a": {
+                            "seed": "하위권 대진 - 3라운드 승자",
+                            "short": "CFO",
+                            "score": 3,
+                            "win": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 결승 패자",
+                            "short": "BYG",
+                            "score": 2,
+                            "elim": true
+                          },
+                          "startRow": 10
+                        }
+                      ]
+                    },
+                    {
+                      "title": "",
+                      "matches": [
+                        {
+                          "id": "110847390580148418",
+                          "title": "결승",
+                          "a": {
+                            "seed": "하위권 대진 - 결승 승자",
+                            "short": "CFO",
+                            "score": 2,
+                            "elim": true
+                          },
+                          "b": {
+                            "seed": "상위권 대진 - 결승 승자",
+                            "short": "PSG",
+                            "score": 3,
+                            "msi": true
+                          },
+                          "startRow": 6
+                        }
+                      ]
+                    }
+                  ],
+                  "connectors": [
+                    [
+                      0,
+                      0,
+                      "mid",
+                      1,
+                      0,
+                      "a"
+                    ],
+                    [
+                      0,
+                      1,
+                      "mid",
+                      1,
+                      1,
+                      "a"
+                    ],
+                    [
+                      1,
+                      1,
+                      "mid",
+                      2,
+                      0,
+                      "a"
+                    ],
+                    [
+                      1,
+                      0,
+                      "mid",
+                      2,
+                      0,
+                      "b"
+                    ],
+                    [
+                      0,
+                      2,
+                      "mid",
+                      1,
+                      2,
+                      "a"
+                    ],
+                    [
+                      0,
+                      3,
+                      "mid",
+                      1,
+                      3,
+                      "a"
+                    ],
+                    [
+                      1,
+                      3,
+                      "mid",
+                      2,
+                      1,
+                      "a"
+                    ],
+                    [
+                      1,
+                      2,
+                      "mid",
+                      2,
+                      1,
+                      "b"
+                    ],
+                    [
+                      2,
+                      1,
+                      "mid",
+                      3,
+                      0,
+                      "a"
+                    ],
+                    [
+                      2,
+                      0,
+                      "mid",
+                      3,
+                      0,
+                      "b"
+                    ],
+                    [
+                      3,
+                      0,
+                      "mid",
+                      4,
+                      0,
+                      "a"
+                    ],
+                    [
+                      2,
+                      0,
+                      "mid",
+                      4,
+                      0,
+                      "b"
+                    ]
+                  ]
+                },
+                "label": "PCS PO"
               }
             ],
             "finalStandings": [
