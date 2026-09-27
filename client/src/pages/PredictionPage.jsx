@@ -44,6 +44,18 @@ import madLions2023Logo from '../assets/mad-lions-2023.webp';
 import madLions2022Logo from '../assets/mad-lions-2022.webp';
 import victoryFiveLogo from '../assets/victory-five.webp';
 import omg2022Logo from '../assets/omg-2022.webp';
+import misfitsGamingLogo from '../assets/misfits-gaming.webp';
+import vitality2022Logo from '../assets/vitality-2022.webp';
+import istanbulWildcatsLogo from '../assets/istanbul-wildcats.webp';
+import galatasarayLogo from '../assets/galatasaray.svg';
+import auroraLogo from '../assets/aurora.webp';
+import darkPassageLogo from '../assets/dark-passage.webp';
+import nasrEsportsLogo from '../assets/nasr-esports.webp';
+import fiveRoninLogo from '../assets/5-ronin.webp';
+import fenerbahceEsporLogo from '../assets/fenerbahce-espor.webp';
+import supermassiveBlazeLogo from '../assets/supermassive-blaze.webp';
+import besiktasEsportsLogo from '../assets/besiktas-esports.webp';
+import galakticosLogo from '../assets/galakticos.webp';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
 import ewcLogo from '../assets/ewc.svg';
@@ -172,10 +184,10 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo, AST: astralisLogo, GG: goldenGuardiansLogo, CLG: clgLogo, EG: evilGeniusesLogo, TSM: tsmLogo, IMP: impunityEsportsLogo, DWT: dewishTeamLogo, SBTE: sbtcEsportsLogo, FL: fennelLogo, CGA: crestGamingActLogo, PGG: pentanetGgLogo, VTX: vertexEscLogo, PCE: peaceLogo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo, AST: astralisLogo, GG: goldenGuardiansLogo, CLG: clgLogo, EG: evilGeniusesLogo, TSM: tsmLogo, IMP: impunityEsportsLogo, DWT: dewishTeamLogo, SBTE: sbtcEsportsLogo, FL: fennelLogo, CGA: crestGamingActLogo, PGG: pentanetGgLogo, VTX: vertexEscLogo, PCE: peaceLogo, MSF: misfitsGamingLogo, IW: istanbulWildcatsLogo, GS: galatasarayLogo, AUR: auroraLogo, DP: darkPassageLogo, NSR: nasrEsportsLogo, '5R': fiveRoninLogo, FB: fenerbahceEsporLogo, SMB: supermassiveBlazeLogo, BJK: besiktasEsportsLogo, GAL: galakticosLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming', AST: 'Astralis', GG: 'Golden Guardians', CLG: 'CLG', EG: 'Evil Geniuses', TSM: 'TSM', IMP: 'Impunity Esports', DWT: 'Dewish Team', SBTE: 'SBTC Esports', FL: 'FENNEL', CGA: 'Crest Gaming Act', PGG: 'Pentanet.GG', VTX: 'Vertex ESC', PCE: 'PEACE' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming', AST: 'Astralis', GG: 'Golden Guardians', CLG: 'CLG', EG: 'Evil Geniuses', TSM: 'TSM', IMP: 'Impunity Esports', DWT: 'Dewish Team', SBTE: 'SBTC Esports', FL: 'FENNEL', CGA: 'Crest Gaming Act', PGG: 'Pentanet.GG', VTX: 'Vertex ESC', PCE: 'PEACE', MSF: 'Misfits Gaming', IW: 'DenizBank İstanbul Wildcats', GS: 'Galatasaray Esports', AUR: 'Info Yatırım Aurora', DP: 'Dark Passage', NSR: 'NASR Esports', '5R': '5 Ronin', FB: 'Fenerbahçe Espor', SMB: 'SuperMassive Blaze', BJK: 'Beşiktaş Esports', GAL: 'Galakticos' };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 // 과거 팀 코드 → 현재 팀 연결(클릭 시 현재 팀 페이지로). 예: VCS의 Team Secret(TS)·Team Whales(TW) → TSW, MGN Blue Esports(MBE) → MVK, Rogue(RGE) → NAVI.
@@ -2811,7 +2823,7 @@ const PAST_DETAIL = {
   'worlds|2025': { color: '#0e2bf4' },
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000' },
-  'msi|2022': { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' },
+  'msi|2022': { black: true, gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' },
   'worlds|2022': { color: '#321bdd' },
   'worlds|2023': { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' },
   'asiangames|2023': { color: '#b223ba', gradient: 'linear-gradient(90deg, #dd0b7c, #b223ba, #433feb)', logo: asiangames2022Logo },
@@ -2833,10 +2845,10 @@ const EVENT_DETAIL = {
   'lcp|2022|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2022|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2022|LCO': { color: '#0f3341', logo: lcoLogo },
-  'lec|2016|TCL': { color: '#3f567c', logo: TCL_LOGO },
-  'lec|2020|TCL': { color: '#3f567c', logo: TCL_LOGO },
-  'lec|2021|TCL': { color: '#3f567c', logo: TCL_LOGO },
-  'lec|2022|TCL': { color: '#3f567c', logo: TCL_LOGO },
+  'lec|2016|TCL': { color: '#3f567c', logo: TCL_LOGO, invert: true },
+  'lec|2020|TCL': { color: '#3f567c', logo: TCL_LOGO, invert: true },
+  'lec|2021|TCL': { color: '#3f567c', logo: TCL_LOGO, invert: true },
+  'lec|2022|TCL': { color: '#3f567c', logo: TCL_LOGO, invert: true },
   'cblol|2020|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2021|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2022|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
@@ -3219,6 +3231,8 @@ const PredictionPage = () => {
     if (activeYear <= 2022) ov.NIP = { tag: 'V5', name: 'Victory Five', logo: victoryFiveLogo };
     // OMG: 2022 이하 로고.
     if (activeYear <= 2022) ov.OMG = { ...(ov.OMG || {}), logo: omg2022Logo };
+    // VIT: 2022 이하 로고.
+    if (activeYear <= 2022) ov.VIT = { ...(ov.VIT || {}), logo: vitality2022Logo };
     // INTZ: 약칭 ITZ.
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
@@ -3402,7 +3416,7 @@ const PredictionPage = () => {
                     return (
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={hd?.gradient ? { backgroundImage: hd.gradient } : (!hd && COMP_GRADIENT[comp.key]) ? { backgroundImage: COMP_GRADIENT[comp.key] } : { backgroundColor: hd?.color || comp.color }}>
                     <img src={hd?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={{ filter: hd?.logo ? (hd.invert ? 'brightness(0) invert(1)' : 'none') : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
+                      style={{ filter: hd?.black ? 'brightness(0)' : hd?.logo ? (hd.invert ? 'brightness(0) invert(1)' : 'none') : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                     );
