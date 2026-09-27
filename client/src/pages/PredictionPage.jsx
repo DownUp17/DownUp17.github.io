@@ -35,6 +35,9 @@ import pentanetGgLogo from '../assets/pentanet-gg.webp';
 import vertexEscLogo from '../assets/vertex-esc.webp';
 import peaceLogo from '../assets/peace.webp';
 import theChiefsLogo from '../assets/the-chiefs.webp';
+import dwgKiaLogo from '../assets/dwg-kia.svg';
+import drx2022Logo from '../assets/drx-2022.svg';
+import freditBrionLogo from '../assets/fredit-brion.svg';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
 import ewcLogo from '../assets/ewc.svg';
@@ -3185,6 +3188,12 @@ const PredictionPage = () => {
     if (activeYear <= 2023) ov.BCT = { tag: 'BC', name: 'Burning Core', logo: burningCoreLogo };
     // CHF: 2023 이하는 The Chiefs.
     if (activeYear <= 2023) ov.CHF = { ...(ov.CHF || {}), name: 'The Chiefs', logo: theChiefsLogo };
+    // DK: 2022 이하는 DWG KIA.
+    if (activeYear <= 2022) ov.DK = { ...(ov.DK || {}), name: 'DWG KIA', logo: dwgKiaLogo };
+    // DRX: 2022 이하 로고.
+    if (activeYear <= 2022) ov.DRX = { ...(ov.DRX || {}), logo: drx2022Logo };
+    // BRO: 2022 이하는 Fredit BRION.
+    if (activeYear <= 2022) ov.BRO = { ...(ov.BRO || {}), name: 'Fredit BRION', logo: freditBrionLogo };
     // INTZ: 약칭 ITZ.
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
@@ -3373,7 +3382,7 @@ const PredictionPage = () => {
                   })()}
                   <div>
                     <h2 className="text-xl font-black text-white">{displayTitle}</h2>
-                    <p className="text-xs text-white/40">{comp.scope === 'intl' ? '국제 대회' : '지역 리그'}</p>
+                    <p className="text-xs text-white/40">{comp.scope === 'intl' ? '국제 대회' : (comp.key === 'lcp' && ((activeYear === 2024 && ['LJL', 'LCO'].includes(activeEvent)) || (activeYear === 2023 && activeEvent === 'LCO')) ? '지역 하위리그' : '지역 리그')}</p>
                   </div>
                   {years.length > 1 && (
                     <YearDropdown years={years} value={activeYear} onChange={setActiveYear} />
