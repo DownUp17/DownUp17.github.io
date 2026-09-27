@@ -109,7 +109,7 @@ try {
   const simPath = path.join(__dirname, '..', 'client', 'src', 'data', 'lolSim.json');
   const st = JSON.parse(fs.readFileSync(stPath, 'utf8'));
   const simData = JSON.parse(fs.readFileSync(simPath, 'utf8'));
-  // 대회 → 리그 매핑(시뮬 대상). Worlds/DCGI는 아직 시뮬 미지원이라 제외.
+  // 대회 → 리그 매핑(시뮬 대상). Worlds는 아직 시뮬 미지원이라 제외.
   const bracketSigs = {
     MSI: JSON.stringify({
       pi: st.standings?.msi?.['플레이-인 스테이지']?.bracket ?? null,
@@ -136,6 +136,11 @@ try {
     }),
     CBLOL: JSON.stringify({
       po: st.standings?.cblol?.['Split 2']?.playoffs ?? null,
+    }),
+    DCGI: JSON.stringify({
+      q: st.standings?.demacia?.qualifiers ?? null,
+      g: st.standings?.demacia?.group ?? null,
+      k: st.standings?.demacia?.knockout ?? null,
     }),
   };
   const oldSigs = simData.bracketSigs || {};

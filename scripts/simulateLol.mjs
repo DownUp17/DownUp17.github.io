@@ -957,6 +957,145 @@ msi.teams = [...msiDirect, ...msiPlayIn].map((t) => ({ name: t.name, short: t.sh
 msi.standings = msiStandings;
 console.log(`MSI: 우승1위 ${msiStandings[0].team} ${msiStandings[0].champ}%`);
 
+// ---- 2026 DCGI (Demacia Cup Global Invitational) ----
+//   그룹 스테이지(12팀, 더블 엘리미네이션식): 0-0 M1-M6(Bo1) → 1-0 M7-M9 / 0-1 M10-M12(Bo3)
+//   → 1-1 M13-M15(1-0 패자 vs 0-1 승자) / 0-2 M16-M18(3팀 라운드로빈) → 1-2 M19-M20(1-1 패자 3 + 0-2 1위)
+//   → 진출 8팀(1-0 승자 3 + 1-1 승자 3 + 1-2 승자 2) → 녹아웃 8강~결승(Bo5 싱글 엘리).
+//   드로우 규칙: 0-0은 같은 리그끼리 대진 금지, 이후 라운드는 재대결 금지(0-2 라운드로빈만 예외).
+//   녹아웃 8강 대진 방식은 미공개라 무작위 드로우로 가정. 실제 대진·결과가 데이터에 있으면 그대로 고정.
+function simulateDcgi(node) {
+  const quals = node?.qualifiers || [];
+  const T = {};
+  for (const q of quals) {
+    const t = byShort(q.short);
+    if (t) T[q.short] = { ...t, lg: (q.seed || '').split(' ')[0] };
+  }
+  if (quals.length !== 12 || Object.keys(T).length !== 12) return null;
+  const slotMap = Object.fromEntries((node.teams || []).map((t) => [t.slot, t.short]));
+  const resolve = (v) => (v ? (T[slotMap[v]] || T[v] || null) : null);
+  const byId = Object.fromEntries([...(node.group?.matches || []), ...(node.knockout?.matches || [])].map((m) => [m.id, m]));
+  const NEED = { Bo1: 1, Bo3: 2, Bo5: 3 };
+  const fixedWinner = (m) => {
+    if (!m?.winner) return null;
+    if (m.winner === m.a) return resolve(m.a);
+    if (m.winner === m.b) return resolve(m.b);
+    return resolve(m.winner);
+  };
+  const pairKey = (x, y) => (x.short < y.short ? `${x.short}|${y.short}` : `${y.short}|${x.short}`);
+  const shuffle = (arr) => {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  };
+  // 제약을 만족하는 무작위 짝짓기(거부 샘플링 → 전 매칭 중 균등). 불가능하면 제약 없이 짝짓는다.
+  const randomPairs = (pool, ok) => {
+    for (let tries = 0; tries < 500; tries++) {
+      const s = shuffle(pool);
+      const pairs = [];
+      for (let i = 0; i < s.length; i += 2) pairs.push([s[i], s[i + 1]]);
+      if (pairs.every(([x, y]) => ok(x, y))) return pairs;
+    }
+    const s = shuffle(pool);
+    const pairs = [];
+    for (let i = 0; i < s.length; i += 2) pairs.push([s[i], s[i + 1]]);
+    return pairs;
+  };
+  const crossPairs = (left, right, ok) => {
+    for (let tries = 0; tries < 500; tries++) {
+      const r = shuffle(right);
+      const pairs = left.map((x, i) => [x, r[i]]);
+      if (pairs.every(([x, y]) => ok(x, y))) return pairs;
+    }
+    const r = shuffle(right);
+    return left.map((x, i) => [x, r[i]]);
+  };
+  // 라운드 매치들의 대진 결정 — 데이터에 양 팀이 확정된 매치는 그대로, 나머지는 남은 팀을 드로우.
+  const assign = (ids, pool, drawFn) => {
+    const fixedPairs = {};
+    const used = new Set();
+    for (const id of ids) {
+      const m = byId[id];
+      const a = resolve(m?.a), b = resolve(m?.b);
+      if (a && b && pool.includes(a) && pool.includes(b)) { fixedPairs[id] = [a, b]; used.add(a); used.add(b); }
+    }
+    const rest = pool.filter((t) => !used.has(t));
+    const drawn = rest.length ? drawFn(rest) : [];
+    return ids.map((id) => fixedPairs[id] || drawn.shift());
+  };
+
+  const teams = Object.values(T);
+  const stat = Object.fromEntries(teams.map((t) => [t.short, { advance: 0, champ: 0, finals: 0 }]));
+  for (let it = 0; it < ITER; it++) {
+    const met = new Set();
+    const noRematch = (x, y) => !met.has(pairKey(x, y));
+    const res = {};
+    const play = (id, a, b) => {
+      const m = byId[id];
+      const fw = fixedWinner(m);
+      const w = fw === a || fw === b ? fw : simSeries(a, b, NEED[m?.format] || 2);
+      met.add(pairKey(a, b));
+      res[id] = { w, l: w === a ? b : a };
+      return res[id];
+    };
+    const playRound = (ids, pairs) => ids.forEach((id, i) => play(id, pairs[i][0], pairs[i][1]));
+
+    // 0-0 (같은 리그 대진 금지)
+    const r00 = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'];
+    playRound(r00, assign(r00, teams, (p) => randomPairs(p, (x, y) => x.lg !== y.lg)));
+    // 1-0 / 0-1
+    const r10 = ['M7', 'M8', 'M9'], r01 = ['M10', 'M11', 'M12'];
+    playRound(r10, assign(r10, r00.map((id) => res[id].w), (p) => randomPairs(p, noRematch)));
+    playRound(r01, assign(r01, r00.map((id) => res[id].l), (p) => randomPairs(p, noRematch)));
+    // 1-1 (1-0 패자 vs 0-1 승자, 재대결 금지)
+    const r11 = ['M13', 'M14', 'M15'];
+    const l10 = r10.map((id) => res[id].l), w01 = r01.map((id) => res[id].w);
+    playRound(r11, assign(r11, [...l10, ...w01], (p) => {
+      const left = p.filter((t) => l10.includes(t)), right = p.filter((t) => w01.includes(t));
+      return left.length === right.length ? crossPairs(left, right, noRematch) : randomPairs(p, noRematch);
+    }));
+    // 0-2 라운드로빈 (재대결 허용) — 승수 → 동률은 무작위로 1위 결정
+    const [la, lb, lc] = r01.map((id) => res[id].l);
+    const rrWins = { [la.short]: 0, [lb.short]: 0, [lc.short]: 0 };
+    [['M16', la, lb], ['M17', la, lc], ['M18', lb, lc]].forEach(([id, x, y]) => {
+      const m = byId[id];
+      const a = resolve(m?.a) || x, b = resolve(m?.b) || y;
+      rrWins[play(id, a, b).w.short]++;
+    });
+    const rr1 = [la, lb, lc].map((t) => ({ t, k: rrWins[t.short] + rng() * 0.5 })).sort((p, q) => q.k - p.k)[0].t;
+    // 1-2 (1-1 패자 3 + 0-2 1위, 재대결 금지)
+    const r12 = ['M19', 'M20'];
+    playRound(r12, assign(r12, [...r11.map((id) => res[id].l), rr1], (p) => randomPairs(p, noRematch)));
+
+    const adv = [...r10, ...r11, ...r12].map((id) => res[id].w);
+    adv.forEach((t) => stat[t.short].advance++);
+    // 녹아웃
+    const qf = ['M21', 'M22', 'M23', 'M24'];
+    playRound(qf, assign(qf, adv, (p) => randomPairs(p, () => true)));
+    const sf1 = play('M25', res.M21.w, res.M22.w), sf2 = play('M26', res.M23.w, res.M24.w);
+    const fin = play('GF', sf1.w, sf2.w);
+    stat[sf1.w.short].finals++; stat[sf2.w.short].finals++;
+    stat[fin.w.short].champ++;
+  }
+  return quals.map((q) => {
+    const t = T[q.short];
+    return {
+      team: t.short, name: t.name, rating: t.score,
+      advance: pct(stat[t.short].advance / ITER),
+      finals: pct(stat[t.short].finals / ITER),
+      champ: pct(stat[t.short].champ / ITER),
+    };
+  });
+}
+const dcgiStandings = simulateDcgi(standingsData.standings?.demacia);
+const dcgi = sim.competitions.find((c) => c.key === 'demacia');
+if (dcgi && dcgiStandings) {
+  dcgi.iterations = ITER;
+  dcgi.generatedAt = GENERATED_AT;
+  dcgi.standings = dcgiStandings;
+  const top = [...dcgiStandings].sort((a, b) => b.champ - a.champ)[0];
+  console.log(`DCGI: 우승1위 ${top.team} ${top.champ}%`);
+}
+
 // ---- FST 2026 (종료) 실제 결과 ----
 const fstTeams = gpr.teams.filter((t) => t.fst).sort((a, b) => a.fst - b.fst);
 const fst = sim.competitions.find((c) => c.key === 'fst');
@@ -1044,6 +1183,11 @@ sim.bracketSigs = {
   }),
   CBLOL: JSON.stringify({
     po: standingsData.standings?.cblol?.['Split 2']?.playoffs ?? null,
+  }),
+  DCGI: JSON.stringify({
+    q: standingsData.standings?.demacia?.qualifiers ?? null,
+    g: standingsData.standings?.demacia?.group ?? null,
+    k: standingsData.standings?.demacia?.knockout ?? null,
   }),
 };
 delete sim.msiBracketSig; // 이전 형식(단일 문자열) 제거

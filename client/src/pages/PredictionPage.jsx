@@ -1620,17 +1620,41 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           list = qualifiers;
         }
         if (!list.length) return null;
+        // 진출(녹아웃 진출) = DCGI 상징색, 우승 = 기존 골드. 녹아웃 스테이지에선 진출 생략, 종료 시 전부 숨김.
+        const finished = comp.status === 'finished';
+        //   상징색(#1826a1)은 어두운 배경에서 숫자가 안 보여 수치 텍스트만 같은 계열의 밝은 톤을 쓴다.
+        const probRow = (label, v, color, strong, textColor = color) => (
+          <div key={label} className="flex items-center gap-2">
+            <span className="text-[10px] text-white/40 w-8 shrink-0">{label}</span>
+            <div className="flex-1 h-1.5 rounded-full bg-white/5 overflow-hidden">
+              <div className="h-full rounded-full" style={{ width: `${Math.min(v, 100)}%`, backgroundColor: color }} />
+            </div>
+            <span className="font-mono tabular-nums text-[11px] w-12 text-right shrink-0" style={{ color: textColor, fontWeight: strong ? 800 : 600 }}>{v}%</span>
+          </div>
+        );
         return (
           <section className="flex flex-col gap-3">
             <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">참가 팀</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {list.map((q, i) => (
-                <div key={i} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+              {list.map((q, i) => {
+                const p = q.short ? probByShort[q.short] : null;
+                const showAdvance = !finished && stage !== '녹아웃 스테이지' && p?.advance != null;
+                const showChamp = !finished && p?.champ != null;
+                return (
+                <div key={i} className="flex flex-col gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
                   {q.short ? (
                     <>
-                      <TeamLogo src={logoByShort[q.short]} size={20} />
-                      <span className="font-bold truncate text-white/90">{nameByShort[q.short] || q.short}</span>
-                      {q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
+                      <div className="flex items-center gap-2 min-w-0">
+                        <TeamLogo src={logoByShort[q.short]} size={20} />
+                        <span className="font-bold truncate text-white/90">{nameByShort[q.short] || q.short}</span>
+                        {q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
+                      </div>
+                      {(showAdvance || showChamp) && (
+                        <div className="flex flex-col gap-1">
+                          {showAdvance && probRow('진출', p.advance, comp.color, false, '#8b98f5')}
+                          {showChamp && probRow('우승', p.champ, '#E8C77E', true)}
+                        </div>
+                      )}
                     </>
                   ) : (
                     <>
@@ -1639,7 +1663,8 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                     </>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         );
