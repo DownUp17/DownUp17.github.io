@@ -39,6 +39,11 @@ import theChiefsLogo from '../assets/the-chiefs.webp';
 import dwgKiaLogo from '../assets/dwg-kia.svg';
 import drx2022Logo from '../assets/drx-2022.svg';
 import freditBrionLogo from '../assets/fredit-brion.svg';
+import tclLogo from '../assets/tcl.webp';
+import madLions2023Logo from '../assets/mad-lions-2023.webp';
+import madLions2022Logo from '../assets/mad-lions-2022.webp';
+import victoryFiveLogo from '../assets/victory-five.webp';
+import omg2022Logo from '../assets/omg-2022.webp';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
 import ewcLogo from '../assets/ewc.svg';
@@ -2796,6 +2801,8 @@ const PAST_DETAIL = {
   'lck|2025': { bySub: { 'LCK CUP': { color: '#7f6b00' }, 'KeSPA CUP': { color: '#072148', logo: kespa2025Logo } } },
   'lck|2024': { bySub: { 'KeSPA CUP': { color: '#072148' } } },
   'demacia|2024': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 2025 Demacia Cup과 동일
+  'demacia|2022': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2023': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
   'fst|2025': { color: '#45002c' },
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
   'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
@@ -2810,7 +2817,7 @@ const PAST_DETAIL = {
   'asiangames|2023': { color: '#b223ba', gradient: 'linear-gradient(90deg, #dd0b7c, #b223ba, #433feb)', logo: asiangames2022Logo },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
-const TCL_LOGO = 'https://static.lolesports.com/leagues/1738338347640_ampiyonlukLigi-AMBLEM.png'; // TCL(튀르키예 챔피언십 리그) 공식 로고
+const TCL_LOGO = tclLogo; // TCL(튀르키예 챔피언십 리그) 공식 로고
 const EVENT_DETAIL = {
   'demacia|2025|ASI': { color: '#7927ff', logo: asiLogo },
   'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
@@ -2826,10 +2833,10 @@ const EVENT_DETAIL = {
   'lcp|2022|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2022|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2022|LCO': { color: '#0f3341', logo: lcoLogo },
-  'lec|2016|TCL': { color: '#e30a17', logo: TCL_LOGO },
-  'lec|2020|TCL': { color: '#e30a17', logo: TCL_LOGO },
-  'lec|2021|TCL': { color: '#e30a17', logo: TCL_LOGO },
-  'lec|2022|TCL': { color: '#e30a17', logo: TCL_LOGO },
+  'lec|2016|TCL': { color: '#3f567c', logo: TCL_LOGO },
+  'lec|2020|TCL': { color: '#3f567c', logo: TCL_LOGO },
+  'lec|2021|TCL': { color: '#3f567c', logo: TCL_LOGO },
+  'lec|2022|TCL': { color: '#3f567c', logo: TCL_LOGO },
   'cblol|2020|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2021|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2022|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
@@ -2928,7 +2935,7 @@ const COMP_EDITIONS = {
   cblol: [2026, 2025],
   fst: [2026, 2025],
   msi: [2026, 2025],
-  demacia: [2026, 2025, 2024],
+  demacia: [2026, 2025, 2024, 2023, 2022],
   worlds: [2026, 2025],
   ewc: [2026, 2025, 2024],
   asiangames: [2026, 2023], // 2022 항저우 AG는 코로나로 2023년 개최 → 연도 선택은 2023(대회명은 2022 유지)
@@ -3140,6 +3147,8 @@ const PredictionPage = () => {
     else if (activeYear === 2025) ov.MVK = { tag: 'MVKE', name: 'MGN Vikings Esports', logo: mvkeLogo };
     // VCS 2024 이하: Team Secret(TS)·Team Whales(TW) — 2025에 합병해 TSW(클릭 시 TSW로 연결, TEAM_LINK).
     // 2024 Demacia Cup 참가 2군·기타 팀 명칭
+    if (comp?.key === 'demacia' && activeYear === 2022) Object.assign(ov, { DYU: { name: "DYU" }, MOJ: { name: "Huya MOJ" }, MAX: { name: "MAX" }, DHM: { name: "Douyu DHM" }, LML: { name: "Huya LML" }, BLI: { name: "Bilibili Live" }, RTL: { name: "Huya RTL" }, LCC: { name: "LCC" }, LYA: { name: "LYA" }, SDX: { name: "Shu Dai Xiong Gaming" }, YM: { name: "Young Miracles" }, EQX: { name: "EQX" }, Q9: { name: "Qing Jiu E-sport Club" }, QSG: { name: "QSG" }, TP: { name: "Team Pinnacle" }, HHH: { name: "HHH" }, V5: { name: "Victory Five" }, TT: { name: "ThunderTalk Gaming" }, AL: { name: "Anyone's Legend" }, RNG: { name: "Royal Never Give Up" }, FPX: { name: "FunPlus Phoenix" } });
+    if (comp?.key === 'demacia' && activeYear === 2023) Object.assign(ov, { TT: { name: 'ThunderTalk Gaming' }, AL: { name: "Anyone's Legend" }, WSG: { name: 'WSG' }, RNG: { name: 'Royal Never Give Up' }, MJ: { name: 'MiaoJing' }, RST: { name: 'Huya RST' }, FPX: { name: 'FunPlus Phoenix' }, MAX: { name: 'MAX' }, BUG: { name: 'Huya BUG' }, EQX: { name: 'EQX' }, WSQ: { name: 'WSQ' } });
     if (comp?.key === 'demacia' && activeYear === 2024) Object.assign(ov, { BLGJ: { name: 'Bilibili Gaming Junior' }, SG: { name: 'Super Gaming' }, BLD: { name: 'Blood' }, LGDYT: { name: 'LGD Gaming Young Team' }, FPX: { name: 'FunPlus Phoenix' }, RNG: { name: 'Royal Never Give Up' } });
     // 과거 AG(2022 항저우 등): 국가 코드 → 한국어 국가명(약칭·풀네임 모두) + 국기
     if (comp?.key === 'asiangames') for (const [c, n] of Object.entries(AG_NATION_NAME)) ov[c] = { tag: n, name: n, logo: nationFlag(c) };
@@ -3169,7 +3178,7 @@ const PredictionPage = () => {
     if (activeYear <= 2024) ov.DNS = { tag: 'KDF', name: 'KWANGDONG FREECS', logo: kwangdongFreecsLogo };
     // MKOI: 2024까지 MAD Lions KOI(MDK). 2025부터 기본 Movistar KOI.
     if (activeYear <= 2024) ov.MKOI = activeYear <= 2023
-      ? { tag: 'MAD', name: 'MAD Lions', logo: madLionsKoiLogo }
+      ? { tag: 'MAD', name: 'MAD Lions', logo: activeYear <= 2022 ? madLions2022Logo : madLions2023Logo }
       : { tag: 'MDK', name: 'MAD Lions KOI', logo: madLionsKoiLogo };
     // C9: 2024까지 이름 'Cloud9', 옛 로고. 2025부터 기본 Cloud9 Kia.
     if (activeYear <= 2024) ov.C9 = { name: 'Cloud9', logo: c9_2024Logo };
@@ -3206,6 +3215,10 @@ const PredictionPage = () => {
     if (activeYear <= 2022) ov.KRX = { ...(ov.KRX || {}), logo: drx2022Logo };
     // BRO: 2022 이하는 Fredit BRION.
     if (activeYear <= 2022) ov.BRO = { ...(ov.BRO || {}), name: 'Fredit BRION', logo: freditBrionLogo };
+    // NIP: 2022 이하는 Victory Five(V5).
+    if (activeYear <= 2022) ov.NIP = { tag: 'V5', name: 'Victory Five', logo: victoryFiveLogo };
+    // OMG: 2022 이하 로고.
+    if (activeYear <= 2022) ov.OMG = { ...(ov.OMG || {}), logo: omg2022Logo };
     // INTZ: 약칭 ITZ.
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
@@ -3261,6 +3274,8 @@ const PredictionPage = () => {
 
   // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
   const PAST_COMP_NAME = {
+    'demacia|2022': { default: 'Demacia Cup' },
+    'demacia|2023': { default: 'Demacia Cup' },
     'demacia|2024': { default: 'Demacia Cup' }, // 2024는 Demacia Cup 단독(통합 DCGI 이전)
     'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA', 'Playoffs': 'LTA' },
     'cblol|2025': { default: 'LTA Sul', 'Etapa 1': 'LTA', 'Playoffs': 'LTA' },

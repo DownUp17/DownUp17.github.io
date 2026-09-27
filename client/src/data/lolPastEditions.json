@@ -36727,6 +36727,569 @@
             ]
           }
         }
+      },
+      "demacia": {
+        "name": "Demacia Cup",
+        "regLabel": "스테이지 1",
+        "rows": [
+          {
+            "rank": 1,
+            "team": "DYU",
+            "w": 4,
+            "l": 0
+          },
+          {
+            "rank": 2,
+            "team": "MOJ",
+            "w": 4,
+            "l": 1
+          },
+          {
+            "rank": 2,
+            "team": "MAX",
+            "w": 4,
+            "l": 1
+          },
+          {
+            "rank": 4,
+            "team": "DHM",
+            "w": 3,
+            "l": 2
+          },
+          {
+            "rank": 4,
+            "team": "LML",
+            "w": 3,
+            "l": 2
+          },
+          {
+            "rank": 6,
+            "team": "BLI",
+            "w": 2,
+            "l": 2
+          },
+          {
+            "rank": 6,
+            "team": "RTL",
+            "w": 2,
+            "l": 2
+          },
+          {
+            "rank": 6,
+            "team": "LCC",
+            "w": 2,
+            "l": 2
+          },
+          {
+            "rank": 6,
+            "team": "LYA",
+            "w": 2,
+            "l": 2
+          },
+          {
+            "rank": 6,
+            "team": "SDX",
+            "w": 2,
+            "l": 2
+          },
+          {
+            "rank": 6,
+            "team": "YM",
+            "w": 2,
+            "l": 2
+          },
+          {
+            "rank": 12,
+            "team": "EQX",
+            "w": 1,
+            "l": 3
+          },
+          {
+            "rank": 12,
+            "team": "Q9",
+            "w": 1,
+            "l": 3
+          },
+          {
+            "rank": 12,
+            "team": "QSG",
+            "w": 1,
+            "l": 3
+          },
+          {
+            "rank": 12,
+            "team": "TP",
+            "w": 1,
+            "l": 3
+          },
+          {
+            "rank": 16,
+            "team": "HHH",
+            "w": 0,
+            "l": 4
+          }
+        ],
+        "brackets": [
+          {
+            "slug": "stage2",
+            "name": "스테이지 2",
+            "label": "스테이지 2",
+            "bracket": {
+              "totalRows": 16,
+              "rounds": [
+                {
+                  "matches": [
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "WBG",
+                        "score": "FF"
+                      },
+                      "b": {
+                        "short": "IG",
+                        "score": "W",
+                        "win": true
+                      },
+                      "startRow": 0
+                    },
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "LNG",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "WE",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 2
+                    },
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "AL",
+                        "score": 2,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "OMG",
+                        "score": 1
+                      },
+                      "startRow": 4
+                    },
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "DYU",
+                        "seed": "스테이지 1",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "RA",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 6
+                    },
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "UP",
+                        "score": "FF"
+                      },
+                      "b": {
+                        "short": "FPX",
+                        "score": "W",
+                        "win": true
+                      },
+                      "startRow": 8
+                    },
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "MOJ",
+                        "seed": "스테이지 1",
+                        "score": "W",
+                        "win": true
+                      },
+                      "b": {
+                        "short": "LGD",
+                        "score": "FF"
+                      },
+                      "startRow": 10
+                    },
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "MAX",
+                        "seed": "스테이지 1",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "BLG",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 12
+                    },
+                    {
+                      "title": "1라운드",
+                      "a": {
+                        "short": "V5",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "TT",
+                        "score": 2,
+                        "win": true
+                      },
+                      "startRow": 14
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "2라운드",
+                      "a": {
+                        "short": "IG",
+                        "score": 2,
+                        "msi": true
+                      },
+                      "b": {
+                        "short": "WE",
+                        "score": 0
+                      },
+                      "startRow": 1
+                    },
+                    {
+                      "title": "2라운드",
+                      "a": {
+                        "short": "AL",
+                        "score": "W",
+                        "msi": true
+                      },
+                      "b": {
+                        "short": "RA",
+                        "score": "FF"
+                      },
+                      "startRow": 5
+                    },
+                    {
+                      "title": "2라운드",
+                      "a": {
+                        "short": "FPX",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "MOJ",
+                        "score": 2,
+                        "msi": true
+                      },
+                      "startRow": 9
+                    },
+                    {
+                      "title": "2라운드",
+                      "a": {
+                        "short": "BLG",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "TT",
+                        "score": 2,
+                        "msi": true
+                      },
+                      "startRow": 13
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "b",
+                  1,
+                  0,
+                  "a"
+                ],
+                [
+                  0,
+                  1,
+                  "b",
+                  1,
+                  0,
+                  "b"
+                ],
+                [
+                  0,
+                  2,
+                  "a",
+                  1,
+                  1,
+                  "a"
+                ],
+                [
+                  0,
+                  3,
+                  "b",
+                  1,
+                  1,
+                  "b"
+                ],
+                [
+                  0,
+                  4,
+                  "b",
+                  1,
+                  2,
+                  "a"
+                ],
+                [
+                  0,
+                  5,
+                  "a",
+                  1,
+                  2,
+                  "b"
+                ],
+                [
+                  0,
+                  6,
+                  "b",
+                  1,
+                  3,
+                  "a"
+                ],
+                [
+                  0,
+                  7,
+                  "b",
+                  1,
+                  3,
+                  "b"
+                ]
+              ]
+            }
+          },
+          {
+            "slug": "stage3",
+            "name": "스테이지 3",
+            "label": "스테이지 3",
+            "bracket": {
+              "totalRows": 8,
+              "rounds": [
+                {
+                  "matches": [
+                    {
+                      "title": "8강 1경기",
+                      "a": {
+                        "short": "IG",
+                        "seed": "스테이지 2",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "BLG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 0
+                    },
+                    {
+                      "title": "8강 2경기",
+                      "a": {
+                        "short": "AL",
+                        "seed": "스테이지 2",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "RNG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 2
+                    },
+                    {
+                      "title": "8강 3경기",
+                      "a": {
+                        "short": "MOJ",
+                        "seed": "스테이지 2",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "EDG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 4
+                    },
+                    {
+                      "title": "8강 4경기",
+                      "a": {
+                        "short": "TT",
+                        "seed": "스테이지 2",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "JDG",
+                        "score": 0
+                      },
+                      "startRow": 6
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "4강 1경기",
+                      "a": {
+                        "short": "BLG",
+                        "seed": "8강 승자",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "RNG",
+                        "seed": "8강 승자",
+                        "score": 0
+                      },
+                      "startRow": 1
+                    },
+                    {
+                      "title": "4강 2경기",
+                      "a": {
+                        "short": "EDG",
+                        "seed": "8강 승자",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "TT",
+                        "seed": "8강 승자",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 5
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "결승",
+                      "a": {
+                        "short": "BLG",
+                        "seed": "4강 승자",
+                        "score": 3,
+                        "msi": true
+                      },
+                      "b": {
+                        "short": "TT",
+                        "seed": "4강 승자",
+                        "score": 2,
+                        "elim": true
+                      },
+                      "startRow": 3
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "b",
+                  1,
+                  0,
+                  "a"
+                ],
+                [
+                  0,
+                  1,
+                  "b",
+                  1,
+                  0,
+                  "b"
+                ],
+                [
+                  0,
+                  2,
+                  "b",
+                  1,
+                  1,
+                  "a"
+                ],
+                [
+                  0,
+                  3,
+                  "a",
+                  1,
+                  1,
+                  "b"
+                ],
+                [
+                  1,
+                  0,
+                  "a",
+                  2,
+                  0,
+                  "a"
+                ],
+                [
+                  1,
+                  1,
+                  "b",
+                  2,
+                  0,
+                  "b"
+                ]
+              ]
+            }
+          }
+        ],
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "BLG",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "TT",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "RNG",
+            "note": "4강"
+          },
+          {
+            "rank": 4,
+            "team": "EDG",
+            "note": "4강"
+          },
+          {
+            "rank": 5,
+            "team": "IG",
+            "note": "8강"
+          },
+          {
+            "rank": 6,
+            "team": "AL",
+            "note": "8강"
+          },
+          {
+            "rank": 7,
+            "team": "MOJ",
+            "note": "8강"
+          },
+          {
+            "rank": 8,
+            "team": "JDG",
+            "note": "8강"
+          }
+        ]
       }
     },
     "2023": {
@@ -49005,6 +49568,373 @@
             ]
           }
         }
+      },
+      "demacia": {
+        "name": "Demacia Cup",
+        "regLabel": "그룹 스테이지",
+        "parallelGroups": true,
+        "rows": [
+          {
+            "rank": 1,
+            "team": "NIP",
+            "w": 3,
+            "l": 0,
+            "group": "A조"
+          },
+          {
+            "rank": 2,
+            "team": "TT",
+            "w": 2,
+            "l": 1,
+            "group": "A조"
+          },
+          {
+            "rank": 3,
+            "team": "AL",
+            "w": 1,
+            "l": 2,
+            "group": "A조"
+          },
+          {
+            "rank": 4,
+            "team": "EDG",
+            "w": 0,
+            "l": 3,
+            "group": "A조"
+          },
+          {
+            "rank": 5,
+            "team": "WSG",
+            "w": 0,
+            "l": 0,
+            "group": "A조",
+            "remark": "실격"
+          },
+          {
+            "rank": 1,
+            "team": "RNG",
+            "w": 4,
+            "l": 0,
+            "group": "B조"
+          },
+          {
+            "rank": 2,
+            "team": "LGD",
+            "w": 3,
+            "l": 1,
+            "group": "B조"
+          },
+          {
+            "rank": 3,
+            "team": "OMG",
+            "w": 2,
+            "l": 2,
+            "group": "B조"
+          },
+          {
+            "rank": 4,
+            "team": "MJ",
+            "w": 1,
+            "l": 3,
+            "group": "B조"
+          },
+          {
+            "rank": 5,
+            "team": "RST",
+            "w": 0,
+            "l": 4,
+            "group": "B조"
+          },
+          {
+            "rank": 1,
+            "team": "RA",
+            "w": 3,
+            "l": 1,
+            "group": "C조"
+          },
+          {
+            "rank": 2,
+            "team": "IG",
+            "w": 3,
+            "l": 1,
+            "group": "C조"
+          },
+          {
+            "rank": 3,
+            "team": "FPX",
+            "w": 2,
+            "l": 2,
+            "group": "C조"
+          },
+          {
+            "rank": 4,
+            "team": "MAX",
+            "w": 1,
+            "l": 3,
+            "group": "C조"
+          },
+          {
+            "rank": 5,
+            "team": "BUG",
+            "w": 1,
+            "l": 3,
+            "group": "C조"
+          },
+          {
+            "rank": 1,
+            "team": "TES",
+            "w": 3,
+            "l": 0,
+            "group": "D조"
+          },
+          {
+            "rank": 2,
+            "team": "WE",
+            "w": 2,
+            "l": 1,
+            "group": "D조"
+          },
+          {
+            "rank": 3,
+            "team": "UP",
+            "w": 1,
+            "l": 2,
+            "group": "D조"
+          },
+          {
+            "rank": 4,
+            "team": "EQX",
+            "w": 0,
+            "l": 3,
+            "group": "D조"
+          },
+          {
+            "rank": 5,
+            "team": "WSQ",
+            "w": 0,
+            "l": 0,
+            "group": "D조",
+            "remark": "실격"
+          }
+        ],
+        "brackets": [
+          {
+            "slug": "knockout",
+            "name": "녹아웃 스테이지",
+            "label": "녹아웃 스테이지",
+            "bracket": {
+              "totalRows": 8,
+              "rounds": [
+                {
+                  "matches": [
+                    {
+                      "title": "8강 1경기",
+                      "a": {
+                        "short": "NIP",
+                        "seed": "A조 1위",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "WBG",
+                        "score": 2
+                      },
+                      "startRow": 0
+                    },
+                    {
+                      "title": "8강 2경기",
+                      "a": {
+                        "short": "RNG",
+                        "seed": "B조 1위",
+                        "score": 1
+                      },
+                      "b": {
+                        "short": "BLG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 2
+                    },
+                    {
+                      "title": "8강 3경기",
+                      "a": {
+                        "short": "RA",
+                        "seed": "C조 1위",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "LNG",
+                        "score": 1
+                      },
+                      "startRow": 4
+                    },
+                    {
+                      "title": "8강 4경기",
+                      "a": {
+                        "short": "TES",
+                        "seed": "D조 1위",
+                        "score": 2
+                      },
+                      "b": {
+                        "short": "JDG",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 6
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "4강 1경기",
+                      "a": {
+                        "short": "NIP",
+                        "seed": "8강 승자",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "BLG",
+                        "seed": "8강 승자",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 1
+                    },
+                    {
+                      "title": "4강 2경기",
+                      "a": {
+                        "short": "RA",
+                        "seed": "8강 승자",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "JDG",
+                        "seed": "8강 승자",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 5
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "결승",
+                      "a": {
+                        "short": "BLG",
+                        "seed": "4강 승자",
+                        "score": 3,
+                        "msi": true
+                      },
+                      "b": {
+                        "short": "JDG",
+                        "seed": "4강 승자",
+                        "score": 0,
+                        "elim": true
+                      },
+                      "startRow": 3
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "a",
+                  1,
+                  0,
+                  "a"
+                ],
+                [
+                  0,
+                  1,
+                  "b",
+                  1,
+                  0,
+                  "b"
+                ],
+                [
+                  0,
+                  2,
+                  "a",
+                  1,
+                  1,
+                  "a"
+                ],
+                [
+                  0,
+                  3,
+                  "b",
+                  1,
+                  1,
+                  "b"
+                ],
+                [
+                  1,
+                  0,
+                  "b",
+                  2,
+                  0,
+                  "a"
+                ],
+                [
+                  1,
+                  1,
+                  "b",
+                  2,
+                  0,
+                  "b"
+                ]
+              ]
+            }
+          }
+        ],
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "BLG",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "JDG",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "NIP",
+            "note": "4강"
+          },
+          {
+            "rank": 4,
+            "team": "RA",
+            "note": "4강"
+          },
+          {
+            "rank": 5,
+            "team": "WBG",
+            "note": "8강"
+          },
+          {
+            "rank": 6,
+            "team": "RNG",
+            "note": "8강"
+          },
+          {
+            "rank": 7,
+            "team": "LNG",
+            "note": "8강"
+          },
+          {
+            "rank": 8,
+            "team": "TES",
+            "note": "8강"
+          }
+        ]
       }
     },
     "2024": {

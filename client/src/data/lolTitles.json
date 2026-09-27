@@ -131,6 +131,18 @@
         "name": "2024 LPL Spring",
         "detail": "우승",
         "color": "#D32F2F"
+      },
+      {
+        "name": "2023 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)"
+      },
+      {
+        "name": "2022 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)"
       }
     ],
     "G2": [
@@ -323,7 +335,7 @@
       {
         "name": "2022 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#191919"
+        "gradient": "linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)"
       },
       {
         "name": "2022 LPL Spring",
@@ -357,12 +369,12 @@
       {
         "name": "2022 TCL Summer",
         "detail": "우승",
-        "color": "#e30a17"
+        "color": "#3f567c"
       },
       {
         "name": "2022 TCL Winter",
         "detail": "우승",
-        "color": "#e30a17"
+        "color": "#3f567c"
       }
     ],
     "TLAW": [
@@ -379,26 +391,26 @@
       {
         "name": "2022 LCS Lock In",
         "detail": "우승",
-        "color": "#eeece7"
+        "color": "#6460ff"
       }
     ],
     "EG": [
       {
         "name": "2022 LCS Spring",
         "detail": "우승",
-        "color": "#eeece7"
+        "color": "#6460ff"
       }
     ],
     "C9": [
       {
         "name": "2023 LCS Spring",
         "detail": "우승",
-        "color": "#eeece7"
+        "color": "#6460ff"
       },
       {
         "name": "2022 LCS Summer",
         "detail": "우승",
-        "color": "#eeece7"
+        "color": "#6460ff"
       }
     ],
     "RED": [
@@ -426,7 +438,7 @@
       {
         "name": "2022 Worlds",
         "detail": "우승",
-        "color": "#dddddd"
+        "color": "#321bdd"
       }
     ],
     "PSG": [
@@ -443,12 +455,12 @@
       {
         "name": "2023 PCS Summer",
         "detail": "우승",
-        "color": "#101725"
+        "color": "#cb0004"
       },
       {
         "name": "2023 PCS Spring",
         "detail": "우승",
-        "color": "#101725"
+        "color": "#cb0004"
       },
       {
         "name": "2022 PCS Spring",
@@ -562,7 +574,7 @@
       {
         "name": "2023 LCS Summer",
         "detail": "우승",
-        "color": "#eeece7"
+        "color": "#6460ff"
       }
     ],
     "KOR": [
