@@ -2813,7 +2813,7 @@ const PAST_DETAIL = {
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
   'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
   'msi|2025': { color: '#fe0000' }, // MSI 기본색은 #191919로 변경, 2025 상징색은 유지
-  'msi|2024': { color: '#000000', gradient: 'linear-gradient(90deg, #fe0000, #fc0ade, #3e03a0, #000026, #000, #000026, #3e03a0, #fc0ade, #fe0000)' },
+  'msi|2024': { color: '#000000', gradient: 'linear-gradient(90deg, #fe0000 0%, #fe0000 5.88%, #fc0ade 17.65%, #3e03a0 29.41%, #000026 41.18%, #000 50%, #000026 58.82%, #3e03a0 70.59%, #fc0ade 82.35%, #fe0000 94.12%, #fe0000 100%)' },
   'worlds|2025': { color: '#0e2bf4' },
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000' },

@@ -53,7 +53,7 @@
         "name": "2024 Mid-Season Invitational",
         "detail": "우승",
         "color": "#000000",
-        "gradient": "linear-gradient(90deg, #fe0000, #fc0ade, #3e03a0, #000026, #000, #000026, #3e03a0, #fc0ade, #fe0000)"
+        "gradient": "linear-gradient(90deg, #fe0000 0%, #fe0000 5.88%, #fc0ade 17.65%, #3e03a0 29.41%, #000026 41.18%, #000 50%, #000026 58.82%, #3e03a0 70.59%, #fc0ade 82.35%, #fe0000 94.12%, #fe0000 100%)"
       },
       {
         "name": "2024 LCK Spring",
