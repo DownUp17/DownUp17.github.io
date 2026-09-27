@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T01:03:09.457Z",
+  "updatedAt": "2026-09-27T01:07:38.274Z",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
   "iterationsDefault": 20000,
   "competitions": [
@@ -1616,7 +1616,7 @@
       "stage": "플레이-인 스테이지 (Bo5 더블 엘리미네이션) → 브래킷 스테이지 (Bo5 더블 엘리미네이션)",
       "format": "",
       "iterations": 100000,
-      "generatedAt": "2026-09-27T01:03:07.074Z",
+      "generatedAt": "2026-09-27T01:07:35.849Z",
       "teams": [
         {
           "name": "G2 Esports",
@@ -1780,7 +1780,7 @@
       "ready": true,
       "format": "그룹 스테이지 (Bo1/Bo3) → 녹아웃 스테이지 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-09-27T01:03:07.074Z",
+      "generatedAt": "2026-09-27T01:07:35.849Z",
       "teams": [],
       "matches": [],
       "standings": [
@@ -1788,96 +1788,96 @@
           "team": "JDG",
           "name": "Beijing JDG Esports",
           "rating": 1311,
-          "advance": 82.68,
-          "finals": 26.83,
+          "advance": 82.91,
+          "finals": 26.74,
           "champ": 12.63
         },
         {
           "team": "WE",
           "name": "Xi'an Team WE",
           "rating": 1283,
-          "advance": 75.81,
-          "finals": 17.99,
-          "champ": 7.12
+          "advance": 76.14,
+          "finals": 18.21,
+          "champ": 7.16
         },
         {
           "team": "LGD",
           "name": "LGD Gaming",
           "rating": 1260,
-          "advance": 69.04,
-          "finals": 12.53,
-          "champ": 4.24
+          "advance": 68.97,
+          "finals": 12.47,
+          "champ": 4.2
         },
         {
           "team": "KT",
           "name": "kt Rolster",
           "rating": 1381,
-          "advance": 93.88,
-          "finals": 54.75,
-          "champ": 40.08
+          "advance": 93.92,
+          "finals": 55.1,
+          "champ": 40.27
         },
         {
           "team": "BFX",
           "name": "BNK FEARX",
           "rating": 1254,
-          "advance": 67.44,
-          "finals": 11.44,
-          "champ": 3.73
+          "advance": 67.49,
+          "finals": 11.38,
+          "champ": 3.75
         },
         {
           "team": "BRO",
           "name": "Hanjin BRION",
           "rating": 1209,
-          "advance": 51.63,
-          "finals": 4.62,
-          "champ": 1.05
+          "advance": 51.66,
+          "finals": 4.46,
+          "champ": 1.04
         },
         {
           "team": "NAVI",
           "name": "Natus Vincere",
           "rating": 1205,
           "advance": 50.14,
-          "finals": 4.16,
-          "champ": 0.92
+          "finals": 4.32,
+          "champ": 0.94
         },
         {
           "team": "VIT",
           "name": "Team Vitality",
           "rating": 1257,
-          "advance": 67.89,
-          "finals": 11.89,
-          "champ": 3.93
+          "advance": 67.9,
+          "finals": 11.82,
+          "champ": 3.94
         },
         {
           "team": "SR",
           "name": "Shopify Rebellion",
           "rating": 1184,
-          "advance": 43.02,
-          "finals": 2.67,
+          "advance": 42.66,
+          "finals": 2.59,
           "champ": 0.48
         },
         {
           "team": "FLY",
           "name": "FlyQuest",
           "rating": 1335,
-          "advance": 87.49,
-          "finals": 35.68,
-          "champ": 19.7
+          "advance": 87.6,
+          "finals": 35.77,
+          "champ": 19.65
         },
         {
           "team": "GAM",
           "name": "GAM Esports",
           "rating": 1272,
-          "advance": 72.83,
-          "finals": 15.56,
-          "champ": 5.84
+          "advance": 72.64,
+          "finals": 15.39,
+          "champ": 5.65
         },
         {
           "team": "RED",
           "name": "RED Canids Kalunga",
           "rating": 1171,
-          "advance": 38.17,
-          "finals": 1.89,
+          "advance": 37.97,
+          "finals": 1.76,
           "champ": 0.3
         }
       ],

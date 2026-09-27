@@ -1029,12 +1029,27 @@ function simulateDcgi(node) {
     const met = new Set();
     const noRematch = (x, y) => !met.has(pairKey(x, y));
     const res = {};
+    // 결과에 세트 스코어(wg/lg)도 기록 — 0-2 라운드로빈 득실차 타이브레이커용.
     const play = (id, a, b) => {
       const m = byId[id];
+      const need = NEED[m?.format] || 2;
       const fw = fixedWinner(m);
-      const w = fw === a || fw === b ? fw : simSeries(a, b, NEED[m?.format] || 2);
+      let w, wg, lg;
+      if (fw === a || fw === b) {
+        w = fw;
+        const aIsA = resolve(m.a) === a;
+        const sa = aIsA ? m.scoreA : m.scoreB, sb = aIsA ? m.scoreB : m.scoreA;
+        wg = (w === a ? sa : sb) ?? need;
+        lg = (w === a ? sb : sa) ?? 0;
+      } else {
+        let ga = 0, gb = 0;
+        const p = gameProb(a.score, b.score);
+        while (ga < need && gb < need) (rng() < p ? ga++ : gb++);
+        w = ga === need ? a : b;
+        wg = need; lg = Math.min(ga, gb);
+      }
       met.add(pairKey(a, b));
-      res[id] = { w, l: w === a ? b : a };
+      res[id] = { w, l: w === a ? b : a, wg, lg };
       return res[id];
     };
     const playRound = (ids, pairs) => ids.forEach((id, i) => play(id, pairs[i][0], pairs[i][1]));
@@ -1053,15 +1068,20 @@ function simulateDcgi(node) {
       const left = p.filter((t) => l10.includes(t)), right = p.filter((t) => w01.includes(t));
       return left.length === right.length ? crossPairs(left, right, noRematch) : randomPairs(p, noRematch);
     }));
-    // 0-2 라운드로빈 (재대결 허용) — 승수 → 동률은 무작위로 1위 결정
+    // 0-2 라운드로빈 (재대결 허용) — 순위: 승수 → 세트 득실차 → 그래도 같으면 동률 팀 중 균등 무작위
     const [la, lb, lc] = r01.map((id) => res[id].l);
-    const rrWins = { [la.short]: 0, [lb.short]: 0, [lc.short]: 0 };
+    const rr = Object.fromEntries([la, lb, lc].map((t) => [t.short, { w: 0, diff: 0 }]));
     [['M16', la, lb], ['M17', la, lc], ['M18', lb, lc]].forEach(([id, x, y]) => {
       const m = byId[id];
       const a = resolve(m?.a) || x, b = resolve(m?.b) || y;
-      rrWins[play(id, a, b).w.short]++;
+      const r = play(id, a, b);
+      rr[r.w.short].w++;
+      rr[r.w.short].diff += r.wg - r.lg;
+      rr[r.l.short].diff -= r.wg - r.lg;
     });
-    const rr1 = [la, lb, lc].map((t) => ({ t, k: rrWins[t.short] + rng() * 0.5 })).sort((p, q) => q.k - p.k)[0].t;
+    const rr1 = [la, lb, lc]
+      .map((t) => ({ t, ...rr[t.short], rand: rng() }))
+      .sort((p, q) => q.w - p.w || q.diff - p.diff || q.rand - p.rand)[0].t;
     // 1-2 (1-1 패자 3 + 0-2 1위, 재대결 금지)
     const r12 = ['M19', 'M20'];
     playRound(r12, assign(r12, [...r11.map((id) => res[id].l), rr1], (p) => randomPairs(p, noRematch)));
