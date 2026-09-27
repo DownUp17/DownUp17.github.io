@@ -2805,10 +2805,12 @@ const PAST_DETAIL = {
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000' },
   'msi|2022': { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' },
+  'worlds|2022': { color: '#321bdd' },
   'worlds|2023': { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' },
   'asiangames|2023': { color: '#b223ba', gradient: 'linear-gradient(90deg, #dd0b7c, #b223ba, #433feb)', logo: asiangames2022Logo },
 };
 // 연도 내 세부 대회(event)별 상세 헤더 로고·상징색 (`key|year|event`).
+const TCL_LOGO = 'https://static.lolesports.com/leagues/1738338347640_ampiyonlukLigi-AMBLEM.png'; // TCL(튀르키예 챔피언십 리그) 공식 로고
 const EVENT_DETAIL = {
   'demacia|2025|ASI': { color: '#7927ff', logo: asiLogo },
   'demacia|2025|Demacia Cup': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 검은 로고 → 흰색 반전, 상하 그라데이션(위 #446aca → 아래 #61a1ea)
@@ -2820,6 +2822,14 @@ const EVENT_DETAIL = {
   'lcp|2023|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2023|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2023|LCO': { color: '#0f3341', logo: lcoLogo },
+  'lcp|2022|VCS': { color: '#f0fea6', logo: vcsLogo },
+  'lcp|2022|PCS': { color: '#cb0004', logo: pcsLogo },
+  'lcp|2022|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
+  'lcp|2022|LCO': { color: '#0f3341', logo: lcoLogo },
+  'lec|2016|TCL': { color: '#e30a17', logo: TCL_LOGO },
+  'lec|2020|TCL': { color: '#e30a17', logo: TCL_LOGO },
+  'lec|2021|TCL': { color: '#e30a17', logo: TCL_LOGO },
+  'lec|2022|TCL': { color: '#e30a17', logo: TCL_LOGO },
   'cblol|2020|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2021|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
   'cblol|2022|LLA': { color: '#ff6528', logo: llaLogo, invert: true },
@@ -2914,7 +2924,7 @@ const COMP_EDITIONS = {
   lpl: [2026, 2025],
   lec: [2026, 2025],
   lcs: [2026, 2025],
-  lcp: [2026, 2025, 2024, 2023],
+  lcp: [2026, 2025, 2024, 2023, 2022],
   cblol: [2026, 2025],
   fst: [2026, 2025],
   msi: [2026, 2025],
@@ -2951,7 +2961,7 @@ const resolvePastData = (key, sub, year, ev) => {
   return sub ? base[sub] : base;
 };
 // 연도 옆 '대회 선택'(통합/분리 시 사용) — DCGI 2025는 통합 전 ASI / Demacia Cup 두 대회.
-const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LCO', 'LJL', 'VCS'], 'lcp|2023': ['PCS', 'LCO', 'LJL', 'VCS'] };
+const YEAR_SUBEVENTS = { 'demacia|2025': ['Demacia Cup', 'ASI'], 'lcp|2024': ['PCS', 'LCO', 'LJL', 'VCS'], 'lcp|2023': ['PCS', 'LCO', 'LJL', 'VCS'], 'lcp|2022': ['PCS', 'LCO', 'LJL', 'VCS'] };
 // 세부 대회 선택 시 헤더에 표기할 대회 정식 명칭
 const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' };
 

@@ -3983,6 +3983,49 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2023 LCP 전신 생성 실패(무시): ${e.message}`); }
 }
 
+// ── 2022 LCP 전신(PCS·LCO·LJL·VCS) — 2023과 동일 구조(PCS 플레이오프는 같은 토너먼트에 포함) — 2024와 동일 구조. PCS 2022은 플레이오프가 별도 토너먼트 → 브래킷·최종순위 병합 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const EV = {
+      PCS: ['104366947889790212', [['Spring', 'pcs_spring_2022'], ['Summer', 'pcs_summer_2022']]],
+      LCO: ['105709090213554609', [['Split 1', 'lco_split_1_2022'], ['Split 2', 'lco_split_2_2022']]],
+      LJL: ['98767991349978712', [['Spring', 'ljl_spring_2022'], ['Summer', 'ljl_summer_2022']]],
+      VCS: ['107213827295848783', [['Spring', 'vcs_spring_2022'], ['Summer', 'vcs_summer_2022']]],
+    };
+    const std = (past.standings['2022'] = past.standings['2022'] || {});
+    const sub = (past.subtabs['2022'] = past.subtabs['2022'] || {});
+    const lcp = std.lcp || {}, subs = sub.lcp || {};
+    let changed = false;
+    for (const [ev, [leagueId, list]] of Object.entries(EV)) {
+      if (lcp[ev]) continue;
+      for (const [label, slug, poSlug] of list) {
+        try {
+          const s = await buildSplit(leagueId, slug);
+          if (!s) continue;
+          const node = { name: s.name, rows: s.rows, brackets: s.brackets || [], finalStandings: s.finalStandings };
+          if (poSlug) {
+            const po = await buildSplit(leagueId, poSlug);
+            if (po) {
+              node.brackets = [...node.brackets, ...(po.brackets || [])];
+              if (po.finalStandings?.length) node.finalStandings = po.finalStandings;
+            }
+          }
+          (lcp[ev] = lcp[ev] || {})[label] = node; (subs[ev] = subs[ev] || []).push(label); changed = true;
+        } catch (e) { console.warn(`2022 ${ev} ${label} 실패: ${e.message}`); }
+      }
+    }
+    if (changed) {
+      const order = Object.keys(EV).filter((k) => lcp[k]);
+      std.lcp = Object.fromEntries(order.map((k) => [k, lcp[k]]));
+      sub.lcp = Object.fromEntries(order.map((k) => [k, subs[k]]));
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log(`2022 LCP 대회 선택 생성: ${order.map((k) => `${k}[${sub.lcp[k].join(',')}]`).join(' ')}`);
+    }
+  } catch (e) { console.warn(`2022 LCP 전신 생성 실패(무시): ${e.message}`); }
+}
+
 // ── 2023 LCO 'PCS PO' — 플레이오프 다음에 같은 스플릿 PCS 플레이오프 대진(2023 PCS는 스테이지 구분 없이 단일) ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -4153,6 +4196,40 @@ console.log('lolStandings.json 갱신 완료');
     }
     if (changed) fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
   } catch (e) { console.warn(`CBLOL/LLA 대회 선택 생성 실패(무시): ${e.message}`); }
+}
+
+// ── LEC ~2022 대회 선택(LEC / TCL) — TCL(튀르키예 챔피언십 리그)이 API에 있는 2022년 이하 연도만 ──
+//   standings[year].lec = { LEC: {Spring, Summer}, TCL: {Winter, Summer} } · subtabs도 이벤트별.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const TCL_ID = '98767991343597634';
+    const tours = (await api('getTournamentsForLeague', { leagueId: TCL_ID })).data.leagues[0].tournaments || [];
+    const lab = (slug) => (/summer/.test(slug) ? 'Summer' : /spring/.test(slug) ? 'Spring' : 'Winter');
+    let changed = false;
+    for (const year of ['2016', '2020', '2021', '2022']) {
+      const cur = past.standings?.[year]?.lec;
+      if (!cur || cur.LEC) continue; // 없음 / 이미 이벤트형
+      const tcl = {}, tclSubs = [];
+      const list = tours.filter((t) => t.slug.includes(year)).sort((a, b) => (a.startDate < b.startDate ? -1 : 1));
+      for (const t of list) {
+        try {
+          const s = await buildSplit(TCL_ID, t.slug);
+          if (!s || !((s.rows || []).length || (s.brackets || []).length)) continue;
+          const l = lab(t.slug);
+          tcl[l] = { name: s.name, rows: s.rows, brackets: s.brackets, finalStandings: s.finalStandings };
+          tclSubs.push(l);
+        } catch (e) { console.warn(`${year} TCL ${t.slug} 실패: ${e.message}`); }
+      }
+      if (!tclSubs.length) continue;
+      past.standings[year].lec = { LEC: cur, TCL: tcl };
+      past.subtabs[year].lec = { LEC: past.subtabs[year].lec, TCL: tclSubs };
+      changed = true;
+      console.log(`${year} LEC 대회 선택: LEC / TCL[${tclSubs.join(',')}]`);
+    }
+    if (changed) fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+  } catch (e) { console.warn(`LEC/TCL 대회 선택 생성 실패(무시): ${e.message}`); }
 }
 
 // ── 2024 LCS Championship — Summer 플레이오프가 곧 LCS Championship → 'Championship' 서브탭으로 분리 ──
@@ -4656,6 +4733,7 @@ console.log('lolStandings.json 갱신 완료');
   const COMP_COLOR = { lck: '#1c192a', lpl: '#D32F2F', lec: '#00E0B0', lcs: '#eeece7', lcp: '#F08040', cblol: '#0b0718', fst: '#ff5500', msi: '#191919', ewc: '#f74e16', asiangames: '#079a3e', demacia: '#1826a1', worlds: '#dddddd' };
   const compStyle = (year, lg, sub, event) => {
     const y = String(year);
+    if (lg === 'lec' && event === 'TCL') return { color: '#e30a17' }; // TCL(튀르키예 챔피언십 리그)
     if (lg === 'lcp' && event === 'VCS') return { color: '#f0fea6' }; // LCP 전신(2024) 베트남 리그
     if (lg === 'lcp' && event === 'PCS') return { color: '#101725' }; // LCP 전신(2024) 대만/홍콩/마카오 리그
     if (lg === 'lcp' && event === 'LJL') return { color: '#ed1b30' }; // LCP 전신(2024) 일본 리그
@@ -4750,12 +4828,12 @@ console.log('lolStandings.json 갱신 완료');
         } else if (v && typeof v === 'object') {             // 서브탭형 리그
           for (const [sub, node] of Object.entries(v)) {
             if (isSeonbal(sub) || sub === 'Road to MSI') continue; // 선발전·Road to MSI 제외
-            if ((lg === 'lcp' || lg === 'cblol') && node && !node.finalStandings && !node.rows && !node.brackets) {
+            if ((lg === 'lcp' || lg === 'cblol' || lg === 'lec') && node && !node.finalStandings && !node.rows && !node.brackets) {
               // 대회 선택형(2024 PCS·VCS / ~2024 CBLOL·LLA) — 이벤트 → 스플릿 2단 구조
               for (const [sp, n2] of Object.entries(node)) {
                 if (isSeonbal(sp) || sp === '승강전') continue;
                 if (lg === 'lcp' && ((sub === 'LCO' && (year === '2023' || year === '2024')) || (sub === 'LJL' && year === '2024'))) continue; // 우승 경력 제외(사용자 지정)
-                const nm = sub === 'CBLOL' ? compName(year, lg, sp) : `${year} ${sub} ${sp}`;
+                const nm = (sub === 'CBLOL' || sub === 'LEC') ? compName(year, lg, sp) : `${year} ${sub} ${sp}`;
                 add(champOf(n2), nm, compStyle(year, lg, sp, sub));
               }
               continue;
