@@ -5189,3 +5189,39 @@ function autoGridAll(node) {
     if (n || centered) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`과거 대진표 격자형 변환: ${n}개 · 2라운드 중앙 정렬: ${centered}개`); }
   } catch (e) { console.warn(`과거 대진표 격자형 변환 실패(무시): ${e.message}`); }
 }
+
+// ── 상위권 대진 결승 → 하위권 대진 결승이 연속 단일 컬럼이면 같은 컬럼에 배치(예: 2022 PCS Spring·Summer) ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    let merged = 0;
+    const walk = (o) => {
+      if (Array.isArray(o)) { o.forEach(walk); return; }
+      if (!o || typeof o !== 'object') return;
+      if (Array.isArray(o.rounds) && o.totalRows != null) {
+        const R = o.rounds;
+        for (let c = 0; c + 1 < R.length; c++) {
+          const a = R[c].matches, b = R[c + 1].matches;
+          if (a.length !== 1 || b.length !== 1 || a[0].title !== '상위권 대진 - 결승' || b[0].title !== '하위권 대진 - 결승' || a[0].startRow === b[0].startRow) continue;
+          const [ub, lb] = a[0].startRow < b[0].startRow ? [a[0], b[0]] : [b[0], a[0]];
+          const ubIdx = ub === a[0] ? 0 : 1;
+          R[c] = { ...R[c], matches: [ub, lb] };
+          R.splice(c + 1, 1);
+          // 연결선 재매핑: c(상위 결승) → c,ubIdx / c+1(하위 결승) → c,1-ubIdx / 이후 컬럼 -1. 같은 컬럼 간 선은 제거.
+          o.connectors = (o.connectors || []).map(([fR, fM, m, tR, tM, s]) => {
+            const map = (r, i) => (r === c ? [c, ubIdx] : r === c + 1 ? [c, 1 - ubIdx] : r > c + 1 ? [r - 1, i] : [r, i]);
+            const [nfR, nfM] = map(fR, fM), [ntR, ntM] = map(tR, tM);
+            return [nfR, nfM, m, ntR, ntM, s];
+          }).filter((x) => x[0] !== x[3]);
+          merged++;
+          break;
+        }
+        return;
+      }
+      for (const k in o) walk(o[k]);
+    };
+    walk(past.standings);
+    if (merged) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`상위·하위권 결승 같은 컬럼 배치: ${merged}개`); }
+  } catch (e) { console.warn(`상위·하위권 결승 컬럼 병합 실패(무시): ${e.message}`); }
+}
