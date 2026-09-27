@@ -4981,7 +4981,6 @@ console.log('lolStandings.json 갱신 완료');
       if (y === '2025' && (sub === 'Etapa 1' || sub === 'Playoffs')) return { color: '#b2a27e' };
       return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol };
     }
-    if (lg === 'msi' && y === '2024') return { color: '#000000', gradient: 'linear-gradient(90deg, #fe0000 0%, #fe0000 5.88%, #fc0ade 17.65%, #3e03a0 29.41%, #000026 41.18%, #000 50%, #000026 58.82%, #3e03a0 70.59%, #fc0ade 82.35%, #fe0000 94.12%, #fe0000 100%)' };
     if (lg === 'msi' && y === '2022') return { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' };
     if (lg === 'msi') return { color: (y === '2025' || y === '2023') ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 연도별 상징색
     if (lg === 'worlds' && y === '2023') return { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' };
