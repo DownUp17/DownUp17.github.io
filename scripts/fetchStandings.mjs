@@ -4258,6 +4258,28 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 LCS Championship 분리 실패(무시): ${e.message}`); }
 }
 
+// ── 2022 MSI 럼블 스테이지 — API 'round_2'(6팀 순위형)가 buildSplit에서 누락 → phaseStage로 보강(그룹 스테이지 다음) ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const node = past.standings?.['2022']?.msi;
+    if (node && !(node.phaseStages || []).some((p) => p.label === '럼블 스테이지')) {
+      const tj = await api('getTournamentsForLeague', { leagueId: '98767991325878492' });
+      const tour = (tj.data.leagues[0].tournaments || []).find((t) => t.slug === 'msi_2022');
+      const st = tour && (await api('getStandingsV3', { tournamentId: tour.id })).data?.standings?.[0];
+      const r2 = (st?.stages || []).find((s) => s.slug === 'round_2');
+      const rows = [];
+      for (const sec of r2?.sections || []) for (const r of sec.rankings || []) for (const t of r.teams) rows.push({ rank: r.ordinal, team: t.code, w: t.record.wins, l: t.record.losses });
+      if (rows.length) {
+        node.phaseStages = [...(node.phaseStages || []), { label: '럼블 스테이지', rows }];
+        fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+        console.log(`2022 MSI 럼블 스테이지 반영: ${rows.map((r) => r.team).join(',')}`);
+      }
+    }
+  } catch (e) { console.warn(`2022 MSI 럼블 스테이지 실패(무시): ${e.message}`); }
+}
+
 // ── 2021~2023 LCS Championship — 2024와 동일(Summer 플레이오프 = LCS Championship). Summer는 PO·최종순위 유지, Championship 서브탭에 복제 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');

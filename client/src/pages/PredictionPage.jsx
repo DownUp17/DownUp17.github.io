@@ -1692,7 +1692,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                       </div>
                       {(showAdvance || showChamp) && (
                         <div className="flex flex-col gap-1">
-                          {showAdvance && probRow('진출', p.advance, comp.color, false, '#8b98f5')}
+                          {showAdvance && probRow('진출', p.advance, '#8b98f5', false)}
                           {showChamp && probRow('우승', p.champ, '#E8C77E', true)}
                         </div>
                       )}
