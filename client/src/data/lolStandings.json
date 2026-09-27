@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-26",
+  "updatedAt": "2026-09-27",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -9800,7 +9800,8 @@
         },
         {
           "seed": "LCS #4",
-          "label": "LCS #4"
+          "label": "LCS #4",
+          "short": "SR"
         },
         {
           "seed": "LCS #5",
@@ -9813,7 +9814,8 @@
         },
         {
           "seed": "CBLOL #4",
-          "label": "CBLOL #4"
+          "label": "CBLOL #4",
+          "short": "RED"
         }
       ],
       "groups": [],
@@ -9826,12 +9828,12 @@
         {
           "slot": "TEAM1",
           "seed": "LPL #5",
-          "short": null
+          "short": "JDG"
         },
         {
           "slot": "TEAM2",
           "seed": "LPL #6",
-          "short": null
+          "short": "WE"
         },
         {
           "slot": "TEAM3",
@@ -9856,7 +9858,7 @@
         {
           "slot": "TEAM7",
           "seed": "LEC #4",
-          "short": null
+          "short": "NAVI"
         },
         {
           "slot": "TEAM8",
@@ -9866,12 +9868,12 @@
         {
           "slot": "TEAM9",
           "seed": "LCS #4",
-          "short": null
+          "short": "SR"
         },
         {
           "slot": "TEAM10",
           "seed": "LCS #5",
-          "short": null
+          "short": "FLY"
         },
         {
           "slot": "TEAM11",
@@ -9881,7 +9883,7 @@
         {
           "slot": "TEAM12",
           "seed": "CBLOL #4",
-          "short": null
+          "short": "RED"
         }
       ],
       "group": {

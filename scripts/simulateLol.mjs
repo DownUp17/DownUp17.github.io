@@ -828,7 +828,15 @@ function extractDE6Fixed(bracket, seeds) {
     return null;
   };
   const has = (m, c) => c && (m.a?.short === c || m.b?.short === c);
-  for (const r of bracket.rounds) for (const m of r.matches) {
+  // 하위2R에 오는 상위4강 패자는 리그마다 다름(LCS: 2시드 경기 패자, CBLOL: 1시드 경기 패자)
+  //   → 실제 대진표에서 1시드 경기 패자가 하위2R에 있으면 교차(lbCross) 표시.
+  const all = bracket.rounds.flatMap((r) => r.matches);
+  const ub4m1 = all.find((m) => /상위권.*4강/.test(m.title || '') && has(m, s1));
+  const lb2m = all.find((m) => /하위권.*2라운드/.test(m.title || ''));
+  const ub4m1W = winnerOf(ub4m1);
+  const ub4m1L = ub4m1W && (ub4m1.a?.short === ub4m1W ? ub4m1.b?.short : ub4m1.a?.short);
+  if (lb2m && has(lb2m, ub4m1L)) fixed.lbCross = true;
+  for (const m of all) {
     const t = m.title || '', w = winnerOf(m);
     if (!w) continue;
     if (/상위권.*8강/.test(t)) { if (has(m, s3) || has(m, s6)) fixed.UB8M1 = w; else if (has(m, s4) || has(m, s5)) fixed.UB8M2 = w; }
@@ -858,8 +866,9 @@ function simulateDE6(seeds, fixed = {}) {
     const u4a = play(s1, u8a.w, 'UB4M1'), u4b = play(s2, u8b.w, 'UB4M2');
     const uf = play(u4a.w, u4b.w, 'UBF');
     const l1 = play(u8a.l, u8b.l, 'LB1');
-    const l2 = play(l1.w, u4b.l, 'LB2');
-    const l4 = play(l2.w, u4a.l, 'LB4');
+    const [lb2In, lb4In] = fixed.lbCross ? [u4a.l, u4b.l] : [u4b.l, u4a.l];
+    const l2 = play(l1.w, lb2In, 'LB2');
+    const l4 = play(l2.w, lb4In, 'LB4');
     const lf = play(l4.w, uf.l, 'LBF');
     const fin = play(uf.w, lf.w, 'F');
     stat[fin.w.short].champ++;
@@ -914,7 +923,8 @@ function applyLiveSplit(compKey, subKey, splitNode, simFn, extractFn, label) {
   comp.stage = `${label} · 정규시즌 종료 · 플레이오프 진행`;
   comp.format = '싱글 라운드로빈 Bo3 → 상위 6팀 더블 엘리미네이션 (Bo5)';
   const top = [...probs].sort((a, b) => b.champ - a.champ)[0];
-  console.log(`${compKey.toUpperCase()} ${subKey}: 우승1위 ${top.team} ${top.champ}% · 플레이오프 확정 ${Object.keys(fixed).length}경기`);
+  const nFixed = Object.keys(fixed).filter((k) => k !== 'lbCross').length;
+  console.log(`${compKey.toUpperCase()} ${subKey}: 우승1위 ${top.team} ${top.champ}% · 플레이오프 확정 ${nFixed}경기`);
 }
 applyLiveSplit('lec', 'Summer', standingsData.standings?.lec?.Summer, simulateLecSummer, extractLecSummerFixed, '2026 서머');
 applyLiveSplit('lcs', 'Summer', standingsData.standings?.lcs?.Summer, simulateDE6, extractDE6Fixed, '2026 서머');

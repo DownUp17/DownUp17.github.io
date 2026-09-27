@@ -3110,25 +3110,7 @@ try {
   }
 } catch (e) { console.warn(`DCGI LPL 시드 자동 채움 실패(무시): ${e.message}`); }
 
-// DCGI LEC/LCS/CBLOL 시드 자동 채움 — 각 리그 현 시즌(마지막) 스플릿 플레이오프 최종순위 N위 = 시드 #N.
-//   현재 스플릿은 LEAGUES(라이브 추적 대상)에서 파생 → 시즌 진행에 따라 자동 갱신.
-try {
-  const dem = data.standings.demacia;
-  if (dem?.qualifiers) {
-    const curSub = Object.fromEntries(LEAGUES.map((l) => [l.key, l.sub]));
-    let filled = 0; const done = [];
-    for (const qf of dem.qualifiers) {
-      if (qf.short) continue;
-      const m = (qf.seed || '').match(/^(LEC|LCS|CBLOL) #(\d+)$/);
-      if (!m) continue;
-      const key = m[1].toLowerCase(), rank = +m[2];
-      const fs = data.standings[key]?.[curSub[key]]?.finalStandings;
-      const row = fs?.find((r) => r.rank === rank);
-      if (row?.team) { qf.short = row.team; filled++; done.push(`${qf.seed}=${row.team}`); }
-    }
-    if (filled) console.log(`DCGI LEC/LCS/CBLOL 시드 자동 채움: ${filled}팀 (${done.join(', ')})`);
-  }
-} catch (e) { console.warn(`DCGI LEC/LCS/CBLOL 시드 자동 채움 실패(무시): ${e.message}`); }
+// (DCGI LEC/LCS/CBLOL 시드 자동 채움은 현 스플릿 최종순위 산출 이후로 이동)
 
 // Asian Games(국가 대항전) 대회 정보 — 사용자가 asiangames-data_2026 리포지토리에서 직접 관리.
 //   8개국 2개조 싱글 라운드로빈(Bo3) → 4강 · 3·4위전 · 결승. 각 국가 Elo도 리포지토리에서 제공.
@@ -3406,6 +3388,29 @@ for (const fsub of FINAL_STANDINGS_SUBS) {
   node.finalStandings = splitFinalStandings(node.rows || [], brs);
   console.log(`${fsub.key.toUpperCase()} ${fsub.sub} 최종순위: 1위 ${node.finalStandings[0]?.team}`);
 }
+
+// DCGI LEC/LCS/CBLOL 시드 자동 채움 — 각 리그 현 시즌(마지막) 스플릿 플레이오프 최종순위 N위 = 시드 #N.
+//   최종순위(FINAL_STANDINGS_SUBS) 산출 이후 실행해야 새로 확정된 순위가 반영됨. 현재 스플릿은 LEAGUES(라이브 추적 대상)에서 파생 → 시즌 진행에 따라 자동 갱신.
+try {
+  const dem = data.standings.demacia;
+  if (dem?.qualifiers) {
+    const curSub = Object.fromEntries(LEAGUES.map((l) => [l.key, l.sub]));
+    let filled = 0; const done = [];
+    for (const qf of dem.qualifiers) {
+      if (qf.short) continue;
+      const m = (qf.seed || '').match(/^(LEC|LCS|CBLOL) #(\d+)$/);
+      if (!m) continue;
+      const key = m[1].toLowerCase(), rank = +m[2];
+      const fs = data.standings[key]?.[curSub[key]]?.finalStandings;
+      const row = fs?.find((r) => r.rank === rank);
+      if (row?.team) { qf.short = row.team; filled++; done.push(`${qf.seed}=${row.team}`); }
+    }
+    // 조별 대진 슬롯(teams: TEAMn → seed)도 채워진 시드로 동기화
+    const bySeed = Object.fromEntries(dem.qualifiers.filter((q) => q.short).map((q) => [q.seed, q.short]));
+    for (const t of dem.teams || []) if (!t.short && bySeed[t.seed]) t.short = bySeed[t.seed];
+    if (filled) console.log(`DCGI LEC/LCS/CBLOL 시드 자동 채움: ${filled}팀 (${done.join(', ')})`);
+  }
+} catch (e) { console.warn(`DCGI LEC/LCS/CBLOL 시드 자동 채움 실패(무시): ${e.message}`); }
 
 data.updatedAt = new Date().toISOString().slice(0, 10);
 data.note = '리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.';
