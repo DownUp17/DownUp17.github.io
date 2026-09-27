@@ -76,6 +76,7 @@ import xtenEsportsLogo from '../assets/xten-esports.webp';
 import globantEmeraldLogo from '../assets/globant-emerald.webp';
 import rainbow7Logo from '../assets/rainbow7.webp';
 import incubusLogo from '../assets/incubus.webp';
+import geng2022Logo from '../assets/geng-2022.svg';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
 import ewcLogo from '../assets/ewc.svg';
@@ -1029,10 +1030,6 @@ const STAGE_CFG = {
 // LCP Split 3 단계별 설정 — 스위스 → 플레이-인 → 플레이오프
 const LCP_STAGE_CFG = {
   '스위스 스테이지': {
-    pred: true,
-    cols: { advance: true, worlds: true, champ: true, labels: { advance: '플레이오프' } },
-    heading: '스위스 스테이지 예측',
-    desc: '3승 진출·3패 탈락. 플레이오프/Worlds/우승 확률(시뮬레이션).',
     bracketKey: 'swiss', bracketTitle: '스위스 대진 (라운드별)',
   },
   '플레이-인 스테이지': { bracketKey: 'playin', bracketTitle: '플레이-인 대진' },
@@ -1393,30 +1390,6 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
         {comp.generatedAt && <span className="text-white/50">생성: <strong className="text-white/80">{fmtUpdated(comp.generatedAt)}</strong></span>}
       </div>
 
-      {/* LCP Split 3 진행 방식 안내 */}
-      {lcpSplit3 && lcpCfg?.pred && (
-        <section className="rounded-2xl bg-white/5 border border-white/10 p-4 md:p-5 flex flex-col gap-3 text-sm">
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">진행 방식</h3>
-            <span className="text-xs text-white/40">8팀 · 스위스 스테이지 → 4팀 플레이오프</span>
-          </div>
-          <div className="flex flex-col gap-2 text-white/70 leading-relaxed">
-            <p><strong className="text-white/90">① 스위스 스테이지</strong> (7/25~8/30) — Bo3·Bo5 혼합. <strong className="text-white/85">3승 시 플레이오프 진출, 3패 시 탈락.</strong> 1R은 Split 2 상위 4팀 vs 하위 4팀 무작위, 이후 같은 승패기록끼리 대진. 3승·3패가 걸린 경기는 Bo5.</p>
-            <p><strong className="text-white/90">② 플레이오프</strong> (8/29~30, 타이베이) — 4팀 더블 엘리미네이션 Bo5. 우승팀이 LCP 챔피언.</p>
-            <p><strong className="text-white/90">③ Worlds 진출 (3팀)</strong> — 플레이오프 결승 2팀 + 나머지 중 챔피언십 포인트 최다 1팀.</p>
-          </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-white/40 pt-1 border-t border-white/10">
-            <span>챔피언십 포인트</span>
-            <span>3-0 <b className="text-white/60">50</b></span>
-            <span>3-1 <b className="text-white/60">40</b></span>
-            <span>3-2 <b className="text-white/60">30</b></span>
-            <span>2-3 <b className="text-white/60">15</b></span>
-            <span>1-3 <b className="text-white/60">3</b></span>
-            <span>0-3 <b className="text-white/60">0</b></span>
-          </div>
-        </section>
-      )}
-
       {/* 현재 순위 / 단계별 예측 */}
       {current.length > 0 && !hideStandings && (
         <section className="flex flex-col gap-5">
@@ -1438,7 +1411,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                   {grp.name}
                 </span>
               )}
-              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || finalDataStage ? { minimal: true } : lckFinished ? { diff: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : liveBracketStage ? { diff: true, champ: true } : (lcpFinished || lplFinished) ? { diff: true } : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} elimSet={stageElimSet} />
+              <StandingsTable rows={grp.rows} color={comp.color} hasDiff={hasDiff} cols={lckFinalStage || finalDataStage ? { minimal: true } : lckFinished ? { diff: true } : lckBracketStage ? (stage === '플레이-인' ? { diff: true, advance: true, worlds: true, champ: true } : { diff: true, worlds: true, champ: true }) : (liveBracketStage && !subFinished) ? { diff: true, champ: true } : (lcpFinished || lplFinished || subFinished) ? { diff: true } : cfg?.cols} onTeamClick={onTeamClick} teamOverride={isLckCup ? LCKCUP_TEAM_OVERRIDE : undefined} elimSet={stageElimSet} />
             </div>
           ))}
           </div>
@@ -3281,6 +3254,8 @@ const PredictionPage = () => {
     ov.GETS = { ...(ov.GETS || {}), tag: 'GE' };
     // R7: 2022 이하는 Rainbow7.
     if (activeYear <= 2022) ov.R7 = { ...(ov.R7 || {}), name: 'Rainbow7', logo: rainbow7Logo };
+    // GEN: 2022 이하 로고.
+    if (activeYear <= 2022) ov.GEN = { ...(ov.GEN || {}), logo: geng2022Logo };
     // INTZ: 약칭 ITZ.
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
