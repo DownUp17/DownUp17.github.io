@@ -11,6 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { TEAM_LINK } from '../client/src/utils/teamLink.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const file = path.join(__dirname, '..', 'client', 'src', 'data', 'lolStandings.json');
@@ -4740,7 +4741,7 @@ console.log('lolStandings.json 갱신 완료');
       return `${year} ${disp}${subPart}`;
     };
     for (const [year, lgs] of Object.entries(past.standings || {})) {
-      if (!['2023', '2024', '2025'].includes(year)) continue; // 2023~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
+      if (!['2022', '2023', '2024', '2025'].includes(year)) continue; // 2022~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
       for (const [lg, v] of Object.entries(lgs || {})) {
         if (lg === 'ewc' && v?.champion) {                    // EWC(그룹+플레이오프 구조) — champion 필드로 우승 반영
           add(v.champion, `${year} Esports World Cup`, compStyle(year, 'ewc', null));
@@ -4769,9 +4770,11 @@ console.log('lolStandings.json 갱신 완료');
   // 정렬 — 최신 연도 위로, 같은 연도 내에서는 대회 개최 순서(대략)의 역순.
   // 개최 순서(이른 대회 → 늦은 대회). 최신순 정렬 시 뒤쪽(늦은 대회)이 위로 온다.
   //   LCK CUP·첫 스플릿(LPL Split 1 등)은 First Stand보다 먼저 진행 → First Stand 앞에 배치.
-  const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Kickoff', 'Split 1', 'Etapa 1', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Mid Season', 'Split 2', 'Etapa 2', 'Summer', 'Esports World Cup', '시즌 파이널', 'Season Finals', 'Split 3', 'Etapa 3', 'Playoffs', 'Copa', 'Worlds', 'KeSPA'];
+  const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Kickoff', 'Split 1', 'Etapa 1', 'Opening', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Mid Season', 'Split 2', 'Etapa 2', 'Summer', 'Closing', 'Esports World Cup', '시즌 파이널', 'Season Finals', 'Split 3', 'Etapa 3', 'Playoffs', 'Copa', 'Worlds', 'KeSPA'];
   const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
   const yearOf = (name) => { const m = name.match(/\b(20\d{2})\b/); return m ? Number(m[1]) : 0; };
+  // 과거 팀 코드의 우승은 현재 팀으로 합산(예: R7·6K → LYON, RGE → NAVI).
+  for (const [old, cur] of Object.entries(TEAM_LINK)) if (titles[old]) { (titles[cur] = titles[cur] || []).push(...titles[old]); delete titles[old]; }
   for (const short of Object.keys(titles)) titles[short].sort((a, b) => (yearOf(b.name) - yearOf(a.name)) || (ord(b.name) - ord(a.name)));
   const titlesFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolTitles.json');
   fs.writeFileSync(titlesFile, JSON.stringify({ updatedAt: data.updatedAt, titles }, null, 2) + '\n');
@@ -4877,6 +4880,24 @@ function autoGridAll(node) {
   try {
     const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
     const n = autoGridAll(past.standings);
-    if (n) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`과거 대진표 격자형 변환: ${n}개`); }
+    // 1라운드 2경기 → 2라운드 1경기(두 1라운드 승자가 맞붙는 형식): 2라운드를 1라운드 두 경기 사이 행에.
+    let centered = 0;
+    const center = (o) => {
+      if (Array.isArray(o)) { o.forEach(center); return; }
+      if (!o || typeof o !== 'object') return;
+      const r = o.rounds;
+      if (o.totalRows != null && Array.isArray(r) && r.length === 2 && r[0].matches?.length === 2 && r[1].matches?.length === 1) {
+        const feeds = (o.connectors || []).filter((c) => c[0] === 0 && c[3] === 1 && c[4] === 0).map((c) => c[1]);
+        const [m0, m1] = r[0].matches, fin = r[1].matches[0];
+        if (feeds.includes(0) && feeds.includes(1) && m0.startRow != null && m1.startRow != null) {
+          const mid = (m0.startRow + m1.startRow) / 2;
+          if (fin.startRow !== mid) { fin.startRow = mid; centered++; }
+        }
+        return;
+      }
+      for (const k in o) center(o[k]);
+    };
+    center(past.standings);
+    if (n || centered) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`과거 대진표 격자형 변환: ${n}개 · 2라운드 중앙 정렬: ${centered}개`); }
   } catch (e) { console.warn(`과거 대진표 격자형 변환 실패(무시): ${e.message}`); }
 }

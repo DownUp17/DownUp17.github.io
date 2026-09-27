@@ -1,4 +1,5 @@
 // client/src/pages/PredictionPage.jsx
+import { TEAM_LINK } from '../utils/teamLink';
 import React, { useMemo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { Target, Trophy, ExternalLink, Crown, Hourglass, ChevronDown } from 'lucide-react';
@@ -173,7 +174,7 @@ const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: '
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 // 과거 팀 코드 → 현재 팀 연결(클릭 시 현재 팀 페이지로). 예: VCS의 Team Secret(TS)·Team Whales(TW) → TSW, MGN Blue Esports(MBE) → MVK, Rogue(RGE) → NAVI.
-const TEAM_LINK = { TS: 'TSW', TW: 'TSW', MBE: 'MVK', R7: 'LYON', '6K': 'LYON', RGE: 'NAVI', CLG: 'NRG' }; // R7(Movistar R7)·6K(Six Karma) → 현재 LYON, RGE(Rogue) → NAVI, CLG → NRG
+// TEAM_LINK(과거 팀 코드 → 현재 팀)는 utils/teamLink.js에서 관리(우승 경력 합산과 공유).
 const linkTeam = (short) => TEAM_LINK[short] || short;
 const knownTeam = (short) => short != null && baseLogoByShort[linkTeam(short)] != null;
 // AG 참가국 → ISO 3166-1 alpha-2 (flagcdn 국기 이미지용)
@@ -2803,6 +2804,7 @@ const PAST_DETAIL = {
   'worlds|2025': { color: '#0e2bf4' },
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000' },
+  'msi|2022': { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' },
   'worlds|2023': { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' },
   'asiangames|2023': { color: '#b223ba', gradient: 'linear-gradient(90deg, #dd0b7c, #b223ba, #433feb)', logo: asiangames2022Logo },
 };
@@ -3191,7 +3193,7 @@ const PredictionPage = () => {
     // DK: 2022 이하는 DWG KIA.
     if (activeYear <= 2022) ov.DK = { ...(ov.DK || {}), name: 'DWG KIA', logo: dwgKiaLogo };
     // DRX: 2022 이하 로고.
-    if (activeYear <= 2022) ov.DRX = { ...(ov.DRX || {}), logo: drx2022Logo };
+    if (activeYear <= 2022) ov.KRX = { ...(ov.KRX || {}), logo: drx2022Logo };
     // BRO: 2022 이하는 Fredit BRION.
     if (activeYear <= 2022) ov.BRO = { ...(ov.BRO || {}), name: 'Fredit BRION', logo: freditBrionLogo };
     // INTZ: 약칭 ITZ.
