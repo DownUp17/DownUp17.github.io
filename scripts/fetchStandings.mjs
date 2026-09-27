@@ -4258,6 +4258,27 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2024 LCS Championship 분리 실패(무시): ${e.message}`); }
 }
 
+// ── 2021~2023 LCS Championship — 2024와 동일(Summer 플레이오프 = LCS Championship). Summer는 PO·최종순위 유지, Championship 서브탭에 복제 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    let changed = false;
+    for (const yr of ['2021', '2022', '2023']) {
+      const lcs = past.standings?.[yr]?.lcs;
+      const sm = lcs?.Summer;
+      const po = (sm?.brackets || []).find((b) => b.slug === 'playoffs');
+      if (!sm || !po || lcs.Championship) continue;
+      lcs.Championship = { name: `LCS Championship ${yr}`, rows: [], brackets: [{ ...po, name: 'LCS Championship', label: 'LCS Championship' }], finalStandings: sm.finalStandings || [] };
+      const subs = past.subtabs[yr].lcs;
+      if (!subs.includes('Championship')) subs.push('Championship');
+      changed = true;
+      console.log(`${yr} LCS Championship 서브탭 추가`);
+    }
+    if (changed) fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+  } catch (e) { console.warn(`2021~2023 LCS Championship 추가 실패(무시): ${e.message}`); }
+}
+
 // ── 2024 LEC Season Finals 최종순위 — 대진(더블 엘리) 탈락 시점 기준으로 재산출 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');

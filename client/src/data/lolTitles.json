@@ -408,6 +408,11 @@
         "color": "#6460ff"
       },
       {
+        "name": "2022 LCS Championship",
+        "detail": "우승",
+        "color": "#6460ff"
+      },
+      {
         "name": "2022 LCS Summer",
         "detail": "우승",
         "color": "#6460ff"
@@ -571,6 +576,11 @@
       }
     ],
     "NRG": [
+      {
+        "name": "2023 LCS Championship",
+        "detail": "우승",
+        "color": "#6460ff"
+      },
       {
         "name": "2023 LCS Summer",
         "detail": "우승",

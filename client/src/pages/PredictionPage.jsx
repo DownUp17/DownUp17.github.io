@@ -3233,6 +3233,12 @@ const PredictionPage = () => {
     if (activeYear <= 2022) ov.OMG = { ...(ov.OMG || {}), logo: omg2022Logo };
     // VIT: 2022 이하 로고.
     if (activeYear <= 2022) ov.VIT = { ...(ov.VIT || {}), logo: vitality2022Logo };
+    // DIG: 2022 Spring까지 'Dignitas QNTMPAY'.
+    if (activeYear < 2022 || (activeYear === 2022 && ['Lock In', 'Spring'].includes(activeSub))) ov.DIG = { ...(ov.DIG || {}), name: 'Dignitas QNTMPAY' };
+    // CLG: 2022 이하는 'Counter Logic Gaming'.
+    if (activeYear <= 2022) ov.CLG = { ...(ov.CLG || {}), name: 'Counter Logic Gaming' };
+    // TLAW: 2022 이하는 'Team Liquid'(Honda 스폰서 이전).
+    if (activeYear <= 2022 && ov.TLAW) ov.TLAW = { ...ov.TLAW, tag: 'TL', name: 'Team Liquid' };
     // INTZ: 약칭 ITZ.
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
