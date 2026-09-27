@@ -4279,6 +4279,59 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2021~2023 LCS Championship 추가 실패(무시): ${e.message}`); }
 }
 
+// ── 2021~2023 LCS Summer·Championship 플레이오프 — 2023과 같은 격자(상위 1·2R / 하위 1·2R / 상위 결승·하위 3R / 하위 결승 / 결승) ──
+//   8팀 더블 엘리미네이션(상위 1R 2·2R 2·결승 1 / 하위 1R 2·2R 2·3R 1·결승 1 / 결승). 이미 격자면(4-4-2-1-1) 생략.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    let changed = 0;
+    const relayout = (bk) => {
+      if (!bk?.rounds) return false;
+      if (bk.rounds.map((r) => r.matches.length).join('-') === '4-4-2-1-1') return false;
+      const all = bk.rounds.flatMap((r) => r.matches);
+      const by = (re) => all.filter((m) => re.test(m.title || ''));
+      const ub1 = by(/^상위권 대진 - 1라운드$/), ub2 = by(/^상위권 대진 - 2라운드$/), ubf = by(/^상위권 대진 - (4강|결승)$/);
+      const lb1 = by(/^하위권 대진 - 1라운드$/), lb2 = by(/^하위권 대진 - 2라운드$/), lb3 = by(/^하위권 대진 - 3라운드$/), lbf = by(/^하위권 대진 - (4강|결승)$/);
+      const gf = by(/^결승$/);
+      if ([ub1, ub2, ubf, lb1, lb2, lb3, lbf, gf].map((a) => a.length).join('') !== '22122111') return false;
+      const winner = (m) => (m.a.win || m.a.msi || m.a.score > m.b.score ? m.a.short : m.b.short);
+      const loser = (m) => (winner(m) === m.a.short ? m.b.short : m.a.short);
+      const slot = (m, t) => (m.a.short === t ? 'a' : m.b.short === t ? 'b' : null);
+      // 2라운드를 1라운드 승자 순서에 맞춰 정렬(직선 연결)
+      const align = (r1, r2) => r1.map((m) => r2.find((x) => slot(x, winner(m)))).filter(Boolean);
+      const ub2s = align(ub1, ub2), lb2s = align(lb1, lb2);
+      if (ub2s.length !== 2 || lb2s.length !== 2) return false;
+      const P = (m, sr) => ({ ...m, startRow: sr });
+      bk.totalRows = 14;
+      bk.rounds = [
+        { title: '', matches: [P(ub1[0], 0), P(ub1[1], 4), P(lb1[0], 8), P(lb1[1], 12)] },
+        { title: '', matches: [P(ub2s[0], 0), P(ub2s[1], 4), P(lb2s[0], 8), P(lb2s[1], 12)] },
+        { title: '', matches: [P(ubf[0], 2), P(lb3[0], 10)] },
+        { title: '', matches: [P(lbf[0], 10)] },
+        { title: '', matches: [P(gf[0], 6)] },
+      ];
+      const C = [];
+      const link = (fc, fi, fm, tc, ti, tm, team) => { const s = slot(tm, team); if (s) C.push([fc, fi, 'mid', tc, ti, s]); };
+      ub1.forEach((m, i) => link(0, i, m, 1, i, ub2s[i], winner(m)));
+      ub2s.forEach((m, i) => link(1, i, m, 2, 0, ubf[0], winner(m)));
+      lb1.forEach((m, i) => link(0, i + 2, m, 1, i + 2, lb2s[i], winner(m)));
+      lb2s.forEach((m, i) => link(1, i + 2, m, 2, 1, lb3[0], winner(m)));
+      link(2, 1, lb3[0], 3, 0, lbf[0], winner(lb3[0]));
+      link(2, 0, ubf[0], 3, 0, lbf[0], loser(ubf[0]));
+      link(3, 0, lbf[0], 4, 0, gf[0], winner(lbf[0]));
+      link(2, 0, ubf[0], 4, 0, gf[0], winner(ubf[0]));
+      bk.connectors = C;
+      return true;
+    };
+    for (const yr of ['2021', '2022', '2023']) for (const sp of ['Summer', 'Championship']) {
+      const po = (past.standings?.[yr]?.lcs?.[sp]?.brackets || []).find((b) => b.slug === 'playoffs');
+      if (po && relayout(po.bracket)) changed++;
+    }
+    if (changed) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`LCS Summer·Championship 더블 엘리 격자 반영: ${changed}개`); }
+  } catch (e) { console.warn(`LCS Championship 격자 반영 실패(무시): ${e.message}`); }
+}
+
 // ── 2024 LEC Season Finals 최종순위 — 대진(더블 엘리) 탈락 시점 기준으로 재산출 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -4984,6 +5037,7 @@ console.log('lolStandings.json 갱신 완료');
         } else if (v && typeof v === 'object') {             // 서브탭형 리그
           for (const [sub, node] of Object.entries(v)) {
             if (isSeonbal(sub) || sub === 'Road to MSI') continue; // 선발전·Road to MSI 제외
+            if (lg === 'lcs' && sub === 'Summer' && v.Championship) continue; // LCS Championship이 있는 연도는 Summer 우승 제외(Championship으로 대체)
             if ((lg === 'lcp' || lg === 'cblol' || lg === 'lec') && node && !node.finalStandings && !node.rows && !node.brackets) {
               // 대회 선택형(2024 PCS·VCS / ~2024 CBLOL·LLA) — 이벤트 → 스플릿 2단 구조
               for (const [sp, n2] of Object.entries(node)) {

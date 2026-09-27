@@ -3471,7 +3471,7 @@ const PredictionPage = () => {
                     return (
                       <button
                         key={s}
-                        onClick={() => setActiveStage(s)}
+                        onClick={() => (comp.key === 'lcs' && (activeYear === 2022 || activeYear === 2023) && activeSub === 'Summer' && s === '플레이오프' ? setActiveSub('Championship') : setActiveStage(s))}
                         className={`px-3.5 py-1.5 rounded-lg text-xs font-black transition-all ${
                           on ? 'bg-[#C8963E] text-[#1e2328]' : 'text-white/50 hover:text-white/80'
                         }`}
