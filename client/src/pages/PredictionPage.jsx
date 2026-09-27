@@ -3275,8 +3275,36 @@ const PredictionPage = () => {
           <h1 className="text-3xl md:text-4xl font-black text-white">LoL 승부예측</h1>
         </div>
 
-        {/* 탭 선택 (GPR 순위 + 9개 대회) */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        {/* 모바일: GPR 순위 탭 + 그 아래 리그 선택 드롭다운 (탭을 모두 펼치지 않음) */}
+        {(() => {
+          const tabLabel = (c) => c.tabName || c.name.replace('2026 ', '');
+          const leagueLabels = comps.map(tabLabel);
+          const activeComp = comps.find((c) => c.key === activeKey);
+          const gprColor = TAB_COLOR[GPR_TAB.key] || GPR_TAB.color;
+          return (
+            <div className="md:hidden flex flex-col items-start gap-3 mb-8">
+              <button
+                onClick={() => setActiveKey(GPR_TAB.key)}
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-black border transition-all ${isGpr ? '' : 'text-white/60 border-white/15 hover:border-white/40 bg-transparent'}`}
+                style={isGpr ? { backgroundColor: gprColor, borderColor: gprColor, color: textOn(gprColor) } : {}}
+              >
+                <img src={tabLogo(GPR_TAB.key)} alt="" width={18} height={18} className="object-contain shrink-0"
+                  style={{ width: 18, height: 18, filter: isGpr ? (textOn(gprColor) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none', opacity: isGpr ? 0.9 : 1 }}
+                  onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
+                {GPR_TAB.name}
+              </button>
+              <YearDropdown
+                years={leagueLabels}
+                value={activeComp ? tabLabel(activeComp) : '리그 선택'}
+                onChange={(label) => { const c = comps.find((x) => tabLabel(x) === label); if (c) setActiveKey(c.key); }}
+                ariaLabel="리그 선택"
+              />
+            </div>
+          );
+        })()}
+
+        {/* 탭 선택 (GPR 순위 + 9개 대회) — 데스크탑 */}
+        <div className="hidden md:flex flex-wrap gap-2 mb-8">
           {tabs.map((c) => {
             const active = c.key === activeKey;
             // 탭(일반 대회) 상징색 — 에디션별 색과 별개로 탭에 쓸 색. (예: AG 탭은 #ffb732, 2026 상세는 유지)

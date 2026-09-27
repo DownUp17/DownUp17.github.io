@@ -4777,3 +4777,106 @@ console.log('lolStandings.json 갱신 완료');
   fs.writeFileSync(titlesFile, JSON.stringify({ updatedAt: data.updatedAt, titles }, null, 2) + '\n');
   console.log(`우승 경력 자동 산출: ${Object.keys(titles).length}개 팀 (${Object.values(titles).reduce((n, a) => n + a.length, 0)}개 타이틀)`);
 }
+
+// ── 과거 대진표 자동 격자화 — totalRows 없는(flow) 대진표를 startRow·연결선 격자형으로 ──
+//   연결선: 각 경기의 팀이 직전에 뛴 경기(이전 라운드)에서 이어지도록 팀 추적으로 생성(기존 연결선과 병합).
+//   행 배치: 승자가 올라온 경기들의 평균 행(없으면 전체 피더 평균)에 두고, 같은 컬럼 내 겹치면 아래로 밀어냄.
+//   첫 컬럼은 다음 경기의 행 순서로 재정렬해 연결선 교차를 줄인다.
+function autoGridBracket(bk) {
+  if (!bk || bk.totalRows != null || !Array.isArray(bk.rounds) || !bk.rounds.length) return false;
+  const rounds = bk.rounds.map((r) => r.matches.map((m) => m));
+  const key = (c, i) => `${c}-${i}`;
+  const teamsOf = (m) => [m.a?.short, m.b?.short];
+  const won = (m, s) => { const x = m[s], y = m[s === 'a' ? 'b' : 'a']; return !!(x?.win || x?.msi || (x?.score != null && y?.score != null && x.score > y.score)); };
+  // feeders[c-i] = [{c,i,slot,winner}]
+  const feeders = {};
+  for (let c = 1; c < rounds.length; c++) rounds[c].forEach((m, i) => {
+    const f = [];
+    for (const slot of ['a', 'b']) {
+      const t = m[slot]?.short; if (!t) continue;
+      let src = null;
+      for (let pc = c - 1; pc >= 0 && !src; pc--) rounds[pc].forEach((pm, pi) => {
+        if (src) return; const s = teamsOf(pm).indexOf(t); if (s >= 0) src = { c: pc, i: pi, winner: won(pm, s ? 'b' : 'a') };
+      });
+      if (src) f.push({ ...src, slot });
+    }
+    feeders[key(c, i)] = f;
+  });
+  // 기존 연결선 보존(팀 추적으로 못 찾은 슬롯만)
+  for (const [fR, fM, , tR, tM, tS] of bk.connectors || []) {
+    const f = feeders[key(tR, tM)] || (feeders[key(tR, tM)] = []);
+    if (!f.some((x) => x.slot === tS) && fR < tR) f.push({ c: fR, i: fM, slot: tS, winner: true });
+  }
+  const layout = (order0) => {
+    const row = {};
+    const cols = [order0];
+    let totalRows = 0;
+    for (let c = 0; c < rounds.length; c++) {
+      const idxs = c === 0 ? order0 : rounds[c].map((_, i) => i);
+      const want = idxs.map((i, k) => {
+        const f = feeders[key(c, i)] || [];
+        const pick = f.filter((x) => x.winner).length ? f.filter((x) => x.winner) : f;
+        const rs = pick.map((x) => row[key(x.c, x.i)]).filter((v) => v != null);
+        return { i, k, w: rs.length ? rs.reduce((a, b) => a + b, 0) / rs.length : null };
+      });
+      // 원래 순서 유지하면서 겹치면 아래로
+      let prev = -2;
+      for (const x of want) {
+        let r = x.w == null ? prev + 2 : Math.round(x.w);
+        if (r < prev + 2) r = prev + 2;
+        row[key(c, x.i)] = r; prev = r; totalRows = Math.max(totalRows, r + 2);
+      }
+      if (c) cols.push(idxs);
+    }
+    return { row, cols, totalRows };
+  };
+  // 첫 컬럼 재정렬: 각 1R 경기가 이어지는 다음 경기 행 기준
+  let base = rounds[0].map((_, i) => i);
+  const first = layout(base);
+  const targetRow = (i) => {
+    let best = null;
+    for (const [k, f] of Object.entries(feeders)) for (const x of f) if (x.c === 0 && x.i === i && x.winner) {
+      const r = first.row[k]; if (best == null || r < best) best = r;
+    }
+    return best;
+  };
+  const tr = base.map((i) => ({ i, r: targetRow(i) }));
+  if (tr.every((x) => x.r != null)) base = tr.slice().sort((a, b) => a.r - b.r || a.i - b.i).map((x) => x.i);
+  const { row, cols, totalRows } = layout(base);
+  // 새 인덱스 매핑(컬럼 내 startRow 순)
+  const newIdx = {};
+  const newRounds = bk.rounds.map((r, c) => {
+    const ordered = cols[c].slice().sort((a, b) => row[key(c, a)] - row[key(c, b)]);
+    ordered.forEach((oi, ni) => { newIdx[key(c, oi)] = ni; });
+    return { ...r, matches: ordered.map((oi) => ({ ...rounds[c][oi], startRow: row[key(c, oi)] })) };
+  });
+  const conns = [];
+  for (const [k, f] of Object.entries(feeders)) {
+    const [tc, ti] = k.split('-').map(Number);
+    for (const x of f) conns.push([x.c, newIdx[key(x.c, x.i)], 'mid', tc, newIdx[k], x.slot]);
+  }
+  bk.totalRows = totalRows;
+  bk.rounds = newRounds;
+  bk.connectors = conns;
+  return true;
+}
+
+function autoGridAll(node) {
+  let n = 0;
+  const walk = (o) => {
+    if (Array.isArray(o)) { o.forEach(walk); return; }
+    if (!o || typeof o !== 'object') return;
+    if (Array.isArray(o.rounds) && o.totalRows == null && o.rounds.every((r) => Array.isArray(r?.matches))) { if (autoGridBracket(o)) n++; return; }
+    for (const k in o) walk(o[k]);
+  };
+  walk(node);
+  return n;
+}
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const n = autoGridAll(past.standings);
+    if (n) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`과거 대진표 격자형 변환: ${n}개`); }
+  } catch (e) { console.warn(`과거 대진표 격자형 변환 실패(무시): ${e.message}`); }
+}
