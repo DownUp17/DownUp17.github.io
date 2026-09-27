@@ -77,6 +77,7 @@ import globantEmeraldLogo from '../assets/globant-emerald.webp';
 import rainbow7Logo from '../assets/rainbow7.webp';
 import incubusLogo from '../assets/incubus.webp';
 import geng2022Logo from '../assets/geng-2022.svg';
+import vcs2022Logo from '../assets/vcs-2022.webp';
 import kespa2026Logo from '../assets/kespa2026.webp';
 import kespa2025Logo from '../assets/kespa2025.webp';
 import ewcLogo from '../assets/ewc.svg';
@@ -2812,7 +2813,7 @@ const PAST_DETAIL = {
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
   'ewc|2024': { color: '#eaeaea', logo: ewcLogo },
   'msi|2025': { color: '#fe0000' }, // MSI 기본색은 #191919로 변경, 2025 상징색은 유지
-  'msi|2024': { color: '#000000' },
+  'msi|2024': { color: '#000000', gradient: 'linear-gradient(90deg, #fe0000, #fc0ade, #3e03a0, #000026, #000, #000026, #3e03a0, #fc0ade, #fe0000)' },
   'worlds|2025': { color: '#0e2bf4' },
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000' },
@@ -2834,7 +2835,7 @@ const EVENT_DETAIL = {
   'lcp|2023|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2023|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2023|LCO': { color: '#0f3341', logo: lcoLogo },
-  'lcp|2022|VCS': { color: '#f0fea6', logo: vcsLogo },
+  'lcp|2022|VCS': { color: '#000', logo: vcs2022Logo, invert: true },
   'lcp|2022|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2022|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2022|LCO': { color: '#0f3341', logo: lcoLogo },

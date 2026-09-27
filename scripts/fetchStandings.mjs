@@ -4963,7 +4963,7 @@ console.log('lolStandings.json 갱신 완료');
   const compStyle = (year, lg, sub, event) => {
     const y = String(year);
     if (lg === 'lec' && event === 'TCL') return { color: '#3f567c' }; // TCL(튀르키예 챔피언십 리그)
-    if (lg === 'lcp' && event === 'VCS') return { color: '#f0fea6' }; // LCP 전신(2024) 베트남 리그
+    if (lg === 'lcp' && event === 'VCS') return { color: Number(y) <= 2022 ? '#000' : '#f0fea6' }; // LCP 전신(2024) 베트남 리그
     if (lg === 'lcp' && event === 'PCS') return { color: y === '2023' ? '#cb0004' : '#101725' }; // LCP 전신(2024) 대만/홍콩/마카오 리그
     if (lg === 'lcp' && event === 'LJL') return { color: '#ed1b30' }; // LCP 전신(2024) 일본 리그
     if (lg === 'lcp' && event === 'LCO') return { color: '#0f3341' }; // LCP 전신(2024) 오세아니아 리그
@@ -4981,6 +4981,7 @@ console.log('lolStandings.json 갱신 완료');
       if (y === '2025' && (sub === 'Etapa 1' || sub === 'Playoffs')) return { color: '#b2a27e' };
       return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol };
     }
+    if (lg === 'msi' && y === '2024') return { color: '#000000', gradient: 'linear-gradient(90deg, #fe0000, #fc0ade, #3e03a0, #000026, #000, #000026, #3e03a0, #fc0ade, #fe0000)' };
     if (lg === 'msi' && y === '2022') return { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' };
     if (lg === 'msi') return { color: (y === '2025' || y === '2023') ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 연도별 상징색
     if (lg === 'worlds' && y === '2023') return { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' };

@@ -52,7 +52,8 @@
       {
         "name": "2024 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#000000"
+        "color": "#000000",
+        "gradient": "linear-gradient(90deg, #fe0000, #fc0ade, #3e03a0, #000026, #000, #000026, #3e03a0, #fc0ade, #fe0000)"
       },
       {
         "name": "2024 LCK Spring",
@@ -550,12 +551,12 @@
       {
         "name": "2022 VCS Summer",
         "detail": "우승",
-        "color": "#f0fea6"
+        "color": "#000"
       },
       {
         "name": "2022 VCS Spring",
         "detail": "우승",
-        "color": "#f0fea6"
+        "color": "#000"
       }
     ],
     "MKOI": [
