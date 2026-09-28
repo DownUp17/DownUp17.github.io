@@ -1,5 +1,5 @@
 // client/src/pages/TeamPage.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import rosters from '../data/lolRosters.json';
@@ -9,12 +9,17 @@ import teamTitles from '../data/lolTitles.json';
 import { textOn } from '../utils/colorContrast';
 import t1Bg from '../assets/t1-bg.webp';
 import krxBg from '../assets/krx-bg.webp';
+import edgBg from '../assets/edg-bg.webp';
+import dkBg from '../assets/dk-bg.webp';
+import igBg from '../assets/ig-bg.webp';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
 
 // 팀별 상세 페이지 배경 이미지 — 가독성을 위해 어두운 오버레이를 덧씌운다.
-const TEAM_BG = { T1: t1Bg, KRX: krxBg };
+const TEAM_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg };
+// 세로로 긴 이미지 — 그림 전체를 가운데에 표시하고 양옆은 같은 이미지를 흐리게 채운다.
+const TEAM_BG_CONTAIN = new Set(['IG']);
 
 const ROLE_KO = { top: '탑', jungle: '정글', mid: '미드', bottom: '원딜', support: '서폿' };
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
@@ -25,6 +30,14 @@ const TeamPage = () => {
   const team = gprTeamMap[teamShort];
   const roster = rosters.rosters[teamShort];
   const leagueColor = leagueColorMap[team?.league?.toLowerCase()] || '#888';
+  // 고정 배경의 시작 위치 = 사이트 상단 메뉴(sticky header) 높이 — 메뉴에 가려 이미지 상단이 잘리지 않도록.
+  const [headerH, setHeaderH] = useState(0);
+  useEffect(() => {
+    const measure = () => setHeaderH(document.querySelector('header')?.offsetHeight || 0);
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
   if (!team) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] flex items-center justify-center text-white">
@@ -46,11 +59,17 @@ const TeamPage = () => {
   const teamBg = TEAM_BG[teamShort];
   return (
     <div className="relative overflow-hidden min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
-      {/* 팀 배경 — 이미지 전체(가로 폭 맞춤, 잘림 없음)를 상단에 두고 페이지와 함께 스크롤. 하단은 배경색으로 페이드. */}
+      {/* 팀 배경 — 화면에 고정(스크롤해도 따라옴). 메뉴 바로 아래부터 이미지 상단을 맞추고, 넘치면 하단을 자른다. */}
       {teamBg && (
-        <div aria-hidden className="absolute inset-x-0 top-0 pointer-events-none">
-          <img src={teamBg} alt="" className="block w-full h-auto"
-            style={{ maskImage: 'linear-gradient(to bottom, #000 70%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, #000 70%, transparent)' }} />
+        <div aria-hidden className="fixed inset-x-0 bottom-0 overflow-hidden pointer-events-none" style={{ top: headerH }}>
+          {TEAM_BG_CONTAIN.has(teamShort) ? (
+            <>
+              <img src={teamBg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
+              <img src={teamBg} alt="" className="relative block w-full h-full object-contain" style={{ objectPosition: 'center top' }} />
+            </>
+          ) : (
+            <img src={teamBg} alt="" className="block w-full h-full object-cover" style={{ objectPosition: 'center top' }} />
+          )}
           <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
         </div>
       )}
