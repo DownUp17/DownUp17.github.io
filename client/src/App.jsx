@@ -555,7 +555,7 @@ const App = () => {
           <Route path="/lol/prediction/:tab" element={<PredictionPage />} />
         </Routes>
 
-        <footer className="mt-auto py-12 bg-white text-center border-t border-gray-100">
+        <footer className="relative z-10 mt-auto py-12 bg-white text-center border-t border-gray-100">
           <div className="flex items-center justify-center gap-6 mb-4">
             <span className="flex items-center gap-1.5 text-gray-400 text-xs">
               <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">

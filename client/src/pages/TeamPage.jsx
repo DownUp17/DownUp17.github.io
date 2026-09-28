@@ -12,12 +12,13 @@ import krxBg from '../assets/krx-bg.webp';
 import edgBg from '../assets/edg-bg.webp';
 import dkBg from '../assets/dk-bg.webp';
 import igBg from '../assets/ig-bg.webp';
+import genBg from '../assets/gen-bg.webp';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
 
 // 팀별 상세 페이지 배경 이미지 — 가독성을 위해 어두운 오버레이를 덧씌운다.
-const TEAM_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg };
+const TEAM_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN: genBg };
 // 세로로 긴 이미지 — 그림 전체를 가운데에 표시하고 양옆은 같은 이미지를 흐리게 채운다.
 const TEAM_BG_CONTAIN = new Set(['IG']);
 
@@ -38,6 +39,18 @@ const TeamPage = () => {
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
   }, []);
+  // 화면보다 큰(잘리는) 배경 — 스크롤 진행도에 맞춰 보이는 영역 이동(맨 위 = 이미지 상단, 맨 아래 = 이미지 하단).
+  const [scrollPct, setScrollPct] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
+  }, [teamShort]);
   if (!team) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] flex items-center justify-center text-white">
@@ -68,7 +81,7 @@ const TeamPage = () => {
               <img src={teamBg} alt="" className="relative block w-full h-full object-contain" style={{ objectPosition: 'center top' }} />
             </>
           ) : (
-            <img src={teamBg} alt="" className="block w-full h-full object-cover" style={{ objectPosition: 'center top' }} />
+            <img src={teamBg} alt="" className="block w-full h-full object-cover" style={{ objectPosition: `center ${scrollPct}%` }} />
           )}
           <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
         </div>
