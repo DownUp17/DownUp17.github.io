@@ -41,15 +41,25 @@ const TeamPage = () => {
   }, []);
   // 화면보다 큰(잘리는) 배경 — 스크롤 진행도에 맞춰 보이는 영역 이동(맨 위 = 이미지 상단, 맨 아래 = 이미지 하단).
   const [scrollPct, setScrollPct] = useState(0);
+  const [footerGap, setFooterGap] = useState(0);
   useEffect(() => {
     const onScroll = () => {
+      // 진행도 = 페이지 전체 스크롤 기준(맨 위 0% → 맨 아래 100%).
+      const footer = document.querySelector('footer');
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setScrollPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0);
+      // 하단 흰색 바가 화면에 들어온 만큼 배경 영역을 줄임 — 이미지가 바 뒤로 들어가지 않게.
+      const ft = footer?.getBoundingClientRect().top;
+      setFooterGap(ft != null ? Math.max(0, window.innerHeight - ft) : 0);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
-    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
+    window.addEventListener('load', onScroll);
+    // 새로고침 직후 선수 사진 등이 늦게 로드되어 페이지 높이·흰색 바 위치가 바뀌면 다시 계산.
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(onScroll) : null;
+    ro?.observe(document.body);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); window.removeEventListener('load', onScroll); ro?.disconnect(); };
   }, [teamShort]);
   if (!team) {
     return (
@@ -74,7 +84,9 @@ const TeamPage = () => {
     <div className="relative overflow-hidden min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
       {/* 팀 배경 — 화면에 고정(스크롤해도 따라옴). 메뉴 바로 아래부터 이미지 상단을 맞추고, 넘치면 하단을 자른다. */}
       {teamBg && (
-        <div aria-hidden className="fixed inset-x-0 bottom-0 overflow-hidden pointer-events-none" style={{ top: headerH }}>
+        <div aria-hidden className="fixed inset-x-0 overflow-hidden pointer-events-none" style={{ top: headerH, bottom: footerGap }}>
+          {/* 배경 영역 = 메뉴 아래 ~ 흰색 바 위. 이미지는 이 영역에 맞춰 채워 어느 바 뒤로도 들어가지 않는다. */}
+          <div className="absolute inset-0">
           {TEAM_BG_CONTAIN.has(teamShort) ? (
             <>
               <img src={teamBg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
@@ -84,6 +96,7 @@ const TeamPage = () => {
             <img src={teamBg} alt="" className="block w-full h-full object-cover" style={{ objectPosition: `center ${scrollPct}%` }} />
           )}
           <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
+          </div>
         </div>
       )}
       <div className="relative max-w-2xl mx-auto">
