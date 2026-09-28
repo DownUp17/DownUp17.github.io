@@ -7,20 +7,21 @@ import gprTeamsData from '../data/gprTeams.json';
 import gpr from '../data/lolGpr.json';
 import teamTitles from '../data/lolTitles.json';
 import { textOn } from '../utils/colorContrast';
-import t1Bg from '../assets/t1-bg.webp';
-import krxBg from '../assets/krx-bg.webp';
-import edgBg from '../assets/edg-bg.webp';
-import dkBg from '../assets/dk-bg.webp';
-import igBg from '../assets/ig-bg.webp';
-import genBg from '../assets/gen-bg.webp';
+import t1Bg from '../assets/champion-bg/t1.webp';
+import krxBg from '../assets/champion-bg/krx.webp';
+import edgBg from '../assets/champion-bg/edg.webp';
+import dkBg from '../assets/champion-bg/dk.webp';
+import igBg from '../assets/champion-bg/ig.webp';
+import genBg from '../assets/champion-bg/gen.webp';
+import fncBg from '../assets/champion-bg/fnc.webp';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
 
-// 팀별 상세 페이지 배경 이미지 — 가독성을 위해 어두운 오버레이를 덧씌운다.
-const TEAM_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN: genBg };
+// 우승 배경 이미지(Worlds 우승 기념 스킨 일러스트) — 팀 상세 페이지 배경으로 사용, 가독성을 위해 어두운 오버레이를 덧씌운다.
+const CHAMPION_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN: genBg, FNC: fncBg };
 // 세로로 긴 이미지 — 그림 전체를 가운데에 표시하고 양옆은 같은 이미지를 흐리게 채운다.
-const TEAM_BG_CONTAIN = new Set(['IG']);
+const CHAMPION_BG_CONTAIN = new Set(['IG']);
 
 const ROLE_KO = { top: '탑', jungle: '정글', mid: '미드', bottom: '원딜', support: '서폿' };
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
@@ -44,10 +45,12 @@ const TeamPage = () => {
   const [footerGap, setFooterGap] = useState(0);
   useEffect(() => {
     const onScroll = () => {
-      // 진행도 = 페이지 전체 스크롤 기준(맨 위 0% → 맨 아래 100%).
+      // 진행도 = 하단 흰색 바가 보이기 시작하는 지점까지(맨 위 0% → 바 등장 직전 100%).
+      //   바가 보일 때는 항상 이미지 하단까지 보여, 바 쪽으로 이미지 하단이 숨지 않는다.
       const footer = document.querySelector('footer');
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0);
+      const footerDocTop = footer ? footer.getBoundingClientRect().top + window.scrollY : document.documentElement.scrollHeight;
+      const max = footerDocTop - window.innerHeight;
+      setScrollPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 100);
       // 하단 흰색 바가 화면에 들어온 만큼 배경 영역을 줄임 — 이미지가 바 뒤로 들어가지 않게.
       const ft = footer?.getBoundingClientRect().top;
       setFooterGap(ft != null ? Math.max(0, window.innerHeight - ft) : 0);
@@ -79,7 +82,7 @@ const TeamPage = () => {
   // 우승 경력 — API에 없어 수기 관리(lolTitles.json). 팀 약칭 → [{ name, detail }].
   const titles = teamTitles.titles?.[teamShort] || [];
 
-  const teamBg = TEAM_BG[teamShort];
+  const teamBg = CHAMPION_BG[teamShort];
   return (
     <div className="relative overflow-hidden min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
       {/* 팀 배경 — 화면에 고정(스크롤해도 따라옴). 메뉴 바로 아래부터 이미지 상단을 맞추고, 넘치면 하단을 자른다. */}
@@ -87,7 +90,7 @@ const TeamPage = () => {
         <div aria-hidden className="fixed inset-x-0 overflow-hidden pointer-events-none" style={{ top: headerH, bottom: footerGap }}>
           {/* 배경 영역 = 메뉴 아래 ~ 흰색 바 위. 이미지는 이 영역에 맞춰 채워 어느 바 뒤로도 들어가지 않는다. */}
           <div className="absolute inset-0">
-          {TEAM_BG_CONTAIN.has(teamShort) ? (
+          {CHAMPION_BG_CONTAIN.has(teamShort) ? (
             <>
               <img src={teamBg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
               <img src={teamBg} alt="" className="relative block w-full h-full object-contain" style={{ objectPosition: 'center top' }} />
