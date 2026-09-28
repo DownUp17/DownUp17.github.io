@@ -3038,9 +3038,9 @@ try {
 }
 
 // DEMACIA 대회 정보 (참가팀·그룹·녹아웃) 외부 API에서 fetch.
-//   참가팀 short는 사용자가 demacia-data_2026 리포지토리에서 직접 관리.
+//   참가팀 short는 사용자가 Demacia_cup 리포지토리(demacia_2026.json)에서 직접 관리.
 try {
-  const DEMACIA_API = 'https://raw.githubusercontent.com/totaldu/demacia-data_2026/main/demacia.json';
+  const DEMACIA_API = 'https://raw.githubusercontent.com/totaldu/Demacia_cup/main/demacia_2026.json';
   const res = await fetch(DEMACIA_API);
   if (res.ok) {
     const api = await res.json();
@@ -3113,10 +3113,10 @@ try {
 
 // (DCGI LEC/LCS/CBLOL 시드 자동 채움은 현 스플릿 최종순위 산출 이후로 이동)
 
-// Asian Games(국가 대항전) 대회 정보 — 사용자가 asiangames-data_2026 리포지토리에서 직접 관리.
+// Asian Games(국가 대항전) 대회 정보 — 사용자가 asiangames 리포지토리(asiangames_2026.json)에서 직접 관리.
 //   8개국 2개조 싱글 라운드로빈(Bo3) → 4강 · 3·4위전 · 결승. 각 국가 Elo도 리포지토리에서 제공.
 try {
-  const AG_API = 'https://raw.githubusercontent.com/totaldu/asiangames-data_2026/main/asiangames.json';
+  const AG_API = 'https://raw.githubusercontent.com/totaldu/asiangames/main/asiangames_2026.json';
   const res = await fetch(AG_API);
   if (res.ok) {
     const api = await res.json();
