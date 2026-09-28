@@ -1,5 +1,6 @@
 // client/src/components/TeamModal.jsx
 import React, { useEffect } from 'react';
+import RoleIcon from './RoleIcon';
 import { X } from 'lucide-react';
 import rosters from '../data/lolRosters.json';
 import gprTeamsData from '../data/gprTeams.json';
@@ -9,7 +10,6 @@ import gpr from '../data/lolGpr.json';
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
 
-const ROLE_KO = { top: '탑', jungle: '정글', mid: '미드', bottom: '원딜', support: '서폿' };
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
 
 const PlayerCard = ({ player, leagueColor }) => (
@@ -37,7 +37,7 @@ const PlayerCard = ({ player, leagueColor }) => (
         className="inline-block mt-1 text-[9px] font-black px-1.5 py-0.5 rounded"
         style={{ backgroundColor: leagueColor + '33', color: leagueColor }}
       >
-        {ROLE_KO[player.role] ?? player.role}
+        <RoleIcon role={player.role} size={12} className="align-middle" />
       </span>
     </div>
   </div>
@@ -113,7 +113,7 @@ const TeamModal = ({ teamShort, onClose }) => {
                 if (!players?.length) return null;
                 return (
                   <div key={role}>
-                    <div className="text-xs font-bold text-white/30 mb-1 px-1">{ROLE_KO[role]}</div>
+                    <div className="mb-1 px-1 opacity-50"><RoleIcon role={role} size={16} /></div>
                     <div className="flex gap-1 flex-wrap">
                       {players.map(p => (
                         <PlayerCard key={p.name} player={p} leagueColor={leagueColor} />

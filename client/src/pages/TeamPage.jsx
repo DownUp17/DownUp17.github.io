@@ -1,5 +1,6 @@
 // client/src/pages/TeamPage.jsx
 import React, { useEffect, useState } from 'react';
+import RoleIcon from '../components/RoleIcon';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import rosters from '../data/lolRosters.json';
@@ -27,7 +28,6 @@ const CHAMPION_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN:
 // 세로로 긴 이미지 — 그림 전체를 가운데에 표시하고 양옆은 같은 이미지를 흐리게 채운다.
 const CHAMPION_BG_CONTAIN = new Set(['IG']);
 
-const ROLE_KO = { top: '탑', jungle: '정글', mid: '미드', bottom: '원딜', support: '서폿' };
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
 
 const TeamPage = () => {
@@ -36,6 +36,8 @@ const TeamPage = () => {
   const team = gprTeamMap[teamShort];
   const roster = rosters.rosters[teamShort];
   const leagueColor = leagueColorMap[team?.league?.toLowerCase()] || '#888';
+  // 상세 페이지 진입 시 항상 최상단부터 표시(이전 페이지의 스크롤 위치가 남지 않게).
+  useEffect(() => { window.scrollTo(0, 0); }, [teamShort]);
   // 고정 배경의 시작 위치 = 사이트 상단 메뉴(sticky header) 높이 — 메뉴에 가려 이미지 상단이 잘리지 않도록.
   const [headerH, setHeaderH] = useState(0);
   useEffect(() => {
@@ -170,7 +172,7 @@ const TeamPage = () => {
                     className="mt-1.5 text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-lg"
                     style={{ backgroundColor: leagueColor + '25', color: leagueColor }}
                   >
-                    {ROLE_KO[p.role]}
+                    <RoleIcon role={p.role} size={16} className="align-middle" />
                   </span>
                 </div>
               ))}

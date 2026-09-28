@@ -1,5 +1,6 @@
 // client/src/components/TeamPanel.jsx
 import React, { useEffect } from 'react';
+import RoleIcon from './RoleIcon';
 import { X, ArrowRight } from 'lucide-react';
 import rosters from '../data/lolRosters.json';
 import gprTeamsData from '../data/gprTeams.json';
@@ -9,7 +10,6 @@ import { textOn } from '../utils/colorContrast';
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
 
-const ROLE_KO = { top: '탑', jungle: '정글', mid: '미드', bottom: '원딜', support: '서폿' };
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
 
 const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
@@ -79,7 +79,7 @@ const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
                 if (!players?.length) return null;
                 return (
                   <div key={role}>
-                    <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-2">{ROLE_KO[role]}</p>
+                    <div className="mb-2 flex justify-center opacity-50"><RoleIcon role={role} size={18} /></div>
                     <div className="flex flex-col gap-1.5">
                       {players.map(p => (
                         <div key={p.name} className="flex items-center gap-3 p-2.5 rounded-xl"
