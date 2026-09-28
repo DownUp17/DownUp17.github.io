@@ -1,5 +1,8 @@
 // client/src/pages/PredictionPage.jsx
 import { TEAM_LINK } from '../utils/teamLink';
+import afreecaFreecs2021Logo from '../assets/afreeca-freecs-2021.svg';
+import liivSandboxOldLogo from '../assets/liiv-sandbox-old.svg';
+import ktRolster2021Logo from '../assets/kt-rolster-2021.svg';
 import React, { useMemo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { Target, Trophy, ExternalLink, Crown, Hourglass, ChevronDown } from 'lucide-react';
@@ -2824,6 +2827,8 @@ const PAST_DETAIL = {
   'worlds|2025': { color: '#0e2bf4' },
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000' },
+  'msi|2021': { color: '#26d740' },
+  'worlds|2021': { color: '#1036f0' },
   'msi|2022': { black: true, gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' },
   'worlds|2022': { color: '#321bdd' },
   'worlds|2023': { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' },
@@ -3186,11 +3191,14 @@ const PredictionPage = () => {
     if (activeYear < 2024 || (activeYear === 2024 && comp?.key === 'lck' && activeSub === 'Spring')) ov.BRO = { ...ov.BRO, logo: brionOk2024SpringLogo };
     // BFX: 2023까지 Liiv SANDBOX(LSB), 2024 Spring은 FearX(FOX), 2024 Summer는 BNK FearX(FOX), 2025부터 기본 BNK FEARX.
     if (activeYear <= 2023) ov.BFX = { tag: 'LSB', name: 'Liiv SANDBOX', logo: liivSandboxLogo };
+    if (activeYear < 2021 || (activeYear === 2021 && activeSub === 'Spring')) ov.KT = { ...ov.KT, logo: ktRolster2021Logo }; // 2021 Spring까지 옛 KT 로고
+    if (activeYear === 2021 && activeSub === 'Spring') ov.BFX = { ...ov.BFX, logo: liivSandboxOldLogo }; // 2021 Spring은 옛 LSB 로고
     else if (activeYear === 2024 && activeSub === 'Spring') ov.BFX = { tag: 'FOX', name: 'FearX', logo: fearxLogo };
     // 2024 KeSPA CUP(12월, Worlds 이후)도 Summer 당시 팀명(BNK FearX)으로 표기.
     else if (activeYear === 2024 && (activeSub === 'Summer' || activeSub === '선발전' || activeSub === 'KeSPA CUP')) ov.BFX = { tag: 'FOX', name: 'BNK FearX', logo: bnkFearxLogo };
     // DNS: 2024 이하는 KWANGDONG FREECS(KDF). 2025는 DN FREECS(DNF, TEAM_OVERRIDE_2025), 2026부터 DN SOOPers.
-    if (activeYear <= 2024) ov.DNS = { tag: 'KDF', name: 'KWANGDONG FREECS', logo: kwangdongFreecsLogo };
+    if (activeYear <= 2021) ov.DNS = { tag: 'AF', name: 'Afreeca Freecs', logo: afreecaFreecs2021Logo }; // 2021까지 Afreeca Freecs
+    else if (activeYear <= 2024) ov.DNS = { tag: 'KDF', name: 'KWANGDONG FREECS', logo: kwangdongFreecsLogo };
     // MKOI: 2024까지 MAD Lions KOI(MDK). 2025부터 기본 Movistar KOI.
     if (activeYear <= 2024) ov.MKOI = activeYear <= 2023
       ? { tag: 'MAD', name: 'MAD Lions', logo: activeYear <= 2022 ? madLions2022Logo : madLions2023Logo }

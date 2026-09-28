@@ -7,9 +7,13 @@ import gprTeamsData from '../data/gprTeams.json';
 import gpr from '../data/lolGpr.json';
 import teamTitles from '../data/lolTitles.json';
 import { textOn } from '../utils/colorContrast';
+import t1Bg from '../assets/t1-bg.webp';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
+
+// 팀별 상세 페이지 배경 이미지 — 가독성을 위해 어두운 오버레이를 덧씌운다.
+const TEAM_BG = { T1: t1Bg };
 
 const ROLE_KO = { top: '탑', jungle: '정글', mid: '미드', bottom: '원딜', support: '서폿' };
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
@@ -39,8 +43,12 @@ const TeamPage = () => {
   // 우승 경력 — API에 없어 수기 관리(lolTitles.json). 팀 약칭 → [{ name, detail }].
   const titles = teamTitles.titles?.[teamShort] || [];
 
+  const teamBg = TEAM_BG[teamShort];
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
+    <div
+      className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white"
+      style={teamBg ? { backgroundImage: `linear-gradient(rgba(10,20,40,0.72), rgba(10,20,40,0.88)), url(${teamBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' } : undefined}
+    >
       <div className="max-w-2xl mx-auto">
 
         {/* 뒤로가기 */}
@@ -115,17 +123,30 @@ const TeamPage = () => {
         {/* 우승 경력 */}
         {titles.length > 0 && (
           <div className="mt-10">
-            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">우승 경력(2022-)</h2>
+            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">우승 경력(2021-)</h2>
             <div className="flex flex-col gap-2">
               {titles.map((t, i) => {
                 const fg = t.gradient ? '#fff' : (t.color ? textOn(t.color) : 'rgba(255,255,255,0.9)');
                 const bg = t.gradient
                   ? { backgroundImage: t.gradient, backgroundOrigin: 'border-box', backgroundClip: 'border-box' }
                   : { backgroundColor: t.color || 'rgba(255,255,255,0.04)' };
+                // 클릭 시 해당 대회로 이동 — link: { tab, year?, event?, sub? }
+                const href = t.link ? (() => {
+                  const q = new URLSearchParams();
+                  if (t.link.year) q.set('year', t.link.year);
+                  if (t.link.event) q.set('event', t.link.event);
+                  if (t.link.sub) q.set('sub', t.link.sub);
+                  const qs = q.toString();
+                  return `/lol/prediction/${t.link.tab}${qs ? `?${qs}` : ''}`;
+                })() : null;
                 return (
                   <div
                     key={i}
-                    className="p-3 rounded-xl"
+                    role={href ? 'link' : undefined}
+                    tabIndex={href ? 0 : undefined}
+                    onClick={href ? () => navigate(href) : undefined}
+                    onKeyDown={href ? (e) => { if (e.key === 'Enter') navigate(href); } : undefined}
+                    className={`p-3 rounded-xl${href ? ' cursor-pointer transition-opacity hover:opacity-80' : ''}`}
                     style={{ ...bg, border: `1px solid ${t.gradient ? 'transparent' : 'rgba(255,255,255,0.12)'}` }}
                   >
                     <span className="font-bold text-sm" style={{ color: fg }}>{t.name}</span>

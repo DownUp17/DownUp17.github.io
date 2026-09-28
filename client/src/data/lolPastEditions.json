@@ -30496,11 +30496,14 @@
                           "title": "상위권 대진 - 1라운드",
                           "a": {
                             "seed": "",
-                            "short": "MSF"
+                            "short": "MSF",
+                            "score": 1
                           },
                           "b": {
                             "seed": "",
-                            "short": "G2"
+                            "short": "G2",
+                            "score": 3,
+                            "win": true
                           },
                           "startRow": 0
                         },

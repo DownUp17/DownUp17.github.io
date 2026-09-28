@@ -4280,6 +4280,24 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2022 MSI 럼블 스테이지 실패(무시): ${e.message}`); }
 }
 
+// ── 2022 LEC Summer PO 보정 — API에 상위권 1라운드 MSF vs G2 점수 누락 → G2 3:1 승 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const lec = past.standings?.['2022']?.lec;
+    const sm = lec?.LEC?.Summer || lec?.Summer;
+    const po = sm?.brackets?.find((b) => b.slug === 'playoffs');
+    let fixed = false;
+    for (const r of po?.bracket?.rounds || []) for (const m of r.matches || []) {
+      if (m.a?.short === 'MSF' && m.b?.short === 'G2' && m.a.score == null) {
+        m.a.score = 1; m.b.score = 3; m.b.win = true; fixed = true;
+      }
+    }
+    if (fixed) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('2022 LEC Summer PO: G2 3:1 MSF 반영'); }
+  } catch (e) { console.warn(`2022 LEC Summer PO 보정 실패(무시): ${e.message}`); }
+}
+
 // ── 2021~2023 LCS Championship — 2024와 동일(Summer 플레이오프 = LCS Championship). Summer는 PO·최종순위 유지, Championship 서브탭에 복제 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -4981,19 +4999,24 @@ console.log('lolStandings.json 갱신 완료');
       if (y === '2025' && (sub === 'Etapa 1' || sub === 'Playoffs')) return { color: '#b2a27e' };
       return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol };
     }
+    if (lg === 'msi' && y === '2021') return { color: '#26d740' };
     if (lg === 'msi' && y === '2022') return { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' };
     if (lg === 'msi') return { color: (y === '2025' || y === '2023') ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 연도별 상징색
     if (lg === 'worlds' && y === '2023') return { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' };
     if (lg === 'worlds' && y === '2025') return { color: '#0e2bf4' };
     if (lg === 'worlds' && y === '2024') return { color: '#010a42' };
     if (lg === 'worlds' && y === '2022') return { color: '#321bdd' };
+    if (lg === 'worlds' && y === '2021') return { color: '#1036f0' };
     return { color: COMP_COLOR[lg] || '#888' };
   };
-  const add = (short, name, style) => {
+  // link: 클릭 시 이동할 대회 위치 { tab, year?, event?, sub? } → 팀 페이지에서 /lol/prediction/:tab?year&event&sub 로 이동.
+  const add = (short, name, style, link) => {
     if (!short || !name) return;
     (titles[short] = titles[short] || []);
-    if (!titles[short].some((t) => t.name === name)) titles[short].push({ name, detail: '우승', ...(style || {}) });
+    if (!titles[short].some((t) => t.name === name)) titles[short].push({ name, detail: '우승', ...(style || {}), ...(link ? { link } : {}) });
   };
+  const SINGLE_TABS = ['msi', 'worlds', 'fst', 'ewc', 'asiangames'];
+  const liveLink = (segs) => (SINGLE_TABS.includes(segs[0]) || !segs[1] ? { tab: segs[0] } : { tab: segs[0], sub: segs[1] });
   // 섹션/라운드 브래킷의 결승(마지막 섹션·마지막 라운드·마지막 매치) 승자 = 우승자.
   const bracketChampion = (br) => {
     if (!br) return null;
@@ -5010,12 +5033,12 @@ console.log('lolStandings.json 갱신 완료');
     if (!obj || typeof obj !== 'object') return;
     // 우승 확정(note '우승')인 완료 대회만 반영 — 진행 중 대회의 잠정 순위 1위(생존팀 제외 후 상위)를 우승으로 오등록하지 않도록.
     const stl = compStyle(2026, segs[0], segs[1]);
-    if (Array.isArray(obj.finalStandings) && obj.finalStandings[0]?.team && obj.finalStandings[0]?.note === '우승') add(obj.finalStandings[0].team, titleFor(segs), stl);
-    if (typeof obj.champion === 'string') add(obj.champion, titleFor(segs), stl);
+    if (Array.isArray(obj.finalStandings) && obj.finalStandings[0]?.team && obj.finalStandings[0]?.note === '우승') add(obj.finalStandings[0].team, titleFor(segs), stl, liveLink(segs));
+    if (typeof obj.champion === 'string') add(obj.champion, titleFor(segs), stl, liveLink(segs));
     // MSI/Worlds는 최종 순위 대신 결승 대진 결과로 우승자 판정 (플레이-인·스위스 제외).
     const seg = segs[segs.length - 1];
     if ((segs[0] === 'msi' && seg === '브래킷 스테이지') || (segs[0] === 'worlds' && seg === '녹아웃 스테이지')) {
-      add(bracketChampion(obj.bracket), titleFor(segs), stl);
+      add(bracketChampion(obj.bracket), titleFor(segs), stl, liveLink(segs));
     }
     for (const k of Object.keys(obj)) {
       if (SKIP_KEYS.includes(k)) continue;
@@ -5050,12 +5073,12 @@ console.log('lolStandings.json 갱신 완료');
       return `${year} ${disp}${subPart}`;
     };
     for (const [year, lgs] of Object.entries(past.standings || {})) {
-      if (!['2022', '2023', '2024', '2025'].includes(year)) continue; // 2022~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
+      if (!['2021', '2022', '2023', '2024', '2025'].includes(year)) continue; // 2021~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
       for (const [lg, v] of Object.entries(lgs || {})) {
         if (lg === 'ewc' && v?.champion) {                    // EWC(그룹+플레이오프 구조) — champion 필드로 우승 반영
-          add(v.champion, `${year} Esports World Cup`, compStyle(year, 'ewc', null));
+          add(v.champion, `${year} Esports World Cup`, compStyle(year, 'ewc', null), { tab: 'ewc', year });
         } else if (v && Array.isArray(v.finalStandings)) {   // 단일 대회(msi/worlds/fst)
-          add(champOf(v), compName(year, lg, null), compStyle(year, lg, null));
+          add(champOf(v), compName(year, lg, null), compStyle(year, lg, null), { tab: lg, year });
         } else if (v && typeof v === 'object') {             // 서브탭형 리그
           for (const [sub, node] of Object.entries(v)) {
             if (isSeonbal(sub) || sub === 'Road to MSI') continue; // 선발전·Road to MSI 제외
@@ -5066,11 +5089,11 @@ console.log('lolStandings.json 갱신 완료');
                 if (isSeonbal(sp) || sp === '승강전') continue;
                 if (lg === 'lcp' && ((sub === 'LCO' && (year === '2023' || year === '2024')) || (sub === 'LJL' && year === '2024'))) continue; // 우승 경력 제외(사용자 지정)
                 const nm = (sub === 'CBLOL' || sub === 'LEC') ? compName(year, lg, sp) : `${year} ${sub} ${sp}`;
-                add(champOf(n2), nm, compStyle(year, lg, sp, sub));
+                add(champOf(n2), nm, compStyle(year, lg, sp, sub), { tab: lg, year, event: sub, sub: sp });
               }
               continue;
             }
-            add(champOf(node), compName(year, lg, sub), compStyle(year, lg, sub));
+            add(champOf(node), compName(year, lg, sub), compStyle(year, lg, sub), { tab: lg, year, sub });
           }
         }
       }
