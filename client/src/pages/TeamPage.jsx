@@ -1,5 +1,5 @@
 // client/src/pages/TeamPage.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import rosters from '../data/lolRosters.json';
@@ -24,6 +24,19 @@ const TeamPage = () => {
   const team = gprTeamMap[teamShort];
   const roster = rosters.rosters[teamShort];
   const leagueColor = leagueColorMap[team?.league?.toLowerCase()] || '#888';
+  // 배경 이미지 세로 위치 = 스크롤 진행도(맨 위 → 이미지 상단, 맨 아래 → 이미지 하단).
+  const [scrollPct, setScrollPct] = useState(0);
+  useEffect(() => {
+    if (!TEAM_BG[teamShort]) return undefined;
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
+  }, [teamShort]);
 
   if (!team) {
     return (
@@ -47,7 +60,7 @@ const TeamPage = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white"
-      style={teamBg ? { backgroundImage: `linear-gradient(rgba(10,20,40,0.72), rgba(10,20,40,0.88)), url(${teamBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' } : undefined}
+      style={teamBg ? { backgroundImage: `linear-gradient(rgba(10,20,40,0.72), rgba(10,20,40,0.88)), url(${teamBg})`, backgroundSize: 'cover', backgroundPosition: `center ${scrollPct}%`, backgroundAttachment: 'fixed' } : undefined}
     >
       <div className="max-w-2xl mx-auto">
 
