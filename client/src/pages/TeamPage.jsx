@@ -1,5 +1,5 @@
 // client/src/pages/TeamPage.jsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import rosters from '../data/lolRosters.json';
@@ -8,12 +8,13 @@ import gpr from '../data/lolGpr.json';
 import teamTitles from '../data/lolTitles.json';
 import { textOn } from '../utils/colorContrast';
 import t1Bg from '../assets/t1-bg.webp';
+import krxBg from '../assets/krx-bg.webp';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
 
 // 팀별 상세 페이지 배경 이미지 — 가독성을 위해 어두운 오버레이를 덧씌운다.
-const TEAM_BG = { T1: t1Bg };
+const TEAM_BG = { T1: t1Bg, KRX: krxBg };
 
 const ROLE_KO = { top: '탑', jungle: '정글', mid: '미드', bottom: '원딜', support: '서폿' };
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
@@ -24,20 +25,6 @@ const TeamPage = () => {
   const team = gprTeamMap[teamShort];
   const roster = rosters.rosters[teamShort];
   const leagueColor = leagueColorMap[team?.league?.toLowerCase()] || '#888';
-  // 배경 이미지 세로 위치 = 스크롤 진행도(맨 위 → 이미지 상단, 맨 아래 → 이미지 하단).
-  const [scrollPct, setScrollPct] = useState(0);
-  useEffect(() => {
-    if (!TEAM_BG[teamShort]) return undefined;
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
-  }, [teamShort]);
-
   if (!team) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] flex items-center justify-center text-white">
@@ -58,11 +45,16 @@ const TeamPage = () => {
 
   const teamBg = TEAM_BG[teamShort];
   return (
-    <div
-      className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white"
-      style={teamBg ? { backgroundImage: `linear-gradient(rgba(10,20,40,0.72), rgba(10,20,40,0.88)), url(${teamBg})`, backgroundSize: 'cover', backgroundPosition: `center ${scrollPct}%`, backgroundAttachment: 'fixed' } : undefined}
-    >
-      <div className="max-w-2xl mx-auto">
+    <div className="relative overflow-hidden min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
+      {/* 팀 배경 — 이미지 전체(가로 폭 맞춤, 잘림 없음)를 상단에 두고 페이지와 함께 스크롤. 하단은 배경색으로 페이드. */}
+      {teamBg && (
+        <div aria-hidden className="absolute inset-x-0 top-0 pointer-events-none">
+          <img src={teamBg} alt="" className="block w-full h-auto"
+            style={{ maskImage: 'linear-gradient(to bottom, #000 70%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, #000 70%, transparent)' }} />
+          <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
+        </div>
+      )}
+      <div className="relative max-w-2xl mx-auto">
 
         {/* 뒤로가기 */}
         <button
