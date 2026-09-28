@@ -50,6 +50,9 @@ import omg2022Logo from '../assets/omg-2022.webp';
 import misfitsGamingLogo from '../assets/misfits-gaming.webp';
 import vitality2022Logo from '../assets/vitality-2022.webp';
 import istanbulWildcatsLogo from '../assets/istanbul-wildcats.webp';
+import suningLogo from '../assets/suning.webp';
+import blg2021Logo from '../assets/blg-2021.webp';
+import rogueWarriorsLogo from '../assets/rogue-warriors.webp';
 import galatasarayLogo from '../assets/galatasaray.svg';
 import auroraLogo from '../assets/aurora.webp';
 import darkPassageLogo from '../assets/dark-passage.webp';
@@ -3278,6 +3281,18 @@ const PredictionPage = () => {
     if (activeYear <= 2022) ov.SBTE = { ...(ov.SBTE || {}), logo: sbtcEsports2022Logo };
     // KBM: 2022 이하 로고.
     if (activeYear <= 2022) ov.KBM = { ...(ov.KBM || {}), logo: kabumEsports2022Logo };
+    // WBG: 2022 Spring까지 'Weibo Gaming'.
+    if (activeYear < 2022 || (activeYear === 2022 && activeSub === 'Spring')) ov.WBG = { ...(ov.WBG || {}), name: 'Weibo Gaming' };
+    // EDG: 2022 Spring까지 'Edward Gaming'.
+    if (activeYear < 2022 || (activeYear === 2022 && activeSub === 'Spring')) ov.EDG = { ...(ov.EDG || {}), name: 'Edward Gaming' };
+    // BLG: 2022 Spring은 'Bilibili Gaming'.
+    if (activeYear === 2022 && activeSub === 'Spring') ov.BLG = { ...(ov.BLG || {}), name: 'Bilibili Gaming' };
+    // WBG: 2021 이하는 Suning(SN).
+    if (activeYear <= 2021) ov.WBG = { tag: 'SN', name: 'Suning', logo: suningLogo };
+    // BLG: 2021 이하 로고.
+    if (activeYear <= 2021) ov.BLG = { ...(ov.BLG || {}), logo: blg2021Logo };
+    // AL: 2021 이하는 Rogue Warriors(RW).
+    if (activeYear <= 2021) ov.AL = { tag: 'RW', name: 'Rogue Warriors', logo: rogueWarriorsLogo };
     // INTZ: 약칭 ITZ.
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.

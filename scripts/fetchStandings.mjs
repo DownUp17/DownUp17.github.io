@@ -4901,6 +4901,89 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2022 Demacia Cup 주입 실패(무시): ${e.message}`); }
 }
 
+// ── LCK 승강전(2016~2020) — API 미제공(2020 Summer만 Split 1 'knockouts'로 존재) · Leaguepedia 기준 수기 ──
+//   매년 Spring·Summer 2회. 해당 스플릿 시즌 진출권을 두고 LCK 9·10위 vs CK 상위 2팀.
+//   2016: 단판 대결 2경기(Bo5) / 2017~: 4팀 더블 엘리(1라운드 → 패자전 → 진출전 2경기, 진출전 승자 = LCK 진출).
+//   서브탭 순서: Spring 승강전 → Spring → Summer 승강전 → Summer. 팀 코드는 기존 LCK 데이터와 동일(현 팀 연결).
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const S = (short, score, flag, seed) => { const s = { short, score }; if (flag) s[flag] = true; if (seed) s.seed = seed; return s; };
+    // 두 팀·점수 → 승자 flag 부여. q=true면 승자는 진출(msi), 패자 탈락 여부는 elimLoser로 지정.
+    const M = (title, a, as, b, bs, { q = false, elimLoser = false, sa, sb } = {}) => {
+      const aw = as > bs;
+      return { title, a: S(a, as, aw ? (q ? 'msi' : 'win') : (elimLoser ? 'elim' : null), sa), b: S(b, bs, !aw ? (q ? 'msi' : 'win') : (elimLoser ? 'elim' : null), sb) };
+    };
+    // 2016: 진출전 2경기(각 승자 진출, 패자 탈락)
+    const single = (m1, m2) => ({ totalRows: 4, rounds: [{ title: '', matches: [
+      { ...M('진출전 1경기', ...m1, { q: true, elimLoser: true }), startRow: 0 },
+      { ...M('진출전 2경기', ...m2, { q: true, elimLoser: true }), startRow: 2 },
+    ] }], connectors: [] });
+    // 2017~: 4팀 더블 엘리 — [1R-1, 1R-2, 패자전, 진출전 1(1R 승자끼리), 진출전 2(진출전 1 패자 vs 패자전 승자)]
+    const de = (r1, r2, lb, q1, q2) => ({
+      totalRows: 8,
+      rounds: [
+        { title: '', matches: [
+          { ...M('1라운드', ...r1), startRow: 0 },
+          { ...M('1라운드', ...r2), startRow: 2 },
+          { ...M('패자전', ...lb, { elimLoser: true, sa: '1라운드 패자', sb: '1라운드 패자' }), startRow: 5 },
+        ] },
+        { title: '', matches: [
+          { ...M('진출전 1경기', ...q1, { q: true, sa: '1라운드 승자', sb: '1라운드 승자' }), startRow: 1 },
+          { ...M('진출전 2경기', ...q2, { q: true, elimLoser: true, sa: '진출전 1경기 패자', sb: '패자전 승자' }), startRow: 5 },
+        ] },
+      ],
+      connectors: [[0, 0, 'mid', 1, 0, 'a'], [0, 1, 'mid', 1, 0, 'b'], [0, 2, 'mid', 1, 1, 'b']],
+    });
+    const PROMO = {
+      '2016': {
+        Spring: single(['IMI', 3, 'DW', 1], ['SSO', 3, 'ESCX', 1]),
+        Summer: single(['SSO', 0, 'ESCX', 3], ['KDM1', 1, 'MVP', 3]),
+      },
+      '2017': {
+        Spring: de(['ESCX', 2, 'SBK', 1], ['CJ', 0, 'KDM1', 2], ['SBK', 0, 'CJ', 2], ['ESCX', 1, 'KDM1', 3], ['ESCX', 3, 'CJ', 0]),
+        Summer: de(['JAG', 2, 'EEW', 0], ['KDM1', 2, 'CJ', 1], ['EEW', 2, 'CJ', 0], ['JAG', 3, 'KDM1', 1], ['KDM1', 1, 'EEW', 3]),
+      },
+      '2018': {
+        Spring: de(['BBQ', 2, 'CJ', 1], ['EEW', 1, 'KDM1', 2], ['CJ', 2, 'EEW', 1], ['BBQ', 1, 'KDM1', 3], ['BBQ', 3, 'CJ', 0]),
+        Summer: de(['MVP', 2, 'EEW', 1], ['KDM1', 0, 'GFF', 2], ['EEW', 1, 'KDM1', 2], ['MVP', 1, 'GFF', 3], ['MVP', 3, 'KDM1', 2]),
+      },
+      '2019': {
+        Spring: de(['MVP', 0, 'BTC', 2], ['BBQ', 0, 'DK', 2], ['MVP', 3, 'BBQ', 1], ['BTC', 1, 'DK', 3], ['BTC', 3, 'MVP', 0]),
+        Summer: de(['KT', 2, 'VSG', 0], ['JAG', 2, 'ESS', 0], ['VSG', 2, 'ESS', 3], ['KT', 3, 'JAG', 0], ['JAG', 3, 'ESS', 1]),
+      },
+      '2020': {
+        Spring: de(['HLE', 1, 'SP11', 2], ['JAG', 2, 'NS', 0], ['HLE', 3, 'NS', 1], ['SP11', 3, 'JAG', 1], ['JAG', 0, 'HLE', 3]),
+        Summer: de(['BFX', 0, 'NS', 2], ['GFF', 1, 'SRB', 2], ['BFX', 2, 'GFF', 0], ['NS', 2, 'SRB', 0], ['SRB', 0, 'BFX', 3]),
+      },
+    };
+    let changed = false;
+    for (const [yr, sp] of Object.entries(PROMO)) {
+      const lck = past.standings?.[yr]?.lck;
+      if (!lck) continue;
+      const springKey = lck.Spring ? 'Spring' : 'Split 1'; // 2020은 'Split 1'
+      // 2020 Split 1의 'knockouts'(= 2020 Summer 승강전)는 Split 1에서 제거
+      if (lck[springKey]?.brackets?.some((b) => b.slug === 'knockouts')) { lck[springKey].brackets = lck[springKey].brackets.filter((b) => b.slug !== 'knockouts'); changed = true; }
+      for (const [season, bracket] of Object.entries(sp)) {
+        const label = `${season} 승강전`;
+        if (lck[label]) continue;
+        lck[label] = { name: `LCK ${yr} ${season} 승강전`, rows: [], brackets: [{ slug: 'promotion', name: '승강전', label: '승강전', bracket }] };
+        changed = true;
+      }
+      // 서브탭·데이터 순서: Spring 승강전 → Spring → Summer 승강전 → Summer
+      const order = ['Spring 승강전', springKey, 'Summer 승강전', 'Summer'];
+      const rest = Object.keys(lck).filter((k) => !order.includes(k));
+      const keys = [...order.filter((k) => lck[k]), ...rest];
+      past.standings[yr].lck = Object.fromEntries(keys.map((k) => [k, lck[k]]));
+      const subs = past.subtabs[yr].lck || [];
+      const newSubs = [...order.filter((k) => lck[k]), ...subs.filter((k) => !order.includes(k))];
+      if (newSubs.join() !== subs.join()) { past.subtabs[yr].lck = newSubs; changed = true; }
+    }
+    if (changed) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('LCK 승강전(2016~2020 Spring·Summer) 반영'); }
+  } catch (e) { console.warn(`LCK 승강전 반영 실패(무시): ${e.message}`); }
+}
+
 // ── 2022 항저우 아시안게임(2023년 개최) LoL — API 미제공 · 수기 → 과거 에디션 '2023'(연도 선택 기준) ─────────
 //   그룹 스테이지(3팀 4개조 싱글RR · D조 2팀 · 조 1위 진출) → 녹아웃(직행 4국 + 조 1위 4국 · 싱글 엘리 + 동메달 결정전). 금 대한민국.
 {
@@ -5081,7 +5164,7 @@ console.log('lolStandings.json 갱신 완료');
           add(champOf(v), compName(year, lg, null), compStyle(year, lg, null), { tab: lg, year });
         } else if (v && typeof v === 'object') {             // 서브탭형 리그
           for (const [sub, node] of Object.entries(v)) {
-            if (isSeonbal(sub) || sub === 'Road to MSI') continue; // 선발전·Road to MSI 제외
+            if (isSeonbal(sub) || sub === 'Road to MSI' || /승강전/.test(sub)) continue; // 선발전·Road to MSI·승강전 제외
             if (lg === 'lcs' && sub === 'Summer' && v.Championship) continue; // LCS Championship이 있는 연도는 Summer 우승 제외(Championship으로 대체)
             if ((lg === 'lcp' || lg === 'cblol' || lg === 'lec') && node && !node.finalStandings && !node.rows && !node.brackets) {
               // 대회 선택형(2024 PCS·VCS / ~2024 CBLOL·LLA) — 이벤트 → 스플릿 2단 구조

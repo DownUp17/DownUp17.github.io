@@ -9,7 +9,7 @@
           "firstName": "Kiin",
           "lastName": "Kim",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1778842963805_LCK_GEN_Kiin_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842963805_LCK_GEN_Kiin_F.PNG",
           "starter": true
         },
         {
@@ -17,7 +17,7 @@
           "firstName": "Jongmin",
           "lastName": "Byeon",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769087975904_image6-2026-01-22T141912.328.png",
+          "image": "https://static.lolesports.com/players/1769087975904_image6-2026-01-22T141912.328.png",
           "starter": false
         },
         {
@@ -25,7 +25,7 @@
           "firstName": "Gunbu",
           "lastName": "Kim",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1778842984822_LCK_GEN_Canyon_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842984822_LCK_GEN_Canyon_F.PNG",
           "starter": true
         },
         {
@@ -33,7 +33,7 @@
           "firstName": "Hyunmin",
           "lastName": "Jeon",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769088040791_image6-2026-01-22T142015.564.png",
+          "image": "https://static.lolesports.com/players/1769088040791_image6-2026-01-22T142015.564.png",
           "starter": false
         },
         {
@@ -41,7 +41,7 @@
           "firstName": "Jihun",
           "lastName": "Jung",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1778842975847_LCK_GEN_Chovy_F.png",
+          "image": "https://static.lolesports.com/players/1778842975847_LCK_GEN_Chovy_F.png",
           "starter": true
         },
         {
@@ -49,7 +49,7 @@
           "firstName": "Sihun",
           "lastName": "Kim",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769088100524_image6-2026-01-22T142115.940.png",
+          "image": "https://static.lolesports.com/players/1769088100524_image6-2026-01-22T142115.940.png",
           "starter": false
         },
         {
@@ -57,7 +57,7 @@
           "firstName": "Jaehyeok",
           "lastName": "Park",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1778842957393_LCK_GEN_Ruler_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842957393_LCK_GEN_Ruler_F.PNG",
           "starter": true
         },
         {
@@ -65,7 +65,7 @@
           "firstName": "SUNGYU",
           "lastName": "LEE",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769088228177_image6-2026-01-22T142317.010.png",
+          "image": "https://static.lolesports.com/players/1769088228177_image6-2026-01-22T142317.010.png",
           "starter": false
         },
         {
@@ -73,7 +73,7 @@
           "firstName": "Mingyu",
           "lastName": "Ju",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1778842969792_LCK_GEN_Duro_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842969792_LCK_GEN_Duro_F.PNG",
           "starter": true
         },
         {
@@ -81,7 +81,7 @@
           "firstName": "Kun",
           "lastName": "Ko",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769087912320_image6-2026-01-22T141807.421.png",
+          "image": "https://static.lolesports.com/players/1769087912320_image6-2026-01-22T141807.421.png",
           "starter": false
         },
         {
@@ -89,7 +89,7 @@
           "firstName": "JAEMIN",
           "lastName": "KIM",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769088159344_image6-2026-01-22T142218.990.png",
+          "image": "https://static.lolesports.com/players/1769088159344_image6-2026-01-22T142218.990.png",
           "starter": false
         }
       ]
@@ -102,7 +102,7 @@
           "firstName": "Hyeonjun",
           "lastName": "Choi",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769087520664_LCK_T1_Doran_F.PNG",
+          "image": "https://static.lolesports.com/players/1769087520664_LCK_T1_Doran_F.PNG",
           "starter": true
         },
         {
@@ -110,7 +110,7 @@
           "firstName": "Taehyo",
           "lastName": "Seong",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769083424311_image6-2026-01-22T130312.532.png",
+          "image": "https://static.lolesports.com/players/1769083424311_image6-2026-01-22T130312.532.png",
           "starter": false
         },
         {
@@ -118,7 +118,7 @@
           "firstName": "Suhyeon",
           "lastName": "Sim",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769083792191_image6-2026-01-22T130909.603.png",
+          "image": "https://static.lolesports.com/players/1769083792191_image6-2026-01-22T130909.603.png",
           "starter": false
         },
         {
@@ -126,7 +126,7 @@
           "firstName": "Hyunjun",
           "lastName": "Mun",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769087509929_LCK_T1_Oner_F.PNG",
+          "image": "https://static.lolesports.com/players/1769087509929_LCK_T1_Oner_F.PNG",
           "starter": true
         },
         {
@@ -134,7 +134,7 @@
           "firstName": "Jaeseung",
           "lastName": "Oh",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -142,7 +142,7 @@
           "firstName": "Eunhu",
           "lastName": "Kim",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769084021546_image6-2026-01-22T131032.591.png",
+          "image": "https://static.lolesports.com/players/1769084021546_image6-2026-01-22T131032.591.png",
           "starter": false
         },
         {
@@ -150,7 +150,7 @@
           "firstName": "Sanghyeok",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769087499078_LCK_T1_Faker_F.PNG",
+          "image": "https://static.lolesports.com/players/1769087499078_LCK_T1_Faker_F.PNG",
           "starter": true
         },
         {
@@ -158,7 +158,7 @@
           "firstName": "Moon",
           "lastName": "Jeonghwan",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769083583495_image6-2026-01-22T130511.010.png",
+          "image": "https://static.lolesports.com/players/1769083583495_image6-2026-01-22T130511.010.png",
           "starter": false
         },
         {
@@ -166,7 +166,7 @@
           "firstName": "SOOHWAN",
           "lastName": "Kim",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769087491906_LCK_T1_Peyz_F.PNG",
+          "image": "https://static.lolesports.com/players/1769087491906_LCK_T1_Peyz_F.PNG",
           "starter": true
         },
         {
@@ -174,7 +174,7 @@
           "firstName": "Yoojun",
           "lastName": "Kim",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769083165855_image6-2026-01-22T125855.379.png",
+          "image": "https://static.lolesports.com/players/1769083165855_image6-2026-01-22T125855.379.png",
           "starter": false
         },
         {
@@ -182,7 +182,7 @@
           "firstName": "Minjun",
           "lastName": "Kim",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -190,7 +190,7 @@
           "firstName": "Jinbeom",
           "lastName": "Cheon",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -198,7 +198,7 @@
           "firstName": "Minseok",
           "lastName": "Ryu",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769087515444_LCK_T1_Keria_F.PNG",
+          "image": "https://static.lolesports.com/players/1769087515444_LCK_T1_Keria_F.PNG",
           "starter": true
         },
         {
@@ -206,7 +206,7 @@
           "firstName": "Moon",
           "lastName": "Hyunho",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769083077918_image6144.png",
+          "image": "https://static.lolesports.com/players/1769083077918_image6144.png",
           "starter": false
         }
       ]
@@ -219,7 +219,7 @@
           "firstName": "Wooje",
           "lastName": "Choi",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769089435131_LCK_HLE_Zeus_F.PNG",
+          "image": "https://static.lolesports.com/players/1769089435131_LCK_HLE_Zeus_F.PNG",
           "starter": true
         },
         {
@@ -227,7 +227,7 @@
           "firstName": "Jiho",
           "lastName": "Park",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769086291531_image6-2026-01-22T135105.756.png",
+          "image": "https://static.lolesports.com/players/1769086291531_image6-2026-01-22T135105.756.png",
           "starter": false
         },
         {
@@ -235,7 +235,7 @@
           "firstName": "Jinhhyeok ",
           "lastName": "Seo",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769089425886_LCK_HLE_Kanavi_F.PNG",
+          "image": "https://static.lolesports.com/players/1769089425886_LCK_HLE_Kanavi_F.PNG",
           "starter": true
         },
         {
@@ -243,7 +243,7 @@
           "firstName": "Sumin",
           "lastName": "Lee",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769086354742_image6-2026-01-22T135205.457.png",
+          "image": "https://static.lolesports.com/players/1769086354742_image6-2026-01-22T135205.457.png",
           "starter": false
         },
         {
@@ -251,7 +251,7 @@
           "firstName": "Geon-Woo",
           "lastName": "Kim",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769089430303_LCK_HLE_Zeka_F.PNG",
+          "image": "https://static.lolesports.com/players/1769089430303_LCK_HLE_Zeka_F.PNG",
           "starter": true
         },
         {
@@ -259,7 +259,7 @@
           "firstName": "Jeongwook",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769086419226_image6-2026-01-22T135315.938.png",
+          "image": "https://static.lolesports.com/players/1769086419226_image6-2026-01-22T135315.938.png",
           "starter": false
         },
         {
@@ -267,7 +267,7 @@
           "firstName": "Ganghyeon",
           "lastName": "Han",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769086142550_image6-2026-01-22T134839.572.png",
+          "image": "https://static.lolesports.com/players/1769086142550_image6-2026-01-22T134839.572.png",
           "starter": false
         },
         {
@@ -275,7 +275,7 @@
           "firstName": "Minhyung",
           "lastName": "Lee",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769089421483_LCK_HLE_Gumayusi_F.PNG",
+          "image": "https://static.lolesports.com/players/1769089421483_LCK_HLE_Gumayusi_F.PNG",
           "starter": true
         },
         {
@@ -283,7 +283,7 @@
           "firstName": "Mingi",
           "lastName": "Pyeon",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769086215440_image6-2026-01-22T134944.828.png",
+          "image": "https://static.lolesports.com/players/1769086215440_image6-2026-01-22T134944.828.png",
           "starter": false
         },
         {
@@ -291,7 +291,7 @@
           "firstName": "Hwanjung",
           "lastName": "Yu",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769089417110_LCK_HLE_Delight_F.PNG",
+          "image": "https://static.lolesports.com/players/1769089417110_LCK_HLE_Delight_F.PNG",
           "starter": true
         },
         {
@@ -299,7 +299,7 @@
           "firstName": "Gyuyong",
           "lastName": "Park",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769086484481_image6-2026-01-22T135420.093.png",
+          "image": "https://static.lolesports.com/players/1769086484481_image6-2026-01-22T135420.093.png",
           "starter": false
         }
       ]
@@ -312,7 +312,7 @@
           "firstName": "Seungmin",
           "lastName": "Lee",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769088904650_LCK_KT_PerfecT_F.png",
+          "image": "https://static.lolesports.com/players/1769088904650_LCK_KT_PerfecT_F.png",
           "starter": true
         },
         {
@@ -320,7 +320,7 @@
           "firstName": "Hyochan",
           "lastName": "Ahn",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769085767741_image6-2026-01-22T134220.704.png",
+          "image": "https://static.lolesports.com/players/1769085767741_image6-2026-01-22T134220.704.png",
           "starter": false
         },
         {
@@ -328,7 +328,7 @@
           "firstName": "Uchan",
           "lastName": "Mun",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769088880566_LCK_KT_Cuzz_F.PNG",
+          "image": "https://static.lolesports.com/players/1769088880566_LCK_KT_Cuzz_F.PNG",
           "starter": true
         },
         {
@@ -336,7 +336,7 @@
           "firstName": "Seungbok",
           "lastName": "Lee",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769085457796_image6-2026-01-22T133710.328.png",
+          "image": "https://static.lolesports.com/players/1769085457796_image6-2026-01-22T133710.328.png",
           "starter": false
         },
         {
@@ -344,7 +344,7 @@
           "firstName": " Bo seong",
           "lastName": "Gwak",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769088894551_LCK_KT_Bdd_F.PNG",
+          "image": "https://static.lolesports.com/players/1769088894551_LCK_KT_Bdd_F.PNG",
           "starter": true
         },
         {
@@ -352,7 +352,7 @@
           "firstName": "Hwichan",
           "lastName": "Jeong",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769085699169_image6-2026-01-22T134118.726.png",
+          "image": "https://static.lolesports.com/players/1769085699169_image6-2026-01-22T134118.726.png",
           "starter": false
         },
         {
@@ -360,7 +360,7 @@
           "firstName": "Jiwoo",
           "lastName": "Jung",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1778842819812_LCK_DRX_Jiwoo_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842819812_LCK_DRX_Jiwoo_F.PNG",
           "starter": true
         },
         {
@@ -368,7 +368,7 @@
           "firstName": "Kangjun",
           "lastName": "Park",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769085625159_image6-2026-01-22T133959.277.png",
+          "image": "https://static.lolesports.com/players/1769085625159_image6-2026-01-22T133959.277.png",
           "starter": false
         },
         {
@@ -376,7 +376,7 @@
           "firstName": "Sangho",
           "lastName": "Lee",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769085556949_image6-2026-01-22T133848.159.png",
+          "image": "https://static.lolesports.com/players/1769085556949_image6-2026-01-22T133848.159.png",
           "starter": true
         },
         {
@@ -384,7 +384,7 @@
           "firstName": "Yongjun",
           "lastName": "Jang",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769088899654_LCK_KT_Ghost_F.PNG",
+          "image": "https://static.lolesports.com/players/1769088899654_LCK_KT_Ghost_F.PNG",
           "starter": false
         },
         {
@@ -392,7 +392,7 @@
           "firstName": "DongGyu",
           "lastName": "Oh",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769088909540_LCK_KT_Pollu_F.png",
+          "image": "https://static.lolesports.com/players/1769088909540_LCK_KT_Pollu_F.png",
           "starter": false
         }
       ]
@@ -405,7 +405,7 @@
           "firstName": "Jeon",
           "lastName": "Siwoo",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1778842731846_LCK_DK_Siwoo_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842731846_LCK_DK_Siwoo_F.PNG",
           "starter": true
         },
         {
@@ -413,7 +413,7 @@
           "firstName": "Jaehyuk",
           "lastName": "Kwon",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769089631457_image6-2026-01-22T144643.456.png",
+          "image": "https://static.lolesports.com/players/1769089631457_image6-2026-01-22T144643.456.png",
           "starter": false
         },
         {
@@ -421,7 +421,7 @@
           "firstName": "Minwoo",
           "lastName": "Park",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769089783078_image6-2026-01-22T144919.671.png",
+          "image": "https://static.lolesports.com/players/1769089783078_image6-2026-01-22T144919.671.png",
           "starter": false
         },
         {
@@ -429,7 +429,7 @@
           "firstName": "Yonghyeok",
           "lastName": "Choi",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1778842716183_LCK_DK_Lucid_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842716183_LCK_DK_Lucid_F.PNG",
           "starter": true
         },
         {
@@ -437,7 +437,7 @@
           "firstName": "Hyunseo",
           "lastName": "Nam",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -445,7 +445,7 @@
           "firstName": "Su",
           "lastName": "Heo",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1778842721951_LCK_DK_Showmaker_F.png",
+          "image": "https://static.lolesports.com/players/1778842721951_LCK_DK_Showmaker_F.png",
           "starter": true
         },
         {
@@ -453,7 +453,7 @@
           "firstName": "Jeongwon",
           "lastName": "Seol",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769089555344_image6-2026-01-22T144534.879.png",
+          "image": "https://static.lolesports.com/players/1769089555344_image6-2026-01-22T144534.879.png",
           "starter": false
         },
         {
@@ -461,7 +461,7 @@
           "firstName": "Gunmjae",
           "lastName": "Sin",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1778842749985_LCK_DK_Smash_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842749985_LCK_DK_Smash_F.PNG",
           "starter": true
         },
         {
@@ -469,7 +469,7 @@
           "firstName": "Seohyeon",
           "lastName": "Hwang",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769089494861_image6-2026-01-22T144431.139.png",
+          "image": "https://static.lolesports.com/players/1769089494861_image6-2026-01-22T144431.139.png",
           "starter": false
         },
         {
@@ -477,7 +477,7 @@
           "firstName": "HyungSuk",
           "lastName": "Oh",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1778842708132_LCK_DK_Career_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842708132_LCK_DK_Career_F.PNG",
           "starter": true
         },
         {
@@ -485,7 +485,7 @@
           "firstName": "Donghyeon",
           "lastName": "Kim",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769089723144_image6-2026-01-22T144756.107.png",
+          "image": "https://static.lolesports.com/players/1769089723144_image6-2026-01-22T144756.107.png",
           "starter": false
         }
       ]
@@ -498,7 +498,7 @@
           "firstName": "Hyunmin",
           "lastName": "Song",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769091426725_LCK_BFX_Clear_F.png",
+          "image": "https://static.lolesports.com/players/1769091426725_LCK_BFX_Clear_F.png",
           "starter": true
         },
         {
@@ -506,7 +506,7 @@
           "firstName": "Kangin",
           "lastName": "Choi",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769090667320_image6-2026-01-22T150401.262.png",
+          "image": "https://static.lolesports.com/players/1769090667320_image6-2026-01-22T150401.262.png",
           "starter": false
         },
         {
@@ -514,7 +514,7 @@
           "firstName": "Eojin",
           "lastName": "Jeon",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769091440054_LCK_BFX_Raptor_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091440054_LCK_BFX_Raptor_F.PNG",
           "starter": true
         },
         {
@@ -522,7 +522,7 @@
           "firstName": "Seunghoon",
           "lastName": "Jo",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -530,7 +530,7 @@
           "firstName": "Hyeoksu",
           "lastName": "Hwang",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769090492602_image6-2026-01-22T150110.156.png",
+          "image": "https://static.lolesports.com/players/1769090492602_image6-2026-01-22T150110.156.png",
           "starter": false
         },
         {
@@ -538,7 +538,7 @@
           "firstName": "Deakwang",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769091444387_LCK_BFX_VicLa_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091444387_LCK_BFX_VicLa_F.PNG",
           "starter": true
         },
         {
@@ -546,7 +546,7 @@
           "firstName": "Jihoon",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -554,7 +554,7 @@
           "firstName": "Ji-Myeong",
           "lastName": "Yoo",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769091448891_LCK_BFX_Daystar_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091448891_LCK_BFX_Daystar_F.PNG",
           "starter": false
         },
         {
@@ -562,7 +562,7 @@
           "firstName": "Taeyun",
           "lastName": "Kim",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1778842617008_LCK_BFX_Taeyoon_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842617008_LCK_BFX_Taeyoon_F.PNG",
           "starter": true
         },
         {
@@ -570,7 +570,7 @@
           "firstName": "Kim",
           "lastName": "Jinyoung",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769090556098_image6-2026-01-22T150207.367.png",
+          "image": "https://static.lolesports.com/players/1769090556098_image6-2026-01-22T150207.367.png",
           "starter": false
         },
         {
@@ -578,7 +578,7 @@
           "firstName": "Hyeonggyu",
           "lastName": "Kim",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769091436066_LCK_BFX_Kellin_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091436066_LCK_BFX_Kellin_F.PNG",
           "starter": true
         },
         {
@@ -586,7 +586,7 @@
           "firstName": "Hyunho",
           "lastName": "Lee",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769090720455_image6-2026-01-22T150458.891.png",
+          "image": "https://static.lolesports.com/players/1769090720455_image6-2026-01-22T150458.891.png",
           "starter": false
         }
       ]
@@ -599,7 +599,7 @@
           "firstName": "Minhoi",
           "lastName": "Lee",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769088684062_image6-2026-01-22T143101.541.png",
+          "image": "https://static.lolesports.com/players/1769088684062_image6-2026-01-22T143101.541.png",
           "starter": true
         },
         {
@@ -607,7 +607,7 @@
           "firstName": "Jaewon",
           "lastName": "Lee",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1778842826162_LCK_DRX_Rich_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842826162_LCK_DRX_Rich_F.PNG",
           "starter": false
         },
         {
@@ -615,7 +615,7 @@
           "firstName": "Junghyeun",
           "lastName": "Kim",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1778842847968_LCK_DRX_Willer_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842847968_LCK_DRX_Willer_F.PNG",
           "starter": true
         },
         {
@@ -623,7 +623,7 @@
           "firstName": "Seungmin",
           "lastName": "Ha",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1778842840049_LCK_DRX_Vincenzo_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842840049_LCK_DRX_Vincenzo_F.PNG",
           "starter": false
         },
         {
@@ -631,7 +631,7 @@
           "firstName": "JOOSUNG",
           "lastName": "Woo",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769088522766_image6-2026-01-22T142810.865.png",
+          "image": "https://static.lolesports.com/players/1769088522766_image6-2026-01-22T142810.865.png",
           "starter": false
         },
         {
@@ -639,7 +639,7 @@
           "firstName": "Woohyun",
           "lastName": "Son",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1778842833744_LCK_DRX_Ucal_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842833744_LCK_DRX_Ucal_F.PNG",
           "starter": true
         },
         {
@@ -647,7 +647,7 @@
           "firstName": "Suhyeok",
           "lastName": "Choi",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769088738370_image6-2026-01-22T143158.433.png",
+          "image": "https://static.lolesports.com/players/1769088738370_image6-2026-01-22T143158.433.png",
           "starter": false
         },
         {
@@ -655,7 +655,7 @@
           "firstName": "Haram",
           "lastName": "Kim",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769088886678_LCK_KT_Aiming_F.PNG",
+          "image": "https://static.lolesports.com/players/1769088886678_LCK_KT_Aiming_F.PNG",
           "starter": true
         },
         {
@@ -663,7 +663,7 @@
           "firstName": "Bao Minh",
           "lastName": "Tran",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769088600339_image6-2026-01-22T142919.845.png",
+          "image": "https://static.lolesports.com/players/1769088600339_image6-2026-01-22T142919.845.png",
           "starter": false
         },
         {
@@ -671,7 +671,7 @@
           "firstName": "Gwan-bin",
           "lastName": "Mun",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769090483396_LCK_DRX_Andil_F.PNG",
+          "image": "https://static.lolesports.com/players/1769090483396_LCK_DRX_Andil_F.PNG",
           "starter": true
         },
         {
@@ -679,7 +679,7 @@
           "firstName": "Minwoo",
           "lastName": "Kang",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769088440171_image6-2026-01-22T142652.779.png",
+          "image": "https://static.lolesports.com/players/1769088440171_image6-2026-01-22T142652.779.png",
           "starter": false
         }
       ]
@@ -692,7 +692,7 @@
           "firstName": "Minje",
           "lastName": "Shin",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769091238011_LCK_BRO_Casting_F.png",
+          "image": "https://static.lolesports.com/players/1769091238011_LCK_BRO_Casting_F.png",
           "starter": true
         },
         {
@@ -700,7 +700,7 @@
           "firstName": "Minhyuk",
           "lastName": "Ahn",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769090323253_image6-2026-01-22T145701.864.png",
+          "image": "https://static.lolesports.com/players/1769090323253_image6-2026-01-22T145701.864.png",
           "starter": false
         },
         {
@@ -708,7 +708,7 @@
           "firstName": "Minsung",
           "lastName": "Kim",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769091233026_LCK_BRO_GIDEON_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091233026_LCK_BRO_GIDEON_F.PNG",
           "starter": true
         },
         {
@@ -716,7 +716,7 @@
           "firstName": "ChihYun",
           "lastName": "Hwang",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769090179597_image6-2026-01-22T145555.391.png",
+          "image": "https://static.lolesports.com/players/1769090179597_image6-2026-01-22T145555.391.png",
           "starter": false
         },
         {
@@ -724,7 +724,7 @@
           "firstName": "Woojin",
           "lastName": "Cho",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769091227250_LCK_BRO_Roamer_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091227250_LCK_BRO_Roamer_F.PNG",
           "starter": true
         },
         {
@@ -732,7 +732,7 @@
           "firstName": "Lee",
           "lastName": "Jonghyuk",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769232251135_Pungyeon.png",
+          "image": "https://static.lolesports.com/players/1769232251135_Pungyeon.png",
           "starter": false
         },
         {
@@ -740,7 +740,7 @@
           "firstName": "Yeongwoong",
           "lastName": "Oh",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
+          "image": "https://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
           "starter": false
         },
         {
@@ -748,7 +748,7 @@
           "firstName": "Jinsung",
           "lastName": "Park",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769091213345_LCK_BRO_Teddy_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091213345_LCK_BRO_Teddy_F.PNG",
           "starter": true
         },
         {
@@ -756,7 +756,7 @@
           "firstName": "Cho",
           "lastName": "Hyungjin",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769090109251_image6-2026-01-22T145445.080.png",
+          "image": "https://static.lolesports.com/players/1769090109251_image6-2026-01-22T145445.080.png",
           "starter": false
         },
         {
@@ -764,7 +764,7 @@
           "firstName": "Namgung",
           "lastName": "Seonghoon",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769091222686_LCK_BRO_Namgung_F.PNG",
+          "image": "https://static.lolesports.com/players/1769091222686_LCK_BRO_Namgung_F.PNG",
           "starter": true
         },
         {
@@ -772,7 +772,7 @@
           "firstName": "Hong",
           "lastName": "Junseok",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769090048813_image6-2026-01-22T145347.864.png",
+          "image": "https://static.lolesports.com/players/1769090048813_image6-2026-01-22T145347.864.png",
           "starter": false
         }
       ]
@@ -785,7 +785,7 @@
           "firstName": "Sunghoon ",
           "lastName": "Hwang",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769088303035_LCK_NS_Kingen_F.PNG",
+          "image": "https://static.lolesports.com/players/1769088303035_LCK_NS_Kingen_F.PNG",
           "starter": true
         },
         {
@@ -793,7 +793,7 @@
           "firstName": "Um",
           "lastName": "Yejun",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769084399354_image6-2026-01-22T131901.879.png",
+          "image": "https://static.lolesports.com/players/1769084399354_image6-2026-01-22T131901.879.png",
           "starter": false
         },
         {
@@ -801,7 +801,7 @@
           "firstName": "Youngjun",
           "lastName": "Bae",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769088325879_LCK_NS_Sponge_F.PNG",
+          "image": "https://static.lolesports.com/players/1769088325879_LCK_NS_Sponge_F.PNG",
           "starter": true
         },
         {
@@ -809,7 +809,7 @@
           "firstName": "Joohyung",
           "lastName": "Kim",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769084566201_image6-2026-01-22T132214.656.png",
+          "image": "https://static.lolesports.com/players/1769084566201_image6-2026-01-22T132214.656.png",
           "starter": false
         },
         {
@@ -817,7 +817,7 @@
           "firstName": "Yechan",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769088313446_LCK_NS_Scout_F.png",
+          "image": "https://static.lolesports.com/players/1769088313446_LCK_NS_Scout_F.png",
           "starter": true
         },
         {
@@ -825,7 +825,7 @@
           "firstName": "Hyun Bin",
           "lastName": "Syun",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769088332489_LCK_NS_Calix_F.png",
+          "image": "https://static.lolesports.com/players/1769088332489_LCK_NS_Calix_F.png",
           "starter": false
         },
         {
@@ -833,7 +833,7 @@
           "firstName": "Kyeongjin",
           "lastName": "Song",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769084751769_image6-2026-01-22T132525.809.png",
+          "image": "https://static.lolesports.com/players/1769084751769_image6-2026-01-22T132525.809.png",
           "starter": false
         },
         {
@@ -841,7 +841,7 @@
           "firstName": "Nam",
           "lastName": "Daegeun",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1778842694156_LCK_NS_Diable_F.PNG",
+          "image": "https://static.lolesports.com/players/1778842694156_LCK_NS_Diable_F.PNG",
           "starter": true
         },
         {
@@ -849,7 +849,7 @@
           "firstName": "Soohoon",
           "lastName": "Hyun",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769084487004_image6-2026-01-22T132101.252.png",
+          "image": "https://static.lolesports.com/players/1769084487004_image6-2026-01-22T132101.252.png",
           "starter": false
         },
         {
@@ -857,7 +857,7 @@
           "firstName": "Siu",
           "lastName": "Son",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769088308486_LCK_NS_Lehends_F.PNG",
+          "image": "https://static.lolesports.com/players/1769088308486_LCK_NS_Lehends_F.PNG",
           "starter": true
         },
         {
@@ -865,7 +865,7 @@
           "firstName": "Minwoo",
           "lastName": "Son",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769084677995_image6-2026-01-22T132347.123.png",
+          "image": "https://static.lolesports.com/players/1769084677995_image6-2026-01-22T132347.123.png",
           "starter": false
         }
       ]
@@ -878,7 +878,7 @@
           "firstName": "Dongju",
           "lastName": "Lee",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769090757762_LCK_DNS_DuDu_F.PNG",
+          "image": "https://static.lolesports.com/players/1769090757762_LCK_DNS_DuDu_F.PNG",
           "starter": true
         },
         {
@@ -886,7 +886,7 @@
           "firstName": "Jeongheum",
           "lastName": "Han",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769088987064_image6-2026-01-22T143604.524.png",
+          "image": "https://static.lolesports.com/players/1769088987064_image6-2026-01-22T143604.524.png",
           "starter": false
         },
         {
@@ -894,7 +894,7 @@
           "firstName": "Kim",
           "lastName": "Danwoo",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": true
         },
         {
@@ -902,7 +902,7 @@
           "firstName": "Moonyoung",
           "lastName": "Bang",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769089231683_image6-2026-01-22T143929.578.png",
+          "image": "https://static.lolesports.com/players/1769089231683_image6-2026-01-22T143929.578.png",
           "starter": false
         },
         {
@@ -910,7 +910,7 @@
           "firstName": "Changhyeon",
           "lastName": "Hong",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769090766931_LCK_DNS_Pyosik_F.png",
+          "image": "https://static.lolesports.com/players/1769090766931_LCK_DNS_Pyosik_F.png",
           "starter": false
         },
         {
@@ -918,7 +918,7 @@
           "firstName": "Juhyeon",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769090740623_LCK_DNS_Clozer_F.PNG",
+          "image": "https://static.lolesports.com/players/1769090740623_LCK_DNS_Clozer_F.PNG",
           "starter": true
         },
         {
@@ -926,7 +926,7 @@
           "firstName": "Sanguk",
           "lastName": "Kim",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769089040652_image6-2026-01-22T143659.183.png",
+          "image": "https://static.lolesports.com/players/1769089040652_image6-2026-01-22T143659.183.png",
           "starter": false
         },
         {
@@ -934,7 +934,7 @@
           "firstName": "Daegil",
           "lastName": "Seo",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769090748726_LCK_DNS_deokdam_F.PNG",
+          "image": "https://static.lolesports.com/players/1769090748726_LCK_DNS_deokdam_F.PNG",
           "starter": true
         },
         {
@@ -942,7 +942,7 @@
           "firstName": "Yoon",
           "lastName": "Jeong-bin",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -950,7 +950,7 @@
           "firstName": "Kyujun",
           "lastName": "Kwak",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769089101112_image6-2026-01-22T143756.610.png",
+          "image": "https://static.lolesports.com/players/1769089101112_image6-2026-01-22T143756.610.png",
           "starter": false
         },
         {
@@ -958,7 +958,7 @@
           "firstName": "Yoon su",
           "lastName": "Jeong",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769090762247_LCK_DNS_Peter_F.PNG",
+          "image": "https://static.lolesports.com/players/1769090762247_LCK_DNS_Peter_F.PNG",
           "starter": true
         },
         {
@@ -966,7 +966,7 @@
           "firstName": "Jeongmin",
           "lastName": "Kim",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
+          "image": "https://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
           "starter": false
         },
         {
@@ -974,7 +974,7 @@
           "firstName": "Son",
           "lastName": "Junghwan",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
+          "image": "https://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
           "starter": false
         }
       ]
@@ -987,7 +987,7 @@
           "firstName": "Ze-Bin",
           "lastName": "Chen",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768347827679_bin.png",
+          "image": "https://static.lolesports.com/players/1768347827679_bin.png",
           "starter": true
         },
         {
@@ -995,7 +995,7 @@
           "firstName": "Wenbo",
           "lastName": "Yang",
           "role": "top",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -1003,7 +1003,7 @@
           "firstName": "Xuan-jun",
           "lastName": "Li",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768348080942_flandre.png",
+          "image": "https://static.lolesports.com/players/1768348080942_flandre.png",
           "starter": false
         },
         {
@@ -1011,7 +1011,7 @@
           "firstName": "Li-Xun",
           "lastName": "Peng",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768349380095_xun.png",
+          "image": "https://static.lolesports.com/players/1768349380095_xun.png",
           "starter": true
         },
         {
@@ -1019,7 +1019,7 @@
           "firstName": "Ding",
           "lastName": "Zhuo",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768348559860_knight.png",
+          "image": "https://static.lolesports.com/players/1768348559860_knight.png",
           "starter": true
         },
         {
@@ -1027,7 +1027,7 @@
           "firstName": "Dohyeon",
           "lastName": "Park",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768349250531_viper.png",
+          "image": "https://static.lolesports.com/players/1768349250531_viper.png",
           "starter": true
         },
         {
@@ -1035,7 +1035,7 @@
           "firstName": "WENJUN",
           "lastName": "LUO",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768348897219_on.png",
+          "image": "https://static.lolesports.com/players/1768348897219_on.png",
           "starter": true
         }
       ]
@@ -1048,7 +1048,7 @@
           "firstName": "\tCheng",
           "lastName": "Zi-Hao",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1775226028458_zuian.png",
+          "image": "https://static.lolesports.com/players/1775226028458_zuian.png",
           "starter": true
         },
         {
@@ -1056,7 +1056,7 @@
           "firstName": "Jiahao",
           "lastName": "Bai",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768347704727_369.png",
+          "image": "https://static.lolesports.com/players/1768347704727_369.png",
           "starter": false
         },
         {
@@ -1064,7 +1064,7 @@
           "firstName": "Tian-Liang",
           "lastName": "Gao",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1775225951328_tian.png",
+          "image": "https://static.lolesports.com/players/1775225951328_tian.png",
           "starter": true
         },
         {
@@ -1072,7 +1072,7 @@
           "firstName": "Jian",
           "lastName": "Lin",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768347880178_creme.png",
+          "image": "https://static.lolesports.com/players/1768347880178_creme.png",
           "starter": true
         },
         {
@@ -1080,7 +1080,7 @@
           "firstName": "Wen Bo",
           "lastName": "Yu",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768348354504_jackeylove.png",
+          "image": "https://static.lolesports.com/players/1768348354504_jackeylove.png",
           "starter": true
         },
         {
@@ -1088,7 +1088,7 @@
           "firstName": "Xu-Zhuo",
           "lastName": "Wang",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768349462733_zhuo.png",
+          "image": "https://static.lolesports.com/players/1768349462733_zhuo.png",
           "starter": true
         }
       ]
@@ -1101,7 +1101,7 @@
           "firstName": "XINZU",
           "lastName": "XU",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1772232812105_xiaoxu.png",
+          "image": "https://static.lolesports.com/players/1772232812105_xiaoxu.png",
           "starter": true
         },
         {
@@ -1109,7 +1109,7 @@
           "firstName": "Chun-Chia",
           "lastName": "Yu",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768348461257_junjia.png",
+          "image": "https://static.lolesports.com/players/1768348461257_junjia.png",
           "starter": true
         },
         {
@@ -1117,7 +1117,7 @@
           "firstName": "ZHEYU",
           "lastName": "FANG",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1753282860904_image6311.png",
+          "image": "https://static.lolesports.com/players/1753282860904_image6311.png",
           "starter": false
         },
         {
@@ -1125,7 +1125,7 @@
           "firstName": "MING-HUNG",
           "lastName": "TSAI",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768348294988_hongq.png",
+          "image": "https://static.lolesports.com/players/1768348294988_hongq.png",
           "starter": true
         },
         {
@@ -1133,7 +1133,7 @@
           "firstName": "Wei ",
           "lastName": "Chen",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768348104959_gala.png",
+          "image": "https://static.lolesports.com/players/1768348104959_gala.png",
           "starter": true
         },
         {
@@ -1141,7 +1141,7 @@
           "firstName": "ZHECAN",
           "lastName": "ZHAO",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768349226496_vampire.png",
+          "image": "https://static.lolesports.com/players/1768349226496_vampire.png",
           "starter": true
         }
       ]
@@ -1154,7 +1154,7 @@
           "firstName": "Chen",
           "lastName": "Chen",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1775225499864_breathe.png",
+          "image": "https://static.lolesports.com/players/1775225499864_breathe.png",
           "starter": true
         },
         {
@@ -1162,7 +1162,7 @@
           "firstName": "Seungyong",
           "lastName": "Lee",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768349186102_tarzan.png",
+          "image": "https://static.lolesports.com/players/1768349186102_tarzan.png",
           "starter": true
         },
         {
@@ -1170,7 +1170,7 @@
           "firstName": "Xiao-Jun",
           "lastName": "Cui",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768349057032_shanks.png",
+          "image": "https://static.lolesports.com/players/1768349057032_shanks.png",
           "starter": true
         },
         {
@@ -1178,7 +1178,7 @@
           "firstName": "Jie",
           "lastName": "Wang",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768348315588_hope.png",
+          "image": "https://static.lolesports.com/players/1768348315588_hope.png",
           "starter": true
         },
         {
@@ -1186,7 +1186,7 @@
           "firstName": "Jinhong",
           "lastName": "Kim",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768348497910_kael.png",
+          "image": "https://static.lolesports.com/players/1768348497910_kael.png",
           "starter": true
         }
       ]
@@ -1199,7 +1199,7 @@
           "firstName": "Tang",
           "lastName": " HuaYu",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768349506258_zika.png",
+          "image": "https://static.lolesports.com/players/1768349506258_zika.png",
           "starter": true
         },
         {
@@ -1207,7 +1207,7 @@
           "firstName": "HAO",
           "lastName": "PENG",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768349300073_xiaohao.png",
+          "image": "https://static.lolesports.com/players/1768349300073_xiaohao.png",
           "starter": true
         },
         {
@@ -1215,7 +1215,7 @@
           "firstName": "Yuanhao ",
           "lastName": "Li",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768349320124_xiaohu.png",
+          "image": "https://static.lolesports.com/players/1768349320124_xiaohu.png",
           "starter": true
         },
         {
@@ -1223,7 +1223,7 @@
           "firstName": "Jiahao",
           "lastName": "Zhao",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768347950403_elk.png",
+          "image": "https://static.lolesports.com/players/1768347950403_elk.png",
           "starter": true
         },
         {
@@ -1231,7 +1231,7 @@
           "firstName": "Jaehun",
           "lastName": "Jeong ",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768348738615_moham.png",
+          "image": "https://static.lolesports.com/players/1768348738615_moham.png",
           "starter": true
         },
         {
@@ -1239,7 +1239,7 @@
           "firstName": "JUN WEI",
           "lastName": "SUN",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768348478468_jwei.png",
+          "image": "https://static.lolesports.com/players/1768348478468_jwei.png",
           "starter": false
         }
       ]
@@ -1252,7 +1252,7 @@
           "firstName": "Yongho",
           "lastName": "Yoon",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768348332479_hoya.png",
+          "image": "https://static.lolesports.com/players/1768348332479_hoya.png",
           "starter": true
         },
         {
@@ -1260,7 +1260,7 @@
           "firstName": "Gu",
           "lastName": "Kwanmo",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768348142810_guwon.png",
+          "image": "https://static.lolesports.com/players/1768348142810_guwon.png",
           "starter": true
         },
         {
@@ -1268,7 +1268,7 @@
           "firstName": "yang",
           "lastName": "jie",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768347863404_care.png",
+          "image": "https://static.lolesports.com/players/1768347863404_care.png",
           "starter": true
         },
         {
@@ -1276,7 +1276,7 @@
           "firstName": "Qi-Shen ",
           "lastName": "Ying",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768348885435_photic.png",
+          "image": "https://static.lolesports.com/players/1768348885435_photic.png",
           "starter": true
         },
         {
@@ -1284,7 +1284,7 @@
           "firstName": "RunLai",
           "lastName": "Wang",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768348013713_fengyue.png",
+          "image": "https://static.lolesports.com/players/1768348013713_fengyue.png",
           "starter": true
         }
       ]
@@ -1297,7 +1297,7 @@
           "firstName": "Seung-Lok",
           "lastName": "Kang",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1753279025857_image628.png",
+          "image": "https://static.lolesports.com/players/1753279025857_image628.png",
           "starter": true
         },
         {
@@ -1305,7 +1305,7 @@
           "firstName": "Yang-Wei ",
           "lastName": "Yan",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1775225991291_wei.png",
+          "image": "https://static.lolesports.com/players/1775225991291_wei.png",
           "starter": true
         },
         {
@@ -1313,7 +1313,7 @@
           "firstName": "Ui-jin",
           "lastName": "Song",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1775225799612_rookie.png",
+          "image": "https://static.lolesports.com/players/1775225799612_rookie.png",
           "starter": true
         },
         {
@@ -1321,7 +1321,7 @@
           "firstName": "Jiaqi",
           "lastName": "Zi",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1775225631369_jiaqi.png",
+          "image": "https://static.lolesports.com/players/1775225631369_jiaqi.png",
           "starter": true
         },
         {
@@ -1329,7 +1329,7 @@
           "firstName": "Wei",
           "lastName": "Zou",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768347811166_assum.png",
+          "image": "https://static.lolesports.com/players/1768347811166_assum.png",
           "starter": false
         },
         {
@@ -1337,7 +1337,7 @@
           "firstName": "Ye",
           "lastName": "Tian",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1775225723214_meiko.png",
+          "image": "https://static.lolesports.com/players/1775225723214_meiko.png",
           "starter": true
         }
       ]
@@ -1350,7 +1350,7 @@
           "firstName": "Yi",
           "lastName": "Dai",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768347927566_cube.png",
+          "image": "https://static.lolesports.com/players/1768347927566_cube.png",
           "starter": true
         },
         {
@@ -1358,7 +1358,7 @@
           "firstName": "MENGQI",
           "lastName": "WANG",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768348759598_monki.png",
+          "image": "https://static.lolesports.com/players/1768348759598_monki.png",
           "starter": true
         },
         {
@@ -1366,7 +1366,7 @@
           "firstName": "Peng",
           "lastName": "Jun-Bin",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -1374,7 +1374,7 @@
           "firstName": "Hongjo",
           "lastName": "Kim",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768348517805_karis.png",
+          "image": "https://static.lolesports.com/players/1768348517805_karis.png",
           "starter": true
         },
         {
@@ -1382,7 +1382,7 @@
           "firstName": "Hyungsuk",
           "lastName": "Moon",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768347747815_about.png",
+          "image": "https://static.lolesports.com/players/1768347747815_about.png",
           "starter": true
         },
         {
@@ -1390,7 +1390,7 @@
           "firstName": "XUYE",
           "lastName": "SHI",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1775225577413_erha.png",
+          "image": "https://static.lolesports.com/players/1775225577413_erha.png",
           "starter": true
         }
       ]
@@ -1403,7 +1403,7 @@
           "firstName": "WENJIE",
           "lastName": "XU",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768349102228_sheer.png",
+          "image": "https://static.lolesports.com/players/1768349102228_sheer.png",
           "starter": true
         },
         {
@@ -1411,7 +1411,7 @@
           "firstName": "Bo-Han",
           "lastName": "Wei",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1753283383859_image675.png",
+          "image": "https://static.lolesports.com/players/1753283383859_image675.png",
           "starter": true
         },
         {
@@ -1419,7 +1419,7 @@
           "firstName": "Dongbeom",
           "lastName": "Kim",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768347904257_croco.png",
+          "image": "https://static.lolesports.com/players/1768347904257_croco.png",
           "starter": false
         },
         {
@@ -1427,7 +1427,7 @@
           "firstName": "GUANGLU",
           "lastName": "ZOU",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": true
         },
         {
@@ -1435,7 +1435,7 @@
           "firstName": "SAUNAM",
           "lastName": "LI",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768347726528_1xn.png",
+          "image": "https://static.lolesports.com/players/1768347726528_1xn.png",
           "starter": true
         },
         {
@@ -1443,7 +1443,7 @@
           "firstName": "Wenhao",
           "lastName": "Zhao",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768349425414_ycx.png",
+          "image": "https://static.lolesports.com/players/1768349425414_ycx.png",
           "starter": true
         },
         {
@@ -1451,7 +1451,7 @@
           "firstName": "Yunfeng ",
           "lastName": "Lou",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768348695392_missing.png",
+          "image": "https://static.lolesports.com/players/1768348695392_missing.png",
           "starter": false
         }
       ]
@@ -1464,7 +1464,7 @@
           "firstName": "QINGHUA",
           "lastName": "LI",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768348535779_keshi.png",
+          "image": "https://static.lolesports.com/players/1768348535779_keshi.png",
           "starter": true
         },
         {
@@ -1472,7 +1472,7 @@
           "firstName": "Junhao",
           "lastName": "Luo",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768348442737_junhao.png",
+          "image": "https://static.lolesports.com/players/1768348442737_junhao.png",
           "starter": true
         },
         {
@@ -1480,7 +1480,7 @@
           "firstName": "MINSEONG",
           "lastName": "KIM",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768348275758_heru.png",
+          "image": "https://static.lolesports.com/players/1768348275758_heru.png",
           "starter": true
         },
         {
@@ -1488,7 +1488,7 @@
           "firstName": "SHANYE",
           "lastName": "AN",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1775225468701_ahn.png",
+          "image": "https://static.lolesports.com/players/1775225468701_ahn.png",
           "starter": true
         },
         {
@@ -1496,7 +1496,7 @@
           "firstName": "TIANCIFU",
           "lastName": "WANG",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768347992987_feather.png",
+          "image": "https://static.lolesports.com/players/1768347992987_feather.png",
           "starter": true
         }
       ]
@@ -1509,7 +1509,7 @@
           "firstName": "Taeyoon",
           "lastName": "Noh",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1775225525681_burdol.png",
+          "image": "https://static.lolesports.com/players/1775225525681_burdol.png",
           "starter": true
         },
         {
@@ -1517,7 +1517,7 @@
           "firstName": "CUIHENG",
           "lastName": "YANG",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768348231639_heng.png",
+          "image": "https://static.lolesports.com/players/1768348231639_heng.png",
           "starter": true
         },
         {
@@ -1525,7 +1525,7 @@
           "firstName": "YUHONG",
           "lastName": "LIN",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768349168321_tangyuan.png",
+          "image": "https://static.lolesports.com/players/1768349168321_tangyuan.png",
           "starter": true
         },
         {
@@ -1533,7 +1533,7 @@
           "firstName": "GUOBIN",
           "lastName": "QIU",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1772232629920_shaoye.png",
+          "image": "https://static.lolesports.com/players/1772232629920_shaoye.png",
           "starter": true
         },
         {
@@ -1541,7 +1541,7 @@
           "firstName": "Qingsong",
           "lastName": "Liu",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1753285845967_image6216.png",
+          "image": "https://static.lolesports.com/players/1753285845967_image6216.png",
           "starter": true
         }
       ]
@@ -1554,7 +1554,7 @@
           "firstName": "De-Zhang",
           "lastName": "Zhu",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1772232892468_zdz-Photoroom.png",
+          "image": "https://static.lolesports.com/players/1772232892468_zdz-Photoroom.png",
           "starter": true
         },
         {
@@ -1562,7 +1562,7 @@
           "firstName": "Li-Jie",
           "lastName": "Zhao",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1772229587324_jiejie.png",
+          "image": "https://static.lolesports.com/players/1772229587324_jiejie.png",
           "starter": true
         },
         {
@@ -1570,7 +1570,7 @@
           "firstName": "Taeyoung",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768347844999_bulldog.png",
+          "image": "https://static.lolesports.com/players/1768347844999_bulldog.png",
           "starter": true
         },
         {
@@ -1578,7 +1578,7 @@
           "firstName": "Ding",
           "lastName": "Jia-Ming",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -1586,7 +1586,7 @@
           "firstName": "HONGCHAO",
           "lastName": "HU",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1772232334521_leave-Photoroom.png",
+          "image": "https://static.lolesports.com/players/1772232334521_leave-Photoroom.png",
           "starter": true
         },
         {
@@ -1594,7 +1594,7 @@
           "firstName": "Wang",
           "lastName": " Ping-Yang",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768348863818_parukia.png",
+          "image": "https://static.lolesports.com/players/1768348863818_parukia.png",
           "starter": true
         }
       ]
@@ -1607,7 +1607,7 @@
           "firstName": "Dailin",
           "lastName": "Song",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768348992461_saber.png",
+          "image": "https://static.lolesports.com/players/1768348992461_saber.png",
           "starter": false
         },
         {
@@ -1615,7 +1615,7 @@
           "firstName": "xia",
           "lastName": "jingyao",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768349338912_xiaoxia.png",
+          "image": "https://static.lolesports.com/players/1768349338912_xiaoxia.png",
           "starter": false
         }
       ]
@@ -1628,7 +1628,7 @@
           "firstName": "HANYANG",
           "lastName": "XU",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768348909352_re0.png",
+          "image": "https://static.lolesports.com/players/1768348909352_re0.png",
           "starter": false
         },
         {
@@ -1636,7 +1636,7 @@
           "firstName": "MING",
           "lastName": "LEI",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768349148844_starry.png",
+          "image": "https://static.lolesports.com/players/1768349148844_starry.png",
           "starter": false
         }
       ]
@@ -1649,7 +1649,7 @@
           "firstName": "Sergen",
           "lastName": "Çelik",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768550002850_BrokenBlade-01.png",
+          "image": "https://static.lolesports.com/players/1768550002850_BrokenBlade-01.png",
           "starter": true
         },
         {
@@ -1657,7 +1657,7 @@
           "firstName": "Rudy",
           "lastName": "Semaan",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768549980779_Skewmond-01.png",
+          "image": "https://static.lolesports.com/players/1768549980779_Skewmond-01.png",
           "starter": true
         },
         {
@@ -1665,7 +1665,7 @@
           "firstName": "Rasmus",
           "lastName": "Borregaard Winther",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768549998426_Caps-01.png",
+          "image": "https://static.lolesports.com/players/1768549998426_Caps-01.png",
           "starter": true
         },
         {
@@ -1673,7 +1673,7 @@
           "firstName": "Steven",
           "lastName": "Liv",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1768549994123_HansSama-01.png",
+          "image": "https://static.lolesports.com/players/1768549994123_HansSama-01.png",
           "starter": true
         },
         {
@@ -1681,7 +1681,7 @@
           "firstName": "Labros",
           "lastName": "Papoutsakis",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768549989298_Labrov-01.png",
+          "image": "https://static.lolesports.com/players/1768549989298_Labrov-01.png",
           "starter": true
         }
       ]
@@ -1694,7 +1694,7 @@
           "firstName": "Lim",
           "lastName": "Seong-min",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1784889537331_Soboro-01.png",
+          "image": "https://static.lolesports.com/players/1784889537331_Soboro-01.png",
           "starter": true
         },
         {
@@ -1702,7 +1702,7 @@
           "firstName": "Panagiotis",
           "lastName": "Tantis",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1774651449505_empyros.png",
+          "image": "https://static.lolesports.com/players/1774651449505_empyros.png",
           "starter": false
         },
         {
@@ -1710,7 +1710,7 @@
           "firstName": "Iván",
           "lastName": "Martín",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1784889545574_Razork-01.png",
+          "image": "https://static.lolesports.com/players/1784889545574_Razork-01.png",
           "starter": true
         },
         {
@@ -1718,7 +1718,7 @@
           "firstName": "Vladimiros",
           "lastName": "Kourtidis",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1784889526173_Vladi-01.png",
+          "image": "https://static.lolesports.com/players/1784889526173_Vladi-01.png",
           "starter": true
         },
         {
@@ -1726,7 +1726,7 @@
           "firstName": "Elias",
           "lastName": "Lipp",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1784889551806_Upset-01.png",
+          "image": "https://static.lolesports.com/players/1784889551806_Upset-01.png",
           "starter": true
         },
         {
@@ -1734,7 +1734,7 @@
           "firstName": "Joon Hyung",
           "lastName": "Park",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1784889532061_Lospa-01.png",
+          "image": "https://static.lolesports.com/players/1784889532061_Lospa-01.png",
           "starter": true
         }
       ]
@@ -1747,7 +1747,7 @@
           "firstName": "Kaan",
           "lastName": "Okan",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1784888603096_NaakNako-01.png",
+          "image": "https://static.lolesports.com/players/1784888603096_NaakNako-01.png",
           "starter": true
         },
         {
@@ -1755,7 +1755,7 @@
           "firstName": "Linas",
           "lastName": "Naunčikas",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1784888592230_Lyncas-01.png",
+          "image": "https://static.lolesports.com/players/1784888592230_Lyncas-01.png",
           "starter": true
         },
         {
@@ -1763,7 +1763,7 @@
           "firstName": "Hyunseo",
           "lastName": "An",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1784888585781_Fiesta-01.png",
+          "image": "https://static.lolesports.com/players/1784888585781_Fiesta-01.png",
           "starter": true
         },
         {
@@ -1771,7 +1771,7 @@
           "firstName": " Marek",
           "lastName": "Brázda",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1774651500920_humanoid.png",
+          "image": "https://static.lolesports.com/players/1774651500920_humanoid.png",
           "starter": false
         },
         {
@@ -1779,7 +1779,7 @@
           "firstName": "Matyáš",
           "lastName": "Orság",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1784888608730_Carzzy-01.png",
+          "image": "https://static.lolesports.com/players/1784888608730_Carzzy-01.png",
           "starter": true
         },
         {
@@ -1787,7 +1787,7 @@
           "firstName": "Kadir",
           "lastName": "Kemiksiz",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1784888597989_Fleshy-01.png",
+          "image": "https://static.lolesports.com/players/1784888597989_Fleshy-01.png",
           "starter": true
         }
       ]
@@ -1800,7 +1800,7 @@
           "firstName": "Changdong",
           "lastName": "Kim",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1774651372836_canna.png",
+          "image": "https://static.lolesports.com/players/1774651372836_canna.png",
           "starter": true
         },
         {
@@ -1808,7 +1808,7 @@
           "firstName": "Martin",
           "lastName": "Sundelin",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768550195190_Yike-01.png",
+          "image": "https://static.lolesports.com/players/1768550195190_Yike-01.png",
           "starter": true
         },
         {
@@ -1816,7 +1816,7 @@
           "firstName": "Yeahoo",
           "lastName": "Kang",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1774652002153_kyeahoo.png",
+          "image": "https://static.lolesports.com/players/1774652002153_kyeahoo.png",
           "starter": true
         },
         {
@@ -1824,7 +1824,7 @@
           "firstName": "Caliste",
           "lastName": "Henry-Hennebert",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1774651348279_caliste.png",
+          "image": "https://static.lolesports.com/players/1774651348279_caliste.png",
           "starter": true
         },
         {
@@ -1832,7 +1832,7 @@
           "firstName": "Alan",
           "lastName": "Cwalina",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1774651329556_busio.png",
+          "image": "https://static.lolesports.com/players/1774651329556_busio.png",
           "starter": true
         }
       ]
@@ -1845,7 +1845,7 @@
           "firstName": "Martin",
           "lastName": "Hansen",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1784888819344_Wunder-1.png",
+          "image": "https://static.lolesports.com/players/1784888819344_Wunder-1.png",
           "starter": true
         },
         {
@@ -1853,7 +1853,7 @@
           "firstName": "Duncan",
           "lastName": "Marquet",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1784888813852_Skeanz-01.png",
+          "image": "https://static.lolesports.com/players/1784888813852_Skeanz-01.png",
           "starter": true
         },
         {
@@ -1861,7 +1861,7 @@
           "firstName": "Yebit",
           "lastName": "Seo",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1784888808082_SlowQ-01.png",
+          "image": "https://static.lolesports.com/players/1784888808082_SlowQ-01.png",
           "starter": true
         },
         {
@@ -1869,7 +1869,7 @@
           "firstName": "Adam ",
           "lastName": "Ilyasov",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1774652028497_lider.png",
+          "image": "https://static.lolesports.com/players/1774652028497_lider.png",
           "starter": false
         },
         {
@@ -1877,7 +1877,7 @@
           "firstName": "Josip",
           "lastName": "Čančar",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1784888801912_Jopa-01.png",
+          "image": "https://static.lolesports.com/players/1784888801912_Jopa-01.png",
           "starter": true
         },
         {
@@ -1885,7 +1885,7 @@
           "firstName": "Mihael",
           "lastName": "Mehle",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1784888796423_MikyX-01.png",
+          "image": "https://static.lolesports.com/players/1784888796423_MikyX-01.png",
           "starter": true
         }
       ]
@@ -1898,7 +1898,7 @@
           "firstName": "Oscar",
           "lastName": "Muñoz Jiménez",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1784889455621_Oscarinin-01.png",
+          "image": "https://static.lolesports.com/players/1784889455621_Oscarinin-01.png",
           "starter": true
         },
         {
@@ -1906,7 +1906,7 @@
           "firstName": "Eren",
           "lastName": "Yıldız",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1774652144804_lot.png",
+          "image": "https://static.lolesports.com/players/1774652144804_lot.png",
           "starter": false
         },
         {
@@ -1914,7 +1914,7 @@
           "firstName": "Ismaïl",
           "lastName": "Boualem",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1784889470494_Isma-01.png",
+          "image": "https://static.lolesports.com/players/1784889470494_Isma-01.png",
           "starter": true
         },
         {
@@ -1922,7 +1922,7 @@
           "firstName": "Adam",
           "lastName": "Jeřábek",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1784889460898_Jackies-01.png",
+          "image": "https://static.lolesports.com/players/1784889460898_Jackies-01.png",
           "starter": true
         },
         {
@@ -1930,7 +1930,7 @@
           "firstName": "Victor ",
           "lastName": "Lirola",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1784889476051_Flakked-01.png",
+          "image": "https://static.lolesports.com/players/1784889476051_Flakked-01.png",
           "starter": true
         },
         {
@@ -1938,7 +1938,7 @@
           "firstName": "Hyuntaek",
           "lastName": "O",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1774652391494_noah.png",
+          "image": "https://static.lolesports.com/players/1774652391494_noah.png",
           "starter": false
         },
         {
@@ -1946,7 +1946,7 @@
           "firstName": "Sejun",
           "lastName": "Yoon",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1784889465968_Jun-01.png",
+          "image": "https://static.lolesports.com/players/1784889465968_Jun-01.png",
           "starter": true
         }
       ]
@@ -1959,7 +1959,7 @@
           "firstName": "Álex ",
           "lastName": "Villarejo Pastor",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1774652336923_myrwn.png",
+          "image": "https://static.lolesports.com/players/1774652336923_myrwn.png",
           "starter": true
         },
         {
@@ -1967,7 +1967,7 @@
           "firstName": "Ivan ",
           "lastName": "Bilous",
           "role": "top",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -1975,7 +1975,7 @@
           "firstName": "Javier ",
           "lastName": "Prades",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1774651428253_elyoya.png",
+          "image": "https://static.lolesports.com/players/1774651428253_elyoya.png",
           "starter": true
         },
         {
@@ -1983,7 +1983,7 @@
           "firstName": " Joseph Joon",
           "lastName": " Pyun",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1774651666226_jojopyun.png",
+          "image": "https://static.lolesports.com/players/1774651666226_jojopyun.png",
           "starter": true
         },
         {
@@ -1991,7 +1991,7 @@
           "firstName": "David",
           "lastName": "Martínez García",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1774652617630_supa.png",
+          "image": "https://static.lolesports.com/players/1774652617630_supa.png",
           "starter": true
         },
         {
@@ -1999,7 +1999,7 @@
           "firstName": "Alvaro",
           "lastName": "Fernández del Amo",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1774651304778_alvaro.png",
+          "image": "https://static.lolesports.com/players/1774651304778_alvaro.png",
           "starter": true
         }
       ]
@@ -2012,7 +2012,7 @@
           "firstName": "Yunhwan",
           "lastName": "Shin",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1784889280158_Rooster-01.png",
+          "image": "https://static.lolesports.com/players/1784889280158_Rooster-01.png",
           "starter": true
         },
         {
@@ -2020,7 +2020,7 @@
           "firstName": "Théo",
           "lastName": "Borile",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1784889258942_Sheo-01.png",
+          "image": "https://static.lolesports.com/players/1784889258942_Sheo-01.png",
           "starter": true
         },
         {
@@ -2028,7 +2028,7 @@
           "firstName": "Lahlou",
           "lastName": "Mehdi",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1768550943317_Boukada-01.png",
+          "image": "https://static.lolesports.com/players/1768550943317_Boukada-01.png",
           "starter": false
         },
         {
@@ -2036,7 +2036,7 @@
           "firstName": "Ilias",
           "lastName": "Bizriken",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1784889269441_Nuc-01.png",
+          "image": "https://static.lolesports.com/players/1784889269441_Nuc-01.png",
           "starter": true
         },
         {
@@ -2044,7 +2044,7 @@
           "firstName": "Seokhyeon",
           "lastName": "Park",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1784889274929_Paduck-01.png",
+          "image": "https://static.lolesports.com/players/1784889274929_Paduck-01.png",
           "starter": true
         },
         {
@@ -2052,7 +2052,7 @@
           "firstName": "Paul",
           "lastName": "Lardin",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1784889264734_Stend-01.png",
+          "image": "https://static.lolesports.com/players/1784889264734_Stend-01.png",
           "starter": true
         },
         {
@@ -2060,7 +2060,7 @@
           "firstName": "Adrian",
           "lastName": "Trybus",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768550915779_Trymbi-01.png",
+          "image": "https://static.lolesports.com/players/1768550915779_Trymbi-01.png",
           "starter": false
         }
       ]
@@ -2073,7 +2073,7 @@
           "firstName": "Sebastian",
           "lastName": "Wojtoń",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1784888678659_Tracyn-01.png",
+          "image": "https://static.lolesports.com/players/1784888678659_Tracyn-01.png",
           "starter": true
         },
         {
@@ -2081,7 +2081,7 @@
           "firstName": "Kacper",
           "lastName": "Dagiel",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1784888701799_Daglas-01.png",
+          "image": "https://static.lolesports.com/players/1784888701799_Daglas-01.png",
           "starter": true
         },
         {
@@ -2089,7 +2089,7 @@
           "firstName": "Tolga",
           "lastName": "Ölmez",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1784888684908_Serin-01.png",
+          "image": "https://static.lolesports.com/players/1784888684908_Serin-01.png",
           "starter": true
         },
         {
@@ -2097,7 +2097,7 @@
           "firstName": "Junghyun",
           "lastName": "Byun",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1784888690157_Hype-01.png",
+          "image": "https://static.lolesports.com/players/1784888690157_Hype-01.png",
           "starter": true
         },
         {
@@ -2105,7 +2105,7 @@
           "firstName": "Sang-hoon",
           "lastName": "Yoon",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1774651565551_ice.png",
+          "image": "https://static.lolesports.com/players/1774651565551_ice.png",
           "starter": false
         },
         {
@@ -2113,7 +2113,7 @@
           "firstName": "Han",
           "lastName": "Kil",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1784888696000_Way-01.png",
+          "image": "https://static.lolesports.com/players/1784888696000_Way-01.png",
           "starter": true
         }
       ]
@@ -2126,7 +2126,7 @@
           "firstName": "Volodymyr",
           "lastName": "Sorokin",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1784889399078_Maynter-01.png",
+          "image": "https://static.lolesports.com/players/1784889399078_Maynter-01.png",
           "starter": true
         },
         {
@@ -2134,7 +2134,7 @@
           "firstName": "Enes",
           "lastName": "Uçan",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1784889387768_Rhilech-01.png",
+          "image": "https://static.lolesports.com/players/1784889387768_Rhilech-01.png",
           "starter": true
         },
         {
@@ -2142,7 +2142,7 @@
           "firstName": "Sungwon",
           "lastName": "Yoon",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1784889410395_Poby-01.png",
+          "image": "https://static.lolesports.com/players/1784889410395_Poby-01.png",
           "starter": true
         },
         {
@@ -2150,7 +2150,7 @@
           "firstName": "Emil",
           "lastName": "Larsson",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1754473073908_image6331.png",
+          "image": "https://static.lolesports.com/players/1754473073908_image6331.png",
           "starter": false
         },
         {
@@ -2158,7 +2158,7 @@
           "firstName": "Jaehoon",
           "lastName": "Lee",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1784889404139_SamD-01.png",
+          "image": "https://static.lolesports.com/players/1784889404139_SamD-01.png",
           "starter": true
         },
         {
@@ -2166,7 +2166,7 @@
           "firstName": "Polat Furkan",
           "lastName": "Çiçek",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1784889393953_Parus-01.png",
+          "image": "https://static.lolesports.com/players/1784889393953_Parus-01.png",
           "starter": true
         }
       ]
@@ -2179,7 +2179,7 @@
           "firstName": "Niship",
           "lastName": "Doshi",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769150098659_AME_LCS26S1_LYON_DHOKLA.png",
+          "image": "https://static.lolesports.com/players/1769150098659_AME_LCS26S1_LYON_DHOKLA.png",
           "starter": true
         },
         {
@@ -2187,7 +2187,7 @@
           "firstName": "Kacper",
           "lastName": "Sloma",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769150137024_AME_LCS26S1_LYON_INSPIRED.png",
+          "image": "https://static.lolesports.com/players/1769150137024_AME_LCS26S1_LYON_INSPIRED.png",
           "starter": true
         },
         {
@@ -2195,7 +2195,7 @@
           "firstName": "Sungin",
           "lastName": "Kang",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769150214608_AME_LCS26S1_LYON_SAINT.png",
+          "image": "https://static.lolesports.com/players/1769150214608_AME_LCS26S1_LYON_SAINT.png",
           "starter": true
         },
         {
@@ -2203,7 +2203,7 @@
           "firstName": "Mincheol",
           "lastName": "Kim",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769752644164_berserker.png",
+          "image": "https://static.lolesports.com/players/1769752644164_berserker.png",
           "starter": true
         },
         {
@@ -2211,7 +2211,7 @@
           "firstName": "Jonah",
           "lastName": "Rosario",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769150180651_AME_LCS26S1_LYON_ISLES.png",
+          "image": "https://static.lolesports.com/players/1769150180651_AME_LCS26S1_LYON_ISLES.png",
           "starter": true
         }
       ]
@@ -2224,7 +2224,7 @@
           "firstName": "Seung-gyu",
           "lastName": "Park",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769149468221_AME_LCS26S1_C9_THANATOS.png",
+          "image": "https://static.lolesports.com/players/1769149468221_AME_LCS26S1_C9_THANATOS.png",
           "starter": true
         },
         {
@@ -2232,7 +2232,7 @@
           "firstName": "Robert",
           "lastName": "Huang",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769149391904_AME_LCS26S1_C9_BLABER.png",
+          "image": "https://static.lolesports.com/players/1769149391904_AME_LCS26S1_C9_BLABER.png",
           "starter": true
         },
         {
@@ -2240,7 +2240,7 @@
           "firstName": "Sangmin",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1790204959636_loki.png",
+          "image": "https://static.lolesports.com/players/1790204959636_loki.png",
           "starter": true
         },
         {
@@ -2248,7 +2248,7 @@
           "firstName": "Eain",
           "lastName": "Stearns",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769149345623_AME_LCS26S1_C9_APA.png",
+          "image": "https://static.lolesports.com/players/1769149345623_AME_LCS26S1_C9_APA.png",
           "starter": false
         },
         {
@@ -2256,7 +2256,7 @@
           "firstName": "Edward",
           "lastName": "Ra",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1790204905338_tac.png",
+          "image": "https://static.lolesports.com/players/1790204905338_tac.png",
           "starter": true
         },
         {
@@ -2264,7 +2264,7 @@
           "firstName": "Jesper",
           "lastName": "Svenningsen",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769149577599_AME_LCS26S1_C9_ZVEN.png",
+          "image": "https://static.lolesports.com/players/1769149577599_AME_LCS26S1_C9_ZVEN.png",
           "starter": false
         },
         {
@@ -2272,7 +2272,7 @@
           "firstName": "Philippe",
           "lastName": "Laflamme",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769149513772_AME_LCS26S1_C9_VULCAN.png",
+          "image": "https://static.lolesports.com/players/1769149513772_AME_LCS26S1_C9_VULCAN.png",
           "starter": true
         }
       ]
@@ -2285,7 +2285,7 @@
           "firstName": "Bulut",
           "lastName": "Ibrahim Samet",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769149952615_AME_LCS26S1_FLY_GAKGOS.png",
+          "image": "https://static.lolesports.com/players/1769149952615_AME_LCS26S1_FLY_GAKGOS.png",
           "starter": true
         },
         {
@@ -2293,7 +2293,7 @@
           "firstName": "Johnson",
           "lastName": "Le",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769149987501_AME_LCS26S1_FLY_GRYFFINN.png",
+          "image": "https://static.lolesports.com/players/1769149987501_AME_LCS26S1_FLY_GRYFFINN.png",
           "starter": true
         },
         {
@@ -2301,7 +2301,7 @@
           "firstName": "Suhyeong",
           "lastName": "Song",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769150064862_AME_LCS26S1_FLY_QUAD.png",
+          "image": "https://static.lolesports.com/players/1769150064862_AME_LCS26S1_FLY_QUAD.png",
           "starter": true
         },
         {
@@ -2309,7 +2309,7 @@
           "firstName": "Abdulmalek",
           "lastName": "Fahad",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769150023296_AME_LCS26S1_FLY_MASSU.png",
+          "image": "https://static.lolesports.com/players/1769150023296_AME_LCS26S1_FLY_MASSU.png",
           "starter": true
         },
         {
@@ -2317,7 +2317,7 @@
           "firstName": "Michael",
           "lastName": "Luu",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769149918320_AME_LCS26S1_FLY_CRYOGEN.png",
+          "image": "https://static.lolesports.com/players/1769149918320_AME_LCS26S1_FLY_CRYOGEN.png",
           "starter": true
         }
       ]
@@ -2330,7 +2330,7 @@
           "firstName": "Ruhan",
           "lastName": "Park",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769752562927_morgan.png",
+          "image": "https://static.lolesports.com/players/1769752562927_morgan.png",
           "starter": true
         },
         {
@@ -2338,7 +2338,7 @@
           "firstName": "Brandon",
           "lastName": "Villegas",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769150518581_AME_LCS26S1_TL_JOSEDEODO.png",
+          "image": "https://static.lolesports.com/players/1769150518581_AME_LCS26S1_TL_JOSEDEODO.png",
           "starter": true
         },
         {
@@ -2346,7 +2346,7 @@
           "firstName": "HYEONSEUNG",
           "lastName": "Lim",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769150548420_AME_LCS26S1_TL_QUID.png",
+          "image": "https://static.lolesports.com/players/1769150548420_AME_LCS26S1_TL_QUID.png",
           "starter": true
         },
         {
@@ -2354,7 +2354,7 @@
           "firstName": "Sean",
           "lastName": "Sung",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769150607307_AME_LCS26S1_TL_YEON.png",
+          "image": "https://static.lolesports.com/players/1769150607307_AME_LCS26S1_TL_YEON.png",
           "starter": true
         },
         {
@@ -2362,7 +2362,7 @@
           "firstName": "Yongin",
           "lastName": "Jo",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769150483053_AME_LCS26S1_TL_COREJJ.png",
+          "image": "https://static.lolesports.com/players/1769150483053_AME_LCS26S1_TL_COREJJ.png",
           "starter": true
         }
       ]
@@ -2375,7 +2375,7 @@
           "firstName": "Gyutae",
           "lastName": "Kyeong",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769149727754_AME_LCS26S1_DIG_PHOTON.png",
+          "image": "https://static.lolesports.com/players/1769149727754_AME_LCS26S1_DIG_PHOTON.png",
           "starter": false
         },
         {
@@ -2383,7 +2383,7 @@
           "firstName": "Noah",
           "lastName": "Erikson",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1790204881186_edna.png",
+          "image": "https://static.lolesports.com/players/1790204881186_edna.png",
           "starter": false
         },
         {
@@ -2391,7 +2391,7 @@
           "firstName": "Lawrence",
           "lastName": "Xu",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769149626619_AME_LCS26S1_DIG_EXYU.png",
+          "image": "https://static.lolesports.com/players/1769149626619_AME_LCS26S1_DIG_EXYU.png",
           "starter": false
         },
         {
@@ -2399,7 +2399,7 @@
           "firstName": "Ian",
           "lastName": "Huang",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1753349110894_image6224.png",
+          "image": "https://static.lolesports.com/players/1753349110894_image6224.png",
           "starter": false
         }
       ]
@@ -2412,7 +2412,7 @@
           "firstName": "Jett",
           "lastName": "Joye",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1739516062006_ggsdgs4.png",
+          "image": "https://static.lolesports.com/players/1739516062006_ggsdgs4.png",
           "starter": true
         },
         {
@@ -2420,7 +2420,7 @@
           "firstName": "Christian",
           "lastName": "Rahaian",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1675150271520_placeholder.png",
+          "image": "https://static.lolesports.com/players/1675150271520_placeholder.png",
           "starter": true
         },
         {
@@ -2428,7 +2428,7 @@
           "firstName": "Jihoon",
           "lastName": "Oh",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769752706388_callme.png",
+          "image": "https://static.lolesports.com/players/1769752706388_callme.png",
           "starter": true
         },
         {
@@ -2436,7 +2436,7 @@
           "firstName": "Sajed",
           "lastName": "Ziade",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769149802626_AME_LCS26S1_DSG_SAJED.png",
+          "image": "https://static.lolesports.com/players/1769149802626_AME_LCS26S1_DSG_SAJED.png",
           "starter": true
         },
         {
@@ -2444,7 +2444,7 @@
           "firstName": "Pedro",
           "lastName": "Peralta",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769149764464_AME_LCS26S1_DSG_LYONZ.png",
+          "image": "https://static.lolesports.com/players/1769149764464_AME_LCS26S1_DSG_LYONZ.png",
           "starter": true
         }
       ]
@@ -2457,7 +2457,7 @@
           "firstName": "Ibrahim",
           "lastName": "Allami",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769150456468_AME_LCS26S1_SR_FUDGE.png",
+          "image": "https://static.lolesports.com/players/1769150456468_AME_LCS26S1_SR_FUDGE.png",
           "starter": true
         },
         {
@@ -2465,7 +2465,7 @@
           "firstName": "Juan",
           "lastName": "Garcia",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769150425299_AME_LCS26S1_SR_CONTRACTZ.png",
+          "image": "https://static.lolesports.com/players/1769150425299_AME_LCS26S1_SR_CONTRACTZ.png",
           "starter": true
         },
         {
@@ -2473,7 +2473,7 @@
           "firstName": "Yu",
           "lastName": "Baekjin",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769752584631_zinie.png",
+          "image": "https://static.lolesports.com/players/1769752584631_zinie.png",
           "starter": true
         },
         {
@@ -2481,7 +2481,7 @@
           "firstName": "Younghoon",
           "lastName": "Joo",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769150366030_AME_LCS26S1_SR_BVOY.png",
+          "image": "https://static.lolesports.com/players/1769150366030_AME_LCS26S1_SR_BVOY.png",
           "starter": true
         },
         {
@@ -2489,7 +2489,7 @@
           "firstName": "Tristan",
           "lastName": "Stidam",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1790204939755_zeyzal.png",
+          "image": "https://static.lolesports.com/players/1790204939755_zeyzal.png",
           "starter": true
         }
       ]
@@ -2502,7 +2502,7 @@
           "firstName": "Eon-Young",
           "lastName": "Jeong",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769150328282_AME_LCS26S1_SEN_IMPACT.png",
+          "image": "https://static.lolesports.com/players/1769150328282_AME_LCS26S1_SEN_IMPACT.png",
           "starter": true
         },
         {
@@ -2510,7 +2510,7 @@
           "firstName": "Yujin",
           "lastName": "Ham",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769752624889_hambak.png",
+          "image": "https://static.lolesports.com/players/1769752624889_hambak.png",
           "starter": true
         },
         {
@@ -2518,7 +2518,7 @@
           "firstName": "Isaac",
           "lastName": "Chou",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769150251794_AME_LCS26S1_SEN_DARKWINGS.png",
+          "image": "https://static.lolesports.com/players/1769150251794_AME_LCS26S1_SEN_DARKWINGS.png",
           "starter": true
         },
         {
@@ -2526,7 +2526,7 @@
           "firstName": "Minseong",
           "lastName": "Cho",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769752604733_rahel.png",
+          "image": "https://static.lolesports.com/players/1769752604733_rahel.png",
           "starter": true
         },
         {
@@ -2534,7 +2534,7 @@
           "firstName": "Jae Hyun",
           "lastName": "Choi",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769150288234_AME_LCS26S1_SEN_HUHI.png",
+          "image": "https://static.lolesports.com/players/1769150288234_AME_LCS26S1_SEN_HUHI.png",
           "starter": true
         }
       ]
@@ -2547,7 +2547,7 @@
           "firstName": "Dang Khoa",
           "lastName": "Nguyen",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1775221968161_Pun.png",
+          "image": "https://static.lolesports.com/players/1775221968161_Pun.png",
           "starter": true
         },
         {
@@ -2555,7 +2555,7 @@
           "firstName": "Văn Hoàng Hải",
           "lastName": "Lê",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1775221973791_Hizto.png",
+          "image": "https://static.lolesports.com/players/1775221973791_Hizto.png",
           "starter": true
         },
         {
@@ -2563,7 +2563,7 @@
           "firstName": "Duy Đức",
           "lastName": "Trần",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1775221979037_Dire.png",
+          "image": "https://static.lolesports.com/players/1775221979037_Dire.png",
           "starter": true
         },
         {
@@ -2571,7 +2571,7 @@
           "firstName": "Công Nghĩa",
           "lastName": "Hoàng",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1775221984176_Eddie.png",
+          "image": "https://static.lolesports.com/players/1775221984176_Eddie.png",
           "starter": true
         },
         {
@@ -2579,7 +2579,7 @@
           "firstName": "Hieu",
           "lastName": "Tran Duc ",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1775221988811_Bie.png",
+          "image": "https://static.lolesports.com/players/1775221988811_Bie.png",
           "starter": true
         }
       ]
@@ -2592,7 +2592,7 @@
           "firstName": "Sang",
           "lastName": "Tran Duy ",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769231292377_Kiaya.png",
+          "image": "https://static.lolesports.com/players/1769231292377_Kiaya.png",
           "starter": false
         },
         {
@@ -2600,7 +2600,7 @@
           "firstName": "Tien Phat",
           "lastName": "Nguyen",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -2608,7 +2608,7 @@
           "firstName": "Toan",
           "lastName": "Le Ngoc ",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769231353199_Draktharr.png",
+          "image": "https://static.lolesports.com/players/1769231353199_Draktharr.png",
           "starter": false
         },
         {
@@ -2616,7 +2616,7 @@
           "firstName": "Ngoc Vinh",
           "lastName": "Le",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -2624,7 +2624,7 @@
           "firstName": "Hung",
           "lastName": "Tran Quoc ",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769231486961_Artemis.png",
+          "image": "https://static.lolesports.com/players/1769231486961_Artemis.png",
           "starter": false
         },
         {
@@ -2632,7 +2632,7 @@
           "firstName": "Tai",
           "lastName": "Dinh Anh ",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769231527706_Taki.png",
+          "image": "https://static.lolesports.com/players/1769231527706_Taki.png",
           "starter": false
         }
       ]
@@ -2645,7 +2645,7 @@
           "firstName": "Chak-Kin",
           "lastName": "Lo",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769232909918_Flauren.png",
+          "image": "https://static.lolesports.com/players/1769232909918_Flauren.png",
           "starter": true
         },
         {
@@ -2653,7 +2653,7 @@
           "firstName": "YI-HAN",
           "lastName": "WU",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769232940755_Pop9.png",
+          "image": "https://static.lolesports.com/players/1769232940755_Pop9.png",
           "starter": true
         },
         {
@@ -2661,7 +2661,7 @@
           "firstName": "BEI YI",
           "lastName": "GUO",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769232968075_HongSuo.png",
+          "image": "https://static.lolesports.com/players/1769232968075_HongSuo.png",
           "starter": true
         },
         {
@@ -2669,7 +2669,7 @@
           "firstName": "YI-XIANG",
           "lastName": "LIAO",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769233082016_XiaoXiang.png",
+          "image": "https://static.lolesports.com/players/1769233082016_XiaoXiang.png",
           "starter": false
         },
         {
@@ -2677,7 +2677,7 @@
           "firstName": "Jun-Feng",
           "lastName": "Chen",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769233007340_Feng.png",
+          "image": "https://static.lolesports.com/players/1769233007340_Feng.png",
           "starter": true
         },
         {
@@ -2685,7 +2685,7 @@
           "firstName": "Jia-Hao ",
           "lastName": "Liu",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769233035363_ShiauC.png",
+          "image": "https://static.lolesports.com/players/1769233035363_ShiauC.png",
           "starter": true
         }
       ]
@@ -2698,7 +2698,7 @@
           "firstName": "SHI-JIE",
           "lastName": "XU",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769232185565_Rest.png",
+          "image": "https://static.lolesports.com/players/1769232185565_Rest.png",
           "starter": false
         },
         {
@@ -2706,7 +2706,7 @@
           "firstName": "Zhiqian",
           "lastName": "Zhao",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769232218550_Shad0w.png",
+          "image": "https://static.lolesports.com/players/1769232218550_Shad0w.png",
           "starter": false
         },
         {
@@ -2714,7 +2714,7 @@
           "firstName": "INUNG",
           "lastName": "HAN",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785926070523_POUT.png",
+          "image": "https://static.lolesports.com/players/1785926070523_POUT.png",
           "starter": false
         },
         {
@@ -2722,7 +2722,7 @@
           "firstName": "Tzu-Chuan",
           "lastName": "Chiu",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769232306480_Doggo.png",
+          "image": "https://static.lolesports.com/players/1769232306480_Doggo.png",
           "starter": false
         },
         {
@@ -2730,7 +2730,7 @@
           "firstName": "XIN-RONG",
           "lastName": "JHU WU",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785926061333_Kino.png",
+          "image": "https://static.lolesports.com/players/1785926061333_Kino.png",
           "starter": false
         }
       ]
@@ -2743,7 +2743,7 @@
           "firstName": "Khanh",
           "lastName": "Ngo Duc",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769231608754_Kratos.png",
+          "image": "https://static.lolesports.com/players/1769231608754_Kratos.png",
           "starter": false
         },
         {
@@ -2751,7 +2751,7 @@
           "firstName": "QUOC KHANH",
           "lastName": "LE",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785926056081_SanSan.png",
+          "image": "https://static.lolesports.com/players/1785926056081_SanSan.png",
           "starter": false
         },
         {
@@ -2759,7 +2759,7 @@
           "firstName": "Luong Hai",
           "lastName": "Long",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769231815740_Gury.png",
+          "image": "https://static.lolesports.com/players/1769231815740_Gury.png",
           "starter": false
         },
         {
@@ -2767,7 +2767,7 @@
           "firstName": "Le Nhan",
           "lastName": "Vo",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1775222135365_Chika.png",
+          "image": "https://static.lolesports.com/players/1775222135365_Chika.png",
           "starter": false
         },
         {
@@ -2775,7 +2775,7 @@
           "firstName": "Huu",
           "lastName": "Nguyen Van",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1775222116165_Harky.png",
+          "image": "https://static.lolesports.com/players/1775222116165_Harky.png",
           "starter": false
         },
         {
@@ -2783,7 +2783,7 @@
           "firstName": "Hoang Lam",
           "lastName": "Nguyen",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1775222126505_SiuLoong.png",
+          "image": "https://static.lolesports.com/players/1775222126505_SiuLoong.png",
           "starter": false
         }
       ]
@@ -2796,7 +2796,7 @@
           "firstName": "Shunsuke",
           "lastName": "Murase",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1769232705840_Evi.png",
+          "image": "https://static.lolesports.com/players/1769232705840_Evi.png",
           "starter": false
         },
         {
@@ -2804,7 +2804,7 @@
           "firstName": "Seunghu",
           "lastName": "Kim",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769232750898_Van1.png",
+          "image": "https://static.lolesports.com/players/1769232750898_Van1.png",
           "starter": false
         },
         {
@@ -2812,7 +2812,7 @@
           "firstName": "Gaeul",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1769232791302_Aria.png",
+          "image": "https://static.lolesports.com/players/1769232791302_Aria.png",
           "starter": false
         },
         {
@@ -2820,7 +2820,7 @@
           "firstName": "Rei ",
           "lastName": "Shimaya",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769232849627_Marble.png",
+          "image": "https://static.lolesports.com/players/1769232849627_Marble.png",
           "starter": false
         },
         {
@@ -2828,7 +2828,7 @@
           "firstName": "Hyoseong",
           "lastName": "Oh",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1769232878116_Vsta.png",
+          "image": "https://static.lolesports.com/players/1769232878116_Vsta.png",
           "starter": false
         }
       ]
@@ -2841,7 +2841,7 @@
           "firstName": "Yi CHIN",
           "lastName": "Chen",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1775222062914_1Jiang.png",
+          "image": "https://static.lolesports.com/players/1775222062914_1Jiang.png",
           "starter": false
         },
         {
@@ -2849,7 +2849,7 @@
           "firstName": "TZU WEI",
           "lastName": "HUANG",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1775222067056_Husha.png",
+          "image": "https://static.lolesports.com/players/1775222067056_Husha.png",
           "starter": false
         },
         {
@@ -2857,7 +2857,7 @@
           "firstName": "Chang-Ju",
           "lastName": "Chen",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785926085225_Uniboy.png",
+          "image": "https://static.lolesports.com/players/1785926085225_Uniboy.png",
           "starter": false
         },
         {
@@ -2865,7 +2865,7 @@
           "firstName": "Yu-Hung ",
           "lastName": "Lu",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785926075429_Betty.png",
+          "image": "https://static.lolesports.com/players/1785926075429_Betty.png",
           "starter": false
         },
         {
@@ -2873,7 +2873,7 @@
           "firstName": "Kai Wing",
           "lastName": "Ling",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785926080436_Kaiwing.png",
+          "image": "https://static.lolesports.com/players/1785926080436_Kaiwing.png",
           "starter": false
         }
       ]
@@ -2886,7 +2886,7 @@
           "firstName": "Sora",
           "lastName": "Tobita",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1775222047156_Momo.png",
+          "image": "https://static.lolesports.com/players/1775222047156_Momo.png",
           "starter": false
         },
         {
@@ -2894,7 +2894,7 @@
           "firstName": "Ji Woong",
           "lastName": "Byun",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1769232495781_Citrus.png",
+          "image": "https://static.lolesports.com/players/1769232495781_Citrus.png",
           "starter": false
         },
         {
@@ -2902,7 +2902,7 @@
           "firstName": "Jeongtae",
           "lastName": "Lee",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1775222053402_Fisher.png",
+          "image": "https://static.lolesports.com/players/1775222053402_Fisher.png",
           "starter": false
         },
         {
@@ -2910,7 +2910,7 @@
           "firstName": "Kamon",
           "lastName": "Nomoto",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1769232593112_Kakkun.png",
+          "image": "https://static.lolesports.com/players/1769232593112_Kakkun.png",
           "starter": false
         },
         {
@@ -2918,7 +2918,7 @@
           "firstName": "Yu-En",
           "lastName": "Lin",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1775222058551_Woody.png",
+          "image": "https://static.lolesports.com/players/1775222058551_Woody.png",
           "starter": false
         }
       ]
@@ -2931,7 +2931,7 @@
           "firstName": "Guilherme",
           "lastName": "Ruiz",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785137517154_FUR_Guigo-1copy.png",
+          "image": "https://static.lolesports.com/players/1785137517154_FUR_Guigo-1copy.png",
           "starter": true
         },
         {
@@ -2939,7 +2939,7 @@
           "firstName": "Pedro",
           "lastName": "Seixas",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785137528696_FUR_Tatu-1copy.png",
+          "image": "https://static.lolesports.com/players/1785137528696_FUR_Tatu-1copy.png",
           "starter": true
         },
         {
@@ -2947,7 +2947,7 @@
           "firstName": "Diogo",
           "lastName": "Rogê",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -2955,7 +2955,7 @@
           "firstName": "Arthur",
           "lastName": "Machado",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785137538274_FUR_Tutsz-1copy.png",
+          "image": "https://static.lolesports.com/players/1785137538274_FUR_Tutsz-1copy.png",
           "starter": true
         },
         {
@@ -2963,7 +2963,7 @@
           "firstName": "Andrey",
           "lastName": "Saraiva",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785137510622_FUR_Ayu-1copy.png",
+          "image": "https://static.lolesports.com/players/1785137510622_FUR_Ayu-1copy.png",
           "starter": true
         },
         {
@@ -2971,7 +2971,7 @@
           "firstName": "Gabriel",
           "lastName": "Dzelme",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785137522978_FUR_Jojo-1copy.png",
+          "image": "https://static.lolesports.com/players/1785137522978_FUR_Jojo-1copy.png",
           "starter": true
         }
       ]
@@ -2984,7 +2984,7 @@
           "firstName": "Matheus",
           "lastName": "Silva",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785142349477_RED_Zynts-1copy.png",
+          "image": "https://static.lolesports.com/players/1785142349477_RED_Zynts-1copy.png",
           "starter": true
         },
         {
@@ -2992,7 +2992,7 @@
           "firstName": "João",
           "lastName": "Loureiro",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1717435024791_Jmz.png",
+          "image": "https://static.lolesports.com/players/1717435024791_Jmz.png",
           "starter": false
         },
         {
@@ -3000,7 +3000,7 @@
           "firstName": "Eloy",
           "lastName": "Rodriguez",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785142383650_RED_Stepz-1copy.png",
+          "image": "https://static.lolesports.com/players/1785142383650_RED_Stepz-1copy.png",
           "starter": true
         },
         {
@@ -3008,7 +3008,7 @@
           "firstName": "Anthony",
           "lastName": "Bonatto",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -3016,7 +3016,7 @@
           "firstName": "Gabriel",
           "lastName": "Furuya",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785142378404_RED_Fuuu-1copy.png",
+          "image": "https://static.lolesports.com/players/1785142378404_RED_Fuuu-1copy.png",
           "starter": true
         },
         {
@@ -3024,7 +3024,7 @@
           "firstName": "Davi",
           "lastName": "Loureiro",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -3032,7 +3032,7 @@
           "firstName": "Matheus",
           "lastName": "Motta",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785142373432_RED_Morttheus-1copy.png",
+          "image": "https://static.lolesports.com/players/1785142373432_RED_Morttheus-1copy.png",
           "starter": true
         },
         {
@@ -3040,7 +3040,7 @@
           "firstName": "Giuliano",
           "lastName": "de Lorenzo",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -3048,7 +3048,7 @@
           "firstName": "Emanuel",
           "lastName": "Lopes",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1717430231339_Manel.png",
+          "image": "https://static.lolesports.com/players/1717430231339_Manel.png",
           "starter": true
         },
         {
@@ -3056,7 +3056,7 @@
           "firstName": "José",
           "lastName": "Leal",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785142368737_RED_Frosty-1copy.png",
+          "image": "https://static.lolesports.com/players/1785142368737_RED_Frosty-1copy.png",
           "starter": false
         }
       ]
@@ -3069,7 +3069,7 @@
           "firstName": "Carlos ",
           "lastName": "Ferreira",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785138025769_Loud_Xyno-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138025769_Loud_Xyno-1copy.png",
           "starter": true
         },
         {
@@ -3077,7 +3077,7 @@
           "firstName": "Enzo",
           "lastName": "Ferreira",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785138020504_Loud_Sinatra-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138020504_Loud_Sinatra-1copy.png",
           "starter": true
         },
         {
@@ -3085,7 +3085,7 @@
           "firstName": "Lucas",
           "lastName": "Sebastian",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785138015783_Loud_Kaze-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138015783_Loud_Kaze-1copy.png",
           "starter": true
         },
         {
@@ -3093,7 +3093,7 @@
           "firstName": "  Jean",
           "lastName": "  Dias ",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768377459812_image6618.png",
+          "image": "https://static.lolesports.com/players/1768377459812_image6618.png",
           "starter": false
         },
         {
@@ -3101,7 +3101,7 @@
           "firstName": "Guilherme",
           "lastName": "Muniz",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785138010514_Loud_Rabelo-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138010514_Loud_Rabelo-1copy.png",
           "starter": true
         },
         {
@@ -3109,7 +3109,7 @@
           "firstName": "Matheus",
           "lastName": "Ferreira",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785138005226_Loud_Uzent-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138005226_Loud_Uzent-1copy.png",
           "starter": true
         }
       ]
@@ -3122,7 +3122,7 @@
           "firstName": "Felipe",
           "lastName": "Boal",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785141997512_PNG_Boal-1copy.png",
+          "image": "https://static.lolesports.com/players/1785141997512_PNG_Boal-1copy.png",
           "starter": true
         },
         {
@@ -3130,7 +3130,7 @@
           "firstName": "Marcos",
           "lastName": "Oliveira",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785141992129_PNG_Cariok-1copy.png",
+          "image": "https://static.lolesports.com/players/1785141992129_PNG_Cariok-1copy.png",
           "starter": true
         },
         {
@@ -3138,7 +3138,7 @@
           "firstName": "Samuel",
           "lastName": "Rosa",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1774567150246_samkz.png",
+          "image": "https://static.lolesports.com/players/1774567150246_samkz.png",
           "starter": false
         },
         {
@@ -3146,7 +3146,7 @@
           "firstName": "Daniel",
           "lastName": "Tonelli",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1717432498685_Namiru.png",
+          "image": "https://static.lolesports.com/players/1717432498685_Namiru.png",
           "starter": true
         },
         {
@@ -3154,7 +3154,7 @@
           "firstName": "Kim",
           "lastName": "Cheol",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785141987751_PNG_Keine-1copy.png",
+          "image": "https://static.lolesports.com/players/1785141987751_PNG_Keine-1copy.png",
           "starter": false
         },
         {
@@ -3162,7 +3162,7 @@
           "firstName": "Jeunghwan",
           "lastName": "Park",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785141982983_PNG_Hena-1copy.png",
+          "image": "https://static.lolesports.com/players/1785141982983_PNG_Hena-1copy.png",
           "starter": true
         },
         {
@@ -3170,7 +3170,7 @@
           "firstName": "Denilson",
           "lastName": "Oliveira",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785141977929_PNG_Ceos-1copy.png",
+          "image": "https://static.lolesports.com/players/1785141977929_PNG_Ceos-1copy.png",
           "starter": true
         }
       ]
@@ -3183,7 +3183,7 @@
           "firstName": "Cesar",
           "lastName": "França",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785142363013_VKS_Zekas-1copy.png",
+          "image": "https://static.lolesports.com/players/1785142363013_VKS_Zekas-1copy.png",
           "starter": true
         },
         {
@@ -3191,7 +3191,7 @@
           "firstName": "Cleber",
           "lastName": "Nantes",
           "role": "top",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -3199,7 +3199,7 @@
           "firstName": "Pedro",
           "lastName": "Cavalcante",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1754037442082_disamis.png",
+          "image": "https://static.lolesports.com/players/1754037442082_disamis.png",
           "starter": true
         },
         {
@@ -3207,7 +3207,7 @@
           "firstName": "Victor",
           "lastName": "Noguchi",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1754037575571_sarolu.png",
+          "image": "https://static.lolesports.com/players/1754037575571_sarolu.png",
           "starter": false
         },
         {
@@ -3215,7 +3215,7 @@
           "firstName": "Jobeen",
           "lastName": "Jeong",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1754037358233_mireu.png",
+          "image": "https://static.lolesports.com/players/1754037358233_mireu.png",
           "starter": true
         },
         {
@@ -3223,7 +3223,7 @@
           "firstName": "Thiago",
           "lastName": "Augusto",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1754037546970_qats.png",
+          "image": "https://static.lolesports.com/players/1754037546970_qats.png",
           "starter": false
         },
         {
@@ -3231,7 +3231,7 @@
           "firstName": "Jesper",
           "lastName": "Stromberg",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785142357541_VKS_Jeskla-1copy.png",
+          "image": "https://static.lolesports.com/players/1785142357541_VKS_Jeskla-1copy.png",
           "starter": true
         },
         {
@@ -3239,7 +3239,7 @@
           "firstName": "Daniel",
           "lastName": "de Jesus",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/default-headshot.png",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -3247,7 +3247,7 @@
           "firstName": "Pedro",
           "lastName": "Maximiniano",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1754037601928_scamber.png",
+          "image": "https://static.lolesports.com/players/1754037601928_scamber.png",
           "starter": true
         },
         {
@@ -3255,7 +3255,7 @@
           "firstName": "Vinicius",
           "lastName": "Viana",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1717426916070_Zay.png",
+          "image": "https://static.lolesports.com/players/1717426916070_Zay.png",
           "starter": false
         }
       ]
@@ -3268,7 +3268,7 @@
           "firstName": "Dongmin",
           "lastName": "Kim",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785139905307_LOS_Zest-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139905307_LOS_Zest-1copy.png",
           "starter": true
         },
         {
@@ -3276,7 +3276,7 @@
           "firstName": "Raí",
           "lastName": "Yamada",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785139911386_LOS_Curse-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139911386_LOS_Curse-1copy.png",
           "starter": true
         },
         {
@@ -3284,7 +3284,7 @@
           "firstName": "Seonghun",
           "lastName": "Jung",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785139916710_LOS_Feisty-5copy.png",
+          "image": "https://static.lolesports.com/players/1785139916710_LOS_Feisty-5copy.png",
           "starter": true
         },
         {
@@ -3292,7 +3292,7 @@
           "firstName": "Wallyson",
           "lastName": "Silva",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785139922550_LOS_Duduhh-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139922550_LOS_Duduhh-1copy.png",
           "starter": true
         },
         {
@@ -3300,7 +3300,7 @@
           "firstName": "Gabriel",
           "lastName": "Aparicio",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785139928559_LOS_Ackerman-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139928559_LOS_Ackerman-1copy.png",
           "starter": true
         }
       ]
@@ -3313,7 +3313,7 @@
           "firstName": "Carlo André",
           "lastName": "Carrión Zapata",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785139505968_FX_Zothve-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139505968_FX_Zothve-1copy.png",
           "starter": true
         },
         {
@@ -3321,7 +3321,7 @@
           "firstName": "Pedro",
           "lastName": "Curty",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1768375100964_image6236.png",
+          "image": "https://static.lolesports.com/players/1768375100964_image6236.png",
           "starter": false
         },
         {
@@ -3329,7 +3329,7 @@
           "firstName": "Mingyu",
           "lastName": "Lee",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785139513908_FX_Peach-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139513908_FX_Peach-1copy.png",
           "starter": true
         },
         {
@@ -3337,7 +3337,7 @@
           "firstName": "Cristian",
           "lastName": "Yampara",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785139531116_FX_Cody-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139531116_FX_Cody-1copy.png",
           "starter": true
         },
         {
@@ -3345,7 +3345,7 @@
           "firstName": "Bruno",
           "lastName": "Ferreira",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1768376412875_image6617.png",
+          "image": "https://static.lolesports.com/players/1768376412875_image6617.png",
           "starter": false
         },
         {
@@ -3353,7 +3353,7 @@
           "firstName": "Hyeonu",
           "lastName": "Chung",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785139523706_FX_Bao-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139523706_FX_Bao-1copy.png",
           "starter": true
         },
         {
@@ -3361,7 +3361,7 @@
           "firstName": "Gabriel",
           "lastName": "Oliveira",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785139537171_FX_Momochi-1copy.png",
+          "image": "https://static.lolesports.com/players/1785139537171_FX_Momochi-1copy.png",
           "starter": true
         },
         {
@@ -3369,7 +3369,7 @@
           "firstName": "Fábio",
           "lastName": "Marques",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1768376111969_image6336.png",
+          "image": "https://static.lolesports.com/players/1768376111969_image6336.png",
           "starter": false
         }
       ]
@@ -3382,7 +3382,7 @@
           "firstName": "Julián",
           "lastName": "Orozco",
           "role": "top",
-          "image": "http://static.lolesports.com/players/1785138940948_LEV_Devost-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138940948_LEV_Devost-1copy.png",
           "starter": true
         },
         {
@@ -3390,7 +3390,7 @@
           "firstName": "Piero",
           "lastName": "Herrera",
           "role": "jungle",
-          "image": "http://static.lolesports.com/players/1785138935624_LEV_Booki-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138935624_LEV_Booki-1copy.png",
           "starter": true
         },
         {
@@ -3398,7 +3398,7 @@
           "firstName": "Eneas",
           "lastName": "Protti",
           "role": "mid",
-          "image": "http://static.lolesports.com/players/1785138930440_LEV_Enga-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138930440_LEV_Enga-1copy.png",
           "starter": true
         },
         {
@@ -3406,7 +3406,7 @@
           "firstName": "Cristopher",
           "lastName": "Gonzalez",
           "role": "bottom",
-          "image": "http://static.lolesports.com/players/1785138924996_LEV_Strens-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138924996_LEV_Strens-1copy.png",
           "starter": true
         },
         {
@@ -3414,7 +3414,7 @@
           "firstName": "Carlo Andre",
           "lastName": "Carrion Zapata",
           "role": "support",
-          "image": "http://static.lolesports.com/players/1785138919269_LEV_Shiku-1copy.png",
+          "image": "https://static.lolesports.com/players/1785138919269_LEV_Shiku-1copy.png",
           "starter": true
         }
       ]

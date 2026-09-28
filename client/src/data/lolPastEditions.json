@@ -52,7 +52,9 @@
     },
     "2016": {
       "lck": [
+        "Spring 승강전",
         "Spring",
+        "Summer 승강전",
         "Summer"
       ],
       "lec": {
@@ -71,7 +73,9 @@
     },
     "2017": {
       "lck": [
+        "Spring 승강전",
         "Spring",
+        "Summer 승강전",
         "Summer"
       ],
       "lec": [
@@ -85,7 +89,9 @@
     },
     "2018": {
       "lck": [
+        "Spring 승강전",
         "Spring",
+        "Summer 승강전",
         "Summer"
       ],
       "lec": [
@@ -99,7 +105,9 @@
     },
     "2019": {
       "lck": [
+        "Spring 승강전",
         "Spring",
+        "Summer 승강전",
         "Summer"
       ],
       "lec": [
@@ -113,7 +121,9 @@
     },
     "2020": {
       "lck": [
+        "Spring 승강전",
         "Split 1",
+        "Summer 승강전",
         "Summer"
       ],
       "lpl": [
@@ -9093,6 +9103,56 @@
     },
     "2016": {
       "lck": {
+        "Spring 승강전": {
+          "name": "LCK 2016 Spring 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 4,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "IMI",
+                          "score": 3,
+                          "msi": true
+                        },
+                        "b": {
+                          "short": "DW",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "SSO",
+                          "score": 3,
+                          "msi": true
+                        },
+                        "b": {
+                          "short": "ESCX",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "startRow": 2
+                      }
+                    ]
+                  }
+                ],
+                "connectors": []
+              }
+            }
+          ]
+        },
         "Spring": {
           "name": "LCK Spring 2016",
           "rows": [
@@ -9332,6 +9392,56 @@
               "rank": 10,
               "team": "KDM1",
               "note": ""
+            }
+          ]
+        },
+        "Summer 승강전": {
+          "name": "LCK 2016 Summer 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 4,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "SSO",
+                          "score": 0,
+                          "elim": true
+                        },
+                        "b": {
+                          "short": "ESCX",
+                          "score": 3,
+                          "msi": true
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "KDM1",
+                          "score": 1,
+                          "elim": true
+                        },
+                        "b": {
+                          "short": "MVP",
+                          "score": 3,
+                          "msi": true
+                        },
+                        "startRow": 2
+                      }
+                    ]
+                  }
+                ],
+                "connectors": []
+              }
             }
           ]
         },
@@ -11585,6 +11695,131 @@
     },
     "2017": {
       "lck": {
+        "Spring 승강전": {
+          "name": "LCK 2017 Spring 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "ESCX",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "SBK",
+                          "score": 1
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "CJ",
+                          "score": 0
+                        },
+                        "b": {
+                          "short": "KDM1",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "SBK",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "CJ",
+                          "score": 2,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "ESCX",
+                          "score": 1,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "KDM1",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "ESCX",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "CJ",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
         "Spring": {
           "name": "LCK Spring 2017",
           "rows": [
@@ -11824,6 +12059,131 @@
               "rank": 10,
               "team": "KDM1",
               "note": ""
+            }
+          ]
+        },
+        "Summer 승강전": {
+          "name": "LCK 2017 Summer 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "JAG",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "EEW",
+                          "score": 0
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "KDM1",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "CJ",
+                          "score": 1
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "EEW",
+                          "score": 2,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "CJ",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "JAG",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "KDM1",
+                          "score": 1,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "KDM1",
+                          "score": 1,
+                          "elim": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "EEW",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
             }
           ]
         },
@@ -13161,6 +13521,131 @@
     },
     "2018": {
       "lck": {
+        "Spring 승강전": {
+          "name": "LCK 2018 Spring 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "BBQ",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "CJ",
+                          "score": 1
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "EEW",
+                          "score": 1
+                        },
+                        "b": {
+                          "short": "KDM1",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "CJ",
+                          "score": 2,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "EEW",
+                          "score": 1,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "BBQ",
+                          "score": 1,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "KDM1",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "BBQ",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "CJ",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
         "Spring": {
           "name": "LCK Spring 2018",
           "rows": [
@@ -13400,6 +13885,131 @@
               "rank": 10,
               "team": "KDM1",
               "note": ""
+            }
+          ]
+        },
+        "Summer 승강전": {
+          "name": "LCK 2018 Summer 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "MVP",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "EEW",
+                          "score": 1
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "KDM1",
+                          "score": 0
+                        },
+                        "b": {
+                          "short": "GFF",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "EEW",
+                          "score": 1,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "KDM1",
+                          "score": 2,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "MVP",
+                          "score": 1,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "GFF",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "MVP",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "KDM1",
+                          "score": 2,
+                          "elim": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
             }
           ]
         },
@@ -14825,6 +15435,131 @@
     },
     "2019": {
       "lck": {
+        "Spring 승강전": {
+          "name": "LCK 2019 Spring 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "MVP",
+                          "score": 0
+                        },
+                        "b": {
+                          "short": "BTC",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "BBQ",
+                          "score": 0
+                        },
+                        "b": {
+                          "short": "DK",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "MVP",
+                          "score": 3,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "BBQ",
+                          "score": 1,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "BTC",
+                          "score": 1,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "DK",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "BTC",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "MVP",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
         "Spring": {
           "name": "LCK Spring 2019",
           "rows": [
@@ -15064,6 +15799,131 @@
               "rank": 10,
               "team": "JAG",
               "note": ""
+            }
+          ]
+        },
+        "Summer 승강전": {
+          "name": "LCK 2019 Summer 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "KT",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "VSG",
+                          "score": 0
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "JAG",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "ESS",
+                          "score": 0
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "VSG",
+                          "score": 2,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "ESS",
+                          "score": 3,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "KT",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "JAG",
+                          "score": 0,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "JAG",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "ESS",
+                          "score": 1,
+                          "elim": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
             }
           ]
         },
@@ -16470,6 +17330,131 @@
     },
     "2020": {
       "lck": {
+        "Spring 승강전": {
+          "name": "LCK 2020 Spring 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "HLE",
+                          "score": 1
+                        },
+                        "b": {
+                          "short": "SP11",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "JAG",
+                          "score": 2,
+                          "win": true
+                        },
+                        "b": {
+                          "short": "NS",
+                          "score": 0
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "HLE",
+                          "score": 3,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "NS",
+                          "score": 1,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "SP11",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "JAG",
+                          "score": 1,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "JAG",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "HLE",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
         "Split 1": {
           "name": "2020 LCK 스프링 스플릿",
           "rows": [
@@ -16657,162 +17642,6 @@
                 ],
                 "totalRows": 2
               }
-            },
-            {
-              "slug": "knockouts",
-              "name": "토너먼트 스테이지",
-              "bracket": {
-                "totalRows": 5,
-                "rounds": [
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "104072420722551892",
-                        "title": "플레이오프 - 1라운드",
-                        "a": {
-                          "seed": "1위",
-                          "short": "BFX",
-                          "score": 0
-                        },
-                        "b": {
-                          "seed": "3위",
-                          "short": "NS",
-                          "score": 2,
-                          "win": true
-                        },
-                        "startRow": 0
-                      },
-                      {
-                        "id": "104072420722551896",
-                        "title": "플레이오프 - 1라운드",
-                        "a": {
-                          "seed": "2위",
-                          "short": "GFF",
-                          "score": 1
-                        },
-                        "b": {
-                          "seed": "4위",
-                          "short": "SRB",
-                          "score": 2,
-                          "win": true
-                        },
-                        "startRow": 2
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "104072420722551904",
-                        "title": "4강",
-                        "a": {
-                          "seed": "플레이오프 - 1라운드 승자",
-                          "short": "NS",
-                          "score": 2,
-                          "msi": true
-                        },
-                        "b": {
-                          "seed": "플레이오프 - 1라운드 승자",
-                          "short": "SRB",
-                          "score": 0
-                        },
-                        "startRow": 1
-                      },
-                      {
-                        "id": "104072420722551900",
-                        "title": "8강",
-                        "a": {
-                          "seed": "플레이오프 - 1라운드 패자",
-                          "short": "BFX",
-                          "score": 2,
-                          "win": true
-                        },
-                        "b": {
-                          "seed": "플레이오프 - 1라운드 패자",
-                          "short": "GFF",
-                          "score": 0,
-                          "elim": true
-                        },
-                        "startRow": 3
-                      }
-                    ]
-                  },
-                  {
-                    "title": "",
-                    "matches": [
-                      {
-                        "id": "104072420722551908",
-                        "title": "결승",
-                        "a": {
-                          "seed": "4강 패자",
-                          "short": "SRB",
-                          "score": 0,
-                          "elim": true
-                        },
-                        "b": {
-                          "seed": "8강 승자",
-                          "short": "BFX",
-                          "score": 3,
-                          "msi": true
-                        },
-                        "startRow": 3
-                      }
-                    ]
-                  }
-                ],
-                "connectors": [
-                  [
-                    0,
-                    0,
-                    "mid",
-                    1,
-                    0,
-                    "a"
-                  ],
-                  [
-                    0,
-                    0,
-                    "mid",
-                    1,
-                    1,
-                    "a"
-                  ],
-                  [
-                    0,
-                    1,
-                    "mid",
-                    1,
-                    0,
-                    "b"
-                  ],
-                  [
-                    0,
-                    1,
-                    "mid",
-                    1,
-                    1,
-                    "b"
-                  ],
-                  [
-                    1,
-                    0,
-                    "mid",
-                    2,
-                    0,
-                    "a"
-                  ],
-                  [
-                    1,
-                    1,
-                    "mid",
-                    2,
-                    0,
-                    "b"
-                  ]
-                ]
-              }
             }
           ],
           "finalStandings": [
@@ -16865,6 +17694,131 @@
               "rank": 10,
               "team": "HLE",
               "note": ""
+            }
+          ]
+        },
+        "Summer 승강전": {
+          "name": "LCK 2020 Summer 승강전",
+          "rows": [],
+          "brackets": [
+            {
+              "slug": "promotion",
+              "name": "승강전",
+              "label": "승강전",
+              "bracket": {
+                "totalRows": 6,
+                "rounds": [
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "BFX",
+                          "score": 0
+                        },
+                        "b": {
+                          "short": "NS",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 0
+                      },
+                      {
+                        "title": "1라운드",
+                        "a": {
+                          "short": "GFF",
+                          "score": 1
+                        },
+                        "b": {
+                          "short": "SRB",
+                          "score": 2,
+                          "win": true
+                        },
+                        "startRow": 2
+                      },
+                      {
+                        "title": "패자전",
+                        "a": {
+                          "short": "BFX",
+                          "score": 2,
+                          "win": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "b": {
+                          "short": "GFF",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "1라운드 패자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  },
+                  {
+                    "title": "",
+                    "matches": [
+                      {
+                        "title": "진출전 1경기",
+                        "a": {
+                          "short": "NS",
+                          "score": 2,
+                          "msi": true,
+                          "seed": "1라운드 승자"
+                        },
+                        "b": {
+                          "short": "SRB",
+                          "score": 0,
+                          "seed": "1라운드 승자"
+                        },
+                        "startRow": 1
+                      },
+                      {
+                        "title": "진출전 2경기",
+                        "a": {
+                          "short": "SRB",
+                          "score": 0,
+                          "elim": true,
+                          "seed": "진출전 1경기 패자"
+                        },
+                        "b": {
+                          "short": "BFX",
+                          "score": 3,
+                          "msi": true,
+                          "seed": "패자전 승자"
+                        },
+                        "startRow": 4
+                      }
+                    ]
+                  }
+                ],
+                "connectors": [
+                  [
+                    0,
+                    0,
+                    "mid",
+                    1,
+                    0,
+                    "a"
+                  ],
+                  [
+                    0,
+                    1,
+                    "mid",
+                    1,
+                    0,
+                    "b"
+                  ],
+                  [
+                    0,
+                    2,
+                    "mid",
+                    1,
+                    1,
+                    "b"
+                  ]
+                ]
+              }
             }
           ]
         },

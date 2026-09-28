@@ -93,10 +93,13 @@ const TeamPage = () => {
           {CHAMPION_BG_CONTAIN.has(teamShort) ? (
             <>
               <img src={teamBg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
-              <img src={teamBg} alt="" className="relative block w-full h-full object-contain" style={{ objectPosition: 'center top' }} />
+              {/* 메인 이미지 — 크기는 (화면 - 메뉴) 높이로 고정(축소 없음). 평소엔 상단이 메뉴에 붙고,
+                  흰색 바가 보이는 동안엔 바가 올라온 만큼 함께 위로 밀려 하단이 바 위에 보인다. */}
+              <img src={teamBg} alt="" className="absolute inset-x-0 block w-full object-contain" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: 'center top' }} />
             </>
           ) : (
-            <img src={teamBg} alt="" className="block w-full h-full object-cover" style={{ objectPosition: `center ${scrollPct}%` }} />
+            // 크기 고정(축소 없음) — 바 등장 전엔 스크롤 진행도로 상→하 이동, 바가 보이는 동안엔 바와 함께 위로 밀림.
+            <img src={teamBg} alt="" className="absolute inset-x-0 block w-full object-cover" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: `center ${scrollPct}%` }} />
           )}
           <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
           </div>
@@ -197,8 +200,8 @@ const TeamPage = () => {
                     key={i}
                     role={href ? 'link' : undefined}
                     tabIndex={href ? 0 : undefined}
-                    onClick={href ? () => navigate(href) : undefined}
-                    onKeyDown={href ? (e) => { if (e.key === 'Enter') navigate(href); } : undefined}
+                    onClick={href ? () => { navigate(href); window.scrollTo(0, 0); } : undefined}
+                    onKeyDown={href ? (e) => { if (e.key === 'Enter') { navigate(href); window.scrollTo(0, 0); } } : undefined}
                     className={`p-3 rounded-xl${href ? ' cursor-pointer transition-opacity hover:opacity-80' : ''}`}
                     style={{ ...bg, border: `1px solid ${t.gradient ? 'transparent' : 'rgba(255,255,255,0.12)'}` }}
                   >

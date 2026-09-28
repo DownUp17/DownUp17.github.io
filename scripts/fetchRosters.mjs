@@ -235,7 +235,7 @@ async function main() {
           firstName: p.firstName || '',
           lastName: p.lastName || '',
           role: p.role,
-          image: p.image || '',
+          image: (p.image || '').replace(/^http:\/\//, 'https://'), // http 이미지 → https(혼합 콘텐츠 경고 방지)
           starter: starters ? starters.has(p.summonerName) : false,
         }))
         // 역할 순서 → 같은 역할 내에서는 주전 먼저
