@@ -16662,7 +16662,7 @@
               "slug": "knockouts",
               "name": "토너먼트 스테이지",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 5,
                 "rounds": [
                   {
                     "title": "",
@@ -16735,7 +16735,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   },
@@ -16757,7 +16757,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -22413,7 +22413,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -22450,7 +22450,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -22489,7 +22489,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -22528,7 +22528,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -22565,7 +22565,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "105793730781835534",
@@ -22582,7 +22582,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -22603,7 +22603,7 @@
                           "short": "EDG",
                           "score": 2
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "105793730781901076",
@@ -22620,7 +22620,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -22642,7 +22642,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -22939,7 +22939,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -22976,7 +22976,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -23015,7 +23015,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -23054,7 +23054,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -23091,7 +23091,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "106433122689341404",
@@ -23108,7 +23108,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -23129,7 +23129,7 @@
                           "short": "WE",
                           "score": 0
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "106433122689341410",
@@ -23146,7 +23146,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -23168,7 +23168,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -23541,7 +23541,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -23576,7 +23576,7 @@
                             "short": "RGE",
                             "score": 1
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "105753930894421441",
@@ -23593,7 +23593,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -23615,7 +23615,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -23636,7 +23636,7 @@
                             "short": "G2",
                             "score": 1
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "105753980949216247",
@@ -23653,7 +23653,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -23675,7 +23675,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -23697,7 +23697,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -23877,7 +23877,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -23912,7 +23912,7 @@
                             "short": "G2",
                             "score": 1
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "106680962631761037",
@@ -23929,7 +23929,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -23951,7 +23951,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -23972,7 +23972,7 @@
                             "short": "RGE",
                             "score": 0
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "106680962631761055",
@@ -23989,7 +23989,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -24011,7 +24011,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -24033,7 +24033,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -25350,7 +25350,7 @@
               "slug": "knockouts",
               "name": "토너먼트 스테이지",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -25402,7 +25402,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "105912261862338017",
@@ -25419,7 +25419,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -25457,7 +25457,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -25479,7 +25479,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -25501,7 +25501,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -25677,7 +25677,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 14,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -25712,7 +25712,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "106433075319986036",
@@ -25729,7 +25729,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "106433075319986042",
@@ -25746,7 +25746,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -25783,7 +25783,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "106433075319986054",
@@ -25800,7 +25800,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "106433075319986060",
@@ -25817,7 +25817,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -25838,7 +25838,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "106433075319986066",
@@ -25855,7 +25855,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -25877,7 +25877,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -25899,7 +25899,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   }
@@ -26066,7 +26066,7 @@
               "slug": "playoffs",
               "name": "LCS Championship",
               "bracket": {
-                "totalRows": 14,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -26101,7 +26101,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "106433075319986036",
@@ -26118,7 +26118,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "106433075319986042",
@@ -26135,7 +26135,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -26172,7 +26172,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "106433075319986054",
@@ -26189,7 +26189,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "106433075319986060",
@@ -26206,7 +26206,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -26227,7 +26227,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "106433075319986066",
@@ -26244,7 +26244,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -26266,7 +26266,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -26288,7 +26288,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   }
@@ -29022,7 +29022,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -29059,7 +29059,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -29098,7 +29098,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -29137,7 +29137,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -29174,7 +29174,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "107417779634305520",
@@ -29191,7 +29191,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -29212,7 +29212,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "107417779634305526",
@@ -29229,7 +29229,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -29251,7 +29251,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -29548,7 +29548,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -29585,7 +29585,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -29624,7 +29624,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -29663,7 +29663,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -29700,7 +29700,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "108431300957971069",
@@ -29717,7 +29717,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -29738,7 +29738,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "108431300957971075",
@@ -29755,7 +29755,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -29777,7 +29777,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -30150,7 +30150,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -30185,7 +30185,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "107417293272826584",
@@ -30202,7 +30202,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30224,7 +30224,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30245,7 +30245,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "107417293272826602",
@@ -30262,7 +30262,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30284,7 +30284,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30306,7 +30306,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -30486,7 +30486,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -30518,7 +30518,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "108176672286729370",
@@ -30535,7 +30535,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30557,7 +30557,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30578,7 +30578,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "108176672286729388",
@@ -30595,7 +30595,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30617,7 +30617,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -30639,7 +30639,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -31670,7 +31670,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -31722,7 +31722,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "107458367241936679",
@@ -31739,7 +31739,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -31777,7 +31777,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -31799,7 +31799,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -31821,7 +31821,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -32017,7 +32017,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 14,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -32052,7 +32052,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "108206686183407309",
@@ -32069,7 +32069,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "108206686183472851",
@@ -32086,7 +32086,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -32123,7 +32123,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "108206686183472863",
@@ -32140,7 +32140,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "108206686183472869",
@@ -32157,7 +32157,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -32178,7 +32178,7 @@
                           "short": "100T",
                           "score": 1
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "108206686183472875",
@@ -32195,7 +32195,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -32217,7 +32217,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -32239,7 +32239,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   }
@@ -32406,7 +32406,7 @@
               "slug": "playoffs",
               "name": "LCS Championship",
               "bracket": {
-                "totalRows": 14,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -32441,7 +32441,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "108206686183407309",
@@ -32458,7 +32458,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "108206686183472851",
@@ -32475,7 +32475,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -32512,7 +32512,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "108206686183472863",
@@ -32529,7 +32529,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "108206686183472869",
@@ -32546,7 +32546,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -32567,7 +32567,7 @@
                           "short": "100T",
                           "score": 1
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "108206686183472875",
@@ -32584,7 +32584,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -32606,7 +32606,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -32628,7 +32628,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   }
@@ -33596,7 +33596,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 8,
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -33913,7 +33913,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 8,
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -37358,7 +37358,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 8,
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -38200,7 +38200,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -38237,7 +38237,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -38274,7 +38274,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -38295,7 +38295,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "109625510279844693",
@@ -38312,7 +38312,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38334,7 +38334,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38356,7 +38356,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -38568,7 +38568,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -38605,7 +38605,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -38642,7 +38642,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -38663,7 +38663,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "110371551279147582",
@@ -38680,7 +38680,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38702,7 +38702,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -38724,7 +38724,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -39095,7 +39095,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -39132,7 +39132,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -39171,7 +39171,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -39210,7 +39210,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -39247,7 +39247,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "109669600530214249",
@@ -39264,7 +39264,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -39285,7 +39285,7 @@
                           "short": "EDG",
                           "score": 0
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "109669600530214255",
@@ -39302,7 +39302,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -39324,7 +39324,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -39621,7 +39621,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -39658,7 +39658,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -39697,7 +39697,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -39736,7 +39736,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -39773,7 +39773,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "110428848767941205",
@@ -39790,7 +39790,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -39811,7 +39811,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "110428848767941211",
@@ -39828,7 +39828,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -39850,7 +39850,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -40465,7 +40465,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 6,
+                "totalRows": 4,
                 "rounds": [
                   {
                     "title": "",
@@ -40501,7 +40501,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -40523,7 +40523,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -40545,7 +40545,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       }
                     ]
                   }
@@ -40952,7 +40952,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 6,
+                "totalRows": 4,
                 "rounds": [
                   {
                     "title": "",
@@ -40988,7 +40988,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -41010,7 +41010,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -41032,7 +41032,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       }
                     ]
                   }
@@ -41439,7 +41439,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 6,
+                "totalRows": 4,
                 "rounds": [
                   {
                     "title": "",
@@ -41475,7 +41475,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -41497,7 +41497,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -41519,7 +41519,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       }
                     ]
                   }
@@ -41622,7 +41622,7 @@
               "slug": "regional_finals",
               "name": "지역 결승전",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -41674,7 +41674,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "110848560875705973",
@@ -41691,7 +41691,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -41729,7 +41729,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -41751,7 +41751,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -41773,7 +41773,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -41951,7 +41951,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -42003,7 +42003,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "110060650668050180",
@@ -42020,7 +42020,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -42058,7 +42058,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -42080,7 +42080,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -42102,7 +42102,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -42298,7 +42298,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 14,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -42333,7 +42333,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "110767987075556461",
@@ -42350,7 +42350,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "110767987075556467",
@@ -42367,7 +42367,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -42404,7 +42404,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "110767987075556473",
@@ -42421,7 +42421,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "110767987075556479",
@@ -42438,7 +42438,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -42459,7 +42459,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "110767955468411282",
@@ -42476,7 +42476,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -42498,7 +42498,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -42520,7 +42520,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   }
@@ -42687,7 +42687,7 @@
               "slug": "playoffs",
               "name": "LCS Championship",
               "bracket": {
-                "totalRows": 14,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -42722,7 +42722,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "110767987075556461",
@@ -42739,7 +42739,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "110767987075556467",
@@ -42756,7 +42756,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -42793,7 +42793,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "110767987075556473",
@@ -42810,7 +42810,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       },
                       {
                         "id": "110767987075556479",
@@ -42827,7 +42827,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 12
+                        "startRow": 6
                       }
                     ]
                   },
@@ -42848,7 +42848,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "110767955468411282",
@@ -42865,7 +42865,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -42887,7 +42887,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 5
                       }
                     ]
                   },
@@ -42909,7 +42909,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   }
@@ -43141,7 +43141,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -43176,7 +43176,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110056852356944120",
@@ -43193,7 +43193,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43215,7 +43215,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43236,7 +43236,7 @@
                             "short": "PAIN",
                             "score": 1
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "110056852358713622",
@@ -43253,7 +43253,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43275,7 +43275,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43297,7 +43297,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -43477,7 +43477,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -43512,7 +43512,7 @@
                             "short": "RED",
                             "score": 1
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110471059652887218",
@@ -43529,7 +43529,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43551,7 +43551,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43572,7 +43572,7 @@
                             "short": "PAIN",
                             "score": 0
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "110471059652887248",
@@ -43589,7 +43589,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43611,7 +43611,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -43633,7 +43633,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -43803,7 +43803,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 8,
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -44120,7 +44120,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 8,
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -44390,7 +44390,7 @@
             "slug": "play_in_elim",
             "name": "플레이-인 토너먼트 스테이지",
             "bracket": {
-              "totalRows": 9,
+              "totalRows": 8,
               "rounds": [
                 {
                   "title": "",
@@ -44459,7 +44459,7 @@
                         "score": 3,
                         "msi": true
                       },
-                      "startRow": 7
+                      "startRow": 6
                     }
                   ]
                 },
@@ -45205,7 +45205,7 @@
             "slug": "play_ins",
             "name": "플레이-인",
             "bracket": {
-              "totalRows": 9,
+              "totalRows": 8,
               "rounds": [
                 {
                   "title": "",
@@ -45312,7 +45312,7 @@
                         "score": 3,
                         "msi": true
                       },
-                      "startRow": 7
+                      "startRow": 6
                     }
                   ]
                 },
@@ -45383,7 +45383,7 @@
                         "score": 2,
                         "elim": true
                       },
-                      "startRow": 7
+                      "startRow": 6
                     }
                   ]
                 },
@@ -47154,7 +47154,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -47189,7 +47189,7 @@
                             "short": "TB",
                             "score": 0
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110017385380586614",
@@ -47206,7 +47206,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110017385380586620",
@@ -47223,7 +47223,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -47260,7 +47260,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110017385380586632",
@@ -47277,7 +47277,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110017385380586638",
@@ -47294,7 +47294,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -47315,7 +47315,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "110017385380586644",
@@ -47332,7 +47332,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -47354,7 +47354,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -47376,7 +47376,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -47594,7 +47594,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -47629,7 +47629,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110847390580148376",
@@ -47646,7 +47646,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110847390580148382",
@@ -47663,7 +47663,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -47700,7 +47700,7 @@
                             "short": "JT",
                             "score": 0
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110847390580148394",
@@ -47717,7 +47717,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110847390580148400",
@@ -47734,7 +47734,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -47755,7 +47755,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "110847390580148406",
@@ -47772,7 +47772,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -47794,7 +47794,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -47816,7 +47816,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -48508,7 +48508,7 @@
                 "slug": "pcs_po",
                 "name": "PCS PO",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -48543,7 +48543,7 @@
                             "short": "TB",
                             "score": 0
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110017385380586614",
@@ -48560,7 +48560,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110017385380586620",
@@ -48577,7 +48577,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -48614,7 +48614,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110017385380586632",
@@ -48631,7 +48631,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110017385380586638",
@@ -48648,7 +48648,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -48669,7 +48669,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "110017385380586644",
@@ -48686,7 +48686,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -48708,7 +48708,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -48730,7 +48730,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -48937,7 +48937,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 12,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -48989,7 +48989,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 6
+                          "startRow": 4
                         },
                         {
                           "id": "110383628100402754",
@@ -49006,7 +49006,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 6
                         }
                       ]
                     },
@@ -49044,7 +49044,7 @@
                             "score": 2,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -49066,7 +49066,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -49088,7 +49088,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 4
+                          "startRow": 3
                         }
                       ]
                     }
@@ -49165,7 +49165,7 @@
                 "slug": "pcs_po",
                 "name": "PCS PO",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -49200,7 +49200,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110847390580148376",
@@ -49217,7 +49217,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110847390580148382",
@@ -49234,7 +49234,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -49271,7 +49271,7 @@
                             "short": "JT",
                             "score": 0
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110847390580148394",
@@ -49288,7 +49288,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110847390580148400",
@@ -49305,7 +49305,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -49326,7 +49326,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "110847390580148406",
@@ -49343,7 +49343,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -49365,7 +49365,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -49387,7 +49387,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -49836,7 +49836,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 12,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -49888,7 +49888,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 6
+                          "startRow": 4
                         },
                         {
                           "id": "110395337117294338",
@@ -49905,7 +49905,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 6
                         }
                       ]
                     },
@@ -49927,7 +49927,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 6
+                          "startRow": 4
                         },
                         {
                           "id": "110395337117294356",
@@ -49944,7 +49944,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 6
                         }
                       ]
                     },
@@ -49982,7 +49982,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -50004,7 +50004,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -50026,7 +50026,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 4
+                          "startRow": 3
                         }
                       ]
                     }
@@ -50234,7 +50234,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 8,
+                  "totalRows": 7,
                   "rounds": [
                     {
                       "title": "",
@@ -50497,7 +50497,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -50532,7 +50532,7 @@
                             "short": "CES",
                             "score": 2
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "110416990196889989",
@@ -50549,7 +50549,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "110416990196889995",
@@ -50566,7 +50566,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -50603,7 +50603,7 @@
                             "short": "TW",
                             "score": 0
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -50625,7 +50625,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -50646,7 +50646,7 @@
                             "short": "TS",
                             "score": 2
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "110416990196890007",
@@ -50663,7 +50663,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -50685,7 +50685,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -51235,7 +51235,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -51272,7 +51272,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -51309,7 +51309,7 @@
                           "short": "T1",
                           "score": 0
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -51330,7 +51330,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "111561337007371283",
@@ -51347,7 +51347,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -51369,7 +51369,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -51391,7 +51391,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -51603,7 +51603,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -51640,7 +51640,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -51677,7 +51677,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -51698,7 +51698,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "112435564214584412",
@@ -51715,7 +51715,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -51737,7 +51737,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -51759,7 +51759,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -52092,7 +52092,7 @@
             ]
           },
           "fs1": {
-            "totalRows": 7,
+            "totalRows": 8,
             "rounds": [
               {
                 "matches": [
@@ -52580,7 +52580,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -52617,7 +52617,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -52656,7 +52656,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -52695,7 +52695,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -52732,7 +52732,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "111561319410825223",
@@ -52749,7 +52749,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -52770,7 +52770,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "111561319410825229",
@@ -52787,7 +52787,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -52809,7 +52809,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -53189,7 +53189,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -53226,7 +53226,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -53265,7 +53265,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -53304,7 +53304,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -53341,7 +53341,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "112449598160932442",
@@ -53358,7 +53358,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -53379,7 +53379,7 @@
                           "short": "TES",
                           "score": 1
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "112449598160932448",
@@ -53396,7 +53396,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -53418,7 +53418,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -55659,7 +55659,7 @@
               "slug": "regional_finals",
               "name": "지역 결승전",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -55711,7 +55711,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "112869331707376409",
@@ -55728,7 +55728,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -55766,7 +55766,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -55788,7 +55788,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -55810,7 +55810,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -55976,7 +55976,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -56028,7 +56028,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "111861082639032045",
@@ -56045,7 +56045,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -56083,7 +56083,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -56105,7 +56105,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -56127,7 +56127,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -56301,7 +56301,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -56336,7 +56336,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "112523566482677353",
@@ -56353,7 +56353,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56390,7 +56390,7 @@
                           "short": "C9",
                           "score": 1
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "112523566482677365",
@@ -56407,7 +56407,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56428,7 +56428,7 @@
                           "short": "FLY",
                           "score": 2
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "112523566482677371",
@@ -56445,7 +56445,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56467,7 +56467,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56489,7 +56489,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -56631,7 +56631,7 @@
               "slug": "playoffs",
               "name": "LCS Championship",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -56666,7 +56666,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "112523566482677353",
@@ -56683,7 +56683,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56720,7 +56720,7 @@
                           "short": "C9",
                           "score": 1
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "112523566482677365",
@@ -56737,7 +56737,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56758,7 +56758,7 @@
                           "short": "FLY",
                           "score": 2
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "112523566482677371",
@@ -56775,7 +56775,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56797,7 +56797,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -56819,7 +56819,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -57025,7 +57025,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -57060,7 +57060,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "112113446623938569",
@@ -57077,7 +57077,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "112113446623938575",
@@ -57094,7 +57094,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -57131,7 +57131,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -57153,7 +57153,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -57174,7 +57174,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "112113446623938593",
@@ -57191,7 +57191,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -57213,7 +57213,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -57417,7 +57417,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -57452,7 +57452,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "112813446384803857",
@@ -57469,7 +57469,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57506,7 +57506,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "112813446384803869",
@@ -57523,7 +57523,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57544,7 +57544,7 @@
                             "short": "VKS",
                             "score": 1
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "112813446384803875",
@@ -57561,7 +57561,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57583,7 +57583,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57605,7 +57605,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -57801,7 +57801,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 10,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -57836,7 +57836,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "112019223382842971",
@@ -57853,7 +57853,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57875,7 +57875,7 @@
                             "score": 1,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57896,7 +57896,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "112019223382842989",
@@ -57913,7 +57913,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57935,7 +57935,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         }
                       ]
                     },
@@ -57957,7 +57957,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 3
                         }
                       ]
                     }
@@ -58098,7 +58098,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 7,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -58171,7 +58171,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -58193,7 +58193,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -60978,7 +60978,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프 스테이지 2",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -61013,7 +61013,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -61050,7 +61050,7 @@
                             "short": "SHG",
                             "score": 2
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "111686476080491601",
@@ -61067,7 +61067,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "111686476080491607",
@@ -61084,7 +61084,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -61106,7 +61106,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -61127,7 +61127,7 @@
                             "short": "CFO",
                             "score": 0
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "111686476080491619",
@@ -61144,7 +61144,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -61166,7 +61166,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -61685,7 +61685,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프 스테이지 2",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -61720,7 +61720,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -61757,7 +61757,7 @@
                             "short": "DCG",
                             "score": 2
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "112518559812701818",
@@ -61774,7 +61774,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "112518559812701824",
@@ -61791,7 +61791,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -61813,7 +61813,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -61834,7 +61834,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "112518559812701836",
@@ -61851,7 +61851,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -61873,7 +61873,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -62110,7 +62110,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 12,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -62162,7 +62162,7 @@
                             "score": 2,
                             "win": true
                           },
-                          "startRow": 6
+                          "startRow": 4
                         },
                         {
                           "id": "111691792353211332",
@@ -62179,7 +62179,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 6
                         }
                       ]
                     },
@@ -62217,7 +62217,7 @@
                             "score": 2,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -62239,7 +62239,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -62261,7 +62261,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 4
+                          "startRow": 3
                         }
                       ]
                     }
@@ -62616,7 +62616,7 @@
                 "slug": "pcs_po_2",
                 "name": "PCS PO 2",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -62651,7 +62651,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -62688,7 +62688,7 @@
                             "short": "SHG",
                             "score": 2
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "111686476080491601",
@@ -62705,7 +62705,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "111686476080491607",
@@ -62722,7 +62722,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -62744,7 +62744,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -62765,7 +62765,7 @@
                             "short": "CFO",
                             "score": 0
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "111686476080491619",
@@ -62782,7 +62782,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -62804,7 +62804,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -62987,7 +62987,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 12,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -63039,7 +63039,7 @@
                             "score": 2,
                             "win": true
                           },
-                          "startRow": 6
+                          "startRow": 4
                         },
                         {
                           "id": "112439909523296590",
@@ -63056,7 +63056,7 @@
                             "score": 2,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 6
                         }
                       ]
                     },
@@ -63094,7 +63094,7 @@
                             "score": 2,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -63116,7 +63116,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 5
                         }
                       ]
                     },
@@ -63138,7 +63138,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 4
+                          "startRow": 3
                         }
                       ]
                     }
@@ -63493,7 +63493,7 @@
                 "slug": "pcs_po_2",
                 "name": "PCS PO 2",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -63528,7 +63528,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -63565,7 +63565,7 @@
                             "short": "DCG",
                             "score": 2
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "112518559812701818",
@@ -63582,7 +63582,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "112518559812701824",
@@ -63599,7 +63599,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -63621,7 +63621,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -63642,7 +63642,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "112518559812701836",
@@ -63659,7 +63659,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -63681,7 +63681,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -63854,7 +63854,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 6,
+                  "totalRows": 5,
                   "rounds": [
                     {
                       "title": "",
@@ -63928,7 +63928,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 4
+                          "startRow": 3
                         }
                       ]
                     }
@@ -64251,7 +64251,7 @@
                 "slug": "pcs_po_2",
                 "name": "PCS PO 2",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -64286,7 +64286,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -64323,7 +64323,7 @@
                             "short": "SHG",
                             "score": 2
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "111686476080491601",
@@ -64340,7 +64340,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "111686476080491607",
@@ -64357,7 +64357,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -64379,7 +64379,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -64400,7 +64400,7 @@
                             "short": "CFO",
                             "score": 0
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "111686476080491619",
@@ -64417,7 +64417,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -64439,7 +64439,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -64600,7 +64600,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 7,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -64674,7 +64674,7 @@
                             "score": 2,
                             "win": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -64696,7 +64696,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -65065,7 +65065,7 @@
                 "slug": "pcs_po_2",
                 "name": "PCS PO 2",
                 "bracket": {
-                  "totalRows": 14,
+                  "totalRows": 8,
                   "rounds": [
                     {
                       "title": "",
@@ -65100,7 +65100,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 4
+                          "startRow": 2
                         }
                       ]
                     },
@@ -65137,7 +65137,7 @@
                             "short": "DCG",
                             "score": 2
                           },
-                          "startRow": 4
+                          "startRow": 2
                         },
                         {
                           "id": "112518559812701818",
@@ -65154,7 +65154,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 8
+                          "startRow": 4
                         },
                         {
                           "id": "112518559812701824",
@@ -65171,7 +65171,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 12
+                          "startRow": 6
                         }
                       ]
                     },
@@ -65193,7 +65193,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -65214,7 +65214,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 2
+                          "startRow": 1
                         },
                         {
                           "id": "112518559812701836",
@@ -65231,7 +65231,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 10
+                          "startRow": 5
                         }
                       ]
                     },
@@ -65253,7 +65253,7 @@
                             "score": 3,
                             "msi": true
                           },
-                          "startRow": 6
+                          "startRow": 3
                         }
                       ]
                     }
@@ -65428,7 +65428,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 7,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -65501,7 +65501,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -65523,7 +65523,7 @@
                             "score": 0,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -65713,7 +65713,7 @@
                 "slug": "playoffs",
                 "name": "플레이오프",
                 "bracket": {
-                  "totalRows": 7,
+                  "totalRows": 6,
                   "rounds": [
                     {
                       "title": "",
@@ -65787,7 +65787,7 @@
                             "score": 2,
                             "elim": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -65825,7 +65825,7 @@
                             "score": 3,
                             "win": true
                           },
-                          "startRow": 5
+                          "startRow": 4
                         }
                       ]
                     },
@@ -66535,7 +66535,7 @@
               "slug": "play_ins",
               "name": "플레이-인",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 5,
                 "rounds": [
                   {
                     "title": "",
@@ -66609,7 +66609,7 @@
                           "score": 2,
                           "win": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   },
@@ -66631,7 +66631,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -66660,7 +66660,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -66697,7 +66697,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -66734,7 +66734,7 @@
                           "short": "GEN",
                           "score": 2
                         },
-                        "startRow": 4
+                        "startRow": 2
                       }
                     ]
                   },
@@ -66755,7 +66755,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "113480952128462496",
@@ -66772,7 +66772,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -66794,7 +66794,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -66816,7 +66816,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -67023,7 +67023,7 @@
               "slug": "play_ins",
               "name": "플레이-인",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 5,
                 "rounds": [
                   {
                     "title": "",
@@ -67093,7 +67093,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   },
@@ -67115,7 +67115,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -67160,7 +67160,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -67195,7 +67195,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "113503500599535540",
@@ -67212,7 +67212,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -67249,7 +67249,7 @@
                           "short": "GEN",
                           "score": 2
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "113503500599535552",
@@ -67266,7 +67266,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -67287,7 +67287,7 @@
                           "short": "KT",
                           "score": 0
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "113503500599535558",
@@ -67304,7 +67304,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -67326,7 +67326,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -67348,7 +67348,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -67868,7 +67868,7 @@
             }
           ],
           "knockout": {
-            "totalRows": 7,
+            "totalRows": 6,
             "rounds": [
               {
                 "matches": [
@@ -67907,7 +67907,7 @@
                   {
                     "title": "패자조 M3",
                     "time": "12/11",
-                    "startRow": 5,
+                    "startRow": 4,
                     "a": {
                       "short": "NS",
                       "seed": "M1 패자",
@@ -67942,7 +67942,7 @@
                   {
                     "title": "패자조 결승 M5",
                     "time": "12/13",
-                    "startRow": 5,
+                    "startRow": 4,
                     "a": {
                       "short": "DK",
                       "seed": "M4 패자",
@@ -68667,7 +68667,7 @@
               "slug": "qualifying_series",
               "name": "정상 승격전",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 5,
                 "rounds": [
                   {
                     "title": "",
@@ -68740,7 +68740,7 @@
                           "score": 2,
                           "win": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   },
@@ -68762,7 +68762,7 @@
                           "score": 2,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -71500,7 +71500,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "matches": [
@@ -71532,7 +71532,7 @@
                       },
                       {
                         "title": "하위권 1라운드",
-                        "startRow": 6,
+                        "startRow": 4,
                         "a": {
                           "short": "FNC",
                           "score": 3,
@@ -71546,7 +71546,7 @@
                       },
                       {
                         "title": "하위권 1라운드",
-                        "startRow": 8,
+                        "startRow": 6,
                         "a": {
                           "short": "KC",
                           "win": true
@@ -71575,7 +71575,7 @@
                       },
                       {
                         "title": "하위권 2라운드",
-                        "startRow": 7,
+                        "startRow": 5,
                         "a": {
                           "short": "FNC",
                           "score": 3,
@@ -71593,7 +71593,7 @@
                     "matches": [
                       {
                         "title": "하위권 결승",
-                        "startRow": 7,
+                        "startRow": 5,
                         "a": {
                           "short": "MKOI",
                           "score": 3,
@@ -71611,7 +71611,7 @@
                     "matches": [
                       {
                         "title": "결승",
-                        "startRow": 4,
+                        "startRow": 3,
                         "a": {
                           "short": "G2",
                           "score": 3,
@@ -71808,7 +71808,7 @@
               "slug": "qualifying_series",
               "name": "퀄리파잉 시리즈",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -71899,7 +71899,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 4
                       }
                     ]
                   },
@@ -71937,7 +71937,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 5
+                        "startRow": 4
                       }
                     ]
                   },
@@ -72125,7 +72125,7 @@
               "slug": "regional_qualifier",
               "name": "퀄리파잉 시리즈",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -72216,7 +72216,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 5
+                        "startRow": 4
                       }
                     ]
                   },
@@ -72254,7 +72254,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 4
                       }
                     ]
                   },
@@ -72742,7 +72742,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 10,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "title": "",
@@ -72777,7 +72777,7 @@
                           "short": "MVK",
                           "score": 0
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "113503233403361001",
@@ -72794,7 +72794,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -72831,7 +72831,7 @@
                           "short": "GAM",
                           "score": 0
                         },
-                        "startRow": 4
+                        "startRow": 2
                       },
                       {
                         "id": "113503233403361021",
@@ -72848,7 +72848,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -72869,7 +72869,7 @@
                           "short": "PSG",
                           "score": 1
                         },
-                        "startRow": 2
+                        "startRow": 1
                       },
                       {
                         "id": "113503233403361027",
@@ -72886,7 +72886,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -72908,7 +72908,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 4
                       }
                     ]
                   },
@@ -72930,7 +72930,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -73232,7 +73232,7 @@
               "slug": "north_qualifier",
               "name": "컨퍼런스 스테이지",
               "bracket": {
-                "totalRows": 15,
+                "totalRows": 14,
                 "rounds": [
                   {
                     "title": "",
@@ -73349,7 +73349,7 @@
                           "score": 1,
                           "msi": true
                         },
-                        "startRow": 13
+                        "startRow": 12
                       }
                     ]
                   },
@@ -73436,7 +73436,7 @@
                           "short": "TLAW",
                           "score": 0
                         },
-                        "startRow": 13
+                        "startRow": 12
                       }
                     ]
                   }
@@ -73873,7 +73873,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -73925,7 +73925,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "114217030657972323",
@@ -73942,7 +73942,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -73980,7 +73980,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -74002,7 +74002,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -74024,7 +74024,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -74213,7 +74213,7 @@
               "slug": "round_2",
               "name": "엘리미네이션 페이즈",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -74265,7 +74265,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "113487190606782052",
@@ -74282,7 +74282,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -74320,7 +74320,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "113487190606782064",
@@ -74337,7 +74337,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -74359,7 +74359,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -74381,7 +74381,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -74403,7 +74403,7 @@
                           "msi": true,
                           "score": 3
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -74658,7 +74658,7 @@
               "name": "아메리카 스테이지",
               "label": "아메리카 스테이지",
               "bracket": {
-                "totalRows": 8,
+                "totalRows": 5,
                 "rounds": [
                   {
                     "title": "",
@@ -74695,7 +74695,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   },
@@ -74733,7 +74733,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 3
+                        "startRow": 2
                       }
                     ]
                   },
@@ -74755,7 +74755,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 2
                       }
                     ]
                   },
@@ -74878,7 +74878,7 @@
               "slug": "south_qualifier",
               "name": "컨퍼런스 스테이지",
               "bracket": {
-                "totalRows": 15,
+                "totalRows": 14,
                 "rounds": [
                   {
                     "title": "",
@@ -74995,7 +74995,7 @@
                           "short": "LEV",
                           "score": 0
                         },
-                        "startRow": 13
+                        "startRow": 12
                       }
                     ]
                   },
@@ -75082,7 +75082,7 @@
                           "score": 1,
                           "msi": true
                         },
-                        "startRow": 13
+                        "startRow": 12
                       }
                     ]
                   }
@@ -75529,7 +75529,7 @@
               "slug": "playoffs",
               "name": "플레이오프",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -75581,7 +75581,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "114217106692001462",
@@ -75598,7 +75598,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -75636,7 +75636,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -75658,7 +75658,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -75680,7 +75680,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -75869,7 +75869,7 @@
               "slug": "round_2",
               "name": "엘리미네이션 페이즈",
               "bracket": {
-                "totalRows": 12,
+                "totalRows": 8,
                 "rounds": [
                   {
                     "title": "",
@@ -75921,7 +75921,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "113487198987129084",
@@ -75938,7 +75938,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -75976,7 +75976,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       },
                       {
                         "id": "113487198987129096",
@@ -75993,7 +75993,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 10
+                        "startRow": 6
                       }
                     ]
                   },
@@ -76015,7 +76015,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -76037,7 +76037,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 8
+                        "startRow": 5
                       }
                     ]
                   },
@@ -76059,7 +76059,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 3
                       }
                     ]
                   }
@@ -76314,7 +76314,7 @@
               "name": "아메리카 스테이지",
               "label": "아메리카 스테이지",
               "bracket": {
-                "totalRows": 8,
+                "totalRows": 5,
                 "rounds": [
                   {
                     "title": "",
@@ -76351,7 +76351,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 3
                       }
                     ]
                   },
@@ -76389,7 +76389,7 @@
                           "score": 3,
                           "win": true
                         },
-                        "startRow": 3
+                        "startRow": 2
                       }
                     ]
                   },
@@ -76411,7 +76411,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 2
                       }
                     ]
                   },
@@ -76686,7 +76686,7 @@
             "slug": "play_ins",
             "name": "플레이-인",
             "bracket": {
-              "totalRows": 7,
+              "totalRows": 5,
               "rounds": [
                 {
                   "title": "",
@@ -76759,7 +76759,7 @@
                         "score": 3,
                         "win": true
                       },
-                      "startRow": 5
+                      "startRow": 3
                     }
                   ]
                 },
@@ -76781,7 +76781,7 @@
                         "score": 3,
                         "msi": true
                       },
-                      "startRow": 5
+                      "startRow": 3
                     }
                   ]
                 }
@@ -79545,7 +79545,7 @@
               "name": "녹아웃 스테이지",
               "label": "녹아웃 스테이지",
               "bracket": {
-                "totalRows": 7,
+                "totalRows": 6,
                 "rounds": [
                   {
                     "matches": [
@@ -79584,7 +79584,7 @@
                       {
                         "title": "패자조 M16",
                         "time": "10/11",
-                        "startRow": 5,
+                        "startRow": 4,
                         "a": {
                           "short": "WBG",
                           "seed": "M13 패자",
@@ -79619,7 +79619,7 @@
                       {
                         "title": "패자조 결승 M17",
                         "time": "10/11",
-                        "startRow": 5,
+                        "startRow": 4,
                         "a": {
                           "short": "NS",
                           "seed": "M15 패자",

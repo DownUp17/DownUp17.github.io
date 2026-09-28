@@ -5247,3 +5247,39 @@ function autoGridAll(node) {
     if (merged) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`상위·하위권 결승 같은 컬럼 배치: ${merged}개`); }
   } catch (e) { console.warn(`상위·하위권 결승 컬럼 병합 실패(무시): ${e.message}`); }
 }
+
+// ── 과거 대진표 세로 간격 압축 — 형식(순서·정렬)은 유지하며 같은 컬럼 경기 사이 빈 행 제거(예: 2022 CBLOL Split 2 PO처럼) ──
+//   startRow 값을 오름차순으로 다시 매기되, 같은 컬럼의 앞 경기와는 2행(카드 높이) 이상, 직전 값과는 최대 1행 간격.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    let compacted = 0;
+    const compact = (bk) => {
+      const ms = [];
+      bk.rounds.forEach((r, c) => (r.matches || []).forEach((m) => { if (typeof m.startRow === 'number') ms.push({ c, m }); }));
+      if (!ms.length) return false;
+      const vals = [...new Set(ms.map((x) => x.m.startRow))].sort((a, b) => a - b);
+      const map = new Map();
+      let prevV = null, prevN = 0;
+      for (const v of vals) {
+        let n = prevV == null ? 0 : prevN + Math.min(1, v - prevV);
+        for (const x of ms) if (x.m.startRow === v) for (const y of ms) if (y.c === x.c && y.m.startRow < v) n = Math.max(n, map.get(y.m.startRow) + 2);
+        map.set(v, n); prevV = v; prevN = n;
+      }
+      let changed = false;
+      for (const x of ms) { const n = map.get(x.m.startRow); if (n !== x.m.startRow) { x.m.startRow = n; changed = true; } }
+      const tr = Math.max(...ms.map((x) => x.m.startRow)) + 2;
+      if (bk.totalRows !== tr) { bk.totalRows = tr; changed = true; }
+      return changed;
+    };
+    const walk = (o) => {
+      if (Array.isArray(o)) { o.forEach(walk); return; }
+      if (!o || typeof o !== 'object') return;
+      if (Array.isArray(o.rounds) && o.totalRows != null) { if (compact(o)) compacted++; return; }
+      for (const k in o) walk(o[k]);
+    };
+    walk(past.standings);
+    if (compacted) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`과거 대진표 세로 간격 압축: ${compacted}개`); }
+  } catch (e) { console.warn(`과거 대진표 간격 압축 실패(무시): ${e.message}`); }
+}
