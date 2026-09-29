@@ -5538,3 +5538,33 @@ function autoGridAll(node) {
     if (compacted) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`과거 대진표 세로 간격 압축: ${compacted}개`); }
   } catch (e) { console.warn(`과거 대진표 간격 압축 실패(무시): ${e.message}`); }
 }
+
+// ── 과거 대진표: '4강 패자'끼리 붙는 경기가 '결승'으로 잘못 표기된 3·4위전 수정 ──
+//   제목 → '3위 결정전', 결승과 행 위치를 맞바꿔 결승이 위에 오게, 3위전 승자의 우승 표시(msi) → 라운드 승리(win).
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    let fixed = 0;
+    const walk = (o) => {
+      if (Array.isArray(o)) { o.forEach(walk); return; }
+      if (!o || typeof o !== 'object') return;
+      if (Array.isArray(o.rounds)) {
+        for (const r of o.rounds) {
+          const ms = r.matches || [];
+          const third = ms.find((m) => m.title === '결승' && /4강 패자/.test(m.a?.seed || '') && /4강 패자/.test(m.b?.seed || ''));
+          const fin = ms.find((m) => m !== third && m.title === '결승');
+          if (!third || !fin) continue;
+          third.title = '3위 결정전';
+          for (const s of ['a', 'b']) if (third[s]?.msi) { delete third[s].msi; third[s].win = true; }
+          if (typeof third.startRow === 'number' && typeof fin.startRow === 'number' && third.startRow < fin.startRow) [third.startRow, fin.startRow] = [fin.startRow, third.startRow];
+          fixed++;
+        }
+        return;
+      }
+      for (const k in o) walk(o[k]);
+    };
+    walk(past.standings);
+    if (fixed) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`3위 결정전 표기 수정: ${fixed}개`); }
+  } catch (e) { console.warn(`3위 결정전 수정 실패(무시): ${e.message}`); }
+}

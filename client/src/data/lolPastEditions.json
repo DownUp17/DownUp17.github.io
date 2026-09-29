@@ -1515,12 +1515,12 @@
                     "matches": [
                       {
                         "id": "109479322500624140",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "XEN",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -1528,7 +1528,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 5
                       },
                       {
                         "id": "109479322500624144",
@@ -1545,7 +1545,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -1940,12 +1940,12 @@
                     "matches": [
                       {
                         "id": "109433362203811210",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "NBSW",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -1953,7 +1953,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 5
                       },
                       {
                         "id": "109433362203811214",
@@ -1970,7 +1970,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -2733,12 +2733,12 @@
                     "matches": [
                       {
                         "id": "109434103073676925",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "SKTK",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -2746,7 +2746,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 5
                       },
                       {
                         "id": "109434103073676931",
@@ -2763,7 +2763,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -3138,7 +3138,7 @@
                     "matches": [
                       {
                         "id": "109434488624997445",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "CJEF",
@@ -3149,9 +3149,9 @@
                           "seed": "4강 패자",
                           "short": "MVPO",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 3
+                        "startRow": 5
                       },
                       {
                         "id": "109434488624997451",
@@ -3168,7 +3168,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -3563,12 +3563,12 @@
                     "matches": [
                       {
                         "id": "109440320605177964",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "KTRB",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -3576,7 +3576,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 5
                       },
                       {
                         "id": "109440320605177970",
@@ -3593,7 +3593,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -3892,12 +3892,12 @@
                     "matches": [
                       {
                         "id": "109274702205854665",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "EG",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -3905,7 +3905,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "109274702205854669",
@@ -3922,7 +3922,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -4178,12 +4178,12 @@
                     "matches": [
                       {
                         "id": "109349946713623748",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "GMBT",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -4191,7 +4191,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 4
+                        "startRow": 6
                       },
                       {
                         "id": "109349946713623752",
@@ -4208,7 +4208,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 6
+                        "startRow": 4
                       }
                     ]
                   }
@@ -4467,12 +4467,12 @@
                     "matches": [
                       {
                         "id": "107620994344218788",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "VUL",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -4480,7 +4480,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107621148529949425",
@@ -4497,7 +4497,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -4753,12 +4753,12 @@
                     "matches": [
                       {
                         "id": "107656643146943865",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "VUL",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -4766,7 +4766,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107656643146943869",
@@ -4783,7 +4783,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -5142,12 +5142,12 @@
                     "matches": [
                       {
                         "id": "109440642556762157",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "SSW",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -5155,7 +5155,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 5
                       },
                       {
                         "id": "109440642556762163",
@@ -5172,7 +5172,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -5567,7 +5567,7 @@
                     "matches": [
                       {
                         "id": "109441091721873755",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "SKTS"
@@ -5576,7 +5576,7 @@
                           "seed": "4강 패자",
                           "short": "SSW"
                         },
-                        "startRow": 3
+                        "startRow": 5
                       },
                       {
                         "id": "109441091721873761",
@@ -5593,7 +5593,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 5
+                        "startRow": 3
                       }
                     ]
                   }
@@ -5909,12 +5909,12 @@
                       },
                       {
                         "id": "109218949925712397",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "ROC",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -6211,7 +6211,7 @@
                       },
                       {
                         "id": "109229629614366003",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "ROC",
@@ -6222,7 +6222,7 @@
                           "seed": "4강 패자",
                           "short": "SK",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 3
                       }
@@ -6498,7 +6498,7 @@
                     "matches": [
                       {
                         "id": "107697401525148535",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "CRS",
@@ -6509,9 +6509,9 @@
                           "seed": "4강 패자",
                           "short": "CLG",
                           "score": 2,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107697401525148539",
@@ -6528,7 +6528,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -6800,12 +6800,12 @@
                     "matches": [
                       {
                         "id": "107719921887854733",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "LMQ",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -6813,7 +6813,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107719921887854739",
@@ -6830,7 +6830,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -7948,7 +7948,7 @@
                       },
                       {
                         "id": "109212709766034570",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "SK",
@@ -7959,7 +7959,7 @@
                           "seed": "4강 패자",
                           "short": "H2K",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 3
                       }
@@ -8241,7 +8241,7 @@
                       },
                       {
                         "id": "109218068330955038",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "UOL",
@@ -8252,7 +8252,7 @@
                           "seed": "4강 패자",
                           "short": "H2K",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 3
                       }
@@ -8519,12 +8519,12 @@
                     "matches": [
                       {
                         "id": "107045060627514688",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "TLAW",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -8532,7 +8532,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107045060627514694",
@@ -8549,7 +8549,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -8812,7 +8812,7 @@
                     "matches": [
                       {
                         "id": "107741488945871544",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "TIP",
@@ -8823,9 +8823,9 @@
                           "seed": "4강 패자",
                           "short": "TLAW",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107741488945871550",
@@ -8842,7 +8842,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -10266,12 +10266,12 @@
                         },
                         {
                           "id": "109188962506423528",
-                          "title": "결승",
+                          "title": "3위 결정전",
                           "a": {
                             "seed": "4강 패자",
                             "short": "FNC",
                             "score": 3,
-                            "msi": true
+                            "win": true
                           },
                           "b": {
                             "seed": "4강 패자",
@@ -10559,12 +10559,12 @@
                         },
                         {
                           "id": "109212238689954084",
-                          "title": "결승",
+                          "title": "3위 결정전",
                           "a": {
                             "seed": "4강 패자",
                             "short": "H2K",
                             "score": 3,
-                            "msi": true
+                            "win": true
                           },
                           "b": {
                             "seed": "4강 패자",
@@ -11128,7 +11128,7 @@
                       },
                       {
                         "id": "106972812539377906",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "TLAW",
@@ -11139,7 +11139,7 @@
                           "seed": "4강 패자",
                           "short": "IMT",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "startRow": 3
                       }
@@ -11404,7 +11404,7 @@
                     "matches": [
                       {
                         "id": "107744640258945276",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "CLG",
@@ -11415,9 +11415,9 @@
                           "seed": "4강 패자",
                           "short": "IMT",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107744640258945282",
@@ -11434,7 +11434,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -12983,7 +12983,7 @@
                       },
                       {
                         "id": "109273533606109828",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자"
                         },
@@ -13215,14 +13215,14 @@
                     "matches": [
                       {
                         "id": "109407348771689485",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자"
                         },
                         "b": {
                           "seed": "4강 패자"
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "109407348771689491",
@@ -13233,7 +13233,7 @@
                         "b": {
                           "seed": "4강 승자"
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -13494,12 +13494,12 @@
                     "matches": [
                       {
                         "id": "107784927886792932",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "PH1",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -13507,7 +13507,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "107784927886792938",
@@ -13524,7 +13524,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -13787,12 +13787,12 @@
                     "matches": [
                       {
                         "id": "108007809206740539",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "CLG",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -13800,7 +13800,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "108007809206740545",
@@ -13817,7 +13817,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -14820,7 +14820,7 @@
                     "matches": [
                       {
                         "id": "109421587472061150",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "VIT",
@@ -14831,9 +14831,9 @@
                           "seed": "4강 패자",
                           "short": "SPY",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "109421587472061156",
@@ -14850,7 +14850,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -15113,7 +15113,7 @@
                     "matches": [
                       {
                         "id": "109423067698054093",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "MSF",
@@ -15124,9 +15124,9 @@
                           "seed": "4강 패자",
                           "short": "VIT",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "109423067698054099",
@@ -15143,7 +15143,7 @@
                           "score": 1,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -15408,7 +15408,7 @@
                     "matches": [
                       {
                         "id": "108283491279826393",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "CLU",
@@ -15419,9 +15419,9 @@
                           "seed": "4강 패자",
                           "short": "FOX2",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "108283491279826399",
@@ -15438,7 +15438,7 @@
                           "score": 0,
                           "elim": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -15701,12 +15701,12 @@
                     "matches": [
                       {
                         "id": "108288780706968011",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "TSM",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
                         "b": {
                           "seed": "4강 패자",
@@ -15714,7 +15714,7 @@
                           "score": 2,
                           "elim": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "108288780706968017",
@@ -15731,7 +15731,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
@@ -17596,7 +17596,7 @@
                     "matches": [
                       {
                         "id": "108300620376442371",
-                        "title": "결승",
+                        "title": "3위 결정전",
                         "a": {
                           "seed": "4강 패자",
                           "short": "CLU",
@@ -17607,9 +17607,9 @@
                           "seed": "4강 패자",
                           "short": "CLG",
                           "score": 3,
-                          "msi": true
+                          "win": true
                         },
-                        "startRow": 1
+                        "startRow": 3
                       },
                       {
                         "id": "108300620376442377",
@@ -17626,7 +17626,7 @@
                           "score": 3,
                           "msi": true
                         },
-                        "startRow": 3
+                        "startRow": 1
                       }
                     ]
                   }
