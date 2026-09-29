@@ -3114,7 +3114,7 @@ try {
 // (DCGI LEC/LCS/CBLOL 시드 자동 채움은 현 스플릿 최종순위 산출 이후로 이동)
 
 // Asian Games(국가 대항전) 대회 정보 — 사용자가 asiangames 리포지토리(asiangames_2026.json)에서 직접 관리.
-//   8개국 2개조 싱글 라운드로빈(Bo3) → 4강 · 3·4위전 · 결승. 각 국가 Elo도 리포지토리에서 제공.
+//   8개국 2개조 싱글 라운드로빈(Bo1) → 4강 · 3·4위전 · 결승. 각 국가 Elo도 리포지토리에서 제공.
 try {
   const AG_API = 'https://raw.githubusercontent.com/totaldu/asiangames/main/asiangames_2026.json';
   const res = await fetch(AG_API);
@@ -3126,6 +3126,7 @@ try {
     if (api.knockout) ag.knockout = api.knockout;
     if (api.format) ag.format = api.format;
     if (api.updatedAt) ag.apiUpdatedAt = api.updatedAt;
+    delete ag.placeholder; // 리포지토리 실데이터 → 임시 대진표(기본값) 블록이 덮어쓰지 않도록
 
     // 조별 순위 계산 (승수 → 세트 득실 → 상대전적). 각 조 상위 2팀이 4강 진출.
     const codeName = Object.fromEntries((api.teams || []).map((t) => [t.code, t]));

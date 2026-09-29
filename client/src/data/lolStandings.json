@@ -11598,36 +11598,207 @@
           "group": "A"
         }
       ],
-      "placeholder": true,
       "groups": {
         "A": {
-          "matches": []
+          "matches": [
+            {
+              "id": "A1",
+              "a": "VIE",
+              "b": "SAU",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "A2",
+              "a": "VIE",
+              "b": "MYS",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "A3",
+              "a": "VIE",
+              "b": "UAE",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "A4",
+              "a": "SAU",
+              "b": "MYS",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "A5",
+              "a": "SAU",
+              "b": "UAE",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "A6",
+              "a": "MYS",
+              "b": "UAE",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            }
+          ],
+          "standings": [
+            {
+              "code": "VIE",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            },
+            {
+              "code": "SAU",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            },
+            {
+              "code": "MYS",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            },
+            {
+              "code": "UAE",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            }
+          ]
         },
         "B": {
-          "matches": []
+          "matches": [
+            {
+              "id": "B1",
+              "a": "KOR",
+              "b": "TPE",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "B2",
+              "a": "KOR",
+              "b": "HKG",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "B3",
+              "a": "KOR",
+              "b": "IND",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "B4",
+              "a": "TPE",
+              "b": "HKG",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "B5",
+              "a": "TPE",
+              "b": "IND",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            },
+            {
+              "id": "B6",
+              "a": "HKG",
+              "b": "IND",
+              "format": "Bo1",
+              "scoreA": null,
+              "scoreB": null
+            }
+          ],
+          "standings": [
+            {
+              "code": "KOR",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            },
+            {
+              "code": "TPE",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            },
+            {
+              "code": "HKG",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            },
+            {
+              "code": "IND",
+              "w": 0,
+              "l": 0,
+              "sw": 0,
+              "sl": 0,
+              "h2h": {}
+            }
+          ]
         }
       },
       "knockout": {
         "matches": [
           {
             "id": "SF1",
-            "a": null,
-            "b": null,
+            "a": "VIE",
+            "b": "TPE",
             "format": "Bo3",
             "prev": {
               "a": "A:1",
               "b": "B:2"
-            }
+            },
+            "winner": null,
+            "scoreA": null,
+            "scoreB": null
           },
           {
             "id": "SF2",
-            "a": null,
-            "b": null,
+            "a": "KOR",
+            "b": "SAU",
             "format": "Bo3",
             "prev": {
               "a": "B:1",
               "b": "A:2"
-            }
+            },
+            "winner": null,
+            "scoreA": null,
+            "scoreB": null
           },
           {
             "id": "FINAL",
@@ -11637,7 +11808,10 @@
             "prev": {
               "a": "SF1:W",
               "b": "SF2:W"
-            }
+            },
+            "winner": null,
+            "scoreA": null,
+            "scoreB": null
           },
           {
             "id": "BRONZE",
@@ -11647,11 +11821,14 @@
             "prev": {
               "a": "SF1:L",
               "b": "SF2:L"
-            }
+            },
+            "winner": null,
+            "scoreA": null,
+            "scoreB": null
           }
         ]
       },
-      "format": "8개국 2개조 싱글 라운드로빈(Bo3) → 4강(Bo3) · 동메달 결정전(Bo5) · 결승(Bo5)",
+      "format": "8개국 2개조 싱글 라운드로빈(Bo1) → 4강(Bo3) · 동메달 결정전(Bo5) · 결승(Bo5)",
       "apiUpdatedAt": "2026-09-28"
     },
     "ewc": {
