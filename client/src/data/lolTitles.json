@@ -38,6 +38,16 @@
           "year": "2024",
           "sub": "Summer"
         }
+      },
+      {
+        "name": "2016 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2016",
+          "sub": "Summer"
+        }
       }
     ],
     "GEN": [
@@ -134,6 +144,40 @@
           "tab": "lck",
           "year": "2022",
           "sub": "Summer"
+        }
+      },
+      {
+        "name": "2017 Worlds",
+        "detail": "우승",
+        "color": "#0fe3f9"
+      },
+      {
+        "name": "2014 Worlds",
+        "detail": "우승",
+        "color": "#0fe3f9",
+        "link": {
+          "tab": "worlds",
+          "year": "2014"
+        }
+      },
+      {
+        "name": "2014 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2014",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2013 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2013",
+          "sub": "Spring"
         }
       }
     ],
@@ -564,6 +608,423 @@
           "year": "2021",
           "sub": "Spring"
         }
+      },
+      {
+        "name": "2020 Worlds",
+        "detail": "우승",
+        "color": "#ff5566",
+        "link": {
+          "tab": "worlds",
+          "year": "2020"
+        }
+      },
+      {
+        "name": "2020 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2020",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "C9": [
+      {
+        "name": "2023 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2023",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2022 LCS Championship",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2022",
+          "sub": "Championship"
+        }
+      },
+      {
+        "name": "2021 LCS Mid-Season Showdown",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2021",
+          "sub": "Mid-Season Showdown"
+        }
+      },
+      {
+        "name": "2021 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2021",
+          "sub": "Spring"
+        }
+      }
+    ],
+    "T1": [
+      {
+        "name": "2025 LoL KeSPA CUP",
+        "detail": "우승",
+        "color": "#8f7cf6",
+        "gradient": "linear-gradient(180deg, #8f7cf6, #6176eb)",
+        "link": {
+          "tab": "lck",
+          "year": "2025",
+          "sub": "KeSPA CUP"
+        }
+      },
+      {
+        "name": "2025 Worlds",
+        "detail": "우승",
+        "color": "#0e2bf4",
+        "link": {
+          "tab": "worlds",
+          "year": "2025"
+        }
+      },
+      {
+        "name": "2024 Worlds",
+        "detail": "우승",
+        "color": "#010a42",
+        "link": {
+          "tab": "worlds",
+          "year": "2024"
+        }
+      },
+      {
+        "name": "2024 Esports World Cup",
+        "detail": "우승",
+        "color": "#eaeaea",
+        "link": {
+          "tab": "ewc",
+          "year": "2024"
+        }
+      },
+      {
+        "name": "2023 Worlds",
+        "detail": "우승",
+        "color": "#220401",
+        "gradient": "linear-gradient(90deg, #410602, #220401, #120200)",
+        "link": {
+          "tab": "worlds",
+          "year": "2023"
+        }
+      },
+      {
+        "name": "2022 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2022",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2020 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2020",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2019 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2019",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2019 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2019",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2017 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#191919"
+      },
+      {
+        "name": "2017 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2017",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2016 Worlds",
+        "detail": "우승",
+        "color": "#0fe3f9",
+        "link": {
+          "tab": "worlds",
+          "year": "2016"
+        }
+      },
+      {
+        "name": "2016 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#191919",
+        "link": {
+          "tab": "msi",
+          "year": "2016"
+        }
+      },
+      {
+        "name": "2016 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2016",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2015 Worlds",
+        "detail": "우승",
+        "color": "#0fe3f9",
+        "link": {
+          "tab": "worlds",
+          "year": "2015"
+        }
+      },
+      {
+        "name": "2015 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2015",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2015 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2015",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2013 Worlds",
+        "detail": "우승",
+        "color": "#0fe3f9"
+      },
+      {
+        "name": "2013 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2013",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2013 LCK Winter",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2013",
+          "sub": "Winter"
+        }
+      }
+    ],
+    "EDG": [
+      {
+        "name": "2021 Worlds",
+        "detail": "우승",
+        "color": "#1036f0",
+        "link": {
+          "tab": "worlds",
+          "year": "2021"
+        }
+      },
+      {
+        "name": "2021 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2021",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "KRX": [
+      {
+        "name": "2022 Worlds",
+        "detail": "우승",
+        "color": "#321bdd",
+        "link": {
+          "tab": "worlds",
+          "year": "2022"
+        }
+      },
+      {
+        "name": "2018 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2018",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2017 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2017",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "KT": [
+      {
+        "name": "2018 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2018",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2014 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2014",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "TLAW": [
+      {
+        "name": "2025 LTA Split 1",
+        "detail": "우승",
+        "color": "#b2a27e",
+        "link": {
+          "tab": "lcs",
+          "year": "2025",
+          "sub": "Split 1"
+        }
+      },
+      {
+        "name": "2024 LCS Spring",
+        "detail": "우승",
+        "color": "#eeece7",
+        "link": {
+          "tab": "lcs",
+          "year": "2024",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2022 LCS Lock In",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2022",
+          "sub": "Lock In"
+        }
+      },
+      {
+        "name": "2021 LCS Lock In",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2021",
+          "sub": "Lock In"
+        }
+      }
+    ],
+    "JDG": [
+      {
+        "name": "2023 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2023",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2023 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#fe0000",
+        "link": {
+          "tab": "msi",
+          "year": "2023"
+        }
+      },
+      {
+        "name": "2023 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2023",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2022 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2022",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "TES": [
+      {
+        "name": "2025 LPL Split 1",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2025",
+          "sub": "Split 1"
+        }
       }
     ],
     "RNG": [
@@ -603,27 +1064,6 @@
           "tab": "lpl",
           "year": "2021",
           "sub": "Spring"
-        }
-      }
-    ],
-    "EDG": [
-      {
-        "name": "2021 Worlds",
-        "detail": "우승",
-        "color": "#1036f0",
-        "link": {
-          "tab": "worlds",
-          "year": "2021"
-        }
-      },
-      {
-        "name": "2021 LPL Summer",
-        "detail": "우승",
-        "color": "#D32F2F",
-        "link": {
-          "tab": "lpl",
-          "year": "2021",
-          "sub": "Summer"
         }
       }
     ],
@@ -716,90 +1156,6 @@
           "year": "2021",
           "event": "TCL",
           "sub": "Summer"
-        }
-      }
-    ],
-    "TLAW": [
-      {
-        "name": "2025 LTA Split 1",
-        "detail": "우승",
-        "color": "#b2a27e",
-        "link": {
-          "tab": "lcs",
-          "year": "2025",
-          "sub": "Split 1"
-        }
-      },
-      {
-        "name": "2024 LCS Spring",
-        "detail": "우승",
-        "color": "#eeece7",
-        "link": {
-          "tab": "lcs",
-          "year": "2024",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2022 LCS Lock In",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2022",
-          "sub": "Lock In"
-        }
-      },
-      {
-        "name": "2021 LCS Lock In",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2021",
-          "sub": "Lock In"
-        }
-      }
-    ],
-    "C9": [
-      {
-        "name": "2023 LCS Spring",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2023",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2022 LCS Championship",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2022",
-          "sub": "Championship"
-        }
-      },
-      {
-        "name": "2021 LCS Mid-Season Showdown",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2021",
-          "sub": "Mid-Season Showdown"
-        }
-      },
-      {
-        "name": "2021 LCS Spring",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2021",
-          "sub": "Spring"
         }
       }
     ],
@@ -1073,107 +1429,6 @@
         }
       }
     ],
-    "T1": [
-      {
-        "name": "2025 LoL KeSPA CUP",
-        "detail": "우승",
-        "color": "#8f7cf6",
-        "gradient": "linear-gradient(180deg, #8f7cf6, #6176eb)",
-        "link": {
-          "tab": "lck",
-          "year": "2025",
-          "sub": "KeSPA CUP"
-        }
-      },
-      {
-        "name": "2025 Worlds",
-        "detail": "우승",
-        "color": "#0e2bf4",
-        "link": {
-          "tab": "worlds",
-          "year": "2025"
-        }
-      },
-      {
-        "name": "2024 Worlds",
-        "detail": "우승",
-        "color": "#010a42",
-        "link": {
-          "tab": "worlds",
-          "year": "2024"
-        }
-      },
-      {
-        "name": "2024 Esports World Cup",
-        "detail": "우승",
-        "color": "#eaeaea",
-        "link": {
-          "tab": "ewc",
-          "year": "2024"
-        }
-      },
-      {
-        "name": "2023 Worlds",
-        "detail": "우승",
-        "color": "#220401",
-        "gradient": "linear-gradient(90deg, #410602, #220401, #120200)",
-        "link": {
-          "tab": "worlds",
-          "year": "2023"
-        }
-      },
-      {
-        "name": "2022 LCK Spring",
-        "detail": "우승",
-        "color": "#1c192a",
-        "link": {
-          "tab": "lck",
-          "year": "2022",
-          "sub": "Spring"
-        }
-      }
-    ],
-    "JDG": [
-      {
-        "name": "2023 LPL Summer",
-        "detail": "우승",
-        "color": "#D32F2F",
-        "link": {
-          "tab": "lpl",
-          "year": "2023",
-          "sub": "Summer"
-        }
-      },
-      {
-        "name": "2023 Mid-Season Invitational",
-        "detail": "우승",
-        "color": "#fe0000",
-        "link": {
-          "tab": "msi",
-          "year": "2023"
-        }
-      },
-      {
-        "name": "2023 LPL Spring",
-        "detail": "우승",
-        "color": "#D32F2F",
-        "link": {
-          "tab": "lpl",
-          "year": "2023",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2022 LPL Summer",
-        "detail": "우승",
-        "color": "#D32F2F",
-        "link": {
-          "tab": "lpl",
-          "year": "2022",
-          "sub": "Summer"
-        }
-      }
-    ],
     "EG": [
       {
         "name": "2022 LCS Spring",
@@ -1209,17 +1464,6 @@
           "year": "2022",
           "event": "LLA",
           "sub": "Closing"
-        }
-      }
-    ],
-    "KRX": [
-      {
-        "name": "2022 Worlds",
-        "detail": "우승",
-        "color": "#321bdd",
-        "link": {
-          "tab": "worlds",
-          "year": "2022"
         }
       }
     ],
@@ -1394,6 +1638,16 @@
           "year": "2024",
           "sub": "KeSPA CUP"
         }
+      },
+      {
+        "name": "2012 LCK Winter",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2012",
+          "sub": "Winter"
+        }
       }
     ],
     "FLY": [
@@ -1448,18 +1702,6 @@
           "year": "2024",
           "event": "LLA",
           "sub": "Opening"
-        }
-      }
-    ],
-    "TES": [
-      {
-        "name": "2025 LPL Split 1",
-        "detail": "우승",
-        "color": "#D32F2F",
-        "link": {
-          "tab": "lpl",
-          "year": "2025",
-          "sub": "Split 1"
         }
       }
     ],

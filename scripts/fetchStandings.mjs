@@ -4383,6 +4383,54 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2021 MSI GAM 추가 실패(무시): ${e.message}`); }
 }
 
+// ── 2020 LCK 'Split 1' → 'Spring' 서브탭 이름 변경(API 슬러그만 split1, 실제 대회명은 Spring) ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const lck = past.standings?.['2020']?.lck;
+    if (lck?.['Split 1'] && !lck.Spring) {
+      past.standings['2020'].lck = Object.fromEntries(Object.entries(lck).map(([k, v]) => [k === 'Split 1' ? 'Spring' : k, v]));
+      past.subtabs['2020'].lck = past.subtabs['2020'].lck.map((k) => (k === 'Split 1' ? 'Spring' : k));
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2020 LCK Split 1 → Spring');
+    }
+  } catch (e) { console.warn(`2020 LCK Spring 이름 변경 실패(무시): ${e.message}`); }
+}
+
+// ── LCK 2020 이하 최종순위 보정 — 플레이오프 결승 승자와 최종순위 1위가 다르면 플레이오프만으로 재산출 ──
+//   (API 최종순위가 정규시즌·다른 스테이지 기준으로 잘못 들어간 경우: 2012 Spring·2013 Spring·2014 Spring/Summer·2020 Split 1 등)
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const fixed = [];
+    for (const [yr, lgs] of Object.entries(past.standings || {})) {
+      if (Number(yr) > 2020) continue;
+      for (const [sub, node] of Object.entries(lgs?.lck || {})) {
+        const po = node?.brackets?.find((b) => b.slug === 'playoffs');
+        const ms = (po?.bracket?.rounds || []).flatMap((r) => r.matches || []);
+        const gf = ms.filter((m) => /^결승/.test(m.title || '')).pop();
+        if (!gf || gf.a?.score == null || gf.b?.score == null || gf.a.score === gf.b.score) continue;
+        const champ = gf.a.score > gf.b.score ? gf.a.short : gf.b.short;
+        if (node.finalStandings?.[0]?.team === champ) continue;
+        let fsNew = splitFinalStandings(node.rows || [], [po.bracket], true);
+        if (fsNew[0]?.team !== champ) {
+          // 같은 라운드의 3위 결정전을 결승으로 오인한 경우 → 결승·3위전으로 상위 4팀 직접 구성, 나머지는 기존 순서 유지
+          const tp = ms.find((m) => /3위/.test(m.title || ''));
+          const w = (m) => (m.a.score > m.b.score ? m.a.short : m.b.short), l = (m) => (m.a.score > m.b.score ? m.b.short : m.a.short);
+          const top = [champ, l(gf), ...(tp && tp.a?.score != null ? [w(tp), l(tp)] : [])];
+          const restT = (node.finalStandings || []).map((r) => r.team).filter((t) => !top.includes(t));
+          fsNew = [...top, ...restT].map((team, i) => ({ rank: i + 1, team, note: ['우승', '준우승', '3위'][i] || '' }));
+        }
+        node.finalStandings = fsNew;
+        fixed.push(`${yr} ${sub}=${champ}`);
+      }
+    }
+    if (fixed.length) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`LCK 과거 최종순위 보정: ${fixed.join(', ')}`); }
+  } catch (e) { console.warn(`LCK 과거 최종순위 보정 실패(무시): ${e.message}`); }
+}
+
 // ── 2021~2023 LCS Championship — 2024와 동일(Summer 플레이오프 = LCS Championship). Summer는 PO·최종순위 유지, Championship 서브탭에 복제 ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -5291,6 +5339,7 @@ console.log('lolStandings.json 갱신 완료');
       if (lg === 'fst') return `${year} First Stand`;
       if (lg === 'msi') return `${year} Mid-Season Invitational`;
       if (lg === 'worlds') return `${year} Worlds`;
+      if (lg === 'lck' && String(year) === '2020' && sub === 'Split 1') return '2020 LCK Spring'; // API 슬러그는 split1이지만 실제 대회명은 Spring
       if (String(year) === '2025' && (lg === 'lcs' || lg === 'cblol') && sub === 'Playoffs') return `${year} LTA Playoffs`;
       if (String(year) === '2025' && (lg === 'lcs' || lg === 'cblol') && (sub === 'Split 1' || sub === 'Etapa 1')) return `${year} LTA Split 1`; // 통합 스플릿 = 단일 우승
       if (String(year) === '2025' && lg === 'lcs') return sub === 'Split 1' ? `${year} LTA Split 1` : `${year} LTA North ${sub}`;
@@ -5305,7 +5354,7 @@ console.log('lolStandings.json 갱신 완료');
       return `${year} ${disp}${subPart}`;
     };
     for (const [year, lgs] of Object.entries(past.standings || {})) {
-      if (!['2021', '2022', '2023', '2024', '2025'].includes(year)) continue; // 2021~2026 대회 우승 경력 반영(2026은 라이브 data.standings에서 별도 산출)
+      if (Number(year) > 2025) continue; // 과거 전 연도 산출(2026은 라이브 data.standings에서 별도). 2021 미만은 아래에서 LCK 팀만 남김
       for (const [lg, v] of Object.entries(lgs || {})) {
         if (lg === 'ewc' && v?.champion) {                    // EWC(그룹+플레이오프 구조) — champion 필드로 우승 반영
           add(v.champion, `${year} Esports World Cup`, compStyle(year, 'ewc', null), { tab: 'ewc', year });
@@ -5340,6 +5389,14 @@ console.log('lolStandings.json 갱신 완료');
   const yearOf = (name) => { const m = name.match(/\b(20\d{2})\b/); return m ? Number(m[1]) : 0; };
   // 과거 팀 코드의 우승은 현재 팀으로 합산(예: R7·6K → LYON, RGE → NAVI).
   for (const [old, cur] of Object.entries(TEAM_LINK)) if (titles[old]) { (titles[cur] = titles[cur] || []).push(...titles[old]); delete titles[old]; }
+  // API에 없는 과거 국제대회(MSI 2017~2019·Worlds 2012~2013·2017~2019) 중 현 LCK 팀 계보 우승만 수기 보충(대회 페이지 없음 → link 없음).
+  for (const [team, year, lg, nm] of [['T1', '2013', 'worlds', '2013 Worlds'], ['T1', '2017', 'msi', '2017 Mid-Season Invitational'], ['GEN', '2017', 'worlds', '2017 Worlds']]) add(team, nm, compStyle(year, lg, null));
+  // 2020 이하 우승은 현재 LCK 팀에 한정(그 외 팀은 2021~만).
+  const LCK_TEAMS = new Set(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'client', 'src', 'data', 'gprTeams.json'), 'utf8')).teams.filter((t) => t.league === 'LCK').map((t) => t.short));
+  for (const short of Object.keys(titles)) {
+    if (!LCK_TEAMS.has(short)) titles[short] = titles[short].filter((t) => yearOf(t.name) >= 2021);
+    if (!titles[short].length) delete titles[short];
+  }
   for (const short of Object.keys(titles)) titles[short].sort((a, b) => (yearOf(b.name) - yearOf(a.name)) || (ord(b.name) - ord(a.name)));
   const titlesFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolTitles.json');
   fs.writeFileSync(titlesFile, JSON.stringify({ updatedAt: data.updatedAt, titles }, null, 2) + '\n');

@@ -1694,12 +1694,12 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           const a = shortOf(m.a), b = shortOf(m.b);
           return m.winner === m.a || m.winner === a ? a : b;
         };
-        // 녹아웃 진출 8팀: M7-M9 승자(1-0, 3팀) + M13-M15 승자(1-1, 3팀) + M19-M20 승자(1-2, 2팀).
+        // 녹아웃 진출 8팀: M7-M9 승자(2-0, 3팀) + M13-M15 승자(2-1, 3팀) + M19-M20 승자(2-2, 2팀).
         //   각 슬롯은 매치 확정 시 자동 채움, 미정은 TBD.
         const advSlots = [
-          ...['M7','M8','M9'].map((id) => ({ rec: '1-0', short: winnerShortOf(gm.find((x) => x.id === id)) })),
-          ...['M13','M14','M15'].map((id) => ({ rec: '1-1', short: winnerShortOf(gm.find((x) => x.id === id)) })),
-          ...['M19','M20'].map((id) => ({ rec: '1-2', short: winnerShortOf(gm.find((x) => x.id === id)) })),
+          ...['M7','M8','M9'].map((id) => ({ rec: '2-0', short: winnerShortOf(gm.find((x) => x.id === id)) })),
+          ...['M13','M14','M15'].map((id) => ({ rec: '2-1', short: winnerShortOf(gm.find((x) => x.id === id)) })),
+          ...['M19','M20'].map((id) => ({ rec: '2-2', short: winnerShortOf(gm.find((x) => x.id === id)) })),
         ];
         let list;
         if (stage === '녹아웃 스테이지') {

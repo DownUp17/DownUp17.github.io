@@ -123,7 +123,7 @@
     "2020": {
       "lck": [
         "Spring 승강전",
-        "Split 1",
+        "Spring",
         "Summer 승강전",
         "Summer",
         "선발전"
@@ -1623,17 +1623,17 @@
           "finalStandings": [
             {
               "rank": 1,
-              "team": "XEN",
+              "team": "MIBL",
               "note": "우승"
             },
             {
               "rank": 2,
-              "team": "MIBL",
+              "team": "MIGF",
               "note": "준우승"
             },
             {
               "rank": 3,
-              "team": "MIGF",
+              "team": "XEN",
               "note": "3위"
             },
             {
@@ -2841,22 +2841,22 @@
           "finalStandings": [
             {
               "rank": 1,
-              "team": "SKTK",
+              "team": "MVPO",
               "note": "우승"
             },
             {
               "rank": 2,
-              "team": "MVPO",
+              "team": "CJEB",
               "note": "준우승"
             },
             {
               "rank": 3,
-              "team": "CJEF",
+              "team": "SKTK",
               "note": "3위"
             },
             {
               "rank": 4,
-              "team": "CJEB",
+              "team": "CJEF",
               "note": ""
             },
             {
@@ -5250,17 +5250,17 @@
           "finalStandings": [
             {
               "rank": 1,
-              "team": "SSW",
+              "team": "SSB",
               "note": "우승"
             },
             {
               "rank": 2,
-              "team": "SSB",
+              "team": "NWS",
               "note": "준우승"
             },
             {
               "rank": 3,
-              "team": "NWS",
+              "team": "SSW",
               "note": "3위"
             },
             {
@@ -5670,9 +5670,24 @@
           ],
           "finalStandings": [
             {
+              "rank": 1,
+              "team": "KTRA",
+              "note": "우승"
+            },
+            {
               "rank": 2,
               "team": "SSB",
               "note": "준우승"
+            },
+            {
+              "rank": 3,
+              "team": "SSW",
+              "note": "3위"
+            },
+            {
+              "rank": 4,
+              "team": "SKTS",
+              "note": ""
             },
             {
               "rank": 5,
@@ -17867,7 +17882,7 @@
             }
           ]
         },
-        "Split 1": {
+        "Spring": {
           "name": "2020 LCK 스프링 스플릿",
           "rows": [
             {
@@ -18059,52 +18074,52 @@
           "finalStandings": [
             {
               "rank": 1,
-              "team": "BFX",
+              "team": "T1",
               "note": "우승"
             },
             {
               "rank": 2,
-              "team": "GFF",
+              "team": "GEN",
               "note": "준우승"
             },
             {
               "rank": 3,
-              "team": "T1",
+              "team": "KRX",
               "note": "3위"
             },
             {
               "rank": 4,
-              "team": "GEN",
-              "note": ""
-            },
-            {
-              "rank": 5,
-              "team": "KRX",
-              "note": ""
-            },
-            {
-              "rank": 6,
               "team": "DK",
               "note": ""
             },
             {
-              "rank": 7,
+              "rank": 5,
               "team": "KT",
               "note": ""
             },
             {
-              "rank": 8,
+              "rank": 6,
               "team": "DNS",
               "note": ""
             },
             {
-              "rank": 9,
+              "rank": 7,
               "team": "SP11",
               "note": ""
             },
             {
-              "rank": 10,
+              "rank": 8,
               "team": "HLE",
+              "note": ""
+            },
+            {
+              "rank": 9,
+              "team": "BFX",
+              "note": ""
+            },
+            {
+              "rank": 10,
+              "team": "GFF",
               "note": ""
             }
           ]
