@@ -2863,7 +2863,7 @@ const EVENT_DETAIL = {
   'lcp|2022|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2022|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2022|LCO': { color: '#0f3341', logo: lcoLogo },
-  'lcp|2021|VCS': { color: '#000', logo: vcs2021Logo, invert: true },
+  'lcp|2021|VCS': { color: '#000', logo: vcs2022Logo, invert: true },
   'lcp|2021|PCS': { color: '#cb0004', logo: pcsLogo },
   'lcp|2021|LJL': { color: '#ed1b30', logo: ljlLogo, invert: true },
   'lcp|2021|LCO': { color: '#0f3341', logo: lcoLogo },

@@ -5144,7 +5144,7 @@ console.log('lolStandings.json 갱신 완료');
   };
   const titles = {};
   // 대회 상징색 — 프론트(lolSim.json comp.color + PredictionPage PAST_DETAIL/SUBTAB_DETAIL/COMP_GRADIENT)와 일치.
-  const COMP_COLOR = { lck: '#1c192a', lpl: '#D32F2F', lec: '#00E0B0', lcs: '#eeece7', lcp: '#F08040', cblol: '#0b0718', fst: '#ff5500', msi: '#191919', ewc: '#f74e16', asiangames: '#079a3e', demacia: '#1826a1', worlds: '#dddddd' };
+  const COMP_COLOR = { lck: '#1c192a', lpl: '#D32F2F', lec: '#00E0B0', lcs: '#eeece7', lcp: '#F08040', cblol: '#0b0718', fst: '#ff5500', msi: '#191919', ewc: '#f74e16', asiangames: '#079a3e', demacia: '#1826a1', worlds: '#0fe3f9' };
   const compStyle = (year, lg, sub, event) => {
     const y = String(year);
     if (lg === 'lec' && event === 'TCL') return { color: '#3f567c' }; // TCL(튀르키예 챔피언십 리그)
