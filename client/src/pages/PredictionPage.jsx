@@ -310,6 +310,13 @@ const gprScoreByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t
 const ELO_SCALE = 400;
 const bracketGameProb = (ra, rb) => 1 / (1 + Math.pow(10, (rb - ra) / ELO_SCALE));
 const bracketBo5Prob = (pa) => { const q = 1 - pa; return pa * pa * pa * (1 + 3 * q + 6 * q * q); };
+// BoN 시리즈 승률 (need = 선승 수: Bo1=1, Bo3=2, Bo5=3)
+const bracketSeriesProb = (pa, need) => {
+  const C = (n, k) => { let r = 1; for (let i = 0; i < k; i++) r = r * (n - i) / (i + 1); return r; };
+  let prob = 0;
+  for (let l = 0; l < need; l++) prob += C(need - 1 + l, l) * Math.pow(pa, need) * Math.pow(1 - pa, l);
+  return prob;
+};
 // 매치의 양 팀이 모두 확정(short 보유)이고 아직 결과가 안 나왔으면(점수·승패 표기 없음) 승부예측 %를 반환
 const matchPrediction = (a, b) => {
   if (!a?.short || !b?.short) return null;
@@ -405,6 +412,13 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
     const aWin = m.winner && (m.winner === m.a || m.winner === aShort);
     const bWin = m.winner && (m.winner === m.b || m.winner === bShort);
     const dispName = m.name != null ? m.name : matchDisplayName(m); // '' 이면 헤더 숨김(스위스)
+    let pred = null;
+    const ra = gprScoreByShort[aShort], rb = gprScoreByShort[bShort];
+    if (!m.winner && m.scoreA == null && m.scoreB == null && ra != null && rb != null) {
+      const need = { Bo1: 1, Bo3: 2, Bo5: 3 }[m.format] || 3;
+      const pA = Math.round(bracketSeriesProb(bracketGameProb(ra, rb), need) * 100);
+      pred = { pA, pB: 100 - pA };
+    }
     return (
       <div key={m.id} className="flex flex-col">
         {(dispName || (showDate && m.day)) && (
@@ -414,9 +428,9 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
         </span>
         )}
         <div data-card-id={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag)} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag)} predPct={pred?.pA} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           <div className="h-px bg-white/10" />
-          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag)} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag)} predPct={pred?.pB} onTeamClick={onTeamClick} teamOverride={teamOverride} />
         </div>
       </div>
     );
