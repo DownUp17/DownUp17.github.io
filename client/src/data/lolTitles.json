@@ -887,6 +887,192 @@
         }
       }
     ],
+    "PSG": [
+      {
+        "name": "2024 PCS Summer",
+        "detail": "우승",
+        "color": "#101725",
+        "link": {
+          "tab": "lcp",
+          "year": "2024",
+          "event": "PCS",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2024 PCS Spring",
+        "detail": "우승",
+        "color": "#101725",
+        "link": {
+          "tab": "lcp",
+          "year": "2024",
+          "event": "PCS",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2023 PCS Summer",
+        "detail": "우승",
+        "color": "#cb0004",
+        "link": {
+          "tab": "lcp",
+          "year": "2023",
+          "event": "PCS",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2023 PCS Spring",
+        "detail": "우승",
+        "color": "#cb0004",
+        "link": {
+          "tab": "lcp",
+          "year": "2023",
+          "event": "PCS",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2022 PCS Spring",
+        "detail": "우승",
+        "color": "#101725",
+        "link": {
+          "tab": "lcp",
+          "year": "2022",
+          "event": "PCS",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2021 PCS Summer",
+        "detail": "우승",
+        "color": "#101725",
+        "link": {
+          "tab": "lcp",
+          "year": "2021",
+          "event": "PCS",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2021 PCS Spring",
+        "detail": "우승",
+        "color": "#101725",
+        "link": {
+          "tab": "lcp",
+          "year": "2021",
+          "event": "PCS",
+          "sub": "Spring"
+        }
+      }
+    ],
+    "PGG": [
+      {
+        "name": "2021 LCO Split 1",
+        "detail": "우승",
+        "color": "#0f3341",
+        "link": {
+          "tab": "lcp",
+          "year": "2021",
+          "event": "LCO",
+          "sub": "Split 1"
+        }
+      }
+    ],
+    "PCE": [
+      {
+        "name": "2021 LCO Split 2",
+        "detail": "우승",
+        "color": "#0f3341",
+        "link": {
+          "tab": "lcp",
+          "year": "2021",
+          "event": "LCO",
+          "sub": "Split 2"
+        }
+      }
+    ],
+    "DFM": [
+      {
+        "name": "2023 LJL Summer",
+        "detail": "우승",
+        "color": "#ed1b30",
+        "link": {
+          "tab": "lcp",
+          "year": "2023",
+          "event": "LJL",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2023 LJL Spring",
+        "detail": "우승",
+        "color": "#ed1b30",
+        "link": {
+          "tab": "lcp",
+          "year": "2023",
+          "event": "LJL",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2022 LJL Summer",
+        "detail": "우승",
+        "color": "#ed1b30",
+        "link": {
+          "tab": "lcp",
+          "year": "2022",
+          "event": "LJL",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2022 LJL Spring",
+        "detail": "우승",
+        "color": "#ed1b30",
+        "link": {
+          "tab": "lcp",
+          "year": "2022",
+          "event": "LJL",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2021 LJL Summer",
+        "detail": "우승",
+        "color": "#ed1b30",
+        "link": {
+          "tab": "lcp",
+          "year": "2021",
+          "event": "LJL",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2021 LJL Spring",
+        "detail": "우승",
+        "color": "#ed1b30",
+        "link": {
+          "tab": "lcp",
+          "year": "2021",
+          "event": "LJL",
+          "sub": "Spring"
+        }
+      }
+    ],
+    "CES": [
+      {
+        "name": "2021 VCS Winter",
+        "detail": "우승",
+        "color": "#000",
+        "link": {
+          "tab": "lcp",
+          "year": "2021",
+          "event": "VCS",
+          "sub": "Winter"
+        }
+      }
+    ],
     "T1": [
       {
         "name": "2025 LoL KeSPA CUP",
@@ -1037,63 +1223,6 @@
         }
       }
     ],
-    "PSG": [
-      {
-        "name": "2024 PCS Summer",
-        "detail": "우승",
-        "color": "#101725",
-        "link": {
-          "tab": "lcp",
-          "year": "2024",
-          "event": "PCS",
-          "sub": "Summer"
-        }
-      },
-      {
-        "name": "2024 PCS Spring",
-        "detail": "우승",
-        "color": "#101725",
-        "link": {
-          "tab": "lcp",
-          "year": "2024",
-          "event": "PCS",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2023 PCS Summer",
-        "detail": "우승",
-        "color": "#cb0004",
-        "link": {
-          "tab": "lcp",
-          "year": "2023",
-          "event": "PCS",
-          "sub": "Summer"
-        }
-      },
-      {
-        "name": "2023 PCS Spring",
-        "detail": "우승",
-        "color": "#cb0004",
-        "link": {
-          "tab": "lcp",
-          "year": "2023",
-          "event": "PCS",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2022 PCS Spring",
-        "detail": "우승",
-        "color": "#101725",
-        "link": {
-          "tab": "lcp",
-          "year": "2022",
-          "event": "PCS",
-          "sub": "Spring"
-        }
-      }
-    ],
     "CFO": [
       {
         "name": "2025 LCP Season Finals",
@@ -1160,52 +1289,6 @@
           "year": "2022",
           "event": "LCO",
           "sub": "Split 2"
-        }
-      }
-    ],
-    "DFM": [
-      {
-        "name": "2023 LJL Summer",
-        "detail": "우승",
-        "color": "#ed1b30",
-        "link": {
-          "tab": "lcp",
-          "year": "2023",
-          "event": "LJL",
-          "sub": "Summer"
-        }
-      },
-      {
-        "name": "2023 LJL Spring",
-        "detail": "우승",
-        "color": "#ed1b30",
-        "link": {
-          "tab": "lcp",
-          "year": "2023",
-          "event": "LJL",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2022 LJL Summer",
-        "detail": "우승",
-        "color": "#ed1b30",
-        "link": {
-          "tab": "lcp",
-          "year": "2022",
-          "event": "LJL",
-          "sub": "Summer"
-        }
-      },
-      {
-        "name": "2022 LJL Spring",
-        "detail": "우승",
-        "color": "#ed1b30",
-        "link": {
-          "tab": "lcp",
-          "year": "2022",
-          "event": "LJL",
-          "sub": "Spring"
         }
       }
     ],

@@ -19,12 +19,18 @@ import hleBg from '../assets/champion-bg/hle.webp';
 import blgBg from '../assets/champion-bg/blg.webp';
 import jdgBg from '../assets/champion-bg/jdg.webp';
 import g2Bg from '../assets/champion-bg/g2.webp';
+import ktBg from '../assets/champion-bg/kt.webp';
+import bfxBg from '../assets/champion-bg/bfx.webp';
+import broBg from '../assets/champion-bg/bro.webp';
+import dnsBg from '../assets/champion-bg/dns.webp';
+import alBg from '../assets/champion-bg/al.webp';
+import tesBg from '../assets/champion-bg/tes.webp';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
 
 // 우승 배경 이미지(Worlds 우승 기념 스킨 일러스트) — 팀 상세 페이지 배경으로 사용, 가독성을 위해 어두운 오버레이를 덧씌운다.
-const CHAMPION_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN: genBg, FNC: fncBg, HLE: hleBg, BLG: blgBg, JDG: jdgBg, G2: g2Bg };
+const CHAMPION_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN: genBg, FNC: fncBg, HLE: hleBg, BLG: blgBg, JDG: jdgBg, G2: g2Bg, KT: ktBg, BFX: bfxBg, BRO: broBg, DNS: dnsBg, AL: alBg, TES: tesBg };
 // 세로로 긴 이미지 — 그림 전체를 가운데에 표시하고 양옆은 같은 이미지를 흐리게 채운다.
 const CHAMPION_BG_CONTAIN = new Set(['IG']);
 

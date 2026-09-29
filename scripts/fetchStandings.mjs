@@ -4026,6 +4026,49 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2022 LCP 전신 생성 실패(무시): ${e.message}`); }
 }
 
+// ── 2021 LCP 전신(PCS·LCO·LJL·VCS) — 2022와 동일. VCS는 API에 Winter(11~12월)만 존재(Spring 미제공·Summer 취소) — 2024와 동일 구조. PCS 2021은 플레이오프가 별도 토너먼트 → 브래킷·최종순위 병합 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const EV = {
+      PCS: ['104366947889790212', [['Spring', 'pcs_spring_2021'], ['Summer', 'pcs_summer_2021']]],
+      LCO: ['105709090213554609', [['Split 1', 'lco_split_1_2021'], ['Split 2', 'lco_split_2_2021']]],
+      LJL: ['98767991349978712', [['Spring', 'ljl_spring_2021'], ['Summer', 'ljl_summer_2021']]],
+      VCS: ['107213827295848783', [['Winter', 'vcs_winter_2021']]],
+    };
+    const std = (past.standings['2021'] = past.standings['2021'] || {});
+    const sub = (past.subtabs['2021'] = past.subtabs['2021'] || {});
+    const lcp = std.lcp || {}, subs = sub.lcp || {};
+    let changed = false;
+    for (const [ev, [leagueId, list]] of Object.entries(EV)) {
+      if (lcp[ev]) continue;
+      for (const [label, slug, poSlug] of list) {
+        try {
+          const s = await buildSplit(leagueId, slug);
+          if (!s) continue;
+          const node = { name: s.name, rows: s.rows, brackets: s.brackets || [], finalStandings: s.finalStandings };
+          if (poSlug) {
+            const po = await buildSplit(leagueId, poSlug);
+            if (po) {
+              node.brackets = [...node.brackets, ...(po.brackets || [])];
+              if (po.finalStandings?.length) node.finalStandings = po.finalStandings;
+            }
+          }
+          (lcp[ev] = lcp[ev] || {})[label] = node; (subs[ev] = subs[ev] || []).push(label); changed = true;
+        } catch (e) { console.warn(`2021 ${ev} ${label} 실패: ${e.message}`); }
+      }
+    }
+    if (changed) {
+      const order = Object.keys(EV).filter((k) => lcp[k]);
+      std.lcp = Object.fromEntries(order.map((k) => [k, lcp[k]]));
+      sub.lcp = Object.fromEntries(order.map((k) => [k, subs[k]]));
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log(`2021 LCP 대회 선택 생성: ${order.map((k) => `${k}[${sub.lcp[k].join(',')}]`).join(' ')}`);
+    }
+  } catch (e) { console.warn(`2021 LCP 전신 생성 실패(무시): ${e.message}`); }
+}
+
 // ── 2023 LCO 'PCS PO' — 플레이오프 다음에 같은 스플릿 PCS 플레이오프 대진(2023 PCS는 스테이지 구분 없이 단일) ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -4296,6 +4339,47 @@ console.log('lolStandings.json 갱신 완료');
     }
     if (fixed) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('2022 LEC Summer PO: G2 3:1 MSF 반영'); }
   } catch (e) { console.warn(`2022 LEC Summer PO 보정 실패(무시): ${e.message}`); }
+}
+
+// ── 2020 LPL 대표 선발전 — API상 Summer 토너먼트의 'regionals' 스테이지 → 2021~처럼 '선발전' 서브탭으로 분리 ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    for (const lg of ['lpl', 'lck']) { // LCK 2020 Summer도 동일 구조(우승 DK가 GEN으로 오표기)
+    const lpl = past.standings?.['2020']?.[lg];
+    const reg = lpl?.Summer?.brackets?.find((b) => b.slug === 'regionals');
+    if (reg && !lpl['선발전']) {
+      lpl.Summer.brackets = lpl.Summer.brackets.filter((b) => b !== reg);
+      lpl['선발전'] = { name: `${lg.toUpperCase()} 2020 대표 선발전`, rows: [], brackets: [reg] };
+      const subs = past.subtabs['2020'][lg];
+      if (!subs.includes('선발전')) subs.push('선발전');
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log(`2020 ${lg.toUpperCase()} 대표 선발전 → 선발전 서브탭 분리`);
+    }
+    // Summer 최종순위가 선발전 대진까지 포함해 산출됨(우승 LGD 오표기) → 플레이오프만으로 재산출(우승 TES)
+    const sm = lpl?.Summer, po = sm?.brackets?.find((b) => b.slug === 'playoffs');
+    if (po) {
+      const fsNew = splitFinalStandings(sm.rows || [], [po.bracket], true);
+      if (fsNew[0]?.team && fsNew[0].team !== sm.finalStandings?.[0]?.team) { sm.finalStandings = fsNew; fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`2020 ${lg.toUpperCase()} Summer 최종순위 재산출: 우승 ${fsNew[0].team}`); }
+    }
+    }
+  } catch (e) { console.warn(`2020 LPL 선발전 분리 실패(무시): ${e.message}`); }
+}
+
+// ── 2021 MSI 그룹 A조 — GAM(베트남, 코로나로 불참) 4위 0-0 · 비고 '불참' ──
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const rows = past.standings?.['2021']?.msi?.rows;
+    if (rows && !rows.some((r) => r.team === 'GAM')) {
+      const i = rows.map((r) => r.group).lastIndexOf('A조');
+      rows.splice(i + 1, 0, { rank: 4, team: 'GAM', w: 0, l: 0, group: 'A조', remark: '불참' });
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2021 MSI A조 GAM(불참) 추가');
+    }
+  } catch (e) { console.warn(`2021 MSI GAM 추가 실패(무시): ${e.message}`); }
 }
 
 // ── 2021~2023 LCS Championship — 2024와 동일(Summer 플레이오프 = LCS Championship). Summer는 PO·최종순위 유지, Championship 서브탭에 복제 ──
@@ -5090,6 +5174,7 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'worlds' && y === '2024') return { color: '#010a42' };
     if (lg === 'worlds' && y === '2022') return { color: '#321bdd' };
     if (lg === 'worlds' && y === '2021') return { color: '#1036f0' };
+    if (lg === 'worlds' && y === '2020') return { color: '#ff5566' };
     return { color: COMP_COLOR[lg] || '#888' };
   };
   // link: 클릭 시 이동할 대회 위치 { tab, year?, event?, sub? } → 팀 페이지에서 /lol/prediction/:tab?year&event&sub 로 이동.
