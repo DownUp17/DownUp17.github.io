@@ -3,6 +3,11 @@ import { TEAM_LINK } from '../utils/teamLink';
 import afreecaFreecs2021Logo from '../assets/afreeca-freecs-2021.svg';
 import liivSandboxOldLogo from '../assets/liiv-sandbox-old.svg';
 import ktRolster2021Logo from '../assets/kt-rolster-2021.svg';
+import mvpLogo from '../assets/mvp.svg';
+import sktT1No1Logo from '../assets/skt-t1-1.webp';
+import sktT1No2Logo from '../assets/skt-t1-2.webp';
+import najinShieldLogo from '../assets/najin-shield.webp';
+import najinSwordLogo from '../assets/najin-sword.webp';
 import React, { useMemo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { Target, Trophy, ExternalLink, Crown, Hourglass, ChevronDown } from 'lucide-react';
@@ -260,7 +265,7 @@ const GroupSymbol = ({ group, size = 16 }) => (
 
 // 팀 short → 로고 / 풀네임
 // GPR에 없는 팀(과거 참가팀 등)의 로고 보강 — 표시용. 클릭(팀 페이지)은 knownTeam(GPR 기준)으로 별도 판단.
-const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo, AST: astralisLogo, GG: goldenGuardiansLogo, CLG: clgLogo, EG: evilGeniusesLogo, TSM: tsmLogo, IMP: impunityEsportsLogo, DWT: dewishTeamLogo, SBTE: sbtcEsportsLogo, FL: fennelLogo, CGA: crestGamingActLogo, PGG: pentanetGgLogo, VTX: vertexEscLogo, MCX: machiEsportsLogo, BJD: berjayaDragonsLogo, PCE: peaceLogo, MSF: misfitsGamingLogo, IW: istanbulWildcatsLogo, GS: galatasarayLogo, AUR: auroraLogo, DP: darkPassageLogo, NASR: nasrEsportsLogo, '5R': fiveRoninLogo, FB: fenerbahceEsporLogo, SUP: supermassiveBlazeLogo, BJK: besiktasEsportsLogo, GAL: galakticosLogo, MFT: metaFalconTeamLogo, S9: sem9Logo, HG: hurricaneGamingLogo, ORD: orderLogo, GRV: gravitasLogo, RJ: rascalJesterLogo, ASES: asEsportsLogo, GETS: geniusEsportsLogo, TK: theKingsLogo, AZE: teamAzeLogo, XTN: xtenEsportsLogo, GET: globantEmeraldLogo, INC: incubusLogo, SKY: burstTheSkyLogo, LX: luxuryEsportsLogo, NMG: minersLogo, FLA: flamengoLosGrandesLogo, RNS: rensgaLogo, S04: schalke04Logo, FG: furiousGamingLogo, KLG: kaosLatinGamersLogo, UOL: unicornsOfLoveLogo, KSV: ksvEsportsLogo, ROX: roxTigersLogo, KDM1: kongdooMonsterLogo, SSGG: samsungGalaxyLogo, LZ: longzhuGamingLogo, NJF: najinMfireLogo, IMI: longzhuImLogo, RANC: rebelsAnarchyLogo, SSW: samsungWhiteLogo, SSB: samsungBlueLogo, NWS: najinWhiteShieldLogo, NBSW: najinBlackSwordLogo, KTRA: ktRolsterArrowsLogo, KTRB: ktRolsterBulletsLogo, SKTS: sktT1SLogo, SKTK: sktT1KLogo, IM1: incredibleMiracle1Logo, IM2: incredibleMiracle2Logo };
+const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo, AST: astralisLogo, GG: goldenGuardiansLogo, CLG: clgLogo, EG: evilGeniusesLogo, TSM: tsmLogo, IMP: impunityEsportsLogo, DWT: dewishTeamLogo, SBTE: sbtcEsportsLogo, FL: fennelLogo, CGA: crestGamingActLogo, PGG: pentanetGgLogo, VTX: vertexEscLogo, MCX: machiEsportsLogo, BJD: berjayaDragonsLogo, PCE: peaceLogo, MSF: misfitsGamingLogo, IW: istanbulWildcatsLogo, GS: galatasarayLogo, AUR: auroraLogo, DP: darkPassageLogo, NASR: nasrEsportsLogo, '5R': fiveRoninLogo, FB: fenerbahceEsporLogo, SUP: supermassiveBlazeLogo, BJK: besiktasEsportsLogo, GAL: galakticosLogo, MFT: metaFalconTeamLogo, S9: sem9Logo, HG: hurricaneGamingLogo, ORD: orderLogo, GRV: gravitasLogo, RJ: rascalJesterLogo, ASES: asEsportsLogo, GETS: geniusEsportsLogo, TK: theKingsLogo, AZE: teamAzeLogo, XTN: xtenEsportsLogo, GET: globantEmeraldLogo, INC: incubusLogo, SKY: burstTheSkyLogo, LX: luxuryEsportsLogo, NMG: minersLogo, FLA: flamengoLosGrandesLogo, RNS: rensgaLogo, S04: schalke04Logo, FG: furiousGamingLogo, KLG: kaosLatinGamersLogo, UOL: unicornsOfLoveLogo, KSV: ksvEsportsLogo, ROX: roxTigersLogo, KDM1: kongdooMonsterLogo, SSGG: samsungGalaxyLogo, LZ: longzhuGamingLogo, NJF: najinMfireLogo, IMI: longzhuImLogo, RANC: rebelsAnarchyLogo, SSW: samsungWhiteLogo, SSB: samsungBlueLogo, NWS: najinWhiteShieldLogo, NBSW: najinBlackSwordLogo, KTRA: ktRolsterArrowsLogo, KTRB: ktRolsterBulletsLogo, SKTS: sktT1SLogo, SKTK: sktT1KLogo, IM1: incredibleMiracle1Logo, IM2: incredibleMiracle2Logo, MVP: mvpLogo, MVPO: mvpLogo, MVPB: mvpLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
 const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming', AST: 'Astralis', GG: 'Golden Guardians', CLG: 'CLG', EG: 'Evil Geniuses', TSM: 'TSM', IMP: 'Impunity Esports', DWT: 'Dewish Team', SBTE: 'SBTC Esports', FL: 'FENNEL', CGA: 'Crest Gaming Act', PGG: 'Pentanet.GG', VTX: 'Vertex ESC', MCX: 'Machi Esports', BJD: 'Berjaya Dragons', PCE: 'PEACE', MSF: 'Misfits Gaming', IW: 'DenizBank İstanbul Wildcats', GS: 'Galatasaray Esports', AUR: 'Info Yatırım Aurora', DP: 'Dark Passage', NASR: 'NASR Esports', '5R': '5 Ronin', FB: 'Fenerbahçe Espor', SUP: 'SuperMassive Blaze', BJK: 'Beşiktaş Esports', GAL: 'Galakticos', MFT: 'Meta Falcon Team', S9: 'SEM9', HG: 'Hurricane Gaming', ORD: 'ORDER', GRV: 'Gravitas', RJ: 'Rascal Jester', ASES: 'AS Esports', GETS: 'Genius Esports', TK: 'The Kings', AZE: 'Team Aze', XTN: 'XTEN Esports', GET: 'Globant Emerald', INC: 'Incubus', SKY: 'Burst The Sky Esports', LX: 'Luxury Esports', NMG: 'Miners', FLA: 'Flamengo Los Grandes', RNS: 'RENSGA', S04: 'FC Schalke 04 Esports', FG: 'Furious Gaming', KLG: 'Kaos Latin Gamers', UOL: 'Unicorns of Love', SP11: 'SeolHaeOne Prince', GFF: 'Griffin', JAG: 'Jin Air GreenWings', BBQ: 'bbq OLIVERS', KSV: 'KSV Esports', ROX: 'ROX Tigers', KDM1: 'KONGDOO MONSTER', EEW: 'Ever8 Winners', SSGG: 'Samsung Galaxy', LZ: 'Longzhu Gaming', ESCX: 'ESC Ever', CJ: 'CJ Entus', SSO: 'SBENU SonicBoom', NJF: 'NaJin e-mFire', IMI: 'Longzhu IM', RANC: 'Rebels Anarchy', SSW: 'Samsung Galaxy White', SSB: 'Samsung Galaxy Blue', NWS: 'NaJin White Shield', NBSW: 'NaJin Black Sword', CJEB: 'CJ Entus Blaze', CJEF: 'CJ Entus Frost', JAGF: 'Jin Air Greenwings Falcons', BFM: 'Bigfile Miracle', JAGS: 'Jin Air Greenwings Stealths', KTRA: 'kt Rolster Arrows', KTRB: 'kt Rolster Bullets', SKTS: 'SK telecom T1 S', SKTK: 'SK telecom T1 K', IM1: 'Incredible Miracle #1', IM2: 'Incredible Miracle #2', XEN: 'Xenics Storm', PROP: 'Prime Optimus', FIO: 'Midas FIO', AWAR: 'Alienware Arena', TNB: 'Team NB', DARK: 'Team Dark', MVPO: 'MVP Ozone', CTU: 'Chunnam Techno University', MIGB: 'MiG Blitz', XENB: 'Xenics Blast', MVPB: 'MVP Blue', AHQK: 'ahq Korea' };
@@ -421,10 +426,10 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
     }
     return (
       <div key={m.id} className="flex flex-col">
-        {(dispName || (showDate && m.day)) && (
+        {(dispName || (showDate && (m.day || m.time))) && (
         <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider px-0.5 mb-1 flex items-baseline gap-1.5">
           <span>{dispName}</span>
-          {showDate && m.day && <span className="text-white/30 normal-case font-normal ml-auto">{m.day.replace(/^(\d+)-(\d+)$/, '$1/$2')}</span>}
+          {showDate && (m.day || m.time) && <span className="text-white/30 normal-case font-normal ml-auto">{[m.day?.replace(/^(\d+)-(\d+)$/, '$1/$2'), m.time].filter(Boolean).join(' ')}</span>}
         </span>
         )}
         <div data-card-id={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
@@ -3429,6 +3434,8 @@ const PredictionPage = () => {
     ov.KTRB = { ...(ov.KTRB || {}), tag: 'KT.B' };
     // SKTS: 약칭 SKT S.
     ov.SKTS = { ...(ov.SKTS || {}), tag: 'SKT S' };
+    // SKTS: 2013 Spring은 SK telecom T1 #1(SKT #1).
+    if (activeYear === 2013 && activeSub === 'Spring') ov.SKTS = { ...ov.SKTS, tag: 'SKT #1', name: 'SK telecom T1 #1', logo: sktT1No1Logo };
     // SKTK: 약칭 SKT K.
     ov.SKTK = { ...(ov.SKTK || {}), tag: 'SKT K' };
     // IM1: 약칭 IM#1.
@@ -3448,6 +3455,12 @@ const PredictionPage = () => {
     // MVPO: 약칭 MVP.O.
     ov.MVPO = { ...(ov.MVPO || {}), tag: 'MVP.O' };
     // SKTK: 2013 Summer는 팀명·로고를 SK telecom T1(2019까지 표기)로.
+    // SKTK: 2013 Spring은 SK telecom T1 #2(SKT #2).
+    // NBSW(NaJin Black Sword): 2013 Spring까지 NaJin Sword(NJ SWD).
+    if (activeYear < 2013 || (activeYear === 2013 && activeSub === 'Spring')) ov.NBSW = { ...(ov.NBSW || {}), tag: 'NJ SWD', name: 'NaJin Sword', logo: najinSwordLogo };
+    // NWS(NaJin White Shield): 2013 Spring까지 NaJin Shield(NJ SHD).
+    if (activeYear < 2013 || (activeYear === 2013 && activeSub === 'Spring')) ov.NWS = { ...(ov.NWS || {}), tag: 'NJ SHD', name: 'NaJin Shield', logo: najinShieldLogo };
+    if (activeYear === 2013 && activeSub === 'Spring') ov.SKTK = { ...(ov.SKTK || {}), tag: 'SKT #2', name: 'SK telecom T1 #2', logo: sktT1No2Logo };
     if (activeYear === 2013 && activeSub === 'Summer') ov.SKTK = { ...(ov.SKTK || {}), name: 'SK telecom T1', logo: sktT1Logo };
     // MIGB: 약칭 MIG.
     ov.MIGB = { ...(ov.MIGB || {}), tag: 'MIG' };
@@ -3455,6 +3468,8 @@ const PredictionPage = () => {
     ov.XENB = { ...(ov.XENB || {}), tag: 'XB' };
     // MVPB: 약칭 MVP.B.
     ov.MVPB = { ...(ov.MVPB || {}), tag: 'MVP.B' };
+    // 2012 Winter(Champions Winter 2012-13) 당시 팀명: MVP White·KT Rolster A/B·Team OP·GSG.
+    if (activeYear === 2012 && activeSub === 'Winter') Object.assign(ov, { MVPO: { ...ov.MVPO, tag: 'MVP.W', name: 'MVP White' }, KTRA: { ...ov.KTRA, tag: 'KT A', name: 'KT Rolster A' }, KTRB: { ...ov.KTRB, tag: 'KT B', name: 'KT Rolster B' }, TOP: { tag: 'OP', name: 'Team OP' }, GSG: { tag: 'GSG', name: 'GSG' } });
     // AHQK: 약칭 ahq.KR.
     ov.AHQK = { ...(ov.AHQK || {}), tag: 'ahq.KR' };
     // INTZ: 약칭 ITZ.

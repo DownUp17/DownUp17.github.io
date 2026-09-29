@@ -5069,6 +5069,69 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`LCK 승강전 반영 실패(무시): ${e.message}`); }
 }
 
+// ── 2012 LCK(OGN Champions) Winter 2012-13 — API 미제공 · Leaguepedia 기준 수기 ──
+//   (앱의 '2013 Winter'는 Champions Winter 2013-14 → 2012-13 시즌은 '2012 Winter'로)
+//   그룹 스테이지(6팀 2개조 · Bo2 · 승 3점/무 1점, 조 4위까지 진출) → 8강~결승 Bo5(4강은 Bo5 2회) + 3위전 · 시드 결정전. 우승 NaJin Sword.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const lck = past.standings?.['2012']?.lck;
+    if (lck && !lck.Winter) {
+      const S = (short, seed, score, flag) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
+      // w-l = 세트(게임) 승-패, 비고 = 시리즈 승-무-패 · 승점
+      const R = (rank, team, w, l, group, rec) => ({ rank, team, w, l, group, remark: rec });
+      const rows = [
+        R(1, 'AZF', 8, 4, 'A조', '2승 4무 · 10점'), R(2, 'MVPO', 7, 5, 'A조', '2승 3무 1패 · 9점'), R(3, 'IMI', 7, 5, 'A조', '2승 3무 1패 · 9점'),
+        R(4, 'KTRA', 7, 5, 'A조', '1승 5무 · 8점'), R(5, 'NWS', 5, 7, 'A조', '1승 3무 2패 · 6점'), R(6, 'TOP', 3, 9, 'A조', '3무 3패 · 3점'),
+        R(1, 'KTRB', 11, 1, 'B조', '5승 1무 · 16점'), R(2, 'AZB', 9, 3, 'B조', '4승 1무 1패 · 13점'), R(3, 'NBSW', 7, 5, 'B조', '3승 1무 2패 · 10점'),
+        R(4, 'CJ', 4, 8, 'B조', '2승 4패 · 6점'), R(5, 'MVPB', 2, 10, 'B조', '2무 4패 · 2점'), R(6, 'GSG', 2, 10, 'B조', '2무 4패 · 2점'),
+      ];
+      const ko = applySingleElimLayout({
+        rounds: [
+          { matches: [
+            { title: '8강', a: S('AZF', 'A조 1위', 3, 'win'), b: S('CJ', 'B조 4위', 2) },
+            { title: '8강', a: S('AZB', 'B조 2위', 3, 'win'), b: S('IMI', 'A조 3위', 2) },
+            { title: '8강', a: S('MVPO', 'A조 2위', 0), b: S('NBSW', 'B조 3위', 3, 'win') },
+            { title: '8강', a: S('KTRB', 'B조 1위', 3, 'win'), b: S('KTRA', 'A조 4위', 1) },
+          ] },
+          { matches: [
+            { title: '4강 (Bo5 2회 · 3:2, 3:2)', a: S('AZF', '8강 승자', 2, 'win'), b: S('AZB', '8강 승자', 0) },
+            { title: '4강 (Bo5 2회 · 3:1, 3:0)', a: S('NBSW', '8강 승자', 2, 'win'), b: S('KTRB', '8강 승자', 0) },
+          ] },
+          { matches: [
+            { title: '결승', a: S('AZF', '4강 승자', 0, 'elim'), b: S('NBSW', '4강 승자', 3, 'msi') },
+          ] },
+        ],
+        connectors: [
+          [0, 0, 'a', 1, 0, 'a'], [0, 1, 'a', 1, 0, 'b'], [0, 2, 'b', 1, 1, 'a'], [0, 3, 'a', 1, 1, 'b'],
+          [1, 0, 'a', 2, 0, 'a'], [1, 1, 'a', 2, 0, 'b'],
+        ],
+      });
+      ko.rounds[ko.rounds.length - 1].matches.push({ title: '3위 결정전', startRow: 6, a: S('AZB', '4강 패자', 0), b: S('KTRB', '4강 패자', 3, 'win') });
+      const seedCh = { totalRows: 2, rounds: [{ title: '', matches: [{ title: '시드 결정전 (조 5위)', startRow: 0, a: S('NWS', 'A조 5위', 3, 'win'), b: S('MVPB', 'B조 5위', 1, 'elim') }] }], connectors: [] };
+      lck.Winter = {
+        name: 'Champions Winter 2012-13', regLabel: '그룹 스테이지', parallelGroups: true,
+        rows,
+        brackets: [
+          { slug: 'playoffs', name: '플레이오프', label: '플레이오프', bracket: ko },
+          { slug: 'seed_challenge', name: '시드 결정전', label: '시드 결정전', bracket: seedCh },
+        ],
+        finalStandings: [
+          { rank: 1, team: 'NBSW', note: '우승' }, { rank: 2, team: 'AZF', note: '준우승' },
+          { rank: 3, team: 'KTRB', note: '3위' }, { rank: 4, team: 'AZB', note: '' },
+          { rank: 5, team: 'KTRA', note: '' }, { rank: 5, team: 'MVPO', note: '' }, { rank: 5, team: 'IMI', note: '' }, { rank: 5, team: 'CJ', note: '' },
+          { rank: 9, team: 'NWS', note: '' }, { rank: 9, team: 'TOP', note: '' }, { rank: 9, team: 'GSG', note: '' }, { rank: 9, team: 'MVPB', note: '' },
+        ],
+      };
+      const subs = past.subtabs['2012'].lck;
+      if (!subs.includes('Winter')) subs.push('Winter');
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2012 LCK Winter(Champions Winter 2012-13) 추가 · 우승 NaJin Sword');
+    }
+  } catch (e) { console.warn(`2012 LCK Winter 추가 실패(무시): ${e.message}`); }
+}
+
 // ── 2022 항저우 아시안게임(2023년 개최) LoL — API 미제공 · 수기 → 과거 에디션 '2023'(연도 선택 기준) ─────────
 //   그룹 스테이지(3팀 4개조 싱글RR · D조 2팀 · 조 1위 진출) → 녹아웃(직행 4국 + 조 1위 4국 · 싱글 엘리 + 동메달 결정전). 금 대한민국.
 {
