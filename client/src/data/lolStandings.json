@@ -11603,84 +11603,93 @@
           "matches": [
             {
               "id": "A1",
-              "a": "VIE",
-              "b": "SAU",
+              "a": "SAU",
+              "b": "VIE",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 0,
+              "scoreB": 1
             },
             {
               "id": "A2",
-              "a": "VIE",
+              "a": "UAE",
               "b": "MYS",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 1,
+              "scoreB": 0
             },
             {
               "id": "A3",
-              "a": "VIE",
+              "a": "SAU",
               "b": "UAE",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 1,
+              "scoreB": 0
             },
             {
               "id": "A4",
-              "a": "SAU",
+              "a": "VIE",
               "b": "MYS",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 1,
+              "scoreB": 0
             },
             {
               "id": "A5",
               "a": "SAU",
-              "b": "UAE",
+              "b": "MYS",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 1,
+              "scoreB": 0
             },
             {
               "id": "A6",
-              "a": "MYS",
+              "a": "VIE",
               "b": "UAE",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 1,
+              "scoreB": 0
             }
           ],
           "standings": [
             {
               "code": "VIE",
-              "w": 0,
+              "w": 3,
               "l": 0,
-              "sw": 0,
+              "sw": 3,
               "sl": 0,
-              "h2h": {}
+              "h2h": {
+                "SAU": 1,
+                "MYS": 1,
+                "UAE": 1
+              }
             },
             {
               "code": "SAU",
-              "w": 0,
-              "l": 0,
-              "sw": 0,
-              "sl": 0,
-              "h2h": {}
+              "w": 2,
+              "l": 1,
+              "sw": 2,
+              "sl": 1,
+              "h2h": {
+                "UAE": 1,
+                "MYS": 1
+              }
+            },
+            {
+              "code": "UAE",
+              "w": 1,
+              "l": 2,
+              "sw": 1,
+              "sl": 2,
+              "h2h": {
+                "MYS": 1
+              }
             },
             {
               "code": "MYS",
               "w": 0,
-              "l": 0,
+              "l": 3,
               "sw": 0,
-              "sl": 0,
-              "h2h": {}
-            },
-            {
-              "code": "UAE",
-              "w": 0,
-              "l": 0,
-              "sw": 0,
-              "sl": 0,
+              "sl": 3,
               "h2h": {}
             }
           ]
