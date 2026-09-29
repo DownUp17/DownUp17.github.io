@@ -1129,6 +1129,14 @@
           "starter": true
         },
         {
+          "name": "Angel",
+          "firstName": "Tao",
+          "lastName": "Xiang",
+          "role": "mid",
+          "image": "https://static.lolesports.com/players/1768347791801_angel.png",
+          "starter": false
+        },
+        {
           "name": "GALA",
           "firstName": "Wei ",
           "lastName": "Chen",
