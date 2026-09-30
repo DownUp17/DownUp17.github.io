@@ -9773,12 +9773,10 @@
       "qualifiers": [
         {
           "seed": "LPL #5",
-          "label": "LPL #5",
           "short": "JDG"
         },
         {
           "seed": "LPL #6",
-          "label": "LPL #6",
           "short": "WE"
         },
         {
@@ -9799,7 +9797,6 @@
         },
         {
           "seed": "LEC #4",
-          "label": "LEC #4",
           "short": "NAVI"
         },
         {
@@ -9808,12 +9805,10 @@
         },
         {
           "seed": "LCS #4",
-          "label": "LCS #4",
           "short": "SR"
         },
         {
           "seed": "LCS #5",
-          "label": "LCS #5",
           "short": "FLY"
         },
         {
@@ -9822,7 +9817,6 @@
         },
         {
           "seed": "CBLOL #4",
-          "label": "CBLOL #4",
           "short": "RED"
         }
       ],
@@ -9902,8 +9896,8 @@
             "time": "17:00",
             "format": "Bo1",
             "bracket": "0-0",
-            "a": "SR",
-            "b": "KT",
+            "a": "RED",
+            "b": "NAVI",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -9915,8 +9909,8 @@
             "time": "18:00",
             "format": "Bo1",
             "bracket": "0-0",
-            "a": "BRO",
-            "b": "JDG",
+            "a": "LGD",
+            "b": "FLY",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -9928,8 +9922,8 @@
             "time": "19:00",
             "format": "Bo1",
             "bracket": "0-0",
-            "a": "VIT",
-            "b": "BFX",
+            "a": "SR",
+            "b": "KT",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -9941,8 +9935,8 @@
             "time": "20:00",
             "format": "Bo1",
             "bracket": "0-0",
-            "a": "LGD",
-            "b": "FLY",
+            "a": "VIT",
+            "b": "BFX",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -9967,8 +9961,8 @@
             "time": "22:00",
             "format": "Bo1",
             "bracket": "0-0",
-            "a": "RED",
-            "b": "NAVI",
+            "a": "BRO",
+            "b": "JDG",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
