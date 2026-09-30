@@ -1973,7 +1973,6 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                         <th className="text-center font-bold py-2 px-2 w-10">#</th>
                         <th className="text-left font-bold py-2 pr-2">국가</th>
                         <th className="text-center font-bold py-2 px-2">승-패</th>
-                        <th className="text-center font-bold py-2 px-2">득실차</th>
                       </tr></thead>
                       <tbody>
                         {rows.length ? rows.map((r, i) => (
@@ -1981,10 +1980,9 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                             <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
                             <td className="py-2 pr-2 font-bold text-white/90">{nameOf(r.code)}</td>
                             <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
-                            <td className="py-2 px-2 text-center font-mono" style={{ color: r.sw - r.sl > 0 ? '#34D399' : r.sw - r.sl < 0 ? '#F87171' : '#9CA3AF' }}>{r.sw - r.sl > 0 ? `+${r.sw - r.sl}` : r.sw - r.sl}</td>
                           </tr>
                         )) : (
-                          <tr><td colSpan={4} className="py-4 text-center text-white/30 text-xs">조 편성 미정</td></tr>
+                          <tr><td colSpan={3} className="py-4 text-center text-white/30 text-xs">조 편성 미정</td></tr>
                         )}
                       </tbody>
                     </table>
