@@ -11717,8 +11717,8 @@
               "a": "IND",
               "b": "KOR",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 0,
+              "scoreB": 1
             },
             {
               "id": "B4",
@@ -11747,6 +11747,17 @@
           ],
           "standings": [
             {
+              "code": "KOR",
+              "w": 2,
+              "l": 0,
+              "sw": 2,
+              "sl": 0,
+              "h2h": {
+                "TPE": 1,
+                "IND": 1
+              }
+            },
+            {
               "code": "HKG",
               "w": 1,
               "l": 0,
@@ -11757,17 +11768,7 @@
               }
             },
             {
-              "code": "KOR",
-              "w": 1,
-              "l": 0,
-              "sw": 1,
-              "sl": 0,
-              "h2h": {
-                "TPE": 1
-              }
-            },
-            {
-              "code": "IND",
+              "code": "TPE",
               "w": 0,
               "l": 1,
               "sw": 0,
@@ -11775,11 +11776,11 @@
               "h2h": {}
             },
             {
-              "code": "TPE",
+              "code": "IND",
               "w": 0,
-              "l": 1,
+              "l": 2,
               "sw": 0,
-              "sl": 1,
+              "sl": 2,
               "h2h": {}
             }
           ]
@@ -11790,7 +11791,7 @@
           {
             "id": "SF1",
             "a": "VIE",
-            "b": "KOR",
+            "b": "HKG",
             "format": "Bo3",
             "prev": {
               "a": "A:1",
@@ -11802,7 +11803,7 @@
           },
           {
             "id": "SF2",
-            "a": "HKG",
+            "a": "KOR",
             "b": "SAU",
             "format": "Bo3",
             "prev": {
