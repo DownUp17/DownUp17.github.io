@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-09-30",
   "titles": {
     "HLE": [
       {
@@ -833,6 +833,16 @@
         }
       },
       {
+        "name": "2013 LCK Winter",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2013",
+          "sub": "Winter"
+        }
+      },
+      {
         "name": "2013 Worlds",
         "detail": "우승",
         "color": "#0fe3f9"
@@ -845,16 +855,6 @@
           "tab": "lck",
           "year": "2013",
           "sub": "Summer"
-        }
-      },
-      {
-        "name": "2013 LCK Winter",
-        "detail": "우승",
-        "color": "#1c192a",
-        "link": {
-          "tab": "lck",
-          "year": "2013",
-          "sub": "Winter"
         }
       }
     ],

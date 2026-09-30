@@ -5385,7 +5385,8 @@ console.log('lolStandings.json 갱신 완료');
   // 개최 순서(이른 대회 → 늦은 대회). 최신순 정렬 시 뒤쪽(늦은 대회)이 위로 온다.
   //   LCK CUP·첫 스플릿(LPL Split 1 등)은 First Stand보다 먼저 진행 → First Stand 앞에 배치.
   const TITLE_ORDER = ['LCK CUP', 'Lock-In', 'Lock In', 'Versus', 'Winter', 'Kickoff', 'Split 1', 'Etapa 1', 'Opening', 'First Stand', 'Spring', 'Road to MSI', 'Mid-Season', 'Mid Season', 'Split 2', 'Etapa 2', 'Summer', 'Closing', 'Esports World Cup', '시즌 파이널', 'Season Finals', 'Split 3', 'Etapa 3', 'Playoffs', 'Copa', 'Worlds', 'KeSPA'];
-  const ord = (name) => { const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
+  // LCK Winter(2012·2013)는 그해 Worlds 이후(11월~) 개최 → 가장 늦은 대회로.
+  const ord = (name) => { if (/LCK Winter/.test(name)) return 100; const i = TITLE_ORDER.findIndex((k) => name.includes(k)); return i < 0 ? 99 : i; };
   const yearOf = (name) => { const m = name.match(/\b(20\d{2})\b/); return m ? Number(m[1]) : 0; };
   // 과거 팀 코드의 우승은 현재 팀으로 합산(예: R7·6K → LYON, RGE → NAVI).
   for (const [old, cur] of Object.entries(TEAM_LINK)) if (titles[old]) { (titles[cur] = titles[cur] || []).push(...titles[old]); delete titles[old]; }
