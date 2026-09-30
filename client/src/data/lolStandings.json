@@ -11725,62 +11725,66 @@
               "a": "HKG",
               "b": "TPE",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 0,
+              "scoreB": 1
             },
             {
               "id": "B5",
               "a": "IND",
               "b": "TPE",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 0,
+              "scoreB": 1
             },
             {
               "id": "B6",
               "a": "HKG",
               "b": "KOR",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 0,
+              "scoreB": 1
             }
           ],
           "standings": [
             {
               "code": "KOR",
-              "w": 2,
+              "w": 3,
               "l": 0,
-              "sw": 2,
+              "sw": 3,
               "sl": 0,
               "h2h": {
                 "TPE": 1,
+                "IND": 1,
+                "HKG": 1
+              }
+            },
+            {
+              "code": "TPE",
+              "w": 2,
+              "l": 1,
+              "sw": 2,
+              "sl": 1,
+              "h2h": {
+                "HKG": 1,
                 "IND": 1
               }
             },
             {
               "code": "HKG",
               "w": 1,
-              "l": 0,
+              "l": 2,
               "sw": 1,
-              "sl": 0,
+              "sl": 2,
               "h2h": {
                 "IND": 1
               }
             },
             {
-              "code": "TPE",
-              "w": 0,
-              "l": 1,
-              "sw": 0,
-              "sl": 1,
-              "h2h": {}
-            },
-            {
               "code": "IND",
               "w": 0,
-              "l": 2,
+              "l": 3,
               "sw": 0,
-              "sl": 2,
+              "sl": 3,
               "h2h": {}
             }
           ]
@@ -11791,7 +11795,7 @@
           {
             "id": "SF1",
             "a": "VIE",
-            "b": "HKG",
+            "b": "TPE",
             "format": "Bo3",
             "prev": {
               "a": "A:1",
