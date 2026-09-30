@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-09-30",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -11704,40 +11704,40 @@
           "matches": [
             {
               "id": "B1",
-              "a": "KOR",
-              "b": "TPE",
+              "a": "IND",
+              "b": "HKG",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 0,
+              "scoreB": 1
             },
             {
               "id": "B2",
               "a": "KOR",
-              "b": "HKG",
+              "b": "TPE",
               "format": "Bo1",
-              "scoreA": null,
-              "scoreB": null
+              "scoreA": 1,
+              "scoreB": 0
             },
             {
               "id": "B3",
-              "a": "KOR",
-              "b": "IND",
+              "a": "IND",
+              "b": "KOR",
               "format": "Bo1",
               "scoreA": null,
               "scoreB": null
             },
             {
               "id": "B4",
-              "a": "TPE",
-              "b": "HKG",
+              "a": "HKG",
+              "b": "TPE",
               "format": "Bo1",
               "scoreA": null,
               "scoreB": null
             },
             {
               "id": "B5",
-              "a": "TPE",
-              "b": "IND",
+              "a": "IND",
+              "b": "TPE",
               "format": "Bo1",
               "scoreA": null,
               "scoreB": null
@@ -11745,7 +11745,7 @@
             {
               "id": "B6",
               "a": "HKG",
-              "b": "IND",
+              "b": "KOR",
               "format": "Bo1",
               "scoreA": null,
               "scoreB": null
@@ -11753,35 +11753,39 @@
           ],
           "standings": [
             {
-              "code": "KOR",
-              "w": 0,
+              "code": "HKG",
+              "w": 1,
               "l": 0,
-              "sw": 0,
+              "sw": 1,
               "sl": 0,
+              "h2h": {
+                "IND": 1
+              }
+            },
+            {
+              "code": "KOR",
+              "w": 1,
+              "l": 0,
+              "sw": 1,
+              "sl": 0,
+              "h2h": {
+                "TPE": 1
+              }
+            },
+            {
+              "code": "IND",
+              "w": 0,
+              "l": 1,
+              "sw": 0,
+              "sl": 1,
               "h2h": {}
             },
             {
               "code": "TPE",
               "w": 0,
-              "l": 0,
+              "l": 1,
               "sw": 0,
-              "sl": 0,
-              "h2h": {}
-            },
-            {
-              "code": "HKG",
-              "w": 0,
-              "l": 0,
-              "sw": 0,
-              "sl": 0,
-              "h2h": {}
-            },
-            {
-              "code": "IND",
-              "w": 0,
-              "l": 0,
-              "sw": 0,
-              "sl": 0,
+              "sl": 1,
               "h2h": {}
             }
           ]
@@ -11792,7 +11796,7 @@
           {
             "id": "SF1",
             "a": "VIE",
-            "b": "TPE",
+            "b": "KOR",
             "format": "Bo3",
             "prev": {
               "a": "A:1",
@@ -11804,7 +11808,7 @@
           },
           {
             "id": "SF2",
-            "a": "KOR",
+            "a": "HKG",
             "b": "SAU",
             "format": "Bo3",
             "prev": {
