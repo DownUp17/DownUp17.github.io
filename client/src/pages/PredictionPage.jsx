@@ -1801,16 +1801,16 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
               </div>
               <DemaciaBracket
                 columns={[
-                  { groups: [{ day: '10/3', format: 'Bo1', label: '0-0', matches: groupMatches.filter((m) => m.bracket === '0-0') }] },
+                  { groups: [{ day: '10/3', showMatchDate: true, format: 'Bo1', label: '0-0', matches: groupMatches.filter((m) => m.bracket === '0-0') }] },
                   { groups: [
-                    { day: '10/4', format: 'Bo3', label: '1-0', matches: groupMatches.filter((m) => m.bracket === '1-0') },
-                    { day: '10/5', format: 'Bo3', label: '0-1', matches: groupMatches.filter((m) => m.bracket === '0-1') },
+                    { day: '10/4', showMatchDate: true, format: 'Bo3', label: '1-0', matches: groupMatches.filter((m) => m.bracket === '1-0') },
+                    { day: '10/5', showMatchDate: true, format: 'Bo3', label: '0-1', matches: groupMatches.filter((m) => m.bracket === '0-1') },
                   ] },
                   { groups: [
-                    { day: '10/6', format: 'Bo3', label: '1-1', matches: groupMatches.filter((m) => m.bracket === '1-1') },
-                    { day: '10/7', format: 'Bo3', label: '0-2 RR', matches: groupMatches.filter((m) => m.bracket === '0-2 RR'), showRRStandings: true },
+                    { day: '10/6', showMatchDate: true, format: 'Bo3', label: '1-1', matches: groupMatches.filter((m) => m.bracket === '1-1') },
+                    { day: '10/7', showMatchDate: true, format: 'Bo3', label: '0-2 RR', matches: groupMatches.filter((m) => m.bracket === '0-2 RR'), showRRStandings: true },
                   ] },
-                  { groups: [{ day: '10/8', format: 'Bo3', label: '1-2 & 0-2 1st', matches: groupMatches.filter((m) => m.bracket === '1-2 & 0-2 1st') }] },
+                  { groups: [{ day: '10/8', showMatchDate: true, format: 'Bo3', label: '1-2 & 0-2 1st', matches: groupMatches.filter((m) => m.bracket === '1-2 & 0-2 1st') }] },
                 ]}
                 teams={official.teams}
                 msiSet={msiSet}
