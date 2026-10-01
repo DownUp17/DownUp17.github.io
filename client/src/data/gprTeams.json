@@ -1,6 +1,6 @@
 {
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "updatedAt": "2026-09-30",
+  "updatedAt": "2026-10-01",
   "note": "GPR 팀별 점수(포인트)와 전적. score를 시뮬레이션 레이팅으로 사용. fst는 2026 First Stand 최종 순위.",
   "teams": [
     {
@@ -532,10 +532,10 @@
       "name": "LOS",
       "short": "LOS",
       "league": "CBLOL",
-      "score": 1174,
+      "score": 1177,
       "w": 22,
-      "l": 9,
-      "gw": 50,
+      "l": 10,
+      "gw": 51,
       "gl": 31,
       "logo": "https://static.lolesports.com/teams/1784013312149_LOS-OLaranja.png"
     },
