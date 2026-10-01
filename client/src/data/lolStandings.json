@@ -11801,9 +11801,9 @@
               "a": "A:1",
               "b": "B:2"
             },
-            "winner": null,
-            "scoreA": null,
-            "scoreB": null,
+            "winner": "TPE",
+            "scoreA": 0,
+            "scoreB": 2,
             "day": "10-01",
             "time": "09:00"
           },
@@ -11816,16 +11816,16 @@
               "a": "B:1",
               "b": "A:2"
             },
-            "winner": null,
-            "scoreA": null,
-            "scoreB": null,
+            "winner": "KOR",
+            "scoreA": 2,
+            "scoreB": 0,
             "day": "10-01",
             "time": "13:30"
           },
           {
             "id": "FINAL",
-            "a": null,
-            "b": null,
+            "a": "TPE",
+            "b": "KOR",
             "format": "Bo5",
             "prev": {
               "a": "SF1:W",
