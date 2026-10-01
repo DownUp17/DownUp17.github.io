@@ -268,7 +268,7 @@ const GroupSymbol = ({ group, size = 16 }) => (
 const EXTRA_LOGOS = { FPX: fpxLogo, RNG: rngLogo, RGE: rogueLogo, LR: losRatonesLogo, KCB: karmineCorpBlueLogo, '100T': hundredThievesLogo, ISG: isurusLogo, PSG: psgTalonLogo, CHF: chiefsLogo, QTD: qtdIgLogo, IE: infernoEsportsLogo, SVO: savingOceLogo, FRK: frkLogo, ZSM: zsmLogo, RA: rareAtomLogo, NRG: nrgLogo, IMT: imtLogo, FAK: frankEsportsLogo, JT: taipeiJTeamLogo, WP: westPointEsportsLogo, HPS: hellPigsLogo, BYG: beyondGamingLogo, V3: v3EsportsLogo, AXC: axizCrestLogo, BCT: burningCoreToyomaLogo, DW: direWolvesLogo, TB: teamBlissLogo, ION: ionGlobalEsportsLogo, FRY: furyGlobalLogo, MEC: mammothLogo, KNG: kangaEsportsLogo, TS: teamSecretLogo, TW: teamWhalesLogo, CES: cerberusEsportsLogo, MBE: mgnBlueEsportsLogo, TF: teamFlashLogo, RW: rainbowWarriorsLogo, KBM: kabumEsportsLogo, LBR: libertyLogo, INTZ: intzLogo, R7: movistarR7Logo, INF: infinityLogo, EST: estralEsportsLogo, '6K': sixKarmaLogo, AK: allKnightsLogo, LGDYT: lgdYoungTeamLogo, BLGJ: blgJuniorLogo, BLD: bloodLogo, SG: superGamingLogo, AST: astralisLogo, GG: goldenGuardiansLogo, CLG: clgLogo, EG: evilGeniusesLogo, TSM: tsmLogo, IMP: impunityEsportsLogo, DWT: dewishTeamLogo, SBTE: sbtcEsportsLogo, FL: fennelLogo, CGA: crestGamingActLogo, PGG: pentanetGgLogo, VTX: vertexEscLogo, MCX: machiEsportsLogo, BJD: berjayaDragonsLogo, PCE: peaceLogo, MSF: misfitsGamingLogo, IW: istanbulWildcatsLogo, GS: galatasarayLogo, AUR: auroraLogo, DP: darkPassageLogo, NASR: nasrEsportsLogo, '5R': fiveRoninLogo, FB: fenerbahceEsporLogo, SUP: supermassiveBlazeLogo, BJK: besiktasEsportsLogo, GAL: galakticosLogo, MFT: metaFalconTeamLogo, S9: sem9Logo, HG: hurricaneGamingLogo, ORD: orderLogo, GRV: gravitasLogo, RJ: rascalJesterLogo, ASES: asEsportsLogo, GETS: geniusEsportsLogo, TK: theKingsLogo, AZE: teamAzeLogo, XTN: xtenEsportsLogo, GET: globantEmeraldLogo, INC: incubusLogo, SKY: burstTheSkyLogo, LX: luxuryEsportsLogo, NMG: minersLogo, FLA: flamengoLosGrandesLogo, RNS: rensgaLogo, S04: schalke04Logo, FG: furiousGamingLogo, KLG: kaosLatinGamersLogo, UOL: unicornsOfLoveLogo, KSV: ksvEsportsLogo, ROX: roxTigersLogo, KDM1: kongdooMonsterLogo, SSGG: samsungGalaxyLogo, LZ: longzhuGamingLogo, NJF: najinMfireLogo, IMI: longzhuImLogo, RANC: rebelsAnarchyLogo, SSW: samsungWhiteLogo, SSB: samsungBlueLogo, NWS: najinWhiteShieldLogo, NBSW: najinBlackSwordLogo, KTRA: ktRolsterArrowsLogo, KTRB: ktRolsterBulletsLogo, SKTS: sktT1SLogo, SKTK: sktT1KLogo, IM1: incredibleMiracle1Logo, IM2: incredibleMiracle2Logo, MVP: mvpLogo, MVPO: mvpLogo, MVPB: mvpLogo };
 const baseLogoByShort = Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.logo]));
 const logoByShort = { ...EXTRA_LOGOS, ...baseLogoByShort };
-const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming', AST: 'Astralis', GG: 'Golden Guardians', CLG: 'CLG', EG: 'Evil Geniuses', TSM: 'TSM', IMP: 'Impunity Esports', DWT: 'Dewish Team', SBTE: 'SBTC Esports', FL: 'FENNEL', CGA: 'Crest Gaming Act', PGG: 'Pentanet.GG', VTX: 'Vertex ESC', MCX: 'Machi Esports', BJD: 'Berjaya Dragons', PCE: 'PEACE', MSF: 'Misfits Gaming', IW: 'DenizBank İstanbul Wildcats', GS: 'Galatasaray Esports', AUR: 'Info Yatırım Aurora', DP: 'Dark Passage', NASR: 'NASR Esports', '5R': '5 Ronin', FB: 'Fenerbahçe Espor', SUP: 'SuperMassive Blaze', BJK: 'Beşiktaş Esports', GAL: 'Galakticos', MFT: 'Meta Falcon Team', S9: 'SEM9', HG: 'Hurricane Gaming', ORD: 'ORDER', GRV: 'Gravitas', RJ: 'Rascal Jester', ASES: 'AS Esports', GETS: 'Genius Esports', TK: 'The Kings', AZE: 'Team Aze', XTN: 'XTEN Esports', GET: 'Globant Emerald', INC: 'Incubus', SKY: 'Burst The Sky Esports', LX: 'Luxury Esports', NMG: 'Miners', FLA: 'Flamengo Los Grandes', RNS: 'RENSGA', S04: 'FC Schalke 04 Esports', FG: 'Furious Gaming', KLG: 'Kaos Latin Gamers', UOL: 'Unicorns of Love', SP11: 'SeolHaeOne Prince', GFF: 'Griffin', JAG: 'Jin Air GreenWings', BBQ: 'bbq OLIVERS', KSV: 'KSV Esports', ROX: 'ROX Tigers', KDM1: 'KONGDOO MONSTER', EEW: 'Ever8 Winners', SSGG: 'Samsung Galaxy', LZ: 'Longzhu Gaming', ESCX: 'ESC Ever', CJ: 'CJ Entus', SSO: 'SBENU SonicBoom', NJF: 'NaJin e-mFire', IMI: 'Longzhu IM', RANC: 'Rebels Anarchy', SSW: 'Samsung Galaxy White', SSB: 'Samsung Galaxy Blue', NWS: 'NaJin White Shield', NBSW: 'NaJin Black Sword', CJEB: 'CJ Entus Blaze', CJEF: 'CJ Entus Frost', JAGF: 'Jin Air Greenwings Falcons', BFM: 'Bigfile Miracle', JAGS: 'Jin Air Greenwings Stealths', KTRA: 'kt Rolster Arrows', KTRB: 'kt Rolster Bullets', SKTS: 'SK telecom T1 S', SKTK: 'SK telecom T1 K', IM1: 'Incredible Miracle #1', IM2: 'Incredible Miracle #2', XEN: 'Xenics Storm', PROP: 'Prime Optimus', FIO: 'Midas FIO', AWAR: 'Alienware Arena', TNB: 'Team NB', DARK: 'Team Dark', MVPO: 'MVP Ozone', CTU: 'Chunnam Techno University', MIGB: 'MiG Blitz', XENB: 'Xenics Blast', MVPB: 'MVP Blue', AHQK: 'ahq Korea', AZF: 'Azubu Frost', AZB: 'Azubu Blaze', 'CLG EU': 'CLG Europe', STRR: 'StarTale', NATU: 'Natus Vincere', ROMG: 'RoMg', MIBL: 'MiG Blaze', MIGF: 'MiG Frost', OPKR: 'Team OP', HUNT: 'Team Hunters', SUST: 'SuperStar', NEB: 'Noobs Except Balnemse', LIHI: 'Little Hippo', NEL: 'NeL', DDOL: 'DDoL', TEXD: 'Team XD' };
+const EXTRA_NAMES = { FPX: 'FunPlus Phoenix', RNG: 'Royal Never Give Up', RGE: 'Rogue', LR: 'Los Ratones', KCB: 'Karmine Corp Blue', '100T': '100 Thieves', ISG: 'Isurus', PSG: 'PSG Talon', CHF: 'The Chiefs Esports Club', QTD: 'QT DIG∞', IE: 'Inferno Esports', SVO: 'Saving OCE', RA: 'Rare Atom', NRG: 'NRG Kia', IMT: 'Immortals Progressive', FAK: 'Frank Esports', JT: 'Taipei J Team', WP: 'West Point Esports', HPS: 'Hell Pigs', BYG: 'Beyond Gaming', V3: 'V3 Esports', AXC: 'AXIZ CREST', BCT: 'Burning Core Toyoma', DW: 'Dire Wolves', TB: 'Team Bliss', ION: 'ION Global Esports', FRY: 'FURY Global', MEC: 'MAMMOTH', KNG: 'Kanga Esports', TS: 'Team Secret', TW: 'Team Whales', CES: 'CERBERUS Esports', MBE: 'MGN Blue Esports', TF: 'Team Flash', RW: 'Rainbow Warriors', KBM: 'KaBuM! Esports', LBR: 'Liberty', INTZ: 'INTZ', R7: 'Movistar R7', INF: 'INFINITY', EST: 'Estral Esports', '6K': 'Six Karma', AK: 'All Knights', LGDYT: 'LGD Young Team', BLGJ: 'BLG Junior', BLD: 'Blood', SG: 'Super Gaming', AST: 'Astralis', GG: 'Golden Guardians', CLG: 'CLG', EG: 'Evil Geniuses', TSM: 'TSM', IMP: 'Impunity Esports', DWT: 'Dewish Team', SBTE: 'SBTC Esports', FL: 'FENNEL', CGA: 'Crest Gaming Act', PGG: 'Pentanet.GG', VTX: 'Vertex ESC', MCX: 'Machi Esports', BJD: 'Berjaya Dragons', PCE: 'PEACE', MSF: 'Misfits Gaming', IW: 'DenizBank İstanbul Wildcats', GS: 'Galatasaray Esports', AUR: 'Info Yatırım Aurora', DP: 'Dark Passage', NASR: 'NASR Esports', '5R': '5 Ronin', FB: 'Fenerbahçe Espor', SUP: 'SuperMassive Blaze', BJK: 'Beşiktaş Esports', GAL: 'Galakticos', MFT: 'Meta Falcon Team', S9: 'SEM9', HG: 'Hurricane Gaming', ORD: 'ORDER', GRV: 'Gravitas', RJ: 'Rascal Jester', ASES: 'AS Esports', GETS: 'Genius Esports', TK: 'The Kings', AZE: 'Team Aze', XTN: 'XTEN Esports', GET: 'Globant Emerald', INC: 'Incubus', SKY: 'Burst The Sky Esports', LX: 'Luxury Esports', NMG: 'Miners', FLA: 'Flamengo Los Grandes', RNS: 'RENSGA', S04: 'FC Schalke 04 Esports', FG: 'Furious Gaming', KLG: 'Kaos Latin Gamers', UOL: 'Unicorns of Love', SP11: 'SeolHaeOne Prince', GFF: 'Griffin', JAG: 'Jin Air GreenWings', BBQ: 'bbq OLIVERS', KSV: 'KSV Esports', ROX: 'ROX Tigers', KDM1: 'KONGDOO MONSTER', EEW: 'Ever8 Winners', SSGG: 'Samsung Galaxy', LZ: 'Longzhu Gaming', ESCX: 'ESC Ever', CJ: 'CJ Entus', SSO: 'SBENU SonicBoom', NJF: 'NaJin e-mFire', IMI: 'Longzhu IM', RANC: 'Rebels Anarchy', SSW: 'Samsung Galaxy White', SSB: 'Samsung Galaxy Blue', NWS: 'NaJin White Shield', NBSW: 'NaJin Black Sword', CJEB: 'CJ Entus Blaze', CJEF: 'CJ Entus Frost', JAGF: 'Jin Air Greenwings Falcons', BFM: 'Bigfile Miracle', JAGS: 'Jin Air Greenwings Stealths', KTRA: 'kt Rolster Arrows', KTRB: 'kt Rolster Bullets', SKTS: 'SK telecom T1 S', SKTK: 'SK telecom T1 K', IM1: 'Incredible Miracle #1', IM2: 'Incredible Miracle #2', XEN: 'Xenics Storm', PROP: 'Prime Optimus', FIO: 'Midas FIO', AWAR: 'Alienware Arena', TNB: 'Team NB', DARK: 'Team Dark', MVPO: 'MVP Ozone', CTU: 'Chunnam Techno University', MIGB: 'MiG Blitz', XENB: 'Xenics Blast', MVPB: 'MVP Blue', AHQK: 'ahq Korea', AZF: 'Azubu Frost', AZB: 'Azubu Blaze', 'CLG EU': 'CLG Europe', STRR: 'StarTale', NATU: 'Natus Vincere', ROMG: 'RoMg', MIBL: 'MiG Blaze', MIGF: 'MiG Frost', OPKR: 'Team OP', HUNT: 'Team Hunters', SUST: 'SuperStar', NEB: 'Noobs Except Balnemse', LIHI: 'Little Hippo', NEL: 'NeL', DDOL: 'DDoL', TEXD: 'Team XD', TPAA: "Taipei Assassins", M5: "Moscow Five", SAJ: "Saigon Jokers", ROC: "Royal Club", GAB: "Gamania Bears", GMBT: "Gambit Gaming", LD: "Lemondogs", VUL: "Team Vulcun", GGEU: "GamingGear.eu", MSK: "Mineski", GMB: "Gambit Esports", ONE: "Team oNe eSports", YG: "Young Generation", HKA: "Hong Kong Attitude", RPG: "Rampage", AHQ: "ahq e-Sports Club", FWS: "Flash Wolves", ASC: "Ascension Gaming", GRX: "G-Rex", PVB: "Phong Vũ Buffalo", MAD: "MAD Team", CG: "Clutch Gaming", SPY: "Splyce", LK: "Lowkey Esports", MEGA: "MEGA", RYL: "Royal Youth" };
 const nameByShort = { ...EXTRA_NAMES, ...Object.fromEntries(gprTeams.teams.map((t) => [t.short, t.name])) };
 // 팀 페이지가 있는(=GPR에 존재하는) 팀만 클릭 가능. 과거 대회의 강등/해체 팀(LR·KCB 등)은 클릭 차단.
 // 과거 팀 코드 → 현재 팀 연결(클릭 시 현재 팀 페이지로). 예: VCS의 Team Secret(TS)·Team Whales(TW) → TSW, MGN Blue Esports(MBE) → MVK, Rogue(RGE) → NAVI.
@@ -1872,6 +1872,11 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
         if (comp.key !== 'asiangames') return null;
         const teams = official?.teams || [];
         const nameOf = (code) => (teams.find((t) => t.code === code)?.name || code);
+        // 국가명 옆 국기 — 대진표·순위표 공용.
+        const flagOf = (code, w = 18, h = 13) => {
+          const src = code && nationFlag(code);
+          return src ? <img src={src} alt="" width={w} height={h} className="shrink-0 rounded-[2px] object-cover" style={{ width: w, height: h }} onError={(e) => { e.currentTarget.style.display = 'none'; }} /> : null;
+        };
         const eloOf = (code) => teams.find((t) => t.code === code)?.elo;
         const legend = (
           <div className="mt-3 flex items-center gap-4 text-xs text-white/60 flex-wrap">
@@ -1904,6 +1909,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           }
           const slot = (code, score, win, pct) => (
             <div className={`flex items-center gap-2 px-2.5 py-2 ${win ? 'bg-[rgba(96,165,250,0.14)]' : ''}`}>
+              {flagOf(code)}
               <span className={`text-xs truncate flex-1 ${win ? 'font-bold text-white' : 'text-white/70'}`}>{code ? nameOf(code) : 'TBD'}</span>
               {score != null ? <span className={`font-mono tabular-nums text-sm shrink-0 ${win ? 'text-[#60A5FA] font-black' : 'text-white/45'}`}>{score}</span>
                 : pct != null ? <span className="font-mono tabular-nums text-xs shrink-0 text-white/55 font-black">{pct}%</span> : null}
@@ -1912,7 +1918,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           return (
             <div key={m.id} className="flex flex-col">
               <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider px-0.5 mb-1 flex items-baseline gap-1.5">
-                <span>{m.id}</span><span className="ml-auto text-white/30 normal-case font-normal">{m.format}</span>
+                <span>{m.id}</span><span className="ml-auto text-white/30 normal-case font-normal">{[[m.day?.replace(/^(\d+)-(\d+)$/, (_, mo, d) => `${+mo}/${+d}`), m.time].filter(Boolean).join(' '), m.format].filter(Boolean).join(' · ')}</span>
               </span>
               <div className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
                 {slot(m.a, m.scoreA, aWin, pA)}
@@ -1978,7 +1984,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                         {rows.length ? rows.map((r, i) => (
                           <tr key={r.code} className="border-b border-white/5">
                             <td className="py-2 px-2 text-center text-white/50 font-mono">{i + 1}</td>
-                            <td className="py-2 pr-2 font-bold text-white/90">{nameOf(r.code)}</td>
+                            <td className="py-2 pr-2 font-bold text-white/90"><span className="flex items-center gap-2">{flagOf(r.code, 20, 15)}{nameOf(r.code)}</span></td>
                             <td className="py-2 px-2 text-center font-mono">{r.w}-{r.l}</td>
                           </tr>
                         )) : (
@@ -2013,20 +2019,11 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
             <section>
               <div className="flex items-baseline gap-2 flex-wrap mb-4">
                 <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">녹아웃 스테이지</h3>
-                <span className="text-xs text-white/40">4강 Bo3 · 3·4위전·결승 Bo5</span>
+                <span className="text-xs text-white/40">4강 Bo3 · 결승 Bo5 (동메달 결정전 없음)</span>
               </div>
               <div className="flex gap-6 overflow-x-auto pb-3 items-stretch w-fit">
                 {col('4강', ['SF1', 'SF2'])}
-                <div className="flex flex-col gap-6 shrink-0 justify-center" style={{ width: 220 }}>
-                  <div>
-                    <div className="text-[11px] text-white/50 font-black tracking-wider px-1 mb-4">결승</div>
-                    {byId['FINAL'] && matchCard(byId['FINAL'])}
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-white/50 font-black tracking-wider px-1 mb-4">3·4위전</div>
-                    {byId['BRONZE'] && matchCard(byId['BRONZE'])}
-                  </div>
-                </div>
+                {col('결승', ['FINAL'])}
               </div>
               {legend}
             </section>
@@ -2879,6 +2876,14 @@ const PAST_DETAIL = {
   'lck|2024': { bySub: { 'KeSPA CUP': { color: '#072148' } } },
   'demacia|2024': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true }, // 2025 Demacia Cup과 동일
   'demacia|2022': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2021': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2020': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2019': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2018': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2017': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2016': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2015': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
+  'demacia|2014': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
   'demacia|2023': { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)', logo: demaciaCupLogo, invert: true },
   'fst|2025': { color: '#45002c' },
   'ewc|2025': { color: '#eaeaea', logo: ewcLogo },
@@ -3202,6 +3207,8 @@ const PredictionPage = () => {
   const pastTeamOverride = (() => {
     if (activeYear > 2025) return undefined;
     const ov = { ...TEAM_OVERRIDE_2025 };
+    // 리그피디아 기반 과거 대회(LPL 2013~2019·MSI 2017~2019·Demacia Cup ~2021): 대회 당시 팀명(teamNames). 아래 수기 오버라이드가 우선.
+    for (const [c, n] of Object.entries(pastData?.teamNames || {})) ov[c] = { ...(ov[c] || {}), name: n };
     if (comp?.key === 'lpl') {
       // BLG: 2024 Summer부터 2025 Split 2까지 'Bilibili Gaming Dreamsmart'.
       if ((activeYear === 2024 && activeSub === 'Summer') || (activeYear === 2025 && (activeSub === 'Split 1' || activeSub === 'Split 2')))
@@ -3552,6 +3559,14 @@ const PredictionPage = () => {
   // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
   const PAST_COMP_NAME = {
     'demacia|2022': { default: 'Demacia Cup' },
+    'demacia|2021': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
+    'demacia|2020': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
+    'demacia|2019': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
+    'demacia|2018': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
+    'demacia|2017': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
+    'demacia|2016': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
+    'demacia|2015': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
+    'demacia|2014': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
     'demacia|2023': { default: 'Demacia Cup' },
     'demacia|2024': { default: 'Demacia Cup' }, // 2024는 Demacia Cup 단독(통합 DCGI 이전)
     'lcs|2025': { default: 'LTA North', 'Split 1': 'LTA', 'Playoffs': 'LTA' },

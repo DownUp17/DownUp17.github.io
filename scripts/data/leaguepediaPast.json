@@ -1,0 +1,9936 @@
+{
+ "msi": {
+  "2017": {
+   "name": "2017 Mid-Season Invitational",
+   "regLabel": "플레이-인 그룹",
+   "parallelGroups": true,
+   "rows": [
+    {
+     "rank": 1,
+     "team": "SUP",
+     "w": 5,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 2,
+     "team": "RED",
+     "w": 4,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "DW",
+     "w": 2,
+     "l": 4,
+     "group": "A조"
+    },
+    {
+     "rank": 4,
+     "team": "RPG",
+     "w": 1,
+     "l": 5,
+     "group": "A조"
+    },
+    {
+     "rank": 1,
+     "team": "GAM",
+     "w": 5,
+     "l": 1,
+     "group": "B조"
+    },
+    {
+     "rank": 2,
+     "team": "LYON",
+     "w": 4,
+     "l": 2,
+     "group": "B조"
+    },
+    {
+     "rank": 3,
+     "team": "VP",
+     "w": 2,
+     "l": 4,
+     "group": "B조"
+    },
+    {
+     "rank": 4,
+     "team": "ISG",
+     "w": 1,
+     "l": 5,
+     "group": "B조"
+    }
+   ],
+   "phaseStages": [
+    {
+     "label": "그룹 스테이지",
+     "rows": [
+      {
+       "rank": 1,
+       "team": "T1",
+       "w": 8,
+       "l": 2
+      },
+      {
+       "rank": 2,
+       "team": "WE",
+       "w": 7,
+       "l": 3
+      },
+      {
+       "rank": 3,
+       "team": "G2",
+       "w": 4,
+       "l": 6
+      },
+      {
+       "rank": 4,
+       "team": "FWS",
+       "w": 4,
+       "l": 6
+      },
+      {
+       "rank": 5,
+       "team": "TSM",
+       "w": 4,
+       "l": 6
+      },
+      {
+       "rank": 6,
+       "team": "GAM",
+       "w": 3,
+       "l": 7
+      }
+     ],
+     "after": "플레이-인 녹아웃"
+    }
+   ],
+   "brackets": [
+    {
+     "slug": "play_in_knockout",
+     "name": "플레이-인 녹아웃",
+     "label": "플레이-인 녹아웃",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "플레이-인 녹아웃 1경기",
+          "a": {
+           "short": "TSM",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "GAM",
+           "score": 2
+          }
+         },
+         {
+          "title": "플레이-인 녹아웃 2경기",
+          "a": {
+           "short": "FWS",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "SUP",
+           "score": 0
+          }
+         },
+         {
+          "title": "플레이-인 녹아웃 3경기",
+          "a": {
+           "short": "GAM",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "SUP",
+           "score": 1
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "slug": "knockouts",
+     "name": "토너먼트 스테이지",
+     "label": "토너먼트 스테이지",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "4강",
+          "a": {
+           "short": "T1",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "FWS",
+           "score": 0
+          }
+         },
+         {
+          "title": "4강",
+          "a": {
+           "short": "WE",
+           "score": 1
+          },
+          "b": {
+           "short": "G2",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "결승",
+          "a": {
+           "short": "T1",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "G2",
+           "score": 1
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "finalStandings": [
+    {
+     "rank": 1,
+     "team": "T1",
+     "note": "우승"
+    },
+    {
+     "rank": 2,
+     "team": "G2",
+     "note": "준우승"
+    },
+    {
+     "rank": 3,
+     "team": "WE",
+     "note": ""
+    },
+    {
+     "rank": 4,
+     "team": "FWS",
+     "note": ""
+    }
+   ],
+   "teamNames": {
+    "SUP": "SuperMassive Esports",
+    "RED": "RED Canids",
+    "DW": "Dire Wolves",
+    "RPG": "Rampage",
+    "GAM": "GIGABYTE Marines",
+    "LYON": "Lyon Gaming",
+    "VP": "Virtus.pro",
+    "ISG": "Isurus",
+    "TSM": "TSM",
+    "FWS": "Flash Wolves",
+    "T1": "SK Telecom T1",
+    "WE": "Team WE",
+    "G2": "G2 Esports"
+   }
+  },
+  "2018": {
+   "name": "2018 Mid-Season Invitational",
+   "regLabel": "플레이-인 그룹",
+   "parallelGroups": true,
+   "rows": [
+    {
+     "rank": 1,
+     "team": "GMB",
+     "w": 5,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 2,
+     "team": "RAIN",
+     "w": 3,
+     "l": 3,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "ASC",
+     "w": 2,
+     "l": 4,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "KLG",
+     "w": 2,
+     "l": 4,
+     "group": "A조"
+    },
+    {
+     "rank": 1,
+     "team": "SUP",
+     "w": 5,
+     "l": 1,
+     "group": "B조"
+    },
+    {
+     "rank": 2,
+     "team": "KBM",
+     "w": 4,
+     "l": 2,
+     "group": "B조"
+    },
+    {
+     "rank": 3,
+     "team": "DW",
+     "w": 2,
+     "l": 4,
+     "group": "B조"
+    },
+    {
+     "rank": 4,
+     "team": "PENT",
+     "w": 1,
+     "l": 5,
+     "group": "B조"
+    }
+   ],
+   "phaseStages": [
+    {
+     "label": "그룹 스테이지",
+     "rows": [
+      {
+       "rank": 1,
+       "team": "RNG",
+       "w": 7,
+       "l": 3
+      },
+      {
+       "rank": 2,
+       "team": "FWS",
+       "w": 7,
+       "l": 3
+      },
+      {
+       "rank": 3,
+       "team": "KRX",
+       "w": 6,
+       "l": 4
+      },
+      {
+       "rank": 4,
+       "team": "FNC",
+       "w": 4,
+       "l": 6
+      },
+      {
+       "rank": 5,
+       "team": "TLAW",
+       "w": 4,
+       "l": 6
+      },
+      {
+       "rank": 6,
+       "team": "EVS",
+       "w": 2,
+       "l": 8
+      }
+     ],
+     "after": "플레이-인 녹아웃"
+    }
+   ],
+   "brackets": [
+    {
+     "slug": "play_in_knockout",
+     "name": "플레이-인 녹아웃",
+     "label": "플레이-인 녹아웃",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "플레이-인 녹아웃 1경기",
+          "a": {
+           "short": "EVS",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "SUP",
+           "score": 1
+          }
+         },
+         {
+          "title": "플레이-인 녹아웃 2경기",
+          "a": {
+           "short": "FWS",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "GMB",
+           "score": 0
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "slug": "knockouts",
+     "name": "토너먼트 스테이지",
+     "label": "토너먼트 스테이지",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "4강",
+          "a": {
+           "short": "RNG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "FNC",
+           "score": 0
+          }
+         },
+         {
+          "title": "4강",
+          "a": {
+           "short": "FWS",
+           "score": 1
+          },
+          "b": {
+           "short": "KRX",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "결승",
+          "a": {
+           "short": "RNG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "KRX",
+           "score": 1
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "finalStandings": [
+    {
+     "rank": 1,
+     "team": "RNG",
+     "note": "우승"
+    },
+    {
+     "rank": 2,
+     "team": "KRX",
+     "note": "준우승"
+    },
+    {
+     "rank": 3,
+     "team": "FWS",
+     "note": ""
+    },
+    {
+     "rank": 4,
+     "team": "FNC",
+     "note": ""
+    }
+   ],
+   "teamNames": {
+    "GMB": "Gambit Esports",
+    "RAIN": "Rainbow7",
+    "ASC": "Ascension Gaming",
+    "KLG": "Kaos Latin Gamers",
+    "SUP": "SuperMassive Esports",
+    "KBM": "KaBuM! Esports",
+    "DW": "Dire Wolves",
+    "PENT": "PENTAGRAM",
+    "EVS": "EVOS Esports",
+    "FWS": "Flash Wolves",
+    "RNG": "Royal Never Give Up",
+    "KRX": "Kingzone DragonX",
+    "FNC": "Fnatic",
+    "TLAW": "Team Liquid"
+   }
+  },
+  "2019": {
+   "name": "2019 Mid-Season Invitational",
+   "regLabel": "플레이-인 그룹",
+   "parallelGroups": true,
+   "rows": [
+    {
+     "rank": 1,
+     "team": "PVB",
+     "w": 4,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 2,
+     "team": "FB",
+     "w": 4,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "BOMB",
+     "w": 2,
+     "l": 4,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "ISG",
+     "w": 2,
+     "l": 4,
+     "group": "A조"
+    },
+    {
+     "rank": 1,
+     "team": "VEG",
+     "w": 5,
+     "l": 1,
+     "group": "B조"
+    },
+    {
+     "rank": 2,
+     "team": "DFM",
+     "w": 4,
+     "l": 2,
+     "group": "B조"
+    },
+    {
+     "rank": 3,
+     "team": "MEGA",
+     "w": 2,
+     "l": 4,
+     "group": "B조"
+    },
+    {
+     "rank": 4,
+     "team": "INTZ",
+     "w": 1,
+     "l": 5,
+     "group": "B조"
+    }
+   ],
+   "phaseStages": [
+    {
+     "label": "그룹 스테이지",
+     "rows": [
+      {
+       "rank": 1,
+       "team": "IG",
+       "w": 9,
+       "l": 1
+      },
+      {
+       "rank": 2,
+       "team": "T1",
+       "w": 7,
+       "l": 3
+      },
+      {
+       "rank": 3,
+       "team": "G2",
+       "w": 5,
+       "l": 5
+      },
+      {
+       "rank": 4,
+       "team": "TLAW",
+       "w": 4,
+       "l": 6
+      },
+      {
+       "rank": 5,
+       "team": "FWS",
+       "w": 3,
+       "l": 7
+      },
+      {
+       "rank": 6,
+       "team": "PVB",
+       "w": 2,
+       "l": 8
+      }
+     ],
+     "after": "플레이-인 녹아웃"
+    }
+   ],
+   "brackets": [
+    {
+     "slug": "play_in_knockout",
+     "name": "플레이-인 녹아웃",
+     "label": "플레이-인 녹아웃",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "플레이-인 녹아웃 1경기",
+          "a": {
+           "short": "TLAW",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "PVB",
+           "score": 0
+          }
+         },
+         {
+          "title": "플레이-인 녹아웃 2경기",
+          "a": {
+           "short": "FWS",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "VEG",
+           "score": 1
+          }
+         },
+         {
+          "title": "플레이-인 녹아웃 3경기",
+          "a": {
+           "short": "PVB",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "VEG",
+           "score": 2
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "slug": "knockouts",
+     "name": "토너먼트 스테이지",
+     "label": "토너먼트 스테이지",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "4강",
+          "a": {
+           "short": "IG",
+           "score": 1
+          },
+          "b": {
+           "short": "TLAW",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "4강",
+          "a": {
+           "short": "T1",
+           "score": 2
+          },
+          "b": {
+           "short": "G2",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "결승",
+          "a": {
+           "short": "TLAW",
+           "score": 0
+          },
+          "b": {
+           "short": "G2",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "finalStandings": [
+    {
+     "rank": 1,
+     "team": "G2",
+     "note": "우승"
+    },
+    {
+     "rank": 2,
+     "team": "TLAW",
+     "note": "준우승"
+    },
+    {
+     "rank": 3,
+     "team": "IG",
+     "note": ""
+    },
+    {
+     "rank": 4,
+     "team": "T1",
+     "note": ""
+    }
+   ],
+   "teamNames": {
+    "PVB": "Phong Vũ Buffalo",
+    "FB": "Fenerbahçe Esports",
+    "BOMB": "Bombers",
+    "ISG": "Isurus",
+    "VEG": "Vega Squadron",
+    "DFM": "DetonatioN FocusMe",
+    "MEGA": "MEGA",
+    "INTZ": "INTZ",
+    "TLAW": "Team Liquid",
+    "FWS": "Flash Wolves",
+    "IG": "Invictus Gaming",
+    "T1": "SK Telecom T1",
+    "G2": "G2 Esports"
+   }
+  }
+ },
+ "lpl": {
+  "2013": {
+   "Spring": {
+    "name": "LPL 2013 Spring",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "IG",
+      "w": 22,
+      "l": 6
+     },
+     {
+      "rank": 2,
+      "team": "OMG",
+      "w": 21,
+      "l": 7
+     },
+     {
+      "rank": 3,
+      "team": "WE",
+      "w": 20,
+      "l": 8
+     },
+     {
+      "rank": 4,
+      "team": "PE",
+      "w": 16,
+      "l": 12
+     },
+     {
+      "rank": 5,
+      "team": "ROC",
+      "w": 15,
+      "l": 13
+     },
+     {
+      "rank": 6,
+      "team": "TL",
+      "w": 8,
+      "l": 20
+     },
+     {
+      "rank": 7,
+      "team": "WOA",
+      "w": 7,
+      "l": 21
+     },
+     {
+      "rank": 8,
+      "team": "WSC",
+      "w": 3,
+      "l": 25
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 0
+           },
+           "b": {
+            "short": "PE",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "WE",
+            "score": 1
+           },
+           "b": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "PE",
+            "score": 1
+           },
+           "b": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "OMG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "PE",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "WE",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "IG": "Invictus Gaming",
+     "OMG": "Oh My God",
+     "WE": "Team WE",
+     "PE": "Positive Energy",
+     "ROC": "Royal Club",
+     "TL": "Team Livemore",
+     "WOA": "Wings of Aurora",
+     "WSC": "Wayi Spider China"
+    }
+   },
+   "Summer": {
+    "name": "LPL 2013 Summer",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "OMG",
+      "w": 17,
+      "l": 4
+     },
+     {
+      "rank": 2,
+      "team": "ROC",
+      "w": 13,
+      "l": 8
+     },
+     {
+      "rank": 3,
+      "team": "PE",
+      "w": 13,
+      "l": 8
+     },
+     {
+      "rank": 4,
+      "team": "WE",
+      "w": 13,
+      "l": 8
+     },
+     {
+      "rank": 5,
+      "team": "IG",
+      "w": 10,
+      "l": 11
+     },
+     {
+      "rank": 6,
+      "team": "LMQ",
+      "w": 8,
+      "l": 13
+     },
+     {
+      "rank": 7,
+      "team": "YG2",
+      "w": 8,
+      "l": 13
+     },
+     {
+      "rank": 8,
+      "team": "EPH",
+      "w": 2,
+      "l": 19
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "PE",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "ROC",
+            "score": "FF"
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "OMG",
+            "score": 2
+           },
+           "b": {
+            "short": "PE",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "WE",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "ROC",
+            "score": "FF"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "PE",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "OMG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "WE",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "ROC",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "OMG": "Oh My God",
+     "ROC": "Royal Club",
+     "PE": "Positive Energy",
+     "WE": "Team WE",
+     "IG": "Invictus Gaming",
+     "LMQ": "LMQ",
+     "YG2": "Young Glory",
+     "EPH": "Energy Pacemaker.HK"
+    }
+   }
+  },
+  "2014": {
+   "Spring": {
+    "name": "LPL 2014 Spring",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "OMG",
+      "w": 11,
+      "l": 0,
+      "remark": "3무"
+     },
+     {
+      "rank": 2,
+      "team": "EDG",
+      "w": 9,
+      "l": 2,
+      "remark": "3무"
+     },
+     {
+      "rank": 3,
+      "team": "WE",
+      "w": 7,
+      "l": 3,
+      "remark": "4무"
+     },
+     {
+      "rank": 4,
+      "team": "IG",
+      "w": 3,
+      "l": 3,
+      "remark": "8무"
+     },
+     {
+      "rank": 5,
+      "team": "LGD",
+      "w": 4,
+      "l": 6,
+      "remark": "4무"
+     },
+     {
+      "rank": 6,
+      "team": "ROC",
+      "w": 3,
+      "l": 8,
+      "remark": "3무"
+     },
+     {
+      "rank": 7,
+      "team": "EPH",
+      "w": 1,
+      "l": 8,
+      "remark": "5무"
+     },
+     {
+      "rank": 8,
+      "team": "PE",
+      "w": 1,
+      "l": 9,
+      "remark": "4무"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "OMG",
+            "score": 1
+           },
+           "b": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 0
+           },
+           "b": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "IG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "OMG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "WE",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "OMG": "Oh My God",
+     "EDG": "EDward Gaming",
+     "WE": "Team WE",
+     "IG": "Invictus Gaming",
+     "LGD": "LGD Gaming",
+     "ROC": "Royal Club",
+     "EPH": "Energy Pacemaker.HK",
+     "PE": "Positive Energy"
+    }
+   },
+   "Summer": {
+    "name": "LPL 2014 Summer",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "w": 6,
+      "l": 2,
+      "remark": "6무"
+     },
+     {
+      "rank": 2,
+      "team": "OMG",
+      "w": 6,
+      "l": 3,
+      "remark": "5무"
+     },
+     {
+      "rank": 3,
+      "team": "SHRC",
+      "w": 5,
+      "l": 1,
+      "remark": "8무"
+     },
+     {
+      "rank": 4,
+      "team": "LGD",
+      "w": 4,
+      "l": 4,
+      "remark": "6무"
+     },
+     {
+      "rank": 5,
+      "team": "WE",
+      "w": 4,
+      "l": 4,
+      "remark": "6무"
+     },
+     {
+      "rank": 6,
+      "team": "IG",
+      "w": 2,
+      "l": 3,
+      "remark": "9무"
+     },
+     {
+      "rank": 7,
+      "team": "YG2",
+      "w": 3,
+      "l": 8,
+      "remark": "3무"
+     },
+     {
+      "rank": 8,
+      "team": "TWA",
+      "w": 2,
+      "l": 7,
+      "remark": "5무"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "승자조 1라운드",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 0
+           }
+          },
+          {
+           "title": "승자조 1라운드",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 2
+           }
+          },
+          {
+           "title": "승자조 1라운드",
+           "a": {
+            "short": "LGD",
+            "score": 0
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "승자조 결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 1
+           }
+          },
+          {
+           "title": "승자조 결승",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "OMG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "SHRC",
+      "note": ""
+     },
+     {
+      "rank": 4,
+      "team": "LGD",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "OMG": "Oh My God",
+     "SHRC": "Star Horn Royal Club",
+     "LGD": "LGD Gaming",
+     "WE": "Team WE",
+     "IG": "Invictus Gaming",
+     "YG2": "Young Glory",
+     "TWA": "Team WE Academy"
+    }
+   }
+  },
+  "2015": {
+   "Spring": {
+    "name": "LPL 2015 Spring",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "w": 17,
+      "l": 1,
+      "remark": "4무"
+     },
+     {
+      "rank": 2,
+      "team": "LNG",
+      "w": 10,
+      "l": 2,
+      "remark": "10무"
+     },
+     {
+      "rank": 3,
+      "team": "OMG",
+      "w": 8,
+      "l": 3,
+      "remark": "11무"
+     },
+     {
+      "rank": 4,
+      "team": "UP",
+      "w": 8,
+      "l": 4,
+      "remark": "10무"
+     },
+     {
+      "rank": 5,
+      "team": "IG",
+      "w": 8,
+      "l": 6,
+      "remark": "8무"
+     },
+     {
+      "rank": 6,
+      "team": "LGD",
+      "w": 7,
+      "l": 5,
+      "remark": "10무"
+     },
+     {
+      "rank": 7,
+      "team": "TK2",
+      "w": 5,
+      "l": 7,
+      "remark": "10무"
+     },
+     {
+      "rank": 8,
+      "team": "WE",
+      "w": 4,
+      "l": 8,
+      "remark": "10무"
+     },
+     {
+      "rank": 9,
+      "team": "M3",
+      "w": 4,
+      "l": 9,
+      "remark": "9무"
+     },
+     {
+      "rank": 10,
+      "team": "SHRC",
+      "w": 5,
+      "l": 12,
+      "remark": "5무"
+     },
+     {
+      "rank": 11,
+      "team": "GAMT",
+      "w": 1,
+      "l": 9,
+      "remark": "12무"
+     },
+     {
+      "rank": 12,
+      "team": "EP",
+      "w": 1,
+      "l": 12,
+      "remark": "9무"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "UP",
+            "score": 1
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TK2",
+            "score": 2
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMG",
+            "score": 0
+           },
+           "b": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "LNG",
+            "score": 0
+           },
+           "b": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 2
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "LGD",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "OMG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "UP",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "TK2",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "WE",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "LNG": "Snake Esports",
+     "OMG": "Oh My God",
+     "UP": "Vici Gaming",
+     "IG": "Invictus Gaming",
+     "LGD": "LGD Gaming",
+     "TK2": "Team King",
+     "WE": "Team WE",
+     "M3": "Masters 3",
+     "SHRC": "Star Horn Royal Club",
+     "GAMT": "Gamtee",
+     "EP": "Energy Pacemaker"
+    }
+   },
+   "Summer": {
+    "name": "LPL 2015 Summer",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "w": 14,
+      "l": 2,
+      "remark": "6무"
+     },
+     {
+      "rank": 2,
+      "team": "QG",
+      "w": 7,
+      "l": 1,
+      "remark": "14무"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "w": 8,
+      "l": 6,
+      "remark": "8무"
+     },
+     {
+      "rank": 4,
+      "team": "LNG",
+      "w": 7,
+      "l": 5,
+      "remark": "10무"
+     },
+     {
+      "rank": 5,
+      "team": "LGD",
+      "w": 6,
+      "l": 4,
+      "remark": "12무"
+     },
+     {
+      "rank": 6,
+      "team": "UP",
+      "w": 4,
+      "l": 3,
+      "remark": "15무"
+     },
+     {
+      "rank": 7,
+      "team": "OMG",
+      "w": 5,
+      "l": 6,
+      "remark": "11무"
+     },
+     {
+      "rank": 8,
+      "team": "M3",
+      "w": 4,
+      "l": 8,
+      "remark": "10무"
+     },
+     {
+      "rank": 9,
+      "team": "RNG",
+      "w": 3,
+      "l": 7,
+      "remark": "12무"
+     },
+     {
+      "rank": 10,
+      "team": "UP2",
+      "w": 3,
+      "l": 8,
+      "remark": "11무"
+     },
+     {
+      "rank": 11,
+      "team": "WE",
+      "w": 3,
+      "l": 8,
+      "remark": "11무"
+     },
+     {
+      "rank": 12,
+      "team": "TK2",
+      "w": 1,
+      "l": 7,
+      "remark": "14무"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "seeding",
+      "name": "건틀릿",
+      "label": "건틀릿",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "건틀릿  1",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "M3",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "건틀릿  2",
+           "a": {
+            "short": "UP",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "시드 결정전",
+           "a": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 0
+           },
+           "b": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "QG",
+            "score": 2
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 1
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "LGD",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "QG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "EDG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "UP",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "QG": "Qiao Gu Reapers",
+     "IG": "Invictus Gaming",
+     "LNG": "Snake Esports",
+     "LGD": "LGD Gaming",
+     "UP": "Vici Gaming",
+     "OMG": "Oh My God",
+     "M3": "Masters 3",
+     "RNG": "Royal Never Give Up",
+     "UP2": "Unlimited Potential",
+     "WE": "Team WE",
+     "TK2": "Team King"
+    }
+   }
+  },
+  "2016": {
+   "Spring": {
+    "name": "LPL 2016 Spring",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "QG",
+      "w": 11,
+      "l": 5,
+      "group": "A조"
+     },
+     {
+      "rank": 2,
+      "team": "WE",
+      "w": 10,
+      "l": 6,
+      "group": "A조"
+     },
+     {
+      "rank": 3,
+      "team": "LNG",
+      "w": 10,
+      "l": 6,
+      "group": "A조"
+     },
+     {
+      "rank": 4,
+      "team": "LGD",
+      "w": 8,
+      "l": 8,
+      "group": "A조"
+     },
+     {
+      "rank": 5,
+      "team": "EPA",
+      "w": 4,
+      "l": 12,
+      "group": "A조"
+     },
+     {
+      "rank": 6,
+      "team": "M3",
+      "w": 3,
+      "l": 13,
+      "group": "A조"
+     },
+     {
+      "rank": 1,
+      "team": "RNG",
+      "w": 13,
+      "l": 3,
+      "group": "B조"
+     },
+     {
+      "rank": 2,
+      "team": "EDG",
+      "w": 12,
+      "l": 4,
+      "group": "B조"
+     },
+     {
+      "rank": 3,
+      "team": "UP",
+      "w": 8,
+      "l": 8,
+      "group": "B조"
+     },
+     {
+      "rank": 4,
+      "team": "IG",
+      "w": 8,
+      "l": 8,
+      "group": "B조"
+     },
+     {
+      "rank": 5,
+      "team": "OMG",
+      "w": 8,
+      "l": 8,
+      "group": "B조"
+     },
+     {
+      "rank": 6,
+      "team": "HYG",
+      "w": 1,
+      "l": 15,
+      "group": "B조"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "UP",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 1
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "QG",
+            "score": "FF"
+           },
+           "b": {
+            "short": "EDG",
+            "score": "W",
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 1
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "QG",
+            "score": 0
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "RNG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "EDG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "WE",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "QG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "UP",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "LGD",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "IG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "QG": "Qiao Gu Reapers",
+     "WE": "Team WE",
+     "LNG": "Snake Esports",
+     "LGD": "LGD Gaming",
+     "EPA": "Energy Pacemaker.All",
+     "M3": "Masters 3",
+     "RNG": "Royal Never Give Up",
+     "EDG": "EDward Gaming",
+     "UP": "Vici Gaming",
+     "IG": "Invictus Gaming",
+     "OMG": "Oh My God",
+     "HYG": "Hyper Youth Gaming"
+    }
+   },
+   "Summer": {
+    "name": "LPL 2016 Summer",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "w": 16,
+      "l": 0,
+      "group": "A조"
+     },
+     {
+      "rank": 2,
+      "team": "LNG",
+      "w": 10,
+      "l": 6,
+      "group": "A조"
+     },
+     {
+      "rank": 3,
+      "team": "GT",
+      "w": 7,
+      "l": 9,
+      "group": "A조"
+     },
+     {
+      "rank": 4,
+      "team": "IG",
+      "w": 5,
+      "l": 11,
+      "group": "A조"
+     },
+     {
+      "rank": 5,
+      "team": "NB",
+      "w": 5,
+      "l": 11,
+      "group": "A조"
+     },
+     {
+      "rank": 6,
+      "team": "SG2",
+      "w": 1,
+      "l": 15,
+      "group": "A조"
+     },
+     {
+      "rank": 1,
+      "team": "RNG",
+      "w": 13,
+      "l": 3,
+      "group": "B조"
+     },
+     {
+      "rank": 2,
+      "team": "WE",
+      "w": 10,
+      "l": 6,
+      "group": "B조"
+     },
+     {
+      "rank": 3,
+      "team": "IMAY",
+      "w": 9,
+      "l": 7,
+      "group": "B조"
+     },
+     {
+      "rank": 4,
+      "team": "UP",
+      "w": 9,
+      "l": 7,
+      "group": "B조"
+     },
+     {
+      "rank": 5,
+      "team": "LGD",
+      "w": 7,
+      "l": 9,
+      "group": "B조"
+     },
+     {
+      "rank": 6,
+      "team": "OMG",
+      "w": 4,
+      "l": 12,
+      "group": "B조"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "seeding",
+      "name": "시드 결정전",
+      "label": "시드 결정전",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "시드 결정전",
+           "a": {
+            "short": "UP",
+            "score": 0
+           },
+           "b": {
+            "short": "LNG",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "GT",
+            "score": 1
+           },
+           "b": {
+            "short": "UP",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "IMAY",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "IMAY",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IMAY",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "RNG",
+            "score": 0
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "WE",
+            "score": 1
+           },
+           "b": {
+            "short": "IMAY",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "RNG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IMAY",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "WE",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "UP",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "GT",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "IG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "LNG": "Snake Esports",
+     "GT": "Game Talents",
+     "IG": "Invictus Gaming",
+     "NB": "Newbee",
+     "SG2": "Saint Gaming",
+     "RNG": "Royal Never Give Up",
+     "WE": "Team WE",
+     "IMAY": "I May",
+     "UP": "Vici Gaming",
+     "LGD": "LGD Gaming",
+     "OMG": "Oh My God"
+    }
+   }
+  },
+  "2017": {
+   "Spring": {
+    "name": "LPL 2017 Spring",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "RNG",
+      "w": 12,
+      "l": 4,
+      "group": "A조"
+     },
+     {
+      "rank": 2,
+      "team": "OMG",
+      "w": 9,
+      "l": 7,
+      "group": "A조"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "w": 8,
+      "l": 8,
+      "group": "A조"
+     },
+     {
+      "rank": 4,
+      "team": "IMAY",
+      "w": 8,
+      "l": 8,
+      "group": "A조"
+     },
+     {
+      "rank": 5,
+      "team": "LNG",
+      "w": 7,
+      "l": 9,
+      "group": "A조"
+     },
+     {
+      "rank": 6,
+      "team": "LGD",
+      "w": 4,
+      "l": 12,
+      "group": "A조"
+     },
+     {
+      "rank": 1,
+      "team": "WE",
+      "w": 12,
+      "l": 4,
+      "group": "B조"
+     },
+     {
+      "rank": 2,
+      "team": "EDG",
+      "w": 12,
+      "l": 4,
+      "group": "B조"
+     },
+     {
+      "rank": 3,
+      "team": "QG",
+      "w": 9,
+      "l": 7,
+      "group": "B조"
+     },
+     {
+      "rank": 4,
+      "team": "NB",
+      "w": 6,
+      "l": 10,
+      "group": "B조"
+     },
+     {
+      "rank": 5,
+      "team": "UP",
+      "w": 5,
+      "l": 11,
+      "group": "B조"
+     },
+     {
+      "rank": 6,
+      "team": "GT",
+      "w": 4,
+      "l": 12,
+      "group": "B조"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "IG",
+            "score": 1
+           },
+           "b": {
+            "short": "NB",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "QG",
+            "score": 2
+           },
+           "b": {
+            "short": "IMAY",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "NB",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IMAY",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 1
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "RNG",
+            "score": 0
+           },
+           "b": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 2
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "WE",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "RNG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "EDG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "OMG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "IMAY",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "NB",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "QG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "RNG": "Royal Never Give Up",
+     "OMG": "Oh My God",
+     "IG": "Invictus Gaming",
+     "IMAY": "I May",
+     "LNG": "Snake Esports",
+     "LGD": "LGD Gaming",
+     "WE": "Team WE",
+     "EDG": "EDward Gaming",
+     "QG": "QG Reapers",
+     "NB": "Newbee",
+     "UP": "Vici Gaming",
+     "GT": "Game Talents"
+    }
+   },
+   "Summer": {
+    "name": "LPL 2017 Summer",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "w": 11,
+      "l": 5,
+      "group": "A조"
+     },
+     {
+      "rank": 2,
+      "team": "WE",
+      "w": 11,
+      "l": 5,
+      "group": "A조"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "w": 10,
+      "l": 6,
+      "group": "A조"
+     },
+     {
+      "rank": 4,
+      "team": "LNG",
+      "w": 5,
+      "l": 11,
+      "group": "A조"
+     },
+     {
+      "rank": 5,
+      "team": "IMAY",
+      "w": 5,
+      "l": 11,
+      "group": "A조"
+     },
+     {
+      "rank": 6,
+      "team": "DG",
+      "w": 4,
+      "l": 12,
+      "group": "A조"
+     },
+     {
+      "rank": 1,
+      "team": "RNG",
+      "w": 12,
+      "l": 4,
+      "group": "B조"
+     },
+     {
+      "rank": 2,
+      "team": "OMG",
+      "w": 10,
+      "l": 6,
+      "group": "B조"
+     },
+     {
+      "rank": 3,
+      "team": "NB",
+      "w": 9,
+      "l": 7,
+      "group": "B조"
+     },
+     {
+      "rank": 4,
+      "team": "WBG",
+      "w": 7,
+      "l": 9,
+      "group": "B조"
+     },
+     {
+      "rank": 5,
+      "team": "JDG",
+      "w": 6,
+      "l": 10,
+      "group": "B조"
+     },
+     {
+      "rank": 6,
+      "team": "LGD",
+      "w": 6,
+      "l": 10,
+      "group": "B조"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WBG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "NB",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMG",
+            "score": 1
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "NB",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 2
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "RNG",
+            "score": 2
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "RNG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "WE",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "OMG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "NB",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "WBG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "WE": "Team WE",
+     "IG": "Invictus Gaming",
+     "LNG": "Snake Esports",
+     "IMAY": "I May",
+     "DG": "DAN Gaming",
+     "RNG": "Royal Never Give Up",
+     "OMG": "Oh My God",
+     "NB": "Newbee",
+     "WBG": "Suning",
+     "JDG": "JD Gaming",
+     "LGD": "LGD Gaming"
+    }
+   }
+  },
+  "2018": {
+   "Spring": {
+    "name": "LPL 2018 Spring",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "IG",
+      "w": 18,
+      "l": 1,
+      "group": "동부"
+     },
+     {
+      "rank": 2,
+      "team": "AL",
+      "w": 13,
+      "l": 6,
+      "group": "동부"
+     },
+     {
+      "rank": 3,
+      "team": "RNG",
+      "w": 12,
+      "l": 7,
+      "group": "동부"
+     },
+     {
+      "rank": 4,
+      "team": "JDG",
+      "w": 10,
+      "l": 9,
+      "group": "동부"
+     },
+     {
+      "rank": 5,
+      "team": "WBG",
+      "w": 9,
+      "l": 10,
+      "group": "동부"
+     },
+     {
+      "rank": 6,
+      "team": "LGD",
+      "w": 6,
+      "l": 13,
+      "group": "동부"
+     },
+     {
+      "rank": 7,
+      "team": "TES",
+      "w": 3,
+      "l": 16,
+      "group": "동부"
+     },
+     {
+      "rank": 1,
+      "team": "EDG",
+      "w": 14,
+      "l": 5,
+      "group": "서부"
+     },
+     {
+      "rank": 2,
+      "team": "LNG",
+      "w": 12,
+      "l": 7,
+      "group": "서부"
+     },
+     {
+      "rank": 3,
+      "team": "BLG",
+      "w": 11,
+      "l": 8,
+      "group": "서부"
+     },
+     {
+      "rank": 4,
+      "team": "WE",
+      "w": 9,
+      "l": 10,
+      "group": "서부"
+     },
+     {
+      "rank": 5,
+      "team": "FPX",
+      "w": 9,
+      "l": 10,
+      "group": "서부"
+     },
+     {
+      "rank": 6,
+      "team": "OMG",
+      "w": 5,
+      "l": 14,
+      "group": "서부"
+     },
+     {
+      "rank": 7,
+      "team": "UP",
+      "w": 2,
+      "l": 17,
+      "group": "서부"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "BLG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "JDG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "AL",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "BLG",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 2
+           },
+           "b": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "AL",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 1
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 1
+           },
+           "b": {
+            "short": "AL",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "RNG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "EDG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "AL",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "BLG",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "JDG",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "WE",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "IG": "Invictus Gaming",
+     "AL": "Rogue Warriors",
+     "RNG": "Royal Never Give Up",
+     "JDG": "JD Gaming",
+     "WBG": "Suning",
+     "LGD": "LGD Gaming",
+     "TES": "Topsports Gaming",
+     "EDG": "EDward Gaming",
+     "LNG": "Snake Esports",
+     "BLG": "Bilibili Gaming",
+     "WE": "Team WE",
+     "FPX": "FunPlus Phoenix",
+     "OMG": "Oh My God",
+     "UP": "Vici Gaming"
+    }
+   },
+   "Summer": {
+    "name": "LPL 2018 Summer",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "IG",
+      "w": 18,
+      "l": 1,
+      "group": "동부"
+     },
+     {
+      "rank": 2,
+      "team": "RNG",
+      "w": 14,
+      "l": 5,
+      "group": "동부"
+     },
+     {
+      "rank": 3,
+      "team": "JDG",
+      "w": 13,
+      "l": 6,
+      "group": "동부"
+     },
+     {
+      "rank": 4,
+      "team": "WBG",
+      "w": 10,
+      "l": 9,
+      "group": "동부"
+     },
+     {
+      "rank": 5,
+      "team": "LGD",
+      "w": 9,
+      "l": 10,
+      "group": "동부"
+     },
+     {
+      "rank": 6,
+      "team": "BLG",
+      "w": 6,
+      "l": 13,
+      "group": "동부"
+     },
+     {
+      "rank": 7,
+      "team": "UP",
+      "w": 2,
+      "l": 17,
+      "group": "동부"
+     },
+     {
+      "rank": 1,
+      "team": "AL",
+      "w": 14,
+      "l": 5,
+      "group": "서부"
+     },
+     {
+      "rank": 2,
+      "team": "EDG",
+      "w": 11,
+      "l": 8,
+      "group": "서부"
+     },
+     {
+      "rank": 3,
+      "team": "TES",
+      "w": 10,
+      "l": 9,
+      "group": "서부"
+     },
+     {
+      "rank": 4,
+      "team": "FPX",
+      "w": 8,
+      "l": 11,
+      "group": "서부"
+     },
+     {
+      "rank": 5,
+      "team": "LNG",
+      "w": 7,
+      "l": 12,
+      "group": "서부"
+     },
+     {
+      "rank": 6,
+      "team": "WE",
+      "w": 6,
+      "l": 13,
+      "group": "서부"
+     },
+     {
+      "rank": 7,
+      "team": "OMG",
+      "w": 5,
+      "l": 14,
+      "group": "서부"
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "TES",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WBG",
+            "score": 2
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "JDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "FPX",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TES",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 1
+           },
+           "b": {
+            "short": "JDG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "AL",
+            "score": 1
+           },
+           "b": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "JDG",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 2
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "AL",
+            "score": 0
+           },
+           "b": {
+            "short": "JDG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "RNG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "IG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "JDG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "AL",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "EDG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "TES",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "WBG",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "FPX",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "IG": "Invictus Gaming",
+     "RNG": "Royal Never Give Up",
+     "JDG": "JD Gaming",
+     "WBG": "Suning",
+     "LGD": "LGD Gaming",
+     "BLG": "Bilibili Gaming",
+     "UP": "Vici Gaming",
+     "AL": "Rogue Warriors",
+     "EDG": "EDward Gaming",
+     "TES": "Topsports Gaming",
+     "FPX": "FunPlus Phoenix",
+     "LNG": "Snake Esports",
+     "WE": "Team WE",
+     "OMG": "Oh My God"
+    }
+   }
+  },
+  "2019": {
+   "Spring": {
+    "name": "LPL 2019 Spring",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "FPX",
+      "w": 13,
+      "l": 2
+     },
+     {
+      "rank": 2,
+      "team": "IG",
+      "w": 11,
+      "l": 4
+     },
+     {
+      "rank": 3,
+      "team": "TES",
+      "w": 11,
+      "l": 4
+     },
+     {
+      "rank": 4,
+      "team": "RNG",
+      "w": 10,
+      "l": 5
+     },
+     {
+      "rank": 5,
+      "team": "WE",
+      "w": 10,
+      "l": 5
+     },
+     {
+      "rank": 6,
+      "team": "SG3",
+      "w": 9,
+      "l": 6
+     },
+     {
+      "rank": 7,
+      "team": "EDG",
+      "w": 9,
+      "l": 6
+     },
+     {
+      "rank": 8,
+      "team": "JDG",
+      "w": 9,
+      "l": 6
+     },
+     {
+      "rank": 9,
+      "team": "BLG",
+      "w": 8,
+      "l": 7
+     },
+     {
+      "rank": 10,
+      "team": "WBG",
+      "w": 6,
+      "l": 9
+     },
+     {
+      "rank": 11,
+      "team": "LGD",
+      "w": 5,
+      "l": 10
+     },
+     {
+      "rank": 12,
+      "team": "LNG",
+      "w": 5,
+      "l": 10
+     },
+     {
+      "rank": 13,
+      "team": "NIP",
+      "w": 4,
+      "l": 11
+     },
+     {
+      "rank": 14,
+      "team": "OMG",
+      "w": 4,
+      "l": 11
+     },
+     {
+      "rank": 15,
+      "team": "AL",
+      "w": 4,
+      "l": 11
+     },
+     {
+      "rank": 16,
+      "team": "UP",
+      "w": 2,
+      "l": 13
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "WE",
+            "score": 1
+           },
+           "b": {
+            "short": "JDG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "SG3",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "RNG",
+            "score": 2
+           },
+           "b": {
+            "short": "JDG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "TES",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SG3",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "FPX",
+            "score": 2
+           },
+           "b": {
+            "short": "JDG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TES",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "JDG",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "FPX",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TES",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "IG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "JDG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "FPX",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "TES",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "RNG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "SG3",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "WE",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "EDG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "FPX": "FunPlus Phoenix",
+     "IG": "Invictus Gaming",
+     "TES": "Topsports Gaming",
+     "RNG": "Royal Never Give Up",
+     "WE": "Team WE",
+     "SG3": "SinoDragon Gaming",
+     "EDG": "EDward Gaming",
+     "JDG": "JD Gaming",
+     "BLG": "Bilibili Gaming",
+     "WBG": "Suning",
+     "LGD": "LGD Gaming",
+     "LNG": "Snake Esports",
+     "NIP": "Victory Five",
+     "OMG": "Oh My God",
+     "AL": "Rogue Warriors",
+     "UP": "Vici Gaming"
+    }
+   },
+   "Summer": {
+    "name": "LPL 2019 Summer",
+    "rows": [
+     {
+      "rank": 1,
+      "team": "FPX",
+      "w": 14,
+      "l": 1
+     },
+     {
+      "rank": 2,
+      "team": "TES",
+      "w": 12,
+      "l": 3
+     },
+     {
+      "rank": 3,
+      "team": "RNG",
+      "w": 12,
+      "l": 3
+     },
+     {
+      "rank": 4,
+      "team": "BLG",
+      "w": 11,
+      "l": 4
+     },
+     {
+      "rank": 5,
+      "team": "EDG",
+      "w": 9,
+      "l": 6
+     },
+     {
+      "rank": 6,
+      "team": "IG",
+      "w": 9,
+      "l": 6
+     },
+     {
+      "rank": 7,
+      "team": "LNG",
+      "w": 8,
+      "l": 7
+     },
+     {
+      "rank": 8,
+      "team": "WBG",
+      "w": 8,
+      "l": 7
+     },
+     {
+      "rank": 9,
+      "team": "WE",
+      "w": 8,
+      "l": 7
+     },
+     {
+      "rank": 10,
+      "team": "JDG",
+      "w": 6,
+      "l": 9
+     },
+     {
+      "rank": 11,
+      "team": "TT",
+      "w": 6,
+      "l": 9
+     },
+     {
+      "rank": 12,
+      "team": "NIP",
+      "w": 5,
+      "l": 10
+     },
+     {
+      "rank": 13,
+      "team": "AL",
+      "w": 5,
+      "l": 10
+     },
+     {
+      "rank": 14,
+      "team": "LGD",
+      "w": 3,
+      "l": 12
+     },
+     {
+      "rank": 15,
+      "team": "UP",
+      "w": 2,
+      "l": 13
+     },
+     {
+      "rank": 16,
+      "team": "OMG",
+      "w": 2,
+      "l": 13
+     }
+    ],
+    "brackets": [
+     {
+      "slug": "playoffs",
+      "name": "플레이오프",
+      "label": "플레이오프",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WBG",
+            "score": 1
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "IG",
+            "score": 0
+           },
+           "b": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "BLG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "FPX",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "BLG",
+            "score": 1
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "TES",
+            "score": 1
+           },
+           "b": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "FPX",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "RNG",
+            "score": 1
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "BLG",
+            "score": 0
+           },
+           "b": {
+            "short": "TES",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "FPX",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "RNG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "TES",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "BLG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "EDG",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "WBG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "FPX": "FunPlus Phoenix",
+     "TES": "Top Esports",
+     "RNG": "Royal Never Give Up",
+     "BLG": "Bilibili Gaming",
+     "EDG": "EDward Gaming",
+     "IG": "Invictus Gaming",
+     "LNG": "LNG Esports",
+     "WBG": "Suning",
+     "WE": "Team WE",
+     "JDG": "JD Gaming",
+     "TT": "Dominus Esports",
+     "NIP": "Victory Five",
+     "AL": "Rogue Warriors",
+     "LGD": "LGD Gaming",
+     "UP": "Vici Gaming",
+     "OMG": "Oh My God"
+    }
+   }
+  }
+ },
+ "demacia": {
+  "2014": {
+   "Season 1": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "PE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "EPH",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "ROC",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "LMQ",
+            "score": "FF"
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "PE",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "OMG",
+            "score": 0
+           },
+           "b": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "PE",
+            "score": 0
+           },
+           "b": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "IG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "WE",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "OMG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "PE",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "EPH",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "ROC",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "LGD",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "LMQ",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "PE": "Positive Energy",
+     "EPH": "Energy Pacemaker.HK",
+     "ROC": "Royal Club",
+     "IG": "Invictus Gaming",
+     "OMG": "Oh My God",
+     "LGD": "LGD Gaming",
+     "WE": "Team WE",
+     "LMQ": "LMQ"
+    }
+   },
+   "Season 2": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "32강",
+           "a": {
+            "short": "SHRC",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "YG2",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "IG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EP",
+            "score": 1
+           },
+           "b": {
+            "short": "VSG2",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EPC",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "VPG",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TK2",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "DC",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LING",
+            "score": 1
+           },
+           "b": {
+            "short": "MESC",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "AESC",
+            "score": 1
+           },
+           "b": {
+            "short": "HC",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "VE",
+            "score": "FF"
+           },
+           "b": {
+            "short": "PE",
+            "score": "W",
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WE",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "RAYU",
+            "score": 0
+           },
+           "b": {
+            "short": "SQ",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TR",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WOA",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "AG",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "OMG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "KL",
+            "score": "FF"
+           },
+           "b": {
+            "short": "TD",
+            "score": "W",
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TWA",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "KH",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "SHRC",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "VSG2",
+            "score": 1
+           },
+           "b": {
+            "short": "EPC",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TK2",
+            "score": 1
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "MESC",
+            "score": 1
+           },
+           "b": {
+            "short": "HC",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "PE",
+            "score": 0
+           },
+           "b": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "SQ",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TR",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WOA",
+            "score": 0
+           },
+           "b": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TD",
+            "score": 1
+           },
+           "b": {
+            "short": "TWA",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "SHRC",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "EPC",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "HC",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "SQ",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TWA",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "16강",
+           "a": {
+            "short": "SHRC",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "VSG2",
+            "score": 1
+           },
+           "b": {
+            "short": "EPC",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "TK2",
+            "score": 1
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "MESC",
+            "score": 1
+           },
+           "b": {
+            "short": "HC",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "PE",
+            "score": 0
+           },
+           "b": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "SQ",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TR",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "WOA",
+            "score": 0
+           },
+           "b": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "TD",
+            "score": 1
+           },
+           "b": {
+            "short": "TWA",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "SHRC",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "EPC",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "HC",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "SQ",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TWA",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "SHRC",
+            "score": 0
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "SHRC",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "EPC",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "HC",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "SQ",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TWA",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "SHRC",
+            "score": 0
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "SHRC",
+            "score": 0
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 2
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "WE",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "SHRC",
+      "note": ""
+     },
+     {
+      "rank": 4,
+      "team": "OMG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "EPC",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "HC",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "SQ",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "TWA",
+      "note": ""
+     },
+     {
+      "rank": 9,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 10,
+      "team": "VSG2",
+      "note": ""
+     },
+     {
+      "rank": 11,
+      "team": "TK2",
+      "note": ""
+     },
+     {
+      "rank": 12,
+      "team": "MESC",
+      "note": ""
+     },
+     {
+      "rank": 13,
+      "team": "PE",
+      "note": ""
+     },
+     {
+      "rank": 14,
+      "team": "TR",
+      "note": ""
+     },
+     {
+      "rank": 15,
+      "team": "WOA",
+      "note": ""
+     },
+     {
+      "rank": 16,
+      "team": "TD",
+      "note": ""
+     },
+     {
+      "rank": 17,
+      "team": "YG2",
+      "note": ""
+     },
+     {
+      "rank": 18,
+      "team": "EP",
+      "note": ""
+     },
+     {
+      "rank": 19,
+      "team": "VPG",
+      "note": ""
+     },
+     {
+      "rank": 20,
+      "team": "DC",
+      "note": ""
+     },
+     {
+      "rank": 21,
+      "team": "LING",
+      "note": ""
+     },
+     {
+      "rank": 22,
+      "team": "AESC",
+      "note": ""
+     },
+     {
+      "rank": 23,
+      "team": "VE",
+      "note": ""
+     },
+     {
+      "rank": 24,
+      "team": "RAYU",
+      "note": ""
+     },
+     {
+      "rank": 25,
+      "team": "LGD",
+      "note": ""
+     },
+     {
+      "rank": 26,
+      "team": "AG",
+      "note": ""
+     },
+     {
+      "rank": 27,
+      "team": "KL",
+      "note": ""
+     },
+     {
+      "rank": 28,
+      "team": "KH",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "SHRC": "Star Horn Royal Club",
+     "YG2": "Young Glory",
+     "IG": "Invictus Gaming",
+     "EP": "Energy Pacemaker",
+     "VSG2": "Vici Stand Gaming",
+     "EPC": "Energy Pacemaker.Carries",
+     "VPG": "Vici Point Gaming",
+     "TK2": "Team King",
+     "DC": "Dream Catcher",
+     "EDG": "EDward Gaming",
+     "LING": "LinG",
+     "MESC": "MD E-sports Club",
+     "AESC": "AcFun e-Sports Club",
+     "HC": "HanGong Clan",
+     "VE": "Vici Esports",
+     "PE": "Positive Energy",
+     "WE": "Team WE",
+     "RAYU": "Rayunion",
+     "SQ": "Snake.Q",
+     "TR": "Team RM",
+     "LGD": "LGD Gaming",
+     "WOA": "Wings of Aurora",
+     "AG": "All Gamers",
+     "OMG": "Oh My God",
+     "KL": "Kx.LM",
+     "TD": "Team DK",
+     "TWA": "Team WE Academy",
+     "KH": "Kx.Happy"
+    }
+   }
+  },
+  "2015": {
+   "Spring": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "KH",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TQ",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "M3",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WOA",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TK2",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EPC",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EPA",
+            "score": 2
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "GAMT",
+            "score": 2
+           },
+           "b": {
+            "short": "SPG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "SHRC",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TD",
+            "score": 2
+           },
+           "b": {
+            "short": "SHE",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "VPG2",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "2144G",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "PE",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMD",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "UP",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "YG2",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "AG2",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EP",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LD2",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "OMG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TWF",
+            "score": 0
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "KH",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "M3",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TK2",
+            "score": 2
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SPG",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "SHRC",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHE",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "VPG2",
+            "score": 0
+           },
+           "b": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EP",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "OMG",
+            "score": 2
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "M3",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LGD",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "16강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "KH",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "M3",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TK2",
+            "score": 2
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SPG",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "SHRC",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHE",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "VPG2",
+            "score": 0
+           },
+           "b": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EP",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "OMG",
+            "score": 2
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "M3",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "LGD",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "QG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "M3",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "LGD",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "QG",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "WE",
+            "score": 2
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "QG",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "WE",
+            "score": 2
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 0
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "WE",
+            "score": 2
+           },
+           "b": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "IG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "QG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "WE",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "M3",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "SHRC",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "LGD",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 9,
+      "team": "KH",
+      "note": ""
+     },
+     {
+      "rank": 10,
+      "team": "TK2",
+      "note": ""
+     },
+     {
+      "rank": 11,
+      "team": "SPG",
+      "note": ""
+     },
+     {
+      "rank": 12,
+      "team": "SHE",
+      "note": ""
+     },
+     {
+      "rank": 13,
+      "team": "VPG2",
+      "note": ""
+     },
+     {
+      "rank": 14,
+      "team": "UP",
+      "note": ""
+     },
+     {
+      "rank": 15,
+      "team": "EP",
+      "note": ""
+     },
+     {
+      "rank": 16,
+      "team": "OMG",
+      "note": ""
+     },
+     {
+      "rank": 17,
+      "team": "TQ",
+      "note": ""
+     },
+     {
+      "rank": 18,
+      "team": "WOA",
+      "note": ""
+     },
+     {
+      "rank": 19,
+      "team": "EPC",
+      "note": ""
+     },
+     {
+      "rank": 20,
+      "team": "EPA",
+      "note": ""
+     },
+     {
+      "rank": 21,
+      "team": "GAMT",
+      "note": ""
+     },
+     {
+      "rank": 22,
+      "team": "TD",
+      "note": ""
+     },
+     {
+      "rank": 23,
+      "team": "2144G",
+      "note": ""
+     },
+     {
+      "rank": 24,
+      "team": "PE",
+      "note": ""
+     },
+     {
+      "rank": 25,
+      "team": "OMD",
+      "note": ""
+     },
+     {
+      "rank": 26,
+      "team": "YG2",
+      "note": ""
+     },
+     {
+      "rank": 27,
+      "team": "AG2",
+      "note": ""
+     },
+     {
+      "rank": 28,
+      "team": "LD2",
+      "note": ""
+     },
+     {
+      "rank": 29,
+      "team": "TWF",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "KH": "Kx.Happy",
+     "TQ": "Team QN",
+     "M3": "Masters 3",
+     "WOA": "Wings of Aurora",
+     "TK2": "Team King",
+     "EPC": "Energy Pacemaker.Carries",
+     "WE": "Team WE",
+     "EPA": "Energy Pacemaker.All",
+     "GAMT": "Gamtee",
+     "SPG": "Stand Point Gaming",
+     "SHRC": "Star Horn Royal Club",
+     "TD": "Team DK",
+     "SHE": "Snake Honor Esports",
+     "VPG2": "Vici Potential Gaming",
+     "2144G": "2144 Gaming",
+     "LGD": "LGD Gaming",
+     "PE": "Positive Energy",
+     "IG": "Invictus Gaming",
+     "OMD": "Oh My Dream",
+     "UP": "Vici Gaming",
+     "YG2": "Young Glory",
+     "LNG": "Snake Esports",
+     "AG2": "AD Gaming",
+     "EP": "Energy Pacemaker",
+     "LD2": "Legend Dragon",
+     "OMG": "Oh My God",
+     "TWF": "Team WE Future",
+     "QG": "Qiao Gu Reapers"
+    }
+   },
+   "Summer": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "NB",
+            "score": 0
+           },
+           "b": {
+            "short": "TWF",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "M3",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHOW",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LD2",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "AG2",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "2144D",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "UP",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EPC",
+            "score": 0
+           },
+           "b": {
+            "short": "YG2",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TBG",
+            "score": 1
+           },
+           "b": {
+            "short": "HYG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "OMG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMD",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "QG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "KH",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TK2",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EPA",
+            "score": 2
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "UP2",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "2144G",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LNG",
+            "score": "W"
+           },
+           "b": {
+            "short": null,
+            "seed": "BYE"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "SHRC",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "LG",
+            "score": "DQ"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TWF",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "M3",
+            "score": 0
+           },
+           "b": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "RNG",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "UP",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "YG2",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "HYG",
+            "score": 0
+           },
+           "b": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "QG",
+            "score": 1
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "TK2",
+            "score": 1
+           },
+           "b": {
+            "short": "UP2",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "IG",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": "FF"
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 0
+           }
+          },
+          {
+           "title": "32강",
+           "a": {
+            "short": "UP2",
+            "score": 1
+           },
+           "b": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "16강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "TWF",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "M3",
+            "score": 0
+           },
+           "b": {
+            "short": "WE",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "RNG",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "UP",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "YG2",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "HYG",
+            "score": 0
+           },
+           "b": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "LGD",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "QG",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "TK2",
+            "score": 1
+           },
+           "b": {
+            "short": "UP2",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "SHRC",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "IG",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": "FF"
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 0
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "UP2",
+            "score": 1
+           },
+           "b": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 1
+           }
+          },
+          {
+           "title": "16강",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "IG",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": "FF"
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LGD",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "UP2",
+            "score": 1
+           },
+           "b": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "IG",
+            "score": 2
+           },
+           "b": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 1
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "OMG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 1
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 2
+           },
+           "b": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 2
+           },
+           "b": {
+            "short": "LNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "OMG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "LNG",
+      "note": "3위"
+     },
+     {
+      "rank": 4,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "WE",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "UP",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "LGD",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "UP2",
+      "note": ""
+     },
+     {
+      "rank": 9,
+      "team": "TWF",
+      "note": ""
+     },
+     {
+      "rank": 10,
+      "team": "M3",
+      "note": ""
+     },
+     {
+      "rank": 11,
+      "team": "RNG",
+      "note": ""
+     },
+     {
+      "rank": 12,
+      "team": "YG2",
+      "note": ""
+     },
+     {
+      "rank": 13,
+      "team": "HYG",
+      "note": ""
+     },
+     {
+      "rank": 14,
+      "team": "QG",
+      "note": ""
+     },
+     {
+      "rank": 15,
+      "team": "TK2",
+      "note": ""
+     },
+     {
+      "rank": 16,
+      "team": "SHRC",
+      "note": ""
+     },
+     {
+      "rank": 17,
+      "team": "NB",
+      "note": ""
+     },
+     {
+      "rank": 18,
+      "team": "SHOW",
+      "note": ""
+     },
+     {
+      "rank": 19,
+      "team": "LD2",
+      "note": ""
+     },
+     {
+      "rank": 20,
+      "team": "AG2",
+      "note": ""
+     },
+     {
+      "rank": 21,
+      "team": "2144D",
+      "note": ""
+     },
+     {
+      "rank": 22,
+      "team": "EPC",
+      "note": ""
+     },
+     {
+      "rank": 23,
+      "team": "TBG",
+      "note": ""
+     },
+     {
+      "rank": 24,
+      "team": "OMD",
+      "note": ""
+     },
+     {
+      "rank": 25,
+      "team": "KH",
+      "note": ""
+     },
+     {
+      "rank": 26,
+      "team": "EPA",
+      "note": ""
+     },
+     {
+      "rank": 27,
+      "team": "2144G",
+      "note": ""
+     },
+     {
+      "rank": 28,
+      "team": "LG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "NB": "Newbee",
+     "TWF": "Team WE Future",
+     "M3": "Masters 3",
+     "SHOW": "ShowTime",
+     "WE": "Team WE",
+     "LD2": "Legend Dragon",
+     "IG": "Invictus Gaming",
+     "AG2": "AD Gaming",
+     "RNG": "Royal Never Give Up",
+     "2144D": "2144 Danmu Gaming",
+     "UP": "Vici Gaming",
+     "EPC": "Energy Pacemaker.Carries",
+     "YG2": "Young Glory",
+     "TBG": "T.Bear Gaming",
+     "HYG": "Hyper Youth Gaming",
+     "OMG": "Oh My God",
+     "LGD": "LGD Gaming",
+     "OMD": "Oh My Dream",
+     "QG": "Qiao Gu Reapers",
+     "KH": "Kx.Happy",
+     "TK2": "Team King",
+     "EPA": "Energy Pacemaker.All",
+     "UP2": "Unlimited Potential",
+     "2144G": "2144 Gaming",
+     "LNG": "Snake Esports",
+     "SHRC": "Star Horn Royal Club",
+     "LG": "LongYing Game"
+    }
+   },
+   "Grand Finals": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 2
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "IG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "LNG",
+      "note": ""
+     },
+     {
+      "rank": 4,
+      "team": "OMG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "EDG": "EDward Gaming",
+     "LNG": "Snake Esports",
+     "IG": "Invictus Gaming",
+     "OMG": "Oh My God"
+    }
+   }
+  },
+  "2016": {
+   "name": "Demacia Cup",
+   "regLabel": "그룹 스테이지",
+   "parallelGroups": true,
+   "rows": [
+    {
+     "rank": 1,
+     "team": "LNG",
+     "w": 4,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 2,
+     "team": "WE",
+     "w": 4,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "YM",
+     "w": 3,
+     "l": 3,
+     "group": "A조"
+    },
+    {
+     "rank": 4,
+     "team": "NB",
+     "w": 1,
+     "l": 5,
+     "group": "A조"
+    },
+    {
+     "rank": 1,
+     "team": "EDG",
+     "w": 6,
+     "l": 0,
+     "group": "B조"
+    },
+    {
+     "rank": 2,
+     "team": "SHRC",
+     "w": 3,
+     "l": 3,
+     "group": "B조"
+    },
+    {
+     "rank": 3,
+     "team": "LGD",
+     "w": 2,
+     "l": 4,
+     "group": "B조"
+    },
+    {
+     "rank": 4,
+     "team": "IG",
+     "w": 1,
+     "l": 5,
+     "group": "B조"
+    },
+    {
+     "rank": 1,
+     "team": "LD2",
+     "w": 6,
+     "l": 0,
+     "group": "C조"
+    },
+    {
+     "rank": 2,
+     "team": "GT",
+     "w": 4,
+     "l": 2,
+     "group": "C조"
+    },
+    {
+     "rank": 3,
+     "team": "UP",
+     "w": 2,
+     "l": 4,
+     "group": "C조"
+    },
+    {
+     "rank": 4,
+     "team": "SG2",
+     "w": 0,
+     "l": 6,
+     "group": "C조"
+    },
+    {
+     "rank": 1,
+     "team": "RNG",
+     "w": 5,
+     "l": 1,
+     "group": "D조"
+    },
+    {
+     "rank": 2,
+     "team": "IMAY",
+     "w": 5,
+     "l": 1,
+     "group": "D조"
+    },
+    {
+     "rank": 3,
+     "team": "OMG",
+     "w": 1,
+     "l": 5,
+     "group": "D조"
+    },
+    {
+     "rank": 4,
+     "team": "TBG",
+     "w": 1,
+     "l": 5,
+     "group": "D조"
+    }
+   ],
+   "brackets": [
+    {
+     "slug": "knockout",
+     "name": "녹아웃 스테이지",
+     "label": "녹아웃 스테이지",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "8강",
+          "a": {
+           "short": "LNG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "SHRC",
+           "score": 0
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "LD2",
+           "score": 0
+          },
+          "b": {
+           "short": "IMAY",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "RNG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "WE",
+           "score": 0
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "EDG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "GT",
+           "score": 0
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "4강",
+          "a": {
+           "short": "LNG",
+           "score": 2
+          },
+          "b": {
+           "short": "IMAY",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "4강",
+          "a": {
+           "short": "RNG",
+           "score": 1
+          },
+          "b": {
+           "short": "EDG",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "결승",
+          "a": {
+           "short": "IMAY",
+           "score": 0
+          },
+          "b": {
+           "short": "EDG",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "finalStandings": [
+    {
+     "rank": 1,
+     "team": "EDG",
+     "note": "우승"
+    },
+    {
+     "rank": 2,
+     "team": "IMAY",
+     "note": "준우승"
+    },
+    {
+     "rank": 3,
+     "team": "LNG",
+     "note": ""
+    },
+    {
+     "rank": 4,
+     "team": "RNG",
+     "note": ""
+    },
+    {
+     "rank": 5,
+     "team": "WE",
+     "note": ""
+    },
+    {
+     "rank": 6,
+     "team": "SHRC",
+     "note": ""
+    },
+    {
+     "rank": 7,
+     "team": "LD2",
+     "note": ""
+    },
+    {
+     "rank": 8,
+     "team": "GT",
+     "note": ""
+    }
+   ],
+   "teamNames": {
+    "LNG": "Snake Esports",
+    "WE": "Team WE",
+    "YM": "Young Miracles",
+    "NB": "Newbee",
+    "EDG": "EDward Gaming",
+    "SHRC": "Star Horn Royal Club",
+    "LGD": "LGD Gaming",
+    "IG": "Invictus Gaming",
+    "LD2": "Legend Dragon",
+    "GT": "Game Talents",
+    "UP": "Vici Gaming",
+    "SG2": "Saint Gaming",
+    "RNG": "Royal Never Give Up",
+    "IMAY": "I May",
+    "OMG": "Oh My God",
+    "TBG": "T.Bear Gaming"
+   }
+  },
+  "2017": {
+   "Demacia Cup": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "qualifiers",
+      "name": "예선",
+      "label": "예선",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "DG2",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TF2",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "ROC",
+            "score": 0
+           },
+           "b": {
+            "short": "RWG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "OMD",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TH2",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "WBG",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "KS",
+            "score": "FF"
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "JD",
+            "score": 1
+           },
+           "b": {
+            "short": "YG2",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "YM",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "RT",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "LD2",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "MSC",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "DG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "FFFD",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "DG2",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "RWG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "IMAY",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "OMD",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "GT",
+            "score": 1
+           },
+           "b": {
+            "short": "WBG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "NB",
+            "score": 1
+           },
+           "b": {
+            "short": "YG2",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "UP",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "YM",
+            "score": 0
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "JDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "LD2",
+            "score": 1
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "LGD",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "DG",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "RWG",
+            "score": 0
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "IMAY",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WBG",
+            "score": 1
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "YG2",
+            "score": 1
+           },
+           "b": {
+            "short": "UP",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "결승",
+           "a": {
+            "short": "JDG",
+            "score": 0
+           },
+           "b": {
+            "short": "LGD",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "8강",
+           "a": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "IMAY",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "OMG",
+            "score": 0
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "UP",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 1
+           }
+          },
+          {
+           "title": "8강",
+           "a": {
+            "short": "LGD",
+            "score": 1
+           },
+           "b": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4강",
+           "a": {
+            "short": "IG",
+            "score": 1
+           },
+           "b": {
+            "short": "IMAY",
+            "score": 3,
+            "win": true
+           }
+          },
+          {
+           "title": "4강",
+           "a": {
+            "short": "UP",
+            "score": 0
+           },
+           "b": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "IMAY",
+            "score": 1
+           },
+           "b": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "RNG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "IMAY",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 4,
+      "team": "UP",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "WE",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "OMG",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "EDG",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "LGD",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "IG": "Invictus Gaming",
+     "WE": "Team WE",
+     "IMAY": "I May",
+     "OMG": "Oh My God",
+     "UP": "Vici Gaming",
+     "EDG": "EDward Gaming",
+     "LGD": "LGD Gaming",
+     "RNG": "Royal Never Give Up",
+     "DG2": "DS Gaming",
+     "TF2": "Team Fighter",
+     "ROC": "Royal Club",
+     "RWG": "Red Wolf Gaming",
+     "LNG": "Snake Esports",
+     "OMD": "Oh My Dream",
+     "TH2": "Team Hurricane",
+     "WBG": "Suning",
+     "KS": "Ku Shang",
+     "GT": "Game Talents",
+     "JD": "Joy Dream",
+     "YG2": "Young Glory",
+     "YM": "Young Miracles",
+     "RT": "Raging Thunder",
+     "NB": "Newbee",
+     "LD2": "Legend Dragon",
+     "MSC": "Moss Seven Club",
+     "DG": "DAN Gaming",
+     "FFFD": "Fight For Freedom.Dream",
+     "JDG": "JD Gaming"
+    }
+   },
+   "Demacia Championship": {
+    "name": "Demacia Championship",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "qualifiers",
+      "name": "예선",
+      "label": "예선",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "MSC",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "TH2",
+            "score": "FF"
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "TF2",
+            "score": "FF"
+           },
+           "b": {
+            "short": "OMD",
+            "score": "W",
+            "win": true
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "JD",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "ROC",
+            "score": 1
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "PSRWG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TYLO",
+            "score": 1
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "B8",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "YG2",
+            "score": "FF"
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "HCOE",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "LD2",
+            "score": "FF"
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "BTC2",
+            "score": "W",
+            "win": true
+           },
+           "b": {
+            "short": "GT",
+            "score": "FF"
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "JDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "MSC",
+            "score": 1
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "UP",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "OMD",
+            "score": 1
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "TES",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "JD",
+            "score": 0
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "AL",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "PSRWG",
+            "score": 0
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "FPX",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "B8",
+            "score": 0
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "BLG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "HCOE",
+            "score": 0
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "YM",
+            "score": "FF"
+           },
+           "b": {
+            "short": "BTC2",
+            "score": "W",
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "LGD",
+            "score": 1
+           },
+           "b": {
+            "short": "JDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "LNG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "UP",
+            "score": 1
+           }
+          },
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "WBG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TES",
+            "score": 1
+           }
+          },
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "OMG",
+            "score": 1
+           },
+           "b": {
+            "short": "AL",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "FPX",
+            "score": 1
+           }
+          },
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "RNG",
+            "score": 1
+           },
+           "b": {
+            "short": "BLG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "BTC2",
+            "score": 0
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "JDG",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "LNG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "BLG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "AL",
+            "score": 0
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "WE",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WBG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "JDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "BLG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "WBG",
+            "score": 1
+           },
+           "b": {
+            "short": "AL",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "IG",
+            "score": 1
+           },
+           "b": {
+            "short": "LNG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WE",
+            "score": 0
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "WE",
+            "score": 0
+           },
+           "b": {
+            "short": "JDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "AL",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "JDG",
+            "score": 0
+           },
+           "b": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4라운드",
+           "a": {
+            "short": "LNG",
+            "score": 0
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4라운드",
+           "a": {
+            "short": "LNG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "EDG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "EDG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "LNG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 4,
+      "team": "JDG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "AL",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "WE",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "BLG",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "WBG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "JDG": "JD Gaming",
+     "IG": "Invictus Gaming",
+     "LNG": "Snake Esports",
+     "BLG": "Bilibili Gaming",
+     "AL": "Rogue Warriors",
+     "EDG": "EDward Gaming",
+     "WE": "Team WE",
+     "WBG": "Suning",
+     "MSC": "Moss Seven Club",
+     "TH2": "Team Hurricane",
+     "LGD": "LGD Gaming",
+     "TF2": "Team Fighter",
+     "OMD": "Oh My Dream",
+     "UP": "Vici Gaming",
+     "JD": "Joy Dream",
+     "ROC": "Royal Club",
+     "TES": "Topsports Gaming",
+     "PSRWG": "People's Red Wolf Gaming",
+     "TYLO": "TyLoo",
+     "OMG": "Oh My God",
+     "B8": "Black-8",
+     "YG2": "Young Glory",
+     "FPX": "FunPlus Phoenix",
+     "HCOE": "Haikou College of Economics",
+     "LD2": "Legend Dragon",
+     "RNG": "Royal Never Give Up",
+     "BTC2": "Baiyun Technician College",
+     "GT": "Game Talents",
+     "YM": "Young Miracles"
+    }
+   }
+  },
+  "2018": {
+   "Summer": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "AL",
+            "score": 1,
+            "win": true
+           },
+           "b": {
+            "short": "BLG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "RNG",
+            "score": 1,
+            "win": true
+           },
+           "b": {
+            "short": "TYLO",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "IG",
+            "score": 1,
+            "win": true
+           },
+           "b": {
+            "short": "LNG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "EDG",
+            "score": 1,
+            "win": true
+           },
+           "b": {
+            "short": "SC",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "BLG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "TYLO",
+            "score": 1
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "LNG",
+            "score": 1
+           },
+           "b": {
+            "short": "SC",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "AL",
+            "score": 0
+           },
+           "b": {
+            "short": "RNG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 0
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "AL",
+            "score": 0
+           },
+           "b": {
+            "short": "BLG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "SC",
+            "score": 0
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "BLG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4라운드",
+           "a": {
+            "short": "RNG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "IG",
+            "score": 1
+           }
+          },
+          {
+           "title": "4라운드",
+           "a": {
+            "short": "IG",
+            "score": 1
+           },
+           "b": {
+            "short": "BLG",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "RNG",
+            "score": 3,
+            "win": true
+           },
+           "b": {
+            "short": "BLG",
+            "score": 1
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "RNG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "BLG",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "IG",
+      "note": ""
+     },
+     {
+      "rank": 4,
+      "team": "EDG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "SC",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "AL",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "TYLO",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "LNG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "AL": "Rogue Warriors",
+     "BLG": "Bilibili Gaming",
+     "RNG": "Royal Never Give Up",
+     "TYLO": "TyLoo",
+     "IG": "Invictus Gaming",
+     "LNG": "Snake Esports",
+     "EDG": "EDward Gaming",
+     "SC": "Shadow Cream"
+    }
+   },
+   "Winter": {
+    "name": "Demacia Cup",
+    "rows": [],
+    "brackets": [
+     {
+      "slug": "knockout",
+      "name": "토너먼트",
+      "label": "토너먼트",
+      "bracket": {
+       "rounds": [
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "IG",
+            "score": 1,
+            "win": true
+           },
+           "b": {
+            "short": "WBG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "AL",
+            "score": 1,
+            "win": true
+           },
+           "b": {
+            "short": "SG3",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "JDG",
+            "score": 0
+           },
+           "b": {
+            "short": "TES",
+            "score": 1,
+            "win": true
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "RNG",
+            "score": 1,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 0
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "WBG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "SG3",
+            "score": 1
+           }
+          },
+          {
+           "title": "1라운드",
+           "a": {
+            "short": "JDG",
+            "score": 1
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "AL",
+            "score": 1
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "TES",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "RNG",
+            "score": 0
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "AL",
+            "score": 1
+           },
+           "b": {
+            "short": "WBG",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "2라운드",
+           "a": {
+            "short": "RNG",
+            "score": 1
+           },
+           "b": {
+            "short": "EDG",
+            "score": 2,
+            "win": true
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "3라운드",
+           "a": {
+            "short": "WBG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "EDG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "4라운드",
+           "a": {
+            "short": "IG",
+            "score": 0
+           },
+           "b": {
+            "short": "TES",
+            "score": 2,
+            "win": true
+           }
+          },
+          {
+           "title": "4라운드",
+           "a": {
+            "short": "IG",
+            "score": 2,
+            "win": true
+           },
+           "b": {
+            "short": "WBG",
+            "score": 1
+           }
+          }
+         ]
+        },
+        {
+         "title": "",
+         "matches": [
+          {
+           "title": "결승",
+           "a": {
+            "short": "TES",
+            "score": 1
+           },
+           "b": {
+            "short": "IG",
+            "score": 3,
+            "win": true
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "finalStandings": [
+     {
+      "rank": 1,
+      "team": "IG",
+      "note": "우승"
+     },
+     {
+      "rank": 2,
+      "team": "TES",
+      "note": "준우승"
+     },
+     {
+      "rank": 3,
+      "team": "WBG",
+      "note": ""
+     },
+     {
+      "rank": 4,
+      "team": "EDG",
+      "note": ""
+     },
+     {
+      "rank": 5,
+      "team": "AL",
+      "note": ""
+     },
+     {
+      "rank": 6,
+      "team": "RNG",
+      "note": ""
+     },
+     {
+      "rank": 7,
+      "team": "SG3",
+      "note": ""
+     },
+     {
+      "rank": 8,
+      "team": "JDG",
+      "note": ""
+     }
+    ],
+    "teamNames": {
+     "IG": "Invictus Gaming",
+     "WBG": "Suning",
+     "AL": "Rogue Warriors",
+     "SG3": "SinoDragon Gaming",
+     "JDG": "JD Gaming",
+     "TES": "Topsports Gaming",
+     "RNG": "Royal Never Give Up",
+     "EDG": "EDward Gaming"
+    }
+   }
+  },
+  "2019": {
+   "name": "Demacia Cup",
+   "regLabel": "그룹 스테이지",
+   "parallelGroups": true,
+   "rows": [
+    {
+     "rank": 1,
+     "team": "UP",
+     "w": 3,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 2,
+     "team": "WE",
+     "w": 3,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "FPX",
+     "w": 2,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 4,
+     "team": "WBG",
+     "w": 1,
+     "l": 3,
+     "group": "A조"
+    },
+    {
+     "rank": 5,
+     "team": "LES",
+     "w": 1,
+     "l": 3,
+     "group": "A조"
+    },
+    {
+     "rank": 1,
+     "team": "EDG",
+     "w": 3,
+     "l": 1,
+     "group": "B조"
+    },
+    {
+     "rank": 2,
+     "team": "TES",
+     "w": 3,
+     "l": 1,
+     "group": "B조"
+    },
+    {
+     "rank": 3,
+     "team": "LGD",
+     "w": 2,
+     "l": 2,
+     "group": "B조"
+    },
+    {
+     "rank": 4,
+     "team": "NIP",
+     "w": 2,
+     "l": 2,
+     "group": "B조"
+    },
+    {
+     "rank": 5,
+     "team": "GD",
+     "w": 0,
+     "l": 4,
+     "group": "B조"
+    },
+    {
+     "rank": 1,
+     "team": "JDG",
+     "w": 4,
+     "l": 0,
+     "group": "C조"
+    },
+    {
+     "rank": 2,
+     "team": "RNG",
+     "w": 2,
+     "l": 2,
+     "group": "C조"
+    },
+    {
+     "rank": 3,
+     "team": "LNG",
+     "w": 2,
+     "l": 2,
+     "group": "C조"
+    },
+    {
+     "rank": 4,
+     "team": "OMG",
+     "w": 2,
+     "l": 2,
+     "group": "C조"
+    },
+    {
+     "rank": 5,
+     "team": "YM",
+     "w": 0,
+     "l": 4,
+     "group": "C조"
+    },
+    {
+     "rank": 1,
+     "team": "AL",
+     "w": 3,
+     "l": 1,
+     "group": "D조"
+    },
+    {
+     "rank": 2,
+     "team": "BLG",
+     "w": 2,
+     "l": 2,
+     "group": "D조"
+    },
+    {
+     "rank": 3,
+     "team": "TT",
+     "w": 2,
+     "l": 2,
+     "group": "D조"
+    },
+    {
+     "rank": 4,
+     "team": "IG",
+     "w": 2,
+     "l": 2,
+     "group": "D조"
+    },
+    {
+     "rank": 5,
+     "team": "SDX",
+     "w": 1,
+     "l": 3,
+     "group": "D조"
+    }
+   ],
+   "brackets": [
+    {
+     "slug": "knockout",
+     "name": "녹아웃 스테이지",
+     "label": "녹아웃 스테이지",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "8강",
+          "a": {
+           "short": "UP",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "TES",
+           "score": 2
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "EDG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "WE",
+           "score": 2
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "JDG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "BLG",
+           "score": 1
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "AL",
+           "score": 0
+          },
+          "b": {
+           "short": "RNG",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "4강",
+          "a": {
+           "short": "UP",
+           "score": 2
+          },
+          "b": {
+           "short": "EDG",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "4강",
+          "a": {
+           "short": "JDG",
+           "score": 0
+          },
+          "b": {
+           "short": "RNG",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "결승",
+          "a": {
+           "short": "EDG",
+           "score": 1
+          },
+          "b": {
+           "short": "RNG",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "결승",
+          "a": {
+           "short": "UP",
+           "score": 0
+          },
+          "b": {
+           "short": "JDG",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "finalStandings": [
+    {
+     "rank": 1,
+     "team": "RNG",
+     "note": "우승"
+    },
+    {
+     "rank": 2,
+     "team": "EDG",
+     "note": "준우승"
+    },
+    {
+     "rank": 3,
+     "team": "JDG",
+     "note": "3위"
+    },
+    {
+     "rank": 4,
+     "team": "UP",
+     "note": ""
+    },
+    {
+     "rank": 5,
+     "team": "WE",
+     "note": ""
+    },
+    {
+     "rank": 6,
+     "team": "TES",
+     "note": ""
+    },
+    {
+     "rank": 7,
+     "team": "AL",
+     "note": ""
+    },
+    {
+     "rank": 8,
+     "team": "BLG",
+     "note": ""
+    }
+   ],
+   "teamNames": {
+    "UP": "Vici Gaming",
+    "WE": "Team WE",
+    "FPX": "FunPlus Phoenix",
+    "WBG": "Suning",
+    "LES": "LinGan e-Sports",
+    "EDG": "EDward Gaming",
+    "TES": "Top Esports",
+    "LGD": "LGD Gaming",
+    "NIP": "Victory Five",
+    "GD": "Gama Dream",
+    "JDG": "JD Gaming",
+    "RNG": "Royal Never Give Up",
+    "LNG": "LNG Esports",
+    "OMG": "Oh My God",
+    "YM": "Young Miracles",
+    "AL": "Rogue Warriors",
+    "BLG": "Bilibili Gaming",
+    "TT": "Dominus Esports",
+    "IG": "Invictus Gaming",
+    "SDX": "Shu Dai Xiong Gaming"
+   }
+  },
+  "2020": {
+   "name": "Demacia Cup",
+   "regLabel": "그룹 스테이지",
+   "parallelGroups": true,
+   "rows": [
+    {
+     "rank": 1,
+     "team": "FPX",
+     "w": 3,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 2,
+     "team": "OMG",
+     "w": 3,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "AL",
+     "w": 3,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 4,
+     "team": "SDX",
+     "w": 1,
+     "l": 3,
+     "group": "A조"
+    },
+    {
+     "rank": 5,
+     "team": "HMG",
+     "w": 0,
+     "l": 4,
+     "group": "A조"
+    },
+    {
+     "rank": 1,
+     "team": "UP",
+     "w": 4,
+     "l": 0,
+     "group": "B조"
+    },
+    {
+     "rank": 2,
+     "team": "EDG",
+     "w": 3,
+     "l": 1,
+     "group": "B조"
+    },
+    {
+     "rank": 3,
+     "team": "LNG",
+     "w": 2,
+     "l": 2,
+     "group": "B조"
+    },
+    {
+     "rank": 4,
+     "team": "DYU",
+     "w": 1,
+     "l": 3,
+     "group": "B조"
+    },
+    {
+     "rank": 5,
+     "team": "LEG",
+     "w": 0,
+     "l": 4,
+     "group": "B조"
+    },
+    {
+     "rank": 1,
+     "team": "NIP",
+     "w": 4,
+     "l": 0,
+     "group": "C조"
+    },
+    {
+     "rank": 2,
+     "team": "YM",
+     "w": 3,
+     "l": 1,
+     "group": "C조"
+    },
+    {
+     "rank": 3,
+     "team": "RA",
+     "w": 2,
+     "l": 2,
+     "group": "C조"
+    },
+    {
+     "rank": 4,
+     "team": "TT",
+     "w": 1,
+     "l": 3,
+     "group": "C조"
+    },
+    {
+     "rank": 5,
+     "team": "LYA",
+     "w": 0,
+     "l": 4,
+     "group": "C조"
+    },
+    {
+     "rank": 1,
+     "team": "WE",
+     "w": 3,
+     "l": 1,
+     "group": "D조"
+    },
+    {
+     "rank": 2,
+     "team": "BLG",
+     "w": 3,
+     "l": 1,
+     "group": "D조"
+    },
+    {
+     "rank": 3,
+     "team": "IG",
+     "w": 2,
+     "l": 2,
+     "group": "D조"
+    },
+    {
+     "rank": 4,
+     "team": "RNG",
+     "w": 2,
+     "l": 2,
+     "group": "D조"
+    },
+    {
+     "rank": 5,
+     "team": "CMG",
+     "w": 0,
+     "l": 4,
+     "group": "D조"
+    }
+   ],
+   "brackets": [
+    {
+     "slug": "knockout",
+     "name": "녹아웃 스테이지",
+     "label": "녹아웃 스테이지",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "8강",
+          "a": {
+           "short": "FPX",
+           "score": 0
+          },
+          "b": {
+           "short": "TES",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "UP",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "WBG",
+           "score": 0
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "NIP",
+           "score": 1
+          },
+          "b": {
+           "short": "JDG",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "WE",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "LGD",
+           "score": 0
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "4강",
+          "a": {
+           "short": "TES",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "UP",
+           "score": 1
+          }
+         },
+         {
+          "title": "4강",
+          "a": {
+           "short": "JDG",
+           "score": 2
+          },
+          "b": {
+           "short": "WE",
+           "score": 3,
+           "win": true
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "결승",
+          "a": {
+           "short": "TES",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "WE",
+           "score": 0
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "finalStandings": [
+    {
+     "rank": 1,
+     "team": "TES",
+     "note": "우승"
+    },
+    {
+     "rank": 2,
+     "team": "WE",
+     "note": "준우승"
+    },
+    {
+     "rank": 3,
+     "team": "UP",
+     "note": ""
+    },
+    {
+     "rank": 4,
+     "team": "JDG",
+     "note": ""
+    },
+    {
+     "rank": 5,
+     "team": "FPX",
+     "note": ""
+    },
+    {
+     "rank": 6,
+     "team": "NIP",
+     "note": ""
+    },
+    {
+     "rank": 7,
+     "team": "WBG",
+     "note": ""
+    },
+    {
+     "rank": 8,
+     "team": "LGD",
+     "note": ""
+    }
+   ],
+   "teamNames": {
+    "FPX": "FunPlus Phoenix",
+    "OMG": "Oh My God",
+    "AL": "Rogue Warriors",
+    "SDX": "Shu Dai Xiong Gaming",
+    "HMG": "HMG",
+    "UP": "Vici Gaming",
+    "EDG": "EDward Gaming",
+    "LNG": "LNG Esports",
+    "DYU": "DYU",
+    "LEG": "Legend Esport Gaming",
+    "NIP": "Victory Five",
+    "YM": "Young Miracles",
+    "RA": "eStar",
+    "TT": "ThunderTalk Gaming",
+    "LYA": "LYA",
+    "WE": "Team WE",
+    "BLG": "Bilibili Gaming",
+    "IG": "Invictus Gaming",
+    "RNG": "Royal Never Give Up",
+    "CMG": "CMG",
+    "TES": "Top Esports",
+    "WBG": "Suning",
+    "JDG": "JD Gaming",
+    "LGD": "LGD Gaming"
+   }
+  },
+  "2021": {
+   "name": "Demacia Cup",
+   "regLabel": "그룹 스테이지",
+   "parallelGroups": true,
+   "rows": [
+    {
+     "rank": 1,
+     "team": "TES",
+     "w": 3,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 2,
+     "team": "WE",
+     "w": 3,
+     "l": 1,
+     "group": "A조"
+    },
+    {
+     "rank": 3,
+     "team": "BLG",
+     "w": 2,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 4,
+     "team": "HAS",
+     "w": 2,
+     "l": 2,
+     "group": "A조"
+    },
+    {
+     "rank": 5,
+     "team": "JDG",
+     "w": 0,
+     "l": 4,
+     "group": "A조"
+    },
+    {
+     "rank": 1,
+     "team": "IG",
+     "w": 4,
+     "l": 0,
+     "group": "B조"
+    },
+    {
+     "rank": 2,
+     "team": "LGD",
+     "w": 3,
+     "l": 1,
+     "group": "B조"
+    },
+    {
+     "rank": 3,
+     "team": "RA",
+     "w": 2,
+     "l": 2,
+     "group": "B조"
+    },
+    {
+     "rank": 4,
+     "team": "SDX",
+     "w": 1,
+     "l": 3,
+     "group": "B조"
+    },
+    {
+     "rank": 5,
+     "team": "WG",
+     "w": 0,
+     "l": 4,
+     "group": "B조"
+    },
+    {
+     "rank": 1,
+     "team": "UP",
+     "w": 4,
+     "l": 0,
+     "group": "C조"
+    },
+    {
+     "rank": 2,
+     "team": "AL",
+     "w": 3,
+     "l": 1,
+     "group": "C조"
+    },
+    {
+     "rank": 3,
+     "team": "TP",
+     "w": 1,
+     "l": 3,
+     "group": "C조"
+    },
+    {
+     "rank": 4,
+     "team": "WEC",
+     "w": 1,
+     "l": 3,
+     "group": "C조"
+    },
+    {
+     "rank": 5,
+     "team": "EQX",
+     "w": 1,
+     "l": 3,
+     "group": "C조"
+    },
+    {
+     "rank": 1,
+     "team": "OMG",
+     "w": 3,
+     "l": 1,
+     "group": "D조"
+    },
+    {
+     "rank": 2,
+     "team": "NIP",
+     "w": 3,
+     "l": 1,
+     "group": "D조"
+    },
+    {
+     "rank": 3,
+     "team": "WBG",
+     "w": 2,
+     "l": 2,
+     "group": "D조"
+    },
+    {
+     "rank": 4,
+     "team": "TT",
+     "w": 1,
+     "l": 3,
+     "group": "D조"
+    },
+    {
+     "rank": 5,
+     "team": "BLI",
+     "w": 1,
+     "l": 3,
+     "group": "D조"
+    }
+   ],
+   "brackets": [
+    {
+     "slug": "knockout",
+     "name": "녹아웃 스테이지",
+     "label": "녹아웃 스테이지",
+     "bracket": {
+      "rounds": [
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "8강",
+          "a": {
+           "short": "RNG",
+           "score": 0
+          },
+          "b": {
+           "short": "TES",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "EDG",
+           "score": 1
+          },
+          "b": {
+           "short": "IG",
+           "score": 3,
+           "win": true
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "FPX",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "UP",
+           "score": 0
+          }
+         },
+         {
+          "title": "8강",
+          "a": {
+           "short": "LNG",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "OMG",
+           "score": 1
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "4강",
+          "a": {
+           "short": "TES",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "IG",
+           "score": 0
+          }
+         },
+         {
+          "title": "4강",
+          "a": {
+           "short": "FPX",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "LNG",
+           "score": 1
+          }
+         }
+        ]
+       },
+       {
+        "title": "",
+        "matches": [
+         {
+          "title": "결승",
+          "a": {
+           "short": "TES",
+           "score": 3,
+           "win": true
+          },
+          "b": {
+           "short": "FPX",
+           "score": 2
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "finalStandings": [
+    {
+     "rank": 1,
+     "team": "TES",
+     "note": "우승"
+    },
+    {
+     "rank": 2,
+     "team": "FPX",
+     "note": "준우승"
+    },
+    {
+     "rank": 3,
+     "team": "IG",
+     "note": ""
+    },
+    {
+     "rank": 4,
+     "team": "LNG",
+     "note": ""
+    },
+    {
+     "rank": 5,
+     "team": "UP",
+     "note": ""
+    },
+    {
+     "rank": 6,
+     "team": "OMG",
+     "note": ""
+    },
+    {
+     "rank": 7,
+     "team": "RNG",
+     "note": ""
+    },
+    {
+     "rank": 8,
+     "team": "EDG",
+     "note": ""
+    }
+   ],
+   "teamNames": {
+    "TES": "Top Esports",
+    "WE": "Team WE",
+    "BLG": "Bilibili Gaming",
+    "HAS": "Huya All Star",
+    "JDG": "JD Gaming",
+    "IG": "Invictus Gaming",
+    "LGD": "LGD Gaming",
+    "RA": "Rare Atom",
+    "SDX": "Shu Dai Xiong Gaming",
+    "WG": "Wahaha Gaming",
+    "UP": "Ultra Prime",
+    "AL": "Anyone's Legend",
+    "TP": "Team Pinnacle",
+    "WEC": "WanZhen Esports Club",
+    "EQX": "EQX",
+    "OMG": "Oh My God",
+    "NIP": "Victory Five",
+    "WBG": "Weibo Gaming",
+    "TT": "ThunderTalk Gaming",
+    "BLI": "Bilibili Live",
+    "RNG": "Royal Never Give Up",
+    "EDG": "EDward Gaming",
+    "FPX": "FunPlus Phoenix",
+    "LNG": "LNG Esports"
+   }
+  }
+ }
+}

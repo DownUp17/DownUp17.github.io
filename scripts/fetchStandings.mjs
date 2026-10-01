@@ -3127,6 +3127,12 @@ try {
     if (api.format) ag.format = api.format;
     if (api.updatedAt) ag.apiUpdatedAt = api.updatedAt;
     delete ag.placeholder; // 리포지토리 실데이터 → 임시 대진표(기본값) 블록이 덮어쓰지 않도록
+    // 2026 녹아웃 일정(사용자 지정) — 동메달 결정전 없음. 4강 10/1 09:00·13:30, 결승 10/2 12:00.
+    if (ag.knockout?.matches) {
+      ag.knockout.matches = ag.knockout.matches.filter((m) => m.id !== 'BRONZE');
+      const AG_KO_SCHEDULE = { SF1: { day: '10-01', time: '09:00' }, SF2: { day: '10-01', time: '13:30' }, FINAL: { day: '10-02', time: '12:00' } };
+      for (const m of ag.knockout.matches) if (AG_KO_SCHEDULE[m.id]) Object.assign(m, AG_KO_SCHEDULE[m.id]);
+    }
 
     // 조별 순위 계산 (승수 → 세트 득실 → 상대전적). 각 조 상위 2팀이 4강 진출.
     const codeName = Object.fromEntries((api.teams || []).map((t) => [t.code, t]));
@@ -3216,10 +3222,9 @@ try {
     // 녹아웃: 4강(Bo3) · 결승/동메달(Bo5) — 팀 미정(각 조 순위 확정 후 채워짐).
     ag.knockout = {
       matches: [
-        { id: 'SF1', a: null, b: null, format: 'Bo3', prev: { a: 'A:1', b: 'B:2' } },
-        { id: 'SF2', a: null, b: null, format: 'Bo3', prev: { a: 'B:1', b: 'A:2' } },
-        { id: 'FINAL', a: null, b: null, format: 'Bo5', prev: { a: 'SF1:W', b: 'SF2:W' } },
-        { id: 'BRONZE', a: null, b: null, format: 'Bo5', prev: { a: 'SF1:L', b: 'SF2:L' } },
+        { id: 'SF1', a: null, b: null, format: 'Bo3', day: '10-01', time: '09:00', prev: { a: 'A:1', b: 'B:2' } },
+        { id: 'SF2', a: null, b: null, format: 'Bo3', day: '10-01', time: '13:30', prev: { a: 'B:1', b: 'A:2' } },
+        { id: 'FINAL', a: null, b: null, format: 'Bo5', day: '10-02', time: '12:00', prev: { a: 'SF1:W', b: 'SF2:W' } },
       ],
     };
     console.log('Asian Games: 참가 8개국(조 편성 미정) + 녹아웃 임시 대진표(TBD) 표시');
@@ -4383,6 +4388,30 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2021 MSI GAM 추가 실패(무시): ${e.message}`); }
 }
 
+// ── 리그피디아 기반 과거 대회 주입 — LPL 2013~2019 · MSI 2017~2019 · Demacia Cup 2014~2021 (API 미제공) ──
+//   scripts/data/leaguepediaPast.json(리그피디아 파싱 결과 스냅샷)을 없는 연도에만 넣는다. teamNames = 대회 당시 팀명.
+//   대진은 rounds만 담겨 있어 아래 '과거 대진표 자동 격자화'가 좌표·연결선을 만든다.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const LP = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'leaguepediaPast.json'), 'utf8'));
+    const added = [];
+    for (const [key, byYear] of Object.entries(LP)) {
+      for (const [y, v] of Object.entries(byYear)) {
+        const std = (past.standings[y] = past.standings[y] || {});
+        const sub = (past.subtabs[y] = past.subtabs[y] || {});
+        if (std[key]) continue;
+        std[key] = v;
+        const single = Array.isArray(v.brackets); // 단일 대회 노드 vs 서브탭 {Spring:…, Summer:…}
+        if (!single) sub[key] = Object.keys(v);
+        added.push(`${key} ${y}${single ? '' : `[${Object.keys(v).join(',')}]`}`);
+      }
+    }
+    if (added.length) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`리그피디아 과거 대회 주입: ${added.join(' · ')}`); }
+  } catch (e) { console.warn(`리그피디아 과거 대회 주입 실패(무시): ${e.message}`); }
+}
+
 // ── 2020 LCK 'Split 1' → 'Spring' 서브탭 이름 변경(API 슬러그만 split1, 실제 대회명은 Spring) ──
 {
   const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
@@ -5178,6 +5207,96 @@ console.log('lolStandings.json 갱신 완료');
       console.log('2012 LCK Winter(Champions Winter 2012-13) 추가 · 우승 NaJin Sword');
     }
   } catch (e) { console.warn(`2012 LCK Winter 추가 실패(무시): ${e.message}`); }
+}
+
+// ── Worlds 2012·2013·2017·2018·2019 — API 미제공 · Leaguepedia 기준 수기 ──
+//   2012·2013: 그룹 스테이지 → 토너먼트(8강~결승, 시드 4팀 8강 직행).
+//   2017~2019: 플레이-인 그룹 → 플레이-인 녹아웃 → 그룹 스테이지(4개조) → 토너먼트 스테이지(8강~결승).
+//   팀 코드는 기존 과거 데이터와 동일(현 팀 연결: SKT→T1/SKTK, Samsung→SSGG/SSW, 아프리카→DNS 등).
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    // [팀, 승, 패] 배열 → 조별 rows
+    const groups = (obj) => Object.entries(obj).flatMap(([g, list]) => list.map(([team, w, l], i) => ({ rank: i + 1, team, w, l, group: `${g}조` }))); // 순서 = 타이브레이커 반영 최종 조 순위
+    const slot = (short, score, flag) => { const s = { short, score }; if (flag) s[flag] = true; return s; };
+    const match = (title, [a, as, b, bs], last) => {
+      const aw = as > bs;
+      return { title, a: slot(a, as, aw ? (last ? 'msi' : 'win') : (last ? 'elim' : null)), b: slot(b, bs, !aw ? (last ? 'msi' : 'win') : (last ? 'elim' : null)) };
+    };
+    // 8강·4강·결승 싱글 엘리 — 연결선은 승자 쪽(a/b)에서 다음 라운드 슬롯으로
+    const ko = (qf, sf, f) => {
+      const rounds = [qf.map((m) => match('8강', m)), sf.map((m) => match('4강', m)), [match('결승', f, true)]];
+      const connectors = [];
+      for (let r = 0; r < 2; r++) rounds[r].forEach((m, i) => connectors.push([r, i, m.a.win ? 'a' : 'b', r + 1, Math.floor(i / 2), i % 2 ? 'b' : 'a']));
+      return applySingleElimLayout({ rounds: rounds.map((matches) => ({ title: '', matches })), connectors });
+    };
+    // 플레이-인 녹아웃(단판 진출전 4경기, 승자 = 그룹 스테이지 진출)
+    const piKo = (list) => ({ totalRows: list.length * 2, rounds: [{ title: '', matches: list.map((m, i) => ({ ...match(`진출전 ${i + 1}경기`, m, true), startRow: i * 2 })) }], connectors: [] });
+    const finalOf = (qf, sf, f, rest = []) => {
+      const W = ([a, as, b, bs]) => (as > bs ? a : b), L = ([a, as, b, bs]) => (as > bs ? b : a);
+      const order = [W(f), L(f), ...sf.map(L), ...qf.map(L), ...rest];
+      return order.map((team, i) => ({ rank: i < 2 ? i + 1 : i < 4 ? 3 : i < 8 ? 5 : 9, team, note: ['우승', '준우승'][i] || (i < 4 ? '4강' : i < 8 ? '8강' : '') }));
+    };
+    const W = {
+      '2012': {
+        name: 'Season 2 World Championship',
+        main: { A: [['AZF', 3, 0], ['IG', 2, 1], ['CLG', 1, 2], ['SK', 0, 3]], B: [['NBSW', 3, 0], ['CLG EU', 2, 1], ['SAJ', 1, 2], ['DIG', 0, 3]] },
+        qf: [['M5', 2, 'IG', 0], ['TPAA', 2, 'NBSW', 0], ['TSM', 0, 'AZF', 2], ['WE', 1, 'CLG EU', 2]],
+        sf: [['M5', 1, 'TPAA', 2], ['AZF', 2, 'CLG EU', 1]],
+        f: ['TPAA', 3, 'AZF', 1],
+        rest: ['CLG', 'SAJ', 'SK', 'DIG'],
+      },
+      '2013': {
+        name: 'Season 3 World Championship',
+        main: { A: [['SKTK', 7, 1], ['OMG', 7, 1], ['LD', 3, 5], ['TSM', 2, 6], ['GGEU', 1, 7]], B: [['FNC', 7, 1], ['GMBT', 5, 3], ['SSW', 5, 3], ['VUL', 3, 5], ['MSK', 0, 8]] },
+        qf: [['GAB', 0, 'SKTK', 2], ['NBSW', 2, 'GMBT', 1], ['ROC', 2, 'OMG', 0], ['C9', 1, 'FNC', 2]],
+        sf: [['SKTK', 3, 'NBSW', 2], ['ROC', 3, 'FNC', 1]],
+        f: ['SKTK', 3, 'ROC', 0],
+        rest: ['LD', 'SSW', 'TSM', 'VUL', 'GGEU', 'MSK'],
+      },
+      '2017': {
+        name: '2017 World Championship',
+        pi: { A: [['WE', 4, 0], ['LYON', 2, 2], ['GMB', 0, 4]], B: [['C9', 4, 0], ['ONE', 1, 3], ['DW', 1, 3]], C: [['FNC', 3, 1], ['YG', 2, 2], ['KLG', 1, 3]], D: [['FB', 3, 1], ['HKA', 3, 1], ['RPG', 0, 4]] },
+        piKo: [['C9', 3, 'LYON', 0], ['FNC', 3, 'HKA', 0], ['FB', 3, 'ONE', 1], ['WE', 3, 'YG', 0]],
+        main: { A: [['T1', 5, 1], ['C9', 3, 3], ['AHQ', 2, 4], ['EDG', 2, 4]], B: [['LZ', 6, 0], ['FNC', 2, 4], ['GAM', 2, 4], ['IMT', 2, 4]], C: [['RNG', 5, 1], ['SSGG', 4, 2], ['G2', 3, 3], ['FB', 0, 6]], D: [['WE', 5, 1], ['MSF', 3, 3], ['TSM', 3, 3], ['FWS', 1, 5]] },
+        qf: [['T1', 3, 'MSF', 2], ['RNG', 3, 'FNC', 1], ['LZ', 0, 'SSGG', 3], ['WE', 3, 'C9', 2]],
+        sf: [['T1', 3, 'RNG', 2], ['SSGG', 3, 'WE', 1]],
+        f: ['T1', 0, 'SSGG', 3],
+      },
+      '2018': {
+        name: '2018 World Championship',
+        pi: { A: [['EDG', 3, 1], ['INF', 2, 2], ['DW', 1, 3]], B: [['G2', 3, 1], ['SUP', 3, 1], ['ASC', 0, 4]], C: [['C9', 4, 0], ['DFM', 1, 3], ['KBM', 1, 3]], D: [['GRX', 4, 0], ['GMB', 2, 2], ['KLG', 0, 4]] },
+        piKo: [['C9', 3, 'GMB', 2], ['EDG', 3, 'DFM', 0], ['G2', 3, 'INF', 1], ['GRX', 3, 'SUP', 1]],
+        main: { A: [['DNS', 4, 2], ['G2', 3, 3], ['FWS', 3, 3], ['PVB', 2, 4]], B: [['RNG', 4, 2], ['C9', 4, 2], ['VIT', 3, 3], ['GEN', 1, 5]], C: [['KT', 5, 1], ['EDG', 4, 2], ['TLAW', 3, 3], ['MAD', 0, 6]], D: [['FNC', 5, 1], ['IG', 5, 1], ['100T', 2, 4], ['GRX', 0, 6]] },
+        qf: [['DNS', 0, 'C9', 3], ['FNC', 3, 'EDG', 1], ['RNG', 2, 'G2', 3], ['KT', 2, 'IG', 3]],
+        sf: [['C9', 0, 'FNC', 3], ['G2', 0, 'IG', 3]],
+        f: ['FNC', 0, 'IG', 3],
+      },
+      '2019': {
+        name: '2019 World Championship',
+        pi: { A: [['CG', 2, 2], ['UOL', 2, 2], ['MEC', 2, 2]], B: [['SPY', 3, 1], ['ISG', 2, 2], ['DFM', 1, 3]], C: [['HKA', 3, 1], ['LK', 2, 2], ['MEGA', 1, 3]], D: [['DK', 4, 0], ['RYL', 1, 3], ['FLA', 1, 3]] },
+        piKo: [['DK', 3, 'LK', 1], ['CG', 3, 'RYL', 0], ['HKA', 3, 'ISG', 1], ['SPY', 3, 'UOL', 2]],
+        main: { A: [['GFF', 5, 1], ['G2', 5, 1], ['C9', 2, 4], ['HKA', 0, 6]], B: [['FPX', 4, 2], ['SPY', 4, 2], ['JT', 3, 3], ['GAM', 1, 5]], C: [['T1', 5, 1], ['FNC', 4, 2], ['RNG', 3, 3], ['CG', 0, 6]], D: [['DK', 5, 1], ['IG', 4, 2], ['TLAW', 3, 3], ['AHQ', 0, 6]] },
+        qf: [['DK', 1, 'G2', 3], ['T1', 3, 'SPY', 1], ['GFF', 1, 'IG', 3], ['FPX', 3, 'FNC', 1]],
+        sf: [['G2', 3, 'T1', 1], ['IG', 1, 'FPX', 3]],
+        f: ['G2', 0, 'FPX', 3],
+      },
+    };
+    let changed = false;
+    for (const [yr, e] of Object.entries(W)) {
+      const std = (past.standings[yr] = past.standings[yr] || {});
+      if (std.worlds) continue;
+      const brackets = [];
+      if (e.piKo) brackets.push({ slug: 'play_in_knockout', name: '플레이-인 녹아웃', label: '플레이-인 녹아웃', bracket: piKo(e.piKo) });
+      brackets.push({ slug: 'knockouts', name: '토너먼트 스테이지', label: '토너먼트 스테이지', bracket: ko(e.qf, e.sf, e.f) });
+      std.worlds = e.pi
+        ? { name: e.name, regLabel: '플레이-인 그룹', parallelGroups: true, rows: groups(e.pi), phaseStages: [{ label: '그룹 스테이지', rows: groups(e.main), after: '플레이-인 녹아웃' }], brackets, finalStandings: finalOf(e.qf, e.sf, e.f) }
+        : { name: e.name, regLabel: '그룹 스테이지', parallelGroups: true, rows: groups(e.main), brackets, finalStandings: finalOf(e.qf, e.sf, e.f, e.rest) };
+      changed = true;
+    }
+    if (changed) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log('Worlds 2012·2013·2017·2018·2019 추가(Leaguepedia 기준)'); }
+  } catch (e) { console.warn(`과거 Worlds 추가 실패(무시): ${e.message}`); }
 }
 
 // ── 2022 항저우 아시안게임(2023년 개최) LoL — API 미제공 · 수기 → 과거 에디션 '2023'(연도 선택 기준) ─────────

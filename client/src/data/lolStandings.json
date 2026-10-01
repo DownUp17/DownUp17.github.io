@@ -11803,7 +11803,9 @@
             },
             "winner": null,
             "scoreA": null,
-            "scoreB": null
+            "scoreB": null,
+            "day": "10-01",
+            "time": "09:00"
           },
           {
             "id": "SF2",
@@ -11816,7 +11818,9 @@
             },
             "winner": null,
             "scoreA": null,
-            "scoreB": null
+            "scoreB": null,
+            "day": "10-01",
+            "time": "13:30"
           },
           {
             "id": "FINAL",
@@ -11829,20 +11833,9 @@
             },
             "winner": null,
             "scoreA": null,
-            "scoreB": null
-          },
-          {
-            "id": "BRONZE",
-            "a": null,
-            "b": null,
-            "format": "Bo5",
-            "prev": {
-              "a": "SF1:L",
-              "b": "SF2:L"
-            },
-            "winner": null,
-            "scoreA": null,
-            "scoreB": null
+            "scoreB": null,
+            "day": "10-02",
+            "time": "12:00"
           }
         ]
       },

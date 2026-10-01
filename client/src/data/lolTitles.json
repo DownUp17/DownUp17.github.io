@@ -149,7 +149,11 @@
       {
         "name": "2017 Worlds",
         "detail": "우승",
-        "color": "#0fe3f9"
+        "color": "#0fe3f9",
+        "link": {
+          "tab": "worlds",
+          "year": "2017"
+        }
       },
       {
         "name": "2014 Worlds",
@@ -671,6 +675,40 @@
         }
       }
     ],
+    "EDG": [
+      {
+        "name": "2021 Worlds",
+        "detail": "우승",
+        "color": "#1036f0",
+        "link": {
+          "tab": "worlds",
+          "year": "2021"
+        }
+      },
+      {
+        "name": "2021 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2021",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "IG": [
+      {
+        "name": "2025 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2025",
+          "sub": "Demacia Cup"
+        }
+      }
+    ],
     "T1": [
       {
         "name": "2025 LoL KeSPA CUP",
@@ -763,7 +801,11 @@
       {
         "name": "2017 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#191919"
+        "color": "#191919",
+        "link": {
+          "tab": "msi",
+          "year": "2017"
+        }
       },
       {
         "name": "2017 LCK Spring",
@@ -845,7 +887,11 @@
       {
         "name": "2013 Worlds",
         "detail": "우승",
-        "color": "#0fe3f9"
+        "color": "#0fe3f9",
+        "link": {
+          "tab": "worlds",
+          "year": "2013"
+        }
       },
       {
         "name": "2013 LCK Summer",
@@ -858,24 +904,43 @@
         }
       }
     ],
-    "EDG": [
+    "RNG": [
       {
-        "name": "2021 Worlds",
+        "name": "2022 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#1036f0",
+        "gradient": "linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)",
         "link": {
-          "tab": "worlds",
+          "tab": "msi",
+          "year": "2022"
+        }
+      },
+      {
+        "name": "2022 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2022",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2021 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#26d740",
+        "link": {
+          "tab": "msi",
           "year": "2021"
         }
       },
       {
-        "name": "2021 LPL Summer",
+        "name": "2021 LPL Spring",
         "detail": "우승",
         "color": "#D32F2F",
         "link": {
           "tab": "lpl",
           "year": "2021",
-          "sub": "Summer"
+          "sub": "Spring"
         }
       }
     ],
@@ -1025,45 +1090,15 @@
           "year": "2025",
           "sub": "Split 1"
         }
-      }
-    ],
-    "RNG": [
-      {
-        "name": "2022 Mid-Season Invitational",
-        "detail": "우승",
-        "gradient": "linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)",
-        "link": {
-          "tab": "msi",
-          "year": "2022"
-        }
       },
       {
-        "name": "2022 LPL Spring",
+        "name": "2021 Demacia Cup",
         "detail": "우승",
-        "color": "#D32F2F",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
         "link": {
-          "tab": "lpl",
-          "year": "2022",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2021 Mid-Season Invitational",
-        "detail": "우승",
-        "color": "#26d740",
-        "link": {
-          "tab": "msi",
+          "tab": "demacia",
           "year": "2021"
-        }
-      },
-      {
-        "name": "2021 LPL Spring",
-        "detail": "우승",
-        "color": "#D32F2F",
-        "link": {
-          "tab": "lpl",
-          "year": "2021",
-          "sub": "Spring"
         }
       }
     ],
@@ -1726,19 +1761,6 @@
           "tab": "cblol",
           "year": "2025",
           "sub": "Etapa 3"
-        }
-      }
-    ],
-    "IG": [
-      {
-        "name": "2025 Demacia Cup",
-        "detail": "우승",
-        "color": "#446aca",
-        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
-        "link": {
-          "tab": "demacia",
-          "year": "2025",
-          "sub": "Demacia Cup"
         }
       }
     ],
