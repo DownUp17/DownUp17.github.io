@@ -38335,6 +38335,206 @@
           "JDG": "JD Gaming",
           "LGD": "LGD Gaming"
         }
+      },
+      "msi": {
+        "name": "Mid-Season Cup",
+        "regLabel": "그룹 스테이지",
+        "parallelGroups": true,
+        "rows": [
+          {
+            "rank": 1,
+            "team": "FPX",
+            "w": 2,
+            "l": 1,
+            "group": "A조",
+            "remark": "vs. TES 우세"
+          },
+          {
+            "rank": 2,
+            "team": "TES",
+            "w": 2,
+            "l": 1,
+            "group": "A조",
+            "remark": "vs. FPX 열세"
+          },
+          {
+            "rank": 3,
+            "team": "DK",
+            "w": 1,
+            "l": 2,
+            "group": "A조",
+            "remark": "vs. T1 우세"
+          },
+          {
+            "rank": 4,
+            "team": "T1",
+            "w": 1,
+            "l": 2,
+            "group": "A조",
+            "remark": "vs. DWG 열세"
+          },
+          {
+            "rank": 1,
+            "team": "GEN",
+            "w": 2,
+            "l": 1,
+            "group": "B조",
+            "remark": "TB1 승"
+          },
+          {
+            "rank": 2,
+            "team": "JDG",
+            "w": 2,
+            "l": 1,
+            "group": "B조",
+            "remark": "TB2 승"
+          },
+          {
+            "rank": 3,
+            "team": "KRX",
+            "w": 2,
+            "l": 1,
+            "group": "B조",
+            "remark": "TB1 패, TB2 패"
+          },
+          {
+            "rank": 4,
+            "team": "IG",
+            "w": 0,
+            "l": 3,
+            "group": "B조",
+            "remark": "전패"
+          }
+        ],
+        "brackets": [
+          {
+            "slug": "knockout",
+            "name": "녹아웃 스테이지",
+            "label": "녹아웃 스테이지",
+            "bracket": {
+              "totalRows": 4,
+              "rounds": [
+                {
+                  "matches": [
+                    {
+                      "title": "4강 1경기",
+                      "time": "5/30",
+                      "a": {
+                        "short": "FPX",
+                        "seed": "A조 1위",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "short": "JDG",
+                        "seed": "B조 2위",
+                        "score": 1
+                      },
+                      "startRow": 0
+                    },
+                    {
+                      "title": "4강 2경기",
+                      "time": "5/30",
+                      "a": {
+                        "short": "GEN",
+                        "seed": "B조 1위",
+                        "score": 0
+                      },
+                      "b": {
+                        "short": "TES",
+                        "seed": "A조 2위",
+                        "score": 3,
+                        "win": true
+                      },
+                      "startRow": 2
+                    }
+                  ]
+                },
+                {
+                  "matches": [
+                    {
+                      "title": "결승",
+                      "time": "5/31",
+                      "a": {
+                        "short": "FPX",
+                        "seed": "4강 승자",
+                        "score": 1,
+                        "elim": true
+                      },
+                      "b": {
+                        "short": "TES",
+                        "seed": "4강 승자",
+                        "score": 3,
+                        "msi": true
+                      },
+                      "startRow": 1
+                    }
+                  ]
+                }
+              ],
+              "connectors": [
+                [
+                  0,
+                  0,
+                  "a",
+                  1,
+                  0,
+                  "a"
+                ],
+                [
+                  0,
+                  1,
+                  "b",
+                  1,
+                  0,
+                  "b"
+                ]
+              ]
+            }
+          }
+        ],
+        "finalStandings": [
+          {
+            "rank": 1,
+            "team": "TES",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "FPX",
+            "note": "준우승"
+          },
+          {
+            "rank": 3,
+            "team": "JDG",
+            "note": "4강"
+          },
+          {
+            "rank": 3,
+            "team": "GEN",
+            "note": "4강"
+          },
+          {
+            "rank": 5,
+            "team": "DK",
+            "note": ""
+          },
+          {
+            "rank": 5,
+            "team": "KRX",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "T1",
+            "note": ""
+          },
+          {
+            "rank": 7,
+            "team": "IG",
+            "note": ""
+          }
+        ]
       }
     },
     "2021": {

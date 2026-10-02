@@ -149,7 +149,7 @@
       {
         "name": "2017 Worlds",
         "detail": "우승",
-        "color": "#0fe3f9",
+        "color": "#101b21",
         "link": {
           "tab": "worlds",
           "year": "2017"
@@ -158,7 +158,7 @@
       {
         "name": "2014 Worlds",
         "detail": "우승",
-        "color": "#0fe3f9",
+        "color": "#003161",
         "link": {
           "tab": "worlds",
           "year": "2014"
@@ -424,6 +424,89 @@
           "event": "LEC",
           "sub": "Spring"
         }
+      },
+      {
+        "name": "2020 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2020",
+          "event": "LEC",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2020 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2020",
+          "event": "LEC",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2019 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2019",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2019 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#755a2f",
+        "link": {
+          "tab": "msi",
+          "year": "2019"
+        }
+      },
+      {
+        "name": "2019 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2019",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2017 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2017",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2016 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2016",
+          "event": "LEC",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2016 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2016",
+          "event": "LEC",
+          "sub": "Spring"
+        }
       }
     ],
     "TSW": [
@@ -505,6 +588,17 @@
           "year": "2023",
           "event": "LLA",
           "sub": "Opening"
+        }
+      },
+      {
+        "name": "2020 LLA Closing",
+        "detail": "우승",
+        "color": "#ff6528",
+        "link": {
+          "tab": "cblol",
+          "year": "2020",
+          "event": "LLA",
+          "sub": "Closing"
         }
       }
     ],
@@ -633,6 +727,194 @@
         }
       }
     ],
+    "FNC": [
+      {
+        "name": "2018 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2018",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2018 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2018",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2017 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2017",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2015 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2015",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2015 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2015",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2014 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2014",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2013 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2013",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2013 LEC Spring",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2013",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2011 Worlds",
+        "detail": "우승",
+        "color": "#003161",
+        "link": {
+          "tab": "worlds",
+          "year": "2011"
+        }
+      }
+    ],
+    "MIBL": [
+      {
+        "name": "2012 LCK Spring",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2012",
+          "sub": "Spring"
+        }
+      }
+    ],
+    "AZF": [
+      {
+        "name": "2012 LCK Summer",
+        "detail": "우승",
+        "color": "#1c192a",
+        "link": {
+          "tab": "lck",
+          "year": "2012",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "TPAA": [
+      {
+        "name": "2012 Worlds",
+        "detail": "우승",
+        "color": "#003161",
+        "link": {
+          "tab": "worlds",
+          "year": "2012"
+        }
+      }
+    ],
+    "TSM": [
+      {
+        "name": "2020 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2020",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2017 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2017",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2017 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2017",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2016 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2016",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2015 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2015",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2013 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2013",
+          "sub": "Spring"
+        }
+      }
+    ],
     "C9": [
       {
         "name": "2023 LCS Spring",
@@ -673,6 +955,84 @@
           "year": "2021",
           "sub": "Spring"
         }
+      },
+      {
+        "name": "2020 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2020",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2014 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2014",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2013 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2013",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "OMG": [
+      {
+        "name": "2013 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2013",
+          "sub": "Spring"
+        }
+      }
+    ],
+    "PE": [
+      {
+        "name": "2013 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2013",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "ALL": [
+      {
+        "name": "2014 LEC Summer",
+        "detail": "우승",
+        "color": "#00E0B0",
+        "link": {
+          "tab": "lec",
+          "year": "2014",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "LMQ": [
+      {
+        "name": "2014 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2014",
+          "sub": "Summer"
+        }
       }
     ],
     "EDG": [
@@ -694,6 +1054,130 @@
           "year": "2021",
           "sub": "Summer"
         }
+      },
+      {
+        "name": "2017 Demacia Championship",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2017",
+          "sub": "Demacia Championship"
+        }
+      },
+      {
+        "name": "2017 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2017",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2016 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2016"
+        }
+      },
+      {
+        "name": "2016 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2016",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2015 Demacia Cup Grand Finals",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2015",
+          "sub": "Grand Finals"
+        }
+      },
+      {
+        "name": "2015 Demacia Cup Summer",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2015",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2015 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#31353A",
+        "link": {
+          "tab": "msi",
+          "year": "2015"
+        }
+      },
+      {
+        "name": "2015 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2015",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2015 Demacia Cup Spring",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2015",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2014 Demacia Cup Season 2",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2014",
+          "sub": "Season 2"
+        }
+      },
+      {
+        "name": "2014 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2014",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2014 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2014",
+          "sub": "Spring"
+        }
       }
     ],
     "IG": [
@@ -706,6 +1190,47 @@
           "tab": "demacia",
           "year": "2025",
           "sub": "Demacia Cup"
+        }
+      },
+      {
+        "name": "2019 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2019",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2018 Worlds",
+        "detail": "우승",
+        "color": "#2f5cad",
+        "link": {
+          "tab": "worlds",
+          "year": "2018"
+        }
+      },
+      {
+        "name": "2018 Demacia Cup Winter",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2018",
+          "sub": "Winter"
+        }
+      },
+      {
+        "name": "2014 Demacia Cup Season 1",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2014",
+          "sub": "Season 1"
         }
       }
     ],
@@ -801,7 +1326,7 @@
       {
         "name": "2017 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#191919",
+        "color": "#5c5c0a",
         "link": {
           "tab": "msi",
           "year": "2017"
@@ -820,7 +1345,7 @@
       {
         "name": "2016 Worlds",
         "detail": "우승",
-        "color": "#0fe3f9",
+        "color": "#003161",
         "link": {
           "tab": "worlds",
           "year": "2016"
@@ -829,11 +1354,12 @@
       {
         "name": "2016 Mid-Season Invitational",
         "detail": "우승",
-        "color": "#191919",
+        "color": "#c9c7c5",
         "link": {
           "tab": "msi",
           "year": "2016"
-        }
+        },
+        "gradient": "linear-gradient(90deg, #c9c7c5 20%, #a69b67 30%, #897a73 55%, #c9c7c5 90%)"
       },
       {
         "name": "2016 LCK Spring",
@@ -848,7 +1374,7 @@
       {
         "name": "2015 Worlds",
         "detail": "우승",
-        "color": "#0fe3f9",
+        "color": "#003161",
         "link": {
           "tab": "worlds",
           "year": "2015"
@@ -887,7 +1413,7 @@
       {
         "name": "2013 Worlds",
         "detail": "우승",
-        "color": "#0fe3f9",
+        "color": "#003161",
         "link": {
           "tab": "worlds",
           "year": "2013"
@@ -901,6 +1427,54 @@
           "tab": "lck",
           "year": "2013",
           "sub": "Summer"
+        }
+      }
+    ],
+    "LGD": [
+      {
+        "name": "2015 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2015",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "SUP": [
+      {
+        "name": "2020 TCL Summer",
+        "detail": "우승",
+        "color": "#3f567c",
+        "link": {
+          "tab": "lec",
+          "year": "2020",
+          "event": "TCL",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2016 TCL Winter",
+        "detail": "우승",
+        "color": "#3f567c",
+        "link": {
+          "tab": "lec",
+          "year": "2016",
+          "event": "TCL",
+          "sub": "Winter"
+        }
+      }
+    ],
+    "IMT": [
+      {
+        "name": "2016 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2016",
+          "sub": "Spring"
         }
       }
     ],
@@ -940,6 +1514,89 @@
         "link": {
           "tab": "lpl",
           "year": "2021",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2019 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2019"
+        }
+      },
+      {
+        "name": "2018 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2018",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2018 Demacia Cup Summer",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2018",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2018 Mid-Season Invitational",
+        "detail": "우승",
+        "color": "#202620",
+        "link": {
+          "tab": "msi",
+          "year": "2018"
+        }
+      },
+      {
+        "name": "2018 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2018",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2017 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2017",
+          "sub": "Demacia Cup"
+        }
+      },
+      {
+        "name": "2016 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2016",
+          "sub": "Spring"
+        }
+      }
+    ],
+    "WE": [
+      {
+        "name": "2017 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2017",
           "sub": "Spring"
         }
       }
@@ -997,6 +1654,18 @@
         }
       }
     ],
+    "FOX2": [
+      {
+        "name": "2018 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2018",
+          "sub": "Spring"
+        }
+      }
+    ],
     "TLAW": [
       {
         "name": "2025 LTA Split 1",
@@ -1036,6 +1705,57 @@
           "tab": "lcs",
           "year": "2021",
           "sub": "Lock In"
+        }
+      },
+      {
+        "name": "2019 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2019",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2019 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2019",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2018 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2018",
+          "sub": "Summer"
+        }
+      }
+    ],
+    "FPX": [
+      {
+        "name": "2019 Worlds",
+        "detail": "우승",
+        "color": "#40423f",
+        "link": {
+          "tab": "worlds",
+          "year": "2019"
+        }
+      },
+      {
+        "name": "2019 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2019",
+          "sub": "Summer"
         }
       }
     ],
@@ -1078,6 +1798,16 @@
           "year": "2022",
           "sub": "Summer"
         }
+      },
+      {
+        "name": "2020 LPL Spring",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2020",
+          "sub": "Spring"
+        }
       }
     ],
     "TES": [
@@ -1099,6 +1829,87 @@
         "link": {
           "tab": "demacia",
           "year": "2021"
+        }
+      },
+      {
+        "name": "2020 Demacia Cup",
+        "detail": "우승",
+        "color": "#446aca",
+        "gradient": "linear-gradient(180deg, #446aca, #61a1ea)",
+        "link": {
+          "tab": "demacia",
+          "year": "2020"
+        }
+      },
+      {
+        "name": "2020 LPL Summer",
+        "detail": "우승",
+        "color": "#D32F2F",
+        "link": {
+          "tab": "lpl",
+          "year": "2020",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2020 Mid-Season Cup",
+        "detail": "우승",
+        "color": "#00ffd9",
+        "link": {
+          "tab": "msi",
+          "year": "2020"
+        }
+      }
+    ],
+    "FB": [
+      {
+        "name": "2020 TCL Winter",
+        "detail": "우승",
+        "color": "#3f567c",
+        "link": {
+          "tab": "lec",
+          "year": "2020",
+          "event": "TCL",
+          "sub": "Winter"
+        }
+      }
+    ],
+    "KBM": [
+      {
+        "name": "CBLOL 2020 Split 1",
+        "detail": "우승",
+        "color": "#0b0718",
+        "link": {
+          "tab": "cblol",
+          "year": "2020",
+          "event": "CBLOL",
+          "sub": "Split 1"
+        }
+      }
+    ],
+    "INTZ": [
+      {
+        "name": "CBLOL 2020 Split 2",
+        "detail": "우승",
+        "color": "#0b0718",
+        "link": {
+          "tab": "cblol",
+          "year": "2020",
+          "event": "CBLOL",
+          "sub": "Split 2"
+        }
+      }
+    ],
+    "AK": [
+      {
+        "name": "2020 LLA Opening",
+        "detail": "우승",
+        "color": "#ff6528",
+        "link": {
+          "tab": "cblol",
+          "year": "2020",
+          "event": "LLA",
+          "sub": "Opening"
         }
       }
     ],
@@ -1648,6 +2459,16 @@
           "tab": "lcs",
           "year": "2023",
           "sub": "Championship"
+        }
+      },
+      {
+        "name": "2015 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2015",
+          "sub": "Summer"
         }
       }
     ],

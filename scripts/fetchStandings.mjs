@@ -4388,6 +4388,46 @@ console.log('lolStandings.json 갱신 완료');
   } catch (e) { console.warn(`2021 MSI GAM 추가 실패(무시): ${e.message}`); }
 }
 
+// ── 2020 Mid-Season Cup(MSC) — 코로나로 MSI 대신 개최(LPL 4팀 + LCK 4팀). API 미제공 · 수기 ──
+//   그룹 스테이지(4팀 2개조 싱글 라운드로빈, 상위 2팀 진출) → 녹아웃(4강·결승 싱글 엘리, Bo5). 우승 TES.
+{
+  const pastFile = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPastEditions.json');
+  try {
+    const past = JSON.parse(fs.readFileSync(pastFile, 'utf8'));
+    const std = (past.standings['2020'] = past.standings['2020'] || {});
+    if (!std.msi) {
+      const S = (short, seed, score, flag) => { const s = { short }; if (seed) s.seed = seed; if (score != null) s.score = score; if (flag) s[flag] = true; return s; };
+      const R = (rank, team, w, l, group, remark) => ({ rank, team, w, l, group, remark });
+      const ko = applySingleElimLayout({
+        rounds: [
+          { matches: [
+            { title: '4강 1경기', time: '5/30', a: S('FPX', 'A조 1위', 3, 'win'), b: S('JDG', 'B조 2위', 1) },
+            { title: '4강 2경기', time: '5/30', a: S('GEN', 'B조 1위', 0), b: S('TES', 'A조 2위', 3, 'win') },
+          ] },
+          { matches: [{ title: '결승', time: '5/31', a: S('FPX', '4강 승자', 1, 'elim'), b: S('TES', '4강 승자', 3, 'msi') }] },
+        ],
+        connectors: [[0, 0, 'a', 1, 0, 'a'], [0, 1, 'b', 1, 0, 'b']],
+      });
+      std.msi = {
+        name: 'Mid-Season Cup', regLabel: '그룹 스테이지', parallelGroups: true,
+        rows: [
+          R(1, 'FPX', 2, 1, 'A조', 'vs. TES 우세'), R(2, 'TES', 2, 1, 'A조', 'vs. FPX 열세'), R(3, 'DK', 1, 2, 'A조', 'vs. T1 우세'), R(4, 'T1', 1, 2, 'A조', 'vs. DWG 열세'),
+          R(1, 'GEN', 2, 1, 'B조', 'TB1 승'), R(2, 'JDG', 2, 1, 'B조', 'TB2 승'), R(3, 'KRX', 2, 1, 'B조', 'TB1 패, TB2 패'), R(4, 'IG', 0, 3, 'B조', '전패'),
+        ],
+        brackets: [{ slug: 'knockout', name: '녹아웃 스테이지', label: '녹아웃 스테이지', bracket: ko }],
+        finalStandings: [
+          { rank: 1, team: 'TES', note: '우승' }, { rank: 2, team: 'FPX', note: '준우승' },
+          { rank: 3, team: 'JDG', note: '4강' }, { rank: 3, team: 'GEN', note: '4강' },
+          { rank: 5, team: 'DK', note: '' }, { rank: 5, team: 'KRX', note: '' },
+          { rank: 7, team: 'T1', note: '' }, { rank: 7, team: 'IG', note: '' },
+        ],
+      };
+      fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n');
+      console.log('2020 Mid-Season Cup 추가 · 우승 TES');
+    }
+  } catch (e) { console.warn(`2020 MSC 추가 실패(무시): ${e.message}`); }
+}
+
 // ── 리그피디아 기반 과거 대회 주입 — LPL 2013~2019 · MSI 2017~2019 · Demacia Cup 2014~2021 (API 미제공) ──
 //   scripts/data/leaguepediaPast.json(리그피디아 파싱 결과 스냅샷)을 없는 연도에만 넣는다. teamNames = 대회 당시 팀명.
 //   대진은 rounds만 담겨 있어 아래 '과거 대진표 자동 격자화'가 좌표·연결선을 만든다.
@@ -5383,7 +5423,7 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'lcp' && event === 'PCS') return { color: y === '2023' ? '#cb0004' : '#101725' }; // LCP 전신(2024) 대만/홍콩/마카오 리그
     if (lg === 'lcp' && event === 'LJL') return { color: '#ed1b30' }; // LCP 전신(2024) 일본 리그
     if (lg === 'lcp' && event === 'LCO') return { color: '#0f3341' }; // LCP 전신(2024) 오세아니아 리그
-    if (lg === 'demacia') return (!sub || sub === 'Demacia Cup') ? { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)' } : (sub === 'ASI' ? { color: '#7927ff' } : { color: COMP_COLOR.demacia });
+    if (lg === 'demacia') return (!sub || sub === 'Demacia Cup' || !['ASI'].includes(sub)) ? { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)' } : (sub === 'ASI' ? { color: '#7927ff' } : { color: COMP_COLOR.demacia });
     if (lg === 'ewc') return y === '2026' ? { gradient: 'linear-gradient(90deg, #f74e16, #d1b36f)' } : { color: '#eaeaea' };
     if (lg === 'fst') return { color: y === '2025' ? '#45002c' : '#ff5500' };
     if (lg === 'lck') {
@@ -5398,6 +5438,12 @@ console.log('lolStandings.json 갱신 완료');
       return { color: y === '2025' ? '#D94F30' : COMP_COLOR.cblol };
     }
     if (lg === 'msi' && y === '2021') return { color: '#26d740' };
+    if (lg === 'msi' && y === '2020') return { color: '#00ffd9' };
+    if (lg === 'msi' && y === '2019') return { color: '#755a2f' };
+    if (lg === 'msi' && y === '2018') return { color: '#202620' };
+    if (lg === 'msi' && y === '2017') return { color: '#5c5c0a' };
+    if (lg === 'msi' && y === '2015') return { color: '#31353A' };
+    if (lg === 'msi' && y === '2016') return { color: '#c9c7c5', gradient: 'linear-gradient(90deg, #c9c7c5 20%, #a69b67 30%, #897a73 55%, #c9c7c5 90%)' };
     if (lg === 'msi' && y === '2022') return { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' };
     if (lg === 'msi') return { color: (y === '2025' || y === '2023') ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 연도별 상징색
     if (lg === 'worlds' && y === '2023') return { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' };
@@ -5406,6 +5452,10 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'worlds' && y === '2022') return { color: '#321bdd' };
     if (lg === 'worlds' && y === '2021') return { color: '#1036f0' };
     if (lg === 'worlds' && y === '2020') return { color: '#ff5566' };
+    if (lg === 'worlds' && y === '2019') return { color: '#40423f' };
+    if (lg === 'worlds' && y === '2018') return { color: '#2f5cad' };
+    if (lg === 'worlds' && y === '2017') return { color: '#101b21' };
+    if (lg === 'worlds' && Number(y) >= 2011 && Number(y) <= 2016) return { color: '#003161' }; // 2011~2016 동일
     return { color: COMP_COLOR[lg] || '#888' };
   };
   // link: 클릭 시 이동할 대회 위치 { tab, year?, event?, sub? } → 팀 페이지에서 /lol/prediction/:tab?year&event&sub 로 이동.
@@ -5456,6 +5506,7 @@ console.log('lolStandings.json 갱신 완료');
     // 대회 표기 — 프론트 표시와 최대한 일치(2025 LTA 재편·CBLOL Etapa·LCK CUP 등).
     const compName = (year, lg, sub) => {
       if (lg === 'fst') return `${year} First Stand`;
+      if (lg === 'msi' && String(year) === '2020') return '2020 Mid-Season Cup'; // 코로나로 MSI 대신 MSC
       if (lg === 'msi') return `${year} Mid-Season Invitational`;
       if (lg === 'worlds') return `${year} Worlds`;
       if (lg === 'lck' && String(year) === '2020' && sub === 'Split 1') return '2020 LCK Spring'; // API 슬러그는 split1이지만 실제 대회명은 Spring
@@ -5466,7 +5517,7 @@ console.log('lolStandings.json 갱신 완료');
       if (lg === 'cblol') return sub === 'Copa' ? `Copa CBLOL ${year}` : `CBLOL ${year} ${sub}`;
       if (lg === 'lck' && sub === 'LCK CUP') return `${year} LCK CUP`;
       if (lg === 'lck' && sub === 'KeSPA CUP') return `${year} LoL KeSPA CUP`;
-      if (lg === 'demacia') return (!sub || sub === 'Demacia Cup') ? `${year} Demacia Cup` : (sub === 'ASI' ? `${year} Asia Invitational` : `${year} ${sub}`);
+      if (lg === 'demacia') return (!sub || sub === 'Demacia Cup') ? `${year} Demacia Cup` : sub === 'ASI' ? `${year} Asia Invitational` : sub === 'Demacia Championship' ? `${year} Demacia Championship` : `${year} Demacia Cup ${sub}`; // 같은 해 여러 대회(2014 Season 1·2, 2015 Spring·Summer·Grand Finals, 2018 Summer·Winter)
       if (String(year) === '2025' && lg === 'lcp') { const M = { Kickoff: 'Season Kickoff', Mid: 'Mid Season', Finals: 'Season Finals' }; if (M[sub]) return `${year} LCP ${M[sub]}`; }
       const disp = DISP[lg] || lg.toUpperCase();
       const subPart = (sub && sub !== disp) ? ` ${sub}` : '';
@@ -5511,10 +5562,10 @@ console.log('lolStandings.json 갱신 완료');
   for (const [old, cur] of Object.entries(TEAM_LINK)) if (titles[old]) { (titles[cur] = titles[cur] || []).push(...titles[old]); delete titles[old]; }
   // API에 없는 과거 국제대회(MSI 2017~2019·Worlds 2012~2013·2017~2019) 중 현 LCK 팀 계보 우승만 수기 보충(대회 페이지 없음 → link 없음).
   for (const [team, year, lg, nm] of [['T1', '2013', 'worlds', '2013 Worlds'], ['T1', '2017', 'msi', '2017 Mid-Season Invitational'], ['GEN', '2017', 'worlds', '2017 Worlds']]) add(team, nm, compStyle(year, lg, null));
-  // 2020 이하 우승은 현재 LCK 팀에 한정(그 외 팀은 2021~만).
+  // 모든 팀 전 연도 우승 반영.
   const LCK_TEAMS = new Set(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'client', 'src', 'data', 'gprTeams.json'), 'utf8')).teams.filter((t) => t.league === 'LCK').map((t) => t.short));
   for (const short of Object.keys(titles)) {
-    if (!LCK_TEAMS.has(short)) titles[short] = titles[short].filter((t) => yearOf(t.name) >= 2021);
+    // (전 연도 반영 — 연도 제한 없음)
     if (!titles[short].length) delete titles[short];
   }
   for (const short of Object.keys(titles)) titles[short].sort((a, b) => (yearOf(b.name) - yearOf(a.name)) || (ord(b.name) - ord(a.name)));

@@ -2894,8 +2894,19 @@ const PAST_DETAIL = {
   'worlds|2024': { color: '#010a42' },
   'msi|2023': { color: '#fe0000', black: true },
   'msi|2021': { color: '#26d740', black: true },
+  'msi|2020': { color: '#00ffd9' }, // 2020 MSC(Mid-Season Cup)
+  'msi|2019': { color: '#755a2f' },
+  'msi|2018': { color: '#202620' },
+  'msi|2017': { color: '#5c5c0a' },
+  'msi|2016': { color: '#c9c7c5', gradient: 'linear-gradient(90deg, #c9c7c5 20%, #a69b67 30%, #897a73 55%, #c9c7c5 90%)' },
+  'msi|2015': { color: '#31353A' },
   'worlds|2021': { color: '#1036f0' },
   'worlds|2020': { color: '#ff5566' },
+  'worlds|2019': { color: '#40423f' },
+  'worlds|2018': { color: '#2f5cad' },
+  'worlds|2017': { color: '#101b21' },
+  'worlds|2016': { color: '#003161' },
+  ...Object.fromEntries([2011, 2012, 2013, 2014, 2015].map((y) => [`worlds|${y}`, { color: '#003161' }])), // 2011~2015 Worlds = 2016과 동일
   'msi|2022': { black: true, gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' },
   'worlds|2022': { color: '#321bdd' },
   'worlds|2023': { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' },
@@ -3558,6 +3569,7 @@ const PredictionPage = () => {
 
   // 과거 연도의 대회 명칭 오버라이드 — 2025 LCS/CBLOL은 LTA North/LTA Sul(단, Split 1은 통합 'LTA').
   const PAST_COMP_NAME = {
+    'msi|2020': { default: 'Mid-Season Cup' }, // 2020은 코로나로 MSI 대신 MSC(LPL·LCK 각 4팀)
     'demacia|2022': { default: 'Demacia Cup' },
     'demacia|2021': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
     'demacia|2020': { default: 'Demacia Cup', 'Demacia Championship': 'Demacia Championship' },
