@@ -5444,7 +5444,7 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'msi' && y === '2018') return { color: '#202620' };
     if (lg === 'msi' && y === '2017') return { color: '#5c5c0a' };
     if (lg === 'msi' && y === '2015') return { color: '#31353A' };
-    if (lg === 'msi' && y === '2016') return { color: '#c9c7c5', gradient: 'linear-gradient(90deg, #c9c7c5 20%, #a69b67 30%, #897a73 55%, #c9c7c5 90%)' };
+    if (lg === 'msi' && y === '2016') return { color: '#c9c7c5', gradient: 'linear-gradient(90deg, #c9c7c5 20%, #897a73 30%, #897a73 55%, #c9c7c5 90%)' };
     if (lg === 'msi' && y === '2022') return { gradient: 'linear-gradient(90deg, #ef6b5e 1%, #e29e61 20%, #ccc86f 30%, #7be082 55%, #36fae2 90%)' };
     if (lg === 'msi') return { color: (y === '2025' || y === '2023') ? '#fe0000' : y === '2024' ? '#000000' : COMP_COLOR.msi }; // 연도별 상징색
     if (lg === 'worlds' && y === '2023') return { color: '#220401', gradient: 'linear-gradient(90deg, #410602, #220401, #120200)' };

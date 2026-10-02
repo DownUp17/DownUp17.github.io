@@ -1355,7 +1355,7 @@
         "name": "2016 Mid-Season Invitational",
         "detail": "우승",
         "color": "#c9c7c5",
-        "gradient": "linear-gradient(90deg, #c9c7c5 20%, #a69b67 30%, #897a73 55%, #c9c7c5 90%)",
+        "gradient": "linear-gradient(90deg, #c9c7c5 20%, #897a73 30%, #897a73 55%, #c9c7c5 90%)",
         "link": {
           "tab": "msi",
           "year": "2016"
