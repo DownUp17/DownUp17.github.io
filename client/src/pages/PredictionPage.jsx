@@ -1061,7 +1061,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride,
                   )}
                 </td>
                 {!minimal && <td className={`py-2 px-2 text-center font-mono ${elim ? 'text-white/30' : 'text-white/70'}`}>{t.games ? `${t.w}-${t.l}` : '-'}</td>}
-                {hasRemark && <td className="py-2 px-2 text-center text-xs font-bold text-red-400/80 whitespace-nowrap">{t.remark || ''}</td>}
+                {hasRemark && <td className={`py-2 px-2 text-center text-xs font-bold whitespace-nowrap ${/몰수/.test(t.remark || '') ? 'text-red-400/80' : 'text-white'}`}>{t.remark || ''}</td>}
                 {showDiff && (
                   <td className="py-2 px-2 text-center font-mono"
                     style={{ color: elim ? 'rgba(255,255,255,0.3)' : (t.gd > 0 ? '#34D399' : t.gd < 0 ? '#F87171' : '#9CA3AF') }}>
@@ -1567,7 +1567,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           const finished = comp.status === 'finished';
           const showAdvance = !finished && !isBracketStage && p?.advance != null;
           return (
-            <div key={i} className="flex flex-col gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+            <div key={i} className={`flex flex-col gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm${q.short ? ' cursor-pointer hover:bg-white/10 transition-colors' : ''}`} onClick={q.short ? () => onTeamClick?.(q.short) : undefined}>
               {q.short ? (
                 <>
                   <div className="flex items-center gap-2 min-w-0">
@@ -1729,7 +1729,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 const showAdvance = !finished && stage !== '녹아웃 스테이지' && p?.advance != null;
                 const showChamp = !finished && p?.champ != null;
                 return (
-                <div key={i} className="flex flex-col gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm">
+                <div key={i} className={`flex flex-col gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-sm${q.short ? ' cursor-pointer hover:bg-white/10 transition-colors' : ''}`} onClick={q.short ? () => onTeamClick?.(q.short) : undefined}>
                   {q.short ? (
                     <>
                       <div className="flex items-center gap-2 min-w-0">
@@ -2021,7 +2021,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 <h3 className="text-sm font-black text-[#E8C77E] uppercase tracking-wider">녹아웃 스테이지</h3>
                 <span className="text-xs text-white/40">4강 Bo3 · 결승 Bo5 (동메달 결정전 없음)</span>
               </div>
-              <div className="flex gap-6 overflow-x-auto pb-3 items-stretch w-fit">
+              <div className="flex gap-6 overflow-x-auto pb-3 items-stretch w-fit max-w-full">
                 {col('4강', ['SF1', 'SF2'])}
                 {col('결승', ['FINAL'])}
               </div>
@@ -3017,6 +3017,7 @@ const STAGE_DEFAULT = {
   'cblol|Split 2': '플레이오프',
   ewc: '플레이오프',
   msi: '브래킷 스테이지',
+  asiangames: '그룹 스테이지',
 };
 
 // ── 대회 연도(에디션) 선택 ─────────────────────────────────────────────

@@ -3132,6 +3132,7 @@ try {
       ag.knockout.matches = ag.knockout.matches.filter((m) => m.id !== 'BRONZE');
       const AG_KO_SCHEDULE = { SF1: { day: '10-01', time: '09:00' }, SF2: { day: '10-01', time: '13:30' }, FINAL: { day: '10-02', time: '12:00' } };
       for (const m of ag.knockout.matches) if (AG_KO_SCHEDULE[m.id]) Object.assign(m, AG_KO_SCHEDULE[m.id]);
+      if (typeof ag.format === 'string') ag.format = ag.format.replace(' · 동메달 결정전(Bo5)', '');
     }
 
     // 조별 순위 계산 (승수 → 세트 득실 → 상대전적). 각 조 상위 2팀이 4강 진출.
@@ -4412,7 +4413,7 @@ console.log('lolStandings.json 갱신 완료');
         name: 'Mid-Season Cup', regLabel: '그룹 스테이지', parallelGroups: true,
         rows: [
           R(1, 'FPX', 2, 1, 'A조', 'vs. TES 우세'), R(2, 'TES', 2, 1, 'A조', 'vs. FPX 열세'), R(3, 'DK', 1, 2, 'A조', 'vs. T1 우세'), R(4, 'T1', 1, 2, 'A조', 'vs. DWG 열세'),
-          R(1, 'GEN', 2, 1, 'B조', 'TB1 승'), R(2, 'JDG', 2, 1, 'B조', 'TB2 승'), R(3, 'KRX', 2, 1, 'B조', 'TB1 패, TB2 패'), R(4, 'IG', 0, 3, 'B조', '전패'),
+          R(1, 'GEN', 2, 1, 'B조', 'TB1 승'), R(2, 'JDG', 2, 1, 'B조', 'TB2 승'), R(3, 'KRX', 2, 1, 'B조', 'TB1 패, TB2 패'), R(4, 'IG', 0, 3, 'B조', ''),
         ],
         brackets: [{ slug: 'knockout', name: '녹아웃 스테이지', label: '녹아웃 스테이지', bracket: ko }],
         finalStandings: [
