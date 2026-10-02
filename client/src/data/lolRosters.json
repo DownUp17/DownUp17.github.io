@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-02",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -938,19 +938,19 @@
           "starter": true
         },
         {
-          "name": "Revenge",
-          "firstName": "Yoon",
-          "lastName": "Jeong-bin",
-          "role": "bottom",
-          "image": "https://static.lolesports.com/players/default-headshot.png",
-          "starter": false
-        },
-        {
           "name": "Enosh",
           "firstName": "Kyujun",
           "lastName": "Kwak",
           "role": "bottom",
           "image": "https://static.lolesports.com/players/1769089101112_image6-2026-01-22T143756.610.png",
+          "starter": false
+        },
+        {
+          "name": "Revenge",
+          "firstName": "Yoon",
+          "lastName": "Jeong-bin",
+          "role": "bottom",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -991,19 +991,19 @@
           "starter": true
         },
         {
-          "name": "Flandre",
-          "firstName": "Xuan-jun",
-          "lastName": "Li",
-          "role": "top",
-          "image": "https://static.lolesports.com/players/1768348080942_flandre.png",
-          "starter": false
-        },
-        {
           "name": "Wenbo",
           "firstName": "Wenbo",
           "lastName": "Yang",
           "role": "top",
           "image": "https://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "name": "Flandre",
+          "firstName": "Xuan-jun",
+          "lastName": "Li",
+          "role": "top",
+          "image": "https://static.lolesports.com/players/1768348080942_flandre.png",
           "starter": false
         },
         {
