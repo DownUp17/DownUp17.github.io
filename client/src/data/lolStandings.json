@@ -11831,9 +11831,9 @@
               "a": "SF1:W",
               "b": "SF2:W"
             },
-            "winner": null,
-            "scoreA": null,
-            "scoreB": null,
+            "winner": "KOR",
+            "scoreA": 0,
+            "scoreB": 3,
             "day": "10-02",
             "time": "12:00"
           }
