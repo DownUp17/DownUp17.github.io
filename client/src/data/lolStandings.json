@@ -9950,9 +9950,9 @@
             "bracket": "0-0",
             "a": "GAM",
             "b": "WE",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 0,
+            "scoreB": 1,
+            "winner": "WE",
             "state": "scheduled"
           },
           {
@@ -9963,9 +9963,9 @@
             "bracket": "0-0",
             "a": "BRO",
             "b": "JDG",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 1,
+            "scoreB": 0,
+            "winner": "BRO",
             "state": "scheduled"
           },
           {
@@ -9977,8 +9977,8 @@
               "a": null,
               "b": null
             },
-            "a": null,
-            "b": null,
+            "a": "RED",
+            "b": "KT",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -9993,8 +9993,8 @@
               "a": null,
               "b": null
             },
-            "a": null,
-            "b": null,
+            "a": "WE",
+            "b": "BRO",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -10009,8 +10009,8 @@
               "a": null,
               "b": null
             },
-            "a": null,
-            "b": null,
+            "a": "LGD",
+            "b": "BFX",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -10025,8 +10025,8 @@
               "a": null,
               "b": null
             },
-            "a": null,
-            "b": null,
+            "a": "NAVI",
+            "b": "FLY",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -10041,8 +10041,8 @@
               "a": null,
               "b": null
             },
-            "a": null,
-            "b": null,
+            "a": "GAM",
+            "b": "VIT",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
@@ -10057,8 +10057,8 @@
               "a": null,
               "b": null
             },
-            "a": null,
-            "b": null,
+            "a": "SR",
+            "b": "JDG",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
