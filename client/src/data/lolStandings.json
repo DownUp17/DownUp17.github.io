@@ -9937,9 +9937,9 @@
             "bracket": "0-0",
             "a": "VIT",
             "b": "BFX",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 0,
+            "scoreB": 1,
+            "winner": "BFX",
             "state": "scheduled"
           },
           {
