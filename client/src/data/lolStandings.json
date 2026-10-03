@@ -9164,14 +9164,17 @@
                   "title": "하위권 대진 - 결승",
                   "a": {
                     "seed": "상위권 대진 - 결승 패자",
-                    "short": "LOUD"
+                    "short": "LOUD",
+                    "score": 0,
+                    "elim": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 4강 승자",
-                    "short": "FUR"
+                    "short": "FUR",
+                    "score": 3,
+                    "win": true
                   },
-                  "startRow": 8,
-                  "time": "10/4 01:00"
+                  "startRow": 8
                 }
               ]
             },
@@ -9186,7 +9189,8 @@
                     "short": "LOS"
                   },
                   "b": {
-                    "seed": "하위권 대진 - 결승 승자"
+                    "seed": "하위권 대진 - 결승 승자",
+                    "short": "FUR"
                   },
                   "startRow": 5,
                   "time": "10/11 01:00"
@@ -9278,6 +9282,11 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 3,
+            "team": "LOUD",
+            "note": "3위"
+          },
           {
             "rank": 4,
             "team": "RED",
