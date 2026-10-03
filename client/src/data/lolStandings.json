@@ -9898,9 +9898,9 @@
             "bracket": "0-0",
             "a": "RED",
             "b": "NAVI",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 1,
+            "scoreB": 0,
+            "winner": "RED",
             "state": "scheduled"
           },
           {
@@ -9911,9 +9911,9 @@
             "bracket": "0-0",
             "a": "LGD",
             "b": "FLY",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 1,
+            "scoreB": 0,
+            "winner": "LGD",
             "state": "scheduled"
           },
           {
@@ -9924,9 +9924,9 @@
             "bracket": "0-0",
             "a": "SR",
             "b": "KT",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 0,
+            "scoreB": 1,
+            "winner": "KT",
             "state": "scheduled"
           },
           {
