@@ -9971,38 +9971,7 @@
           {
             "id": "M7",
             "day": "10-04",
-            "format": "Bo3",
-            "bracket": "1-0",
-            "prev": {
-              "a": null,
-              "b": null
-            },
-            "a": "RED",
-            "b": "KT",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
-            "state": "scheduled"
-          },
-          {
-            "id": "M8",
-            "day": "10-04",
-            "format": "Bo3",
-            "bracket": "1-0",
-            "prev": {
-              "a": null,
-              "b": null
-            },
-            "a": "WE",
-            "b": "BRO",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
-            "state": "scheduled"
-          },
-          {
-            "id": "M9",
-            "day": "10-04",
+            "time": "16:00",
             "format": "Bo3",
             "bracket": "1-0",
             "prev": {
@@ -10017,24 +9986,43 @@
             "state": "scheduled"
           },
           {
-            "id": "M10",
-            "day": "10-05",
+            "id": "M8",
+            "day": "10-04",
+            "time": "18:00",
             "format": "Bo3",
-            "bracket": "0-1",
+            "bracket": "1-0",
             "prev": {
               "a": null,
               "b": null
             },
-            "a": "NAVI",
-            "b": "FLY",
+            "a": "RED",
+            "b": "KT",
             "scoreA": null,
             "scoreB": null,
             "winner": null,
             "state": "scheduled"
           },
           {
-            "id": "M11",
+            "id": "M9",
+            "day": "10-04",
+            "time": "20:00",
+            "format": "Bo3",
+            "bracket": "1-0",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": "WE",
+            "b": "BRO",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
+            "id": "M10",
             "day": "10-05",
+            "time": "16:00",
             "format": "Bo3",
             "bracket": "0-1",
             "prev": {
@@ -10049,8 +10037,26 @@
             "state": "scheduled"
           },
           {
+            "id": "M11",
+            "day": "10-05",
+            "time": "18:00",
+            "format": "Bo3",
+            "bracket": "0-1",
+            "prev": {
+              "a": null,
+              "b": null
+            },
+            "a": "NAVI",
+            "b": "FLY",
+            "scoreA": null,
+            "scoreB": null,
+            "winner": null,
+            "state": "scheduled"
+          },
+          {
             "id": "M12",
             "day": "10-05",
+            "time": "20:00",
             "format": "Bo3",
             "bracket": "0-1",
             "prev": {
