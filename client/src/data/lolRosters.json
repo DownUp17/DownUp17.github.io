@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-03",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -962,19 +962,19 @@
           "starter": true
         },
         {
-          "name": "Quantum ",
-          "firstName": "Son",
-          "lastName": "Junghwan",
-          "role": "support",
-          "image": "https://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
-          "starter": false
-        },
-        {
           "name": "Life",
           "firstName": "Jeongmin",
           "lastName": "Kim",
           "role": "support",
           "image": "https://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
+          "starter": false
+        },
+        {
+          "name": "Quantum ",
+          "firstName": "Son",
+          "lastName": "Junghwan",
+          "role": "support",
+          "image": "https://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
           "starter": false
         }
       ]
@@ -3012,19 +3012,19 @@
           "starter": true
         },
         {
-          "name": "Aegis",
-          "firstName": "Gabriel",
-          "lastName": "Lemos",
-          "role": "jungle",
-          "image": "https://static.lolesports.com/players/1737725725326_image634.png",
-          "starter": false
-        },
-        {
           "name": "smooth",
           "firstName": "Anthony",
           "lastName": "Bonatto",
           "role": "jungle",
           "image": "https://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "name": "Aegis",
+          "firstName": "Gabriel",
+          "lastName": "Lemos",
+          "role": "jungle",
+          "image": "https://static.lolesports.com/players/1737725725326_image634.png",
           "starter": false
         },
         {
