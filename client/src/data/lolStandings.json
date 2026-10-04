@@ -10094,10 +10094,10 @@
             "format": "Bo3",
             "bracket": "1-1",
             "prev": {
-              "a": "M7:L",
-              "b": "M10:W"
+              "a": null,
+              "b": null
             },
-            "a": "LGD",
+            "a": null,
             "b": null,
             "scoreA": null,
             "scoreB": null,
@@ -10110,8 +10110,8 @@
             "format": "Bo3",
             "bracket": "1-1",
             "prev": {
-              "a": "M8:L",
-              "b": "M11:W"
+              "a": null,
+              "b": null
             },
             "a": null,
             "b": null,
@@ -10126,8 +10126,8 @@
             "format": "Bo3",
             "bracket": "1-1",
             "prev": {
-              "a": "M9:L",
-              "b": "M12:W"
+              "a": null,
+              "b": null
             },
             "a": null,
             "b": null,
@@ -10142,8 +10142,8 @@
             "format": "Bo3",
             "bracket": "0-2 RR",
             "prev": {
-              "a": "M10:L",
-              "b": "M11:L"
+              "a": null,
+              "b": null
             },
             "a": null,
             "b": null,
@@ -10158,8 +10158,8 @@
             "format": "Bo3",
             "bracket": "0-2 RR",
             "prev": {
-              "a": "M10:L",
-              "b": "M12:L"
+              "a": null,
+              "b": null
             },
             "a": null,
             "b": null,
@@ -10174,8 +10174,8 @@
             "format": "Bo3",
             "bracket": "0-2 RR",
             "prev": {
-              "a": "M11:L",
-              "b": "M12:L"
+              "a": null,
+              "b": null
             },
             "a": null,
             "b": null,
@@ -10190,8 +10190,8 @@
             "format": "Bo3",
             "bracket": "1-2 & 0-2 1st",
             "prev": {
-              "a": "M13:L",
-              "b": "M16-18:#1"
+              "a": null,
+              "b": null
             },
             "a": null,
             "b": null,
@@ -10206,8 +10206,8 @@
             "format": "Bo3",
             "bracket": "1-2 & 0-2 1st",
             "prev": {
-              "a": "M14:L",
-              "b": "M15:L"
+              "a": null,
+              "b": null
             },
             "a": null,
             "b": null,
