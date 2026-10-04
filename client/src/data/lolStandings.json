@@ -10015,8 +10015,8 @@
             },
             "a": "RED",
             "b": "KT",
-            "scoreA": null,
-            "scoreB": null,
+            "scoreA": 0,
+            "scoreB": 2,
             "winner": null,
             "state": "scheduled"
           },
