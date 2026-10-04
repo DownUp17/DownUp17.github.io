@@ -4,9 +4,10 @@
 import { writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { LOLESPORTS_API_KEY } from './lolesportsKey.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
+const API_KEY = LOLESPORTS_API_KEY; // 환경변수(.env / Actions Secrets)에서 로드 — scripts/lolesportsKey.mjs
 
 // short → lolesports team ID
 const TEAM_IDS = {

@@ -26,12 +26,16 @@ jobs:
 
       - name: Fetch league standings & brackets
         run: node scripts/fetchStandings.mjs
+        env:
+          LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
 
       - name: Fetch GPR scores & re-simulate
         run: node scripts/fetchGpr.mjs
 
       - name: Fetch rosters & starters
         run: node scripts/fetchRosters.mjs
+        env:
+          LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
 
       - name: Commit if changed
         run: |

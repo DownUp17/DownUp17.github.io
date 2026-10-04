@@ -393,7 +393,8 @@ const BracketLegend = ({ goldLabel = '우승/진출' }) => (
 // DEMACIA 브래킷 — 컬럼당 여러 브래킷 그룹을 세로로 배치. MsiSlot 재사용으로 다른 대진표와 일관.
 //   msiSet(진출/우승) = 금색, 매치 승자 = 파랑, elimSet = 빨강.
 //   connectors: [srcMatchId, destMatchId, destSlot('a'|'b')] — 매치 카드 간 SVG 연결선.
-const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamClick, teamOverride }) => {
+// msiMatchIds: 지정 시 진출(금색)은 해당 매치(진출 확정 경기)의 승자에게만 — 0-0 등 관련 없는 경기엔 표시하지 않음.
+const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, connectors, onTeamClick, teamOverride }) => {
   const teamMap = Object.fromEntries((teams || []).map((t) => [t.slot, t]));
   const resolveShort = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
   const wrapRef = useRef(null);
@@ -401,12 +402,12 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
   const [svgSize, setSvgSize] = useState({ w: 0, h: 0 });
   const matchDisplayName = (m) => m.id === 'GF' ? 'Grand Final' : m.id;
   // flag: 명시적 슬롯 색('msi'|'win'|'elim'|'' = 색 없음). undefined면 전역 set·승자 여부로 폴백.
-  const toSlot = (v, isWinner, score, flag) => {
+  const toSlot = (v, isWinner, score, flag, matchId) => {
     const short = resolveShort(v);
     const slot = short ? { short } : { label: 'TBD' };
     if (short) {
       if (flag !== undefined) { if (flag) slot[flag] = true; }
-      else if (msiSet?.has(short)) slot.msi = true;
+      else if (msiSet?.has(short) && (!msiMatchIds || (isWinner && msiMatchIds.includes(matchId)))) slot.msi = true;
       else if (isWinner) slot.win = true;
       else if (elimSet?.has(short)) slot.elim = true;
     }
@@ -434,9 +435,9 @@ const DemaciaBracket = ({ columns, teams, msiSet, elimSet, connectors, onTeamCli
         </span>
         )}
         <div data-card-id={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag)} predPct={pred?.pA} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag, m.id)} predPct={pred?.pA} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           <div className="h-px bg-white/10" />
-          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag)} predPct={pred?.pB} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag, m.id)} predPct={pred?.pB} onTeamClick={onTeamClick} teamOverride={teamOverride} />
         </div>
       </div>
     );
@@ -1815,6 +1816,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 ]}
                 teams={official.teams}
                 msiSet={msiSet}
+                msiMatchIds={['M7','M8','M9','M13','M14','M15','M16','M17','M18','M19','M20']}
                 elimSet={elimSet}
                 onTeamClick={onTeamClick}
               />

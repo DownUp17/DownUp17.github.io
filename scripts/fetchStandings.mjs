@@ -12,12 +12,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { TEAM_LINK } from '../client/src/utils/teamLink.js';
+import { LOLESPORTS_API_KEY } from './lolesportsKey.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const file = path.join(__dirname, '..', 'client', 'src', 'data', 'lolStandings.json');
 
 const API = 'https://esports-api.lolesports.com/persisted/gw';
-const KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
+const KEY = LOLESPORTS_API_KEY; // 환경변수(.env / Actions Secrets)에서 로드 — scripts/lolesportsKey.mjs
 const HL = 'ko-KR';
 
 // 갱신 대상: 국내(지역) 정규리그 6개. 국제전(FST·MSI·Worlds)은 정규시즌 개념이 없어 제외.
