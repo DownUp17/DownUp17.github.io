@@ -3041,8 +3041,8 @@ try {
 // DEMACIA 대회 정보 (참가팀·그룹·녹아웃) 외부 API에서 fetch.
 //   참가팀 short는 사용자가 Demacia_cup 리포지토리(demacia_2026.json)에서 직접 관리.
 try {
-  const DEMACIA_API = 'https://raw.githubusercontent.com/totaldu/Demacia_cup/main/demacia_2026.json';
-  const res = await fetch(DEMACIA_API);
+  const DEMACIA_API = 'https://api.github.com/repos/totaldu/Demacia_cup/contents/demacia_2026.json';
+  const res = await fetch(DEMACIA_API, { headers: { Accept: 'application/vnd.github.raw' } }); // raw.githubusercontent는 5분 캐시라 최신 결과가 늦게 반영됨
   if (res.ok) {
     const api = await res.json();
     const dem = data.standings.demacia || (data.standings.demacia = {});
@@ -3117,8 +3117,8 @@ try {
 // Asian Games(국가 대항전) 대회 정보 — 사용자가 asiangames 리포지토리(asiangames_2026.json)에서 직접 관리.
 //   8개국 2개조 싱글 라운드로빈(Bo1) → 4강 · 3·4위전 · 결승. 각 국가 Elo도 리포지토리에서 제공.
 try {
-  const AG_API = 'https://raw.githubusercontent.com/totaldu/asiangames/main/asiangames_2026.json';
-  const res = await fetch(AG_API);
+  const AG_API = 'https://api.github.com/repos/totaldu/asiangames/contents/asiangames_2026.json';
+  const res = await fetch(AG_API, { headers: { Accept: 'application/vnd.github.raw' } });
   if (res.ok) {
     const api = await res.json();
     const ag = data.standings.asiangames || (data.standings.asiangames = {});
