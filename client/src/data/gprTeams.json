@@ -212,9 +212,9 @@
       "league": "LCS",
       "score": 1335,
       "w": 20,
-      "l": 6,
-      "gw": 47,
-      "gl": 27,
+      "l": 7,
+      "gw": 48,
+      "gl": 30,
       "logo": "https://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png"
     },
     {
@@ -266,10 +266,10 @@
       "name": "Team Liquid Alienware",
       "short": "TLAW",
       "league": "LCS",
-      "score": 1364,
+      "score": 1368,
       "w": 21,
-      "l": 10,
-      "gw": 54,
+      "l": 11,
+      "gw": 55,
       "gl": 31,
       "logo": "https://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png"
     },
@@ -288,12 +288,12 @@
       "name": "LYON",
       "short": "LYON",
       "league": "LCS",
-      "score": 1443,
-      "w": 24,
+      "score": 1438,
+      "w": 25,
       "l": 10,
       "fst": 6,
-      "gw": 68,
-      "gl": 35,
+      "gw": 71,
+      "gl": 37,
       "logo": "https://static.lolesports.com/teams/1743717443673_isotypelyon-03.png"
     },
     {
