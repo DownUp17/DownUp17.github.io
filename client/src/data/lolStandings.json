@@ -10017,7 +10017,7 @@
             "b": "KT",
             "scoreA": 0,
             "scoreB": 2,
-            "winner": null,
+            "winner": "KT",
             "state": "scheduled"
           },
           {
@@ -10228,7 +10228,7 @@
             {
               "seed": 2,
               "from": "M8:W",
-              "short": null
+              "short": "KT"
             },
             {
               "seed": 3,
