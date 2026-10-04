@@ -9992,10 +9992,6 @@
             "time": "16:00",
             "format": "Bo3",
             "bracket": "1-0",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": "LGD",
             "b": "BFX",
             "scoreA": 1,
@@ -10009,10 +10005,6 @@
             "time": "18:00",
             "format": "Bo3",
             "bracket": "1-0",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": "RED",
             "b": "KT",
             "scoreA": 0,
@@ -10026,15 +10018,11 @@
             "time": "20:00",
             "format": "Bo3",
             "bracket": "1-0",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": "WE",
             "b": "BRO",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 2,
+            "scoreB": 1,
+            "winner": "WE",
             "state": "scheduled"
           },
           {
@@ -10043,10 +10031,6 @@
             "time": "16:00",
             "format": "Bo3",
             "bracket": "0-1",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": "GAM",
             "b": "VIT",
             "scoreA": null,
@@ -10060,10 +10044,6 @@
             "time": "18:00",
             "format": "Bo3",
             "bracket": "0-1",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": "NAVI",
             "b": "FLY",
             "scoreA": null,
@@ -10077,10 +10057,6 @@
             "time": "20:00",
             "format": "Bo3",
             "bracket": "0-1",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": "SR",
             "b": "JDG",
             "scoreA": null,
@@ -10093,10 +10069,6 @@
             "day": "10-06",
             "format": "Bo3",
             "bracket": "1-1",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10109,10 +10081,6 @@
             "day": "10-06",
             "format": "Bo3",
             "bracket": "1-1",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10125,10 +10093,6 @@
             "day": "10-06",
             "format": "Bo3",
             "bracket": "1-1",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10141,10 +10105,6 @@
             "day": "10-07",
             "format": "Bo3",
             "bracket": "0-2 RR",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10157,10 +10117,6 @@
             "day": "10-07",
             "format": "Bo3",
             "bracket": "0-2 RR",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10173,10 +10129,6 @@
             "day": "10-07",
             "format": "Bo3",
             "bracket": "0-2 RR",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10189,10 +10141,6 @@
             "day": "10-08",
             "format": "Bo3",
             "bracket": "1-2 & 0-2 1st",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10205,10 +10153,6 @@
             "day": "10-08",
             "format": "Bo3",
             "bracket": "1-2 & 0-2 1st",
-            "prev": {
-              "a": null,
-              "b": null
-            },
             "a": null,
             "b": null,
             "scoreA": null,
@@ -10233,7 +10177,7 @@
             {
               "seed": 3,
               "from": "M9:W",
-              "short": null
+              "short": "WE"
             },
             {
               "seed": 4,
