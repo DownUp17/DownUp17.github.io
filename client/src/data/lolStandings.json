@@ -9998,9 +9998,9 @@
             },
             "a": "LGD",
             "b": "BFX",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 1,
+            "scoreB": 2,
+            "winner": "BFX",
             "state": "scheduled"
           },
           {
@@ -10097,7 +10097,7 @@
               "a": "M7:L",
               "b": "M10:W"
             },
-            "a": null,
+            "a": "LGD",
             "b": null,
             "scoreA": null,
             "scoreB": null,
@@ -10223,7 +10223,7 @@
             {
               "seed": 1,
               "from": "M7:W",
-              "short": null
+              "short": "BFX"
             },
             {
               "seed": 2,
@@ -10460,7 +10460,7 @@
         },
         {
           "seed": "LCS #3",
-          "label": "LCS #3",
+          "short": "C9",
           "stage": "playin"
         },
         {
