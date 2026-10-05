@@ -160,6 +160,14 @@ function applySingleElimLayout(bracket) {
   };
 }
 
+// 2026 Worlds 플레이-인 경기 이름·일정(공식 대진표 기준): Match 1·2(10/16) → Match 3·4(10/17) → Match 5(10/18) → Match 6(10/19).
+function worldsPlayinNames(br) {
+  if (!br?.rounds) return br;
+  const M = [[['Match 1', '10/16'], ['Match 2', '10/16']], [['Match 3', '10/17'], ['Match 4', '10/17']], [['Match 5', '10/18']], [['Match 6', '10/19']]];
+  br.rounds.forEach((r, c) => r.matches.forEach((m, i) => { const x = M[c]?.[i]; if (x) { m.title = x[0]; m.time = x[1]; } }));
+  return br;
+}
+
 // 4팀 더블 엘리미네이션(4rounds: 상위 4강×2 / 상위 결승·하위 4강 / 하위 결승 / 결승) 표준 그리드 레이아웃.
 //   LCP 플레이오프·MSI 플레이-인·Worlds 플레이-인 등 4팀 DE 브래킷 공통 배치.
 //   totalRows=8 · 상위 4강 좌상단(0,2) / 상위 결승 중상단(1) / 하위 4강 우상단(6) /
@@ -172,12 +180,13 @@ function apply4TeamDELayout(bracket) {
   const lbF = P[2].matches[0], gf = P[3].matches[0];
   if (!ubSF1 || !ubSF2 || !ubF || !lbSF || !lbF || !gf) return bracket;
   return {
-    totalRows: 8,
+    // 세로 간격 압축(빈 행 제거): 상위 4강 0·2 / 상위 결승 1 / 하위 4강·하위 결승 4 / 결승은 상위 결승(1)과 하위 결승(4) 사이(2.5).
+    totalRows: 6,
     rounds: [
       { title: '', matches: [{ ...ubSF1, startRow: 0 }, { ...ubSF2, startRow: 2 }] },
-      { title: '', matches: [{ ...ubF, startRow: 1 }, { ...lbSF, startRow: 6 }] },
-      { title: '', matches: [{ ...lbF, startRow: 6 }] },
-      { title: '', matches: [{ ...gf, startRow: 3 }] },
+      { title: '', matches: [{ ...ubF, startRow: 1 }, { ...lbSF, startRow: 4 }] },
+      { title: '', matches: [{ ...lbF, startRow: 4 }] },
+      { title: '', matches: [{ ...gf, startRow: 2.5 }] },
     ],
     connectors: bracket.connectors,
   };
@@ -2565,7 +2574,7 @@ try {
     data.standings.worlds = {
       stage: '2026 Worlds · 플레이-인 → 스위스 → 녹아웃',
       qualifiers,
-      playin: apply4TeamDELayout(bySlug['play_ins']),
+      playin: worldsPlayinNames(apply4TeamDELayout(bySlug['play_ins'])),
       swiss: swiss || null,
       knockout: applySingleElimLayout(bySlug['knockouts']),
     };
@@ -5417,7 +5426,7 @@ console.log('lolStandings.json 갱신 완료');
   };
   const titles = {};
   // 대회 상징색 — 프론트(lolSim.json comp.color + PredictionPage PAST_DETAIL/SUBTAB_DETAIL/COMP_GRADIENT)와 일치.
-  const COMP_COLOR = { lck: '#1c192a', lpl: '#D32F2F', lec: '#00E0B0', lcs: '#eeece7', lcp: '#F08040', cblol: '#0b0718', fst: '#ff5500', msi: '#191919', ewc: '#f74e16', asiangames: '#079a3e', demacia: '#1826a1', worlds: '#0fe3f9' };
+  const COMP_COLOR = { lck: '#1c192a', lpl: '#D32F2F', lec: '#00E0B0', lcs: '#eeece7', lcp: '#F08040', cblol: '#0b0718', fst: '#ff5500', msi: '#191919', ewc: '#f74e16', asiangames: '#079a3e', demacia: '#1826a1', worlds: '#c7ae93' };
   const compStyle = (year, lg, sub, event) => {
     const y = String(year);
     if (lg === 'lec' && event === 'TCL') return { color: '#3f567c' }; // TCL(튀르키예 챔피언십 리그)

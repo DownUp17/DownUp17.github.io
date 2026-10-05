@@ -482,7 +482,13 @@ const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, connecto
     const list = Array.from(parts);
     const wins = Object.fromEntries(list.map((p) => [p, 0]));
     const losses = Object.fromEntries(list.map((p) => [p, 0]));
+    const diff = Object.fromEntries(list.map((p) => [p, 0])); // 세트 득실차
     for (const m of matches) {
+      const sa = resolveShort(m.a), sb = resolveShort(m.b);
+      if (m.scoreA != null && m.scoreB != null) {
+        if (sa && diff[sa] != null) diff[sa] += m.scoreA - m.scoreB;
+        if (sb && diff[sb] != null) diff[sb] += m.scoreB - m.scoreA;
+      }
       if (!m.winner) continue;
       const a = resolveShort(m.a), b = resolveShort(m.b);
       const winShort = m.winner === m.a || m.winner === a ? a : b;
@@ -490,8 +496,8 @@ const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, connecto
       if (winShort && wins[winShort] != null) wins[winShort]++;
       if (loseShort && losses[loseShort] != null) losses[loseShort]++;
     }
-    const sorted = list.slice().sort((x, y) => wins[y] - wins[x] || losses[x] - losses[y]);
-    const rows = sorted.length > 0 ? sorted.map((short) => ({ short, w: wins[short], l: losses[short] })) : [null, null, null];
+    const sorted = list.slice().sort((x, y) => wins[y] - wins[x] || losses[x] - losses[y] || diff[y] - diff[x]);
+    const rows = sorted.length > 0 ? sorted.map((short) => ({ short, w: wins[short], l: losses[short], d: diff[short] })) : [null, null, null];
     return (
       <div className="mt-1 rounded-xl bg-white/5 border border-white/10 overflow-hidden">
         <div className="px-2.5 py-1.5 bg-white/10 text-[10px] font-black text-white/70 uppercase tracking-wider">순위표</div>
@@ -518,6 +524,7 @@ const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, connecto
                   <TeamLogo src={logoByShort[r.short]} size={14} />
                   <span className="text-xs font-bold truncate flex-1" style={{ color: accent || 'rgba(255,255,255,0.88)' }}>{r.short}</span>
                   <span className="font-mono tabular-nums text-xs shrink-0" style={{ color: accent || 'rgba(255,255,255,0.55)' }}>{r.w}-{r.l}</span>
+                  <span className="font-mono tabular-nums text-[11px] shrink-0 w-7 text-right" style={{ color: r.d > 0 ? '#34D399' : r.d < 0 ? '#F87171' : '#9CA3AF' }}>{r.d > 0 ? `+${r.d}` : r.d}</span>
                 </>
               ) : (
                 <>
