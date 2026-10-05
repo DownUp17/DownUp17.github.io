@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-05",
   "titles": {
     "HLE": [
       {
@@ -599,6 +599,87 @@
           "year": "2020",
           "event": "LLA",
           "sub": "Closing"
+        }
+      }
+    ],
+    "TLAW": [
+      {
+        "name": "2026 LCS Summer",
+        "detail": "우승",
+        "color": "#eeece7",
+        "link": {
+          "tab": "lcs",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2025 LTA Split 1",
+        "detail": "우승",
+        "color": "#b2a27e",
+        "link": {
+          "tab": "lcs",
+          "year": "2025",
+          "sub": "Split 1"
+        }
+      },
+      {
+        "name": "2024 LCS Spring",
+        "detail": "우승",
+        "color": "#eeece7",
+        "link": {
+          "tab": "lcs",
+          "year": "2024",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2022 LCS Lock In",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2022",
+          "sub": "Lock In"
+        }
+      },
+      {
+        "name": "2021 LCS Lock In",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2021",
+          "sub": "Lock In"
+        }
+      },
+      {
+        "name": "2019 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2019",
+          "sub": "Summer"
+        }
+      },
+      {
+        "name": "2019 LCS Spring",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2019",
+          "sub": "Spring"
+        }
+      },
+      {
+        "name": "2018 LCS Summer",
+        "detail": "우승",
+        "color": "#6460ff",
+        "link": {
+          "tab": "lcs",
+          "year": "2018",
+          "sub": "Summer"
         }
       }
     ],
@@ -1663,78 +1744,6 @@
           "tab": "lcs",
           "year": "2018",
           "sub": "Spring"
-        }
-      }
-    ],
-    "TLAW": [
-      {
-        "name": "2025 LTA Split 1",
-        "detail": "우승",
-        "color": "#b2a27e",
-        "link": {
-          "tab": "lcs",
-          "year": "2025",
-          "sub": "Split 1"
-        }
-      },
-      {
-        "name": "2024 LCS Spring",
-        "detail": "우승",
-        "color": "#eeece7",
-        "link": {
-          "tab": "lcs",
-          "year": "2024",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2022 LCS Lock In",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2022",
-          "sub": "Lock In"
-        }
-      },
-      {
-        "name": "2021 LCS Lock In",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2021",
-          "sub": "Lock In"
-        }
-      },
-      {
-        "name": "2019 LCS Summer",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2019",
-          "sub": "Summer"
-        }
-      },
-      {
-        "name": "2019 LCS Spring",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2019",
-          "sub": "Spring"
-        }
-      },
-      {
-        "name": "2018 LCS Summer",
-        "detail": "우승",
-        "color": "#6460ff",
-        "link": {
-          "tab": "lcs",
-          "year": "2018",
-          "sub": "Summer"
         }
       }
     ],

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-05",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -6779,7 +6779,7 @@
           ]
         },
         "playoffs": {
-          "totalRows": 8,
+          "totalRows": 6,
           "rounds": [
             {
               "title": "",
@@ -6852,7 +6852,7 @@
                     "score": 3,
                     "win": true
                   },
-                  "startRow": 6
+                  "startRow": 4
                 }
               ]
             },
@@ -6874,7 +6874,7 @@
                     "score": 3,
                     "win": true
                   },
-                  "startRow": 6
+                  "startRow": 4
                 }
               ]
             },
@@ -6896,7 +6896,7 @@
                     "score": 0,
                     "elim": true
                   },
-                  "startRow": 3
+                  "startRow": 2.5
                 }
               ]
             }
@@ -7916,14 +7916,17 @@
                   "title": "결승",
                   "a": {
                     "seed": "상위권 대진 - 결승 승자",
-                    "short": "TLAW"
+                    "short": "TLAW",
+                    "score": 3,
+                    "msi": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 결승 승자",
-                    "short": "LYON"
+                    "short": "LYON",
+                    "score": 1,
+                    "elim": true
                   },
-                  "startRow": 5,
-                  "time": "10/5 05:00"
+                  "startRow": 5
                 }
               ]
             }
@@ -8012,6 +8015,16 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 1,
+            "team": "TLAW",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "LYON",
+            "note": "준우승"
+          },
           {
             "rank": 3,
             "team": "C9",
@@ -10424,32 +10437,34 @@
         }
       ],
       "playin": {
-        "totalRows": 8,
+        "totalRows": 6,
         "rounds": [
           {
             "title": "",
             "matches": [
               {
                 "id": "115660588583040710",
-                "title": "상위권 대진 - 4강",
+                "title": "Match 1",
                 "a": {
                   "seed": ""
                 },
                 "b": {
                   "seed": ""
                 },
-                "startRow": 0
+                "startRow": 0,
+                "time": "10/16"
               },
               {
                 "id": "115660588583171786",
-                "title": "상위권 대진 - 4강",
+                "title": "Match 2",
                 "a": {
                   "seed": ""
                 },
                 "b": {
                   "seed": ""
                 },
-                "startRow": 2
+                "startRow": 2,
+                "time": "10/16"
               }
             ]
           },
@@ -10458,25 +10473,27 @@
             "matches": [
               {
                 "id": "115660588583171790",
-                "title": "상위권 대진 - 결승",
+                "title": "Match 3",
                 "a": {
                   "seed": "상위권 대진 - 4강 승자"
                 },
                 "b": {
                   "seed": "상위권 대진 - 4강 승자"
                 },
-                "startRow": 1
+                "startRow": 1,
+                "time": "10/17"
               },
               {
                 "id": "115660588583171794",
-                "title": "하위권 대진 - 4강",
+                "title": "Match 4",
                 "a": {
                   "seed": "상위권 대진 - 4강 패자"
                 },
                 "b": {
                   "seed": "상위권 대진 - 4강 패자"
                 },
-                "startRow": 6
+                "startRow": 4,
+                "time": "10/17"
               }
             ]
           },
@@ -10485,14 +10502,15 @@
             "matches": [
               {
                 "id": "115660588583171798",
-                "title": "하위권 대진 - 결승",
+                "title": "Match 5",
                 "a": {
                   "seed": "상위권 대진 - 결승 패자"
                 },
                 "b": {
                   "seed": "하위권 대진 - 4강 승자"
                 },
-                "startRow": 6
+                "startRow": 4,
+                "time": "10/18"
               }
             ]
           },
@@ -10501,14 +10519,15 @@
             "matches": [
               {
                 "id": "116299649498303884",
-                "title": "결승",
+                "title": "Match 6",
                 "a": {
                   "seed": "상위권 대진 - 결승 승자"
                 },
                 "b": {
                   "seed": "하위권 대진 - 결승 승자"
                 },
-                "startRow": 3
+                "startRow": 2.5,
+                "time": "10/19"
               }
             ]
           }
