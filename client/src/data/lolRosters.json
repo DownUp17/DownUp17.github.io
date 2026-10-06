@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-05",
+  "updatedAt": "2026-10-06",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -728,19 +728,19 @@
           "starter": true
         },
         {
-          "name": "Pungyeon",
-          "firstName": "Lee",
-          "lastName": "Jonghyuk",
-          "role": "mid",
-          "image": "https://static.lolesports.com/players/1769232251135_Pungyeon.png",
-          "starter": false
-        },
-        {
           "name": "Tempester",
           "firstName": "Yeongwoong",
           "lastName": "Oh",
           "role": "mid",
           "image": "https://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
+          "starter": false
+        },
+        {
+          "name": "Pungyeon",
+          "firstName": "Lee",
+          "lastName": "Jonghyuk",
+          "role": "mid",
+          "image": "https://static.lolesports.com/players/1769232251135_Pungyeon.png",
           "starter": false
         },
         {
@@ -2379,19 +2379,19 @@
       "id": "98926509883054987",
       "players": [
         {
-          "name": "Photon",
-          "firstName": "Gyutae",
-          "lastName": "Kyeong",
-          "role": "top",
-          "image": "https://static.lolesports.com/players/1769149727754_AME_LCS26S1_DIG_PHOTON.png",
-          "starter": false
-        },
-        {
           "name": "Denathor",
           "firstName": "Noah",
           "lastName": "Erikson",
           "role": "top",
           "image": "https://static.lolesports.com/players/1790204881186_edna.png",
+          "starter": false
+        },
+        {
+          "name": "Photon",
+          "firstName": "Gyutae",
+          "lastName": "Kyeong",
+          "role": "top",
+          "image": "https://static.lolesports.com/players/1769149727754_AME_LCS26S1_DIG_PHOTON.png",
           "starter": false
         },
         {
@@ -2604,19 +2604,19 @@
           "starter": false
         },
         {
-          "name": "Tiphat",
-          "firstName": "Tien Phat",
-          "lastName": "Nguyen",
-          "role": "jungle",
-          "image": "https://static.lolesports.com/players/default-headshot.png",
-          "starter": false
-        },
-        {
           "name": "Draktharr",
           "firstName": "Toan",
           "lastName": "Le Ngoc ",
           "role": "jungle",
           "image": "https://static.lolesports.com/players/1769231353199_Draktharr.png",
+          "starter": false
+        },
+        {
+          "name": "Tiphat",
+          "firstName": "Tien Phat",
+          "lastName": "Nguyen",
+          "role": "jungle",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -3012,19 +3012,19 @@
           "starter": true
         },
         {
-          "name": "smooth",
-          "firstName": "Anthony",
-          "lastName": "Bonatto",
-          "role": "jungle",
-          "image": "https://static.lolesports.com/players/default-headshot.png",
-          "starter": false
-        },
-        {
           "name": "Aegis",
           "firstName": "Gabriel",
           "lastName": "Lemos",
           "role": "jungle",
           "image": "https://static.lolesports.com/players/1737725725326_image634.png",
+          "starter": false
+        },
+        {
+          "name": "smooth",
+          "firstName": "Anthony",
+          "lastName": "Bonatto",
+          "role": "jungle",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
