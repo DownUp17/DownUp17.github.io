@@ -10085,9 +10085,9 @@
             "bracket": "1-1",
             "a": "BRO",
             "b": "NAVI",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 2,
+            "scoreB": 1,
+            "winner": "BRO",
             "state": "scheduled"
           },
           {
@@ -10201,7 +10201,7 @@
             {
               "seed": 4,
               "from": "M13:W",
-              "short": null
+              "short": "BRO"
             },
             {
               "seed": 5,
