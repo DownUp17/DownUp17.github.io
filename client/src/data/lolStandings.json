@@ -10098,9 +10098,9 @@
             "bracket": "1-1",
             "a": "VIT",
             "b": "RED",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 2,
+            "scoreB": 0,
+            "winner": "VIT",
             "state": "scheduled"
           },
           {
@@ -10111,9 +10111,9 @@
             "bracket": "1-1",
             "a": "JDG",
             "b": "LGD",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 0,
+            "scoreB": 2,
+            "winner": "LGD",
             "state": "scheduled"
           },
           {
@@ -10206,12 +10206,12 @@
             {
               "seed": 5,
               "from": "M14:W",
-              "short": null
+              "short": "VIT"
             },
             {
               "seed": 6,
               "from": "M15:W",
-              "short": null
+              "short": "LGD"
             },
             {
               "seed": 7,
