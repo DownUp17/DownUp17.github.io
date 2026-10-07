@@ -165,6 +165,9 @@ function worldsPlayinNames(br) {
   if (!br?.rounds) return br;
   const M = [[['Match 1', '10/16'], ['Match 2', '10/16']], [['Match 3', '10/17'], ['Match 4', '10/17']], [['Match 5', '10/18']], [['Match 6', '10/19']]];
   br.rounds.forEach((r, c) => r.matches.forEach((m, i) => { const x = M[c]?.[i]; if (x) { m.title = x[0]; m.time = x[1]; } }));
+  // 시드(빈 슬롯 안내) 라벨도 경기 이름 기준으로 — 'Match N 승자/패자'.
+  const SEED = [[null, null], [['Match 1 승자', 'Match 2 승자'], ['Match 1 패자', 'Match 2 패자']], [['Match 3 패자', 'Match 4 승자']], [['Match 3 승자', 'Match 5 승자']]];
+  br.rounds.forEach((r, c) => r.matches.forEach((m, i) => { const sd = SEED[c]?.[i]; if (!sd) return; if (m.a) m.a.seed = sd[0]; if (m.b) m.b.seed = sd[1]; }));
   return br;
 }
 
