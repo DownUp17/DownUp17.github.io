@@ -3012,19 +3012,19 @@
           "starter": true
         },
         {
-          "name": "Aegis",
-          "firstName": "Gabriel",
-          "lastName": "Lemos",
-          "role": "jungle",
-          "image": "https://static.lolesports.com/players/1737725725326_image634.png",
-          "starter": false
-        },
-        {
           "name": "smooth",
           "firstName": "Anthony",
           "lastName": "Bonatto",
           "role": "jungle",
           "image": "https://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "name": "Aegis",
+          "firstName": "Gabriel",
+          "lastName": "Lemos",
+          "role": "jungle",
+          "image": "https://static.lolesports.com/players/1737725725326_image634.png",
           "starter": false
         },
         {
