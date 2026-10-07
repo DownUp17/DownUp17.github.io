@@ -4,6 +4,10 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const path = require('path');
+// 로컬 실행 시 리포 루트 .env(LOLESPORTS_API_KEY 등) 로드 — Vercel에서는 프로젝트 환경변수 사용
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+const { getLiveMatches } = require('./lolLive');
 
 const app = express();
 
@@ -12,6 +16,8 @@ app.use(cors({
   origin: [
     'https://totaldu.github.io',   // 배포된 프론트엔드 (신규)
     'https://downup17.github.io',  // 구 주소 (계정명 변경 전 호환)
+    'https://totaldu.com',         // production
+    'https://www.totaldu.com',
     'http://localhost:5173'         // 로컬 개발용
   ],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -75,6 +81,27 @@ app.post('/api/articles', verifyAdmin, (req, res) => {
   const newArticle = { id: nextId++, ...req.body, updatedAt: new Date() };
   wikiArticles.push(newArticle);
   res.status(201).json(newArticle);
+});
+
+// 5. LoL 실시간 경기 (공개) — 진행 중 경기·세트 스코어·현재 세트 골드/킬/오브젝트. 20초 캐시.
+app.get('/api/lol/live', async (req, res) => {
+  // 로컬 화면 확인용 예시 데이터(?demo=1) — 배포(NODE_ENV=production)에서는 무시
+  if (req.query.demo && process.env.NODE_ENV !== 'production') {
+    return res.json({ updatedAt: new Date().toISOString(), demo: true, matches: [{
+      id: 'demo', league: { name: 'Worlds' }, blockName: '스위스 스테이지', bestOf: 3,
+      teams: [{ id: 'a', code: 'T1', name: 'T1', wins: 1 }, { id: 'b', code: 'GEN', name: 'Gen.G', wins: 0 }],
+      game: { number: 2, state: 'in_game', blueTeamId: 'b', redTeamId: 'a',
+        blue: { gold: 41200, kills: 9, towers: 4, dragons: 2, barons: 0, inhibitors: 0 },
+        red: { gold: 44800, kills: 13, towers: 6, dragons: 2, barons: 1, inhibitors: 1 } },
+    }] });
+  }
+  if (!process.env.LOLESPORTS_API_KEY) return res.status(503).json({ message: 'LOLESPORTS_API_KEY 미설정' });
+  try {
+    res.set('Cache-Control', 'public, max-age=15');
+    res.json(await getLiveMatches());
+  } catch (err) {
+    res.status(502).json({ message: '실시간 경기 정보를 가져오지 못했습니다.', detail: err.message });
+  }
 });
 
 // Vercel 배포용 export

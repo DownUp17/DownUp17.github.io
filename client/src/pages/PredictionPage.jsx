@@ -8,6 +8,7 @@ import sktT1No1Logo from '../assets/skt-t1-1.webp';
 import sktT1No2Logo from '../assets/skt-t1-2.webp';
 import najinShieldLogo from '../assets/najin-shield.webp';
 import najinSwordLogo from '../assets/najin-sword.webp';
+import LiveMatches from '../components/LiveMatches';
 import React, { useMemo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { Target, Trophy, ExternalLink, Crown, Hourglass, ChevronDown } from 'lucide-react';
@@ -3625,6 +3626,9 @@ const PredictionPage = () => {
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-white">LoL 승부예측</h1>
         </div>
+
+        {/* 진행 중 경기(LIVE) — 백엔드 경유 30초 갱신, 없으면 숨김 */}
+        <LiveMatches logoOf={(c) => logoByShort[c]} />
 
         {/* 모바일: GPR 순위 탭 + 그 아래 리그 선택 드롭다운 (탭을 모두 펼치지 않음) */}
         {(() => {
