@@ -9932,7 +9932,8 @@
             "scoreA": 1,
             "scoreB": 0,
             "winner": "RED",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552196841"
           },
           {
             "id": "M2",
@@ -9945,7 +9946,8 @@
             "scoreA": 1,
             "scoreB": 0,
             "winner": "LGD",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262379"
           },
           {
             "id": "M3",
@@ -9958,7 +9960,8 @@
             "scoreA": 0,
             "scoreB": 1,
             "winner": "KT",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262381"
           },
           {
             "id": "M4",
@@ -9971,7 +9974,8 @@
             "scoreA": 0,
             "scoreB": 1,
             "winner": "BFX",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262383"
           },
           {
             "id": "M5",
@@ -9984,7 +9988,8 @@
             "scoreA": 0,
             "scoreB": 1,
             "winner": "WE",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262385"
           },
           {
             "id": "M6",
@@ -9997,7 +10002,8 @@
             "scoreA": 1,
             "scoreB": 0,
             "winner": "BRO",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262387"
           },
           {
             "id": "M7",
@@ -10010,7 +10016,8 @@
             "scoreA": 1,
             "scoreB": 2,
             "winner": "BFX",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262389"
           },
           {
             "id": "M8",
@@ -10023,7 +10030,8 @@
             "scoreA": 0,
             "scoreB": 2,
             "winner": "KT",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262393"
           },
           {
             "id": "M9",
@@ -10036,7 +10044,8 @@
             "scoreA": 2,
             "scoreB": 1,
             "winner": "WE",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262397"
           },
           {
             "id": "M10",
@@ -10049,7 +10058,8 @@
             "scoreA": 0,
             "scoreB": 2,
             "winner": "VIT",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262401"
           },
           {
             "id": "M11",
@@ -10062,7 +10072,8 @@
             "scoreA": 2,
             "scoreB": 0,
             "winner": "NAVI",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262405"
           },
           {
             "id": "M12",
@@ -10075,7 +10086,8 @@
             "scoreA": 0,
             "scoreB": 2,
             "winner": "JDG",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262409"
           },
           {
             "id": "M13",
@@ -10088,7 +10100,8 @@
             "scoreA": 2,
             "scoreB": 1,
             "winner": "BRO",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262413"
           },
           {
             "id": "M14",
@@ -10101,7 +10114,8 @@
             "scoreA": 2,
             "scoreB": 0,
             "winner": "VIT",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262417"
           },
           {
             "id": "M15",
@@ -10114,7 +10128,8 @@
             "scoreA": 0,
             "scoreB": 2,
             "winner": "LGD",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133805552262421"
           },
           {
             "id": "M16",
@@ -10127,7 +10142,8 @@
             "scoreA": 0,
             "scoreB": 2,
             "winner": "FLY",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133816701918794"
           },
           {
             "id": "M17",
@@ -10140,7 +10156,8 @@
             "scoreA": 2,
             "scoreB": 0,
             "winner": "SR",
-            "state": "scheduled"
+            "state": "completed",
+            "apiMatchId": "117133816701918798"
           },
           {
             "id": "M18",
@@ -10150,10 +10167,11 @@
             "bracket": "0-2 RR",
             "a": "FLY",
             "b": "SR",
-            "scoreA": null,
-            "scoreB": null,
+            "scoreA": 0,
+            "scoreB": 0,
             "winner": null,
-            "state": "scheduled"
+            "state": "inProgress",
+            "apiMatchId": "117133816701918802"
           },
           {
             "id": "M19",
@@ -10165,7 +10183,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "18:00",
+            "apiMatchId": "117133830114188936"
           },
           {
             "id": "M20",
@@ -10177,7 +10197,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "20:00",
+            "apiMatchId": "117133830114188940"
           }
         ],
         "advancing": {
@@ -10242,7 +10264,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "15:00",
+            "apiMatchId": "117133830110912093"
           },
           {
             "id": "M22",
@@ -10258,7 +10282,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "18:00",
+            "apiMatchId": "117133830110912099"
           },
           {
             "id": "M23",
@@ -10274,7 +10300,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "15:00",
+            "apiMatchId": "117133830110912105"
           },
           {
             "id": "M24",
@@ -10290,7 +10318,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "18:00",
+            "apiMatchId": "117133830110912111"
           },
           {
             "id": "M25",
@@ -10306,7 +10336,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "18:00",
+            "apiMatchId": "117133830110912117"
           },
           {
             "id": "M26",
@@ -10322,7 +10354,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "18:00",
+            "apiMatchId": "117133830110912123"
           },
           {
             "id": "GF",
@@ -10338,7 +10372,9 @@
             "scoreA": null,
             "scoreB": null,
             "winner": null,
-            "state": "scheduled"
+            "state": "scheduled",
+            "time": "18:00",
+            "apiMatchId": "117133830110912129"
           }
         ]
       }
@@ -11600,7 +11636,12 @@
               "b": "VIE",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1
+              "scoreB": 1,
+              "winner": "VIE",
+              "state": "completed",
+              "day": "09-29",
+              "time": "09:00",
+              "apiMatchId": "117229242613241563"
             },
             {
               "id": "A2",
@@ -11608,7 +11649,12 @@
               "b": "MYS",
               "format": "Bo1",
               "scoreA": 1,
-              "scoreB": 0
+              "scoreB": 0,
+              "winner": "UAE",
+              "state": "completed",
+              "day": "09-29",
+              "time": "09:00",
+              "apiMatchId": "117229242613241569"
             },
             {
               "id": "A3",
@@ -11616,7 +11662,12 @@
               "b": "UAE",
               "format": "Bo1",
               "scoreA": 1,
-              "scoreB": 0
+              "scoreB": 0,
+              "winner": "SAU",
+              "state": "completed",
+              "day": "09-29",
+              "time": "11:30",
+              "apiMatchId": "117229242613110489"
             },
             {
               "id": "A4",
@@ -11624,7 +11675,12 @@
               "b": "MYS",
               "format": "Bo1",
               "scoreA": 1,
-              "scoreB": 0
+              "scoreB": 0,
+              "winner": "VIE",
+              "state": "completed",
+              "day": "09-29",
+              "time": "11:30",
+              "apiMatchId": "117229242613241571"
             },
             {
               "id": "A5",
@@ -11632,7 +11688,12 @@
               "b": "MYS",
               "format": "Bo1",
               "scoreA": 1,
-              "scoreB": 0
+              "scoreB": 0,
+              "winner": "SAU",
+              "state": "completed",
+              "day": "09-29",
+              "time": "14:00",
+              "apiMatchId": "117229242613241565"
             },
             {
               "id": "A6",
@@ -11640,7 +11701,12 @@
               "b": "UAE",
               "format": "Bo1",
               "scoreA": 1,
-              "scoreB": 0
+              "scoreB": 0,
+              "winner": "VIE",
+              "state": "completed",
+              "day": "09-29",
+              "time": "14:00",
+              "apiMatchId": "117229242613241567"
             }
           ],
           "standings": [
@@ -11695,7 +11761,12 @@
               "b": "HKG",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1
+              "scoreB": 1,
+              "winner": "HKG",
+              "state": "completed",
+              "day": "09-30",
+              "time": "09:00",
+              "apiMatchId": "117229242613241575"
             },
             {
               "id": "B2",
@@ -11703,7 +11774,12 @@
               "b": "TPE",
               "format": "Bo1",
               "scoreA": 1,
-              "scoreB": 0
+              "scoreB": 0,
+              "winner": "KOR",
+              "state": "completed",
+              "day": "09-30",
+              "time": "09:00",
+              "apiMatchId": "117229242613241581"
             },
             {
               "id": "B3",
@@ -11711,7 +11787,12 @@
               "b": "KOR",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1
+              "scoreB": 1,
+              "winner": "KOR",
+              "state": "completed",
+              "day": "09-30",
+              "time": "11:30",
+              "apiMatchId": "117229242613241573"
             },
             {
               "id": "B4",
@@ -11719,7 +11800,12 @@
               "b": "TPE",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1
+              "scoreB": 1,
+              "winner": "TPE",
+              "state": "completed",
+              "day": "09-30",
+              "time": "11:30",
+              "apiMatchId": "117229242613241583"
             },
             {
               "id": "B5",
@@ -11727,7 +11813,12 @@
               "b": "TPE",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1
+              "scoreB": 1,
+              "winner": "TPE",
+              "state": "completed",
+              "day": "09-30",
+              "time": "14:00",
+              "apiMatchId": "117229242613241577"
             },
             {
               "id": "B6",
@@ -11735,7 +11826,12 @@
               "b": "KOR",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1
+              "scoreB": 1,
+              "winner": "KOR",
+              "state": "completed",
+              "day": "09-30",
+              "time": "14:00",
+              "apiMatchId": "117229242613241579"
             }
           ],
           "standings": [
@@ -11797,8 +11893,10 @@
             "winner": "TPE",
             "scoreA": 0,
             "scoreB": 2,
+            "state": "completed",
             "day": "10-01",
-            "time": "09:00"
+            "time": "09:00",
+            "apiMatchId": "117229302393058344"
           },
           {
             "id": "SF2",
@@ -11812,8 +11910,10 @@
             "winner": "KOR",
             "scoreA": 2,
             "scoreB": 0,
+            "state": "completed",
             "day": "10-01",
-            "time": "13:30"
+            "time": "13:30",
+            "apiMatchId": "117229302393058348"
           },
           {
             "id": "FINAL",
@@ -11827,8 +11927,10 @@
             "winner": "KOR",
             "scoreA": 0,
             "scoreB": 3,
+            "state": "completed",
             "day": "10-02",
-            "time": "12:00"
+            "time": "12:00",
+            "apiMatchId": "117229302393058352"
           }
         ]
       },

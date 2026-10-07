@@ -3047,6 +3047,61 @@ try {
   console.warn(`LPL Split 3 대진 갱신 실패 — 기존 값 유지: ${e.message}`);
 }
 
+// lolesports 일정(getSchedule) → 리포지토리 JSON 매치에 결과 자동 반영(DCGI·Asian Games 공용).
+//   형식은 리포 JSON 그대로 두고 a/b·scoreA/scoreB·winner·state(·day/time 비어 있으면)만 채운다.
+//   1) a·b가 이미 있는 매치는 팀 조합(순서 무관)으로 API 경기와 연결
+//   2) 남은 매치(추첨 대진·TBD)는 리포 순서 ↔ API 시작 시각 순서로 연결 (DCGI M7~·녹아웃, AG 결승 등)
+//   codeMap: API 코드 → 리포 코드(예: AG KSA→SAU, MAS→MYS)
+async function syncScheduleResults(leagueId, matches, { codeMap = {}, label } = {}) {
+  let events = [];
+  try {
+    let page = null;
+    for (let i = 0; i < 5; i++) {
+      const j = await api('getSchedule', { leagueId, ...(page ? { pageToken: page } : {}) });
+      events.push(...(j.data?.schedule?.events || []));
+      page = j.data?.schedule?.pages?.older; if (!page) break;
+    }
+  } catch (e) { console.warn(`${label} 일정 조회 실패(무시): ${e.message}`); return 0; }
+  events = events.filter((e) => e.type === 'match' || e.match).sort((a, b) => (a.startTime < b.startTime ? -1 : 1));
+  const code = (t) => (t?.code && t.code !== 'TBD' ? (codeMap[t.code] || t.code) : null);
+  const kst = (iso) => new Date(new Date(iso).getTime() + 9 * 3600e3).toISOString();
+  const apply = (m, e) => {
+    const [t1, t2] = e.match.teams || [];
+    const c1 = code(t1), c2 = code(t2);
+    // 비어 있는 자리만 채움(한쪽만 있으면 나머지 팀으로)
+    if (!m.a && !m.b) { m.a = c1; m.b = c2; }
+    else if (!m.a) m.a = c1 === m.b ? c2 : c1;
+    else if (!m.b) m.b = c1 === m.a ? c2 : c1;
+    const sideOf = (c) => (c === m.a ? 'A' : c === m.b ? 'B' : null);
+    for (const [t, c] of [[t1, c1], [t2, c2]]) {
+      const s = sideOf(c); if (!s || !t.result) continue;
+      if (t.result.gameWins != null) m[`score${s}`] = t.result.gameWins;
+      if (e.state === 'completed' && t.result.outcome === 'win') m.winner = c;
+    }
+    m.state = e.state === 'completed' ? 'completed' : e.state === 'inProgress' ? 'inProgress' : (m.state || 'scheduled');
+    if (!m.day) m.day = kst(e.startTime).slice(5, 10);
+    if (!m.time) m.time = kst(e.startTime).slice(11, 16);
+    m.apiMatchId = e.match.id;
+  };
+  const used = new Set();
+  let n = 0;
+  // 1) 팀 조합 연결
+  for (const m of matches) {
+    if (!m.a || !m.b) continue;
+    const e = events.find((x) => !used.has(x) && (() => { const cs = (x.match?.teams || []).map(code); return cs.includes(m.a) && cs.includes(m.b); })());
+    if (e) { used.add(e); apply(m, e); n++; }
+  }
+  // 2) 순서 연결 — 팀이 비어 있는 매치 ↔ 아직 안 쓴 API 경기(시작 시각 순). 한쪽 팀만 있으면 그 팀이 포함된 경기만 허용.
+  const rest = events.filter((x) => !used.has(x));
+  for (const m of matches) {
+    if (m.a && m.b && m.apiMatchId) continue;
+    const i = rest.findIndex((x) => { const cs = (x.match?.teams || []).map(code).filter(Boolean); return !cs.length || ((!m.a || cs.includes(m.a)) && (!m.b || cs.includes(m.b))); });
+    if (i < 0) continue;
+    const [e] = rest.splice(i, 1); used.add(e); apply(m, e); n++;
+  }
+  return n;
+}
+
 // DEMACIA 대회 정보 (참가팀·그룹·녹아웃) 외부 API에서 fetch.
 //   참가팀 short는 사용자가 Demacia_cup 리포지토리(demacia_2026.json)에서 직접 관리.
 try {
@@ -3064,6 +3119,9 @@ try {
     }
     if (api.group) dem.group = api.group;
     if (api.knockout) dem.knockout = api.knockout;
+    // lolesports 일정(DCGI 리그)으로 대진·결과 자동 반영 — 리포 JSON 형식 유지
+    const synced = await syncScheduleResults('117126995932274206', [...(dem.group?.matches || []), ...(dem.knockout?.matches || [])], { label: 'DCGI' });
+    if (synced) console.log(`DCGI 일정 자동 반영: ${synced}경기`);
     if (api.format) dem.format = api.format;
     if (api.updatedAt) dem.apiUpdatedAt = api.updatedAt;
     // prev 참조에 따라 매치 팀 자동 전파 (M1 승자 확정 시 M7 슬롯 자동 채움 등)
@@ -3134,6 +3192,9 @@ try {
     if (Array.isArray(api.teams)) ag.teams = api.teams;
     if (api.groups) ag.groups = api.groups;
     if (api.knockout) ag.knockout = api.knockout;
+    // lolesports 일정(Asian Games 리그)으로 결과 자동 반영 — API 국가 코드(KSA·MAS)는 리포 코드(SAU·MYS)로
+    const agSynced = await syncScheduleResults('117228885404001005', [...(ag.groups?.A?.matches || []), ...(ag.groups?.B?.matches || []), ...(ag.knockout?.matches || [])], { label: 'Asian Games', codeMap: { KSA: 'SAU', MAS: 'MYS' } });
+    if (agSynced) console.log(`Asian Games 일정 자동 반영: ${agSynced}경기`);
     if (api.format) ag.format = api.format;
     if (api.updatedAt) ag.apiUpdatedAt = api.updatedAt;
     delete ag.placeholder; // 리포지토리 실데이터 → 임시 대진표(기본값) 블록이 덮어쓰지 않도록

@@ -35,16 +35,15 @@ export default function LiveMatches({ logoOf }) {
       {matches.map((m) => {
         const [a, b] = m.teams;
         const g = m.game;
-        // LIVE 클릭 → lolesports 공식 라이브 페이지(리그별)에서 시청
+        // 카드 클릭 → lolesports 공식 라이브 페이지(리그별)에서 시청
         const watchUrl = m.league?.slug ? `https://lolesports.com/live/${m.league.slug}` : 'https://lolesports.com/live';
         return (
-          <div key={m.id} className="rounded-xl bg-white/5 border border-red-500/30 p-4">
+          <a key={m.id} href={watchUrl} target="_blank" rel="noopener noreferrer" title="라이브 시청"
+            className="block rounded-xl bg-white/5 border border-red-500/30 p-4 hover:bg-white/10 hover:border-red-500/60 transition-colors">
             <div className="flex items-center gap-2 mb-3 text-xs">
-              <a href={watchUrl} target="_blank" rel="noopener noreferrer" title="라이브 시청"
-                className="flex items-center gap-1.5 font-black text-red-400 hover:text-red-300 px-2 py-0.5 -ml-2 rounded-md hover:bg-red-500/10 transition-colors">
+              <span className="flex items-center gap-1.5 font-black text-red-400">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />LIVE
-                <span className="text-[10px] font-bold text-red-300/80">시청 ↗</span>
-              </a>
+              </span>
               <span className="text-white/50 font-bold">{m.league?.name}{m.blockName ? ` · ${m.blockName}` : ''}</span>
               {m.bestOf && <span className="text-white/30 ml-auto">Bo{m.bestOf}{g ? ` · ${g.number}세트` : ''}</span>}
             </div>
@@ -53,7 +52,7 @@ export default function LiveMatches({ logoOf }) {
               <span className="font-black text-xl tabular-nums">{a?.wins ?? 0} : {b?.wins ?? 0}</span>
               <TeamSide team={b} logo={logoOf?.(b?.code)} align="right" />
             </div>
-          </div>
+          </a>
         );
       })}
     </section>
