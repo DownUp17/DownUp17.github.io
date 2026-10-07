@@ -10124,9 +10124,9 @@
             "bracket": "0-2 RR",
             "a": "GAM",
             "b": "FLY",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 0,
+            "scoreB": 2,
+            "winner": "FLY",
             "state": "scheduled"
           },
           {
@@ -10137,9 +10137,9 @@
             "bracket": "0-2 RR",
             "a": "SR",
             "b": "GAM",
-            "scoreA": null,
-            "scoreB": null,
-            "winner": null,
+            "scoreA": 2,
+            "scoreB": 0,
+            "winner": "SR",
             "state": "scheduled"
           },
           {
