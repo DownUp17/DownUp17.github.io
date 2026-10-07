@@ -22,11 +22,15 @@ const teamFrame = (t) => t && ({
 });
 
 async function liveGame(gameId) {
-  // startingTime 없이 부르면 경기 시작 직후 프레임이 온다 → 약 1분 전(10초 단위 내림)부터의 구간을 요청해 마지막 프레임 = 현재 상태.
-  //   (피드는 실제보다 수십 초 늦게 쌓이므로 너무 최근 시각은 빈 응답) 실패하면 시작 구간으로 폴백.
-  const t = new Date(Math.floor((Date.now() - 60 * 1000) / 10000) * 10000).toISOString();
-  const w = (await getJson(`${FEED}/window/${gameId}?startingTime=${t}`).catch(() => null))
-    || (await getJson(`${FEED}/window/${gameId}`).catch(() => null));
+  // startingTime 없이 부르면 경기 시작 직후 프레임(골드 0)이 온다 → 최근 시각(10초 단위 내림)부터의 구간을 요청해 마지막 프레임 = 현재 상태.
+  //   피드는 실제보다 늦게 쌓여 너무 최근 시각은 빈 응답/오류 → 40초·1분·1분 30초·2분·3분 전 순으로 물러나며 재시도.
+  //   (시작 구간으로 폴백하면 경기 내내 0으로 보이므로 폴백하지 않음)
+  let w = null;
+  for (const sec of [40, 60, 90, 120, 180]) {
+    const t = new Date(Math.floor((Date.now() - sec * 1000) / 10000) * 10000).toISOString();
+    w = await getJson(`${FEED}/window/${gameId}?startingTime=${t}`).catch(() => null);
+    if (w?.frames?.length) break;
+  }
   const frame = w?.frames?.[w.frames.length - 1];
   if (!frame) return null;
   return {
@@ -73,4 +77,4 @@ async function getLiveMatches() {
   return cache.pending;
 }
 
-module.exports = { getLiveMatches };
+module.exports = { getLiveMatches, liveGame };
