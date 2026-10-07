@@ -4,9 +4,6 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const path = require('path');
-// 로컬 실행 시 리포 루트 .env(LOLESPORTS_API_KEY 등) 로드 — Vercel에서는 프로젝트 환경변수 사용
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 const { getLiveMatches } = require('./lolLive');
 
 const app = express();
