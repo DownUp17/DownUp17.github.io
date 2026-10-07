@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T10:41:57.710Z",
+  "updatedAt": "2026-10-07T14:21:40.063Z",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
   "iterationsDefault": 20000,
   "competitions": [
@@ -1616,7 +1616,7 @@
       "stage": "플레이-인 스테이지 (Bo5 더블 엘리미네이션) → 브래킷 스테이지 (Bo5 더블 엘리미네이션)",
       "format": "",
       "iterations": 100000,
-      "generatedAt": "2026-10-07T10:41:53.324Z",
+      "generatedAt": "2026-10-07T14:21:37.561Z",
       "teams": [
         {
           "name": "G2 Esports",
@@ -1780,7 +1780,7 @@
       "ready": true,
       "format": "그룹 스테이지 (Bo1/Bo3) → 녹아웃 스테이지 (Bo5)",
       "iterations": 100000,
-      "generatedAt": "2026-10-07T10:41:53.324Z",
+      "generatedAt": "2026-10-07T14:21:37.561Z",
       "teams": [],
       "matches": [],
       "standings": [
@@ -1788,81 +1788,81 @@
           "team": "JDG",
           "name": "Beijing JDG Esports",
           "rating": 1311,
-          "advance": 72.54,
-          "finals": 23.65,
-          "champ": 11.39
+          "advance": 71.35,
+          "finals": 22.51,
+          "champ": 10.73
         },
         {
           "team": "WE",
           "name": "Xi'an Team WE",
           "rating": 1283,
           "advance": 100,
-          "finals": 24.85,
-          "champ": 9.96
+          "finals": 24.3,
+          "champ": 9.56
         },
         {
           "team": "LGD",
           "name": "LGD Gaming",
           "rating": 1260,
           "advance": 100,
-          "finals": 19.01,
-          "champ": 6.54
+          "finals": 18.16,
+          "champ": 6.27
         },
         {
           "team": "KT",
           "name": "kt Rolster",
           "rating": 1381,
           "advance": 100,
-          "finals": 60.41,
-          "champ": 45.58
+          "finals": 59.18,
+          "champ": 44.18
         },
         {
           "team": "BFX",
           "name": "BNK FEARX",
           "rating": 1254,
           "advance": 100,
-          "finals": 17.46,
-          "champ": 5.71
+          "finals": 16.99,
+          "champ": 5.46
         },
         {
           "team": "BRO",
           "name": "Hanjin BRION",
           "rating": 1209,
           "advance": 100,
-          "finals": 9.14,
-          "champ": 2.13
+          "finals": 8.68,
+          "champ": 2.03
         },
         {
           "team": "NAVI",
           "name": "Natus Vincere",
           "rating": 1205,
-          "advance": 31.21,
-          "finals": 2.96,
-          "champ": 0.67
+          "advance": 28.65,
+          "finals": 2.64,
+          "champ": 0.6
         },
         {
           "team": "VIT",
           "name": "Team Vitality",
           "rating": 1257,
           "advance": 100,
-          "finals": 18.31,
-          "champ": 6.19
+          "finals": 17.39,
+          "champ": 5.85
         },
         {
           "team": "SR",
           "name": "Shopify Rebellion",
           "rating": 1196,
-          "advance": 12.67,
-          "finals": 1.17,
-          "champ": 0.25
+          "advance": 0,
+          "finals": 0,
+          "champ": 0
         },
         {
           "team": "FLY",
           "name": "FlyQuest",
           "rating": 1325,
-          "advance": 60.33,
-          "finals": 21.82,
-          "champ": 11.36
+          "advance": 79.62,
+          "finals": 29.06,
+          "champ": 15.13
         },
         {
           "team": "GAM",
@@ -1876,9 +1876,9 @@
           "team": "RED",
           "name": "RED Canids Kalunga",
           "rating": 1168,
-          "advance": 23.25,
-          "finals": 1.24,
-          "champ": 0.22
+          "advance": 20.38,
+          "finals": 1.09,
+          "champ": 0.2
         }
       ],
       "situations": [],
@@ -1913,6 +1913,6 @@
     "LEC": "{\"po\":{\"totalRows\":8,\"rounds\":[{\"title\":\"\",\"matches\":[{\"id\":\"115548681803406291\",\"title\":\"상위권 대진 - 1라운드\",\"a\":{\"seed\":\"1위\",\"short\":\"KC\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"4위\",\"short\":\"GX\",\"score\":1},\"startRow\":0},{\"id\":\"115548681803406297\",\"title\":\"상위권 대진 - 1라운드\",\"a\":{\"seed\":\"3위\",\"short\":\"G2\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"2위\",\"short\":\"VIT\",\"score\":0},\"startRow\":2},{\"id\":\"115548681803406309\",\"title\":\"하위권 대진 - 1라운드\",\"a\":{\"seed\":\"\",\"short\":\"GX\",\"score\":2,\"elim\":true},\"b\":{\"seed\":\"5위\",\"short\":\"NAVI\",\"score\":3,\"win\":true},\"startRow\":4},{\"id\":\"115548681803406315\",\"title\":\"하위권 대진 - 1라운드\",\"a\":{\"seed\":\"\",\"short\":\"VIT\",\"score\":2,\"elim\":true},\"b\":{\"seed\":\"6위\",\"short\":\"MKOI\",\"score\":3,\"win\":true},\"startRow\":6}]},{\"title\":\"\",\"matches\":[{\"id\":\"115548681803406303\",\"title\":\"상위권 대진 - 2라운드\",\"a\":{\"seed\":\"상위권 대진 - 1라운드 승자\",\"short\":\"KC\",\"score\":1},\"b\":{\"seed\":\"상위권 대진 - 1라운드 승자\",\"short\":\"G2\",\"score\":3,\"win\":true},\"startRow\":1},{\"id\":\"115548681803406321\",\"title\":\"하위권 대진 - 2라운드\",\"a\":{\"seed\":\"하위권 대진 - 1라운드 승자\",\"short\":\"NAVI\",\"score\":1,\"elim\":true},\"b\":{\"seed\":\"하위권 대진 - 1라운드 승자\",\"short\":\"MKOI\",\"score\":3,\"win\":true},\"startRow\":5}]},{\"title\":\"\",\"matches\":[{\"id\":\"115548681803406327\",\"title\":\"하위권 대진 - 3라운드\",\"a\":{\"seed\":\"하위권 대진 - 2라운드 승자\",\"short\":\"MKOI\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"상위권 대진 - 2라운드 패자\",\"short\":\"KC\",\"score\":0,\"elim\":true},\"startRow\":5}]},{\"title\":\"\",\"matches\":[{\"id\":\"115548681803406333\",\"title\":\"결승\",\"a\":{\"seed\":\"상위권 대진 - 2라운드 승자\",\"short\":\"G2\",\"score\":3,\"msi\":true},\"b\":{\"seed\":\"하위권 대진 - 3라운드 승자\",\"short\":\"MKOI\",\"score\":0,\"elim\":true},\"startRow\":3}]}],\"connectors\":[[0,0,\"mid\",1,0,\"a\"],[0,1,\"mid\",1,0,\"b\"],[0,2,\"mid\",1,1,\"a\"],[0,3,\"mid\",1,1,\"b\"],[1,1,\"mid\",2,0,\"a\"],[1,0,\"mid\",2,0,\"b\"],[1,0,\"mid\",3,0,\"a\"],[2,0,\"mid\",3,0,\"b\"]]}}",
     "LCS": "{\"po\":{\"totalRows\":10,\"rounds\":[{\"title\":\"\",\"matches\":[{\"id\":\"115565004607949375\",\"title\":\"상위권 대진 - 8강\",\"a\":{\"seed\":\"\",\"short\":\"SR\",\"score\":0},\"b\":{\"seed\":\"\",\"short\":\"C9\",\"score\":3,\"win\":true},\"startRow\":0},{\"id\":\"115565004607949381\",\"title\":\"상위권 대진 - 8강\",\"a\":{\"seed\":\"\",\"short\":\"FLY\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"\",\"short\":\"SEN\",\"score\":0},\"startRow\":4},{\"id\":\"115565004607949399\",\"title\":\"하위권 대진 - 1라운드\",\"a\":{\"seed\":\"상위권 대진 - 8강 패자\",\"short\":\"SR\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"상위권 대진 - 8강 패자\",\"short\":\"SEN\",\"score\":2,\"elim\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565004607949387\",\"title\":\"상위권 대진 - 4강\",\"a\":{\"seed\":\"\",\"short\":\"LYON\",\"score\":1},\"b\":{\"seed\":\"상위권 대진 - 8강 승자\",\"short\":\"C9\",\"score\":3,\"win\":true},\"startRow\":0},{\"id\":\"115565004607949393\",\"title\":\"상위권 대진 - 4강\",\"a\":{\"seed\":\"상위권 대진 - 8강 승자\",\"short\":\"FLY\",\"score\":0},\"b\":{\"seed\":\"\",\"short\":\"TLAW\",\"score\":3,\"win\":true},\"startRow\":4},{\"id\":\"115565004607949411\",\"title\":\"하위권 대진 - 2라운드\",\"a\":{\"seed\":\"\",\"short\":\"FLY\",\"score\":2,\"elim\":true},\"b\":{\"seed\":\"하위권 대진 - 1라운드 승자\",\"short\":\"SR\",\"score\":3,\"win\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565004607949405\",\"title\":\"상위권 대진 - 결승\",\"a\":{\"seed\":\"상위권 대진 - 4강 승자\",\"short\":\"C9\",\"score\":1},\"b\":{\"seed\":\"상위권 대진 - 4강 승자\",\"short\":\"TLAW\",\"score\":3,\"win\":true},\"startRow\":2},{\"id\":\"115565004607949417\",\"title\":\"하위권 대진 - 4강\",\"a\":{\"seed\":\"\",\"short\":\"LYON\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"하위권 대진 - 2라운드 승자\",\"short\":\"SR\",\"score\":1,\"elim\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565004607949423\",\"title\":\"하위권 대진 - 결승\",\"a\":{\"seed\":\"상위권 대진 - 결승 패자\",\"short\":\"C9\",\"score\":1,\"elim\":true},\"b\":{\"seed\":\"하위권 대진 - 4강 승자\",\"short\":\"LYON\",\"score\":3,\"win\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565004607949429\",\"title\":\"결승\",\"a\":{\"seed\":\"상위권 대진 - 결승 승자\",\"short\":\"TLAW\",\"score\":3,\"msi\":true},\"b\":{\"seed\":\"하위권 대진 - 결승 승자\",\"short\":\"LYON\",\"score\":1,\"elim\":true},\"startRow\":5}]}],\"connectors\":[[0,0,\"mid\",1,0,\"b\"],[0,1,\"mid\",1,1,\"a\"],[0,2,\"mid\",1,2,\"b\"],[1,2,\"mid\",2,1,\"b\"],[1,0,\"mid\",2,0,\"a\"],[1,1,\"mid\",2,0,\"b\"],[2,0,\"mid\",3,0,\"a\"],[2,1,\"mid\",3,0,\"b\"],[2,0,\"mid\",4,0,\"a\"],[3,0,\"mid\",4,0,\"b\"]]}}",
     "CBLOL": "{\"po\":{\"totalRows\":10,\"rounds\":[{\"title\":\"\",\"matches\":[{\"id\":\"115565671526403057\",\"title\":\"상위권 대진 - 8강\",\"a\":{\"seed\":\"\",\"short\":\"RED\",\"score\":0},\"b\":{\"seed\":\"\",\"short\":\"FUR\",\"score\":3,\"win\":true},\"startRow\":0},{\"id\":\"115565671526403063\",\"title\":\"상위권 대진 - 8강\",\"a\":{\"seed\":\"\",\"short\":\"PAIN\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"\",\"short\":\"VKS\",\"score\":1},\"startRow\":4},{\"id\":\"115565671526403081\",\"title\":\"하위권 대진 - 1라운드\",\"a\":{\"seed\":\"상위권 대진 - 8강 패자\",\"short\":\"RED\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"상위권 대진 - 8강 패자\",\"short\":\"VKS\",\"score\":0,\"elim\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565671526403069\",\"title\":\"상위권 대진 - 4강\",\"a\":{\"seed\":\"\",\"short\":\"LOS\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"상위권 대진 - 8강 승자\",\"short\":\"FUR\",\"score\":1},\"startRow\":0},{\"id\":\"115565671526403075\",\"title\":\"상위권 대진 - 4강\",\"a\":{\"seed\":\"상위권 대진 - 8강 승자\",\"short\":\"PAIN\",\"score\":1},\"b\":{\"seed\":\"\",\"short\":\"LOUD\",\"score\":3,\"win\":true},\"startRow\":4},{\"id\":\"115565671526468629\",\"title\":\"하위권 대진 - 2라운드\",\"a\":{\"seed\":\"\",\"short\":\"PAIN\",\"score\":1,\"elim\":true},\"b\":{\"seed\":\"하위권 대진 - 1라운드 승자\",\"short\":\"RED\",\"score\":3,\"win\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565671526468623\",\"title\":\"상위권 대진 - 결승\",\"a\":{\"seed\":\"상위권 대진 - 4강 승자\",\"short\":\"LOS\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"상위권 대진 - 4강 승자\",\"short\":\"LOUD\",\"score\":2},\"startRow\":2},{\"id\":\"115565671526468635\",\"title\":\"하위권 대진 - 4강\",\"a\":{\"seed\":\"\",\"short\":\"FUR\",\"score\":3,\"win\":true},\"b\":{\"seed\":\"하위권 대진 - 2라운드 승자\",\"short\":\"RED\",\"score\":2,\"elim\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565671526468641\",\"title\":\"하위권 대진 - 결승\",\"a\":{\"seed\":\"상위권 대진 - 결승 패자\",\"short\":\"LOUD\",\"score\":0,\"elim\":true},\"b\":{\"seed\":\"하위권 대진 - 4강 승자\",\"short\":\"FUR\",\"score\":3,\"win\":true},\"startRow\":8}]},{\"title\":\"\",\"matches\":[{\"id\":\"115565671526468647\",\"title\":\"결승\",\"a\":{\"seed\":\"상위권 대진 - 결승 승자\",\"short\":\"LOS\"},\"b\":{\"seed\":\"하위권 대진 - 결승 승자\",\"short\":\"FUR\"},\"startRow\":5,\"time\":\"10/11 01:00\"}]}],\"connectors\":[[0,0,\"mid\",1,0,\"b\"],[0,1,\"mid\",1,1,\"a\"],[0,2,\"mid\",1,2,\"b\"],[1,2,\"mid\",2,1,\"b\"],[1,0,\"mid\",2,0,\"a\"],[1,1,\"mid\",2,0,\"b\"],[2,0,\"mid\",3,0,\"a\"],[2,1,\"mid\",3,0,\"b\"],[2,0,\"mid\",4,0,\"a\"],[3,0,\"mid\",4,0,\"b\"]]}}",
-    "DCGI": "{\"q\":[{\"seed\":\"LPL #5\",\"short\":\"JDG\"},{\"seed\":\"LPL #6\",\"short\":\"WE\"},{\"seed\":\"LPL #7\",\"short\":\"LGD\"},{\"seed\":\"LCK #5\",\"short\":\"KT\"},{\"seed\":\"LCK #6\",\"short\":\"BFX\"},{\"seed\":\"LCK #7\",\"short\":\"BRO\"},{\"seed\":\"LEC #4\",\"short\":\"NAVI\"},{\"seed\":\"LEC #5\",\"short\":\"VIT\"},{\"seed\":\"LCS #4\",\"short\":\"SR\"},{\"seed\":\"LCS #5\",\"short\":\"FLY\"},{\"seed\":\"LCP #4\",\"short\":\"GAM\"},{\"seed\":\"CBLOL #4\",\"short\":\"RED\"}],\"g\":{\"matches\":[{\"id\":\"M1\",\"day\":\"10-03\",\"time\":\"17:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"RED\",\"b\":\"NAVI\",\"scoreA\":1,\"scoreB\":0,\"winner\":\"RED\",\"state\":\"scheduled\"},{\"id\":\"M2\",\"day\":\"10-03\",\"time\":\"18:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"LGD\",\"b\":\"FLY\",\"scoreA\":1,\"scoreB\":0,\"winner\":\"LGD\",\"state\":\"scheduled\"},{\"id\":\"M3\",\"day\":\"10-03\",\"time\":\"19:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"SR\",\"b\":\"KT\",\"scoreA\":0,\"scoreB\":1,\"winner\":\"KT\",\"state\":\"scheduled\"},{\"id\":\"M4\",\"day\":\"10-03\",\"time\":\"20:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"VIT\",\"b\":\"BFX\",\"scoreA\":0,\"scoreB\":1,\"winner\":\"BFX\",\"state\":\"scheduled\"},{\"id\":\"M5\",\"day\":\"10-03\",\"time\":\"21:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"GAM\",\"b\":\"WE\",\"scoreA\":0,\"scoreB\":1,\"winner\":\"WE\",\"state\":\"scheduled\"},{\"id\":\"M6\",\"day\":\"10-03\",\"time\":\"22:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"BRO\",\"b\":\"JDG\",\"scoreA\":1,\"scoreB\":0,\"winner\":\"BRO\",\"state\":\"scheduled\"},{\"id\":\"M7\",\"day\":\"10-04\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"1-0\",\"a\":\"LGD\",\"b\":\"BFX\",\"scoreA\":1,\"scoreB\":2,\"winner\":\"BFX\",\"state\":\"scheduled\"},{\"id\":\"M8\",\"day\":\"10-04\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"1-0\",\"a\":\"RED\",\"b\":\"KT\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"KT\",\"state\":\"scheduled\"},{\"id\":\"M9\",\"day\":\"10-04\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"1-0\",\"a\":\"WE\",\"b\":\"BRO\",\"scoreA\":2,\"scoreB\":1,\"winner\":\"WE\",\"state\":\"scheduled\"},{\"id\":\"M10\",\"day\":\"10-05\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"0-1\",\"a\":\"GAM\",\"b\":\"VIT\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"VIT\",\"state\":\"scheduled\"},{\"id\":\"M11\",\"day\":\"10-05\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"0-1\",\"a\":\"NAVI\",\"b\":\"FLY\",\"scoreA\":2,\"scoreB\":0,\"winner\":\"NAVI\",\"state\":\"scheduled\"},{\"id\":\"M12\",\"day\":\"10-05\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"0-1\",\"a\":\"SR\",\"b\":\"JDG\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"JDG\",\"state\":\"scheduled\"},{\"id\":\"M13\",\"day\":\"10-06\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"1-1\",\"a\":\"BRO\",\"b\":\"NAVI\",\"scoreA\":2,\"scoreB\":1,\"winner\":\"BRO\",\"state\":\"scheduled\"},{\"id\":\"M14\",\"day\":\"10-06\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"1-1\",\"a\":\"VIT\",\"b\":\"RED\",\"scoreA\":2,\"scoreB\":0,\"winner\":\"VIT\",\"state\":\"scheduled\"},{\"id\":\"M15\",\"day\":\"10-06\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"1-1\",\"a\":\"JDG\",\"b\":\"LGD\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"LGD\",\"state\":\"scheduled\"},{\"id\":\"M16\",\"day\":\"10-07\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"0-2 RR\",\"a\":\"GAM\",\"b\":\"FLY\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"FLY\",\"state\":\"scheduled\"},{\"id\":\"M17\",\"day\":\"10-07\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"0-2 RR\",\"a\":\"SR\",\"b\":\"GAM\",\"scoreA\":2,\"scoreB\":0,\"winner\":\"SR\",\"state\":\"scheduled\"},{\"id\":\"M18\",\"day\":\"10-07\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"0-2 RR\",\"a\":\"FLY\",\"b\":\"SR\",\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"M19\",\"day\":\"10-08\",\"format\":\"Bo3\",\"bracket\":\"1-2 & 0-2 1st\",\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"M20\",\"day\":\"10-08\",\"format\":\"Bo3\",\"bracket\":\"1-2 & 0-2 1st\",\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"}],\"advancing\":{\"note\":\"8팀 진출: M7-M9 승자 3팀 (1-0) + M13-M15 승자 3팀 (1-1) + M19-M20 승자 2팀 (1-2 & 0-2 1st). 탈락: M16-M18 2·3위 + M19-M20 패자.\",\"seeds\":[{\"seed\":1,\"from\":\"M7:W\",\"short\":\"BFX\"},{\"seed\":2,\"from\":\"M8:W\",\"short\":\"KT\"},{\"seed\":3,\"from\":\"M9:W\",\"short\":\"WE\"},{\"seed\":4,\"from\":\"M13:W\",\"short\":\"BRO\"},{\"seed\":5,\"from\":\"M14:W\",\"short\":\"VIT\"},{\"seed\":6,\"from\":\"M15:W\",\"short\":\"LGD\"},{\"seed\":7,\"from\":\"M19:W\",\"short\":null},{\"seed\":8,\"from\":\"M20:W\",\"short\":null}]}},\"k\":{\"matches\":[{\"id\":\"M21\",\"day\":\"10-12\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"M22\",\"day\":\"10-12\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"M23\",\"day\":\"10-13\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"M24\",\"day\":\"10-13\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"M25\",\"day\":\"10-14\",\"format\":\"Bo5\",\"round\":\"4강\",\"prev\":{\"a\":\"M21:W\",\"b\":\"M22:W\"},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"M26\",\"day\":\"10-15\",\"format\":\"Bo5\",\"round\":\"4강\",\"prev\":{\"a\":\"M23:W\",\"b\":\"M24:W\"},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"},{\"id\":\"GF\",\"day\":\"10-17\",\"format\":\"Bo5\",\"round\":\"결승\",\"prev\":{\"a\":\"M25:W\",\"b\":\"M26:W\"},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\"}]}}"
+    "DCGI": "{\"q\":[{\"seed\":\"LPL #5\",\"short\":\"JDG\"},{\"seed\":\"LPL #6\",\"short\":\"WE\"},{\"seed\":\"LPL #7\",\"short\":\"LGD\"},{\"seed\":\"LCK #5\",\"short\":\"KT\"},{\"seed\":\"LCK #6\",\"short\":\"BFX\"},{\"seed\":\"LCK #7\",\"short\":\"BRO\"},{\"seed\":\"LEC #4\",\"short\":\"NAVI\"},{\"seed\":\"LEC #5\",\"short\":\"VIT\"},{\"seed\":\"LCS #4\",\"short\":\"SR\"},{\"seed\":\"LCS #5\",\"short\":\"FLY\"},{\"seed\":\"LCP #4\",\"short\":\"GAM\"},{\"seed\":\"CBLOL #4\",\"short\":\"RED\"}],\"g\":{\"matches\":[{\"id\":\"M1\",\"day\":\"10-03\",\"time\":\"17:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"RED\",\"b\":\"NAVI\",\"scoreA\":1,\"scoreB\":0,\"winner\":\"RED\",\"state\":\"completed\",\"apiMatchId\":\"117133805552196841\"},{\"id\":\"M2\",\"day\":\"10-03\",\"time\":\"18:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"LGD\",\"b\":\"FLY\",\"scoreA\":1,\"scoreB\":0,\"winner\":\"LGD\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262379\"},{\"id\":\"M3\",\"day\":\"10-03\",\"time\":\"19:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"SR\",\"b\":\"KT\",\"scoreA\":0,\"scoreB\":1,\"winner\":\"KT\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262381\"},{\"id\":\"M4\",\"day\":\"10-03\",\"time\":\"20:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"VIT\",\"b\":\"BFX\",\"scoreA\":0,\"scoreB\":1,\"winner\":\"BFX\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262383\"},{\"id\":\"M5\",\"day\":\"10-03\",\"time\":\"21:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"GAM\",\"b\":\"WE\",\"scoreA\":0,\"scoreB\":1,\"winner\":\"WE\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262385\"},{\"id\":\"M6\",\"day\":\"10-03\",\"time\":\"22:00\",\"format\":\"Bo1\",\"bracket\":\"0-0\",\"a\":\"BRO\",\"b\":\"JDG\",\"scoreA\":1,\"scoreB\":0,\"winner\":\"BRO\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262387\"},{\"id\":\"M7\",\"day\":\"10-04\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"1-0\",\"a\":\"LGD\",\"b\":\"BFX\",\"scoreA\":1,\"scoreB\":2,\"winner\":\"BFX\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262389\"},{\"id\":\"M8\",\"day\":\"10-04\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"1-0\",\"a\":\"RED\",\"b\":\"KT\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"KT\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262393\"},{\"id\":\"M9\",\"day\":\"10-04\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"1-0\",\"a\":\"WE\",\"b\":\"BRO\",\"scoreA\":2,\"scoreB\":1,\"winner\":\"WE\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262397\"},{\"id\":\"M10\",\"day\":\"10-05\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"0-1\",\"a\":\"GAM\",\"b\":\"VIT\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"VIT\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262401\"},{\"id\":\"M11\",\"day\":\"10-05\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"0-1\",\"a\":\"NAVI\",\"b\":\"FLY\",\"scoreA\":2,\"scoreB\":0,\"winner\":\"NAVI\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262405\"},{\"id\":\"M12\",\"day\":\"10-05\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"0-1\",\"a\":\"SR\",\"b\":\"JDG\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"JDG\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262409\"},{\"id\":\"M13\",\"day\":\"10-06\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"1-1\",\"a\":\"BRO\",\"b\":\"NAVI\",\"scoreA\":2,\"scoreB\":1,\"winner\":\"BRO\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262413\"},{\"id\":\"M14\",\"day\":\"10-06\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"1-1\",\"a\":\"VIT\",\"b\":\"RED\",\"scoreA\":2,\"scoreB\":0,\"winner\":\"VIT\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262417\"},{\"id\":\"M15\",\"day\":\"10-06\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"1-1\",\"a\":\"JDG\",\"b\":\"LGD\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"LGD\",\"state\":\"completed\",\"apiMatchId\":\"117133805552262421\"},{\"id\":\"M16\",\"day\":\"10-07\",\"time\":\"16:00\",\"format\":\"Bo3\",\"bracket\":\"0-2 RR\",\"a\":\"GAM\",\"b\":\"FLY\",\"scoreA\":0,\"scoreB\":2,\"winner\":\"FLY\",\"state\":\"completed\",\"apiMatchId\":\"117133816701918794\"},{\"id\":\"M17\",\"day\":\"10-07\",\"time\":\"18:00\",\"format\":\"Bo3\",\"bracket\":\"0-2 RR\",\"a\":\"SR\",\"b\":\"GAM\",\"scoreA\":2,\"scoreB\":0,\"winner\":\"SR\",\"state\":\"completed\",\"apiMatchId\":\"117133816701918798\"},{\"id\":\"M18\",\"day\":\"10-07\",\"time\":\"20:00\",\"format\":\"Bo3\",\"bracket\":\"0-2 RR\",\"a\":\"FLY\",\"b\":\"SR\",\"scoreA\":2,\"scoreB\":1,\"winner\":\"FLY\",\"state\":\"completed\",\"apiMatchId\":\"117133816701918802\"},{\"id\":\"M19\",\"day\":\"10-08\",\"format\":\"Bo3\",\"bracket\":\"1-2 & 0-2 1st\",\"a\":\"FLY\",\"b\":\"RED\",\"scoreA\":0,\"scoreB\":0,\"winner\":null,\"state\":\"scheduled\",\"time\":\"18:00\",\"apiMatchId\":\"117133830114188936\"},{\"id\":\"M20\",\"day\":\"10-08\",\"format\":\"Bo3\",\"bracket\":\"1-2 & 0-2 1st\",\"a\":\"NAVI\",\"b\":\"JDG\",\"scoreA\":0,\"scoreB\":0,\"winner\":null,\"state\":\"scheduled\",\"time\":\"20:00\",\"apiMatchId\":\"117133830114188940\"}],\"advancing\":{\"note\":\"8팀 진출: M7-M9 승자 3팀 (1-0) + M13-M15 승자 3팀 (1-1) + M19-M20 승자 2팀 (1-2 & 0-2 1st). 탈락: M16-M18 2·3위 + M19-M20 패자.\",\"seeds\":[{\"seed\":1,\"from\":\"M7:W\",\"short\":\"BFX\"},{\"seed\":2,\"from\":\"M8:W\",\"short\":\"KT\"},{\"seed\":3,\"from\":\"M9:W\",\"short\":\"WE\"},{\"seed\":4,\"from\":\"M13:W\",\"short\":\"BRO\"},{\"seed\":5,\"from\":\"M14:W\",\"short\":\"VIT\"},{\"seed\":6,\"from\":\"M15:W\",\"short\":\"LGD\"},{\"seed\":7,\"from\":\"M19:W\",\"short\":null},{\"seed\":8,\"from\":\"M20:W\",\"short\":null}]}},\"k\":{\"matches\":[{\"id\":\"M21\",\"day\":\"10-12\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\",\"time\":\"15:00\",\"apiMatchId\":\"117133830110912093\"},{\"id\":\"M22\",\"day\":\"10-12\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\",\"time\":\"18:00\",\"apiMatchId\":\"117133830110912099\"},{\"id\":\"M23\",\"day\":\"10-13\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\",\"time\":\"15:00\",\"apiMatchId\":\"117133830110912105\"},{\"id\":\"M24\",\"day\":\"10-13\",\"format\":\"Bo5\",\"round\":\"8강\",\"prev\":{\"a\":null,\"b\":null},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\",\"time\":\"18:00\",\"apiMatchId\":\"117133830110912111\"},{\"id\":\"M25\",\"day\":\"10-14\",\"format\":\"Bo5\",\"round\":\"4강\",\"prev\":{\"a\":\"M21:W\",\"b\":\"M22:W\"},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\",\"time\":\"18:00\",\"apiMatchId\":\"117133830110912117\"},{\"id\":\"M26\",\"day\":\"10-15\",\"format\":\"Bo5\",\"round\":\"4강\",\"prev\":{\"a\":\"M23:W\",\"b\":\"M24:W\"},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\",\"time\":\"18:00\",\"apiMatchId\":\"117133830110912123\"},{\"id\":\"GF\",\"day\":\"10-17\",\"format\":\"Bo5\",\"round\":\"결승\",\"prev\":{\"a\":\"M25:W\",\"b\":\"M26:W\"},\"a\":null,\"b\":null,\"scoreA\":null,\"scoreB\":null,\"winner\":null,\"state\":\"scheduled\",\"time\":\"18:00\",\"apiMatchId\":\"117133830110912129\"}]}}"
   }
 }
