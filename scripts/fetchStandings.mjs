@@ -2571,13 +2571,27 @@ try {
       });
     }
     const qualifiers = computeWorldsQualifiers(data);
+    // Worlds 일정(KST) — getSchedule 전 페이지에서 match.id → 시작시각, 미진행 경기에 'M/D HH:MM' 라벨.
+    const wTimes = {};
+    try {
+      let token = null;
+      for (let g = 0; g < 10; g++) {
+        const params = { leagueId: '98767975604431411' };
+        if (token) params.pageToken = token;
+        const { data: sd } = await api('getSchedule', params);
+        for (const e of sd.schedule.events || []) if (e.type === 'match' && e.state !== 'completed' && e.match?.id && e.startTime) wTimes[e.match.id] = e.startTime;
+        token = sd.schedule.pages?.newer;
+        if (!token) break;
+      }
+    } catch (e) { console.warn(`Worlds 일정 조회 실패(무시): ${e.message}`); }
     data.standings.worlds = {
       stage: '2026 Worlds · 플레이-인 → 스위스 → 녹아웃',
       qualifiers,
-      playin: worldsPlayinNames(apply4TeamDELayout(bySlug['play_ins'])),
-      swiss: swiss || null,
-      knockout: applySingleElimLayout(bySlug['knockouts']),
+      playin: attachSchedule(worldsPlayinNames(apply4TeamDELayout(bySlug['play_ins'])), wTimes),
+      swiss: attachSchedule(swiss || null, wTimes),
+      knockout: attachSchedule(applySingleElimLayout(bySlug['knockouts']), wTimes),
     };
+    console.log(`Worlds 일정 반영: ${Object.keys(wTimes).length}경기`);
     const cnt = (b) => b ? b.rounds.reduce((n, r) => n + r.matches.length, 0) : 0;
     console.log(`Worlds 대진 갱신 (플레이-인 ${cnt(bySlug['play_ins'])}경기 / 스위스 ${cnt(swiss)}경기 / 녹아웃 ${cnt(bySlug['knockouts'])}경기 · 참가팀 자동 ${qualifiers.filter((q) => q.short).length}/${qualifiers.length}팀)`);
   }

@@ -395,7 +395,8 @@ const BracketLegend = ({ goldLabel = '우승/진출' }) => (
 //   msiSet(진출/우승) = 금색, 매치 승자 = 파랑, elimSet = 빨강.
 //   connectors: [srcMatchId, destMatchId, destSlot('a'|'b')] — 매치 카드 간 SVG 연결선.
 // msiMatchIds: 지정 시 진출(금색)은 해당 매치(진출 확정 경기)의 승자에게만 — 0-0 등 관련 없는 경기엔 표시하지 않음.
-const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, connectors, onTeamClick, teamOverride }) => {
+// elimMatchIds: 지정 시 탈락(빨강)은 해당 매치(탈락 결정 경기)의 패자에게만.
+const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, elimMatchIds, connectors, onTeamClick, teamOverride }) => {
   const teamMap = Object.fromEntries((teams || []).map((t) => [t.slot, t]));
   const resolveShort = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
   const wrapRef = useRef(null);
@@ -410,7 +411,7 @@ const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, connecto
       if (flag !== undefined) { if (flag) slot[flag] = true; }
       else if (msiSet?.has(short) && (!msiMatchIds || (isWinner && msiMatchIds.includes(matchId)))) slot.msi = true;
       else if (isWinner) slot.win = true;
-      else if (elimSet?.has(short)) slot.elim = true;
+      else if (elimSet?.has(short) && (!elimMatchIds || elimMatchIds.includes(matchId))) slot.elim = true;
     }
     if (score != null) slot.score = score;
     return slot;
@@ -632,6 +633,7 @@ const SwissBracket = ({ swiss, onTeamClick, bo, teamOverride }) => {
         const boN = boFor(rec, ms[0]);
         return {
           label: boN ? `${rec} · Bo${boN}` : rec, // "m-n" (+ Bo)
+          showMatchDate: true, // 경기 일정(m.time) 표시
           matches: ms.map((m) => {
             const a = m.a?.short, b = m.b?.short, w = winnerOf(m);
             let aFlag, bFlag;
@@ -645,7 +647,7 @@ const SwissBracket = ({ swiss, onTeamClick, bo, teamOverride }) => {
               }
               if (loser && L === CLINCH - 1) { if (loser === a) aFlag = 'elim'; else bFlag = 'elim'; }  // 2패 매치 패자 = 탈락
             }
-            return { id: m.id, name: '', a, b, winner: w, scoreA: m.a?.score, scoreB: m.b?.score, aFlag, bFlag };
+            return { id: m.id, name: '', time: m.time, a, b, winner: w, scoreA: m.a?.score, scoreB: m.b?.score, aFlag, bFlag };
           }),
         };
       }),
@@ -1718,6 +1720,10 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           list = qualifiers;
         }
         if (!list.length) return null;
+        // 탈락 팀 회색 — 그룹 스테이지 목록: 그룹 탈락 팀만 / 녹아웃 목록: 녹아웃 탈락 팀만.
+        const elimShorts = stage === '녹아웃 스테이지'
+          ? computeKnockoutEliminated(official?.knockout?.matches || [], teamMap)
+          : computeGroupEliminated(gm, teamMap);
         // 진출(녹아웃 진출) = DCGI 상징색, 우승 = 기존 골드. 녹아웃 스테이지에선 진출 생략, 종료 시 전부 숨김.
         const finished = comp.status === 'finished';
         //   상징색(#1826a1)은 어두운 배경에서 숫자가 안 보여 수치 텍스트만 같은 계열의 밝은 톤을 쓴다.
@@ -1743,8 +1749,10 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                   {q.short ? (
                     <>
                       <div className="flex items-center gap-2 min-w-0">
-                        <TeamLogo src={logoByShort[q.short]} size={20} />
-                        <span className="font-bold truncate text-white/90">{nameByShort[q.short] || q.short}</span>
+                        <div className="shrink-0" style={elimShorts.has(q.short) ? { filter: 'grayscale(1)', opacity: 0.4 } : undefined}>
+                          <TeamLogo src={logoByShort[q.short]} size={20} />
+                        </div>
+                        <span className={`font-bold truncate ${elimShorts.has(q.short) ? 'text-white/35' : 'text-white/90'}`}>{nameByShort[q.short] || q.short}</span>
                         {q.seed && <span className="text-[10px] text-white/40 shrink-0 ml-auto">{q.seed}</span>}
                       </div>
                       {(showAdvance || showChamp) && (
@@ -1826,6 +1834,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
                 msiSet={msiSet}
                 msiMatchIds={['M7','M8','M9','M13','M14','M15','M16','M17','M18','M19','M20']}
                 elimSet={elimSet}
+                elimMatchIds={['M16','M17','M18','M19','M20']}
                 onTeamClick={onTeamClick}
               />
               {makeLegend('진출')}
