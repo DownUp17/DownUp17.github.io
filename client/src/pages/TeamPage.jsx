@@ -7,6 +7,8 @@ import rosters from '../data/lolRosters.json';
 import gprTeamsData from '../data/gprTeams.json';
 import gpr from '../data/lolGpr.json';
 import teamTitles from '../data/lolTitles.json';
+import playerStats from '../data/lolPlayerStats.json';
+import leaguesData from '../data/lolLeagues.json';
 import { textOn } from '../utils/colorContrast';
 import t1Bg from '../assets/champion-bg/t1.webp';
 import krxBg from '../assets/champion-bg/krx.webp';
@@ -29,6 +31,11 @@ const CHAMPION_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN:
 const CHAMPION_BG_CONTAIN = new Set(['IG']);
 
 const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
+// lolesports getLeagues — 리그 공식 로고(리그 이름 → 이미지)
+const leagueLogo = Object.fromEntries((leaguesData.leagues || []).map((l) => [l.name.toUpperCase(), l.image]));
+// 시즌 기록(lolPlayerStats.json, livestats 집계) — esports 선수 ID로 연결
+const statOf = (p) => (p?.id ? playerStats.players?.[p.id] : null);
+const pct = (x) => (x == null ? '-' : `${Math.round(x * 100)}%`);
 
 const TeamPage = () => {
   const { teamShort } = useParams();
@@ -124,8 +131,8 @@ const TeamPage = () => {
 
         {/* 팀 헤더 */}
         <div className="flex items-center gap-5 mb-8 pb-8" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-          {team.logo && (
-            <img src={team.logo} alt={team.short} className="w-20 h-20 object-contain shrink-0" />
+          {(team.logo || roster?.team?.image) && (
+            <img src={team.logo || roster.team.image} alt={team.short} className="w-20 h-20 object-contain shrink-0" />
           )}
           <div>
             <div className="flex items-center gap-3 flex-wrap mb-1">
@@ -134,12 +141,14 @@ const TeamPage = () => {
                 className="text-sm font-black px-2.5 py-1 rounded-lg"
                 style={{ backgroundColor: leagueColor, color: textOn(leagueColor) }}
               >
+                {leagueLogo[team.league?.toUpperCase()] && <img src={leagueLogo[team.league.toUpperCase()]} alt="" className="inline-block w-4 h-4 object-contain mr-1 -mt-0.5" />}
                 {team.league}
               </span>
             </div>
             <div className="flex items-center gap-4 text-sm text-white/50">
               <span>GPR <span className="font-black text-white/80">{team.score}</span></span>
               {team.w != null && <span>{team.w}승 {team.l}패</span>}
+              {roster?.team?.homeLeague?.region && <span>{roster.team.homeLeague.region}</span>}
             </div>
           </div>
         </div>
@@ -174,6 +183,12 @@ const TeamPage = () => {
                   >
                     <RoleIcon role={p.role} size={16} className="align-middle" />
                   </span>
+                  {statOf(p) && (
+                    <div className="mt-2 text-[10px] sm:text-xs text-white/50 leading-snug font-mono">
+                      <div>KDA <span className="text-white/85 font-bold">{statOf(p).kda}</span></div>
+                      <div>CS/분 {statOf(p).csm}</div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -181,6 +196,54 @@ const TeamPage = () => {
         ) : (
           <p className="text-white/30 text-sm text-center py-16">선수 정보 없음</p>
         )}
+
+        {/* 시즌 기록 — 로스터 전원(주전·후보), lolesports livestats 경기별 최종 기록 평균 */}
+        {(() => {
+          const list = ROLE_ORDER.flatMap((role) => (roster?.players ?? []).filter((p) => p.role === role))
+            .map((p) => ({ p, s: statOf(p) })).filter((x) => x.s);
+          if (!list.length) return null;
+          return (
+            <div className="mt-10">
+              <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">{playerStats.season} 시즌 기록</h2>
+              <div className="overflow-x-auto rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <table className="w-full text-xs sm:text-sm border-collapse whitespace-nowrap">
+                  <thead><tr className="text-white/40 text-[11px] border-b border-white/10">
+                    <th className="text-left font-bold py-2 px-3">선수</th>
+                    <th className="text-center font-bold py-2 px-2">경기</th>
+                    <th className="text-center font-bold py-2 px-2">K / D / A</th>
+                    <th className="text-center font-bold py-2 px-2">KDA</th>
+                    <th className="text-center font-bold py-2 px-2">CS/분</th>
+                    <th className="text-center font-bold py-2 px-2">골드/분</th>
+                    <th className="text-center font-bold py-2 px-2">딜 비중</th>
+                    <th className="text-center font-bold py-2 px-2">킬 관여</th>
+                    <th className="text-left font-bold py-2 px-3">주 챔피언</th>
+                  </tr></thead>
+                  <tbody>
+                    {list.map(({ p, s }) => (
+                      <tr key={p.name} className="border-b border-white/5 last:border-0">
+                        <td className="py-2 px-3">
+                          <span className="inline-flex items-center gap-1.5 font-bold text-white/90">
+                            <RoleIcon role={p.role} size={14} />{p.name}
+                            {p.starter === false && <span className="text-[10px] font-bold text-white/35 border border-white/15 rounded px-1">후보</span>}
+                          </span>
+                        </td>
+                        <td className="py-2 px-2 text-center font-mono text-white/60">{s.games}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/70">{s.k} / {s.d} / {s.a}</td>
+                        <td className="py-2 px-2 text-center font-mono font-bold text-white/90">{s.kda}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/70">{s.csm}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/70">{s.gpm}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/70">{pct(s.dmgShare)}</td>
+                        <td className="py-2 px-2 text-center font-mono text-white/70">{pct(s.kp)}</td>
+                        <td className="py-2 px-3 text-white/60">{(s.champions || []).slice(0, 3).map(([c, n]) => `${c} ${n}`).join(' · ')}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-white/25 text-[11px] mt-2">경기당 평균 · LCK·LPL·LEC·LCS·LCP·CBLOL·국제대회 합산 · 출처 lolesports 경기 데이터</p>
+            </div>
+          );
+        })()}
 
         {/* 우승 경력 */}
         {titles.length > 0 && (

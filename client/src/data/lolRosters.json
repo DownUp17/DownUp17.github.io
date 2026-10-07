@@ -5,6 +5,7 @@
       "id": "100205573495116443",
       "players": [
         {
+          "id": "99566404532924465",
           "name": "Kiin",
           "firstName": "Kiin",
           "lastName": "Kim",
@@ -13,6 +14,7 @@
           "starter": true
         },
         {
+          "id": "115740909072304963",
           "name": "Ripple",
           "firstName": "Jongmin",
           "lastName": "Byeon",
@@ -21,6 +23,7 @@
           "starter": false
         },
         {
+          "id": "100725844994345151",
           "name": "Canyon",
           "firstName": "Gunbu",
           "lastName": "Kim",
@@ -29,6 +32,7 @@
           "starter": true
         },
         {
+          "id": "108366460978884097",
           "name": "Courage",
           "firstName": "Hyunmin",
           "lastName": "Jeon",
@@ -37,6 +41,7 @@
           "starter": false
         },
         {
+          "id": "99871276342168416",
           "name": "Chovy",
           "firstName": "Jihun",
           "lastName": "Jung",
@@ -45,6 +50,7 @@
           "starter": true
         },
         {
+          "id": "113560610683314243",
           "name": "Kemish",
           "firstName": "Sihun",
           "lastName": "Kim",
@@ -53,6 +59,7 @@
           "starter": false
         },
         {
+          "id": "98767975906852059",
           "name": "Ruler",
           "firstName": "Jaehyeok",
           "lastName": "Park",
@@ -61,6 +68,7 @@
           "starter": true
         },
         {
+          "id": "115740899235923933",
           "name": "MUDAI",
           "firstName": "SUNGYU",
           "lastName": "LEE",
@@ -69,6 +77,7 @@
           "starter": false
         },
         {
+          "id": "107454956790371682",
           "name": "Duro",
           "firstName": "Mingyu",
           "lastName": "Ju",
@@ -77,6 +86,7 @@
           "starter": true
         },
         {
+          "id": "113740943728096233",
           "name": "SIRIUSS",
           "firstName": "Kun",
           "lastName": "Ko",
@@ -85,6 +95,7 @@
           "starter": false
         },
         {
+          "id": "115740899326939236",
           "name": "Lumos",
           "firstName": "JAEMIN",
           "lastName": "KIM",
@@ -92,12 +103,26 @@
           "image": "https://static.lolesports.com/players/1769088159344_image6-2026-01-22T142218.990.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Gen.G Esports",
+        "code": "GEN",
+        "slug": "geng",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/geng-bnm75bf5.png"
+      }
     },
     "T1": {
       "id": "98767991853197861",
       "players": [
         {
+          "id": "102186485482484390",
           "name": "Doran",
           "firstName": "Hyeonjun",
           "lastName": "Choi",
@@ -106,6 +131,7 @@
           "starter": true
         },
         {
+          "id": "115643633313408264",
           "name": "Guardian",
           "firstName": "Taehyo",
           "lastName": "Seong",
@@ -114,6 +140,7 @@
           "starter": false
         },
         {
+          "id": "113560604011392262",
           "name": "Haetae",
           "firstName": "Suhyeon",
           "lastName": "Sim",
@@ -122,6 +149,7 @@
           "starter": false
         },
         {
+          "id": "105320682452092471",
           "name": "Oner",
           "firstName": "Hyunjun",
           "lastName": "Mun",
@@ -130,6 +158,7 @@
           "starter": true
         },
         {
+          "id": "108205131230834705",
           "name": "Carim",
           "firstName": "Jaeseung",
           "lastName": "Oh",
@@ -138,6 +167,7 @@
           "starter": false
         },
         {
+          "id": "115643633228772231",
           "name": "Painter",
           "firstName": "Eunhu",
           "lastName": "Kim",
@@ -146,6 +176,7 @@
           "starter": false
         },
         {
+          "id": "98767991747728851",
           "name": "Faker",
           "firstName": "Sanghyeok",
           "lastName": "Lee",
@@ -154,6 +185,7 @@
           "starter": true
         },
         {
+          "id": "109523134874809981",
           "name": "Guti",
           "firstName": "Moon",
           "lastName": "Jeonghwan",
@@ -162,6 +194,7 @@
           "starter": false
         },
         {
+          "id": "107492068702410338",
           "name": "Peyz",
           "firstName": "SOOHWAN",
           "lastName": "Kim",
@@ -170,6 +203,7 @@
           "starter": true
         },
         {
+          "id": "108205155000821521",
           "name": "Cypher",
           "firstName": "Yoojun",
           "lastName": "Kim",
@@ -178,6 +212,7 @@
           "starter": false
         },
         {
+          "id": "116884197729505782",
           "name": "Eclipse",
           "firstName": "Minjun",
           "lastName": "Kim",
@@ -186,6 +221,7 @@
           "starter": false
         },
         {
+          "id": "111658292000001586",
           "name": "Jinbeom",
           "firstName": "Jinbeom",
           "lastName": "Cheon",
@@ -194,6 +230,7 @@
           "starter": false
         },
         {
+          "id": "103495716561790834",
           "name": "Keria",
           "firstName": "Minseok",
           "lastName": "Ryu",
@@ -202,6 +239,7 @@
           "starter": true
         },
         {
+          "id": "111658337799244461",
           "name": "Cloud ",
           "firstName": "Moon",
           "lastName": "Hyunho",
@@ -209,12 +247,26 @@
           "image": "https://static.lolesports.com/players/1769083077918_image6144.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "T1",
+        "code": "T1",
+        "slug": "t1",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+        "backgroundImage": "https://static.lolesports.com/teams/1596305556675_T1T1.png"
+      }
     },
     "HLE": {
       "id": "100205573496804586",
       "players": [
         {
+          "id": "105320680474347057",
           "name": "Zeus",
           "firstName": "Wooje",
           "lastName": "Choi",
@@ -223,6 +275,7 @@
           "starter": true
         },
         {
+          "id": "115807595873361833",
           "name": "Panther",
           "firstName": "Jiho",
           "lastName": "Park",
@@ -231,6 +284,7 @@
           "starter": false
         },
         {
+          "id": "101671284628761661",
           "name": "Kanavi",
           "firstName": "Jinhhyeok ",
           "lastName": "Seo",
@@ -239,6 +293,7 @@
           "starter": true
         },
         {
+          "id": "113740953522201854",
           "name": "Jackal",
           "firstName": "Sumin",
           "lastName": "Lee",
@@ -247,6 +302,7 @@
           "starter": false
         },
         {
+          "id": "103478281361900912",
           "name": "Zeka",
           "firstName": "Geon-Woo",
           "lastName": "Kim",
@@ -255,6 +311,7 @@
           "starter": true
         },
         {
+          "id": "115740899104327635",
           "name": "Cracker",
           "firstName": "Jeongwook",
           "lastName": "Lee",
@@ -263,6 +320,7 @@
           "starter": false
         },
         {
+          "id": "115740899171305432",
           "name": "Valiant",
           "firstName": "Ganghyeon",
           "lastName": "Han",
@@ -271,6 +329,7 @@
           "starter": false
         },
         {
+          "id": "103495716775975785",
           "name": "Gumayusi",
           "firstName": "Minhyung",
           "lastName": "Lee",
@@ -279,6 +338,7 @@
           "starter": true
         },
         {
+          "id": "113740949736514801",
           "name": "Pyeonsik",
           "firstName": "Mingi",
           "lastName": "Pyeon",
@@ -287,6 +347,7 @@
           "starter": false
         },
         {
+          "id": "105501709748188393",
           "name": "Delight",
           "firstName": "Hwanjung",
           "lastName": "Yu",
@@ -295,6 +356,7 @@
           "starter": true
         },
         {
+          "id": "113740952132760566",
           "name": "Bluffing",
           "firstName": "Gyuyong",
           "lastName": "Park",
@@ -302,12 +364,26 @@
           "image": "https://static.lolesports.com/players/1769086484481_image6-2026-01-22T135420.093.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Hanwha Life Esports",
+        "code": "HLE",
+        "slug": "hanwha-life-esports",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+        "alternativeImage": "https://static.lolesports.com/teams/hle-2021-color-on-light2.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/hanwha-life-esports-7kh5kjdc.png"
+      }
     },
     "KT": {
       "id": "99566404579461230",
       "players": [
         {
+          "id": "107492121209956865",
           "name": "PerfecT",
           "firstName": "Seungmin",
           "lastName": "Lee",
@@ -316,6 +392,7 @@
           "starter": true
         },
         {
+          "id": "113740958697763850",
           "name": "Sero",
           "firstName": "Hyochan",
           "lastName": "Ahn",
@@ -324,6 +401,7 @@
           "starter": false
         },
         {
+          "id": "98767975940969117",
           "name": "Cuzz",
           "firstName": "Uchan",
           "lastName": "Mun",
@@ -332,6 +410,7 @@
           "starter": true
         },
         {
+          "id": "105501846040405864",
           "name": "Sylvie",
           "firstName": "Seungbok",
           "lastName": "Lee",
@@ -340,6 +419,7 @@
           "starter": false
         },
         {
+          "id": "98767975949926165",
           "name": "Bdd",
           "firstName": " Bo seong",
           "lastName": "Gwak",
@@ -348,6 +428,7 @@
           "starter": true
         },
         {
+          "id": "115609835379287175",
           "name": "Hwichan",
           "firstName": "Hwichan",
           "lastName": "Jeong",
@@ -356,6 +437,7 @@
           "starter": false
         },
         {
+          "id": "108205131402932252",
           "name": "Jiwoo",
           "firstName": "Jiwoo",
           "lastName": "Jung",
@@ -364,6 +446,7 @@
           "starter": true
         },
         {
+          "id": "115609835794891478",
           "name": "FenRir",
           "firstName": "Kangjun",
           "lastName": "Park",
@@ -372,6 +455,7 @@
           "starter": false
         },
         {
+          "id": "99566404535234175",
           "name": "Effort",
           "firstName": "Sangho",
           "lastName": "Lee",
@@ -380,6 +464,7 @@
           "starter": true
         },
         {
+          "id": "99566404556524630",
           "name": "Ghost",
           "firstName": "Yongjun",
           "lastName": "Jang",
@@ -388,6 +473,7 @@
           "starter": false
         },
         {
+          "id": "108284723448093299",
           "name": "Pollu",
           "firstName": "DongGyu",
           "lastName": "Oh",
@@ -395,12 +481,26 @@
           "image": "https://static.lolesports.com/players/1769088909540_LCK_KT_Pollu_F.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "kt Rolster",
+        "code": "KT",
+        "slug": "kt-rolster",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/kt_darkbackground.png",
+        "alternativeImage": "https://static.lolesports.com/teams/kt_whitebackground.png",
+        "backgroundImage": ""
+      }
     },
     "DK": {
       "id": "100725845018863243",
       "players": [
         {
+          "id": "111658292064356964",
           "name": "Siwoo",
           "firstName": "Jeon",
           "lastName": "Siwoo",
@@ -409,6 +509,7 @@
           "starter": true
         },
         {
+          "id": "113543956179181753",
           "name": "Jaehyuk",
           "firstName": "Jaehyuk",
           "lastName": "Kwon",
@@ -417,6 +518,7 @@
           "starter": false
         },
         {
+          "id": "114697949393287385",
           "name": "Nevid",
           "firstName": "Minwoo",
           "lastName": "Park",
@@ -425,6 +527,7 @@
           "starter": false
         },
         {
+          "id": "106267599829820917",
           "name": "Lucid",
           "firstName": "Yonghyeok",
           "lastName": "Choi",
@@ -433,6 +536,7 @@
           "starter": true
         },
         {
+          "id": "116907472040667554",
           "name": "Solid",
           "firstName": "Hyunseo",
           "lastName": "Nam",
@@ -441,6 +545,7 @@
           "starter": false
         },
         {
+          "id": "100725844988653773",
           "name": "ShowMaker",
           "firstName": "Su",
           "lastName": "Heo",
@@ -449,6 +554,7 @@
           "starter": true
         },
         {
+          "id": "112822770322732675",
           "name": "Garden",
           "firstName": "Jeongwon",
           "lastName": "Seol",
@@ -457,6 +563,7 @@
           "starter": false
         },
         {
+          "id": "108205129774185945",
           "name": "Smash",
           "firstName": "Gunmjae",
           "lastName": "Sin",
@@ -465,6 +572,7 @@
           "starter": true
         },
         {
+          "id": "105501707243664614",
           "name": "Wayne",
           "firstName": "Seohyeon",
           "lastName": "Hwang",
@@ -473,6 +581,7 @@
           "starter": false
         },
         {
+          "id": "108284721867904137",
           "name": "Career",
           "firstName": "HyungSuk",
           "lastName": "Oh",
@@ -481,6 +590,7 @@
           "starter": true
         },
         {
+          "id": "107492028745476512",
           "name": "Loopy",
           "firstName": "Donghyeon",
           "lastName": "Kim",
@@ -488,12 +598,26 @@
           "image": "https://static.lolesports.com/players/1769089723144_image6-2026-01-22T144756.107.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Dplus KIA",
+        "code": "DK",
+        "slug": "dwg-kia",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1673260049704_DPlusKIALOGO2.png",
+        "backgroundImage": "https://static.lolesports.com/teams/DamwonGamingDWG.png"
+      }
     },
     "BFX": {
       "id": "100725845022060229",
       "players": [
         {
+          "id": "105501790021137688",
           "name": "Clear",
           "firstName": "Hyunmin",
           "lastName": "Song",
@@ -502,6 +626,7 @@
           "starter": true
         },
         {
+          "id": "110660139298018837",
           "name": "Kangin",
           "firstName": "Kangin",
           "lastName": "Choi",
@@ -510,6 +635,7 @@
           "starter": false
         },
         {
+          "id": "107492130895812257",
           "name": "Raptor",
           "firstName": "Eojin",
           "lastName": "Jeon",
@@ -518,6 +644,7 @@
           "starter": true
         },
         {
+          "id": "109523141015834041",
           "name": "Grizzly",
           "firstName": "Seunghoon",
           "lastName": "Jo",
@@ -526,6 +653,7 @@
           "starter": false
         },
         {
+          "id": "112489761307532435",
           "name": "Zephyr",
           "firstName": "Hyeoksu",
           "lastName": "Hwang",
@@ -534,6 +662,7 @@
           "starter": false
         },
         {
+          "id": "105501715923396261",
           "name": "VicLa",
           "firstName": "Deakwang",
           "lastName": "Lee",
@@ -542,6 +671,7 @@
           "starter": true
         },
         {
+          "id": "116884207599398316",
           "name": "MG",
           "firstName": "Jihoon",
           "lastName": "Lee",
@@ -550,6 +680,7 @@
           "starter": false
         },
         {
+          "id": "109675673940491206",
           "name": "Daystar",
           "firstName": "Ji-Myeong",
           "lastName": "Yoo",
@@ -558,6 +689,7 @@
           "starter": false
         },
         {
+          "id": "105501797931408936",
           "name": "Taeyoon",
           "firstName": "Taeyun",
           "lastName": "Kim",
@@ -566,6 +698,7 @@
           "starter": true
         },
         {
+          "id": "111521895921812004",
           "name": "Slayer",
           "firstName": "Kim",
           "lastName": "Jinyoung",
@@ -574,6 +707,7 @@
           "starter": false
         },
         {
+          "id": "101388913291808185",
           "name": "Kellin",
           "firstName": "Hyeonggyu",
           "lastName": "Kim",
@@ -582,6 +716,7 @@
           "starter": true
         },
         {
+          "id": "112518918607721192",
           "name": "Luon",
           "firstName": "Hyunho",
           "lastName": "Lee",
@@ -589,12 +724,26 @@
           "image": "https://static.lolesports.com/players/1769090720455_image6-2026-01-22T150458.891.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "BNK FEARX",
+        "code": "BFX",
+        "slug": "fearx",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
+        "backgroundImage": ""
+      }
     },
     "KRX": {
       "id": "99566404585387054",
       "players": [
         {
+          "id": "108205130568869560",
           "name": "Frog",
           "firstName": "Minhoi",
           "lastName": "Lee",
@@ -603,6 +752,7 @@
           "starter": true
         },
         {
+          "id": "102186438403674539",
           "name": "Rich",
           "firstName": "Jaewon",
           "lastName": "Lee",
@@ -611,6 +761,7 @@
           "starter": false
         },
         {
+          "id": "106267386230851795",
           "name": "Willer",
           "firstName": "Junghyeun",
           "lastName": "Kim",
@@ -619,6 +770,7 @@
           "starter": true
         },
         {
+          "id": "108205131858552538",
           "name": "Vincenzo",
           "firstName": "Seungmin",
           "lastName": "Ha",
@@ -627,6 +779,7 @@
           "starter": false
         },
         {
+          "id": "107492072900515430",
           "name": "Winner",
           "firstName": "JOOSUNG",
           "lastName": "Woo",
@@ -635,6 +788,7 @@
           "starter": false
         },
         {
+          "id": "99566404534366144",
           "name": "Ucal",
           "firstName": "Woohyun",
           "lastName": "Son",
@@ -643,6 +797,7 @@
           "starter": true
         },
         {
+          "id": "114850386783533462",
           "name": "AKaJe",
           "firstName": "Suhyeok",
           "lastName": "Choi",
@@ -651,6 +806,7 @@
           "starter": false
         },
         {
+          "id": "99566404541006806",
           "name": "Aiming",
           "firstName": "Haram",
           "lastName": "Kim",
@@ -659,6 +815,7 @@
           "starter": true
         },
         {
+          "id": "113560602730848023",
           "name": "LazyFeel",
           "firstName": "Bao Minh",
           "lastName": "Tran",
@@ -667,6 +824,7 @@
           "starter": false
         },
         {
+          "id": "105548653898118261",
           "name": "Andil",
           "firstName": "Gwan-bin",
           "lastName": "Mun",
@@ -675,6 +833,7 @@
           "starter": true
         },
         {
+          "id": "108205129853202408",
           "name": "Minous",
           "firstName": "Minwoo",
           "lastName": "Kang",
@@ -682,12 +841,26 @@
           "image": "https://static.lolesports.com/players/1769088440171_image6-2026-01-22T142652.779.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "KIWOOM DRX",
+        "code": "KRX",
+        "slug": "drx",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1774247803537_horizontal_EN_C.png",
+        "backgroundImage": "https://static.lolesports.com/teams/1596305602300_DragonXDRX.png"
+      }
     },
     "BRO": {
       "id": "105505619546859895",
       "players": [
         {
+          "id": "109549750903142546",
           "name": "Casting",
           "firstName": "Minje",
           "lastName": "Shin",
@@ -696,6 +869,7 @@
           "starter": true
         },
         {
+          "id": "108205131563823136",
           "name": "DDahyuk",
           "firstName": "Minhyuk",
           "lastName": "Ahn",
@@ -704,6 +878,7 @@
           "starter": false
         },
         {
+          "id": "105501713673270508",
           "name": "GIDEON",
           "firstName": "Minsung",
           "lastName": "Kim",
@@ -712,6 +887,7 @@
           "starter": true
         },
         {
+          "id": "114861710240389269",
           "name": "Dinai",
           "firstName": "ChihYun",
           "lastName": "Hwang",
@@ -720,6 +896,7 @@
           "starter": false
         },
         {
+          "id": "105501858782308228",
           "name": "Roamer",
           "firstName": "Woojin",
           "lastName": "Cho",
@@ -728,6 +905,7 @@
           "starter": true
         },
         {
+          "id": "108284732073917232",
           "name": "Tempester",
           "firstName": "Yeongwoong",
           "lastName": "Oh",
@@ -736,6 +914,7 @@
           "starter": false
         },
         {
+          "id": "111521549237485643",
           "name": "Pungyeon",
           "firstName": "Lee",
           "lastName": "Jonghyuk",
@@ -744,6 +923,7 @@
           "starter": false
         },
         {
+          "id": "99566404526777331",
           "name": "Teddy",
           "firstName": "Jinsung",
           "lastName": "Park",
@@ -752,6 +932,7 @@
           "starter": true
         },
         {
+          "id": "111658292156711839",
           "name": "OddEye",
           "firstName": "Cho",
           "lastName": "Hyungjin",
@@ -760,6 +941,7 @@
           "starter": false
         },
         {
+          "id": "111521549050142935",
           "name": "Namgung",
           "firstName": "Namgung",
           "lastName": "Seonghoon",
@@ -768,6 +950,7 @@
           "starter": true
         },
         {
+          "id": "109523135464568456",
           "name": "PlanB",
           "firstName": "Hong",
           "lastName": "Junseok",
@@ -775,12 +958,26 @@
           "image": "https://static.lolesports.com/players/1769090048813_image6-2026-01-22T145347.864.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "HANJIN BRION",
+        "code": "BRO",
+        "slug": "fredit-brion",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1716454325887_Nowyprojekt.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1716454325888_Nowyprojekt.png",
+        "backgroundImage": ""
+      }
     },
     "NS": {
       "id": "102747101565183056",
       "players": [
         {
+          "id": "100428088879195423",
           "name": "Kingen",
           "firstName": "Sunghoon ",
           "lastName": "Hwang",
@@ -789,6 +986,7 @@
           "starter": true
         },
         {
+          "id": "111521549323573788",
           "name": "Janus",
           "firstName": "Um",
           "lastName": "Yejun",
@@ -797,6 +995,7 @@
           "starter": false
         },
         {
+          "id": "108366332471078988",
           "name": "Sponge",
           "firstName": "Youngjun",
           "lastName": "Bae",
@@ -805,6 +1004,7 @@
           "starter": true
         },
         {
+          "id": "114973639474141631",
           "name": "MihawK",
           "firstName": "Joohyung",
           "lastName": "Kim",
@@ -813,6 +1013,7 @@
           "starter": false
         },
         {
+          "id": "98767975951139628",
           "name": "Scout",
           "firstName": "Yechan",
           "lastName": "Lee",
@@ -821,6 +1022,7 @@
           "starter": true
         },
         {
+          "id": "108205131295210982",
           "name": "Calix",
           "firstName": "Hyun Bin",
           "lastName": "Syun",
@@ -829,6 +1031,7 @@
           "starter": false
         },
         {
+          "id": "107492116585043595",
           "name": "SeTab",
           "firstName": "Kyeongjin",
           "lastName": "Song",
@@ -837,6 +1040,7 @@
           "starter": false
         },
         {
+          "id": "109523135356383683",
           "name": "Diable",
           "firstName": "Nam",
           "lastName": "Daegeun",
@@ -845,6 +1049,7 @@
           "starter": true
         },
         {
+          "id": "112636754844846666",
           "name": "Lucy",
           "firstName": "Soohoon",
           "lastName": "Hyun",
@@ -853,6 +1058,7 @@
           "starter": false
         },
         {
+          "id": "99871276332909841",
           "name": "Lehends",
           "firstName": "Siu",
           "lastName": "Son",
@@ -861,6 +1067,7 @@
           "starter": true
         },
         {
+          "id": "105388980252039870",
           "name": "Pleata",
           "firstName": "Minwoo",
           "lastName": "Son",
@@ -868,12 +1075,26 @@
           "image": "https://static.lolesports.com/players/1769084677995_image6-2026-01-22T132347.123.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "NONGSHIM RED FORCE",
+        "code": "NS",
+        "slug": "nongshim-redforce",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/NSFullonDark.png",
+        "alternativeImage": "https://static.lolesports.com/teams/NSFullonLight.png",
+        "backgroundImage": "https://static.lolesports.com/teams/NongshimRedForceNS.png"
+      }
     },
     "DNS": {
       "id": "99566404581868574",
       "players": [
         {
+          "id": "104266795407626462",
           "name": "DuDu",
           "firstName": "Dongju",
           "lastName": "Lee",
@@ -882,6 +1103,7 @@
           "starter": true
         },
         {
+          "id": "108205130029559792",
           "name": "Lancer",
           "firstName": "Jeongheum",
           "lastName": "Han",
@@ -890,6 +1112,7 @@
           "starter": false
         },
         {
+          "id": "111658291900451423",
           "name": "Sharvel",
           "firstName": "Kim",
           "lastName": "Danwoo",
@@ -898,6 +1121,7 @@
           "starter": true
         },
         {
+          "id": "109619813466553788",
           "name": "DDoiV",
           "firstName": "Moonyoung",
           "lastName": "Bang",
@@ -906,6 +1130,7 @@
           "starter": false
         },
         {
+          "id": "103495716563691380",
           "name": "Pyosik",
           "firstName": "Changhyeon",
           "lastName": "Hong",
@@ -914,6 +1139,7 @@
           "starter": false
         },
         {
+          "id": "104284310661848687",
           "name": "Clozer",
           "firstName": "Juhyeon",
           "lastName": "Lee",
@@ -922,6 +1148,7 @@
           "starter": true
         },
         {
+          "id": "107151368646534014",
           "name": "Flip",
           "firstName": "Sanguk",
           "lastName": "Kim",
@@ -930,6 +1157,7 @@
           "starter": false
         },
         {
+          "id": "102483272156027229",
           "name": "deokdam",
           "firstName": "Daegil",
           "lastName": "Seo",
@@ -938,6 +1166,7 @@
           "starter": true
         },
         {
+          "id": "108205132580169451",
           "name": "Enosh",
           "firstName": "Kyujun",
           "lastName": "Kwak",
@@ -946,6 +1175,7 @@
           "starter": false
         },
         {
+          "id": "103478281372021286",
           "name": "Revenge",
           "firstName": "Yoon",
           "lastName": "Jeong-bin",
@@ -954,6 +1184,7 @@
           "starter": false
         },
         {
+          "id": "106267619732229182",
           "name": "Peter",
           "firstName": "Yoon su",
           "lastName": "Jeong",
@@ -962,6 +1193,7 @@
           "starter": true
         },
         {
+          "id": "111521915459246530",
           "name": "Quantum ",
           "firstName": "Son",
           "lastName": "Junghwan",
@@ -970,6 +1202,7 @@
           "starter": false
         },
         {
+          "id": "100205573444701958",
           "name": "Life",
           "firstName": "Jeongmin",
           "lastName": "Kim",
@@ -977,12 +1210,26 @@
           "image": "https://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "DN SOOPers",
+        "code": "DNS",
+        "slug": "kwangdong-freecs",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCK",
+          "region": "한국"
+        },
+        "image": "https://static.lolesports.com/teams/1767340467921_DN_SOOPerslogo_profile.webp",
+        "alternativeImage": "https://static.lolesports.com/teams/1767340467922_DN_SOOPerslogo_profile.webp",
+        "backgroundImage": ""
+      }
     },
     "BLG": {
       "id": "99566404853854212",
       "players": [
         {
+          "id": "103478281356330346",
           "name": "Bin",
           "firstName": "Ze-Bin",
           "lastName": "Chen",
@@ -991,6 +1238,7 @@
           "starter": true
         },
         {
+          "id": "99566404805093717",
           "name": "Wenbo",
           "firstName": "Wenbo",
           "lastName": "Yang",
@@ -999,6 +1247,7 @@
           "starter": false
         },
         {
+          "id": "99566404812254466",
           "name": "Flandre",
           "firstName": "Xuan-jun",
           "lastName": "Li",
@@ -1007,6 +1256,7 @@
           "starter": false
         },
         {
+          "id": "105516152837078491",
           "name": "Xun",
           "firstName": "Li-Xun",
           "lastName": "Peng",
@@ -1015,6 +1265,7 @@
           "starter": true
         },
         {
+          "id": "99566404803543690",
           "name": "Knight",
           "firstName": "Ding",
           "lastName": "Zhuo",
@@ -1023,6 +1274,7 @@
           "starter": true
         },
         {
+          "id": "99871276340698623",
           "name": "Viper",
           "firstName": "Dohyeon",
           "lastName": "Park",
@@ -1031,6 +1283,7 @@
           "starter": true
         },
         {
+          "id": "110547957837987327",
           "name": "ON",
           "firstName": "WENJUN",
           "lastName": "LUO",
@@ -1038,12 +1291,26 @@
           "image": "https://static.lolesports.com/players/1768348897219_on.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "BILIBILI GAMING",
+        "code": "BLG",
+        "slug": "bilibili-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1682322954527_Bilibili_Gaming_logo_20211.png",
+        "backgroundImage": ""
+      }
     },
     "TES": {
       "id": "99566404854685458",
       "players": [
         {
+          "id": "112540645110902751",
           "name": "ZUIAN",
           "firstName": "\tCheng",
           "lastName": "Zi-Hao",
@@ -1052,6 +1319,7 @@
           "starter": true
         },
         {
+          "id": "101388912796120370",
           "name": "369",
           "firstName": "Jiahao",
           "lastName": "Bai",
@@ -1060,6 +1328,7 @@
           "starter": false
         },
         {
+          "id": "99566404820654675",
           "name": "Tian",
           "firstName": "Tian-Liang",
           "lastName": "Gao",
@@ -1068,6 +1337,7 @@
           "starter": true
         },
         {
+          "id": "106368556422916908",
           "name": "Creme",
           "firstName": "Jian",
           "lastName": "Lin",
@@ -1076,6 +1346,7 @@
           "starter": true
         },
         {
+          "id": "99566404823220763",
           "name": "JackeyLove",
           "firstName": "Wen Bo",
           "lastName": "Yu",
@@ -1084,6 +1355,7 @@
           "starter": true
         },
         {
+          "id": "105516599464787723",
           "name": "Zhuo",
           "firstName": "Xu-Zhuo",
           "lastName": "Wang",
@@ -1091,12 +1363,26 @@
           "image": "https://static.lolesports.com/players/1768349462733_zhuo.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "TOP ESPORTS",
+        "code": "TES",
+        "slug": "top-esports",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1592592064571_TopEsportsTES-01-FullonDark.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1592592064573_TopEsportsTES-03-FullonLight.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/top-esports-i4rk4nr3.png"
+      }
     },
     "JDG": {
       "id": "99566404852189289",
       "players": [
         {
+          "id": "109784472606547975",
           "name": "Xiaoxu",
           "firstName": "XINZU",
           "lastName": "XU",
@@ -1105,6 +1391,7 @@
           "starter": true
         },
         {
+          "id": "101971954398227333",
           "name": "JunJia",
           "firstName": "Chun-Chia",
           "lastName": "Yu",
@@ -1113,6 +1400,7 @@
           "starter": true
         },
         {
+          "id": "111726354998441726",
           "name": "xiaofang",
           "firstName": "ZHEYU",
           "lastName": "FANG",
@@ -1121,6 +1409,7 @@
           "starter": false
         },
         {
+          "id": "112772120821320830",
           "name": "HongQ",
           "firstName": "MING-HUNG",
           "lastName": "TSAI",
@@ -1129,6 +1418,7 @@
           "starter": true
         },
         {
+          "id": "101388912814667094",
           "name": "Angel",
           "firstName": "Tao",
           "lastName": "Xiang",
@@ -1137,6 +1427,7 @@
           "starter": false
         },
         {
+          "id": "101388912814247335",
           "name": "GALA",
           "firstName": "Wei ",
           "lastName": "Chen",
@@ -1145,6 +1436,7 @@
           "starter": true
         },
         {
+          "id": "111726305547204259",
           "name": "Vampire",
           "firstName": "ZHECAN",
           "lastName": "ZHAO",
@@ -1152,12 +1444,26 @@
           "image": "https://static.lolesports.com/players/1768349226496_vampire.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Beijing JDG Esports",
+        "code": "JDG",
+        "slug": "jd-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1627457924722_29.png",
+        "alternativeImage": "",
+        "backgroundImage": ""
+      }
     },
     "AL": {
       "id": "99566404856367466",
       "players": [
         {
+          "id": "105516622825169657",
           "name": "Breathe",
           "firstName": "Chen",
           "lastName": "Chen",
@@ -1166,6 +1472,7 @@
           "starter": true
         },
         {
+          "id": "99871276342823057",
           "name": "Tarzan",
           "firstName": "Seungyong",
           "lastName": "Lee",
@@ -1174,6 +1481,7 @@
           "starter": true
         },
         {
+          "id": "104287400430814502",
           "name": "Shanks",
           "firstName": "Xiao-Jun",
           "lastName": "Cui",
@@ -1182,6 +1490,7 @@
           "starter": true
         },
         {
+          "id": "99566404819916503",
           "name": "Hope",
           "firstName": "Jie",
           "lastName": "Wang",
@@ -1190,6 +1499,7 @@
           "starter": true
         },
         {
+          "id": "105530584812980593",
           "name": "Kael",
           "firstName": "Jinhong",
           "lastName": "Kim",
@@ -1197,12 +1507,26 @@
           "image": "https://static.lolesports.com/players/1768348497910_kael.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Anyone's Legend",
+        "code": "AL",
+        "slug": "anyones-legend",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1641199582689_.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1641199582691_.png",
+        "backgroundImage": ""
+      }
     },
     "WBG": {
       "id": "99566404853058754",
       "players": [
         {
+          "id": "108477153941144313",
           "name": "Zika",
           "firstName": "Tang",
           "lastName": " HuaYu",
@@ -1211,6 +1535,7 @@
           "starter": true
         },
         {
+          "id": "107597411688435553",
           "name": "Xiaohao",
           "firstName": "HAO",
           "lastName": "PENG",
@@ -1219,6 +1544,7 @@
           "starter": true
         },
         {
+          "id": "98767975914916595",
           "name": "Xiaohu",
           "firstName": "Yuanhao ",
           "lastName": "Li",
@@ -1227,6 +1553,7 @@
           "starter": true
         },
         {
+          "id": "106368692529261498",
           "name": "Elk",
           "firstName": "Jiahao",
           "lastName": "Zhao",
@@ -1235,6 +1562,7 @@
           "starter": true
         },
         {
+          "id": "107492044257978794",
           "name": "Moham",
           "firstName": "Jaehun",
           "lastName": "Jeong ",
@@ -1243,6 +1571,7 @@
           "starter": true
         },
         {
+          "id": "109784315829131585",
           "name": "Jwei",
           "firstName": "JUN WEI",
           "lastName": "SUN",
@@ -1250,12 +1579,26 @@
           "image": "https://static.lolesports.com/players/1768348478468_jwei.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "WeiboGaming",
+        "code": "WBG",
+        "slug": "weibo-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1641202879910_3.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1641202879910_1.png",
+        "backgroundImage": ""
+      }
     },
     "NIP": {
       "id": "101388912914513220",
       "players": [
         {
+          "id": "103729432252832975",
           "name": "Hoya",
           "firstName": "Yongho",
           "lastName": "Yoon",
@@ -1264,6 +1607,7 @@
           "starter": true
         },
         {
+          "id": "109523120092920046",
           "name": "Guwon",
           "firstName": "Gu",
           "lastName": "Kwanmo",
@@ -1272,6 +1616,7 @@
           "starter": true
         },
         {
+          "id": "108013460749990840",
           "name": "Care",
           "firstName": "yang",
           "lastName": "jie",
@@ -1280,6 +1625,7 @@
           "starter": true
         },
         {
+          "id": "103478281359738222",
           "name": "Photic",
           "firstName": "Qi-Shen ",
           "lastName": "Ying",
@@ -1288,6 +1634,7 @@
           "starter": true
         },
         {
+          "id": "112478966902038460",
           "name": "fengyue",
           "firstName": "RunLai",
           "lastName": "Wang",
@@ -1295,12 +1642,26 @@
           "image": "https://static.lolesports.com/players/1768348013713_fengyue.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Shenzhen NINJAS IN PYJAMAS",
+        "code": "NIP",
+        "slug": "shenzen-ninjas-in-pyjamas",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1673425724696_NIP-Symbol-RGB-NeonYellow1.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1673425724698_NIP-Symbol-RGB-NeonYellow1.png",
+        "backgroundImage": ""
+      }
     },
     "IG": {
       "id": "99566404848691211",
       "players": [
         {
+          "id": "99566404810113891",
           "name": "TheShy",
           "firstName": "Seung-Lok",
           "lastName": "Kang",
@@ -1309,6 +1670,7 @@
           "starter": true
         },
         {
+          "id": "103461966880868232",
           "name": "Wei",
           "firstName": "Yang-Wei ",
           "lastName": "Yan",
@@ -1317,6 +1679,7 @@
           "starter": true
         },
         {
+          "id": "99566404811346612",
           "name": "Rookie",
           "firstName": "Ui-jin",
           "lastName": "Song",
@@ -1325,6 +1688,7 @@
           "starter": true
         },
         {
+          "id": "113662801804437510",
           "name": "JiaQi",
           "firstName": "Jiaqi",
           "lastName": "Zi",
@@ -1333,6 +1697,7 @@
           "starter": true
         },
         {
+          "id": "106368497875598272",
           "name": "Assum",
           "firstName": "Wei",
           "lastName": "Zou",
@@ -1341,6 +1706,7 @@
           "starter": false
         },
         {
+          "id": "98767991785832912",
           "name": "Meiko",
           "firstName": "Ye",
           "lastName": "Tian",
@@ -1348,12 +1714,26 @@
           "image": "https://static.lolesports.com/players/1775225723214_meiko.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Invictus Gaming",
+        "code": "IG",
+        "slug": "invictus-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1634762917340_300px-Invictus_Gaming_logo.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1592591780362_InvictusGamingIG-03-FullonLight.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/invictus-gaming-ijpwreew.png"
+      }
     },
     "WE": {
       "id": "98767991887166787",
       "players": [
         {
+          "id": "108477164506118803",
           "name": "Cube",
           "firstName": "Yi",
           "lastName": "Dai",
@@ -1362,6 +1742,7 @@
           "starter": true
         },
         {
+          "id": "110547903628049902",
           "name": "Monki",
           "firstName": "MENGQI",
           "lastName": "WANG",
@@ -1370,6 +1751,7 @@
           "starter": true
         },
         {
+          "id": "116447604862313609",
           "name": "Tyrion",
           "firstName": "Peng",
           "lastName": "Jun-Bin",
@@ -1378,6 +1760,7 @@
           "starter": false
         },
         {
+          "id": "105320683858945274",
           "name": "Karis",
           "firstName": "Hongjo",
           "lastName": "Kim",
@@ -1386,6 +1769,7 @@
           "starter": true
         },
         {
+          "id": "113560612601130250",
           "name": "About",
           "firstName": "Hyungsuk",
           "lastName": "Moon",
@@ -1394,6 +1778,7 @@
           "starter": true
         },
         {
+          "id": "111726064836555178",
           "name": "Erha",
           "firstName": "XUYE",
           "lastName": "SHI",
@@ -1401,12 +1786,26 @@
           "image": "https://static.lolesports.com/players/1775225577413_erha.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Xi'an Team WE",
+        "code": "WE",
+        "slug": "team-we",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
+        "backgroundImage": "https://static.lolesports.com/teams/1634763008789_Team_WElogo_profile.png"
+      }
     },
     "LNG": {
       "id": "99566404850008779",
       "players": [
         {
+          "id": "111726460023550672",
           "name": "sheer",
           "firstName": "WENJIE",
           "lastName": "XU",
@@ -1415,6 +1814,7 @@
           "starter": true
         },
         {
+          "id": "102192147302633932",
           "name": "Weiwei",
           "firstName": "Bo-Han",
           "lastName": "Wei",
@@ -1423,6 +1823,7 @@
           "starter": true
         },
         {
+          "id": "105320703008048707",
           "name": "Croco",
           "firstName": "Dongbeom",
           "lastName": "Kim",
@@ -1431,6 +1832,7 @@
           "starter": false
         },
         {
+          "id": "115728508104344155",
           "name": "Nia1",
           "firstName": "GUANGLU",
           "lastName": "ZOU",
@@ -1439,6 +1841,7 @@
           "starter": true
         },
         {
+          "id": "110547595875608233",
           "name": "1xn",
           "firstName": "SAUNAM",
           "lastName": "LI",
@@ -1447,6 +1850,7 @@
           "starter": true
         },
         {
+          "id": "113662612771288963",
           "name": "Ycx",
           "firstName": "Wenhao",
           "lastName": "Zhao",
@@ -1455,6 +1859,7 @@
           "starter": true
         },
         {
+          "id": "100205573984889078",
           "name": "MISSING",
           "firstName": "Yunfeng ",
           "lastName": "Lou",
@@ -1462,12 +1867,26 @@
           "image": "https://static.lolesports.com/players/1768348695392_missing.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Suzhou LNG Esports",
+        "code": "LNG",
+        "slug": "lng-esports",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1717487697003_LNGlogo.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1717487697004_LNGlogo.png",
+        "backgroundImage": ""
+      }
     },
     "TT": {
       "id": "101388912911039804",
       "players": [
         {
+          "id": "115728542444828247",
           "name": "Keshi",
           "firstName": "QINGHUA",
           "lastName": "LI",
@@ -1476,6 +1895,7 @@
           "starter": true
         },
         {
+          "id": "113662768960485564",
           "name": "Junhao",
           "firstName": "Junhao",
           "lastName": "Luo",
@@ -1484,6 +1904,7 @@
           "starter": true
         },
         {
+          "id": "115887485373399750",
           "name": "Heru",
           "firstName": "MINSEONG",
           "lastName": "KIM",
@@ -1492,6 +1913,7 @@
           "starter": true
         },
         {
+          "id": "107597344477531938",
           "name": "Ahn",
           "firstName": "SHANYE",
           "lastName": "AN",
@@ -1500,6 +1922,7 @@
           "starter": true
         },
         {
+          "id": "110547690694797001",
           "name": "Feather",
           "firstName": "TIANCIFU",
           "lastName": "WANG",
@@ -1507,12 +1930,26 @@
           "image": "https://static.lolesports.com/players/1768347992987_feather.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "THUNDER TALK GAMING",
+        "code": "TT",
+        "slug": "thunder-talk-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/TT-FullonDark.png",
+        "alternativeImage": "https://static.lolesports.com/teams/TT-FullonLight.png",
+        "backgroundImage": "https://static.lolesports.com/teams/TTTT.png"
+      }
     },
     "LGD": {
       "id": "99566404846951820",
       "players": [
         {
+          "id": "105705431649727017",
           "name": "Burdol",
           "firstName": "Taeyoon",
           "lastName": "Noh",
@@ -1521,6 +1958,7 @@
           "starter": true
         },
         {
+          "id": "109784703569533478",
           "name": "Heng",
           "firstName": "CUIHENG",
           "lastName": "YANG",
@@ -1529,6 +1967,7 @@
           "starter": true
         },
         {
+          "id": "109784590066548371",
           "name": "Tangyuan",
           "firstName": "YUHONG",
           "lastName": "LIN",
@@ -1537,6 +1976,7 @@
           "starter": true
         },
         {
+          "id": "111726434869930501",
           "name": "Shaoye",
           "firstName": "GUOBIN",
           "lastName": "QIU",
@@ -1545,6 +1985,7 @@
           "starter": true
         },
         {
+          "id": "99566404817393644",
           "name": "Crisp",
           "firstName": "Qingsong",
           "lastName": "Liu",
@@ -1552,12 +1993,26 @@
           "image": "https://static.lolesports.com/players/1753285845967_image6216.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "LGD GAMING",
+        "code": "LGD",
+        "slug": "lgd-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/LGD-FullonDark-1.png",
+        "alternativeImage": "https://static.lolesports.com/teams/LGD-FullonLight-1.png",
+        "backgroundImage": "https://static.lolesports.com/teams/LGDGamingLGD.png"
+      }
     },
     "EDG": {
       "id": "98767991882270868",
       "players": [
         {
+          "id": "103103555079018097",
           "name": "Zdz",
           "firstName": "De-Zhang",
           "lastName": "Zhu",
@@ -1566,6 +2021,7 @@
           "starter": true
         },
         {
+          "id": "102191852281361066",
           "name": "Jiejie",
           "firstName": "Li-Jie",
           "lastName": "Zhao",
@@ -1574,6 +2030,7 @@
           "starter": true
         },
         {
+          "id": "106288134875041032",
           "name": "BuLLDoG",
           "firstName": "Taeyoung",
           "lastName": "Lee",
@@ -1582,6 +2039,7 @@
           "starter": true
         },
         {
+          "id": "116566497003468671",
           "name": "sinian",
           "firstName": "Ding",
           "lastName": "Jia-Ming",
@@ -1590,6 +2048,7 @@
           "starter": false
         },
         {
+          "id": "109784344243547583",
           "name": "Leave",
           "firstName": "HONGCHAO",
           "lastName": "HU",
@@ -1598,6 +2057,7 @@
           "starter": true
         },
         {
+          "id": "114878673158515186",
           "name": "Parukia",
           "firstName": "Wang",
           "lastName": " Ping-Yang",
@@ -1605,12 +2065,26 @@
           "image": "https://static.lolesports.com/players/1768348863818_parukia.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "EDWARD GAMING",
+        "code": "EDG",
+        "slug": "edward-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1631819297476_edg-2021-worlds.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1694151726921_logo-edg.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/edward-gaming-2ko31fn7.png"
+      }
     },
     "UP": {
       "id": "103461966986776720",
       "players": [
         {
+          "id": "113662769042807097",
           "name": "Saber",
           "firstName": "Dailin",
           "lastName": "Song",
@@ -1619,6 +2093,7 @@
           "starter": false
         },
         {
+          "id": "108013461192555452",
           "name": "Xiaoxia",
           "firstName": "xia",
           "lastName": "jingyao",
@@ -1626,12 +2101,26 @@
           "image": "https://static.lolesports.com/players/1768349338912_xiaoxia.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Ultra Prime",
+        "code": "UP",
+        "slug": "ultra-prime",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/ultraprime.png",
+        "alternativeImage": "https://static.lolesports.com/teams/ultraprime.png",
+        "backgroundImage": ""
+      }
     },
     "OMG": {
       "id": "99566404845279652",
       "players": [
         {
+          "id": "115728421202169788",
           "name": "re0",
           "firstName": "HANYANG",
           "lastName": "XU",
@@ -1640,6 +2129,7 @@
           "starter": false
         },
         {
+          "id": "111726356065825358",
           "name": "Starry",
           "firstName": "MING",
           "lastName": "LEI",
@@ -1647,12 +2137,26 @@
           "image": "https://static.lolesports.com/players/1768349148844_starry.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Oh My God",
+        "code": "OMG",
+        "slug": "oh-my-god",
+        "status": "active",
+        "homeLeague": {
+          "name": "LPL",
+          "region": "중국"
+        },
+        "image": "https://static.lolesports.com/teams/1686821355861_OMG_2023_logo-01.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1686821355862_OMG_2023_logo-01.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/omg-idqs758p.png"
+      }
     },
     "G2": {
       "id": "98767991926151025",
       "players": [
         {
+          "id": "99566406047571736",
           "name": "BrokenBlade",
           "firstName": "Sergen",
           "lastName": "Çelik",
@@ -1661,6 +2165,7 @@
           "starter": true
         },
         {
+          "id": "107128052280762804",
           "name": "SkewMond",
           "firstName": "Rudy",
           "lastName": "Semaan",
@@ -1669,6 +2174,7 @@
           "starter": true
         },
         {
+          "id": "98767975968177297",
           "name": "Caps",
           "firstName": "Rasmus",
           "lastName": "Borregaard Winther",
@@ -1677,6 +2183,7 @@
           "starter": true
         },
         {
+          "id": "98767975961872793",
           "name": "Hans Sama",
           "firstName": "Steven",
           "lastName": "Liv",
@@ -1685,6 +2192,7 @@
           "starter": true
         },
         {
+          "id": "102787200059605684",
           "name": "Labrov",
           "firstName": "Labros",
           "lastName": "Papoutsakis",
@@ -1692,12 +2200,26 @@
           "image": "https://static.lolesports.com/players/1768549989298_Labrov-01.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "G2 Esports",
+        "code": "G2",
+        "slug": "g2-esports",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/G2-FullonDark.png",
+        "alternativeImage": "https://static.lolesports.com/teams/G2-FullonLight.png",
+        "backgroundImage": "https://static.lolesports.com/teams/G2.png"
+      }
     },
     "FNC": {
       "id": "98767991866488695",
       "players": [
         {
+          "id": "107492129389636107",
           "name": "Soboro",
           "firstName": "Lim",
           "lastName": "Seong-min",
@@ -1706,6 +2228,7 @@
           "starter": true
         },
         {
+          "id": "109705412728201213",
           "name": "Empyros",
           "firstName": "Panagiotis",
           "lastName": "Tantis",
@@ -1714,6 +2237,7 @@
           "starter": false
         },
         {
+          "id": "100238780551262852",
           "name": "Razork",
           "firstName": "Iván",
           "lastName": "Martín",
@@ -1722,6 +2246,7 @@
           "starter": true
         },
         {
+          "id": "107045034481599547",
           "name": "Vladi",
           "firstName": "Vladimiros",
           "lastName": "Kourtidis",
@@ -1730,6 +2255,7 @@
           "starter": true
         },
         {
+          "id": "99322214653265200",
           "name": "Upset",
           "firstName": "Elias",
           "lastName": "Lipp",
@@ -1738,6 +2264,7 @@
           "starter": true
         },
         {
+          "id": "107492067202132417",
           "name": "Lospa",
           "firstName": "Joon Hyung",
           "lastName": "Park",
@@ -1745,12 +2272,26 @@
           "image": "https://static.lolesports.com/players/1784889532061_Lospa-01.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Fnatic",
+        "code": "FNC",
+        "slug": "fnatic",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1631819669150_fnc-2021-worlds.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1592591295310_FnaticFNC-03-FullonLight.png",
+        "backgroundImage": "https://static.lolesports.com/teams/1632941274242_FNC.png"
+      }
     },
     "VIT": {
       "id": "99322214695067838",
       "players": [
         {
+          "id": "107605411481021064",
           "name": "Naak Nako",
           "firstName": "Kaan",
           "lastName": "Okan",
@@ -1759,6 +2300,7 @@
           "starter": true
         },
         {
+          "id": "105503548109547493",
           "name": "Lyncas",
           "firstName": "Linas",
           "lastName": "Naunčikas",
@@ -1767,6 +2309,7 @@
           "starter": true
         },
         {
+          "id": "105501850450507181",
           "name": "FIESTA",
           "firstName": "Hyunseo",
           "lastName": "An",
@@ -1775,6 +2318,7 @@
           "starter": true
         },
         {
+          "id": "100356590519370319",
           "name": "Humanoid",
           "firstName": " Marek",
           "lastName": "Brázda",
@@ -1783,6 +2327,7 @@
           "starter": false
         },
         {
+          "id": "102787200044335760",
           "name": "Carzzy",
           "firstName": "Matyáš",
           "lastName": "Orság",
@@ -1791,6 +2336,7 @@
           "starter": true
         },
         {
+          "id": "107605583684952312",
           "name": "Fleshy",
           "firstName": "Kadir",
           "lastName": "Kemiksiz",
@@ -1798,12 +2344,26 @@
           "image": "https://static.lolesports.com/players/1784888597989_Fleshy-01.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Team Vitality",
+        "code": "VIT",
+        "slug": "team-vitality",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1675865863970_Vitality_FullColor.png",
+        "backgroundImage": ""
+      }
     },
     "KC": {
       "id": "111692118851466302",
       "players": [
         {
+          "id": "103495716771322725",
           "name": "Canna",
           "firstName": "Changdong",
           "lastName": "Kim",
@@ -1812,6 +2372,7 @@
           "starter": true
         },
         {
+          "id": "105537190986692036",
           "name": "Yike",
           "firstName": "Martin",
           "lastName": "Sundelin",
@@ -1820,6 +2381,7 @@
           "starter": true
         },
         {
+          "id": "108205130709313212",
           "name": "kyeahoo",
           "firstName": "Yeahoo",
           "lastName": "Kang",
@@ -1828,6 +2390,7 @@
           "starter": true
         },
         {
+          "id": "109461265532592848",
           "name": "Caliste",
           "firstName": "Caliste",
           "lastName": "Henry-Hennebert",
@@ -1836,6 +2399,7 @@
           "starter": true
         },
         {
+          "id": "106625308523122120",
           "name": "Busio",
           "firstName": "Alan",
           "lastName": "Cwalina",
@@ -1843,12 +2407,26 @@
           "image": "https://static.lolesports.com/players/1774651329556_busio.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Karmine Corp",
+        "code": "KC",
+        "slug": "karmine-corp",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1704714951336_KC.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1704714951337_KC.png",
+        "backgroundImage": ""
+      }
     },
     "SK": {
       "id": "101383793567806688",
       "players": [
         {
+          "id": "99322214618656216",
           "name": "Wunder",
           "firstName": "Martin",
           "lastName": "Hansen",
@@ -1857,6 +2435,7 @@
           "starter": true
         },
         {
+          "id": "101389808348806587",
           "name": "Skeanz",
           "firstName": "Duncan",
           "lastName": "Marquet",
@@ -1865,6 +2444,7 @@
           "starter": true
         },
         {
+          "id": "106302003665923326",
           "name": "SlowQ",
           "firstName": "Yebit",
           "lastName": "Seo",
@@ -1873,6 +2453,7 @@
           "starter": true
         },
         {
+          "id": "103889902476986558",
           "name": "LIDER",
           "firstName": "Adam ",
           "lastName": "Ilyasov",
@@ -1881,6 +2462,7 @@
           "starter": false
         },
         {
+          "id": "105553696718837337",
           "name": "Jopa",
           "firstName": "Josip",
           "lastName": "Čančar",
@@ -1889,6 +2471,7 @@
           "starter": true
         },
         {
+          "id": "99322214629661297",
           "name": "Mikyx",
           "firstName": "Mihael",
           "lastName": "Mehle",
@@ -1896,12 +2479,26 @@
           "image": "https://static.lolesports.com/players/1784888796423_MikyX-01.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "SK Gaming",
+        "code": "SK",
+        "slug": "sk-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1643979272144_SK_Monochrome.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1643979272151_SK_Monochrome.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/sk-gaming-2cd63tzz.png"
+      }
     },
     "GX": {
       "id": "101383793572656373",
       "players": [
         {
+          "id": "103536968829352943",
           "name": "Oscarinin",
           "firstName": "Oscar",
           "lastName": "Muñoz Jiménez",
@@ -1910,6 +2507,7 @@
           "starter": true
         },
         {
+          "id": "103495716738607011",
           "name": "Lot",
           "firstName": "Eren",
           "lastName": "Yıldız",
@@ -1918,6 +2516,7 @@
           "starter": false
         },
         {
+          "id": "107464179845128878",
           "name": "ISMA",
           "firstName": "Ismaïl",
           "lastName": "Boualem",
@@ -1926,6 +2525,7 @@
           "starter": true
         },
         {
+          "id": "105647947016264573",
           "name": "Jackies",
           "firstName": "Adam",
           "lastName": "Jeřábek",
@@ -1934,6 +2534,7 @@
           "starter": true
         },
         {
+          "id": "103461966879623046",
           "name": "Flakked",
           "firstName": "Victor ",
           "lastName": "Lirola",
@@ -1942,6 +2543,7 @@
           "starter": true
         },
         {
+          "id": "105501717406803640",
           "name": "Noah",
           "firstName": "Hyuntaek",
           "lastName": "O",
@@ -1950,6 +2552,7 @@
           "starter": false
         },
         {
+          "id": "105501802535116331",
           "name": "Jun",
           "firstName": "Sejun",
           "lastName": "Yoon",
@@ -1957,12 +2560,26 @@
           "image": "https://static.lolesports.com/players/1784889465968_Jun-01.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "GIANTX",
+        "code": "GX",
+        "slug": "giantx-lec",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1765897105091_GIANTX-logotype-white.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1765897105092_GIANTX-logotype-white.png",
+        "backgroundImage": ""
+      }
     },
     "MKOI": {
       "id": "103461966965149786",
       "players": [
         {
+          "id": "110350224593953686",
           "name": "Myrwn",
           "firstName": "Álex ",
           "lastName": "Villarejo Pastor",
@@ -1971,6 +2588,7 @@
           "starter": true
         },
         {
+          "id": "112455030195807491",
           "name": "NightSlayer",
           "firstName": "Ivan ",
           "lastName": "Bilous",
@@ -1979,6 +2597,7 @@
           "starter": false
         },
         {
+          "id": "103877629120745120",
           "name": "Elyoya",
           "firstName": "Javier ",
           "lastName": "Prades",
@@ -1987,6 +2606,7 @@
           "starter": true
         },
         {
+          "id": "105504920899018806",
           "name": "Jojopyun",
           "firstName": " Joseph Joon",
           "lastName": " Pyun",
@@ -1995,6 +2615,7 @@
           "starter": true
         },
         {
+          "id": "103536968833612789",
           "name": "Supa",
           "firstName": "David",
           "lastName": "Martínez García",
@@ -2003,6 +2624,7 @@
           "starter": true
         },
         {
+          "id": "107564404490889053",
           "name": "Alvaro",
           "firstName": "Alvaro",
           "lastName": "Fernández del Amo",
@@ -2010,12 +2632,26 @@
           "image": "https://static.lolesports.com/players/1774651304778_alvaro.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Movistar KOI",
+        "code": "MKOI",
+        "slug": "mad-lions",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1734012609284_MKOI_FullColor_Blue.png",
+        "backgroundImage": ""
+      }
     },
     "SHFT": {
       "id": "107563714667537640",
       "players": [
         {
+          "id": "107767810249714879",
           "name": "Rooster",
           "firstName": "Yunhwan",
           "lastName": "Shin",
@@ -2024,6 +2660,7 @@
           "starter": true
         },
         {
+          "id": "105830645287286396",
           "name": "Sheo",
           "firstName": "Théo",
           "lastName": "Borile",
@@ -2032,6 +2669,7 @@
           "starter": true
         },
         {
+          "id": "105515296576479523",
           "name": "Boukada",
           "firstName": "Lahlou",
           "lastName": "Mehdi",
@@ -2040,6 +2678,7 @@
           "starter": false
         },
         {
+          "id": "105554437688383476",
           "name": "nuc",
           "firstName": "Ilias",
           "lastName": "Bizriken",
@@ -2048,6 +2687,7 @@
           "starter": true
         },
         {
+          "id": "107492114500277895",
           "name": "Paduck",
           "firstName": "Seokhyeon",
           "lastName": "Park",
@@ -2056,6 +2696,7 @@
           "starter": true
         },
         {
+          "id": "107462755349678558",
           "name": "Stend",
           "firstName": "Paul",
           "lastName": "Lardin",
@@ -2064,6 +2705,7 @@
           "starter": true
         },
         {
+          "id": "102181528883745160",
           "name": "Trymbi",
           "firstName": "Adrian",
           "lastName": "Trybus",
@@ -2071,12 +2713,26 @@
           "image": "https://static.lolesports.com/players/1768550915779_Trymbi-01.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Shifters",
+        "code": "SHFT",
+        "slug": "team-bds",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1765897071435_600px-Shifters_allmode.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1765897071435_600px-Shifters_allmode.png",
+        "backgroundImage": ""
+      }
     },
     "TH": {
       "id": "109637393694097670",
       "players": [
         {
+          "id": "107156544177574787",
           "name": "Tracyn",
           "firstName": "Sebastian",
           "lastName": "Wojtoń",
@@ -2085,6 +2741,7 @@
           "starter": true
         },
         {
+          "id": "107621095379170267",
           "name": "Daglas",
           "firstName": "Kacper",
           "lastName": "Dagiel",
@@ -2093,6 +2750,7 @@
           "starter": true
         },
         {
+          "id": "102174699705191142",
           "name": "Serin",
           "firstName": "Tolga",
           "lastName": "Ölmez",
@@ -2101,6 +2759,7 @@
           "starter": true
         },
         {
+          "id": "109625891896082370",
           "name": "Hype ",
           "firstName": "Junghyun",
           "lastName": "Byun",
@@ -2109,6 +2768,7 @@
           "starter": true
         },
         {
+          "id": "105501834624360050",
           "name": "Ice",
           "firstName": "Sang-hoon",
           "lastName": "Yoon",
@@ -2117,6 +2777,7 @@
           "starter": false
         },
         {
+          "id": "107492119089043087",
           "name": "Way",
           "firstName": "Han",
           "lastName": "Kil",
@@ -2124,12 +2785,26 @@
           "image": "https://static.lolesports.com/players/1784888696000_Way-01.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Team Heretics",
+        "code": "TH",
+        "slug": "team-heretics-lec",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1672933861879_Heretics-Full-Color.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1672933861879_Heretics-Full-Color.png",
+        "backgroundImage": ""
+      }
     },
     "NAVI": {
       "id": "114868016111590239",
       "players": [
         {
+          "id": "105700869624784693",
           "name": "Maynter",
           "firstName": "Volodymyr",
           "lastName": "Sorokin",
@@ -2138,6 +2813,7 @@
           "starter": true
         },
         {
+          "id": "105548731617719496",
           "name": "Rhilech",
           "firstName": "Enes",
           "lastName": "Uçan",
@@ -2146,6 +2822,7 @@
           "starter": true
         },
         {
+          "id": "107840393299826151",
           "name": "Poby",
           "firstName": "Sungwon",
           "lastName": "Yoon",
@@ -2154,6 +2831,7 @@
           "starter": true
         },
         {
+          "id": "100482247959137902",
           "name": "Larssen",
           "firstName": "Emil",
           "lastName": "Larsson",
@@ -2162,6 +2840,7 @@
           "starter": false
         },
         {
+          "id": "104287359934240404",
           "name": "SamD",
           "firstName": "Jaehoon",
           "lastName": "Lee",
@@ -2170,6 +2849,7 @@
           "starter": true
         },
         {
+          "id": "103805069759346933",
           "name": "Parus",
           "firstName": "Polat Furkan",
           "lastName": "Çiçek",
@@ -2177,12 +2857,26 @@
           "image": "https://static.lolesports.com/players/1784889393953_Parus-01.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Natus Vincere",
+        "code": "NAVI",
+        "slug": "natus-vincere",
+        "status": "active",
+        "homeLeague": {
+          "name": "LEC",
+          "region": "EMEA"
+        },
+        "image": "https://static.lolesports.com/teams/1752746833620_NAVI_FullColor.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1752746833620_NAVI_FullColor.png",
+        "backgroundImage": ""
+      }
     },
     "LYON": {
       "id": "99566405941863385",
       "players": [
         {
+          "id": "99322408701435122",
           "name": "Dhokla",
           "firstName": "Niship",
           "lastName": "Doshi",
@@ -2191,6 +2885,7 @@
           "starter": true
         },
         {
+          "id": "101389713966873995",
           "name": "Inspired",
           "firstName": "Kacper",
           "lastName": "Sloma",
@@ -2199,6 +2894,7 @@
           "starter": true
         },
         {
+          "id": "107492059066783320",
           "name": "Saint",
           "firstName": "Sungin",
           "lastName": "Kang",
@@ -2207,6 +2903,7 @@
           "starter": true
         },
         {
+          "id": "105388936922706146",
           "name": "Berserker",
           "firstName": "Mincheol",
           "lastName": "Kim",
@@ -2215,6 +2912,7 @@
           "starter": true
         },
         {
+          "id": "103103578076943629",
           "name": "Isles",
           "firstName": "Jonah",
           "lastName": "Rosario",
@@ -2222,12 +2920,26 @@
           "image": "https://static.lolesports.com/players/1769150180651_AME_LCS26S1_LYON_ISLES.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "LYON",
+        "code": "LYON",
+        "slug": "lyon-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+        "backgroundImage": ""
+      }
     },
     "C9": {
       "id": "98767991877340524",
       "players": [
         {
+          "id": "105501816646382923",
           "name": "Thanatos",
           "firstName": "Seung-gyu",
           "lastName": "Park",
@@ -2236,6 +2948,7 @@
           "starter": true
         },
         {
+          "id": "99101098218071815",
           "name": "Blaber",
           "firstName": "Robert",
           "lastName": "Huang",
@@ -2244,6 +2957,7 @@
           "starter": true
         },
         {
+          "id": "108567314915334762",
           "name": "Loki ",
           "firstName": "Sangmin",
           "lastName": "Lee",
@@ -2252,6 +2966,7 @@
           "starter": true
         },
         {
+          "id": "105957619949286329",
           "name": "APA",
           "firstName": "Eain",
           "lastName": "Stearns",
@@ -2260,6 +2975,7 @@
           "starter": false
         },
         {
+          "id": "101383793877071109",
           "name": "Tactical",
           "firstName": "Edward",
           "lastName": "Ra",
@@ -2268,6 +2984,7 @@
           "starter": true
         },
         {
+          "id": "98767991801635485",
           "name": "Zven",
           "firstName": "Jesper",
           "lastName": "Svenningsen",
@@ -2276,6 +2993,7 @@
           "starter": false
         },
         {
+          "id": "99101098208825497",
           "name": "Vulcan",
           "firstName": "Philippe",
           "lastName": "Laflamme",
@@ -2283,12 +3001,26 @@
           "image": "https://static.lolesports.com/players/1769149513772_AME_LCS26S1_C9_VULCAN.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Cloud9 Kia",
+        "code": "C9",
+        "slug": "cloud9",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1736924120255_C9Kia_IconBlue_Transparent_2000x2000.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/cloud9-9vnfum22.png"
+      }
     },
     "FLY": {
       "id": "98926509892121852",
       "players": [
         {
+          "id": "111686531260879329",
           "name": "Gakgos",
           "firstName": "Bulut",
           "lastName": "Ibrahim Samet",
@@ -2297,6 +3029,7 @@
           "starter": true
         },
         {
+          "id": "107577675767857598",
           "name": "Gryffinn",
           "firstName": "Johnson",
           "lastName": "Le",
@@ -2305,6 +3038,7 @@
           "starter": true
         },
         {
+          "id": "110219103969081067",
           "name": "Quad",
           "firstName": "Suhyeong",
           "lastName": "Song",
@@ -2313,6 +3047,7 @@
           "starter": true
         },
         {
+          "id": "108369186353082038",
           "name": "Massu",
           "firstName": "Abdulmalek",
           "lastName": "Fahad",
@@ -2321,6 +3056,7 @@
           "starter": true
         },
         {
+          "id": "110535834235603720",
           "name": "Cryogen",
           "firstName": "Michael",
           "lastName": "Luu",
@@ -2328,12 +3064,26 @@
           "image": "https://static.lolesports.com/players/1769149918320_AME_LCS26S1_FLY_CRYOGEN.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "FlyQuest",
+        "code": "FLY",
+        "slug": "flyquest",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/flyquest-new-on-dark.png",
+        "alternativeImage": "https://static.lolesports.com/teams/flyquest-new-on-dark.png",
+        "backgroundImage": ""
+      }
     },
     "TLAW": {
       "id": "98926509885559666",
       "players": [
         {
+          "id": "103103696693473944",
           "name": "Morgan",
           "firstName": "Ruhan",
           "lastName": "Park",
@@ -2342,6 +3092,7 @@
           "starter": true
         },
         {
+          "id": "99566408350815597",
           "name": "Josedeodo",
           "firstName": "Brandon",
           "lastName": "Villegas",
@@ -2350,6 +3101,7 @@
           "starter": true
         },
         {
+          "id": "107492071007218117",
           "name": "Quid",
           "firstName": "HYEONSEUNG",
           "lastName": "Lim",
@@ -2358,6 +3110,7 @@
           "starter": true
         },
         {
+          "id": "105510944671654183",
           "name": "Yeon",
           "firstName": "Sean",
           "lastName": "Sung",
@@ -2366,6 +3119,7 @@
           "starter": true
         },
         {
+          "id": "98767991789638893",
           "name": "CoreJJ",
           "firstName": "Yongin",
           "lastName": "Jo",
@@ -2373,12 +3127,26 @@
           "image": "https://static.lolesports.com/players/1769150483053_AME_LCS26S1_TL_COREJJ.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Team Liquid Alienware",
+        "code": "TLAW",
+        "slug": "team-liquid",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
+        "alternativeImage": "",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/team-liquid-4bj1d6p9.png"
+      }
     },
     "DIG": {
       "id": "98926509883054987",
       "players": [
         {
+          "id": "108577048167390593",
           "name": "Denathor",
           "firstName": "Noah",
           "lastName": "Erikson",
@@ -2387,6 +3155,7 @@
           "starter": false
         },
         {
+          "id": "105732582273104165",
           "name": "Photon",
           "firstName": "Gyutae",
           "lastName": "Kyeong",
@@ -2395,6 +3164,7 @@
           "starter": false
         },
         {
+          "id": "106857834302830803",
           "name": "eXyu",
           "firstName": "Lawrence",
           "lastName": "Xu",
@@ -2403,6 +3173,7 @@
           "starter": false
         },
         {
+          "id": "99566406314527111",
           "name": "FBI",
           "firstName": "Ian",
           "lastName": "Huang",
@@ -2410,12 +3181,26 @@
           "image": "https://static.lolesports.com/players/1753349110894_image6224.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Dignitas",
+        "code": "DIG",
+        "slug": "dignitas",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/DIG-FullonDark.png",
+        "alternativeImage": "https://static.lolesports.com/teams/DIG-FullonLight.png",
+        "backgroundImage": "https://static.lolesports.com/teams/DignitasDIG.png"
+      }
     },
     "DSG": {
       "id": "110428362822825796",
       "players": [
         {
+          "id": "105913339633194822",
           "name": "Srtty",
           "firstName": "Jett",
           "lastName": "Joye",
@@ -2424,6 +3209,7 @@
           "starter": true
         },
         {
+          "id": "109782648292867379",
           "name": "KryRa",
           "firstName": "Christian",
           "lastName": "Rahaian",
@@ -2432,6 +3218,7 @@
           "starter": true
         },
         {
+          "id": "108205130200366557",
           "name": "Callme",
           "firstName": "Jihoon",
           "lastName": "Oh",
@@ -2440,6 +3227,7 @@
           "starter": true
         },
         {
+          "id": "107577679471034957",
           "name": "sajed",
           "firstName": "Sajed",
           "lastName": "Ziade",
@@ -2448,6 +3236,7 @@
           "starter": true
         },
         {
+          "id": "107583616307712318",
           "name": "Lyonz",
           "firstName": "Pedro",
           "lastName": "Peralta",
@@ -2455,12 +3244,26 @@
           "image": "https://static.lolesports.com/players/1769149764464_AME_LCS26S1_DSG_LYONZ.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Disguised",
+        "code": "DSG",
+        "slug": "disguised",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/1731496922454_Disguised-Wordmark-Yellow-Main.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1731496922455_Disguised-Wordmark-Yellow-Main.png",
+        "backgroundImage": ""
+      }
     },
     "SR": {
       "id": "111504538396430510",
       "players": [
         {
+          "id": "102206337829139149",
           "name": "Fudge",
           "firstName": "Ibrahim",
           "lastName": "Allami",
@@ -2469,6 +3272,7 @@
           "starter": true
         },
         {
+          "id": "98767975969375854",
           "name": "Contractz",
           "firstName": "Juan",
           "lastName": "Garcia",
@@ -2477,6 +3281,7 @@
           "starter": true
         },
         {
+          "id": "111658293765148243",
           "name": "Zinie",
           "firstName": "Yu",
           "lastName": "Baekjin",
@@ -2485,6 +3290,7 @@
           "starter": true
         },
         {
+          "id": "101388912784979237",
           "name": "Bvoy",
           "firstName": "Younghoon",
           "lastName": "Joo",
@@ -2493,6 +3299,7 @@
           "starter": true
         },
         {
+          "id": "98926509843809391",
           "name": "Zeyzal",
           "firstName": "Tristan",
           "lastName": "Stidam",
@@ -2500,12 +3307,26 @@
           "image": "https://static.lolesports.com/players/1790204939755_zeyzal.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Shopify Rebellion",
+        "code": "SR",
+        "slug": "shopify-rebellion",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/1701424227458_Teams204_Shopify_1632869404072.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1701424227460_Shopify_Rebellion_2021_lightmode.png",
+        "backgroundImage": ""
+      }
     },
     "SEN": {
       "id": "115688562107799886",
       "players": [
         {
+          "id": "98767991746528652",
           "name": "Impact",
           "firstName": "Eon-Young",
           "lastName": "Jeong",
@@ -2514,6 +3335,7 @@
           "starter": true
         },
         {
+          "id": "107454953423394142",
           "name": "HamBak",
           "firstName": "Yujin",
           "lastName": "Ham",
@@ -2522,6 +3344,7 @@
           "starter": true
         },
         {
+          "id": "105913330212838498",
           "name": "DARKWINGS",
           "firstName": "Isaac",
           "lastName": "Chou",
@@ -2530,6 +3353,7 @@
           "starter": true
         },
         {
+          "id": "106267600924403194",
           "name": "Rahel",
           "firstName": "Minseong",
           "lastName": "Cho",
@@ -2538,6 +3362,7 @@
           "starter": true
         },
         {
+          "id": "98926509793730393",
           "name": "huhi",
           "firstName": "Jae Hyun",
           "lastName": "Choi",
@@ -2545,12 +3370,26 @@
           "image": "https://static.lolesports.com/players/1769150288234_AME_LCS26S1_SEN_HUHI.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Sentinels",
+        "code": "SEN",
+        "slug": "sentinels",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCS",
+          "region": "북미"
+        },
+        "image": "https://static.lolesports.com/teams/1767769784669_Sentinels_2020_Icon.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1767769784670_Sentinels_2020_Icon.png",
+        "backgroundImage": ""
+      }
     },
     "TSW": {
       "id": "113661839307879869",
       "players": [
         {
+          "id": "107251636998679351",
           "name": "Pun",
           "firstName": "Dang Khoa",
           "lastName": "Nguyen",
@@ -2559,6 +3398,7 @@
           "starter": true
         },
         {
+          "id": "113662600335177587",
           "name": "Hizto",
           "firstName": "Văn Hoàng Hải",
           "lastName": "Lê",
@@ -2567,6 +3407,7 @@
           "starter": true
         },
         {
+          "id": "113661875306288886",
           "name": "Dire",
           "firstName": "Duy Đức",
           "lastName": "Trần",
@@ -2575,6 +3416,7 @@
           "starter": true
         },
         {
+          "id": "107251694749147163",
           "name": "Eddie",
           "firstName": "Công Nghĩa",
           "lastName": "Hoàng",
@@ -2583,6 +3425,7 @@
           "starter": true
         },
         {
+          "id": "107251574398720447",
           "name": "Bie",
           "firstName": "Hieu",
           "lastName": "Tran Duc ",
@@ -2590,12 +3433,26 @@
           "image": "https://static.lolesports.com/players/1775221988811_Bie.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Team Secret Whales",
+        "code": "TSW",
+        "slug": "team-secret-whales",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
+        "backgroundImage": ""
+      }
     },
     "GAM": {
       "id": "98767991954244555",
       "players": [
         {
+          "id": "107330029738468255",
           "name": "Kiaya",
           "firstName": "Sang",
           "lastName": "Tran Duy ",
@@ -2604,6 +3461,7 @@
           "starter": false
         },
         {
+          "id": "107255592262151792",
           "name": "Draktharr",
           "firstName": "Toan",
           "lastName": "Le Ngoc ",
@@ -2612,6 +3470,7 @@
           "starter": false
         },
         {
+          "id": "114533956909173365",
           "name": "Tiphat",
           "firstName": "Tien Phat",
           "lastName": "Nguyen",
@@ -2620,6 +3479,7 @@
           "starter": false
         },
         {
+          "id": "107255594187103787",
           "name": "Gloryy",
           "firstName": "Ngoc Vinh",
           "lastName": "Le",
@@ -2628,6 +3488,7 @@
           "starter": false
         },
         {
+          "id": "107251647709372417",
           "name": "Artemis",
           "firstName": "Hung",
           "lastName": "Tran Quoc ",
@@ -2636,6 +3497,7 @@
           "starter": false
         },
         {
+          "id": "107251533987191201",
           "name": "Taki",
           "firstName": "Tai",
           "lastName": "Dinh Anh ",
@@ -2643,12 +3505,26 @@
           "image": "https://static.lolesports.com/players/1769231527706_Taki.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "GAM Esports",
+        "code": "GAM",
+        "slug": "gam-esports",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1643263093448_GAMyellow.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1643263093449_GAMyellow.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/gam-esports-6t9836to.png"
+      }
     },
     "DCG": {
       "id": "107700204561086446",
       "players": [
         {
+          "id": "113956475907503780",
           "name": "Flauren",
           "firstName": "Chak-Kin",
           "lastName": "Lo",
@@ -2657,6 +3533,7 @@
           "starter": true
         },
         {
+          "id": "115841984162908587",
           "name": "Pop9",
           "firstName": "YI-HAN",
           "lastName": "WU",
@@ -2665,6 +3542,7 @@
           "starter": true
         },
         {
+          "id": "106470350672813985",
           "name": "HongSuo",
           "firstName": "BEI YI",
           "lastName": "GUO",
@@ -2673,6 +3551,7 @@
           "starter": true
         },
         {
+          "id": "103817013605434023",
           "name": "XiaoXiang",
           "firstName": "YI-XIANG",
           "lastName": "LIAO",
@@ -2681,6 +3560,7 @@
           "starter": false
         },
         {
+          "id": "109642956405180458",
           "name": "Feng ",
           "firstName": "Jun-Feng",
           "lastName": "Chen",
@@ -2689,6 +3569,7 @@
           "starter": true
         },
         {
+          "id": "99566406485280528",
           "name": "ShiauC",
           "firstName": "Jia-Hao ",
           "lastName": "Liu",
@@ -2696,12 +3577,26 @@
           "image": "https://static.lolesports.com/players/1769233035363_ShiauC.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "Relove Deep Cross Gaming",
+        "code": "DCG",
+        "slug": "deep-cross-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1785400397160_LCP_DCG_Full_W1.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1785400397161_LCP_DCG_Full_W1.png",
+        "backgroundImage": ""
+      }
     },
     "CFO": {
       "id": "107700199633958891",
       "players": [
         {
+          "id": "99566406483009320",
           "name": "Rest",
           "firstName": "SHI-JIE",
           "lastName": "XU",
@@ -2710,6 +3605,7 @@
           "starter": false
         },
         {
+          "id": "102808727762706248",
           "name": "Shad0w",
           "firstName": "Zhiqian",
           "lastName": "Zhao",
@@ -2718,6 +3614,7 @@
           "starter": false
         },
         {
+          "id": "108443043135317375",
           "name": "POUT",
           "firstName": "INUNG",
           "lastName": "HAN",
@@ -2726,6 +3623,7 @@
           "starter": false
         },
         {
+          "id": "104573129055417270",
           "name": "Doggo",
           "firstName": "Tzu-Chuan",
           "lastName": "Chiu",
@@ -2734,6 +3632,7 @@
           "starter": false
         },
         {
+          "id": "100668757020706361",
           "name": "Kino",
           "firstName": "XIN-RONG",
           "lastName": "JHU WU",
@@ -2741,12 +3640,26 @@
           "image": "https://static.lolesports.com/players/1785926061333_Kino.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "CTBC Flying Oyster",
+        "code": "CFO",
+        "slug": "ctbc-flying-oyster",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1656307849320_CFO_Logo.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1656307849321_CFO_Logo.png",
+        "backgroundImage": ""
+      }
     },
     "MVK": {
       "id": "107251245690956393",
       "players": [
         {
+          "id": "109828407662355333",
           "name": "Kratos",
           "firstName": "Khanh",
           "lastName": "Ngo Duc",
@@ -2755,6 +3668,7 @@
           "starter": false
         },
         {
+          "id": "113628612494074867",
           "name": "SanSan",
           "firstName": "QUOC KHANH",
           "lastName": "LE",
@@ -2763,6 +3677,7 @@
           "starter": false
         },
         {
+          "id": "109828289393968653",
           "name": "Gury",
           "firstName": "Luong Hai",
           "lastName": "Long",
@@ -2771,6 +3686,7 @@
           "starter": false
         },
         {
+          "id": "113628612585554951",
           "name": "Chika",
           "firstName": "Le Nhan",
           "lastName": "Vo",
@@ -2779,6 +3695,7 @@
           "starter": false
         },
         {
+          "id": "109828431746365782",
           "name": "Harky",
           "firstName": "Huu",
           "lastName": "Nguyen Van",
@@ -2787,6 +3704,7 @@
           "starter": false
         },
         {
+          "id": "112834609700454416",
           "name": "SiuLoong",
           "firstName": "Hoang Lam",
           "lastName": "Nguyen",
@@ -2794,12 +3712,26 @@
           "image": "https://static.lolesports.com/players/1775222126505_SiuLoong.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "MVK Esports",
+        "code": "MVK",
+        "slug": "saigon-buffalo-esports",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1767089709161_White_Logo.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1767089709161_Orange_Black_Logo.png",
+        "backgroundImage": ""
+      }
     },
     "SHG": {
       "id": "103535282119620510",
       "players": [
         {
+          "id": "98767975944639514",
           "name": "Evi",
           "firstName": "Shunsuke",
           "lastName": "Murase",
@@ -2808,6 +3740,7 @@
           "starter": false
         },
         {
+          "id": "114533301242660910",
           "name": "Van1",
           "firstName": "Seunghu",
           "lastName": "Kim",
@@ -2816,6 +3749,7 @@
           "starter": false
         },
         {
+          "id": "103535282076301190",
           "name": "Aria",
           "firstName": "Gaeul",
           "lastName": "Lee",
@@ -2824,6 +3758,7 @@
           "starter": false
         },
         {
+          "id": "103678738910712347",
           "name": "Marble",
           "firstName": "Rei ",
           "lastName": "Shimaya",
@@ -2832,6 +3767,7 @@
           "starter": false
         },
         {
+          "id": "103495716560217968",
           "name": "Vsta",
           "firstName": "Hyoseong",
           "lastName": "Oh",
@@ -2839,12 +3775,26 @@
           "image": "https://static.lolesports.com/players/1769232878116_Vsta.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Fukuoka SoftBank HAWKS gaming",
+        "code": "SHG",
+        "slug": "fukuoka-softbank-hawks-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1725885083108_SHG_White_Main.png",
+        "alternativeImage": "",
+        "backgroundImage": ""
+      }
     },
     "GZ": {
       "id": "109675490370327425",
       "players": [
         {
+          "id": "111760351183343187",
           "name": "1Jiang",
           "firstName": "Yi CHIN",
           "lastName": "Chen",
@@ -2853,6 +3803,7 @@
           "starter": false
         },
         {
+          "id": "106470320886575308",
           "name": "Husha",
           "firstName": "TZU WEI",
           "lastName": "HUANG",
@@ -2861,6 +3812,7 @@
           "starter": false
         },
         {
+          "id": "99566406481429847",
           "name": "Uniboy",
           "firstName": "Chang-Ju",
           "lastName": "Chen",
@@ -2869,6 +3821,7 @@
           "starter": false
         },
         {
+          "id": "98767975924333750",
           "name": "Betty",
           "firstName": "Yu-Hung ",
           "lastName": "Lu",
@@ -2877,6 +3830,7 @@
           "starter": false
         },
         {
+          "id": "98767975956663486",
           "name": "Kaiwing",
           "firstName": "Kai Wing",
           "lastName": "Ling",
@@ -2884,12 +3838,26 @@
           "image": "https://static.lolesports.com/players/1785926080436_Kaiwing.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Ground Zero Gaming",
+        "code": "GZ",
+        "slug": "ground-zero",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1766395585595_LCP_TEAMLogo_GZ_Full_B.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1766395585596_LCP_TEAMLogo_GZ_Full_B.png",
+        "backgroundImage": ""
+      }
     },
     "DFM": {
       "id": "100285330168091787",
       "players": [
         {
+          "id": "106304305078654334",
           "name": "Momo",
           "firstName": "Sora",
           "lastName": "Tobita",
@@ -2898,6 +3866,7 @@
           "starter": false
         },
         {
+          "id": "106288133167060072",
           "name": "Citrus",
           "firstName": "Ji Woong",
           "lastName": "Byun",
@@ -2906,6 +3875,7 @@
           "starter": false
         },
         {
+          "id": "108511159661913839",
           "name": "Fisher",
           "firstName": "Jeongtae",
           "lastName": "Lee",
@@ -2914,6 +3884,7 @@
           "starter": false
         },
         {
+          "id": "107618427663806057",
           "name": "Kakkun",
           "firstName": "Kamon",
           "lastName": "Nomoto",
@@ -2922,6 +3893,7 @@
           "starter": false
         },
         {
+          "id": "99566406444168246",
           "name": "Woody",
           "firstName": "Yu-En",
           "lastName": "Lin",
@@ -2929,12 +3901,26 @@
           "image": "https://static.lolesports.com/players/1775222058551_Woody.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "DetonatioN FocusMe",
+        "code": "DFM",
+        "slug": "detonation-focusme",
+        "status": "active",
+        "homeLeague": {
+          "name": "LCP",
+          "region": "퍼시픽"
+        },
+        "image": "https://static.lolesports.com/teams/1673415140442_dfm.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1673415140445_dfm.png",
+        "backgroundImage": "https://lolstatic-a.akamaihd.net/esports-assets/production/team/detonation-focusme-4pgp383l.png"
+      }
     },
     "FUR": {
       "id": "100205576309502431",
       "players": [
         {
+          "id": "100131733430915231",
           "name": "Guigo",
           "firstName": "Guilherme",
           "lastName": "Ruiz",
@@ -2943,6 +3929,7 @@
           "starter": true
         },
         {
+          "id": "108494063372887027",
           "name": "Tatu",
           "firstName": "Pedro",
           "lastName": "Seixas",
@@ -2951,6 +3938,7 @@
           "starter": true
         },
         {
+          "id": "99566407782209288",
           "name": "Shini",
           "firstName": "Diogo",
           "lastName": "Rogê",
@@ -2959,6 +3947,7 @@
           "starter": false
         },
         {
+          "id": "103478281329357326",
           "name": "Tutsz",
           "firstName": "Arthur",
           "lastName": "Machado",
@@ -2967,6 +3956,7 @@
           "starter": true
         },
         {
+          "id": "108613483446049530",
           "name": "Ayu",
           "firstName": "Andrey",
           "lastName": "Saraiva",
@@ -2975,6 +3965,7 @@
           "starter": true
         },
         {
+          "id": "99566408211536727",
           "name": "JoJo",
           "firstName": "Gabriel",
           "lastName": "Dzelme",
@@ -2982,12 +3973,26 @@
           "image": "https://static.lolesports.com/players/1785137522978_FUR_Jojo-1copy.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "FURIA",
+        "code": "FUR",
+        "slug": "furia",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/FURIA---black.png",
+        "alternativeImage": "https://static.lolesports.com/teams/FURIA---black.png",
+        "backgroundImage": "https://static.lolesports.com/teams/FuriaUppercutFUR.png"
+      }
     },
     "RED": {
       "id": "99566408221961358",
       "players": [
         {
+          "id": "111734845200890741",
           "name": "zynts",
           "firstName": "Matheus",
           "lastName": "Silva",
@@ -2996,6 +4001,7 @@
           "starter": true
         },
         {
+          "id": "111734785118050063",
           "name": "jmz",
           "firstName": "João",
           "lastName": "Loureiro",
@@ -3004,6 +4010,7 @@
           "starter": false
         },
         {
+          "id": "107559668094235248",
           "name": "STEPZ",
           "firstName": "Eloy",
           "lastName": "Rodriguez",
@@ -3012,6 +4019,7 @@
           "starter": true
         },
         {
+          "id": "116915008919095996",
           "name": "smooth",
           "firstName": "Anthony",
           "lastName": "Bonatto",
@@ -3020,6 +4028,7 @@
           "starter": false
         },
         {
+          "id": "103743617977630492",
           "name": "Aegis",
           "firstName": "Gabriel",
           "lastName": "Lemos",
@@ -3028,6 +4037,7 @@
           "starter": false
         },
         {
+          "id": "107559338252333149",
           "name": "Fuuu",
           "firstName": "Gabriel",
           "lastName": "Furuya",
@@ -3036,6 +4046,7 @@
           "starter": true
         },
         {
+          "id": "116915009014636741",
           "name": "Nukenin",
           "firstName": "Davi",
           "lastName": "Loureiro",
@@ -3044,6 +4055,7 @@
           "starter": false
         },
         {
+          "id": "108395451349202875",
           "name": "Morttheus",
           "firstName": "Matheus",
           "lastName": "Motta",
@@ -3052,6 +4064,7 @@
           "starter": true
         },
         {
+          "id": "116915009116614247",
           "name": "Nanashi",
           "firstName": "Giuliano",
           "lastName": "de Lorenzo",
@@ -3060,6 +4073,7 @@
           "starter": false
         },
         {
+          "id": "109518716685978765",
           "name": "Manel",
           "firstName": "Emanuel",
           "lastName": "Lopes",
@@ -3068,6 +4082,7 @@
           "starter": true
         },
         {
+          "id": "108395422235497387",
           "name": "frosty",
           "firstName": "José",
           "lastName": "Leal",
@@ -3075,12 +4090,26 @@
           "image": "https://static.lolesports.com/players/1785142368737_RED_Frosty-1copy.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "RED Kalunga",
+        "code": "RED",
+        "slug": "red-kalunga",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/1631820575924_red-2021-worlds.png",
+        "alternativeImage": "",
+        "backgroundImage": "https://static.lolesports.com/teams/REDCanidsRED.png"
+      }
     },
     "LOUD": {
       "id": "105397404796640412",
       "players": [
         {
+          "id": "110434225307697321",
           "name": "Xyno",
           "firstName": "Carlos ",
           "lastName": "Ferreira",
@@ -3089,6 +4118,7 @@
           "starter": true
         },
         {
+          "id": "116287401640559707",
           "name": "Sinatra",
           "firstName": "Enzo",
           "lastName": "Ferreira",
@@ -3097,6 +4127,7 @@
           "starter": true
         },
         {
+          "id": "109656280616610105",
           "name": "Kaze",
           "firstName": "Lucas",
           "lastName": "Sebastian",
@@ -3105,6 +4136,7 @@
           "starter": true
         },
         {
+          "id": "113684241495506037",
           "name": "Mago",
           "firstName": "  Jean",
           "lastName": "  Dias ",
@@ -3113,6 +4145,7 @@
           "starter": false
         },
         {
+          "id": "112462284750329945",
           "name": "Rabelo",
           "firstName": "Guilherme",
           "lastName": "Muniz",
@@ -3121,6 +4154,7 @@
           "starter": true
         },
         {
+          "id": "111734539087870444",
           "name": "uZent",
           "firstName": "Matheus",
           "lastName": "Ferreira",
@@ -3128,12 +4162,26 @@
           "image": "https://static.lolesports.com/players/1785138005226_Loud_Uzent-1copy.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "LOUD",
+        "code": "LOUD",
+        "slug": "loud",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/Logo-LOUD-Esports_Original.png",
+        "alternativeImage": "https://static.lolesports.com/teams/Logo-LOUD-Esports_Original.png",
+        "backgroundImage": "https://static.lolesports.com/teams/LOUDLLL.png"
+      }
     },
     "PAIN": {
       "id": "99566408217955692",
       "players": [
         {
+          "id": "107559111166843860",
           "name": "Boal",
           "firstName": "Felipe",
           "lastName": "Boal",
@@ -3142,6 +4190,7 @@
           "starter": true
         },
         {
+          "id": "100205576295412145",
           "name": "CarioK",
           "firstName": "Marcos",
           "lastName": "Oliveira",
@@ -3150,6 +4199,7 @@
           "starter": true
         },
         {
+          "id": "105541438961192885",
           "name": "Samkz",
           "firstName": "Samuel",
           "lastName": "Rosa",
@@ -3158,6 +4208,7 @@
           "starter": false
         },
         {
+          "id": "111734539296970340",
           "name": "Namiru",
           "firstName": "Daniel",
           "lastName": "Tonelli",
@@ -3166,6 +4217,7 @@
           "starter": true
         },
         {
+          "id": "103619615096612421",
           "name": "Keine",
           "firstName": "Kim",
           "lastName": "Cheol",
@@ -3174,6 +4226,7 @@
           "starter": false
         },
         {
+          "id": "105320670306436651",
           "name": "Hena",
           "firstName": "Jeunghwan",
           "lastName": "Park",
@@ -3182,6 +4235,7 @@
           "starter": true
         },
         {
+          "id": "101383793153915529",
           "name": "Ceos",
           "firstName": "Denilson",
           "lastName": "Oliveira",
@@ -3189,12 +4243,26 @@
           "image": "https://static.lolesports.com/players/1785141977929_PNG_Ceos-1copy.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "paiN Gaming",
+        "code": "PAIN",
+        "slug": "pain-gaming",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/1674657011011_pain_logo_white.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1674657070286_pain_preto.png",
+        "backgroundImage": ""
+      }
     },
     "VKS": {
       "id": "99566408219409348",
       "players": [
         {
+          "id": "112489397428558238",
           "name": "zekas",
           "firstName": "Cesar",
           "lastName": "França",
@@ -3203,6 +4271,7 @@
           "starter": true
         },
         {
+          "id": "106274177506022087",
           "name": "SUPERCLEBER",
           "firstName": "Cleber",
           "lastName": "Nantes",
@@ -3211,6 +4280,7 @@
           "starter": false
         },
         {
+          "id": "105397234464043531",
           "name": "Disamis",
           "firstName": "Pedro",
           "lastName": "Cavalcante",
@@ -3219,6 +4289,7 @@
           "starter": true
         },
         {
+          "id": "112462312538183833",
           "name": "sarolu",
           "firstName": "Victor",
           "lastName": "Noguchi",
@@ -3227,6 +4298,7 @@
           "starter": false
         },
         {
+          "id": "104266800049354578",
           "name": "Mireu",
           "firstName": "Jobeen",
           "lastName": "Jeong",
@@ -3235,6 +4307,7 @@
           "starter": true
         },
         {
+          "id": "105397295174824600",
           "name": "Qats",
           "firstName": "Thiago",
           "lastName": "Augusto",
@@ -3243,6 +4316,7 @@
           "starter": false
         },
         {
+          "id": "103889905542957250",
           "name": "Jeskla",
           "firstName": "Jesper",
           "lastName": "Stromberg",
@@ -3251,6 +4325,7 @@
           "starter": true
         },
         {
+          "id": "114149036444094690",
           "name": "BUERO",
           "firstName": "Daniel",
           "lastName": "de Jesus",
@@ -3259,6 +4334,7 @@
           "starter": false
         },
         {
+          "id": "103743593842085398",
           "name": "scamber",
           "firstName": "Pedro",
           "lastName": "Maximiniano",
@@ -3267,6 +4343,7 @@
           "starter": true
         },
         {
+          "id": "107559356925533344",
           "name": "zay",
           "firstName": "Vinicius",
           "lastName": "Viana",
@@ -3274,12 +4351,26 @@
           "image": "https://static.lolesports.com/players/1717426916070_Zay.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Vivo Keyd Stars",
+        "code": "VKS",
+        "slug": "vivo-keyd",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/1670542079678_vks.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1670541584344_vks.png",
+        "backgroundImage": ""
+      }
     },
     "LOS": {
       "id": "109480204628225868",
       "players": [
         {
+          "id": "107492099069012459",
           "name": "Zest",
           "firstName": "Dongmin",
           "lastName": "Kim",
@@ -3288,6 +4379,7 @@
           "starter": true
         },
         {
+          "id": "110434822594728434",
           "name": "Curse",
           "firstName": "Raí",
           "lastName": "Yamada",
@@ -3296,6 +4388,7 @@
           "starter": true
         },
         {
+          "id": "107492030596737445",
           "name": "Feisty",
           "firstName": "Seonghun",
           "lastName": "Jung",
@@ -3304,6 +4397,7 @@
           "starter": true
         },
         {
+          "id": "112462169706118570",
           "name": "Duduhh",
           "firstName": "Wallyson",
           "lastName": "Silva",
@@ -3312,6 +4406,7 @@
           "starter": true
         },
         {
+          "id": "105506922297942200",
           "name": "Ackerman",
           "firstName": "Gabriel",
           "lastName": "Aparicio",
@@ -3319,12 +4414,26 @@
           "image": "https://static.lolesports.com/players/1785139928559_LOS_Ackerman-1copy.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "LOS",
+        "code": "LOS",
+        "slug": "los",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/1784013312149_LOS-OLaranja.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1784013312149_LOS-OLaranja.png",
+        "backgroundImage": ""
+      }
     },
     "FX": {
       "id": "109480056092207899",
       "players": [
         {
+          "id": "105516185566739968",
           "name": "Zothve",
           "firstName": "Carlo André",
           "lastName": "Carrión Zapata",
@@ -3333,6 +4442,7 @@
           "starter": true
         },
         {
+          "id": "111734812721889388",
           "name": "curty",
           "firstName": "Pedro",
           "lastName": "Curty",
@@ -3341,6 +4451,7 @@
           "starter": false
         },
         {
+          "id": "105501794903516897",
           "name": "Peach",
           "firstName": "Mingyu",
           "lastName": "Lee",
@@ -3349,6 +4460,7 @@
           "starter": true
         },
         {
+          "id": "102825747663199158",
           "name": "cody",
           "firstName": "Cristian",
           "lastName": "Yampara",
@@ -3357,6 +4469,7 @@
           "starter": true
         },
         {
+          "id": "100131567589299245",
           "name": "hauz",
           "firstName": "Bruno",
           "lastName": "Ferreira",
@@ -3365,6 +4478,7 @@
           "starter": false
         },
         {
+          "id": "105320695377750123",
           "name": "BAO",
           "firstName": "Hyeonu",
           "lastName": "Chung",
@@ -3373,6 +4487,7 @@
           "starter": true
         },
         {
+          "id": "109519064896337328",
           "name": "Momochi",
           "firstName": "Gabriel",
           "lastName": "Oliveira",
@@ -3381,6 +4496,7 @@
           "starter": true
         },
         {
+          "id": "103478281332503056",
           "name": "ProDelta",
           "firstName": "Fábio",
           "lastName": "Marques",
@@ -3388,12 +4504,26 @@
           "image": "https://static.lolesports.com/players/1768376111969_image6336.png",
           "starter": false
         }
-      ]
+      ],
+      "team": {
+        "name": "Fluxo W7M",
+        "code": "FX",
+        "slug": "fluxo",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/1766161431111_LogoColorida.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1766161431111_LogoColorida.png",
+        "backgroundImage": ""
+      }
     },
     "LEV": {
       "id": "107598699275015260",
       "players": [
         {
+          "id": "114194564351011213",
           "name": "Devost",
           "firstName": "Julián",
           "lastName": "Orozco",
@@ -3402,6 +4532,7 @@
           "starter": true
         },
         {
+          "id": "114194572740209046",
           "name": "Booki",
           "firstName": "Piero",
           "lastName": "Herrera",
@@ -3410,6 +4541,7 @@
           "starter": true
         },
         {
+          "id": "104843445932165305",
           "name": "Enga",
           "firstName": "Eneas",
           "lastName": "Protti",
@@ -3418,6 +4550,7 @@
           "starter": true
         },
         {
+          "id": "107648370969609784",
           "name": "Strensh",
           "firstName": "Cristopher",
           "lastName": "Gonzalez",
@@ -3426,6 +4559,7 @@
           "starter": true
         },
         {
+          "id": "109716554374057462",
           "name": "Shiku",
           "firstName": "Carlo Andre",
           "lastName": "Carrion Zapata",
@@ -3433,7 +4567,20 @@
           "image": "https://static.lolesports.com/players/1785138919269_LEV_Shiku-1copy.png",
           "starter": true
         }
-      ]
+      ],
+      "team": {
+        "name": "LEVIATÁN",
+        "code": "LEV",
+        "slug": "leviatan-esports",
+        "status": "active",
+        "homeLeague": {
+          "name": "CBLOL",
+          "region": "브라질"
+        },
+        "image": "https://static.lolesports.com/teams/1643795049372_LEV-CLAROWhite.png",
+        "alternativeImage": "https://static.lolesports.com/teams/1643795049373_LEV-OSCUROBlack.png",
+        "backgroundImage": ""
+      }
     }
   }
 }

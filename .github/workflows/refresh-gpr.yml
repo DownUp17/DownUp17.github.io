@@ -37,12 +37,17 @@ jobs:
         env:
           LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
 
+      - name: Fetch player season stats (livestats)
+        run: node scripts/fetchPlayerStats.mjs
+        env:
+          LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           node -e "const fs=require('fs'),f='client/src/data/lolSim.json',d=JSON.parse(fs.readFileSync(f,'utf8'));d.updatedAt=new Date().toISOString();fs.writeFileSync(f,JSON.stringify(d,null,2)+'\n');"
-          git add client/src/data/gprTeams.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolGpr.json client/src/data/lolRosters.json client/src/data/lolTitles.json client/src/data/lolPastEditions.json
+          git add client/src/data/gprTeams.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolGpr.json client/src/data/lolRosters.json client/src/data/lolTitles.json client/src/data/lolPastEditions.json client/src/data/lolPlayerStats.json client/src/data/lolLeagues.json scripts/data/gameStatsCache.json
           git commit -m "chore: 순위표·GPR 자동 갱신 및 시뮬레이션 재계산" || echo "변경 없음 — 커밋 생략"
           # push 전 최신 커밋 통합 (동시 실행 시 충돌 방지)
           git pull --rebase origin main || (git rebase --abort && git pull --ff-only origin main)
@@ -61,7 +66,7 @@ jobs:
             echo "::warning::MIRROR_PAT 시크릿 미설정 — 미러링 생략"
             exit 0
           fi
-          FILES="client/src/data/gprTeams.json client/src/data/lolGpr.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolRosters.json"
+          FILES="client/src/data/gprTeams.json client/src/data/lolGpr.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolRosters.json client/src/data/lolPlayerStats.json client/src/data/lolLeagues.json"
           for repo in "totaldu/totaldu.github.io" "totaldu/totaldu-com"; do
             tmp=$(mktemp -d)
             if ! git clone --depth 1 "https://x-access-token:${MIRROR_PAT}@github.com/${repo}.git" "$tmp" 2>/dev/null; then
