@@ -20,10 +20,11 @@ const findPlayer = (id) => {
   return null;
 };
 
-const Stat = ({ label, value }) => (
+const Stat = ({ label, value, sub }) => (
   <div className="p-3 rounded-xl text-center" style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
     <div className="text-[11px] text-white/40 font-bold mb-1">{label}</div>
     <div className="font-mono font-black text-white/90 text-base sm:text-lg">{value}</div>
+    {sub && <div className="font-mono text-[11px] text-white/50 mt-0.5">{sub}</div>}
   </div>
 );
 
@@ -83,11 +84,10 @@ const PlayerPage = () => {
             <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">{playerStats.season} 시즌 기록</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               <Stat label="경기" value={s.games} />
-              <Stat label="K / D / A" value={`${s.k} / ${s.d} / ${s.a}`} />
-              <Stat label="KDA" value={s.kda} />
+              <Stat label="KDA" value={s.kda} sub={`${s.k} / ${s.d} / ${s.a}`} />
               <Stat label="CS/분" value={s.csm} />
               <Stat label="골드/분" value={s.gpm} />
-              <Stat label="딜 비중" value={pct(s.dmgShare)} />
+              <Stat label="DMG 비중" value={pct(s.dmgShare)} />
               <Stat label="킬 관여" value={pct(s.kp)} />
             </div>
 
@@ -103,17 +103,6 @@ const PlayerPage = () => {
                       </div>
                       <span className="w-10 text-right font-mono text-white/60">{n}</span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {s.leagues && (
-              <div className="mt-8">
-                <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">출전 대회</h2>
-                <div className="flex flex-wrap gap-2">
-                  {Object.entries(s.leagues).sort((a, b) => b[1] - a[1]).map(([l, n]) => (
-                    <span key={l} className="text-xs font-bold px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-white/70">{l} <span className="font-mono text-white/45">{n}경기</span></span>
                   ))}
                 </div>
               </div>

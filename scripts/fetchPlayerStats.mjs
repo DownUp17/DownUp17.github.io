@@ -116,11 +116,25 @@ async function main() {
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cache));
 
   // 3) 선수별 집계
+  // CtO(상대 대비) 가중치 w = (상대 팀 GPR) / (우리 팀 GPR). 팀 ID → 약칭(lolRosters) → GPR 점수(gprTeams).
+  //   GPR이 없는 팀(초청팀 등)이 낀 게임은 CtO 집계에서만 제외.
+  const readJson = (f) => { try { return JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'client', 'src', 'data', f), 'utf8')); } catch { return null; } };
+  const gprByShort = Object.fromEntries((readJson('gprTeams.json')?.teams || []).map((t) => [t.short, t.score]));
+  const gprById = {};
+  for (const [short, v] of Object.entries(readJson('lolRosters.json')?.rosters || {})) if (v.id && gprByShort[short] != null) gprById[v.id] = gprByShort[short];
   const P = {};
   for (const g of Object.values(cache.games)) {
     for (const p of g.players) {
       if (!p.pid) continue;
-      const s = (P[p.pid] = P[p.pid] || { name: p.name, role: p.role, team: p.team, games: 0, k: 0, d: 0, a: 0, cs: 0, gold: 0, min: 0, dmg: 0, kp: 0, champs: {}, leagues: {} });
+      const s = (P[p.pid] = P[p.pid] || { name: p.name, role: p.role, team: p.team, games: 0, k: 0, d: 0, a: 0, cs: 0, gold: 0, min: 0, dmg: 0, kp: 0, champs: {}, leagues: {},
+        cto: { games: 0, w: 0, ka: 0, d: 0, cs: 0, gold: 0, min: 0, dmg: 0, kp: 0 } });
+      // CtO — 같은 게임의 상대 팀 GPR / 우리 팀 GPR. 킬·어시스트·CS·골드·딜 비중·킬 관여에 가중, 데스는 그대로.
+      const oppId = g.players.find((x) => x.team && x.team !== p.team)?.team;
+      const own = gprById[p.team], opp = gprById[oppId];
+      if (own && opp) {
+        const w = opp / own, c = s.cto;
+        c.games++; c.w += w; c.ka += w * (p.k + p.a); c.d += p.d; c.cs += w * p.cs; c.gold += w * p.gold; c.min += g.minutes; c.dmg += w * p.dmg; c.kp += w * p.kp;
+      }
       s.name = p.name; s.role = p.role || s.role; s.team = p.team || s.team; // 최신 경기 기준으로 갱신
       s.games++; s.k += p.k; s.d += p.d; s.a += p.a; s.cs += p.cs; s.gold += p.gold; s.min += g.minutes; s.dmg += p.dmg; s.kp += p.kp;
       if (p.champ) s.champs[p.champ] = (s.champs[p.champ] || 0) + 1;
@@ -133,6 +147,12 @@ async function main() {
     k: r1(s.k / s.games), d: r1(s.d / s.games), a: r1(s.a / s.games),
     kda: r2((s.k + s.a) / Math.max(1, s.d)), csm: r1(s.cs / s.min), gpm: Math.round(s.gold / s.min),
     dmgShare: r2(s.dmg / s.games), kp: r2(s.kp / s.games),
+    // CtO(상대 대비): 상대가 강할수록(가중치 > 1) 높게, 약할수록 낮게 반영한 같은 지표
+    cto: s.cto.games ? {
+      games: s.cto.games, weight: r2(s.cto.w / s.cto.games), // weight = 평균 상대 강도(상대 GPR / 우리 GPR)
+      kda: r2(s.cto.ka / Math.max(1, s.cto.d)), csm: r1(s.cto.cs / s.cto.min), gpm: Math.round(s.cto.gold / s.cto.min),
+      dmgShare: r2(s.cto.dmg / s.cto.games), kp: r2(s.cto.kp / s.cto.games),
+    } : null,
     champions: Object.entries(s.champs).sort((a, b) => b[1] - a[1]).slice(0, 5),
     leagues: s.leagues,
   }]));

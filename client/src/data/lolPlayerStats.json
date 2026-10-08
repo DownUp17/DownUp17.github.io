@@ -16,6 +16,15 @@
    "gpm": 374,
    "dmgShare": 0.22,
    "kp": 0.49,
+   "cto": {
+    "games": 109,
+    "weight": 0.98,
+    "kda": 2.65,
+    "csm": 8.1,
+    "gpm": 364,
+    "dmgShare": 0.21,
+    "kp": 0.48
+   },
    "champions": [
     [
      "Renekton",
@@ -57,6 +66,15 @@
    "gpm": 375,
    "dmgShare": 0.17,
    "kp": 0.71,
+   "cto": {
+    "games": 105,
+    "weight": 0.98,
+    "kda": 3.25,
+    "csm": 6.4,
+    "gpm": 367,
+    "dmgShare": 0.17,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Pantheon",
@@ -98,6 +116,15 @@
    "gpm": 400,
    "dmgShare": 0.25,
    "kp": 0.69,
+   "cto": {
+    "games": 109,
+    "weight": 0.98,
+    "kda": 3.92,
+    "csm": 8.8,
+    "gpm": 390,
+    "dmgShare": 0.24,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Ryze",
@@ -139,6 +166,15 @@
    "gpm": 503,
    "dmgShare": 0.29,
    "kp": 0.7,
+   "cto": {
+    "games": 89,
+    "weight": 0.98,
+    "kda": 4.34,
+    "csm": 10.2,
+    "gpm": 489,
+    "dmgShare": 0.28,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Yunara",
@@ -179,6 +215,15 @@
    "gpm": 268,
    "dmgShare": 0.08,
    "kp": 0.73,
+   "cto": {
+    "games": 89,
+    "weight": 0.99,
+    "kda": 3.56,
+    "csm": 1,
+    "gpm": 266,
+    "dmgShare": 0.08,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Nautilus",
@@ -220,6 +265,15 @@
    "gpm": 393,
    "dmgShare": 0.23,
    "kp": 0.55,
+   "cto": {
+    "games": 124,
+    "weight": 0.91,
+    "kda": 2.67,
+    "csm": 7.4,
+    "gpm": 356,
+    "dmgShare": 0.21,
+    "kp": 0.5
+   },
    "champions": [
     [
      "Gnar",
@@ -262,6 +316,15 @@
    "gpm": 407,
    "dmgShare": 0.18,
    "kp": 0.72,
+   "cto": {
+    "games": 124,
+    "weight": 0.91,
+    "kda": 2.61,
+    "csm": 6.4,
+    "gpm": 368,
+    "dmgShare": 0.17,
+    "kp": 0.66
+   },
    "champions": [
     [
      "JarvanIV",
@@ -304,6 +367,15 @@
    "gpm": 423,
    "dmgShare": 0.24,
    "kp": 0.68,
+   "cto": {
+    "games": 124,
+    "weight": 0.91,
+    "kda": 4.56,
+    "csm": 8.1,
+    "gpm": 383,
+    "dmgShare": 0.22,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Ryze",
@@ -346,6 +418,15 @@
    "gpm": 489,
    "dmgShare": 0.27,
    "kp": 0.65,
+   "cto": {
+    "games": 124,
+    "weight": 0.91,
+    "kda": 3.07,
+    "csm": 9.1,
+    "gpm": 443,
+    "dmgShare": 0.25,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Ziggs",
@@ -388,6 +469,15 @@
    "gpm": 276,
    "dmgShare": 0.07,
    "kp": 0.74,
+   "cto": {
+    "games": 119,
+    "weight": 0.91,
+    "kda": 3.39,
+    "csm": 1.1,
+    "gpm": 250,
+    "dmgShare": 0.06,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Bard",
@@ -430,6 +520,15 @@
    "gpm": 381,
    "dmgShare": 0.22,
    "kp": 0.52,
+   "cto": {
+    "games": 109,
+    "weight": 1.06,
+    "kda": 3.1,
+    "csm": 8.9,
+    "gpm": 404,
+    "dmgShare": 0.24,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Jayce",
@@ -471,6 +570,15 @@
    "gpm": 392,
    "dmgShare": 0.16,
    "kp": 0.73,
+   "cto": {
+    "games": 109,
+    "weight": 1.06,
+    "kda": 3.88,
+    "csm": 7.5,
+    "gpm": 414,
+    "dmgShare": 0.16,
+    "kp": 0.78
+   },
    "champions": [
     [
      "XinZhao",
@@ -512,6 +620,15 @@
    "gpm": 385,
    "dmgShare": 0.24,
    "kp": 0.66,
+   "cto": {
+    "games": 92,
+    "weight": 1.05,
+    "kda": 3.52,
+    "csm": 9,
+    "gpm": 405,
+    "dmgShare": 0.25,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Ryze",
@@ -553,6 +670,15 @@
    "gpm": 494,
    "dmgShare": 0.29,
    "kp": 0.64,
+   "cto": {
+    "games": 109,
+    "weight": 1.06,
+    "kda": 3.88,
+    "csm": 11,
+    "gpm": 523,
+    "dmgShare": 0.31,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Ezreal",
@@ -594,6 +720,15 @@
    "gpm": 260,
    "dmgShare": 0.1,
    "kp": 0.67,
+   "cto": {
+    "games": 109,
+    "weight": 1.06,
+    "kda": 3.03,
+    "csm": 1.2,
+    "gpm": 275,
+    "dmgShare": 0.1,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Neeko",
@@ -635,6 +770,15 @@
    "gpm": 377,
    "dmgShare": 0.24,
    "kp": 0.51,
+   "cto": {
+    "games": 89,
+    "weight": 1.13,
+    "kda": 2.69,
+    "csm": 9.2,
+    "gpm": 424,
+    "dmgShare": 0.27,
+    "kp": 0.57
+   },
    "champions": [
     [
      "Gnar",
@@ -675,6 +819,15 @@
    "gpm": 378,
    "dmgShare": 0.16,
    "kp": 0.71,
+   "cto": {
+    "games": 108,
+    "weight": 1.12,
+    "kda": 3.28,
+    "csm": 7.5,
+    "gpm": 420,
+    "dmgShare": 0.17,
+    "kp": 0.79
+   },
    "champions": [
     [
      "XinZhao",
@@ -715,6 +868,15 @@
    "gpm": 408,
    "dmgShare": 0.24,
    "kp": 0.66,
+   "cto": {
+    "games": 108,
+    "weight": 1.12,
+    "kda": 3.98,
+    "csm": 10.3,
+    "gpm": 453,
+    "dmgShare": 0.27,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Ryze",
@@ -755,6 +917,15 @@
    "gpm": 457,
    "dmgShare": 0.27,
    "kp": 0.63,
+   "cto": {
+    "games": 43,
+    "weight": 1.17,
+    "kda": 2.98,
+    "csm": 11.2,
+    "gpm": 531,
+    "dmgShare": 0.32,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Yunara",
@@ -795,6 +966,15 @@
    "gpm": 254,
    "dmgShare": 0.08,
    "kp": 0.73,
+   "cto": {
+    "games": 107,
+    "weight": 1.12,
+    "kda": 2.79,
+    "csm": 1,
+    "gpm": 282,
+    "dmgShare": 0.09,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Nautilus",
@@ -835,6 +1015,15 @@
    "gpm": 396,
    "dmgShare": 0.22,
    "kp": 0.49,
+   "cto": {
+    "games": 142,
+    "weight": 0.95,
+    "kda": 2.53,
+    "csm": 8,
+    "gpm": 376,
+    "dmgShare": 0.21,
+    "kp": 0.47
+   },
    "champions": [
     [
      "Jayce",
@@ -877,6 +1066,15 @@
    "gpm": 398,
    "dmgShare": 0.17,
    "kp": 0.68,
+   "cto": {
+    "games": 139,
+    "weight": 0.95,
+    "kda": 3.35,
+    "csm": 6.5,
+    "gpm": 376,
+    "dmgShare": 0.16,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Vi",
@@ -919,6 +1117,15 @@
    "gpm": 405,
    "dmgShare": 0.23,
    "kp": 0.57,
+   "cto": {
+    "games": 142,
+    "weight": 0.95,
+    "kda": 2.9,
+    "csm": 8.3,
+    "gpm": 383,
+    "dmgShare": 0.22,
+    "kp": 0.55
+   },
    "champions": [
     [
      "Ryze",
@@ -961,6 +1168,15 @@
    "gpm": 508,
    "dmgShare": 0.29,
    "kp": 0.68,
+   "cto": {
+    "games": 142,
+    "weight": 0.95,
+    "kda": 4.16,
+    "csm": 9.7,
+    "gpm": 482,
+    "dmgShare": 0.28,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Jhin",
@@ -1003,6 +1219,15 @@
    "gpm": 271,
    "dmgShare": 0.09,
    "kp": 0.72,
+   "cto": {
+    "games": 142,
+    "weight": 0.95,
+    "kda": 4.17,
+    "csm": 1,
+    "gpm": 256,
+    "dmgShare": 0.08,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Milio",
@@ -1045,6 +1270,15 @@
    "gpm": 388,
    "dmgShare": 0.23,
    "kp": 0.51,
+   "cto": {
+    "games": 92,
+    "weight": 1.07,
+    "kda": 2.59,
+    "csm": 8.9,
+    "gpm": 414,
+    "dmgShare": 0.25,
+    "kp": 0.54
+   },
    "champions": [
     [
      "Gnar",
@@ -1085,6 +1319,15 @@
    "gpm": 376,
    "dmgShare": 0.16,
    "kp": 0.71,
+   "cto": {
+    "games": 92,
+    "weight": 1.07,
+    "kda": 3.02,
+    "csm": 6.8,
+    "gpm": 402,
+    "dmgShare": 0.17,
+    "kp": 0.77
+   },
    "champions": [
     [
      "JarvanIV",
@@ -1125,6 +1368,15 @@
    "gpm": 418,
    "dmgShare": 0.25,
    "kp": 0.68,
+   "cto": {
+    "games": 92,
+    "weight": 1.07,
+    "kda": 3.61,
+    "csm": 9.5,
+    "gpm": 447,
+    "dmgShare": 0.27,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Ryze",
@@ -1165,6 +1417,15 @@
    "gpm": 489,
    "dmgShare": 0.27,
    "kp": 0.64,
+   "cto": {
+    "games": 102,
+    "weight": 1.07,
+    "kda": 3.42,
+    "csm": 10.5,
+    "gpm": 520,
+    "dmgShare": 0.29,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Ezreal",
@@ -1205,6 +1466,15 @@
    "gpm": 267,
    "dmgShare": 0.08,
    "kp": 0.71,
+   "cto": {
+    "games": 85,
+    "weight": 1.07,
+    "kda": 2.82,
+    "csm": 1.2,
+    "gpm": 286,
+    "dmgShare": 0.09,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Nautilus",
@@ -1245,6 +1515,15 @@
    "gpm": 455,
    "dmgShare": 0.27,
    "kp": 0.6,
+   "cto": {
+    "games": 15,
+    "weight": 1,
+    "kda": 2.85,
+    "csm": 9.2,
+    "gpm": 457,
+    "dmgShare": 0.27,
+    "kp": 0.6
+   },
    "champions": [
     [
      "MissFortune",
@@ -1285,6 +1564,15 @@
    "gpm": 246,
    "dmgShare": 0.11,
    "kp": 0.69,
+   "cto": {
+    "games": 7,
+    "weight": 1.09,
+    "kda": 3.92,
+    "csm": 1.3,
+    "gpm": 267,
+    "dmgShare": 0.12,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Bard",
@@ -1324,6 +1612,15 @@
    "gpm": 291,
    "dmgShare": 0.11,
    "kp": 0.79,
+   "cto": {
+    "games": 13,
+    "weight": 0.85,
+    "kda": 4.05,
+    "csm": 0.8,
+    "gpm": 248,
+    "dmgShare": 0.09,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Shen",
@@ -1364,6 +1661,15 @@
    "gpm": 386,
    "dmgShare": 0.21,
    "kp": 0.49,
+   "cto": {
+    "games": 114,
+    "weight": 1.04,
+    "kda": 2.61,
+    "csm": 8.9,
+    "gpm": 402,
+    "dmgShare": 0.22,
+    "kp": 0.51
+   },
    "champions": [
     [
      "KSante",
@@ -1405,6 +1711,15 @@
    "gpm": 389,
    "dmgShare": 0.18,
    "kp": 0.74,
+   "cto": {
+    "games": 114,
+    "weight": 1.04,
+    "kda": 3.2,
+    "csm": 6.8,
+    "gpm": 404,
+    "dmgShare": 0.18,
+    "kp": 0.77
+   },
    "champions": [
     [
      "JarvanIV",
@@ -1446,6 +1761,15 @@
    "gpm": 400,
    "dmgShare": 0.25,
    "kp": 0.64,
+   "cto": {
+    "games": 104,
+    "weight": 1.05,
+    "kda": 3.08,
+    "csm": 9.3,
+    "gpm": 418,
+    "dmgShare": 0.27,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Ryze",
@@ -1487,6 +1811,15 @@
    "gpm": 485,
    "dmgShare": 0.27,
    "kp": 0.66,
+   "cto": {
+    "games": 102,
+    "weight": 1.04,
+    "kda": 3.27,
+    "csm": 10.4,
+    "gpm": 505,
+    "dmgShare": 0.28,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Yunara",
@@ -1528,6 +1861,15 @@
    "gpm": 263,
    "dmgShare": 0.08,
    "kp": 0.75,
+   "cto": {
+    "games": 114,
+    "weight": 1.04,
+    "kda": 4.27,
+    "csm": 1,
+    "gpm": 274,
+    "dmgShare": 0.09,
+    "kp": 0.78
+   },
    "champions": [
     [
      "Bard",
@@ -1569,6 +1911,15 @@
    "gpm": 392,
    "dmgShare": 0.22,
    "kp": 0.44,
+   "cto": {
+    "games": 130,
+    "weight": 0.96,
+    "kda": 2.04,
+    "csm": 8.6,
+    "gpm": 378,
+    "dmgShare": 0.21,
+    "kp": 0.43
+   },
    "champions": [
     [
      "Jayce",
@@ -1609,6 +1960,15 @@
    "gpm": 384,
    "dmgShare": 0.17,
    "kp": 0.71,
+   "cto": {
+    "games": 127,
+    "weight": 0.96,
+    "kda": 3.2,
+    "csm": 6.6,
+    "gpm": 371,
+    "dmgShare": 0.17,
+    "kp": 0.68
+   },
    "champions": [
     [
      "JarvanIV",
@@ -1649,6 +2009,15 @@
    "gpm": 409,
    "dmgShare": 0.24,
    "kp": 0.63,
+   "cto": {
+    "games": 130,
+    "weight": 0.96,
+    "kda": 3.63,
+    "csm": 8.6,
+    "gpm": 393,
+    "dmgShare": 0.24,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Ryze",
@@ -1689,6 +2058,15 @@
    "gpm": 505,
    "dmgShare": 0.28,
    "kp": 0.67,
+   "cto": {
+    "games": 130,
+    "weight": 0.96,
+    "kda": 4.35,
+    "csm": 10.2,
+    "gpm": 487,
+    "dmgShare": 0.27,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Lucian",
@@ -1729,6 +2107,15 @@
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 130,
+    "weight": 0.96,
+    "kda": 3.87,
+    "csm": 1.1,
+    "gpm": 254,
+    "dmgShare": 0.08,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Lulu",
@@ -1769,6 +2156,15 @@
    "gpm": 395,
    "dmgShare": 0.24,
    "kp": 0.48,
+   "cto": {
+    "games": 110,
+    "weight": 1.16,
+    "kda": 2.94,
+    "csm": 10.1,
+    "gpm": 457,
+    "dmgShare": 0.28,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Ambessa",
@@ -1809,6 +2205,15 @@
    "gpm": 367,
    "dmgShare": 0.15,
    "kp": 0.71,
+   "cto": {
+    "games": 67,
+    "weight": 1.16,
+    "kda": 3.07,
+    "csm": 7.8,
+    "gpm": 425,
+    "dmgShare": 0.18,
+    "kp": 0.83
+   },
    "champions": [
     [
      "MonkeyKing",
@@ -1848,6 +2253,15 @@
    "gpm": 394,
    "dmgShare": 0.24,
    "kp": 0.64,
+   "cto": {
+    "games": 110,
+    "weight": 1.16,
+    "kda": 3.59,
+    "csm": 10.6,
+    "gpm": 455,
+    "dmgShare": 0.28,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Cassiopeia",
@@ -1888,6 +2302,15 @@
    "gpm": 457,
    "dmgShare": 0.26,
    "kp": 0.63,
+   "cto": {
+    "games": 106,
+    "weight": 1.16,
+    "kda": 3.32,
+    "csm": 10.5,
+    "gpm": 528,
+    "dmgShare": 0.31,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Jhin",
@@ -1928,6 +2351,15 @@
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.75,
+   "cto": {
+    "games": 84,
+    "weight": 1.14,
+    "kda": 3.4,
+    "csm": 1.2,
+    "gpm": 302,
+    "dmgShare": 0.1,
+    "kp": 0.86
+   },
    "champions": [
     [
      "Bard",
@@ -1968,6 +2400,15 @@
    "gpm": 407,
    "dmgShare": 0.23,
    "kp": 0.58,
+   "cto": {
+    "games": 115,
+    "weight": 0.9,
+    "kda": 3.52,
+    "csm": 7.6,
+    "gpm": 369,
+    "dmgShare": 0.21,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Ambessa",
@@ -2009,6 +2450,15 @@
    "gpm": 400,
    "dmgShare": 0.17,
    "kp": 0.72,
+   "cto": {
+    "games": 115,
+    "weight": 0.9,
+    "kda": 4.54,
+    "csm": 6.5,
+    "gpm": 363,
+    "dmgShare": 0.15,
+    "kp": 0.65
+   },
    "champions": [
     [
      "XinZhao",
@@ -2050,6 +2500,15 @@
    "gpm": 435,
    "dmgShare": 0.25,
    "kp": 0.64,
+   "cto": {
+    "games": 115,
+    "weight": 0.9,
+    "kda": 4.79,
+    "csm": 8.6,
+    "gpm": 394,
+    "dmgShare": 0.23,
+    "kp": 0.58
+   },
    "champions": [
     [
      "Ryze",
@@ -2091,6 +2550,15 @@
    "gpm": 502,
    "dmgShare": 0.27,
    "kp": 0.66,
+   "cto": {
+    "games": 115,
+    "weight": 0.9,
+    "kda": 4.53,
+    "csm": 9.2,
+    "gpm": 456,
+    "dmgShare": 0.25,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Jhin",
@@ -2132,6 +2600,15 @@
    "gpm": 268,
    "dmgShare": 0.08,
    "kp": 0.75,
+   "cto": {
+    "games": 115,
+    "weight": 0.9,
+    "kda": 4.57,
+    "csm": 0.8,
+    "gpm": 243,
+    "dmgShare": 0.07,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Seraphine",
@@ -2173,6 +2650,15 @@
    "gpm": 404,
    "dmgShare": 0.19,
    "kp": 0.69,
+   "cto": {
+    "games": 44,
+    "weight": 1.12,
+    "kda": 4.8,
+    "csm": 7.9,
+    "gpm": 455,
+    "dmgShare": 0.21,
+    "kp": 0.77
+   },
    "champions": [
     [
      "LeeSin",
@@ -2213,6 +2699,15 @@
    "gpm": 477,
    "dmgShare": 0.29,
    "kp": 0.68,
+   "cto": {
+    "games": 71,
+    "weight": 1.07,
+    "kda": 3.43,
+    "csm": 10.1,
+    "gpm": 506,
+    "dmgShare": 0.31,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Yunara",
@@ -2254,6 +2749,15 @@
    "gpm": 397,
    "dmgShare": 0.25,
    "kp": 0.67,
+   "cto": {
+    "games": 49,
+    "weight": 1.02,
+    "kda": 3.43,
+    "csm": 9.1,
+    "gpm": 402,
+    "dmgShare": 0.26,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Orianna",
@@ -2294,6 +2798,15 @@
    "gpm": 354,
    "dmgShare": 0.22,
    "kp": 0.53,
+   "cto": {
+    "games": 19,
+    "weight": 1.04,
+    "kda": 2.45,
+    "csm": 8.2,
+    "gpm": 368,
+    "dmgShare": 0.23,
+    "kp": 0.55
+   },
    "champions": [
     [
      "KSante",
@@ -2333,6 +2846,15 @@
    "gpm": 382,
    "dmgShare": 0.18,
    "kp": 0.69,
+   "cto": {
+    "games": 13,
+    "weight": 0.87,
+    "kda": 2.95,
+    "csm": 5.8,
+    "gpm": 332,
+    "dmgShare": 0.16,
+    "kp": 0.61
+   },
    "champions": [
     [
      "LeeSin",
@@ -2373,6 +2895,15 @@
    "gpm": 222,
    "dmgShare": 0.19,
    "kp": 1,
+   "cto": {
+    "games": 1,
+    "weight": 0.98,
+    "kda": 0.98,
+    "csm": 1,
+    "gpm": 217,
+    "dmgShare": 0.18,
+    "kp": 0.98
+   },
    "champions": [
     [
      "Karma",
@@ -2396,6 +2927,15 @@
    "gpm": 252,
    "dmgShare": 0.1,
    "kp": 0.62,
+   "cto": {
+    "games": 18,
+    "weight": 1.21,
+    "kda": 1.39,
+    "csm": 1.2,
+    "gpm": 302,
+    "dmgShare": 0.13,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Seraphine",
@@ -2435,6 +2975,15 @@
    "gpm": 404,
    "dmgShare": 0.22,
    "kp": 0.63,
+   "cto": {
+    "games": 10,
+    "weight": 1.02,
+    "kda": 3.02,
+    "csm": 8.8,
+    "gpm": 412,
+    "dmgShare": 0.22,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Akali",
@@ -2474,6 +3023,15 @@
    "gpm": 239,
    "dmgShare": 0.1,
    "kp": 0.8,
+   "cto": {
+    "games": 8,
+    "weight": 1.21,
+    "kda": 1.66,
+    "csm": 1.3,
+    "gpm": 290,
+    "dmgShare": 0.12,
+    "kp": 0.97
+   },
    "champions": [
     [
      "Seraphine",
@@ -2513,6 +3071,15 @@
    "gpm": 443,
    "dmgShare": 0.3,
    "kp": 0.54,
+   "cto": {
+    "games": 6,
+    "weight": 1.03,
+    "kda": 2.25,
+    "csm": 9.4,
+    "gpm": 458,
+    "dmgShare": 0.3,
+    "kp": 0.55
+   },
    "champions": [
     [
      "Locke",
@@ -2553,6 +3120,15 @@
    "gpm": 303,
    "dmgShare": 0.12,
    "kp": 0.45,
+   "cto": {
+    "games": 2,
+    "weight": 1.24,
+    "kda": 0.82,
+    "csm": 7.2,
+    "gpm": 375,
+    "dmgShare": 0.15,
+    "kp": 0.56
+   },
    "champions": [
     [
      "XinZhao",
@@ -2580,6 +3156,15 @@
    "gpm": 383,
    "dmgShare": 0.26,
    "kp": 0.64,
+   "cto": {
+    "games": 4,
+    "weight": 1.15,
+    "kda": 0.99,
+    "csm": 10.4,
+    "gpm": 439,
+    "dmgShare": 0.31,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Lucian",
@@ -2615,6 +3200,15 @@
    "gpm": 263,
    "dmgShare": 0.08,
    "kp": 0.67,
+   "cto": {
+    "games": 11,
+    "weight": 0.94,
+    "kda": 1.55,
+    "csm": 0.9,
+    "gpm": 243,
+    "dmgShare": 0.08,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Nautilus",
@@ -2655,6 +3249,15 @@
    "gpm": 250,
    "dmgShare": 0.08,
    "kp": 0.79,
+   "cto": {
+    "games": 10,
+    "weight": 0.88,
+    "kda": 2.61,
+    "csm": 0.9,
+    "gpm": 221,
+    "dmgShare": 0.07,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Braum",
@@ -2694,6 +3297,15 @@
    "gpm": 363,
    "dmgShare": 0.21,
    "kp": 0.48,
+   "cto": {
+    "games": 130,
+    "weight": 1.04,
+    "kda": 2.34,
+    "csm": 8.4,
+    "gpm": 378,
+    "dmgShare": 0.22,
+    "kp": 0.5
+   },
    "champions": [
     [
      "KSante",
@@ -2734,6 +3346,15 @@
    "gpm": 385,
    "dmgShare": 0.17,
    "kp": 0.71,
+   "cto": {
+    "games": 126,
+    "weight": 1.04,
+    "kda": 2.39,
+    "csm": 7.1,
+    "gpm": 401,
+    "dmgShare": 0.18,
+    "kp": 0.74
+   },
    "champions": [
     [
      "XinZhao",
@@ -2774,6 +3395,15 @@
    "gpm": 399,
    "dmgShare": 0.24,
    "kp": 0.65,
+   "cto": {
+    "games": 130,
+    "weight": 1.04,
+    "kda": 2.99,
+    "csm": 9,
+    "gpm": 415,
+    "dmgShare": 0.25,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Ryze",
@@ -2814,6 +3444,15 @@
    "gpm": 471,
    "dmgShare": 0.3,
    "kp": 0.68,
+   "cto": {
+    "games": 130,
+    "weight": 1.04,
+    "kda": 2.74,
+    "csm": 10.2,
+    "gpm": 491,
+    "dmgShare": 0.31,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Ezreal",
@@ -2854,6 +3493,15 @@
    "gpm": 260,
    "dmgShare": 0.08,
    "kp": 0.77,
+   "cto": {
+    "games": 139,
+    "weight": 1.05,
+    "kda": 3.37,
+    "csm": 1.1,
+    "gpm": 274,
+    "dmgShare": 0.09,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Neeko",
@@ -2894,6 +3542,15 @@
    "gpm": 390,
    "dmgShare": 0.22,
    "kp": 0.53,
+   "cto": {
+    "games": 147,
+    "weight": 1.04,
+    "kda": 2.98,
+    "csm": 9.1,
+    "gpm": 405,
+    "dmgShare": 0.23,
+    "kp": 0.55
+   },
    "champions": [
     [
      "Rumble",
@@ -2935,6 +3592,15 @@
    "gpm": 388,
    "dmgShare": 0.17,
    "kp": 0.71,
+   "cto": {
+    "games": 137,
+    "weight": 1.05,
+    "kda": 3.47,
+    "csm": 7.3,
+    "gpm": 404,
+    "dmgShare": 0.17,
+    "kp": 0.73
+   },
    "champions": [
     [
      "JarvanIV",
@@ -2975,6 +3641,15 @@
    "gpm": 400,
    "dmgShare": 0.26,
    "kp": 0.67,
+   "cto": {
+    "games": 142,
+    "weight": 1.04,
+    "kda": 3.69,
+    "csm": 9,
+    "gpm": 415,
+    "dmgShare": 0.27,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Viktor",
@@ -3015,6 +3690,15 @@
    "gpm": 479,
    "dmgShare": 0.27,
    "kp": 0.64,
+   "cto": {
+    "games": 147,
+    "weight": 1.04,
+    "kda": 4.51,
+    "csm": 10.4,
+    "gpm": 498,
+    "dmgShare": 0.28,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Ezreal",
@@ -3056,6 +3740,15 @@
    "gpm": 261,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 147,
+    "weight": 1.04,
+    "kda": 3.89,
+    "csm": 1.1,
+    "gpm": 271,
+    "dmgShare": 0.08,
+    "kp": 0.77
+   },
    "champions": [
     [
      "Nautilus",
@@ -3097,6 +3790,15 @@
    "gpm": 394,
    "dmgShare": 0.21,
    "kp": 0.44,
+   "cto": {
+    "games": 18,
+    "weight": 0.84,
+    "kda": 2.93,
+    "csm": 6.9,
+    "gpm": 330,
+    "dmgShare": 0.17,
+    "kp": 0.37
+   },
    "champions": [
     [
      "Ambessa",
@@ -3136,6 +3838,15 @@
    "gpm": 401,
    "dmgShare": 0.17,
    "kp": 0.71,
+   "cto": {
+    "games": 154,
+    "weight": 0.89,
+    "kda": 4.22,
+    "csm": 6.2,
+    "gpm": 356,
+    "dmgShare": 0.15,
+    "kp": 0.63
+   },
    "champions": [
     [
      "Pantheon",
@@ -3177,6 +3888,15 @@
    "gpm": 441,
    "dmgShare": 0.27,
    "kp": 0.69,
+   "cto": {
+    "games": 154,
+    "weight": 0.89,
+    "kda": 5.98,
+    "csm": 8,
+    "gpm": 393,
+    "dmgShare": 0.24,
+    "kp": 0.61
+   },
    "champions": [
     [
      "Ryze",
@@ -3218,6 +3938,15 @@
    "gpm": 488,
    "dmgShare": 0.28,
    "kp": 0.66,
+   "cto": {
+    "games": 154,
+    "weight": 0.89,
+    "kda": 4.72,
+    "csm": 8.7,
+    "gpm": 434,
+    "dmgShare": 0.25,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Ezreal",
@@ -3259,6 +3988,15 @@
    "gpm": 275,
    "dmgShare": 0.08,
    "kp": 0.72,
+   "cto": {
+    "games": 154,
+    "weight": 0.89,
+    "kda": 3.52,
+    "csm": 0.9,
+    "gpm": 245,
+    "dmgShare": 0.07,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Bard",
@@ -3300,6 +4038,15 @@
    "gpm": 370,
    "dmgShare": 0.23,
    "kp": 0.55,
+   "cto": {
+    "games": 69,
+    "weight": 1.1,
+    "kda": 2.16,
+    "csm": 9.1,
+    "gpm": 405,
+    "dmgShare": 0.25,
+    "kp": 0.61
+   },
    "champions": [
     [
      "KSante",
@@ -3339,6 +4086,15 @@
    "gpm": 370,
    "dmgShare": 0.15,
    "kp": 0.75,
+   "cto": {
+    "games": 58,
+    "weight": 1.07,
+    "kda": 3.67,
+    "csm": 7.1,
+    "gpm": 394,
+    "dmgShare": 0.16,
+    "kp": 0.8
+   },
    "champions": [
     [
      "JarvanIV",
@@ -3378,6 +4134,15 @@
    "gpm": 393,
    "dmgShare": 0.24,
    "kp": 0.61,
+   "cto": {
+    "games": 64,
+    "weight": 1.06,
+    "kda": 3.57,
+    "csm": 9.3,
+    "gpm": 416,
+    "dmgShare": 0.25,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Ryze",
@@ -3417,6 +4182,15 @@
    "gpm": 464,
    "dmgShare": 0.3,
    "kp": 0.68,
+   "cto": {
+    "games": 69,
+    "weight": 1.1,
+    "kda": 3.03,
+    "csm": 10.6,
+    "gpm": 508,
+    "dmgShare": 0.33,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Ezreal",
@@ -3456,6 +4230,15 @@
    "gpm": 246,
    "dmgShare": 0.07,
    "kp": 0.67,
+   "cto": {
+    "games": 46,
+    "weight": 1.11,
+    "kda": 2.27,
+    "csm": 1.1,
+    "gpm": 273,
+    "dmgShare": 0.08,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Rell",
@@ -3495,6 +4278,15 @@
    "gpm": 382,
    "dmgShare": 0.24,
    "kp": 0.51,
+   "cto": {
+    "games": 85,
+    "weight": 1.04,
+    "kda": 2.84,
+    "csm": 8.6,
+    "gpm": 395,
+    "dmgShare": 0.25,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Ambessa",
@@ -3535,6 +4327,15 @@
    "gpm": 392,
    "dmgShare": 0.17,
    "kp": 0.72,
+   "cto": {
+    "games": 102,
+    "weight": 1.02,
+    "kda": 3.46,
+    "csm": 7.1,
+    "gpm": 397,
+    "dmgShare": 0.17,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Naafiri",
@@ -3575,6 +4376,15 @@
    "gpm": 397,
    "dmgShare": 0.26,
    "kp": 0.66,
+   "cto": {
+    "games": 102,
+    "weight": 1.02,
+    "kda": 4.36,
+    "csm": 8.9,
+    "gpm": 402,
+    "dmgShare": 0.26,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Ryze",
@@ -3615,6 +4425,15 @@
    "gpm": 448,
    "dmgShare": 0.27,
    "kp": 0.62,
+   "cto": {
+    "games": 102,
+    "weight": 1.02,
+    "kda": 3.07,
+    "csm": 9.2,
+    "gpm": 453,
+    "dmgShare": 0.27,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Lucian",
@@ -3655,6 +4474,15 @@
    "gpm": 259,
    "dmgShare": 0.06,
    "kp": 0.74,
+   "cto": {
+    "games": 57,
+    "weight": 1.06,
+    "kda": 4.09,
+    "csm": 1.2,
+    "gpm": 274,
+    "dmgShare": 0.07,
+    "kp": 0.78
+   },
    "champions": [
     [
      "Milio",
@@ -3695,6 +4523,15 @@
    "gpm": 374,
    "dmgShare": 0.23,
    "kp": 0.5,
+   "cto": {
+    "games": 90,
+    "weight": 1.04,
+    "kda": 2.74,
+    "csm": 8.6,
+    "gpm": 387,
+    "dmgShare": 0.24,
+    "kp": 0.52
+   },
    "champions": [
     [
      "Ambessa",
@@ -3734,6 +4571,15 @@
    "gpm": 381,
    "dmgShare": 0.16,
    "kp": 0.75,
+   "cto": {
+    "games": 100,
+    "weight": 1.06,
+    "kda": 3.58,
+    "csm": 7.3,
+    "gpm": 403,
+    "dmgShare": 0.17,
+    "kp": 0.8
+   },
    "champions": [
     [
      "Vi",
@@ -3773,6 +4619,15 @@
    "gpm": 388,
    "dmgShare": 0.23,
    "kp": 0.63,
+   "cto": {
+    "games": 90,
+    "weight": 1.04,
+    "kda": 3.44,
+    "csm": 8.8,
+    "gpm": 401,
+    "dmgShare": 0.24,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Ryze",
@@ -3812,6 +4667,15 @@
    "gpm": 482,
    "dmgShare": 0.29,
    "kp": 0.68,
+   "cto": {
+    "games": 90,
+    "weight": 1.04,
+    "kda": 3.49,
+    "csm": 9.9,
+    "gpm": 498,
+    "dmgShare": 0.3,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Yunara",
@@ -3851,6 +4715,15 @@
    "gpm": 246,
    "dmgShare": 0.07,
    "kp": 0.74,
+   "cto": {
+    "games": 70,
+    "weight": 1.03,
+    "kda": 3.02,
+    "csm": 1.1,
+    "gpm": 252,
+    "dmgShare": 0.07,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Alistar",
@@ -3890,6 +4763,15 @@
    "gpm": 376,
    "dmgShare": 0.21,
    "kp": 0.45,
+   "cto": {
+    "games": 43,
+    "weight": 0.98,
+    "kda": 2.38,
+    "csm": 7.6,
+    "gpm": 367,
+    "dmgShare": 0.21,
+    "kp": 0.44
+   },
    "champions": [
     [
      "Rumble",
@@ -3929,6 +4811,15 @@
    "gpm": 386,
    "dmgShare": 0.17,
    "kp": 0.73,
+   "cto": {
+    "games": 122,
+    "weight": 0.99,
+    "kda": 3.19,
+    "csm": 6.5,
+    "gpm": 382,
+    "dmgShare": 0.17,
+    "kp": 0.72
+   },
    "champions": [
     [
      "XinZhao",
@@ -3968,6 +4859,15 @@
    "gpm": 401,
    "dmgShare": 0.25,
    "kp": 0.66,
+   "cto": {
+    "games": 85,
+    "weight": 0.99,
+    "kda": 3.89,
+    "csm": 8.5,
+    "gpm": 396,
+    "dmgShare": 0.25,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Ryze",
@@ -4007,6 +4907,15 @@
    "gpm": 495,
    "dmgShare": 0.29,
    "kp": 0.65,
+   "cto": {
+    "games": 71,
+    "weight": 0.98,
+    "kda": 3.57,
+    "csm": 9.7,
+    "gpm": 484,
+    "dmgShare": 0.28,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Jhin",
@@ -4046,6 +4955,15 @@
    "gpm": 265,
    "dmgShare": 0.08,
    "kp": 0.75,
+   "cto": {
+    "games": 80,
+    "weight": 0.99,
+    "kda": 3.65,
+    "csm": 1,
+    "gpm": 262,
+    "dmgShare": 0.08,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Lulu",
@@ -4085,6 +5003,15 @@
    "gpm": 386,
    "dmgShare": 0.24,
    "kp": 0.53,
+   "cto": {
+    "games": 76,
+    "weight": 1.08,
+    "kda": 1.97,
+    "csm": 9.3,
+    "gpm": 416,
+    "dmgShare": 0.26,
+    "kp": 0.57
+   },
    "champions": [
     [
      "Ambessa",
@@ -4124,6 +5051,15 @@
    "gpm": 389,
    "dmgShare": 0.18,
    "kp": 0.75,
+   "cto": {
+    "games": 76,
+    "weight": 1.08,
+    "kda": 3.16,
+    "csm": 7.7,
+    "gpm": 418,
+    "dmgShare": 0.19,
+    "kp": 0.81
+   },
    "champions": [
     [
      "JarvanIV",
@@ -4163,6 +5099,15 @@
    "gpm": 367,
    "dmgShare": 0.25,
    "kp": 0.64,
+   "cto": {
+    "games": 76,
+    "weight": 1.08,
+    "kda": 2.78,
+    "csm": 8.8,
+    "gpm": 394,
+    "dmgShare": 0.26,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Ryze",
@@ -4202,6 +5147,15 @@
    "gpm": 442,
    "dmgShare": 0.26,
    "kp": 0.65,
+   "cto": {
+    "games": 61,
+    "weight": 1.09,
+    "kda": 3,
+    "csm": 9.7,
+    "gpm": 478,
+    "dmgShare": 0.29,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Jhin",
@@ -4241,6 +5195,15 @@
    "gpm": 245,
    "dmgShare": 0.07,
    "kp": 0.72,
+   "cto": {
+    "games": 76,
+    "weight": 1.08,
+    "kda": 2.89,
+    "csm": 1.1,
+    "gpm": 263,
+    "dmgShare": 0.08,
+    "kp": 0.78
+   },
    "champions": [
     [
      "Nautilus",
@@ -4280,6 +5243,15 @@
    "gpm": 382,
    "dmgShare": 0.22,
    "kp": 0.54,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 2.48,
+    "csm": 7.8,
+    "gpm": 375,
+    "dmgShare": 0.22,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Jayce",
@@ -4320,6 +5292,15 @@
    "gpm": 397,
    "dmgShare": 0.17,
    "kp": 0.7,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 3.15,
+    "csm": 7,
+    "gpm": 390,
+    "dmgShare": 0.16,
+    "kp": 0.69
+   },
    "champions": [
     [
      "JarvanIV",
@@ -4360,6 +5341,15 @@
    "gpm": 406,
    "dmgShare": 0.26,
    "kp": 0.61,
+   "cto": {
+    "games": 133,
+    "weight": 0.98,
+    "kda": 3.73,
+    "csm": 8.6,
+    "gpm": 400,
+    "dmgShare": 0.26,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Azir",
@@ -4400,6 +5390,15 @@
    "gpm": 463,
    "dmgShare": 0.28,
    "kp": 0.65,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 3.32,
+    "csm": 9.4,
+    "gpm": 455,
+    "dmgShare": 0.27,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Ezreal",
@@ -4440,6 +5439,15 @@
    "gpm": 263,
    "dmgShare": 0.07,
    "kp": 0.76,
+   "cto": {
+    "games": 103,
+    "weight": 0.97,
+    "kda": 4.03,
+    "csm": 1.1,
+    "gpm": 256,
+    "dmgShare": 0.07,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Milio",
@@ -4479,6 +5487,15 @@
    "gpm": 384,
    "dmgShare": 0.24,
    "kp": 0.55,
+   "cto": {
+    "games": 85,
+    "weight": 0.97,
+    "kda": 3.05,
+    "csm": 7.7,
+    "gpm": 373,
+    "dmgShare": 0.23,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Gnar",
@@ -4518,6 +5535,15 @@
    "gpm": 389,
    "dmgShare": 0.16,
    "kp": 0.72,
+   "cto": {
+    "games": 85,
+    "weight": 0.97,
+    "kda": 3.3,
+    "csm": 6.7,
+    "gpm": 378,
+    "dmgShare": 0.15,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Vi",
@@ -4557,6 +5583,15 @@
    "gpm": 412,
    "dmgShare": 0.23,
    "kp": 0.63,
+   "cto": {
+    "games": 85,
+    "weight": 0.97,
+    "kda": 4.55,
+    "csm": 8.6,
+    "gpm": 400,
+    "dmgShare": 0.22,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Azir",
@@ -4596,6 +5631,15 @@
    "gpm": 471,
    "dmgShare": 0.29,
    "kp": 0.68,
+   "cto": {
+    "games": 73,
+    "weight": 0.99,
+    "kda": 3.56,
+    "csm": 9.6,
+    "gpm": 464,
+    "dmgShare": 0.28,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Sivir",
@@ -4635,6 +5679,15 @@
    "gpm": 263,
    "dmgShare": 0.08,
    "kp": 0.73,
+   "cto": {
+    "games": 115,
+    "weight": 0.99,
+    "kda": 3.09,
+    "csm": 1,
+    "gpm": 259,
+    "dmgShare": 0.08,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Seraphine",
@@ -4675,6 +5728,15 @@
    "gpm": 389,
    "dmgShare": 0.22,
    "kp": 0.52,
+   "cto": {
+    "games": 49,
+    "weight": 1.02,
+    "kda": 3.38,
+    "csm": 8.8,
+    "gpm": 396,
+    "dmgShare": 0.22,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Gnar",
@@ -4714,6 +5776,15 @@
    "gpm": 363,
    "dmgShare": 0.16,
    "kp": 0.76,
+   "cto": {
+    "games": 13,
+    "weight": 1.1,
+    "kda": 2.58,
+    "csm": 7.3,
+    "gpm": 397,
+    "dmgShare": 0.18,
+    "kp": 0.83
+   },
    "champions": [
     [
      "Pantheon",
@@ -4753,6 +5824,15 @@
    "gpm": 493,
    "dmgShare": 0.31,
    "kp": 0.67,
+   "cto": {
+    "games": 49,
+    "weight": 1.02,
+    "kda": 4.42,
+    "csm": 10.3,
+    "gpm": 501,
+    "dmgShare": 0.32,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Ezreal",
@@ -4792,6 +5872,15 @@
    "gpm": 251,
    "dmgShare": 0.08,
    "kp": 0.72,
+   "cto": {
+    "games": 53,
+    "weight": 0.98,
+    "kda": 2.79,
+    "csm": 1,
+    "gpm": 246,
+    "dmgShare": 0.08,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Nautilus",
@@ -4831,6 +5920,15 @@
    "gpm": 379,
    "dmgShare": 0.21,
    "kp": 0.5,
+   "cto": {
+    "games": 89,
+    "weight": 0.97,
+    "kda": 2.94,
+    "csm": 8,
+    "gpm": 367,
+    "dmgShare": 0.21,
+    "kp": 0.48
+   },
    "champions": [
     [
      "Gnar",
@@ -4870,6 +5968,15 @@
    "gpm": 402,
    "dmgShare": 0.19,
    "kp": 0.75,
+   "cto": {
+    "games": 135,
+    "weight": 0.95,
+    "kda": 4.44,
+    "csm": 6.9,
+    "gpm": 382,
+    "dmgShare": 0.18,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Naafiri",
@@ -4910,6 +6017,15 @@
    "gpm": 400,
    "dmgShare": 0.25,
    "kp": 0.64,
+   "cto": {
+    "games": 135,
+    "weight": 0.95,
+    "kda": 3.9,
+    "csm": 8.3,
+    "gpm": 381,
+    "dmgShare": 0.23,
+    "kp": 0.61
+   },
    "champions": [
     [
      "Ryze",
@@ -4950,6 +6066,15 @@
    "gpm": 483,
    "dmgShare": 0.28,
    "kp": 0.65,
+   "cto": {
+    "games": 135,
+    "weight": 0.95,
+    "kda": 4.29,
+    "csm": 9.1,
+    "gpm": 460,
+    "dmgShare": 0.26,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Varus",
@@ -4990,6 +6115,15 @@
    "gpm": 261,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 135,
+    "weight": 0.95,
+    "kda": 4.1,
+    "csm": 1.1,
+    "gpm": 249,
+    "dmgShare": 0.08,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Neeko",
@@ -5030,6 +6164,15 @@
    "gpm": 379,
    "dmgShare": 0.23,
    "kp": 0.62,
+   "cto": {
+    "games": 26,
+    "weight": 1.03,
+    "kda": 2.2,
+    "csm": 8.6,
+    "gpm": 389,
+    "dmgShare": 0.23,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Akali",
@@ -5069,6 +6212,15 @@
    "gpm": 270,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 41,
+    "weight": 1,
+    "kda": 3.74,
+    "csm": 1.1,
+    "gpm": 271,
+    "dmgShare": 0.08,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Lulu",
@@ -5108,6 +6260,15 @@
    "gpm": 369,
    "dmgShare": 0.18,
    "kp": 0.66,
+   "cto": {
+    "games": 3,
+    "weight": 0.93,
+    "kda": 2.21,
+    "csm": 6.3,
+    "gpm": 343,
+    "dmgShare": 0.17,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Naafiri",
@@ -5140,6 +6301,15 @@
    "gpm": 251,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 43,
+    "weight": 1.05,
+    "kda": 3.04,
+    "csm": 1.3,
+    "gpm": 264,
+    "dmgShare": 0.08,
+    "kp": 0.79
+   },
    "champions": [
     [
      "Milio",
@@ -5179,6 +6349,15 @@
    "gpm": 385,
    "dmgShare": 0.21,
    "kp": 0.51,
+   "cto": {
+    "games": 92,
+    "weight": 0.95,
+    "kda": 3.22,
+    "csm": 8.1,
+    "gpm": 364,
+    "dmgShare": 0.2,
+    "kp": 0.47
+   },
    "champions": [
     [
      "Sion",
@@ -5219,6 +6398,15 @@
    "gpm": 357,
    "dmgShare": 0.23,
    "kp": 0.65,
+   "cto": {
+    "games": 13,
+    "weight": 1.14,
+    "kda": 2.44,
+    "csm": 9.4,
+    "gpm": 406,
+    "dmgShare": 0.26,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Orianna",
@@ -5258,6 +6446,15 @@
    "gpm": 388,
    "dmgShare": 0.18,
    "kp": 0.63,
+   "cto": {
+    "games": 10,
+    "weight": 0.94,
+    "kda": 2.81,
+    "csm": 6.3,
+    "gpm": 364,
+    "dmgShare": 0.16,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Naafiri",
@@ -5298,6 +6495,15 @@
    "gpm": 490,
    "dmgShare": 0.28,
    "kp": 0.65,
+   "cto": {
+    "games": 112,
+    "weight": 0.99,
+    "kda": 2.79,
+    "csm": 9.7,
+    "gpm": 485,
+    "dmgShare": 0.28,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Yunara",
@@ -5337,6 +6543,15 @@
    "gpm": 399,
    "dmgShare": 0.21,
    "kp": 0.49,
+   "cto": {
+    "games": 127,
+    "weight": 0.9,
+    "kda": 3.2,
+    "csm": 7.9,
+    "gpm": 359,
+    "dmgShare": 0.19,
+    "kp": 0.44
+   },
    "champions": [
     [
      "Gnar",
@@ -5378,6 +6593,15 @@
    "gpm": 257,
    "dmgShare": 0.09,
    "kp": 0.77,
+   "cto": {
+    "games": 26,
+    "weight": 1.05,
+    "kda": 3.04,
+    "csm": 1.1,
+    "gpm": 268,
+    "dmgShare": 0.09,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Nami",
@@ -5417,6 +6641,15 @@
    "gpm": 367,
    "dmgShare": 0.2,
    "kp": 0.46,
+   "cto": {
+    "games": 28,
+    "weight": 0.97,
+    "kda": 2.67,
+    "csm": 8.2,
+    "gpm": 357,
+    "dmgShare": 0.2,
+    "kp": 0.45
+   },
    "champions": [
     [
      "KSante",
@@ -5456,6 +6689,15 @@
    "gpm": 381,
    "dmgShare": 0.17,
    "kp": 0.74,
+   "cto": {
+    "games": 11,
+    "weight": 1.05,
+    "kda": 3.38,
+    "csm": 6.7,
+    "gpm": 399,
+    "dmgShare": 0.17,
+    "kp": 0.78
+   },
    "champions": [
     [
      "JarvanIV",
@@ -5495,6 +6737,15 @@
    "gpm": 417,
    "dmgShare": 0.28,
    "kp": 0.74,
+   "cto": {
+    "games": 24,
+    "weight": 1.06,
+    "kda": 5.58,
+    "csm": 10.2,
+    "gpm": 442,
+    "dmgShare": 0.3,
+    "kp": 0.79
+   },
    "champions": [
     [
      "Ryze",
@@ -5534,6 +6785,15 @@
    "gpm": 453,
    "dmgShare": 0.29,
    "kp": 0.65,
+   "cto": {
+    "games": 52,
+    "weight": 1.04,
+    "kda": 3.3,
+    "csm": 9.8,
+    "gpm": 470,
+    "dmgShare": 0.3,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Ezreal",
@@ -5574,6 +6834,15 @@
    "gpm": 250,
    "dmgShare": 0.09,
    "kp": 0.81,
+   "cto": {
+    "games": 24,
+    "weight": 1.06,
+    "kda": 2.87,
+    "csm": 1.1,
+    "gpm": 265,
+    "dmgShare": 0.09,
+    "kp": 0.86
+   },
    "champions": [
     [
      "Seraphine",
@@ -5613,6 +6882,15 @@
    "gpm": 369,
    "dmgShare": 0.24,
    "kp": 0.64,
+   "cto": {
+    "games": 19,
+    "weight": 1.01,
+    "kda": 3.17,
+    "csm": 8.2,
+    "gpm": 371,
+    "dmgShare": 0.24,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Orianna",
@@ -5652,6 +6930,15 @@
    "gpm": 366,
    "dmgShare": 0.24,
    "kp": 0.42,
+   "cto": {
+    "games": 33,
+    "weight": 1.07,
+    "kda": 1.66,
+    "csm": 9.2,
+    "gpm": 393,
+    "dmgShare": 0.26,
+    "kp": 0.45
+   },
    "champions": [
     [
      "Ambessa",
@@ -5691,6 +6978,15 @@
    "gpm": 345,
    "dmgShare": 0.13,
    "kp": 0.61,
+   "cto": {
+    "games": 13,
+    "weight": 1.07,
+    "kda": 1.15,
+    "csm": 7,
+    "gpm": 368,
+    "dmgShare": 0.14,
+    "kp": 0.65
+   },
    "champions": [
     [
      "MonkeyKing",
@@ -5730,6 +7026,15 @@
    "gpm": 402,
    "dmgShare": 0.25,
    "kp": 0.67,
+   "cto": {
+    "games": 33,
+    "weight": 1.07,
+    "kda": 3.5,
+    "csm": 10.1,
+    "gpm": 432,
+    "dmgShare": 0.27,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Taliyah",
@@ -5769,6 +7074,15 @@
    "gpm": 465,
    "dmgShare": 0.28,
    "kp": 0.75,
+   "cto": {
+    "games": 26,
+    "weight": 1.08,
+    "kda": 2.48,
+    "csm": 10.8,
+    "gpm": 503,
+    "dmgShare": 0.3,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Varus",
@@ -5808,6 +7122,15 @@
    "gpm": 340,
    "dmgShare": 0.17,
    "kp": 0.9,
+   "cto": {
+    "games": 4,
+    "weight": 1.02,
+    "kda": 1.29,
+    "csm": 5.6,
+    "gpm": 348,
+    "dmgShare": 0.18,
+    "kp": 0.92
+   },
    "champions": [
     [
      "XinZhao",
@@ -5843,6 +7166,15 @@
    "gpm": 398,
    "dmgShare": 0.27,
    "kp": 0.7,
+   "cto": {
+    "games": 33,
+    "weight": 1.02,
+    "kda": 4.75,
+    "csm": 9,
+    "gpm": 405,
+    "dmgShare": 0.27,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Ryze",
@@ -5883,6 +7215,15 @@
    "gpm": 415,
    "dmgShare": 0.17,
    "kp": 0.77,
+   "cto": {
+    "games": 36,
+    "weight": 0.99,
+    "kda": 4.89,
+    "csm": 7.3,
+    "gpm": 412,
+    "dmgShare": 0.17,
+    "kp": 0.76
+   },
    "champions": [
     [
      "XinZhao",
@@ -5922,6 +7263,15 @@
    "gpm": 352,
    "dmgShare": 0.14,
    "kp": 0.73,
+   "cto": {
+    "games": 20,
+    "weight": 1.08,
+    "kda": 2.13,
+    "csm": 7,
+    "gpm": 379,
+    "dmgShare": 0.16,
+    "kp": 0.79
+   },
    "champions": [
     [
      "XinZhao",
@@ -5961,6 +7311,15 @@
    "gpm": 253,
    "dmgShare": 0.09,
    "kp": 0.69,
+   "cto": {
+    "games": 11,
+    "weight": 0.98,
+    "kda": 2.28,
+    "csm": 1.1,
+    "gpm": 249,
+    "dmgShare": 0.09,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Karma",
@@ -6000,6 +7359,15 @@
    "gpm": 391,
    "dmgShare": 0.23,
    "kp": 0.46,
+   "cto": {
+    "games": 42,
+    "weight": 0.99,
+    "kda": 2.41,
+    "csm": 8.6,
+    "gpm": 385,
+    "dmgShare": 0.23,
+    "kp": 0.46
+   },
    "champions": [
     [
      "Ambessa",
@@ -6039,6 +7407,15 @@
    "gpm": 397,
    "dmgShare": 0.16,
    "kp": 0.68,
+   "cto": {
+    "games": 42,
+    "weight": 0.99,
+    "kda": 2.63,
+    "csm": 6.9,
+    "gpm": 392,
+    "dmgShare": 0.16,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Pantheon",
@@ -6078,6 +7455,15 @@
    "gpm": 246,
    "dmgShare": 0.07,
    "kp": 0.73,
+   "cto": {
+    "games": 29,
+    "weight": 1.01,
+    "kda": 2.37,
+    "csm": 1,
+    "gpm": 248,
+    "dmgShare": 0.07,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Karma",
@@ -6117,6 +7503,15 @@
    "gpm": 467,
    "dmgShare": 0.26,
    "kp": 0.59,
+   "cto": {
+    "games": 15,
+    "weight": 1.05,
+    "kda": 2.3,
+    "csm": 10.1,
+    "gpm": 487,
+    "dmgShare": 0.27,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Varus",
@@ -6156,6 +7551,15 @@
    "gpm": 372,
    "dmgShare": 0.24,
    "kp": 0.49,
+   "cto": {
+    "games": 62,
+    "weight": 1,
+    "kda": 1.89,
+    "csm": 8.1,
+    "gpm": 372,
+    "dmgShare": 0.24,
+    "kp": 0.5
+   },
    "champions": [
     [
      "Rumble",
@@ -6196,6 +7600,15 @@
    "gpm": 335,
    "dmgShare": 0.19,
    "kp": 0.49,
+   "cto": {
+    "games": 13,
+    "weight": 1.08,
+    "kda": 2.25,
+    "csm": 8.7,
+    "gpm": 361,
+    "dmgShare": 0.2,
+    "kp": 0.52
+   },
    "champions": [
     [
      "KSante",
@@ -6235,6 +7648,15 @@
    "gpm": 385,
    "dmgShare": 0.17,
    "kp": 0.77,
+   "cto": {
+    "games": 17,
+    "weight": 1.05,
+    "kda": 3.09,
+    "csm": 7.6,
+    "gpm": 406,
+    "dmgShare": 0.18,
+    "kp": 0.81
+   },
    "champions": [
     [
      "JarvanIV",
@@ -6275,6 +7697,15 @@
    "gpm": 385,
    "dmgShare": 0.23,
    "kp": 0.48,
+   "cto": {
+    "games": 47,
+    "weight": 1.11,
+    "kda": 1.81,
+    "csm": 9.6,
+    "gpm": 426,
+    "dmgShare": 0.26,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Gnar",
@@ -6314,6 +7745,15 @@
    "gpm": 369,
    "dmgShare": 0.17,
    "kp": 0.73,
+   "cto": {
+    "games": 47,
+    "weight": 1.11,
+    "kda": 3.02,
+    "csm": 7.2,
+    "gpm": 409,
+    "dmgShare": 0.19,
+    "kp": 0.82
+   },
    "champions": [
     [
      "XinZhao",
@@ -6353,6 +7793,15 @@
    "gpm": 415,
    "dmgShare": 0.23,
    "kp": 0.6,
+   "cto": {
+    "games": 30,
+    "weight": 1.11,
+    "kda": 2.11,
+    "csm": 10.2,
+    "gpm": 457,
+    "dmgShare": 0.25,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Yone",
@@ -6392,6 +7841,15 @@
    "gpm": 480,
    "dmgShare": 0.3,
    "kp": 0.66,
+   "cto": {
+    "games": 47,
+    "weight": 1.11,
+    "kda": 3.6,
+    "csm": 11,
+    "gpm": 531,
+    "dmgShare": 0.33,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Corki",
@@ -6431,6 +7889,15 @@
    "gpm": 259,
    "dmgShare": 0.08,
    "kp": 0.73,
+   "cto": {
+    "games": 47,
+    "weight": 1.11,
+    "kda": 2.37,
+    "csm": 1.2,
+    "gpm": 287,
+    "dmgShare": 0.08,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Rell",
@@ -6470,6 +7937,15 @@
    "gpm": 398,
    "dmgShare": 0.23,
    "kp": 0.5,
+   "cto": {
+    "games": 112,
+    "weight": 0.95,
+    "kda": 2.95,
+    "csm": 8,
+    "gpm": 377,
+    "dmgShare": 0.21,
+    "kp": 0.47
+   },
    "champions": [
     [
      "Rumble",
@@ -6511,6 +7987,15 @@
    "gpm": 401,
    "dmgShare": 0.17,
    "kp": 0.69,
+   "cto": {
+    "games": 112,
+    "weight": 0.95,
+    "kda": 3.53,
+    "csm": 6.6,
+    "gpm": 381,
+    "dmgShare": 0.16,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Vi",
@@ -6552,6 +8037,15 @@
    "gpm": 397,
    "dmgShare": 0.24,
    "kp": 0.61,
+   "cto": {
+    "games": 112,
+    "weight": 0.95,
+    "kda": 3.9,
+    "csm": 8.3,
+    "gpm": 377,
+    "dmgShare": 0.22,
+    "kp": 0.58
+   },
    "champions": [
     [
      "Azir",
@@ -6593,6 +8087,15 @@
    "gpm": 505,
    "dmgShare": 0.28,
    "kp": 0.63,
+   "cto": {
+    "games": 112,
+    "weight": 0.95,
+    "kda": 4.77,
+    "csm": 9.8,
+    "gpm": 479,
+    "dmgShare": 0.27,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Ezreal",
@@ -6634,6 +8137,15 @@
    "gpm": 257,
    "dmgShare": 0.08,
    "kp": 0.7,
+   "cto": {
+    "games": 112,
+    "weight": 0.95,
+    "kda": 3.63,
+    "csm": 0.9,
+    "gpm": 244,
+    "dmgShare": 0.08,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Seraphine",
@@ -6675,6 +8187,15 @@
    "gpm": 393,
    "dmgShare": 0.22,
    "kp": 0.54,
+   "cto": {
+    "games": 51,
+    "weight": 1.11,
+    "kda": 2.67,
+    "csm": 9.5,
+    "gpm": 433,
+    "dmgShare": 0.24,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Jayce",
@@ -6714,6 +8235,15 @@
    "gpm": 346,
    "dmgShare": 0.13,
    "kp": 0.68,
+   "cto": {
+    "games": 25,
+    "weight": 1.11,
+    "kda": 2.76,
+    "csm": 6.7,
+    "gpm": 384,
+    "dmgShare": 0.15,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Vi",
@@ -6753,6 +8283,15 @@
    "gpm": 391,
    "dmgShare": 0.26,
    "kp": 0.63,
+   "cto": {
+    "games": 51,
+    "weight": 1.11,
+    "kda": 2.74,
+    "csm": 9.6,
+    "gpm": 433,
+    "dmgShare": 0.29,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Viktor",
@@ -6792,6 +8331,15 @@
    "gpm": 455,
    "dmgShare": 0.29,
    "kp": 0.59,
+   "cto": {
+    "games": 51,
+    "weight": 1.11,
+    "kda": 2.44,
+    "csm": 10.3,
+    "gpm": 503,
+    "dmgShare": 0.32,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Ezreal",
@@ -6831,6 +8379,15 @@
    "gpm": 259,
    "dmgShare": 0.09,
    "kp": 0.76,
+   "cto": {
+    "games": 30,
+    "weight": 1.11,
+    "kda": 2.79,
+    "csm": 1.2,
+    "gpm": 285,
+    "dmgShare": 0.1,
+    "kp": 0.84
+   },
    "champions": [
     [
      "Karma",
@@ -6870,6 +8427,15 @@
    "gpm": 362,
    "dmgShare": 0.2,
    "kp": 0.48,
+   "cto": {
+    "games": 34,
+    "weight": 1.02,
+    "kda": 2.34,
+    "csm": 8.3,
+    "gpm": 363,
+    "dmgShare": 0.2,
+    "kp": 0.49
+   },
    "champions": [
     [
      "KSante",
@@ -6909,6 +8475,15 @@
    "gpm": 373,
    "dmgShare": 0.18,
    "kp": 0.72,
+   "cto": {
+    "games": 54,
+    "weight": 1.02,
+    "kda": 2.54,
+    "csm": 7,
+    "gpm": 378,
+    "dmgShare": 0.19,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Pantheon",
@@ -6948,6 +8523,15 @@
    "gpm": 395,
    "dmgShare": 0.24,
    "kp": 0.69,
+   "cto": {
+    "games": 54,
+    "weight": 1.02,
+    "kda": 3.28,
+    "csm": 9,
+    "gpm": 397,
+    "dmgShare": 0.25,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Ryze",
@@ -6987,6 +8571,15 @@
    "gpm": 495,
    "dmgShare": 0.29,
    "kp": 0.68,
+   "cto": {
+    "games": 54,
+    "weight": 1.02,
+    "kda": 5.01,
+    "csm": 10.4,
+    "gpm": 499,
+    "dmgShare": 0.3,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Yunara",
@@ -7026,6 +8619,15 @@
    "gpm": 245,
    "dmgShare": 0.06,
    "kp": 0.74,
+   "cto": {
+    "games": 54,
+    "weight": 1.02,
+    "kda": 3.35,
+    "csm": 1,
+    "gpm": 247,
+    "dmgShare": 0.07,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Alistar",
@@ -7065,6 +8667,15 @@
    "gpm": 370,
    "dmgShare": 0.21,
    "kp": 0.52,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 2.87,
+    "csm": 8.1,
+    "gpm": 380,
+    "dmgShare": 0.22,
+    "kp": 0.54
+   },
    "champions": [
     [
      "Rumble",
@@ -7105,6 +8716,15 @@
    "gpm": 398,
    "dmgShare": 0.18,
    "kp": 0.75,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 3.59,
+    "csm": 7.5,
+    "gpm": 408,
+    "dmgShare": 0.19,
+    "kp": 0.77
+   },
    "champions": [
     [
      "XinZhao",
@@ -7145,6 +8765,15 @@
    "gpm": 397,
    "dmgShare": 0.24,
    "kp": 0.62,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 3.62,
+    "csm": 9.5,
+    "gpm": 408,
+    "dmgShare": 0.25,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Azir",
@@ -7185,6 +8814,15 @@
    "gpm": 491,
    "dmgShare": 0.28,
    "kp": 0.62,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 3.31,
+    "csm": 10.6,
+    "gpm": 506,
+    "dmgShare": 0.29,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Corki",
@@ -7225,6 +8863,15 @@
    "gpm": 256,
    "dmgShare": 0.08,
    "kp": 0.75,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 3.24,
+    "csm": 1,
+    "gpm": 263,
+    "dmgShare": 0.08,
+    "kp": 0.77
+   },
    "champions": [
     [
      "Bard",
@@ -7265,6 +8912,15 @@
    "gpm": 371,
    "dmgShare": 0.22,
    "kp": 0.48,
+   "cto": {
+    "games": 51,
+    "weight": 1.16,
+    "kda": 1.93,
+    "csm": 10.1,
+    "gpm": 428,
+    "dmgShare": 0.25,
+    "kp": 0.55
+   },
    "champions": [
     [
      "KSante",
@@ -7304,6 +8960,15 @@
    "gpm": 343,
    "dmgShare": 0.16,
    "kp": 0.66,
+   "cto": {
+    "games": 23,
+    "weight": 1.15,
+    "kda": 1.68,
+    "csm": 7.9,
+    "gpm": 396,
+    "dmgShare": 0.19,
+    "kp": 0.77
+   },
    "champions": [
     [
      "XinZhao",
@@ -7343,6 +9008,15 @@
    "gpm": 366,
    "dmgShare": 0.26,
    "kp": 0.66,
+   "cto": {
+    "games": 51,
+    "weight": 1.16,
+    "kda": 2.79,
+    "csm": 10,
+    "gpm": 424,
+    "dmgShare": 0.31,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Orianna",
@@ -7382,6 +9056,15 @@
    "gpm": 469,
    "dmgShare": 0.26,
    "kp": 0.64,
+   "cto": {
+    "games": 34,
+    "weight": 1.16,
+    "kda": 2.66,
+    "csm": 11.9,
+    "gpm": 534,
+    "dmgShare": 0.3,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Jhin",
@@ -7421,6 +9104,15 @@
    "gpm": 239,
    "dmgShare": 0.08,
    "kp": 0.76,
+   "cto": {
+    "games": 37,
+    "weight": 1.16,
+    "kda": 2.24,
+    "csm": 1.1,
+    "gpm": 275,
+    "dmgShare": 0.09,
+    "kp": 0.87
+   },
    "champions": [
     [
      "Bard",
@@ -7460,6 +9152,15 @@
    "gpm": 410,
    "dmgShare": 0.23,
    "kp": 0.49,
+   "cto": {
+    "games": 77,
+    "weight": 1.01,
+    "kda": 2.84,
+    "csm": 8.7,
+    "gpm": 411,
+    "dmgShare": 0.23,
+    "kp": 0.49
+   },
    "champions": [
     [
      "Rumble",
@@ -7500,6 +9201,15 @@
    "gpm": 374,
    "dmgShare": 0.15,
    "kp": 0.65,
+   "cto": {
+    "games": 77,
+    "weight": 1.01,
+    "kda": 3.61,
+    "csm": 6.6,
+    "gpm": 374,
+    "dmgShare": 0.15,
+    "kp": 0.65
+   },
    "champions": [
     [
      "JarvanIV",
@@ -7540,6 +9250,15 @@
    "gpm": 418,
    "dmgShare": 0.25,
    "kp": 0.58,
+   "cto": {
+    "games": 46,
+    "weight": 1,
+    "kda": 2.89,
+    "csm": 9.3,
+    "gpm": 418,
+    "dmgShare": 0.25,
+    "kp": 0.58
+   },
    "champions": [
     [
      "Azir",
@@ -7579,6 +9298,15 @@
    "gpm": 487,
    "dmgShare": 0.29,
    "kp": 0.62,
+   "cto": {
+    "games": 77,
+    "weight": 1.01,
+    "kda": 3.63,
+    "csm": 9.8,
+    "gpm": 488,
+    "dmgShare": 0.29,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Ezreal",
@@ -7619,6 +9347,15 @@
    "gpm": 269,
    "dmgShare": 0.08,
    "kp": 0.69,
+   "cto": {
+    "games": 77,
+    "weight": 1.01,
+    "kda": 3.81,
+    "csm": 1.1,
+    "gpm": 269,
+    "dmgShare": 0.08,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Bard",
@@ -7659,6 +9396,15 @@
    "gpm": 374,
    "dmgShare": 0.18,
    "kp": 0.72,
+   "cto": {
+    "games": 54,
+    "weight": 1.14,
+    "kda": 2.69,
+    "csm": 7.7,
+    "gpm": 420,
+    "dmgShare": 0.21,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Pantheon",
@@ -7698,6 +9444,15 @@
    "gpm": 385,
    "dmgShare": 0.21,
    "kp": 0.5,
+   "cto": {
+    "games": 101,
+    "weight": 0.87,
+    "kda": 2.73,
+    "csm": 7.1,
+    "gpm": 337,
+    "dmgShare": 0.18,
+    "kp": 0.43
+   },
    "champions": [
     [
      "KSante",
@@ -7739,6 +9494,15 @@
    "gpm": 401,
    "dmgShare": 0.18,
    "kp": 0.7,
+   "cto": {
+    "games": 101,
+    "weight": 0.87,
+    "kda": 4.12,
+    "csm": 6.2,
+    "gpm": 351,
+    "dmgShare": 0.16,
+    "kp": 0.61
+   },
    "champions": [
     [
      "XinZhao",
@@ -7780,6 +9544,15 @@
    "gpm": 417,
    "dmgShare": 0.25,
    "kp": 0.64,
+   "cto": {
+    "games": 101,
+    "weight": 0.87,
+    "kda": 3.81,
+    "csm": 7.7,
+    "gpm": 364,
+    "dmgShare": 0.22,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Orianna",
@@ -7821,6 +9594,15 @@
    "gpm": 489,
    "dmgShare": 0.28,
    "kp": 0.59,
+   "cto": {
+    "games": 101,
+    "weight": 0.87,
+    "kda": 3.93,
+    "csm": 8.7,
+    "gpm": 427,
+    "dmgShare": 0.24,
+    "kp": 0.51
+   },
    "champions": [
     [
      "Yunara",
@@ -7862,6 +9644,15 @@
    "gpm": 266,
    "dmgShare": 0.08,
    "kp": 0.71,
+   "cto": {
+    "games": 101,
+    "weight": 0.87,
+    "kda": 2.99,
+    "csm": 0.8,
+    "gpm": 233,
+    "dmgShare": 0.07,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Lulu",
@@ -7903,6 +9694,15 @@
    "gpm": 371,
    "dmgShare": 0.21,
    "kp": 0.49,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 2.49,
+    "csm": 7.9,
+    "gpm": 361,
+    "dmgShare": 0.21,
+    "kp": 0.48
+   },
    "champions": [
     [
      "Rumble",
@@ -7943,6 +9743,15 @@
    "gpm": 389,
    "dmgShare": 0.16,
    "kp": 0.74,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 4.43,
+    "csm": 6.7,
+    "gpm": 379,
+    "dmgShare": 0.16,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Vi",
@@ -7983,6 +9792,15 @@
    "gpm": 409,
    "dmgShare": 0.25,
    "kp": 0.63,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 3.26,
+    "csm": 9,
+    "gpm": 397,
+    "dmgShare": 0.25,
+    "kp": 0.61
+   },
    "champions": [
     [
      "Azir",
@@ -8023,6 +9841,15 @@
    "gpm": 505,
    "dmgShare": 0.29,
    "kp": 0.64,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 4.18,
+    "csm": 9.7,
+    "gpm": 492,
+    "dmgShare": 0.28,
+    "kp": 0.63
+   },
    "champions": [
     [
      "Ezreal",
@@ -8063,6 +9890,15 @@
    "gpm": 263,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 91,
+    "weight": 0.98,
+    "kda": 3.46,
+    "csm": 1.1,
+    "gpm": 256,
+    "dmgShare": 0.08,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Neeko",
@@ -8103,6 +9939,15 @@
    "gpm": 370,
    "dmgShare": 0.2,
    "kp": 0.5,
+   "cto": {
+    "games": 45,
+    "weight": 1.03,
+    "kda": 2.22,
+    "csm": 8.5,
+    "gpm": 379,
+    "dmgShare": 0.21,
+    "kp": 0.51
+   },
    "champions": [
     [
      "KSante",
@@ -8142,6 +9987,15 @@
    "gpm": 361,
    "dmgShare": 0.17,
    "kp": 0.71,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 3.39,
+    "csm": 7,
+    "gpm": 370,
+    "dmgShare": 0.17,
+    "kp": 0.73
+   },
    "champions": [
     [
      "XinZhao",
@@ -8181,6 +10035,15 @@
    "gpm": 399,
    "dmgShare": 0.27,
    "kp": 0.62,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 3.17,
+    "csm": 9.1,
+    "gpm": 408,
+    "dmgShare": 0.28,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Orianna",
@@ -8220,6 +10083,15 @@
    "gpm": 449,
    "dmgShare": 0.27,
    "kp": 0.64,
+   "cto": {
+    "games": 45,
+    "weight": 1.03,
+    "kda": 2.89,
+    "csm": 9.6,
+    "gpm": 457,
+    "dmgShare": 0.28,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Ezreal",
@@ -8259,6 +10131,15 @@
    "gpm": 249,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 76,
+    "weight": 1.03,
+    "kda": 3.33,
+    "csm": 1,
+    "gpm": 256,
+    "dmgShare": 0.08,
+    "kp": 0.77
+   },
    "champions": [
     [
      "Bard",
@@ -8298,6 +10179,15 @@
    "gpm": 383,
    "dmgShare": 0.26,
    "kp": 0.55,
+   "cto": {
+    "games": 31,
+    "weight": 1.01,
+    "kda": 2.3,
+    "csm": 8.2,
+    "gpm": 388,
+    "dmgShare": 0.26,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Syndra",
@@ -8338,6 +10228,15 @@
    "gpm": 423,
    "dmgShare": 0.29,
    "kp": 0.67,
+   "cto": {
+    "games": 17,
+    "weight": 1.16,
+    "kda": 2.49,
+    "csm": 11.4,
+    "gpm": 492,
+    "dmgShare": 0.34,
+    "kp": 0.78
+   },
    "champions": [
     [
      "Lucian",
@@ -8377,6 +10276,15 @@
    "gpm": 250,
    "dmgShare": 0.06,
    "kp": 0.75,
+   "cto": {
+    "games": 35,
+    "weight": 1.14,
+    "kda": 2.59,
+    "csm": 1.3,
+    "gpm": 283,
+    "dmgShare": 0.07,
+    "kp": 0.86
+   },
    "champions": [
     [
      "Rell",
@@ -8416,6 +10324,15 @@
    "gpm": 364,
    "dmgShare": 0.22,
    "kp": 0.57,
+   "cto": {
+    "games": 31,
+    "weight": 1.04,
+    "kda": 2.42,
+    "csm": 8.2,
+    "gpm": 376,
+    "dmgShare": 0.23,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Rumble",
@@ -8455,6 +10372,15 @@
    "gpm": 459,
    "dmgShare": 0.28,
    "kp": 0.71,
+   "cto": {
+    "games": 31,
+    "weight": 1.04,
+    "kda": 3.7,
+    "csm": 9.9,
+    "gpm": 474,
+    "dmgShare": 0.29,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Lucian",
@@ -8494,6 +10420,15 @@
    "gpm": 387,
    "dmgShare": 0.22,
    "kp": 0.63,
+   "cto": {
+    "games": 17,
+    "weight": 1.12,
+    "kda": 2.91,
+    "csm": 9.7,
+    "gpm": 434,
+    "dmgShare": 0.24,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Syndra",
@@ -8533,6 +10468,7 @@
    "gpm": 354,
    "dmgShare": 0.22,
    "kp": 0.46,
+   "cto": null,
    "champions": [
     [
      "Kled",
@@ -8572,6 +10508,7 @@
    "gpm": 339,
    "dmgShare": 0.16,
    "kp": 0.69,
+   "cto": null,
    "champions": [
     [
      "DrMundo",
@@ -8611,6 +10548,7 @@
    "gpm": 387,
    "dmgShare": 0.28,
    "kp": 0.7,
+   "cto": null,
    "champions": [
     [
      "Ryze",
@@ -8650,6 +10588,7 @@
    "gpm": 474,
    "dmgShare": 0.25,
    "kp": 0.61,
+   "cto": null,
    "champions": [
     [
      "Corki",
@@ -8681,6 +10620,7 @@
    "gpm": 250,
    "dmgShare": 0.1,
    "kp": 0.76,
+   "cto": null,
    "champions": [
     [
      "Nami",
@@ -8716,6 +10656,7 @@
    "gpm": 377,
    "dmgShare": 0.21,
    "kp": 0.48,
+   "cto": null,
    "champions": [
     [
      "Aatrox",
@@ -8755,6 +10696,7 @@
    "gpm": 369,
    "dmgShare": 0.18,
    "kp": 0.74,
+   "cto": null,
    "champions": [
     [
      "Pantheon",
@@ -8794,6 +10736,7 @@
    "gpm": 397,
    "dmgShare": 0.27,
    "kp": 0.66,
+   "cto": null,
    "champions": [
     [
      "Taliyah",
@@ -8833,6 +10776,7 @@
    "gpm": 440,
    "dmgShare": 0.27,
    "kp": 0.55,
+   "cto": null,
    "champions": [
     [
      "Yunara",
@@ -8872,6 +10816,7 @@
    "gpm": 248,
    "dmgShare": 0.07,
    "kp": 0.7,
+   "cto": null,
    "champions": [
     [
      "Nautilus",
@@ -8911,6 +10856,15 @@
    "gpm": 385,
    "dmgShare": 0.21,
    "kp": 0.52,
+   "cto": {
+    "games": 87,
+    "weight": 0.96,
+    "kda": 3.31,
+    "csm": 8.1,
+    "gpm": 369,
+    "dmgShare": 0.2,
+    "kp": 0.49
+   },
    "champions": [
     [
      "Renekton",
@@ -8951,6 +10905,15 @@
    "gpm": 396,
    "dmgShare": 0.18,
    "kp": 0.73,
+   "cto": {
+    "games": 87,
+    "weight": 0.96,
+    "kda": 4.95,
+    "csm": 6.7,
+    "gpm": 378,
+    "dmgShare": 0.17,
+    "kp": 0.7
+   },
    "champions": [
     [
      "JarvanIV",
@@ -8991,6 +10954,15 @@
    "gpm": 412,
    "dmgShare": 0.26,
    "kp": 0.7,
+   "cto": {
+    "games": 87,
+    "weight": 0.96,
+    "kda": 4.19,
+    "csm": 8.5,
+    "gpm": 395,
+    "dmgShare": 0.25,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Ryze",
@@ -9031,6 +11003,15 @@
    "gpm": 471,
    "dmgShare": 0.28,
    "kp": 0.62,
+   "cto": {
+    "games": 87,
+    "weight": 0.96,
+    "kda": 4.21,
+    "csm": 9.1,
+    "gpm": 450,
+    "dmgShare": 0.26,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Lucian",
@@ -9071,6 +11052,15 @@
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.75,
+   "cto": {
+    "games": 87,
+    "weight": 0.96,
+    "kda": 4.85,
+    "csm": 1,
+    "gpm": 252,
+    "dmgShare": 0.08,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Rakan",
@@ -9111,6 +11101,15 @@
    "gpm": 374,
    "dmgShare": 0.25,
    "kp": 0.52,
+   "cto": {
+    "games": 31,
+    "weight": 1.11,
+    "kda": 1.77,
+    "csm": 9.1,
+    "gpm": 412,
+    "dmgShare": 0.28,
+    "kp": 0.58
+   },
    "champions": [
     [
      "Rumble",
@@ -9150,6 +11149,15 @@
    "gpm": 352,
    "dmgShare": 0.17,
    "kp": 0.73,
+   "cto": {
+    "games": 41,
+    "weight": 1.11,
+    "kda": 2.32,
+    "csm": 7.1,
+    "gpm": 389,
+    "dmgShare": 0.19,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Pantheon",
@@ -9189,6 +11197,15 @@
    "gpm": 405,
    "dmgShare": 0.24,
    "kp": 0.66,
+   "cto": {
+    "games": 47,
+    "weight": 1.11,
+    "kda": 2.29,
+    "csm": 10.3,
+    "gpm": 445,
+    "dmgShare": 0.27,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Ryze",
@@ -9228,6 +11245,15 @@
    "gpm": 449,
    "dmgShare": 0.25,
    "kp": 0.56,
+   "cto": {
+    "games": 47,
+    "weight": 1.11,
+    "kda": 2.26,
+    "csm": 10.3,
+    "gpm": 493,
+    "dmgShare": 0.28,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Kaisa",
@@ -9267,6 +11293,15 @@
    "gpm": 245,
    "dmgShare": 0.08,
    "kp": 0.7,
+   "cto": {
+    "games": 47,
+    "weight": 1.11,
+    "kda": 2.79,
+    "csm": 1.1,
+    "gpm": 270,
+    "dmgShare": 0.09,
+    "kp": 0.77
+   },
    "champions": [
     [
      "Nami",
@@ -9306,6 +11341,15 @@
    "gpm": 373,
    "dmgShare": 0.23,
    "kp": 0.54,
+   "cto": {
+    "games": 92,
+    "weight": 0.91,
+    "kda": 2.67,
+    "csm": 7.2,
+    "gpm": 338,
+    "dmgShare": 0.21,
+    "kp": 0.49
+   },
    "champions": [
     [
      "Gnar",
@@ -9347,6 +11391,15 @@
    "gpm": 392,
    "dmgShare": 0.15,
    "kp": 0.67,
+   "cto": {
+    "games": 87,
+    "weight": 0.91,
+    "kda": 4.35,
+    "csm": 6.7,
+    "gpm": 358,
+    "dmgShare": 0.13,
+    "kp": 0.62
+   },
    "champions": [
     [
      "XinZhao",
@@ -9388,6 +11441,15 @@
    "gpm": 421,
    "dmgShare": 0.26,
    "kp": 0.63,
+   "cto": {
+    "games": 95,
+    "weight": 0.91,
+    "kda": 3.79,
+    "csm": 8.2,
+    "gpm": 383,
+    "dmgShare": 0.24,
+    "kp": 0.57
+   },
    "champions": [
     [
      "Ryze",
@@ -9429,6 +11491,15 @@
    "gpm": 485,
    "dmgShare": 0.29,
    "kp": 0.65,
+   "cto": {
+    "games": 95,
+    "weight": 0.91,
+    "kda": 5.18,
+    "csm": 9.1,
+    "gpm": 440,
+    "dmgShare": 0.26,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Yunara",
@@ -9470,6 +11541,15 @@
    "gpm": 258,
    "dmgShare": 0.07,
    "kp": 0.71,
+   "cto": {
+    "games": 95,
+    "weight": 0.91,
+    "kda": 4.68,
+    "csm": 0.9,
+    "gpm": 235,
+    "dmgShare": 0.07,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Lulu",
@@ -9511,6 +11591,15 @@
    "gpm": 371,
    "dmgShare": 0.22,
    "kp": 0.52,
+   "cto": {
+    "games": 76,
+    "weight": 0.96,
+    "kda": 2.69,
+    "csm": 7.9,
+    "gpm": 356,
+    "dmgShare": 0.21,
+    "kp": 0.5
+   },
    "champions": [
     [
      "Rumble",
@@ -9551,6 +11640,15 @@
    "gpm": 400,
    "dmgShare": 0.16,
    "kp": 0.69,
+   "cto": {
+    "games": 76,
+    "weight": 0.96,
+    "kda": 2.91,
+    "csm": 6.9,
+    "gpm": 383,
+    "dmgShare": 0.16,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Pantheon",
@@ -9591,6 +11689,15 @@
    "gpm": 377,
    "dmgShare": 0.26,
    "kp": 0.68,
+   "cto": {
+    "games": 76,
+    "weight": 0.96,
+    "kda": 3.56,
+    "csm": 8,
+    "gpm": 361,
+    "dmgShare": 0.25,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Orianna",
@@ -9631,6 +11738,15 @@
    "gpm": 442,
    "dmgShare": 0.27,
    "kp": 0.66,
+   "cto": {
+    "games": 76,
+    "weight": 0.96,
+    "kda": 3.12,
+    "csm": 8.8,
+    "gpm": 422,
+    "dmgShare": 0.26,
+    "kp": 0.63
+   },
    "champions": [
     [
      "Ezreal",
@@ -9671,6 +11787,15 @@
    "gpm": 257,
    "dmgShare": 0.09,
    "kp": 0.78,
+   "cto": {
+    "games": 76,
+    "weight": 0.96,
+    "kda": 3.04,
+    "csm": 1.1,
+    "gpm": 246,
+    "dmgShare": 0.09,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Karma",
@@ -9711,6 +11836,15 @@
    "gpm": 358,
    "dmgShare": 0.23,
    "kp": 0.53,
+   "cto": {
+    "games": 66,
+    "weight": 1.06,
+    "kda": 2.49,
+    "csm": 8.1,
+    "gpm": 379,
+    "dmgShare": 0.24,
+    "kp": 0.55
+   },
    "champions": [
     [
      "Renekton",
@@ -9751,6 +11885,15 @@
    "gpm": 373,
    "dmgShare": 0.16,
    "kp": 0.77,
+   "cto": {
+    "games": 66,
+    "weight": 1.06,
+    "kda": 3.23,
+    "csm": 7.1,
+    "gpm": 392,
+    "dmgShare": 0.17,
+    "kp": 0.81
+   },
    "champions": [
     [
      "JarvanIV",
@@ -9791,6 +11934,15 @@
    "gpm": 385,
    "dmgShare": 0.28,
    "kp": 0.65,
+   "cto": {
+    "games": 66,
+    "weight": 1.06,
+    "kda": 2.99,
+    "csm": 9.2,
+    "gpm": 406,
+    "dmgShare": 0.29,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Ryze",
@@ -9831,6 +11983,15 @@
    "gpm": 460,
    "dmgShare": 0.26,
    "kp": 0.71,
+   "cto": {
+    "games": 66,
+    "weight": 1.06,
+    "kda": 3.98,
+    "csm": 10.5,
+    "gpm": 485,
+    "dmgShare": 0.27,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Jhin",
@@ -9871,6 +12032,15 @@
    "gpm": 256,
    "dmgShare": 0.08,
    "kp": 0.78,
+   "cto": {
+    "games": 66,
+    "weight": 1.06,
+    "kda": 3.85,
+    "csm": 1.2,
+    "gpm": 271,
+    "dmgShare": 0.08,
+    "kp": 0.83
+   },
    "champions": [
     [
      "Seraphine",
@@ -9911,6 +12081,15 @@
    "gpm": 386,
    "dmgShare": 0.23,
    "kp": 0.53,
+   "cto": {
+    "games": 76,
+    "weight": 0.98,
+    "kda": 3.26,
+    "csm": 8.4,
+    "gpm": 380,
+    "dmgShare": 0.22,
+    "kp": 0.52
+   },
    "champions": [
     [
      "Renekton",
@@ -9950,6 +12129,15 @@
    "gpm": 390,
    "dmgShare": 0.16,
    "kp": 0.73,
+   "cto": {
+    "games": 76,
+    "weight": 0.98,
+    "kda": 4.29,
+    "csm": 7.2,
+    "gpm": 383,
+    "dmgShare": 0.15,
+    "kp": 0.72
+   },
    "champions": [
     [
      "JarvanIV",
@@ -9989,6 +12177,15 @@
    "gpm": 406,
    "dmgShare": 0.24,
    "kp": 0.67,
+   "cto": {
+    "games": 44,
+    "weight": 0.99,
+    "kda": 3.85,
+    "csm": 8.6,
+    "gpm": 402,
+    "dmgShare": 0.24,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Taliyah",
@@ -10028,6 +12225,15 @@
    "gpm": 475,
    "dmgShare": 0.29,
    "kp": 0.66,
+   "cto": {
+    "games": 44,
+    "weight": 0.99,
+    "kda": 4.94,
+    "csm": 9.6,
+    "gpm": 470,
+    "dmgShare": 0.29,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Corki",
@@ -10067,6 +12273,15 @@
    "gpm": 262,
    "dmgShare": 0.08,
    "kp": 0.77,
+   "cto": {
+    "games": 76,
+    "weight": 0.98,
+    "kda": 6.38,
+    "csm": 1.1,
+    "gpm": 258,
+    "dmgShare": 0.08,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Nautilus",
@@ -10106,6 +12321,15 @@
    "gpm": 347,
    "dmgShare": 0.23,
    "kp": 0.57,
+   "cto": {
+    "games": 24,
+    "weight": 1.16,
+    "kda": 2.63,
+    "csm": 9.3,
+    "gpm": 405,
+    "dmgShare": 0.26,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Rumble",
@@ -10145,6 +12369,15 @@
    "gpm": 344,
    "dmgShare": 0.17,
    "kp": 0.74,
+   "cto": {
+    "games": 30,
+    "weight": 1.16,
+    "kda": 2.28,
+    "csm": 7.3,
+    "gpm": 400,
+    "dmgShare": 0.19,
+    "kp": 0.85
+   },
    "champions": [
     [
      "XinZhao",
@@ -10184,6 +12417,15 @@
    "gpm": 348,
    "dmgShare": 0.23,
    "kp": 0.59,
+   "cto": {
+    "games": 41,
+    "weight": 1.16,
+    "kda": 2.08,
+    "csm": 9.3,
+    "gpm": 402,
+    "dmgShare": 0.27,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Orianna",
@@ -10223,6 +12465,15 @@
    "gpm": 428,
    "dmgShare": 0.31,
    "kp": 0.65,
+   "cto": {
+    "games": 39,
+    "weight": 1.15,
+    "kda": 2.48,
+    "csm": 10.4,
+    "gpm": 492,
+    "dmgShare": 0.35,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Ezreal",
@@ -10262,6 +12513,15 @@
    "gpm": 233,
    "dmgShare": 0.07,
    "kp": 0.75,
+   "cto": {
+    "games": 39,
+    "weight": 1.15,
+    "kda": 3.08,
+    "csm": 1.1,
+    "gpm": 268,
+    "dmgShare": 0.08,
+    "kp": 0.86
+   },
    "champions": [
     [
      "Lulu",
@@ -10301,6 +12561,15 @@
    "gpm": 371,
    "dmgShare": 0.22,
    "kp": 0.54,
+   "cto": {
+    "games": 65,
+    "weight": 1.08,
+    "kda": 2.19,
+    "csm": 8.8,
+    "gpm": 401,
+    "dmgShare": 0.24,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Gnar",
@@ -10341,6 +12610,15 @@
    "gpm": 370,
    "dmgShare": 0.16,
    "kp": 0.72,
+   "cto": {
+    "games": 65,
+    "weight": 1.08,
+    "kda": 2.83,
+    "csm": 7.3,
+    "gpm": 400,
+    "dmgShare": 0.17,
+    "kp": 0.78
+   },
    "champions": [
     [
      "MonkeyKing",
@@ -10381,6 +12659,15 @@
    "gpm": 370,
    "dmgShare": 0.25,
    "kp": 0.64,
+   "cto": {
+    "games": 65,
+    "weight": 1.08,
+    "kda": 2.28,
+    "csm": 9,
+    "gpm": 401,
+    "dmgShare": 0.27,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Ryze",
@@ -10421,6 +12708,15 @@
    "gpm": 439,
    "dmgShare": 0.3,
    "kp": 0.61,
+   "cto": {
+    "games": 65,
+    "weight": 1.08,
+    "kda": 2.69,
+    "csm": 10.2,
+    "gpm": 473,
+    "dmgShare": 0.32,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Lucian",
@@ -10461,6 +12757,15 @@
    "gpm": 245,
    "dmgShare": 0.08,
    "kp": 0.73,
+   "cto": {
+    "games": 50,
+    "weight": 1.05,
+    "kda": 2.91,
+    "csm": 1,
+    "gpm": 255,
+    "dmgShare": 0.08,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Milio",
@@ -10501,6 +12806,15 @@
    "gpm": 386,
    "dmgShare": 0.25,
    "kp": 0.46,
+   "cto": {
+    "games": 19,
+    "weight": 1.08,
+    "kda": 1.84,
+    "csm": 9,
+    "gpm": 415,
+    "dmgShare": 0.28,
+    "kp": 0.49
+   },
    "champions": [
     [
      "Olaf",
@@ -10540,6 +12854,15 @@
    "gpm": 381,
    "dmgShare": 0.15,
    "kp": 0.71,
+   "cto": {
+    "games": 8,
+    "weight": 0.84,
+    "kda": 4.82,
+    "csm": 5.6,
+    "gpm": 323,
+    "dmgShare": 0.12,
+    "kp": 0.6
+   },
    "champions": [
     [
      "JarvanIV",
@@ -10579,6 +12902,15 @@
    "gpm": 339,
    "dmgShare": 0.23,
    "kp": 0.52,
+   "cto": {
+    "games": 17,
+    "weight": 1.15,
+    "kda": 1.57,
+    "csm": 8.6,
+    "gpm": 386,
+    "dmgShare": 0.27,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Gnar",
@@ -10618,6 +12950,15 @@
    "gpm": 467,
    "dmgShare": 0.27,
    "kp": 0.56,
+   "cto": {
+    "games": 32,
+    "weight": 0.98,
+    "kda": 3.54,
+    "csm": 9.7,
+    "gpm": 455,
+    "dmgShare": 0.26,
+    "kp": 0.54
+   },
    "champions": [
     [
      "Ezreal",
@@ -10657,6 +12998,15 @@
    "gpm": 247,
    "dmgShare": 0.08,
    "kp": 0.71,
+   "cto": {
+    "games": 43,
+    "weight": 1.09,
+    "kda": 3.07,
+    "csm": 1,
+    "gpm": 268,
+    "dmgShare": 0.08,
+    "kp": 0.77
+   },
    "champions": [
     [
      "Nautilus",
@@ -10697,6 +13047,15 @@
    "gpm": 338,
    "dmgShare": 0.15,
    "kp": 0.8,
+   "cto": {
+    "games": 11,
+    "weight": 1.15,
+    "kda": 1.47,
+    "csm": 7.9,
+    "gpm": 385,
+    "dmgShare": 0.18,
+    "kp": 0.92
+   },
    "champions": [
     [
      "LeeSin",
@@ -10736,6 +13095,15 @@
    "gpm": 385,
    "dmgShare": 0.14,
    "kp": 0.65,
+   "cto": {
+    "games": 6,
+    "weight": 1.09,
+    "kda": 2.64,
+    "csm": 7.6,
+    "gpm": 417,
+    "dmgShare": 0.16,
+    "kp": 0.71
+   },
    "champions": [
     [
      "MonkeyKing",
@@ -10775,6 +13143,15 @@
    "gpm": 481,
    "dmgShare": 0.28,
    "kp": 0.59,
+   "cto": {
+    "games": 2,
+    "weight": 1.28,
+    "kda": 1.85,
+    "csm": 11.4,
+    "gpm": 617,
+    "dmgShare": 0.35,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Kaisa",
@@ -10802,6 +13179,15 @@
    "gpm": 247,
    "dmgShare": 0.07,
    "kp": 0.59,
+   "cto": {
+    "games": 2,
+    "weight": 1.28,
+    "kda": 2.38,
+    "csm": 1.4,
+    "gpm": 317,
+    "dmgShare": 0.08,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Alistar",
@@ -10829,6 +13215,15 @@
    "gpm": 409,
    "dmgShare": 0.23,
    "kp": 0.56,
+   "cto": {
+    "games": 67,
+    "weight": 0.99,
+    "kda": 3.17,
+    "csm": 8.8,
+    "gpm": 403,
+    "dmgShare": 0.23,
+    "kp": 0.55
+   },
    "champions": [
     [
      "KSante",
@@ -10868,6 +13263,15 @@
    "gpm": 383,
    "dmgShare": 0.17,
    "kp": 0.68,
+   "cto": {
+    "games": 40,
+    "weight": 0.99,
+    "kda": 2.44,
+    "csm": 6.8,
+    "gpm": 377,
+    "dmgShare": 0.17,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Qiyana",
@@ -10907,6 +13311,15 @@
    "gpm": 377,
    "dmgShare": 0.24,
    "kp": 0.63,
+   "cto": {
+    "games": 30,
+    "weight": 0.99,
+    "kda": 3,
+    "csm": 8,
+    "gpm": 373,
+    "dmgShare": 0.24,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Aurora",
@@ -10946,6 +13359,15 @@
    "gpm": 460,
    "dmgShare": 0.26,
    "kp": 0.64,
+   "cto": {
+    "games": 40,
+    "weight": 0.99,
+    "kda": 3.2,
+    "csm": 9.4,
+    "gpm": 454,
+    "dmgShare": 0.26,
+    "kp": 0.63
+   },
    "champions": [
     [
      "Corki",
@@ -10985,6 +13407,15 @@
    "gpm": 253,
    "dmgShare": 0.08,
    "kp": 0.76,
+   "cto": {
+    "games": 26,
+    "weight": 0.97,
+    "kda": 2.77,
+    "csm": 1,
+    "gpm": 246,
+    "dmgShare": 0.08,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Bard",
@@ -11024,6 +13455,15 @@
    "gpm": 388,
    "dmgShare": 0.22,
    "kp": 0.49,
+   "cto": {
+    "games": 19,
+    "weight": 1,
+    "kda": 4.34,
+    "csm": 8.5,
+    "gpm": 387,
+    "dmgShare": 0.22,
+    "kp": 0.49
+   },
    "champions": [
     [
      "Rumble",
@@ -11063,6 +13503,15 @@
    "gpm": 359,
    "dmgShare": 0.16,
    "kp": 0.68,
+   "cto": {
+    "games": 69,
+    "weight": 0.98,
+    "kda": 3.53,
+    "csm": 6.1,
+    "gpm": 352,
+    "dmgShare": 0.15,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Pantheon",
@@ -11103,6 +13552,15 @@
    "gpm": 398,
    "dmgShare": 0.24,
    "kp": 0.66,
+   "cto": {
+    "games": 71,
+    "weight": 0.99,
+    "kda": 4,
+    "csm": 8.3,
+    "gpm": 393,
+    "dmgShare": 0.24,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Orianna",
@@ -11142,6 +13600,15 @@
    "gpm": 468,
    "dmgShare": 0.28,
    "kp": 0.65,
+   "cto": {
+    "games": 47,
+    "weight": 0.99,
+    "kda": 3.83,
+    "csm": 9.2,
+    "gpm": 464,
+    "dmgShare": 0.28,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Jhin",
@@ -11181,6 +13648,15 @@
    "gpm": 263,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 47,
+    "weight": 0.99,
+    "kda": 4.47,
+    "csm": 1.2,
+    "gpm": 259,
+    "dmgShare": 0.08,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Bard",
@@ -11220,6 +13696,15 @@
    "gpm": 416,
    "dmgShare": 0.26,
    "kp": 0.54,
+   "cto": {
+    "games": 77,
+    "weight": 0.97,
+    "kda": 3.12,
+    "csm": 8.8,
+    "gpm": 406,
+    "dmgShare": 0.25,
+    "kp": 0.52
+   },
    "champions": [
     [
      "Gnar",
@@ -11260,6 +13745,15 @@
    "gpm": 374,
    "dmgShare": 0.14,
    "kp": 0.7,
+   "cto": {
+    "games": 27,
+    "weight": 0.98,
+    "kda": 3.29,
+    "csm": 6.8,
+    "gpm": 367,
+    "dmgShare": 0.14,
+    "kp": 0.68
+   },
    "champions": [
     [
      "MonkeyKing",
@@ -11299,6 +13793,15 @@
    "gpm": 389,
    "dmgShare": 0.24,
    "kp": 0.64,
+   "cto": {
+    "games": 77,
+    "weight": 0.97,
+    "kda": 4.11,
+    "csm": 8.2,
+    "gpm": 377,
+    "dmgShare": 0.23,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Ryze",
@@ -11339,6 +13842,15 @@
    "gpm": 478,
    "dmgShare": 0.26,
    "kp": 0.62,
+   "cto": {
+    "games": 77,
+    "weight": 0.97,
+    "kda": 3.64,
+    "csm": 9.2,
+    "gpm": 468,
+    "dmgShare": 0.26,
+    "kp": 0.61
+   },
    "champions": [
     [
      "Ezreal",
@@ -11379,6 +13891,15 @@
    "gpm": 266,
    "dmgShare": 0.09,
    "kp": 0.74,
+   "cto": {
+    "games": 77,
+    "weight": 0.97,
+    "kda": 5.84,
+    "csm": 1.1,
+    "gpm": 259,
+    "dmgShare": 0.09,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Alistar",
@@ -11419,6 +13940,15 @@
    "gpm": 387,
    "dmgShare": 0.23,
    "kp": 0.57,
+   "cto": {
+    "games": 88,
+    "weight": 0.97,
+    "kda": 3.05,
+    "csm": 7.9,
+    "gpm": 375,
+    "dmgShare": 0.22,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Ambessa",
@@ -11460,6 +13990,15 @@
    "gpm": 400,
    "dmgShare": 0.17,
    "kp": 0.73,
+   "cto": {
+    "games": 82,
+    "weight": 0.97,
+    "kda": 4.99,
+    "csm": 6.8,
+    "gpm": 387,
+    "dmgShare": 0.17,
+    "kp": 0.71
+   },
    "champions": [
     [
      "XinZhao",
@@ -11501,6 +14040,15 @@
    "gpm": 395,
    "dmgShare": 0.23,
    "kp": 0.63,
+   "cto": {
+    "games": 88,
+    "weight": 0.97,
+    "kda": 3.77,
+    "csm": 8.3,
+    "gpm": 382,
+    "dmgShare": 0.23,
+    "kp": 0.61
+   },
    "champions": [
     [
      "Ryze",
@@ -11542,6 +14090,15 @@
    "gpm": 478,
    "dmgShare": 0.28,
    "kp": 0.66,
+   "cto": {
+    "games": 88,
+    "weight": 0.97,
+    "kda": 4.93,
+    "csm": 9.1,
+    "gpm": 462,
+    "dmgShare": 0.28,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Ezreal",
@@ -11583,6 +14140,15 @@
    "gpm": 262,
    "dmgShare": 0.08,
    "kp": 0.77,
+   "cto": {
+    "games": 88,
+    "weight": 0.97,
+    "kda": 5.9,
+    "csm": 1,
+    "gpm": 254,
+    "dmgShare": 0.08,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Seraphine",
@@ -11624,6 +14190,15 @@
    "gpm": 375,
    "dmgShare": 0.22,
    "kp": 0.48,
+   "cto": {
+    "games": 60,
+    "weight": 0.99,
+    "kda": 2.34,
+    "csm": 8.3,
+    "gpm": 371,
+    "dmgShare": 0.22,
+    "kp": 0.47
+   },
    "champions": [
     [
      "Gnar",
@@ -11664,6 +14239,15 @@
    "gpm": 392,
    "dmgShare": 0.18,
    "kp": 0.71,
+   "cto": {
+    "games": 55,
+    "weight": 0.98,
+    "kda": 3.39,
+    "csm": 7.1,
+    "gpm": 386,
+    "dmgShare": 0.17,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Naafiri",
@@ -11703,6 +14287,15 @@
    "gpm": 369,
    "dmgShare": 0.23,
    "kp": 0.51,
+   "cto": {
+    "games": 20,
+    "weight": 1,
+    "kda": 2.2,
+    "csm": 8.2,
+    "gpm": 367,
+    "dmgShare": 0.23,
+    "kp": 0.51
+   },
    "champions": [
     [
      "Ambessa",
@@ -11742,6 +14335,15 @@
    "gpm": 385,
    "dmgShare": 0.17,
    "kp": 0.73,
+   "cto": {
+    "games": 51,
+    "weight": 0.99,
+    "kda": 3.53,
+    "csm": 7,
+    "gpm": 379,
+    "dmgShare": 0.16,
+    "kp": 0.72
+   },
    "champions": [
     [
      "XinZhao",
@@ -11781,6 +14383,15 @@
    "gpm": 398,
    "dmgShare": 0.26,
    "kp": 0.69,
+   "cto": {
+    "games": 56,
+    "weight": 1,
+    "kda": 2.57,
+    "csm": 8.8,
+    "gpm": 395,
+    "dmgShare": 0.26,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Orianna",
@@ -11820,6 +14431,15 @@
    "gpm": 475,
    "dmgShare": 0.29,
    "kp": 0.65,
+   "cto": {
+    "games": 43,
+    "weight": 1.05,
+    "kda": 3.33,
+    "csm": 10.1,
+    "gpm": 498,
+    "dmgShare": 0.3,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Yunara",
@@ -11859,6 +14479,15 @@
    "gpm": 257,
    "dmgShare": 0.07,
    "kp": 0.75,
+   "cto": {
+    "games": 50,
+    "weight": 1.01,
+    "kda": 3.71,
+    "csm": 1.2,
+    "gpm": 259,
+    "dmgShare": 0.07,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Lulu",
@@ -11899,6 +14528,15 @@
    "gpm": 384,
    "dmgShare": 0.23,
    "kp": 0.5,
+   "cto": {
+    "games": 28,
+    "weight": 1.01,
+    "kda": 1.69,
+    "csm": 8.3,
+    "gpm": 386,
+    "dmgShare": 0.23,
+    "kp": 0.5
+   },
    "champions": [
     [
      "Rumble",
@@ -11938,6 +14576,15 @@
    "gpm": 331,
    "dmgShare": 0.18,
    "kp": 0.95,
+   "cto": {
+    "games": 3,
+    "weight": 1.03,
+    "kda": 1.42,
+    "csm": 6.5,
+    "gpm": 340,
+    "dmgShare": 0.18,
+    "kp": 0.98
+   },
    "champions": [
     [
      "JarvanIV",
@@ -11969,6 +14616,15 @@
    "gpm": 390,
    "dmgShare": 0.26,
    "kp": 0.63,
+   "cto": {
+    "games": 42,
+    "weight": 1.06,
+    "kda": 2.61,
+    "csm": 9.6,
+    "gpm": 413,
+    "dmgShare": 0.28,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Aurora",
@@ -12009,6 +14665,15 @@
    "gpm": 476,
    "dmgShare": 0.3,
    "kp": 0.58,
+   "cto": {
+    "games": 24,
+    "weight": 1,
+    "kda": 2.49,
+    "csm": 9.9,
+    "gpm": 476,
+    "dmgShare": 0.3,
+    "kp": 0.58
+   },
    "champions": [
     [
      "Corki",
@@ -12048,6 +14713,15 @@
    "gpm": 251,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 28,
+    "weight": 1.01,
+    "kda": 2.79,
+    "csm": 1.1,
+    "gpm": 252,
+    "dmgShare": 0.08,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Nami",
@@ -12087,6 +14761,15 @@
    "gpm": 353,
    "dmgShare": 0.21,
    "kp": 0.49,
+   "cto": {
+    "games": 38,
+    "weight": 1.08,
+    "kda": 2.04,
+    "csm": 8.3,
+    "gpm": 381,
+    "dmgShare": 0.23,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Renekton",
@@ -12126,6 +14809,15 @@
    "gpm": 378,
    "dmgShare": 0.18,
    "kp": 0.69,
+   "cto": {
+    "games": 54,
+    "weight": 1.08,
+    "kda": 2.09,
+    "csm": 7.9,
+    "gpm": 407,
+    "dmgShare": 0.19,
+    "kp": 0.74
+   },
    "champions": [
     [
      "XinZhao",
@@ -12165,6 +14857,15 @@
    "gpm": 380,
    "dmgShare": 0.25,
    "kp": 0.65,
+   "cto": {
+    "games": 46,
+    "weight": 1.08,
+    "kda": 3.38,
+    "csm": 9.3,
+    "gpm": 410,
+    "dmgShare": 0.28,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Ryze",
@@ -12204,6 +14905,15 @@
    "gpm": 443,
    "dmgShare": 0.29,
    "kp": 0.65,
+   "cto": {
+    "games": 54,
+    "weight": 1.08,
+    "kda": 3.78,
+    "csm": 10.3,
+    "gpm": 477,
+    "dmgShare": 0.31,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Corki",
@@ -12243,6 +14953,15 @@
    "gpm": 244,
    "dmgShare": 0.07,
    "kp": 0.73,
+   "cto": {
+    "games": 46,
+    "weight": 1.08,
+    "kda": 3.35,
+    "csm": 1.1,
+    "gpm": 263,
+    "dmgShare": 0.08,
+    "kp": 0.79
+   },
    "champions": [
     [
      "Nautilus",
@@ -12282,6 +15001,15 @@
    "gpm": 358,
    "dmgShare": 0.23,
    "kp": 0.53,
+   "cto": {
+    "games": 51,
+    "weight": 1.1,
+    "kda": 2.11,
+    "csm": 8.8,
+    "gpm": 392,
+    "dmgShare": 0.26,
+    "kp": 0.58
+   },
    "champions": [
     [
      "KSante",
@@ -12321,6 +15049,15 @@
    "gpm": 341,
    "dmgShare": 0.13,
    "kp": 0.67,
+   "cto": {
+    "games": 51,
+    "weight": 1.1,
+    "kda": 2.31,
+    "csm": 6.7,
+    "gpm": 373,
+    "dmgShare": 0.14,
+    "kp": 0.73
+   },
    "champions": [
     [
      "JarvanIV",
@@ -12360,6 +15097,15 @@
    "gpm": 384,
    "dmgShare": 0.26,
    "kp": 0.71,
+   "cto": {
+    "games": 51,
+    "weight": 1.1,
+    "kda": 3.22,
+    "csm": 9.6,
+    "gpm": 420,
+    "dmgShare": 0.28,
+    "kp": 0.78
+   },
    "champions": [
     [
      "Ryze",
@@ -12399,6 +15145,15 @@
    "gpm": 454,
    "dmgShare": 0.28,
    "kp": 0.7,
+   "cto": {
+    "games": 15,
+    "weight": 1.1,
+    "kda": 2.41,
+    "csm": 10.4,
+    "gpm": 498,
+    "dmgShare": 0.3,
+    "kp": 0.76
+   },
    "champions": [
     [
      "Ezreal",
@@ -12438,6 +15193,15 @@
    "gpm": 253,
    "dmgShare": 0.09,
    "kp": 0.74,
+   "cto": {
+    "games": 37,
+    "weight": 1.1,
+    "kda": 2.49,
+    "csm": 1.3,
+    "gpm": 277,
+    "dmgShare": 0.1,
+    "kp": 0.81
+   },
    "champions": [
     [
      "Neeko",
@@ -12477,6 +15241,15 @@
    "gpm": 472,
    "dmgShare": 0.3,
    "kp": 0.66,
+   "cto": {
+    "games": 74,
+    "weight": 0.99,
+    "kda": 3.72,
+    "csm": 9.6,
+    "gpm": 466,
+    "dmgShare": 0.3,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Ezreal",
@@ -12517,6 +15290,15 @@
    "gpm": 370,
    "dmgShare": 0.16,
    "kp": 0.75,
+   "cto": {
+    "games": 53,
+    "weight": 1.01,
+    "kda": 2.7,
+    "csm": 6.8,
+    "gpm": 374,
+    "dmgShare": 0.16,
+    "kp": 0.76
+   },
    "champions": [
     [
      "JarvanIV",
@@ -12556,6 +15338,15 @@
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.75,
+   "cto": {
+    "games": 41,
+    "weight": 0.99,
+    "kda": 4.02,
+    "csm": 1.2,
+    "gpm": 263,
+    "dmgShare": 0.08,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Bard",
@@ -12595,6 +15386,15 @@
    "gpm": 343,
    "dmgShare": 0.18,
    "kp": 0.71,
+   "cto": {
+    "games": 9,
+    "weight": 1,
+    "kda": 2,
+    "csm": 6,
+    "gpm": 340,
+    "dmgShare": 0.18,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Aatrox",
@@ -12634,6 +15434,15 @@
    "gpm": 350,
    "dmgShare": 0.23,
    "kp": 0.53,
+   "cto": {
+    "games": 25,
+    "weight": 0.99,
+    "kda": 1.75,
+    "csm": 7.6,
+    "gpm": 347,
+    "dmgShare": 0.23,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Gnar",
@@ -12673,6 +15482,15 @@
    "gpm": 381,
    "dmgShare": 0.24,
    "kp": 0.56,
+   "cto": {
+    "games": 43,
+    "weight": 1,
+    "kda": 2.48,
+    "csm": 8.5,
+    "gpm": 381,
+    "dmgShare": 0.24,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Rumble",
@@ -12712,6 +15530,15 @@
    "gpm": 384,
    "dmgShare": 0.16,
    "kp": 0.7,
+   "cto": {
+    "games": 27,
+    "weight": 0.99,
+    "kda": 3.25,
+    "csm": 6.7,
+    "gpm": 379,
+    "dmgShare": 0.16,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Vi",
@@ -12751,6 +15578,15 @@
    "gpm": 422,
    "dmgShare": 0.29,
    "kp": 0.62,
+   "cto": {
+    "games": 14,
+    "weight": 1.1,
+    "kda": 3.75,
+    "csm": 10.1,
+    "gpm": 462,
+    "dmgShare": 0.31,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Viktor",
@@ -12790,6 +15626,15 @@
    "gpm": 233,
    "dmgShare": 0.06,
    "kp": 0.68,
+   "cto": {
+    "games": 14,
+    "weight": 1.1,
+    "kda": 1.65,
+    "csm": 1,
+    "gpm": 256,
+    "dmgShare": 0.07,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Nautilus",
@@ -12829,6 +15674,15 @@
    "gpm": 360,
    "dmgShare": 0.2,
    "kp": 0.47,
+   "cto": {
+    "games": 16,
+    "weight": 1.08,
+    "kda": 2.09,
+    "csm": 9.1,
+    "gpm": 385,
+    "dmgShare": 0.22,
+    "kp": 0.5
+   },
    "champions": [
     [
      "Jayce",
@@ -12868,6 +15722,15 @@
    "gpm": 426,
    "dmgShare": 0.28,
    "kp": 0.63,
+   "cto": {
+    "games": 24,
+    "weight": 0.99,
+    "kda": 3.5,
+    "csm": 9.1,
+    "gpm": 422,
+    "dmgShare": 0.27,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Ezreal",
@@ -12907,6 +15770,15 @@
    "gpm": 245,
    "dmgShare": 0.06,
    "kp": 0.74,
+   "cto": {
+    "games": 24,
+    "weight": 0.99,
+    "kda": 3.32,
+    "csm": 1.1,
+    "gpm": 243,
+    "dmgShare": 0.06,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Seraphine",
@@ -12946,6 +15818,15 @@
    "gpm": 362,
    "dmgShare": 0.24,
    "kp": 0.65,
+   "cto": {
+    "games": 35,
+    "weight": 1.01,
+    "kda": 2.98,
+    "csm": 8.3,
+    "gpm": 363,
+    "dmgShare": 0.24,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Orianna",
@@ -12986,6 +15867,15 @@
    "gpm": 302,
    "dmgShare": 0.2,
    "kp": 0.5,
+   "cto": {
+    "games": 2,
+    "weight": 0.95,
+    "kda": 0.52,
+    "csm": 5.3,
+    "gpm": 287,
+    "dmgShare": 0.19,
+    "kp": 0.47
+   },
    "champions": [
     [
      "Trundle",
@@ -13013,6 +15903,15 @@
    "gpm": 241,
    "dmgShare": 0.07,
    "kp": 0.71,
+   "cto": {
+    "games": 32,
+    "weight": 1.01,
+    "kda": 2.85,
+    "csm": 0.9,
+    "gpm": 242,
+    "dmgShare": 0.07,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Lulu",
@@ -13053,6 +15952,15 @@
    "gpm": 403,
    "dmgShare": 0.22,
    "kp": 0.63,
+   "cto": {
+    "games": 15,
+    "weight": 1.03,
+    "kda": 3.39,
+    "csm": 9.1,
+    "gpm": 415,
+    "dmgShare": 0.23,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Ryze",
@@ -13092,6 +16000,15 @@
    "gpm": 371,
    "dmgShare": 0.2,
    "kp": 0.6,
+   "cto": {
+    "games": 4,
+    "weight": 0.97,
+    "kda": 3.64,
+    "csm": 7.1,
+    "gpm": 361,
+    "dmgShare": 0.19,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Sejuani",
@@ -13127,6 +16044,15 @@
    "gpm": 368,
    "dmgShare": 0.23,
    "kp": 0.66,
+   "cto": {
+    "games": 13,
+    "weight": 1,
+    "kda": 2.52,
+    "csm": 8,
+    "gpm": 365,
+    "dmgShare": 0.23,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Ryze",
@@ -13166,6 +16092,15 @@
    "gpm": 386,
    "dmgShare": 0.23,
    "kp": 0.44,
+   "cto": {
+    "games": 4,
+    "weight": 1.04,
+    "kda": 1.1,
+    "csm": 9.3,
+    "gpm": 401,
+    "dmgShare": 0.24,
+    "kp": 0.46
+   },
    "champions": [
     [
      "Sivir",
@@ -13201,6 +16136,15 @@
    "gpm": 385,
    "dmgShare": 0.25,
    "kp": 0.57,
+   "cto": {
+    "games": 8,
+    "weight": 1.05,
+    "kda": 2.25,
+    "csm": 9.3,
+    "gpm": 407,
+    "dmgShare": 0.27,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Ryze",
@@ -13240,6 +16184,15 @@
    "gpm": 237,
    "dmgShare": 0.08,
    "kp": 0.76,
+   "cto": {
+    "games": 8,
+    "weight": 1.05,
+    "kda": 1.83,
+    "csm": 1.1,
+    "gpm": 249,
+    "dmgShare": 0.08,
+    "kp": 0.8
+   },
    "champions": [
     [
      "Alistar",
@@ -13279,6 +16232,15 @@
    "gpm": 379,
    "dmgShare": 0.23,
    "kp": 0.57,
+   "cto": {
+    "games": 10,
+    "weight": 0.98,
+    "kda": 1.8,
+    "csm": 8.6,
+    "gpm": 372,
+    "dmgShare": 0.22,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Ryze",
@@ -13318,6 +16280,15 @@
    "gpm": 385,
    "dmgShare": 0.23,
    "kp": 0.67,
+   "cto": {
+    "games": 4,
+    "weight": 0.92,
+    "kda": 1.64,
+    "csm": 8.1,
+    "gpm": 353,
+    "dmgShare": 0.21,
+    "kp": 0.61
+   },
    "champions": [
     [
      "Taliyah",
@@ -13353,6 +16324,15 @@
    "gpm": 392,
    "dmgShare": 0.25,
    "kp": 0.56,
+   "cto": {
+    "games": 94,
+    "weight": 1.01,
+    "kda": 2.94,
+    "csm": 8.3,
+    "gpm": 393,
+    "dmgShare": 0.25,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Gnar",
@@ -13393,6 +16373,15 @@
    "gpm": 392,
    "dmgShare": 0.16,
    "kp": 0.68,
+   "cto": {
+    "games": 94,
+    "weight": 1.01,
+    "kda": 3.31,
+    "csm": 7,
+    "gpm": 393,
+    "dmgShare": 0.16,
+    "kp": 0.69
+   },
    "champions": [
     [
      "JarvanIV",
@@ -13433,6 +16422,15 @@
    "gpm": 412,
    "dmgShare": 0.24,
    "kp": 0.64,
+   "cto": {
+    "games": 93,
+    "weight": 1.01,
+    "kda": 3.49,
+    "csm": 9,
+    "gpm": 413,
+    "dmgShare": 0.25,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Ryze",
@@ -13473,6 +16471,15 @@
    "gpm": 473,
    "dmgShare": 0.27,
    "kp": 0.64,
+   "cto": {
+    "games": 94,
+    "weight": 1.01,
+    "kda": 3.06,
+    "csm": 9.3,
+    "gpm": 473,
+    "dmgShare": 0.27,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Jhin",
@@ -13513,6 +16520,15 @@
    "gpm": 272,
    "dmgShare": 0.08,
    "kp": 0.7,
+   "cto": {
+    "games": 94,
+    "weight": 1.01,
+    "kda": 2.72,
+    "csm": 1.2,
+    "gpm": 273,
+    "dmgShare": 0.08,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Bard",
@@ -13553,6 +16569,15 @@
    "gpm": 391,
    "dmgShare": 0.23,
    "kp": 0.58,
+   "cto": {
+    "games": 83,
+    "weight": 0.92,
+    "kda": 2.99,
+    "csm": 7.3,
+    "gpm": 363,
+    "dmgShare": 0.22,
+    "kp": 0.53
+   },
    "champions": [
     [
      "Volibear",
@@ -13594,6 +16619,15 @@
    "gpm": 416,
    "dmgShare": 0.18,
    "kp": 0.72,
+   "cto": {
+    "games": 84,
+    "weight": 0.92,
+    "kda": 4.82,
+    "csm": 6.8,
+    "gpm": 386,
+    "dmgShare": 0.16,
+    "kp": 0.66
+   },
    "champions": [
     [
      "XinZhao",
@@ -13635,6 +16669,15 @@
    "gpm": 409,
    "dmgShare": 0.23,
    "kp": 0.64,
+   "cto": {
+    "games": 84,
+    "weight": 0.92,
+    "kda": 4.64,
+    "csm": 8,
+    "gpm": 380,
+    "dmgShare": 0.21,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Ryze",
@@ -13676,6 +16719,15 @@
    "gpm": 516,
    "dmgShare": 0.28,
    "kp": 0.65,
+   "cto": {
+    "games": 84,
+    "weight": 0.92,
+    "kda": 5.79,
+    "csm": 9.2,
+    "gpm": 476,
+    "dmgShare": 0.25,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Yunara",
@@ -13717,6 +16769,15 @@
    "gpm": 279,
    "dmgShare": 0.08,
    "kp": 0.73,
+   "cto": {
+    "games": 84,
+    "weight": 0.92,
+    "kda": 5.91,
+    "csm": 1.1,
+    "gpm": 258,
+    "dmgShare": 0.07,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Nautilus",
@@ -13758,6 +16819,15 @@
    "gpm": 387,
    "dmgShare": 0.25,
    "kp": 0.53,
+   "cto": {
+    "games": 83,
+    "weight": 0.98,
+    "kda": 2.54,
+    "csm": 8.3,
+    "gpm": 378,
+    "dmgShare": 0.25,
+    "kp": 0.52
+   },
    "champions": [
     [
      "Rumble",
@@ -13799,6 +16869,15 @@
    "gpm": 384,
    "dmgShare": 0.17,
    "kp": 0.72,
+   "cto": {
+    "games": 76,
+    "weight": 0.98,
+    "kda": 3.49,
+    "csm": 6.7,
+    "gpm": 376,
+    "dmgShare": 0.16,
+    "kp": 0.71
+   },
    "champions": [
     [
      "MonkeyKing",
@@ -13839,6 +16918,15 @@
    "gpm": 389,
    "dmgShare": 0.24,
    "kp": 0.64,
+   "cto": {
+    "games": 39,
+    "weight": 1,
+    "kda": 3.17,
+    "csm": 8.4,
+    "gpm": 387,
+    "dmgShare": 0.23,
+    "kp": 0.64
+   },
    "champions": [
     [
      "Ahri",
@@ -13880,6 +16968,15 @@
    "gpm": 490,
    "dmgShare": 0.28,
    "kp": 0.72,
+   "cto": {
+    "games": 83,
+    "weight": 0.98,
+    "kda": 4.11,
+    "csm": 9.7,
+    "gpm": 479,
+    "dmgShare": 0.27,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Sivir",
@@ -13921,6 +17018,15 @@
    "gpm": 262,
    "dmgShare": 0.08,
    "kp": 0.77,
+   "cto": {
+    "games": 83,
+    "weight": 0.98,
+    "kda": 3.67,
+    "csm": 1,
+    "gpm": 257,
+    "dmgShare": 0.08,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Nautilus",
@@ -13962,6 +17068,15 @@
    "gpm": 407,
    "dmgShare": 0.23,
    "kp": 0.53,
+   "cto": {
+    "games": 4,
+    "weight": 0.98,
+    "kda": 2.48,
+    "csm": 8.6,
+    "gpm": 407,
+    "dmgShare": 0.22,
+    "kp": 0.52
+   },
    "champions": [
     [
      "Jayce",
@@ -13997,6 +17112,15 @@
    "gpm": 401,
    "dmgShare": 0.22,
    "kp": 0.7,
+   "cto": {
+    "games": 4,
+    "weight": 0.98,
+    "kda": 3.67,
+    "csm": 8.4,
+    "gpm": 402,
+    "dmgShare": 0.22,
+    "kp": 0.68
+   },
    "champions": [
     [
      "Ryze",
@@ -14032,6 +17156,15 @@
    "gpm": 256,
    "dmgShare": 0.09,
    "kp": 0.56,
+   "cto": {
+    "games": 4,
+    "weight": 0.98,
+    "kda": 1.65,
+    "csm": 1,
+    "gpm": 255,
+    "dmgShare": 0.09,
+    "kp": 0.55
+   },
    "champions": [
     [
      "Shen",
@@ -14067,6 +17200,15 @@
    "gpm": 373,
    "dmgShare": 0.15,
    "kp": 0.76,
+   "cto": {
+    "games": 5,
+    "weight": 0.93,
+    "kda": 3.56,
+    "csm": 5.2,
+    "gpm": 341,
+    "dmgShare": 0.14,
+    "kp": 0.7
+   },
    "champions": [
     [
      "LeeSin",
@@ -14094,6 +17236,15 @@
    "gpm": 410,
    "dmgShare": 0.24,
    "kp": 0.43,
+   "cto": {
+    "games": 8,
+    "weight": 0.84,
+    "kda": 2.32,
+    "csm": 7.1,
+    "gpm": 352,
+    "dmgShare": 0.2,
+    "kp": 0.37
+   },
    "champions": [
     [
      "Gnar",
@@ -14133,6 +17284,15 @@
    "gpm": 412,
    "dmgShare": 0.17,
    "kp": 0.69,
+   "cto": {
+    "games": 8,
+    "weight": 0.84,
+    "kda": 3.09,
+    "csm": 5.7,
+    "gpm": 350,
+    "dmgShare": 0.15,
+    "kp": 0.57
+   },
    "champions": [
     [
      "Nocturne",
@@ -14172,6 +17332,15 @@
    "gpm": 422,
    "dmgShare": 0.21,
    "kp": 0.61,
+   "cto": {
+    "games": 8,
+    "weight": 0.84,
+    "kda": 3.44,
+    "csm": 7.1,
+    "gpm": 358,
+    "dmgShare": 0.18,
+    "kp": 0.52
+   },
    "champions": [
     [
      "Locke",
@@ -14211,6 +17380,15 @@
    "gpm": 462,
    "dmgShare": 0.25,
    "kp": 0.58,
+   "cto": {
+    "games": 8,
+    "weight": 0.84,
+    "kda": 3.02,
+    "csm": 7.7,
+    "gpm": 392,
+    "dmgShare": 0.21,
+    "kp": 0.48
+   },
    "champions": [
     [
      "Ezreal",
@@ -14250,6 +17428,15 @@
    "gpm": 379,
    "dmgShare": 0.24,
    "kp": 0.54,
+   "cto": {
+    "games": 5,
+    "weight": 0.96,
+    "kda": 0.95,
+    "csm": 8.2,
+    "gpm": 364,
+    "dmgShare": 0.23,
+    "kp": 0.51
+   },
    "champions": [
     [
      "Ambessa",
@@ -14281,6 +17468,15 @@
    "gpm": 353,
    "dmgShare": 0.17,
    "kp": 0.82,
+   "cto": {
+    "games": 5,
+    "weight": 0.96,
+    "kda": 1.08,
+    "csm": 5.9,
+    "gpm": 341,
+    "dmgShare": 0.16,
+    "kp": 0.78
+   },
    "champions": [
     [
      "JarvanIV",
@@ -14316,6 +17512,15 @@
    "gpm": 387,
    "dmgShare": 0.3,
    "kp": 0.64,
+   "cto": {
+    "games": 5,
+    "weight": 0.96,
+    "kda": 1.44,
+    "csm": 8.9,
+    "gpm": 376,
+    "dmgShare": 0.29,
+    "kp": 0.62
+   },
    "champions": [
     [
      "Taliyah",
@@ -14351,6 +17556,15 @@
    "gpm": 382,
    "dmgShare": 0.21,
    "kp": 0.41,
+   "cto": {
+    "games": 5,
+    "weight": 0.96,
+    "kda": 0.67,
+    "csm": 8.2,
+    "gpm": 369,
+    "dmgShare": 0.2,
+    "kp": 0.39
+   },
    "champions": [
     [
      "Ziggs",
@@ -14386,6 +17600,15 @@
    "gpm": 261,
    "dmgShare": 0.09,
    "kp": 0.69,
+   "cto": {
+    "games": 5,
+    "weight": 0.96,
+    "kda": 0.67,
+    "csm": 1.1,
+    "gpm": 250,
+    "dmgShare": 0.08,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Nautilus",
@@ -14425,6 +17648,15 @@
    "gpm": 419,
    "dmgShare": 0.23,
    "kp": 0.54,
+   "cto": {
+    "games": 5,
+    "weight": 0.97,
+    "kda": 1.75,
+    "csm": 8.8,
+    "gpm": 406,
+    "dmgShare": 0.22,
+    "kp": 0.52
+   },
    "champions": [
     [
      "Ambessa",
@@ -14456,6 +17688,15 @@
    "gpm": 401,
    "dmgShare": 0.26,
    "kp": 0.56,
+   "cto": {
+    "games": 5,
+    "weight": 0.97,
+    "kda": 1.64,
+    "csm": 9,
+    "gpm": 387,
+    "dmgShare": 0.25,
+    "kp": 0.54
+   },
    "champions": [
     [
      "Cassiopeia",
@@ -14487,6 +17728,15 @@
    "gpm": 467,
    "dmgShare": 0.26,
    "kp": 0.6,
+   "cto": {
+    "games": 5,
+    "weight": 0.97,
+    "kda": 2.09,
+    "csm": 8.6,
+    "gpm": 448,
+    "dmgShare": 0.25,
+    "kp": 0.56
+   },
    "champions": [
     [
      "Ziggs",
@@ -14526,6 +17776,15 @@
    "gpm": 282,
    "dmgShare": 0.11,
    "kp": 0.57,
+   "cto": {
+    "games": 5,
+    "weight": 0.97,
+    "kda": 1.34,
+    "csm": 1.2,
+    "gpm": 274,
+    "dmgShare": 0.1,
+    "kp": 0.55
+   },
    "champions": [
     [
      "Camille",
@@ -14557,6 +17816,15 @@
    "gpm": 409,
    "dmgShare": 0.26,
    "kp": 0.59,
+   "cto": {
+    "games": 10,
+    "weight": 0.82,
+    "kda": 3.06,
+    "csm": 6.6,
+    "gpm": 332,
+    "dmgShare": 0.21,
+    "kp": 0.48
+   },
    "champions": [
     [
      "Ambessa",
@@ -14596,6 +17864,15 @@
    "gpm": 392,
    "dmgShare": 0.25,
    "kp": 0.7,
+   "cto": {
+    "games": 10,
+    "weight": 0.82,
+    "kda": 2.68,
+    "csm": 6.8,
+    "gpm": 319,
+    "dmgShare": 0.2,
+    "kp": 0.57
+   },
    "champions": [
     [
      "Orianna",
@@ -14635,6 +17912,15 @@
    "gpm": 412,
    "dmgShare": 0.2,
    "kp": 0.46,
+   "cto": {
+    "games": 10,
+    "weight": 0.82,
+    "kda": 2.26,
+    "csm": 7,
+    "gpm": 334,
+    "dmgShare": 0.16,
+    "kp": 0.38
+   },
    "champions": [
     [
      "Corki",
@@ -14674,6 +17960,15 @@
    "gpm": 276,
    "dmgShare": 0.1,
    "kp": 0.71,
+   "cto": {
+    "games": 10,
+    "weight": 0.82,
+    "kda": 2.78,
+    "csm": 0.8,
+    "gpm": 227,
+    "dmgShare": 0.09,
+    "kp": 0.58
+   },
    "champions": [
     [
      "Alistar",
@@ -14713,6 +18008,15 @@
    "gpm": 355,
    "dmgShare": 0.14,
    "kp": 0.69,
+   "cto": {
+    "games": 3,
+    "weight": 1,
+    "kda": 1.39,
+    "csm": 6.5,
+    "gpm": 358,
+    "dmgShare": 0.14,
+    "kp": 0.67
+   },
    "champions": [
     [
      "JarvanIV",
@@ -14736,6 +18040,15 @@
    "gpm": 392,
    "dmgShare": 0.25,
    "kp": 0.44,
+   "cto": {
+    "games": 1,
+    "weight": 1.1,
+    "kda": 0.86,
+    "csm": 8.4,
+    "gpm": 431,
+    "dmgShare": 0.27,
+    "kp": 0.48
+   },
    "champions": [
     [
      "Corki",
@@ -14759,6 +18072,15 @@
    "gpm": 348,
    "dmgShare": 0.24,
    "kp": 0.63,
+   "cto": {
+    "games": 1,
+    "weight": 1.1,
+    "kda": 1.83,
+    "csm": 7.3,
+    "gpm": 382,
+    "dmgShare": 0.26,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Akali",
@@ -14782,6 +18104,15 @@
    "gpm": 304,
    "dmgShare": 0.13,
    "kp": 0.76,
+   "cto": {
+    "games": 5,
+    "weight": 1.11,
+    "kda": 1.7,
+    "csm": 6.3,
+    "gpm": 334,
+    "dmgShare": 0.14,
+    "kp": 0.85
+   },
    "champions": [
     [
      "JarvanIV",
@@ -14817,6 +18148,15 @@
    "gpm": 342,
    "dmgShare": 0.15,
    "kp": 0.67,
+   "cto": {
+    "games": 7,
+    "weight": 0.99,
+    "kda": 1.45,
+    "csm": 5.6,
+    "gpm": 337,
+    "dmgShare": 0.15,
+    "kp": 0.67
+   },
    "champions": [
     [
      "JarvanIV",
@@ -14852,6 +18192,15 @@
    "gpm": 363,
    "dmgShare": 0.25,
    "kp": 0.52,
+   "cto": {
+    "games": 58,
+    "weight": 1.06,
+    "kda": 2.17,
+    "csm": 8.4,
+    "gpm": 382,
+    "dmgShare": 0.26,
+    "kp": 0.54
+   },
    "champions": [
     [
      "KSante",
@@ -14891,6 +18240,15 @@
    "gpm": 368,
    "dmgShare": 0.15,
    "kp": 0.75,
+   "cto": {
+    "games": 58,
+    "weight": 1.06,
+    "kda": 3.2,
+    "csm": 6.8,
+    "gpm": 387,
+    "dmgShare": 0.16,
+    "kp": 0.79
+   },
    "champions": [
     [
      "LeeSin",
@@ -14930,6 +18288,15 @@
    "gpm": 406,
    "dmgShare": 0.24,
    "kp": 0.71,
+   "cto": {
+    "games": 58,
+    "weight": 1.06,
+    "kda": 4.02,
+    "csm": 9.6,
+    "gpm": 427,
+    "dmgShare": 0.26,
+    "kp": 0.75
+   },
    "champions": [
     [
      "Ahri",
@@ -14969,6 +18336,15 @@
    "gpm": 475,
    "dmgShare": 0.29,
    "kp": 0.63,
+   "cto": {
+    "games": 58,
+    "weight": 1.06,
+    "kda": 4.09,
+    "csm": 10.5,
+    "gpm": 500,
+    "dmgShare": 0.3,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Varus",
@@ -15008,6 +18384,15 @@
    "gpm": 252,
    "dmgShare": 0.07,
    "kp": 0.71,
+   "cto": {
+    "games": 58,
+    "weight": 1.06,
+    "kda": 3.27,
+    "csm": 1.1,
+    "gpm": 266,
+    "dmgShare": 0.07,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Thresh",
@@ -15047,6 +18432,15 @@
    "gpm": 377,
    "dmgShare": 0.22,
    "kp": 0.46,
+   "cto": {
+    "games": 56,
+    "weight": 1.02,
+    "kda": 1.88,
+    "csm": 8.6,
+    "gpm": 384,
+    "dmgShare": 0.23,
+    "kp": 0.47
+   },
    "champions": [
     [
      "Gnar",
@@ -15086,6 +18480,15 @@
    "gpm": 390,
    "dmgShare": 0.17,
    "kp": 0.66,
+   "cto": {
+    "games": 66,
+    "weight": 1.01,
+    "kda": 2.85,
+    "csm": 7.2,
+    "gpm": 395,
+    "dmgShare": 0.17,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Vi",
@@ -15125,6 +18528,15 @@
    "gpm": 412,
    "dmgShare": 0.25,
    "kp": 0.66,
+   "cto": {
+    "games": 15,
+    "weight": 0.99,
+    "kda": 3.48,
+    "csm": 9.4,
+    "gpm": 409,
+    "dmgShare": 0.25,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Ryze",
@@ -15164,6 +18576,15 @@
    "gpm": 497,
    "dmgShare": 0.31,
    "kp": 0.71,
+   "cto": {
+    "games": 17,
+    "weight": 0.98,
+    "kda": 3.55,
+    "csm": 10.3,
+    "gpm": 487,
+    "dmgShare": 0.3,
+    "kp": 0.7
+   },
    "champions": [
     [
      "Sivir",
@@ -15203,6 +18624,15 @@
    "gpm": 256,
    "dmgShare": 0.07,
    "kp": 0.67,
+   "cto": {
+    "games": 17,
+    "weight": 0.98,
+    "kda": 2.7,
+    "csm": 1.2,
+    "gpm": 251,
+    "dmgShare": 0.07,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Alistar",
@@ -15242,6 +18672,15 @@
    "gpm": 411,
    "dmgShare": 0.21,
    "kp": 0.61,
+   "cto": {
+    "games": 44,
+    "weight": 0.97,
+    "kda": 4.63,
+    "csm": 8.8,
+    "gpm": 395,
+    "dmgShare": 0.2,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Ryze",
@@ -15281,6 +18720,15 @@
    "gpm": 384,
    "dmgShare": 0.25,
    "kp": 0.56,
+   "cto": {
+    "games": 61,
+    "weight": 1.09,
+    "kda": 2.85,
+    "csm": 9.1,
+    "gpm": 414,
+    "dmgShare": 0.27,
+    "kp": 0.61
+   },
    "champions": [
     [
      "KSante",
@@ -15320,6 +18768,15 @@
    "gpm": 388,
    "dmgShare": 0.18,
    "kp": 0.73,
+   "cto": {
+    "games": 61,
+    "weight": 1.09,
+    "kda": 3.1,
+    "csm": 7.4,
+    "gpm": 419,
+    "dmgShare": 0.2,
+    "kp": 0.79
+   },
    "champions": [
     [
      "XinZhao",
@@ -15359,6 +18816,15 @@
    "gpm": 378,
    "dmgShare": 0.22,
    "kp": 0.63,
+   "cto": {
+    "games": 47,
+    "weight": 1.09,
+    "kda": 2.69,
+    "csm": 9.2,
+    "gpm": 412,
+    "dmgShare": 0.24,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Ryze",
@@ -15398,6 +18864,15 @@
    "gpm": 473,
    "dmgShare": 0.26,
    "kp": 0.66,
+   "cto": {
+    "games": 47,
+    "weight": 1.09,
+    "kda": 3.04,
+    "csm": 10.5,
+    "gpm": 515,
+    "dmgShare": 0.29,
+    "kp": 0.72
+   },
    "champions": [
     [
      "Varus",
@@ -15437,6 +18912,15 @@
    "gpm": 258,
    "dmgShare": 0.08,
    "kp": 0.74,
+   "cto": {
+    "games": 47,
+    "weight": 1.09,
+    "kda": 3,
+    "csm": 1.3,
+    "gpm": 280,
+    "dmgShare": 0.09,
+    "kp": 0.8
+   },
    "champions": [
     [
      "Seraphine",
@@ -15476,6 +18960,15 @@
    "gpm": 339,
    "dmgShare": 0.2,
    "kp": 0.43,
+   "cto": {
+    "games": 43,
+    "weight": 1.14,
+    "kda": 1.18,
+    "csm": 8.9,
+    "gpm": 386,
+    "dmgShare": 0.23,
+    "kp": 0.49
+   },
    "champions": [
     [
      "Renekton",
@@ -15515,6 +19008,15 @@
    "gpm": 354,
    "dmgShare": 0.18,
    "kp": 0.66,
+   "cto": {
+    "games": 45,
+    "weight": 1.14,
+    "kda": 1.72,
+    "csm": 7.2,
+    "gpm": 403,
+    "dmgShare": 0.2,
+    "kp": 0.75
+   },
    "champions": [
     [
      "JarvanIV",
@@ -15554,6 +19056,15 @@
    "gpm": 428,
    "dmgShare": 0.27,
    "kp": 0.64,
+   "cto": {
+    "games": 45,
+    "weight": 1.14,
+    "kda": 1.96,
+    "csm": 10.5,
+    "gpm": 487,
+    "dmgShare": 0.31,
+    "kp": 0.74
+   },
    "champions": [
     [
      "MissFortune",
@@ -15593,6 +19104,15 @@
    "gpm": 231,
    "dmgShare": 0.07,
    "kp": 0.65,
+   "cto": {
+    "games": 14,
+    "weight": 1.14,
+    "kda": 1.52,
+    "csm": 1.1,
+    "gpm": 264,
+    "dmgShare": 0.08,
+    "kp": 0.74
+   },
    "champions": [
     [
      "Rell",
@@ -15632,6 +19152,15 @@
    "gpm": 345,
    "dmgShare": 0.14,
    "kp": 0.79,
+   "cto": {
+    "games": 2,
+    "weight": 1.01,
+    "kda": 2.02,
+    "csm": 7.1,
+    "gpm": 348,
+    "dmgShare": 0.14,
+    "kp": 0.77
+   },
    "champions": [
     [
      "Nocturne",
@@ -15659,6 +19188,15 @@
    "gpm": 374,
    "dmgShare": 0.22,
    "kp": 0.49,
+   "cto": {
+    "games": 77,
+    "weight": 0.95,
+    "kda": 2.88,
+    "csm": 7.5,
+    "gpm": 355,
+    "dmgShare": 0.2,
+    "kp": 0.46
+   },
    "champions": [
     [
      "Rumble",
@@ -15698,6 +19236,15 @@
    "gpm": 399,
    "dmgShare": 0.19,
    "kp": 0.72,
+   "cto": {
+    "games": 77,
+    "weight": 0.95,
+    "kda": 3.31,
+    "csm": 6.6,
+    "gpm": 378,
+    "dmgShare": 0.18,
+    "kp": 0.68
+   },
    "champions": [
     [
      "JarvanIV",
@@ -15737,6 +19284,15 @@
    "gpm": 398,
    "dmgShare": 0.23,
    "kp": 0.54,
+   "cto": {
+    "games": 26,
+    "weight": 0.9,
+    "kda": 2.69,
+    "csm": 8.3,
+    "gpm": 360,
+    "dmgShare": 0.2,
+    "kp": 0.49
+   },
    "champions": [
     [
      "Azir",
@@ -15776,6 +19332,15 @@
    "gpm": 499,
    "dmgShare": 0.29,
    "kp": 0.63,
+   "cto": {
+    "games": 77,
+    "weight": 0.95,
+    "kda": 3.37,
+    "csm": 9.2,
+    "gpm": 473,
+    "dmgShare": 0.27,
+    "kp": 0.6
+   },
    "champions": [
     [
      "Lucian",
@@ -15815,6 +19380,15 @@
    "gpm": 255,
    "dmgShare": 0.09,
    "kp": 0.65,
+   "cto": {
+    "games": 26,
+    "weight": 0.9,
+    "kda": 2.35,
+    "csm": 0.7,
+    "gpm": 231,
+    "dmgShare": 0.08,
+    "kp": 0.58
+   },
    "champions": [
     [
      "Neeko",
@@ -15854,6 +19428,15 @@
    "gpm": 382,
    "dmgShare": 0.27,
    "kp": 0.64,
+   "cto": {
+    "games": 31,
+    "weight": 1.14,
+    "kda": 2.4,
+    "csm": 10.3,
+    "gpm": 434,
+    "dmgShare": 0.3,
+    "kp": 0.73
+   },
    "champions": [
     [
      "Annie",
@@ -15893,6 +19476,15 @@
    "gpm": 249,
    "dmgShare": 0.08,
    "kp": 0.81,
+   "cto": {
+    "games": 31,
+    "weight": 1.14,
+    "kda": 2.91,
+    "csm": 1.4,
+    "gpm": 284,
+    "dmgShare": 0.09,
+    "kp": 0.92
+   },
    "champions": [
     [
      "Bard",
@@ -15932,6 +19524,15 @@
    "gpm": 403,
    "dmgShare": 0.22,
    "kp": 0.46,
+   "cto": {
+    "games": 12,
+    "weight": 0.97,
+    "kda": 3.68,
+    "csm": 8.6,
+    "gpm": 391,
+    "dmgShare": 0.22,
+    "kp": 0.45
+   },
    "champions": [
     [
      "KSante",
@@ -15971,6 +19572,15 @@
    "gpm": 395,
    "dmgShare": 0.24,
    "kp": 0.65,
+   "cto": {
+    "games": 38,
+    "weight": 1.02,
+    "kda": 3.47,
+    "csm": 8.4,
+    "gpm": 403,
+    "dmgShare": 0.25,
+    "kp": 0.66
+   },
    "champions": [
     [
      "Yone",
@@ -16010,6 +19620,15 @@
    "gpm": 473,
    "dmgShare": 0.27,
    "kp": 0.66,
+   "cto": {
+    "games": 51,
+    "weight": 1.02,
+    "kda": 3.58,
+    "csm": 10.1,
+    "gpm": 483,
+    "dmgShare": 0.28,
+    "kp": 0.67
+   },
    "champions": [
     [
      "Ezreal",
@@ -16049,6 +19668,15 @@
    "gpm": 262,
    "dmgShare": 0.08,
    "kp": 0.7,
+   "cto": {
+    "games": 51,
+    "weight": 1.02,
+    "kda": 3.13,
+    "csm": 1.1,
+    "gpm": 268,
+    "dmgShare": 0.08,
+    "kp": 0.71
+   },
    "champions": [
     [
      "Seraphine",
@@ -16088,6 +19716,15 @@
    "gpm": 404,
    "dmgShare": 0.25,
    "kp": 0.61,
+   "cto": {
+    "games": 51,
+    "weight": 0.97,
+    "kda": 3.67,
+    "csm": 8.5,
+    "gpm": 392,
+    "dmgShare": 0.24,
+    "kp": 0.59
+   },
    "champions": [
     [
      "Akali",
@@ -16127,6 +19764,15 @@
    "gpm": 262,
    "dmgShare": 0.06,
    "kp": 0.68,
+   "cto": {
+    "games": 51,
+    "weight": 0.97,
+    "kda": 3.16,
+    "csm": 1,
+    "gpm": 254,
+    "dmgShare": 0.06,
+    "kp": 0.65
+   },
    "champions": [
     [
      "Lulu",
@@ -16166,6 +19812,15 @@
    "gpm": 403,
    "dmgShare": 0.24,
    "kp": 0.43,
+   "cto": {
+    "games": 1,
+    "weight": 0.91,
+    "kda": 1.37,
+    "csm": 8.5,
+    "gpm": 367,
+    "dmgShare": 0.22,
+    "kp": 0.39
+   },
    "champions": [
     [
      "Ryze",
@@ -16189,6 +19844,15 @@
    "gpm": 388,
    "dmgShare": 0.26,
    "kp": 0.67,
+   "cto": {
+    "games": 15,
+    "weight": 1.02,
+    "kda": 3.06,
+    "csm": 8.8,
+    "gpm": 397,
+    "dmgShare": 0.27,
+    "kp": 0.69
+   },
    "champions": [
     [
      "Aurora",
@@ -16228,6 +19892,15 @@
    "gpm": 377,
    "dmgShare": 0.23,
    "kp": 0.72,
+   "cto": {
+    "games": 14,
+    "weight": 1.07,
+    "kda": 5.36,
+    "csm": 8.7,
+    "gpm": 399,
+    "dmgShare": 0.25,
+    "kp": 0.77
+   },
    "champions": [
     [
      "Galio",
@@ -16267,6 +19940,15 @@
    "gpm": 456,
    "dmgShare": 0.3,
    "kp": 0.75,
+   "cto": {
+    "games": 14,
+    "weight": 1.07,
+    "kda": 4.23,
+    "csm": 10,
+    "gpm": 484,
+    "dmgShare": 0.32,
+    "kp": 0.8
+   },
    "champions": [
     [
      "Jhin",
@@ -16306,6 +19988,15 @@
    "gpm": 363,
    "dmgShare": 0.26,
    "kp": 0.88,
+   "cto": {
+    "games": 2,
+    "weight": 1.15,
+    "kda": 1.47,
+    "csm": 9.5,
+    "gpm": 416,
+    "dmgShare": 0.29,
+    "kp": 1
+   },
    "champions": [
     [
      "Sion",
@@ -16333,6 +20024,15 @@
    "gpm": 411,
    "dmgShare": 0.28,
    "kp": 0.37,
+   "cto": {
+    "games": 1,
+    "weight": 0.79,
+    "kda": 3.97,
+    "csm": 6.2,
+    "gpm": 326,
+    "dmgShare": 0.22,
+    "kp": 0.29
+   },
    "champions": [
     [
      "Zaahen",
