@@ -161,7 +161,8 @@ const TeamPage = () => {
               {starters.map(p => (
                 <div
                   key={p.name}
-                  className="flex flex-col items-center text-center p-2 sm:p-3 rounded-xl"
+                  onClick={p.id ? () => navigate(`/lol/prediction/player/${p.id}`) : undefined}
+                  className={`flex flex-col items-center text-center p-2 sm:p-3 rounded-xl${p.id ? ' cursor-pointer transition-colors hover:bg-white/10' : ''}`}
                   style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
                 >
                   <div className="w-full aspect-square max-w-[72px] rounded-xl overflow-hidden bg-white/5 mb-2">
@@ -220,7 +221,7 @@ const TeamPage = () => {
                   </tr></thead>
                   <tbody>
                     {list.map(({ p, s }) => (
-                      <tr key={p.name} className="border-b border-white/5 last:border-0">
+                      <tr key={p.name} onClick={p.id ? () => navigate(`/lol/prediction/player/${p.id}`) : undefined} className={`border-b border-white/5 last:border-0${p.id ? ' cursor-pointer hover:bg-white/5' : ''}`}>
                         <td className="py-2 px-3">
                           <span className="inline-flex items-center gap-1.5 font-bold text-white/90">
                             <RoleIcon role={p.role} size={14} />{p.name}
