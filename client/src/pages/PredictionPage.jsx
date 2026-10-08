@@ -444,9 +444,9 @@ const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, elimMatc
         </span>
         )}
         <div data-card-id={m.id} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-          <MsiSlot s={toSlot(m.a, aWin, m.scoreA, m.aFlag, m.id)} predPct={pred?.pA} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          <MsiSlot s={toSlot(m.a, aWin, pred ? null : m.scoreA, m.aFlag, m.id)} predPct={pred?.pA} onTeamClick={onTeamClick} teamOverride={teamOverride} />
           <div className="h-px bg-white/10" />
-          <MsiSlot s={toSlot(m.b, bWin, m.scoreB, m.bFlag, m.id)} predPct={pred?.pB} onTeamClick={onTeamClick} teamOverride={teamOverride} />
+          <MsiSlot s={toSlot(m.b, bWin, pred ? null : m.scoreB, m.bFlag, m.id)} predPct={pred?.pB} onTeamClick={onTeamClick} teamOverride={teamOverride} />
         </div>
       </div>
     );
