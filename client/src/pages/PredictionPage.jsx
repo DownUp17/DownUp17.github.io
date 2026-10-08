@@ -3034,7 +3034,27 @@ const STAGE_TABS = {
   msi: ['플레이-인 스테이지', '브래킷 스테이지'],
 };
 // 기본 선택 단계(탭 순서와 별개로 진입 시 표시할 단계) — 없으면 첫 단계
-const STAGE_DEFAULT = {
+// 진행 중 대회의 단계 → 순위표 데이터 키. 앞 단계 경기가 모두 끝나면 다음 단계를 기본 탭으로.
+const STAGE_DATA_KEY = {
+  demacia: { '그룹 스테이지': 'group', '녹아웃 스테이지': 'knockout' },
+  worlds: { '플레이-인': 'playin', '스위스 스테이지': 'swiss', '녹아웃 스테이지': 'knockout' },
+  asiangames: { '그룹 스테이지': 'groups', '녹아웃 스테이지': 'knockout' },
+  ewc: { '그룹 스테이지': 'groups', '플레이오프': 'playoff' },
+  msi: { '플레이-인 스테이지': '플레이-인 스테이지', '브래킷 스테이지': '브래킷 스테이지' },
+};
+// 데이터 안의 경기(a·b 를 가진 객체)를 모아 전부 끝났는지 — 경기가 없으면 false
+const stageMatchesDone = (data) => {
+  const ms = [];
+  const walk = (o) => {
+    if (Array.isArray(o)) o.forEach(walk);
+    else if (o && typeof o === 'object') {
+      if ('a' in o && 'b' in o && ('winner' in o || 'startRow' in o || 'id' in o)) ms.push(o);
+      else Object.values(o).forEach(walk);
+    }
+  };
+  walk(data);
+  return ms.length > 0 && ms.every((m) => m.winner || m.a?.win || m.b?.win);
+};const STAGE_DEFAULT = {
   'lck|LCK CUP': '최종 순위',
   'lck|LCK': '최종 순위',
   'lck|KeSPA CUP': '결선 스테이지 2',
@@ -3589,7 +3609,16 @@ const PredictionPage = () => {
         : (STAGE_DEFAULT[`${comp.key}|${activeSub}`] || (!subTabs && STAGE_DEFAULT[comp.key]))
   );
   // 기본 스테이지가 실제 목록에 없으면 첫 스테이지로 (예: 최종순위 없는 대표 선발전)
-  const defaultStage = (rawDefaultStage && stageList?.includes(rawDefaultStage)) ? rawDefaultStage : (stageList ? stageList[0] : null);
+  const baseDefaultStage = (rawDefaultStage && stageList?.includes(rawDefaultStage)) ? rawDefaultStage : (stageList ? stageList[0] : null);
+  // 진행 중 대회: 끝난 단계는 건너뛰고 다음 단계를 기본으로(기존 기본보다 뒤일 때만).
+  const defaultStage = (() => {
+    const keys = comp && !pastFull && !isPastSplit && !effFinished && !subTabs && STAGE_DATA_KEY[comp.key];
+    const data = keys && officialStandings.standings?.[comp.key];
+    if (!data || !stageList) return baseDefaultStage;
+    let i = Math.max(0, stageList.indexOf(baseDefaultStage));
+    while (i < stageList.length - 1 && keys[stageList[i]] && stageMatchesDone(data[keys[stageList[i]]])) i++;
+    return stageList[i];
+  })();
   const activeStage = showStages
     ? (stageList.includes(searchParams.get('stage')) ? searchParams.get('stage') : defaultStage)
     : null;
