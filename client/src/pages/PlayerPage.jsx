@@ -20,11 +20,12 @@ const findPlayer = (id) => {
   return null;
 };
 
-const Stat = ({ label, value, sub }) => (
+const Stat = ({ label, value, sub, cto }) => (
   <div className="p-3 rounded-xl text-center" style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
     <div className="text-[11px] text-white/40 font-bold mb-1">{label}</div>
     <div className="font-mono font-black text-white/90 text-base sm:text-lg">{value}</div>
     {sub && <div className="font-mono text-[11px] text-white/50 mt-0.5">{sub}</div>}
+    {cto != null && <div className="font-mono text-[10px] text-white/35 mt-0.5">CtO {cto}</div>}
   </div>
 );
 
@@ -84,12 +85,18 @@ const PlayerPage = () => {
             <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">{playerStats.season} 시즌 기록</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               <Stat label="경기" value={s.games} />
-              <Stat label="KDA" value={s.kda} sub={`${s.k} / ${s.d} / ${s.a}`} />
-              <Stat label="CS/분" value={s.csm} />
-              <Stat label="골드/분" value={s.gpm} />
-              <Stat label="DMG 비중" value={pct(s.dmgShare)} />
-              <Stat label="킬 관여" value={pct(s.kp)} />
+              <Stat label="KDA" value={s.kda} sub={`${s.k} / ${s.d} / ${s.a}`} cto={s.cto?.kda} />
+              <Stat label="CS/분" value={s.csm} cto={s.cto?.csm} />
+              <Stat label="골드/분" value={s.gpm} cto={s.cto?.gpm} />
+              <Stat label="DMG 비중" value={pct(s.dmgShare)} cto={s.cto ? pct(s.cto.dmgShare) : null} />
+              <Stat label="킬 관여" value={pct(s.kp)} cto={s.cto ? pct(s.cto.kp) : null} />
             </div>
+
+            {s.cto && (
+              <p className="text-[11px] text-white/30 mt-2">
+                CtO(상대 대비): 게임마다 (상대 팀 GPR ÷ 우리 팀 GPR)를 곱한 기록 · 평균 상대 강도 {s.cto.weight} ({s.cto.games}경기 기준)
+              </p>
+            )}
 
             {s.champions?.length > 0 && (
               <div className="mt-8">

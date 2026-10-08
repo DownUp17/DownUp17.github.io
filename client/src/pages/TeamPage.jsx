@@ -189,9 +189,8 @@ const TeamPage = () => {
                       <div>골드/분 {statOf(p).gpm}</div>
                       {/* CtO(상대 대비) — 게임마다 (상대 팀 GPR)/(우리 팀 GPR) 가중 */}
                       {statOf(p).cto && (
-                        <div className="mt-1 pt-1 border-t border-white/10" title={`상대 대비(CtO): 게임마다 (상대 팀 GPR ÷ 우리 팀 GPR) 가중 · 평균 상대 강도 ${statOf(p).cto.weight}`}>
-                          <div>KDA(CtO) <span className="text-[#E8C77E] font-bold">{statOf(p).cto.kda}</span></div>
-                          <div>골드/분(CtO) {statOf(p).cto.gpm}</div>
+                        <div className="mt-0.5 text-[9px] sm:text-[10px] text-white/30" title={`상대 대비(CtO): 게임마다 (상대 팀 GPR ÷ 우리 팀 GPR) 가중 · 평균 상대 강도 ${statOf(p).cto.weight}`}>
+                          <div>CtO {statOf(p).cto.kda} · {statOf(p).cto.gpm}</div>
                         </div>
                       )}
                     </div>
