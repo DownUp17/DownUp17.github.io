@@ -430,7 +430,7 @@ const DemaciaBracket = ({ columns, teams, msiSet, msiMatchIds, elimSet, elimMatc
     const dispName = m.name != null ? m.name : matchDisplayName(m); // '' 이면 헤더 숨김(스위스)
     let pred = null;
     const ra = gprScoreByShort[aShort], rb = gprScoreByShort[bShort];
-    if (!m.winner && m.scoreA == null && m.scoreB == null && ra != null && rb != null) {
+    if (!m.winner && !m.scoreA && !m.scoreB && ra != null && rb != null) { // 0:0(미진행)도 예측 표시
       const need = { Bo1: 1, Bo3: 2, Bo5: 3 }[m.format] || 3;
       const pA = Math.round(bracketSeriesProb(bracketGameProb(ra, rb), need) * 100);
       pred = { pA, pB: 100 - pA };
