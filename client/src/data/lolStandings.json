@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07",
+  "updatedAt": "2026-10-08",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -10178,12 +10178,12 @@
             "day": "10-08",
             "format": "Bo3",
             "bracket": "1-2 & 0-2 1st",
-            "a": "FLY",
-            "b": "RED",
+            "a": "RED",
+            "b": "FLY",
             "scoreA": 0,
             "scoreB": 0,
             "winner": null,
-            "state": "scheduled",
+            "state": "inProgress",
             "time": "18:00",
             "apiMatchId": "117133830114188936"
           },
