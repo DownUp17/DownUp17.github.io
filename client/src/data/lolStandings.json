@@ -10181,9 +10181,9 @@
             "a": "RED",
             "b": "FLY",
             "scoreA": 0,
-            "scoreB": 0,
-            "winner": null,
-            "state": "inProgress",
+            "scoreB": 2,
+            "winner": "FLY",
+            "state": "completed",
             "time": "18:00",
             "apiMatchId": "117133830114188936"
           },
@@ -10192,12 +10192,12 @@
             "day": "10-08",
             "format": "Bo3",
             "bracket": "1-2 & 0-2 1st",
-            "a": "NAVI",
-            "b": "JDG",
+            "a": "JDG",
+            "b": "NAVI",
             "scoreA": 0,
-            "scoreB": 0,
+            "scoreB": 1,
             "winner": null,
-            "state": "scheduled",
+            "state": "inProgress",
             "time": "20:00",
             "apiMatchId": "117133830114188940"
           }
@@ -10238,7 +10238,7 @@
             {
               "seed": 7,
               "from": "M19:W",
-              "short": null
+              "short": "FLY"
             },
             {
               "seed": 8,
