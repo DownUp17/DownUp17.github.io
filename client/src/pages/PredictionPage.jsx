@@ -9,6 +9,7 @@ import sktT1No2Logo from '../assets/skt-t1-2.webp';
 import najinShieldLogo from '../assets/najin-shield.webp';
 import najinSwordLogo from '../assets/najin-sword.webp';
 import LiveMatches from '../components/LiveMatches';
+import { applyLiveScores } from '../utils/liveScores';
 import teamsAll from '../data/lolTeamsAll.json';
 import React, { useMemo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
@@ -3630,6 +3631,8 @@ const PredictionPage = () => {
     }
     return title.replace(String(CURRENT_YEAR), String(activeYear));
   })();
+  // LIVE 세트 스코어가 대진표 데이터에 반영되면 다시 그리기 위한 카운터
+  const [, setLiveTick] = useState(0);
   // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
   const stDisplay = !isCurrentYear ? statusMeta.finished : st;
 
@@ -3644,7 +3647,7 @@ const PredictionPage = () => {
         </div>
 
         {/* 진행 중 경기(LIVE) — 백엔드 경유 30초 갱신, 없으면 숨김 */}
-        <LiveMatches logoOf={(c) => logoByShort[c]} />
+        <LiveMatches logoOf={(c) => logoByShort[c]} onData={(d) => { if (applyLiveScores(officialStandings.standings, d.matches)) setLiveTick((t) => t + 1); }} />
 
         {/* 모바일: GPR 순위 탭 + 그 아래 리그 선택 드롭다운 (탭을 모두 펼치지 않음) */}
         {(() => {

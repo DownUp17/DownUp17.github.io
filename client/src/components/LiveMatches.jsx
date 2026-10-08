@@ -13,15 +13,16 @@ const TeamSide = ({ team, align, logo }) => (
   </div>
 );
 
-export default function LiveMatches({ logoOf }) {
+export default function LiveMatches({ logoOf, onData }) {
   const [data, setData] = useState(null);
   useEffect(() => {
     let alive = true;
     // 로컬 개발에서 ?livedemo 를 붙이면 백엔드 예시 데이터로 화면 확인(배포에선 동작 안 함)
     const demo = import.meta.env.DEV && new URLSearchParams(window.location.search).has('livedemo');
-    const load = () => fetch(`${API_BASE}/api/lol/live${demo ? '?demo=1' : ''}`)
+    const demoTeams = demo ? new URLSearchParams(window.location.search).get('livedemo') : '';
+    const load = () => fetch(`${API_BASE}/api/lol/live${demo ? `?demo=${encodeURIComponent(demoTeams || '1')}` : ''}`)
       .then((r) => (r.ok ? r.json() : null))
-      .then((d) => { if (alive && d) setData(d); })
+      .then((d) => { if (alive && d) { setData(d); onData?.(d); } }) // onData: 대진표 세트 스코어 즉시 반영용
       .catch(() => { /* 일시 오류는 무시하고 다음 주기에 재시도 */ });
     load();
     const t = setInterval(() => { if (!document.hidden) load(); }, POLL_MS);

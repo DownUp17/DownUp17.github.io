@@ -86,7 +86,7 @@ app.get('/api/lol/live', async (req, res) => {
   if (req.query.demo && process.env.NODE_ENV !== 'production') {
     return res.json({ updatedAt: new Date().toISOString(), demo: true, matches: [{
       id: 'demo', league: { name: 'Worlds' }, blockName: '스위스 스테이지', bestOf: 3,
-      teams: [{ id: 'a', code: 'T1', name: 'T1', wins: 1 }, { id: 'b', code: 'GEN', name: 'Gen.G', wins: 0 }],
+      teams: (() => { const [x = 'T1', y = 'GEN'] = String(req.query.demo).includes('-') ? String(req.query.demo).split('-') : []; return [{ id: 'a', code: x, name: x, wins: 1 }, { id: 'b', code: y, name: y, wins: 0 }]; })(), // ?demo=LOS-FUR 처럼 팀 지정 가능
       game: { number: 2, state: 'in_game', blueTeamId: 'b', redTeamId: 'a',
         blue: { gold: 41200, kills: 9, towers: 4, dragons: 2, barons: 0, inhibitors: 0 },
         red: { gold: 44800, kills: 13, towers: 6, dragons: 2, barons: 1, inhibitors: 1 } },
