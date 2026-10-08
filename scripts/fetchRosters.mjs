@@ -86,8 +86,14 @@ const LEAGUE_IDS = [
   '98767991302996019',  // LEC
   '98767991299243165',  // LCS
   '98767991325878492',  // MSI
-  '107898214974993351', // LCP
+  '113476371197627891', // LCP
   '98767991332355509',  // CBLOL
+  // 국제·이벤트 대회 — 시즌 후반 마지막 경기가 이쪽에 있는 팀(예: LCP 팀의 DCGI)도 최신 라인업으로 판별
+  '98767975604431411',  // Worlds
+  '113464388705111224', // First Stand
+  '116838530616006090', // EWC
+  '116929044967296666', // KeSPA Cup
+  '117126995932274206', // DCGI
 ];
 
 const api = (path) =>
@@ -239,6 +245,7 @@ async function main() {
           role: p.role,
           image: (p.image || '').replace(/^http:\/\//, 'https://'), // http 이미지 → https(혼합 콘텐츠 경고 방지)
           starter: starters ? starters.has(p.summonerName) : false,
+          _role: p.role,
         }))
         // 역할 순서 → 같은 역할 내에서는 주전 먼저
         .sort((a, b) => {
@@ -246,6 +253,9 @@ async function main() {
           if (r !== 0) return r;
           return (b.starter ? 1 : 0) - (a.starter ? 1 : 0);
         });
+      // 최근 라인업으로 주전을 못 정한 경우(경기 기록 없음 등): 역할별 첫 번째 선수를 주전으로 표시
+      if (!starters) for (const role of ROLE_ORDER) { const p = players.find((x) => x.role === role); if (p) p.starter = true; }
+      for (const p of players) delete p._role;
 
       // getTeams 팀 정보(공식 로고·배경·소속 리그·활동 상태) — 팀 페이지 로고 대체·리그 표기용
       const https = (u) => (u || '').replace(/^http:\/\//, 'https://');

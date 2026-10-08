@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-10-07",
+ "updatedAt": "2026-10-08",
  "season": 2026,
- "games": 2226,
+ "games": 2497,
  "players": {
   "107492121209956865": {
    "name": "KT PerfecT",
@@ -11847,42 +11847,43 @@
    }
   },
   "98767975956663486": {
-   "name": "VKS Kaiwing",
+   "name": "GZ Kaiwing",
    "role": "support",
-   "teamId": "99566408219409348",
-   "games": 36,
-   "k": 0.4,
-   "d": 2.4,
-   "a": 9,
-   "kda": 3.9,
+   "teamId": "109675490370327425",
+   "games": 50,
+   "k": 0.6,
+   "d": 2.7,
+   "a": 9.5,
+   "kda": 3.72,
    "csm": 1.2,
    "gpm": 257,
    "dmgShare": 0.07,
-   "kp": 0.73,
+   "kp": 0.75,
    "champions": [
     [
      "Lulu",
-     6
+     7
     ],
     [
      "Neeko",
      4
     ],
     [
-     "Renata",
-     3
+     "Alistar",
+     4
     ],
     [
-     "Nami",
-     3
+     "Nautilus",
+     4
     ],
     [
-     "Bard",
-     3
+     "Shen",
+     4
     ]
    ],
    "leagues": {
-    "CBLOL": 36
+    "CBLOL": 36,
+    "LCP": 14
    }
   },
   "99566407763820708": {
@@ -11956,42 +11957,43 @@
    }
   },
   "103619615096612421": {
-   "name": "PAIN Keine",
+   "name": "DFM Keine",
    "role": "mid",
-   "teamId": "99566408217955692",
-   "games": 28,
-   "k": 2.5,
-   "d": 2.6,
-   "a": 4.3,
-   "kda": 2.64,
-   "csm": 8.8,
-   "gpm": 381,
-   "dmgShare": 0.25,
-   "kp": 0.61,
+   "teamId": "100285330168091787",
+   "games": 42,
+   "k": 2.8,
+   "d": 2.7,
+   "a": 3.9,
+   "kda": 2.5,
+   "csm": 9,
+   "gpm": 390,
+   "dmgShare": 0.26,
+   "kp": 0.63,
    "champions": [
+    [
+     "Aurora",
+     6
+    ],
+    [
+     "Orianna",
+     6
+    ],
+    [
+     "Viktor",
+     4
+    ],
     [
      "Ahri",
      4
     ],
     [
-     "Orianna",
-     4
-    ],
-    [
-     "Viktor",
-     3
-    ],
-    [
      "Syndra",
-     3
-    ],
-    [
-     "Anivia",
-     3
+     4
     ]
    ],
    "leagues": {
-    "CBLOL": 28
+    "CBLOL": 28,
+    "LCP": 14
    }
   },
   "102747101536135974": {
@@ -13342,582 +13344,609 @@
    "name": "DCG Flauren",
    "role": "top",
    "teamId": "107700204561086446",
-   "games": 6,
-   "k": 1.2,
-   "d": 4.7,
-   "a": 3.8,
-   "kda": 1.07,
-   "csm": 8.2,
-   "gpm": 363,
+   "games": 94,
+   "k": 3.1,
+   "d": 3,
+   "a": 5.7,
+   "kda": 2.97,
+   "csm": 8.3,
+   "gpm": 392,
    "dmgShare": 0.25,
-   "kp": 0.51,
+   "kp": 0.56,
    "champions": [
     [
-     "Jax",
-     2
-    ],
-    [
-     "Ambessa",
-     1
-    ],
-    [
-     "Sion",
-     1
+     "Gnar",
+     11
     ],
     [
      "Rumble",
-     1
+     10
     ],
     [
-     "Gnar",
-     1
+     "Renekton",
+     9
+    ],
+    [
+     "Jayce",
+     8
+    ],
+    [
+     "Ambessa",
+     7
     ]
    ],
    "leagues": {
-    "MSI": 6
+    "MSI": 6,
+    "LCP": 88
    }
   },
   "115841984162908587": {
    "name": "DCG Pop9",
    "role": "jungle",
    "teamId": "107700204561086446",
-   "games": 6,
-   "k": 2.7,
-   "d": 5.2,
-   "a": 4.7,
-   "kda": 1.42,
-   "csm": 6.6,
-   "gpm": 373,
+   "games": 94,
+   "k": 3.2,
+   "d": 3.2,
+   "a": 7.6,
+   "kda": 3.34,
+   "csm": 7,
+   "gpm": 392,
    "dmgShare": 0.16,
-   "kp": 0.7,
+   "kp": 0.68,
    "champions": [
     [
      "JarvanIV",
-     2
-    ],
-    [
-     "LeeSin",
-     1
-    ],
-    [
-     "Qiyana",
-     1
-    ],
-    [
-     "Olaf",
-     1
+     12
     ],
     [
      "MonkeyKing",
-     1
+     12
+    ],
+    [
+     "LeeSin",
+     10
+    ],
+    [
+     "XinZhao",
+     10
+    ],
+    [
+     "Vi",
+     8
     ]
    ],
    "leagues": {
-    "MSI": 6
+    "MSI": 6,
+    "LCP": 88
    }
   },
   "106470350672813985": {
    "name": "DCG HongSuo",
    "role": "mid",
    "teamId": "107700204561086446",
-   "games": 6,
-   "k": 3.2,
-   "d": 4.8,
-   "a": 3,
-   "kda": 1.28,
-   "csm": 9.3,
-   "gpm": 403,
-   "dmgShare": 0.26,
-   "kp": 0.6,
+   "games": 93,
+   "k": 3.7,
+   "d": 2.9,
+   "a": 6.5,
+   "kda": 3.51,
+   "csm": 8.9,
+   "gpm": 412,
+   "dmgShare": 0.24,
+   "kp": 0.64,
    "champions": [
     [
-     "Galio",
-     1
-    ],
-    [
-     "Leblanc",
-     1
-    ],
-    [
      "Ryze",
-     1
+     11
     ],
     [
-     "Cassiopeia",
-     1
+     "Orianna",
+     9
     ],
     [
-     "Taliyah",
-     1
+     "Annie",
+     9
+    ],
+    [
+     "Azir",
+     8
+    ],
+    [
+     "Ahri",
+     7
     ]
    ],
    "leagues": {
-    "MSI": 6
+    "MSI": 6,
+    "LCP": 87
    }
   },
   "109642956405180458": {
    "name": "DCG Feng ",
    "role": "bottom",
    "teamId": "107700204561086446",
-   "games": 6,
-   "k": 2.7,
-   "d": 4.2,
-   "a": 5.2,
-   "kda": 1.88,
-   "csm": 8.3,
-   "gpm": 408,
-   "dmgShare": 0.24,
-   "kp": 0.73,
+   "games": 94,
+   "k": 4.7,
+   "d": 3.3,
+   "a": 5.5,
+   "kda": 3.09,
+   "csm": 9.3,
+   "gpm": 473,
+   "dmgShare": 0.27,
+   "kp": 0.64,
    "champions": [
     [
-     "Senna",
-     2
+     "Jhin",
+     11
     ],
     [
-     "Jhin",
-     2
+     "Corki",
+     11
+    ],
+    [
+     "Yunara",
+     10
     ],
     [
      "Ezreal",
-     1
+     9
     ],
     [
-     "Kalista",
-     1
+     "Varus",
+     9
     ]
    ],
    "leagues": {
-    "MSI": 6
+    "MSI": 6,
+    "LCP": 88
    }
   },
   "99566406485280528": {
    "name": "DCG ShiauC",
    "role": "support",
    "teamId": "107700204561086446",
-   "games": 6,
-   "k": 1.5,
-   "d": 5.5,
-   "a": 6,
-   "kda": 1.36,
-   "csm": 1.3,
-   "gpm": 270,
-   "dmgShare": 0.09,
-   "kp": 0.63,
+   "games": 94,
+   "k": 0.9,
+   "d": 4.1,
+   "a": 10.5,
+   "kda": 2.75,
+   "csm": 1.2,
+   "gpm": 272,
+   "dmgShare": 0.08,
+   "kp": 0.7,
    "champions": [
-    [
-     "Camille",
-     2
-    ],
-    [
-     "Nautilus",
-     2
-    ],
-    [
-     "Pyke",
-     1
-    ],
-    [
-     "Rakan",
-     1
-    ]
-   ],
-   "leagues": {
-    "MSI": 6
-   }
-  },
-  "107251636998679351": {
-   "name": "TS Pun",
-   "role": "top",
-   "teamId": "107251295460371069",
-   "games": 13,
-   "k": 3,
-   "d": 3.8,
-   "a": 4.7,
-   "kda": 2,
-   "csm": 7.2,
-   "gpm": 346,
-   "dmgShare": 0.22,
-   "kp": 0.6,
-   "champions": [
-    [
-     "Volibear",
-     3
-    ],
-    [
-     "Sion",
-     2
-    ],
-    [
-     "Olaf",
-     1
-    ],
-    [
-     "Ornn",
-     1
-    ],
-    [
-     "Sett",
-     1
-    ]
-   ],
-   "leagues": {
-    "MSI": 9,
-    "EWC": 4
-   }
-  },
-  "113662600335177587": {
-   "name": "TS Hizto",
-   "role": "jungle",
-   "teamId": "107251295460371069",
-   "games": 13,
-   "k": 3.2,
-   "d": 2.5,
-   "a": 5.2,
-   "kda": 3.33,
-   "csm": 7,
-   "gpm": 367,
-   "dmgShare": 0.18,
-   "kp": 0.66,
-   "champions": [
-    [
-     "LeeSin",
-     3
-    ],
-    [
-     "Naafiri",
-     3
-    ],
-    [
-     "XinZhao",
-     3
-    ],
-    [
-     "JarvanIV",
-     2
-    ],
-    [
-     "DrMundo",
-     1
-    ]
-   ],
-   "leagues": {
-    "MSI": 9,
-    "EWC": 4
-   }
-  },
-  "113661875306288886": {
-   "name": "TS Dire",
-   "role": "mid",
-   "teamId": "107251295460371069",
-   "games": 13,
-   "k": 2.6,
-   "d": 2.8,
-   "a": 4.2,
-   "kda": 2.44,
-   "csm": 8.4,
-   "gpm": 359,
-   "dmgShare": 0.23,
-   "kp": 0.52,
-   "champions": [
-    [
-     "Ryze",
-     3
-    ],
-    [
-     "Sylas",
-     3
-    ],
-    [
-     "Aurora",
-     2
-    ],
-    [
-     "Viktor",
-     2
-    ],
-    [
-     "Orianna",
-     1
-    ]
-   ],
-   "leagues": {
-    "MSI": 9,
-    "EWC": 4
-   }
-  },
-  "107251694749147163": {
-   "name": "TS Eddie",
-   "role": "bottom",
-   "teamId": "107251295460371069",
-   "games": 13,
-   "k": 2.9,
-   "d": 2,
-   "a": 6,
-   "kda": 4.46,
-   "csm": 9.5,
-   "gpm": 438,
-   "dmgShare": 0.26,
-   "kp": 0.65,
-   "champions": [
-    [
-     "Ezreal",
-     3
-    ],
-    [
-     "Caitlyn",
-     3
-    ],
-    [
-     "Kaisa",
-     2
-    ],
-    [
-     "Sivir",
-     2
-    ],
-    [
-     "Jhin",
-     1
-    ]
-   ],
-   "leagues": {
-    "MSI": 9,
-    "EWC": 4
-   }
-  },
-  "107251574398720447": {
-   "name": "TS Bie",
-   "role": "support",
-   "teamId": "107251295460371069",
-   "games": 13,
-   "k": 1.2,
-   "d": 3,
-   "a": 7.7,
-   "kda": 2.95,
-   "csm": 1.1,
-   "gpm": 251,
-   "dmgShare": 0.11,
-   "kp": 0.71,
-   "champions": [
-    [
-     "Elise",
-     4
-    ],
-    [
-     "Nautilus",
-     3
-    ],
     [
      "Bard",
-     2
-    ],
-    [
-     "Karma",
-     2
+     12
     ],
     [
      "Rell",
-     1
+     11
+    ],
+    [
+     "Lulu",
+     10
+    ],
+    [
+     "Nautilus",
+     8
+    ],
+    [
+     "Rakan",
+     8
+    ]
+   ],
+   "leagues": {
+    "MSI": 6,
+    "LCP": 88
+   }
+  },
+  "107251636998679351": {
+   "name": "TSW Pun",
+   "role": "top",
+   "teamId": "113661839307879869",
+   "games": 87,
+   "k": 3.2,
+   "d": 3.2,
+   "a": 6.9,
+   "kda": 3.13,
+   "csm": 7.9,
+   "gpm": 391,
+   "dmgShare": 0.23,
+   "kp": 0.58,
+   "champions": [
+    [
+     "Volibear",
+     8
+    ],
+    [
+     "Olaf",
+     8
+    ],
+    [
+     "Jax",
+     7
+    ],
+    [
+     "Renekton",
+     7
+    ],
+    [
+     "Gnar",
+     6
     ]
    ],
    "leagues": {
     "MSI": 9,
-    "EWC": 4
+    "EWC": 4,
+    "LCP": 74
+   }
+  },
+  "113662600335177587": {
+   "name": "TSW Hizto",
+   "role": "jungle",
+   "teamId": "113661839307879869",
+   "games": 88,
+   "k": 4.4,
+   "d": 2.5,
+   "a": 8.7,
+   "kda": 5.16,
+   "csm": 7.4,
+   "gpm": 416,
+   "dmgShare": 0.18,
+   "kp": 0.72,
+   "champions": [
+    [
+     "XinZhao",
+     15
+    ],
+    [
+     "JarvanIV",
+     14
+    ],
+    [
+     "LeeSin",
+     10
+    ],
+    [
+     "Vi",
+     10
+    ],
+    [
+     "Naafiri",
+     9
+    ]
+   ],
+   "leagues": {
+    "MSI": 9,
+    "EWC": 4,
+    "LCP": 75
+   }
+  },
+  "113661875306288886": {
+   "name": "TSW Dire",
+   "role": "mid",
+   "teamId": "113661839307879869",
+   "games": 88,
+   "k": 4.4,
+   "d": 2.4,
+   "a": 7.5,
+   "kda": 4.99,
+   "csm": 8.6,
+   "gpm": 409,
+   "dmgShare": 0.23,
+   "kp": 0.64,
+   "champions": [
+    [
+     "Ryze",
+     15
+    ],
+    [
+     "Aurora",
+     11
+    ],
+    [
+     "Ahri",
+     11
+    ],
+    [
+     "Sylas",
+     7
+    ],
+    [
+     "Viktor",
+     5
+    ]
+   ],
+   "leagues": {
+    "MSI": 9,
+    "EWC": 4,
+    "LCP": 75
+   }
+  },
+  "107251694749147163": {
+   "name": "TSW Eddie",
+   "role": "bottom",
+   "teamId": "113661839307879869",
+   "games": 88,
+   "k": 5.3,
+   "d": 2,
+   "a": 6.9,
+   "kda": 6.16,
+   "csm": 9.9,
+   "gpm": 516,
+   "dmgShare": 0.28,
+   "kp": 0.65,
+   "champions": [
+    [
+     "Yunara",
+     12
+    ],
+    [
+     "Kaisa",
+     11
+    ],
+    [
+     "Ezreal",
+     10
+    ],
+    [
+     "Caitlyn",
+     9
+    ],
+    [
+     "Jhin",
+     8
+    ]
+   ],
+   "leagues": {
+    "MSI": 9,
+    "EWC": 4,
+    "LCP": 75
+   }
+  },
+  "107251574398720447": {
+   "name": "TSW Bie",
+   "role": "support",
+   "teamId": "113661839307879869",
+   "games": 88,
+   "k": 1.1,
+   "d": 2.2,
+   "a": 12.4,
+   "kda": 6.16,
+   "csm": 1.2,
+   "gpm": 279,
+   "dmgShare": 0.08,
+   "kp": 0.73,
+   "champions": [
+    [
+     "Nautilus",
+     17
+    ],
+    [
+     "Bard",
+     9
+    ],
+    [
+     "Karma",
+     8
+    ],
+    [
+     "Elise",
+     6
+    ],
+    [
+     "Rakan",
+     6
+    ]
+   ],
+   "leagues": {
+    "MSI": 9,
+    "EWC": 4,
+    "LCP": 75
    }
   },
   "107330029738468255": {
    "name": "GAM Kiaya",
    "role": "top",
    "teamId": "98767991954244555",
-   "games": 13,
+   "games": 83,
    "k": 2.9,
-   "d": 4.7,
-   "a": 4.5,
-   "kda": 1.59,
-   "csm": 7.4,
-   "gpm": 349,
-   "dmgShare": 0.26,
-   "kp": 0.49,
+   "d": 3.2,
+   "a": 5.4,
+   "kda": 2.61,
+   "csm": 8.5,
+   "gpm": 387,
+   "dmgShare": 0.25,
+   "kp": 0.53,
    "champions": [
     [
      "Rumble",
-     3
+     11
     ],
     [
-     "Olaf",
-     3
+     "Gnar",
+     10
     ],
     [
-     "Zaahen",
-     2
+     "Ambessa",
+     9
     ],
     [
-     "Vayne",
-     1
+     "Gwen",
+     8
     ],
     [
-     "Varus",
-     1
+     "Jayce",
+     7
     ]
    ],
    "leagues": {
     "EWC": 6,
-    "DCGI": 7
+    "DCGI": 7,
+    "LCP": 70
    }
   },
   "107255592262151792": {
    "name": "GAM Draktharr",
    "role": "jungle",
    "teamId": "98767991954244555",
-   "games": 6,
-   "k": 3,
-   "d": 4.5,
-   "a": 11.7,
-   "kda": 3.26,
-   "csm": 6.4,
-   "gpm": 366,
-   "dmgShare": 0.16,
-   "kp": 0.75,
+   "games": 76,
+   "k": 3.1,
+   "d": 3.2,
+   "a": 8.5,
+   "kda": 3.58,
+   "csm": 6.9,
+   "gpm": 384,
+   "dmgShare": 0.17,
+   "kp": 0.72,
    "champions": [
     [
+     "MonkeyKing",
+     13
+    ],
+    [
+     "JarvanIV",
+     10
+    ],
+    [
      "Naafiri",
-     2
+     9
     ],
     [
      "Nocturne",
-     2
+     9
     ],
     [
-     "MonkeyKing",
-     1
-    ],
-    [
-     "LeeSin",
-     1
+     "Pantheon",
+     7
     ]
    ],
    "leagues": {
-    "EWC": 6
+    "EWC": 6,
+    "LCP": 70
    }
   },
   "107255594187103787": {
    "name": "GAM Gloryy",
    "role": "mid",
    "teamId": "98767991954244555",
-   "games": 13,
-   "k": 3.7,
-   "d": 4.1,
-   "a": 5.5,
-   "kda": 2.26,
-   "csm": 8.2,
-   "gpm": 372,
-   "dmgShare": 0.23,
-   "kp": 0.56,
+   "games": 39,
+   "k": 3.9,
+   "d": 3.3,
+   "a": 6.6,
+   "kda": 3.19,
+   "csm": 8.4,
+   "gpm": 389,
+   "dmgShare": 0.24,
+   "kp": 0.64,
    "champions": [
     [
-     "Syndra",
-     3
-    ],
-    [
      "Ahri",
-     3
+     8
     ],
     [
      "Ryze",
-     3
+     7
     ],
     [
      "Cassiopeia",
-     1
+     5
     ],
     [
      "Orianna",
-     1
+     5
+    ],
+    [
+     "Syndra",
+     4
     ]
    ],
    "leagues": {
     "EWC": 6,
-    "DCGI": 7
+    "DCGI": 7,
+    "LCP": 26
    }
   },
   "107251647709372417": {
    "name": "GAM Artemis",
    "role": "bottom",
    "teamId": "98767991954244555",
-   "games": 13,
-   "k": 4,
-   "d": 4.1,
-   "a": 6.2,
-   "kda": 2.49,
-   "csm": 8.9,
-   "gpm": 436,
-   "dmgShare": 0.26,
-   "kp": 0.67,
+   "games": 83,
+   "k": 4.7,
+   "d": 2.7,
+   "a": 6.5,
+   "kda": 4.22,
+   "csm": 9.9,
+   "gpm": 490,
+   "dmgShare": 0.28,
+   "kp": 0.72,
    "champions": [
     [
-     "Jhin",
-     4
-    ],
-    [
      "Sivir",
-     2
+     14
     ],
     [
-     "Ziggs",
-     2
-    ],
-    [
-     "Lucian",
-     2
+     "Jhin",
+     9
     ],
     [
      "Yunara",
-     1
+     9
+    ],
+    [
+     "MissFortune",
+     8
+    ],
+    [
+     "Lucian",
+     7
     ]
    ],
    "leagues": {
     "EWC": 6,
-    "DCGI": 7
+    "DCGI": 7,
+    "LCP": 70
    }
   },
   "107251533987191201": {
    "name": "GAM Taki",
    "role": "support",
    "teamId": "98767991954244555",
-   "games": 13,
-   "k": 1.3,
-   "d": 4.8,
-   "a": 9,
-   "kda": 2.13,
-   "csm": 0.9,
-   "gpm": 243,
-   "dmgShare": 0.09,
-   "kp": 0.69,
+   "games": 83,
+   "k": 0.9,
+   "d": 3.1,
+   "a": 10.9,
+   "kda": 3.77,
+   "csm": 1,
+   "gpm": 262,
+   "dmgShare": 0.08,
+   "kp": 0.77,
    "champions": [
     [
      "Nautilus",
-     3
-    ],
-    [
-     "Camille",
-     2
+     12
     ],
     [
      "Bard",
-     2
+     11
+    ],
+    [
+     "Milio",
+     6
     ],
     [
      "Pyke",
-     1
+     5
     ],
     [
-     "Rakan",
-     1
+     "Camille",
+     5
     ]
    ],
    "leagues": {
     "EWC": 6,
-    "DCGI": 7
+    "DCGI": 7,
+    "LCP": 70
    }
   },
   "110660139298018837": {
@@ -14808,6 +14837,1510 @@
    ],
    "leagues": {
     "DCGI": 7
+   }
+  },
+  "98767975944639514": {
+   "name": "SHG Evi",
+   "role": "top",
+   "teamId": "103535282119620510",
+   "games": 58,
+   "k": 2.1,
+   "d": 3.2,
+   "a": 4.4,
+   "kda": 2.06,
+   "csm": 8,
+   "gpm": 363,
+   "dmgShare": 0.25,
+   "kp": 0.52,
+   "champions": [
+    [
+     "KSante",
+     12
+    ],
+    [
+     "Rumble",
+     11
+    ],
+    [
+     "Sion",
+     10
+    ],
+    [
+     "Zaahen",
+     7
+    ],
+    [
+     "Yorick",
+     6
+    ]
+   ],
+   "leagues": {
+    "LCP": 58
+   }
+  },
+  "114533301242660910": {
+   "name": "SHG Van1",
+   "role": "jungle",
+   "teamId": "103535282119620510",
+   "games": 58,
+   "k": 2.5,
+   "d": 3.1,
+   "a": 6.9,
+   "kda": 3.04,
+   "csm": 6.5,
+   "gpm": 368,
+   "dmgShare": 0.15,
+   "kp": 0.75,
+   "champions": [
+    [
+     "LeeSin",
+     9
+    ],
+    [
+     "Vi",
+     8
+    ],
+    [
+     "JarvanIV",
+     8
+    ],
+    [
+     "Pantheon",
+     7
+    ],
+    [
+     "Naafiri",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 58
+   }
+  },
+  "103535282076301190": {
+   "name": "SHG Aria",
+   "role": "mid",
+   "teamId": "103535282119620510",
+   "games": 58,
+   "k": 3.4,
+   "d": 2.3,
+   "a": 5.4,
+   "kda": 3.82,
+   "csm": 9.1,
+   "gpm": 406,
+   "dmgShare": 0.24,
+   "kp": 0.71,
+   "champions": [
+    [
+     "Ahri",
+     10
+    ],
+    [
+     "Taliyah",
+     8
+    ],
+    [
+     "Ryze",
+     7
+    ],
+    [
+     "Orianna",
+     6
+    ],
+    [
+     "Akali",
+     5
+    ]
+   ],
+   "leagues": {
+    "LCP": 58
+   }
+  },
+  "103678738910712347": {
+   "name": "SHG Marble",
+   "role": "bottom",
+   "teamId": "103535282119620510",
+   "games": 58,
+   "k": 3.8,
+   "d": 2.1,
+   "a": 4.4,
+   "kda": 3.91,
+   "csm": 10,
+   "gpm": 475,
+   "dmgShare": 0.29,
+   "kp": 0.63,
+   "champions": [
+    [
+     "Varus",
+     8
+    ],
+    [
+     "Corki",
+     8
+    ],
+    [
+     "Aphelios",
+     8
+    ],
+    [
+     "Sivir",
+     5
+    ],
+    [
+     "Ezreal",
+     5
+    ]
+   ],
+   "leagues": {
+    "LCP": 58
+   }
+  },
+  "103495716560217968": {
+   "name": "SHG Vsta",
+   "role": "support",
+   "teamId": "103535282119620510",
+   "games": 58,
+   "k": 0.5,
+   "d": 2.9,
+   "a": 8.4,
+   "kda": 3.11,
+   "csm": 1,
+   "gpm": 252,
+   "dmgShare": 0.07,
+   "kp": 0.71,
+   "champions": [
+    [
+     "Thresh",
+     8
+    ],
+    [
+     "Bard",
+     6
+    ],
+    [
+     "Alistar",
+     6
+    ],
+    [
+     "Rell",
+     4
+    ],
+    [
+     "Nautilus",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 58
+   }
+  },
+  "109828407662355333": {
+   "name": "MVK Kratos",
+   "role": "top",
+   "teamId": "107251245690956393",
+   "games": 56,
+   "k": 2.4,
+   "d": 3.4,
+   "a": 3.8,
+   "kda": 1.86,
+   "csm": 8.4,
+   "gpm": 377,
+   "dmgShare": 0.22,
+   "kp": 0.46,
+   "champions": [
+    [
+     "Gnar",
+     10
+    ],
+    [
+     "KSante",
+     9
+    ],
+    [
+     "Ambessa",
+     5
+    ],
+    [
+     "Vayne",
+     4
+    ],
+    [
+     "Olaf",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 56
+   }
+  },
+  "109828289393968653": {
+   "name": "MVK Gury",
+   "role": "jungle",
+   "teamId": "107251245690956393",
+   "games": 66,
+   "k": 2.4,
+   "d": 3.2,
+   "a": 6.5,
+   "kda": 2.82,
+   "csm": 7.1,
+   "gpm": 390,
+   "dmgShare": 0.17,
+   "kp": 0.66,
+   "champions": [
+    [
+     "Vi",
+     7
+    ],
+    [
+     "MonkeyKing",
+     7
+    ],
+    [
+     "Aatrox",
+     6
+    ],
+    [
+     "Maokai",
+     6
+    ],
+    [
+     "LeeSin",
+     6
+    ]
+   ],
+   "leagues": {
+    "LCP": 66
+   }
+  },
+  "107251572267658009": {
+   "name": "MVK Kati",
+   "role": "mid",
+   "teamId": "107251245690956393",
+   "games": 15,
+   "k": 3.2,
+   "d": 2,
+   "a": 3.9,
+   "kda": 3.53,
+   "csm": 9.5,
+   "gpm": 412,
+   "dmgShare": 0.25,
+   "kp": 0.66,
+   "champions": [
+    [
+     "Ryze",
+     4
+    ],
+    [
+     "Orianna",
+     4
+    ],
+    [
+     "Mel",
+     2
+    ],
+    [
+     "Syndra",
+     1
+    ],
+    [
+     "Anivia",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 15
+   }
+  },
+  "107251561724960718": {
+   "name": "MVK Shogun",
+   "role": "bottom",
+   "teamId": "107251245690956393",
+   "games": 17,
+   "k": 3.9,
+   "d": 2.3,
+   "a": 4.5,
+   "kda": 3.64,
+   "csm": 10.5,
+   "gpm": 497,
+   "dmgShare": 0.31,
+   "kp": 0.71,
+   "champions": [
+    [
+     "Sivir",
+     3
+    ],
+    [
+     "Yunara",
+     2
+    ],
+    [
+     "Varus",
+     2
+    ],
+    [
+     "Corki",
+     2
+    ],
+    [
+     "Aphelios",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 17
+   }
+  },
+  "107255595746074159": {
+   "name": "MVK Elio",
+   "role": "support",
+   "teamId": "107251245690956393",
+   "games": 17,
+   "k": 0.6,
+   "d": 2.7,
+   "a": 6.9,
+   "kda": 2.76,
+   "csm": 1.2,
+   "gpm": 256,
+   "dmgShare": 0.07,
+   "kp": 0.67,
+   "champions": [
+    [
+     "Alistar",
+     3
+    ],
+    [
+     "Poppy",
+     2
+    ],
+    [
+     "Rakan",
+     2
+    ],
+    [
+     "Leona",
+     2
+    ],
+    [
+     "Karma",
+     2
+    ]
+   ],
+   "leagues": {
+    "LCP": 17
+   }
+  },
+  "110736699378016258": {
+   "name": "GAM Aress",
+   "role": "mid",
+   "teamId": "98767991954244555",
+   "games": 44,
+   "k": 3.8,
+   "d": 2,
+   "a": 5.8,
+   "kda": 4.84,
+   "csm": 9.2,
+   "gpm": 411,
+   "dmgShare": 0.21,
+   "kp": 0.61,
+   "champions": [
+    [
+     "Ryze",
+     8
+    ],
+    [
+     "Orianna",
+     6
+    ],
+    [
+     "Ahri",
+     6
+    ],
+    [
+     "Aurora",
+     5
+    ],
+    [
+     "Akali",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 44
+   }
+  },
+  "111760351183343187": {
+   "name": "GZ 1Jiang",
+   "role": "top",
+   "teamId": "109675490370327425",
+   "games": 61,
+   "k": 2.7,
+   "d": 3,
+   "a": 5.2,
+   "kda": 2.66,
+   "csm": 8.4,
+   "gpm": 384,
+   "dmgShare": 0.25,
+   "kp": 0.56,
+   "champions": [
+    [
+     "KSante",
+     11
+    ],
+    [
+     "Gnar",
+     10
+    ],
+    [
+     "Ambessa",
+     9
+    ],
+    [
+     "Rumble",
+     6
+    ],
+    [
+     "Sion",
+     5
+    ]
+   ],
+   "leagues": {
+    "LCP": 61
+   }
+  },
+  "106470320886575308": {
+   "name": "GZ Husha",
+   "role": "jungle",
+   "teamId": "109675490370327425",
+   "games": 61,
+   "k": 3.3,
+   "d": 3.6,
+   "a": 7,
+   "kda": 2.88,
+   "csm": 6.9,
+   "gpm": 388,
+   "dmgShare": 0.18,
+   "kp": 0.73,
+   "champions": [
+    [
+     "XinZhao",
+     14
+    ],
+    [
+     "Pantheon",
+     10
+    ],
+    [
+     "DrMundo",
+     7
+    ],
+    [
+     "MonkeyKing",
+     6
+    ],
+    [
+     "Naafiri",
+     5
+    ]
+   ],
+   "leagues": {
+    "LCP": 61
+   }
+  },
+  "106470392084689216": {
+   "name": "GZ JimieN",
+   "role": "mid",
+   "teamId": "109675490370327425",
+   "games": 47,
+   "k": 3.1,
+   "d": 3.5,
+   "a": 5.6,
+   "kda": 2.47,
+   "csm": 8.5,
+   "gpm": 378,
+   "dmgShare": 0.22,
+   "kp": 0.63,
+   "champions": [
+    [
+     "Ryze",
+     8
+    ],
+    [
+     "Aurora",
+     5
+    ],
+    [
+     "Akali",
+     4
+    ],
+    [
+     "Ahri",
+     4
+    ],
+    [
+     "Orianna",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 47
+   }
+  },
+  "107760720477800166": {
+   "name": "GZ Shunn",
+   "role": "bottom",
+   "teamId": "109675490370327425",
+   "games": 47,
+   "k": 3.7,
+   "d": 3.2,
+   "a": 5.2,
+   "kda": 2.79,
+   "csm": 9.7,
+   "gpm": 473,
+   "dmgShare": 0.26,
+   "kp": 0.66,
+   "champions": [
+    [
+     "Varus",
+     7
+    ],
+    [
+     "Ashe",
+     7
+    ],
+    [
+     "Yunara",
+     6
+    ],
+    [
+     "Lucian",
+     4
+    ],
+    [
+     "Corki",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 47
+   }
+  },
+  "109642948838393879": {
+   "name": "GZ Orca",
+   "role": "support",
+   "teamId": "109675490370327425",
+   "games": 47,
+   "k": 0.7,
+   "d": 3.7,
+   "a": 9.4,
+   "kda": 2.77,
+   "csm": 1.2,
+   "gpm": 258,
+   "dmgShare": 0.08,
+   "kp": 0.74,
+   "champions": [
+    [
+     "Seraphine",
+     6
+    ],
+    [
+     "Nami",
+     6
+    ],
+    [
+     "Neeko",
+     5
+    ],
+    [
+     "Nautilus",
+     5
+    ],
+    [
+     "Leona",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 47
+   }
+  },
+  "106304305078654334": {
+   "name": "DFM Momo",
+   "role": "top",
+   "teamId": "100285330168091787",
+   "games": 43,
+   "k": 1.3,
+   "d": 3.8,
+   "a": 2.7,
+   "kda": 1.04,
+   "csm": 7.8,
+   "gpm": 339,
+   "dmgShare": 0.2,
+   "kp": 0.43,
+   "champions": [
+    [
+     "Renekton",
+     10
+    ],
+    [
+     "Rumble",
+     7
+    ],
+    [
+     "Ambessa",
+     5
+    ],
+    [
+     "KSante",
+     4
+    ],
+    [
+     "Sion",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 43
+   }
+  },
+  "106288133167060072": {
+   "name": "DFM Citrus",
+   "role": "jungle",
+   "teamId": "100285330168091787",
+   "games": 45,
+   "k": 1.9,
+   "d": 4.4,
+   "a": 4.6,
+   "kda": 1.51,
+   "csm": 6.3,
+   "gpm": 354,
+   "dmgShare": 0.18,
+   "kp": 0.66,
+   "champions": [
+    [
+     "JarvanIV",
+     6
+    ],
+    [
+     "LeeSin",
+     5
+    ],
+    [
+     "Pantheon",
+     4
+    ],
+    [
+     "MonkeyKing",
+     4
+    ],
+    [
+     "XinZhao",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 45
+   }
+  },
+  "107618427663806057": {
+   "name": "DFM Kakkun",
+   "role": "bottom",
+   "teamId": "100285330168091787",
+   "games": 45,
+   "k": 2.4,
+   "d": 3.5,
+   "a": 3.6,
+   "kda": 1.73,
+   "csm": 9.2,
+   "gpm": 428,
+   "dmgShare": 0.27,
+   "kp": 0.64,
+   "champions": [
+    [
+     "MissFortune",
+     6
+    ],
+    [
+     "Corki",
+     6
+    ],
+    [
+     "Varus",
+     5
+    ],
+    [
+     "Ziggs",
+     3
+    ],
+    [
+     "Yunara",
+     3
+    ]
+   ],
+   "leagues": {
+    "LCP": 45
+   }
+  },
+  "100205572958145522": {
+   "name": "DFM GAENG",
+   "role": "support",
+   "teamId": "100285330168091787",
+   "games": 14,
+   "k": 0.3,
+   "d": 4.6,
+   "a": 5.9,
+   "kda": 1.34,
+   "csm": 0.9,
+   "gpm": 231,
+   "dmgShare": 0.07,
+   "kp": 0.65,
+   "champions": [
+    [
+     "Rell",
+     3
+    ],
+    [
+     "Nami",
+     2
+    ],
+    [
+     "Alistar",
+     2
+    ],
+    [
+     "Nautilus",
+     2
+    ],
+    [
+     "Rakan",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 14
+   }
+  },
+  "99566404826019424": {
+   "name": "MVK SofM",
+   "role": "jungle",
+   "teamId": "107251245690956393",
+   "games": 2,
+   "k": 1,
+   "d": 2,
+   "a": 3,
+   "kda": 2,
+   "csm": 7,
+   "gpm": 345,
+   "dmgShare": 0.14,
+   "kp": 0.79,
+   "champions": [
+    [
+     "Nocturne",
+     1
+    ],
+    [
+     "Zac",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 2
+   }
+  },
+  "99566406483009320": {
+   "name": "CFO Rest",
+   "role": "top",
+   "teamId": "107700199633958891",
+   "games": 77,
+   "k": 2.6,
+   "d": 2.8,
+   "a": 6,
+   "kda": 3.05,
+   "csm": 7.9,
+   "gpm": 374,
+   "dmgShare": 0.22,
+   "kp": 0.49,
+   "champions": [
+    [
+     "Rumble",
+     15
+    ],
+    [
+     "Renekton",
+     10
+    ],
+    [
+     "Gnar",
+     7
+    ],
+    [
+     "Jayce",
+     7
+    ],
+    [
+     "KSante",
+     6
+    ]
+   ],
+   "leagues": {
+    "LCP": 77
+   }
+  },
+  "102808727762706248": {
+   "name": "CFO Shad0w",
+   "role": "jungle",
+   "teamId": "107700199633958891",
+   "games": 77,
+   "k": 3.8,
+   "d": 3.4,
+   "a": 8.1,
+   "kda": 3.51,
+   "csm": 6.9,
+   "gpm": 399,
+   "dmgShare": 0.19,
+   "kp": 0.72,
+   "champions": [
+    [
+     "JarvanIV",
+     10
+    ],
+    [
+     "Pantheon",
+     9
+    ],
+    [
+     "MonkeyKing",
+     8
+    ],
+    [
+     "Naafiri",
+     7
+    ],
+    [
+     "XinZhao",
+     6
+    ]
+   ],
+   "leagues": {
+    "LCP": 77
+   }
+  },
+  "111521549237485643": {
+   "name": "CFO Pungyeon",
+   "role": "mid",
+   "teamId": "107700199633958891",
+   "games": 26,
+   "k": 2.8,
+   "d": 3,
+   "a": 6,
+   "kda": 3,
+   "csm": 9.1,
+   "gpm": 398,
+   "dmgShare": 0.23,
+   "kp": 0.54,
+   "champions": [
+    [
+     "Azir",
+     5
+    ],
+    [
+     "Taliyah",
+     5
+    ],
+    [
+     "Akali",
+     3
+    ],
+    [
+     "Orianna",
+     2
+    ],
+    [
+     "Ryze",
+     2
+    ]
+   ],
+   "leagues": {
+    "LCP": 26
+   }
+  },
+  "104573129055417270": {
+   "name": "CFO Doggo",
+   "role": "bottom",
+   "teamId": "107700199633958891",
+   "games": 77,
+   "k": 5.4,
+   "d": 3,
+   "a": 5.2,
+   "kda": 3.57,
+   "csm": 9.7,
+   "gpm": 499,
+   "dmgShare": 0.29,
+   "kp": 0.63,
+   "champions": [
+    [
+     "Lucian",
+     12
+    ],
+    [
+     "Kaisa",
+     8
+    ],
+    [
+     "Yunara",
+     8
+    ],
+    [
+     "Ezreal",
+     8
+    ],
+    [
+     "Caitlyn",
+     6
+    ]
+   ],
+   "leagues": {
+    "LCP": 77
+   }
+  },
+  "113951627488570916": {
+   "name": "CFO 2274",
+   "role": "support",
+   "teamId": "107700199633958891",
+   "games": 26,
+   "k": 0.6,
+   "d": 4,
+   "a": 9.8,
+   "kda": 2.62,
+   "csm": 0.8,
+   "gpm": 255,
+   "dmgShare": 0.09,
+   "kp": 0.65,
+   "champions": [
+    [
+     "Neeko",
+     4
+    ],
+    [
+     "Nami",
+     4
+    ],
+    [
+     "Karma",
+     3
+    ],
+    [
+     "Rell",
+     2
+    ],
+    [
+     "Lulu",
+     2
+    ]
+   ],
+   "leagues": {
+    "LCP": 26
+   }
+  },
+  "108511159661913839": {
+   "name": "DFM Fisher",
+   "role": "mid",
+   "teamId": "100285330168091787",
+   "games": 31,
+   "k": 2.7,
+   "d": 3.1,
+   "a": 3.9,
+   "kda": 2.11,
+   "csm": 9,
+   "gpm": 382,
+   "dmgShare": 0.27,
+   "kp": 0.64,
+   "champions": [
+    [
+     "Annie",
+     4
+    ],
+    [
+     "Ryze",
+     4
+    ],
+    [
+     "Aurora",
+     3
+    ],
+    [
+     "Orianna",
+     3
+    ],
+    [
+     "Akali",
+     3
+    ]
+   ],
+   "leagues": {
+    "LCP": 31
+   }
+  },
+  "99566406444168246": {
+   "name": "DFM Woody",
+   "role": "support",
+   "teamId": "100285330168091787",
+   "games": 31,
+   "k": 0.7,
+   "d": 3,
+   "a": 6.9,
+   "kda": 2.55,
+   "csm": 1.2,
+   "gpm": 249,
+   "dmgShare": 0.08,
+   "kp": 0.81,
+   "champions": [
+    [
+     "Bard",
+     5
+    ],
+    [
+     "Shen",
+     5
+    ],
+    [
+     "Seraphine",
+     4
+    ],
+    [
+     "Rell",
+     4
+    ],
+    [
+     "Lulu",
+     3
+    ]
+   ],
+   "leagues": {
+    "LCP": 31
+   }
+  },
+  "113662600266438786": {
+   "name": "MVK Steller",
+   "role": "top",
+   "teamId": "107251245690956393",
+   "games": 12,
+   "k": 2.8,
+   "d": 2.1,
+   "a": 5.2,
+   "kda": 3.8,
+   "csm": 8.8,
+   "gpm": 403,
+   "dmgShare": 0.22,
+   "kp": 0.46,
+   "champions": [
+    [
+     "KSante",
+     3
+    ],
+    [
+     "Yorick",
+     2
+    ],
+    [
+     "Ambessa",
+     2
+    ],
+    [
+     "Gnar",
+     2
+    ],
+    [
+     "Renekton",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 12
+   }
+  },
+  "113628612585554951": {
+   "name": "MVK Chika",
+   "role": "mid",
+   "teamId": "107251245690956393",
+   "games": 38,
+   "k": 4,
+   "d": 2.8,
+   "a": 5.4,
+   "kda": 3.42,
+   "csm": 8.3,
+   "gpm": 395,
+   "dmgShare": 0.24,
+   "kp": 0.65,
+   "champions": [
+    [
+     "Yone",
+     4
+    ],
+    [
+     "Hwei",
+     4
+    ],
+    [
+     "Cassiopeia",
+     4
+    ],
+    [
+     "Locke",
+     4
+    ],
+    [
+     "Ryze",
+     3
+    ]
+   ],
+   "leagues": {
+    "LCP": 38
+   }
+  },
+  "109828431746365782": {
+   "name": "MVK Harky",
+   "role": "bottom",
+   "teamId": "107251245690956393",
+   "games": 51,
+   "k": 3.8,
+   "d": 2.7,
+   "a": 5.8,
+   "kda": 3.53,
+   "csm": 9.9,
+   "gpm": 473,
+   "dmgShare": 0.27,
+   "kp": 0.66,
+   "champions": [
+    [
+     "Ezreal",
+     9
+    ],
+    [
+     "Ashe",
+     7
+    ],
+    [
+     "Corki",
+     5
+    ],
+    [
+     "Jhin",
+     4
+    ],
+    [
+     "Caitlyn",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 51
+   }
+  },
+  "112834609700454416": {
+   "name": "MVK SiuLoong",
+   "role": "support",
+   "teamId": "107251245690956393",
+   "games": 51,
+   "k": 0.8,
+   "d": 3.2,
+   "a": 9.1,
+   "kda": 3.08,
+   "csm": 1.1,
+   "gpm": 262,
+   "dmgShare": 0.08,
+   "kp": 0.7,
+   "champions": [
+    [
+     "Seraphine",
+     9
+    ],
+    [
+     "Pyke",
+     6
+    ],
+    [
+     "Karma",
+     5
+    ],
+    [
+     "Alistar",
+     4
+    ],
+    [
+     "Leona",
+     3
+    ]
+   ],
+   "leagues": {
+    "LCP": 51
+   }
+  },
+  "108443043135317375": {
+   "name": "CFO POUT",
+   "role": "mid",
+   "teamId": "107700199633958891",
+   "games": 51,
+   "k": 4.3,
+   "d": 2.7,
+   "a": 6.2,
+   "kda": 3.81,
+   "csm": 8.7,
+   "gpm": 404,
+   "dmgShare": 0.25,
+   "kp": 0.61,
+   "champions": [
+    [
+     "Akali",
+     10
+    ],
+    [
+     "Syndra",
+     6
+    ],
+    [
+     "Ryze",
+     5
+    ],
+    [
+     "Aurora",
+     5
+    ],
+    [
+     "Orianna",
+     5
+    ]
+   ],
+   "leagues": {
+    "LCP": 51
+   }
+  },
+  "100668757020706361": {
+   "name": "CFO Kino",
+   "role": "support",
+   "teamId": "107700199633958891",
+   "games": 51,
+   "k": 0.7,
+   "d": 3.5,
+   "a": 10.8,
+   "kda": 3.28,
+   "csm": 1,
+   "gpm": 262,
+   "dmgShare": 0.06,
+   "kp": 0.68,
+   "champions": [
+    [
+     "Lulu",
+     7
+    ],
+    [
+     "Nautilus",
+     7
+    ],
+    [
+     "Milio",
+     7
+    ],
+    [
+     "Karma",
+     5
+    ],
+    [
+     "Alistar",
+     4
+    ]
+   ],
+   "leagues": {
+    "LCP": 51
+   }
+  },
+  "103817013605434023": {
+   "name": "DCG XiaoXiang",
+   "role": "mid",
+   "teamId": "107700204561086446",
+   "games": 1,
+   "k": 1,
+   "d": 4,
+   "a": 5,
+   "kda": 1.5,
+   "csm": 9.3,
+   "gpm": 403,
+   "dmgShare": 0.24,
+   "kp": 0.43,
+   "champions": [
+    [
+     "Ryze",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 1
+   }
+  },
+  "115254322161332512": {
+   "name": "MVK Seany",
+   "role": "mid",
+   "teamId": "107251245690956393",
+   "games": 15,
+   "k": 3.2,
+   "d": 2.7,
+   "a": 5,
+   "kda": 3,
+   "csm": 8.6,
+   "gpm": 388,
+   "dmgShare": 0.26,
+   "kp": 0.67,
+   "champions": [
+    [
+     "Aurora",
+     4
+    ],
+    [
+     "Azir",
+     3
+    ],
+    [
+     "Akali",
+     2
+    ],
+    [
+     "Orianna",
+     2
+    ],
+    [
+     "Lissandra",
+     2
+    ]
+   ],
+   "leagues": {
+    "LCP": 15
+   }
+  },
+  "99566406481429847": {
+   "name": "GZ Uniboy",
+   "role": "mid",
+   "teamId": "109675490370327425",
+   "games": 14,
+   "k": 3.4,
+   "d": 2.1,
+   "a": 7.1,
+   "kda": 5.1,
+   "csm": 8.2,
+   "gpm": 377,
+   "dmgShare": 0.23,
+   "kp": 0.72,
+   "champions": [
+    [
+     "Galio",
+     3
+    ],
+    [
+     "Viktor",
+     3
+    ],
+    [
+     "Ahri",
+     2
+    ],
+    [
+     "Cassiopeia",
+     1
+    ],
+    [
+     "Taliyah",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 14
+   }
+  },
+  "98767975924333750": {
+   "name": "GZ Betty",
+   "role": "bottom",
+   "teamId": "109675490370327425",
+   "games": 14,
+   "k": 4.4,
+   "d": 2.7,
+   "a": 6.6,
+   "kda": 4.03,
+   "csm": 9.4,
+   "gpm": 456,
+   "dmgShare": 0.3,
+   "kp": 0.75,
+   "champions": [
+    [
+     "Jhin",
+     3
+    ],
+    [
+     "Mel",
+     2
+    ],
+    [
+     "Sivir",
+     2
+    ],
+    [
+     "Ashe",
+     2
+    ],
+    [
+     "Ziggs",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 14
+   }
+  },
+  "101796953888872633": {
+   "name": "DFM RayFarky",
+   "role": "top",
+   "teamId": "100285330168091787",
+   "games": 2,
+   "k": 2,
+   "d": 3.5,
+   "a": 2.5,
+   "kda": 1.29,
+   "csm": 8.3,
+   "gpm": 363,
+   "dmgShare": 0.26,
+   "kp": 0.88,
+   "champions": [
+    [
+     "Sion",
+     1
+    ],
+    [
+     "Jax",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 2
+   }
+  },
+  "107251381045668485": {
+   "name": "TSW Hiro02",
+   "role": "top",
+   "teamId": "113661839307879869",
+   "games": 1,
+   "k": 4,
+   "d": 2,
+   "a": 6,
+   "kda": 5,
+   "csm": 7.8,
+   "gpm": 411,
+   "dmgShare": 0.28,
+   "kp": 0.37,
+   "champions": [
+    [
+     "Zaahen",
+     1
+    ]
+   ],
+   "leagues": {
+    "LCP": 1
    }
   }
  }

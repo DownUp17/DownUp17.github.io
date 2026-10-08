@@ -21,7 +21,7 @@ import pastEditionsData from '../data/lolPastEditions.json';
 import GprTable, { TeamLogo } from '../components/GprTable';
 import TeamPanel from '../components/TeamPanel';
 import { textOn, lighten } from '../utils/colorContrast';
-import demaciaLogo from '../assets/demacia.svg';
+import demaciaLogo from '../assets/dcgi.png'; // DCGI 공식 로고(lolesports getLeagues)
 import asiangamesLogo from '../assets/asiangames.svg';
 import asiangames2026Logo from '../assets/asiangames2026.svg';
 import asiangames2022Logo from '../assets/asiangames2022.svg';
@@ -3693,7 +3693,7 @@ const PredictionPage = () => {
               >
                 <img src={tabLogo(c.key)} alt="" width={18} height={18}
                   className="object-contain shrink-0"
-                  style={{ width: 18, height: 18, filter: c.key === 'ewc' ? 'brightness(0) invert(1)' : (active ? (textOn(tabColor) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none'), opacity: active ? 0.9 : 1 }}
+                  style={{ width: 18, height: 18, filter: c.key === 'demacia' ? 'none' /* DCGI 공식 로고는 금색 그대로 */ : c.key === 'ewc' ? 'brightness(0) invert(1)' : (active ? (textOn(tabColor) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') : 'none'), opacity: active ? 0.9 : 1 }}
                   onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                 {c.tabName || c.name.replace('2026 ', '')}
               </button>
@@ -3737,7 +3737,7 @@ const PredictionPage = () => {
                     return (
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style={hd?.gradient ? { backgroundImage: hd.gradient } : (!hd && COMP_GRADIENT[comp.key]) ? { backgroundImage: COMP_GRADIENT[comp.key] } : { backgroundColor: hd?.color || comp.color }}>
                     <img src={hd?.logo || COMP_DETAIL_LOGO[comp.key] || COMP_LOGO[comp.key]} alt={comp.name} width={24} height={24} className="object-contain"
-                      style={{ filter: hd?.black ? 'brightness(0)' : hd?.logo ? (hd.invert ? 'brightness(0) invert(1)' : 'none') : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
+                      style={{ filter: (comp.key === 'demacia' && !hd?.logo) ? 'none' : hd?.black ? 'brightness(0)' : hd?.logo ? (hd.invert ? 'brightness(0) invert(1)' : 'none') : (textOn(hd?.color || comp.color) === '#1e2328' ? 'brightness(0)' : 'brightness(0) invert(1)') }}
                       onError={e => { e.currentTarget.style.visibility = 'hidden'; }} />
                   </div>
                     );

@@ -18,7 +18,7 @@ const OUT_FILE = path.join(__dirname, '..', 'client', 'src', 'data', 'lolPlayerS
 // 집계 대상: 지역 리그 + 국제대회 (팀 단위 대회. 국가대항전 AG는 제외)
 const LEAGUES = {
   LCK: '98767991310872058', LPL: '98767991314006698', LEC: '98767991302996019', LCS: '98767991299243165',
-  LCP: '107898214974993351', CBLOL: '98767991332355509', MSI: '98767991325878492', Worlds: '98767975604431411',
+  LCP: '113476371197627891', CBLOL: '98767991332355509', MSI: '98767991325878492', Worlds: '98767975604431411',
   EWC: '116838530616006090', 'KeSPA Cup': '116929044967296666', DCGI: '117126995932274206',
 };
 
@@ -38,7 +38,8 @@ const getJson = async (url, key) => {
 
 let cache = { games: {}, matches: {} };
 try { cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')); } catch { /* 최초 실행 */ }
-cache.games = cache.games || {}; cache.matches = cache.matches || {};
+cache.games = cache.games || {}; cache.matches = cache.matches || {}; cache.failed = cache.failed || {};
+const RETRY_MS = 7 * 24 * 3600e3; // 피드 데이터가 없는 게임은 7일 뒤에 다시 시도
 
 // 1) 시즌 완료 경기(match) 목록 — 리그별 일정(과거 페이지 포함)
 async function seasonMatches(leagueId) {
@@ -99,9 +100,9 @@ async function main() {
         await sleep(60);
       }
       for (const gid of cache.matches[mid].games) {
-        if (cache.games[gid]) continue;
+        if (cache.games[gid] || (cache.failed[gid] && Date.now() - cache.failed[gid] < RETRY_MS)) continue;
         const g = await gameStats(gid).catch(() => null);
-        if (g) { cache.games[gid] = { league: lname, match: mid, ...g }; newGames++; lgNew++; } else failed++;
+        if (g) { cache.games[gid] = { league: lname, match: mid, ...g }; delete cache.failed[gid]; newGames++; lgNew++; } else { cache.failed[gid] = Date.now(); failed++; }
         if (g && lgNew % 25 === 0) console.log(`  ${lname}: 신규 게임 ${lgNew}…`);
         await sleep(60);
       }
