@@ -5885,3 +5885,54 @@ function autoGridAll(node) {
     if (fixed) { fs.writeFileSync(pastFile, JSON.stringify(past, null, 2) + '\n'); console.log(`3위 결정전 표기 수정: ${fixed}개`); }
   } catch (e) { console.warn(`3위 결정전 수정 실패(무시): ${e.message}`); }
 }
+
+// ── 2026 LCS 승강전(LCS Promotion) — 2부 팀 포함 5팀 더블 엘리. API 순서(7경기)로 대진 구성 → lcs['승강전'] ──
+//   2부 팀 로고는 대회 종료 후 API에서 사라질 수 있어 client/src/assets/lcsp-*.png 로 저장해 두고 PredictionPage EXTRA_LOGOS 에서 사용.
+try {
+  const tj = await api('getTournamentsForLeague', { leagueId: '117370069134032321' });
+  const tour = (tj?.data?.leagues?.[0]?.tournaments || []).find((t) => t.slug === 'lcs_promotion_2026');
+  if (tour) {
+    const sj = await api('getStandings', { tournamentId: tour.id });
+    const ms = (sj?.data?.standings?.[0]?.stages || []).flatMap((st) => (st.sections || []).flatMap((se) => se.matches || []));
+    const sch = await api('getSchedule', { leagueId: '117370069134032321' });
+    const timeOf = {};
+    for (const e of sch?.data?.schedule?.events || []) if (e.match?.id) {
+      const d = new Date(new Date(e.startTime).getTime() + 9 * 3600e3);
+      timeOf[e.match.id] = `${d.getUTCMonth() + 1}/${d.getUTCDate()} ${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`;
+    }
+    // [제목, 열, 행, a시드, b시드, 패자 탈락 여부, 결승 여부]
+    const LAYOUT = [
+      ['1라운드', 0, 0, '', '', true],
+      ['1라운드', 0, 3, '', '', false],
+      ['2라운드', 1, 0, '1라운드 승자', '', false],
+      ['상위권 결승', 2, 1.5, '2라운드 승자', '1라운드 승자', false],
+      ['하위권 1라운드', 1, 4.5, '2라운드 패자', '1라운드 패자', true],
+      ['하위권 결승', 2, 4.5, '하위권 1라운드 승자', '상위권 결승 패자', true],
+      ['결승', 3, 3, '하위권 결승 승자', '상위권 결승 승자', true, true],
+    ];
+    if (ms.length === LAYOUT.length) {
+      const rounds = [0, 1, 2, 3].map(() => ({ title: '', matches: [] }));
+      ms.forEach((m, i) => {
+        const [title, col, row, sa, sb, loserOut, isFinal] = LAYOUT[i];
+        const done = m.state === 'completed';
+        const slot = (t, seed) => {
+          const s = { seed };
+          if (t && t.code !== 'TBD') { s.short = t.code; s.score = t.result?.gameWins ?? 0; }
+          if (done && t?.result?.outcome === 'win') s[isFinal ? 'msi' : 'win'] = true;
+          if (done && t?.result?.outcome === 'loss' && loserOut) s.elim = true;
+          return s;
+        };
+        rounds[col].matches.push({ id: m.id, title, a: slot(m.teams[0], sa), b: slot(m.teams[1], sb), startRow: row, time: timeOf[m.id] });
+      });
+      const allDone = ms.every((m) => m.state === 'completed');
+      const out = JSON.parse(fs.readFileSync(file, 'utf8'));
+      out.standings.lcs['승강전'] = {
+        name: '2026 LCS 승강전', stage: '2026 LCS 승강전', rows: [],
+        brackets: [{ slug: 'promotion', name: '승강전', bracket: { totalRows: 6.5, rounds } }],
+        finished: allDone,
+      };
+      fs.writeFileSync(file, JSON.stringify(out, null, 2) + '\n');
+      console.log('LCS 승강전 대진 갱신');
+    }
+  }
+} catch (e) { console.warn(`LCS 승강전 갱신 실패(무시): ${e.message}`); }

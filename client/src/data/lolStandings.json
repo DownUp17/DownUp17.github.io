@@ -8578,6 +8578,156 @@
           }
         ],
         "finished": true
+      },
+      "승강전": {
+        "name": "2026 LCS 승강전",
+        "stage": "2026 LCS 승강전",
+        "rows": [],
+        "brackets": [
+          {
+            "slug": "promotion",
+            "name": "승강전",
+            "bracket": {
+              "totalRows": 6.5,
+              "rounds": [
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "117322953110545728",
+                      "title": "1라운드",
+                      "a": {
+                        "seed": "",
+                        "short": "MU",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "Z5",
+                        "score": 1,
+                        "elim": true
+                      },
+                      "startRow": 0,
+                      "time": "10/6 06:00"
+                    },
+                    {
+                      "id": "117322971012796382",
+                      "title": "1라운드",
+                      "a": {
+                        "seed": "",
+                        "short": "CPD",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "FUE",
+                        "score": 0
+                      },
+                      "startRow": 3,
+                      "time": "10/7 06:00"
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "117322971012796388",
+                      "title": "2라운드",
+                      "a": {
+                        "seed": "1라운드 승자",
+                        "short": "MU",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "",
+                        "short": "DSG",
+                        "score": 1
+                      },
+                      "startRow": 0,
+                      "time": "10/8 06:00"
+                    },
+                    {
+                      "id": "117322971012796400",
+                      "title": "하위권 1라운드",
+                      "a": {
+                        "seed": "2라운드 패자",
+                        "short": "DSG",
+                        "score": 1
+                      },
+                      "b": {
+                        "seed": "1라운드 패자",
+                        "short": "FUE",
+                        "score": 0
+                      },
+                      "startRow": 4.5,
+                      "time": "10/10 06:00"
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "117322971012796394",
+                      "title": "상위권 결승",
+                      "a": {
+                        "seed": "2라운드 승자",
+                        "short": "MU",
+                        "score": 3,
+                        "win": true
+                      },
+                      "b": {
+                        "seed": "1라운드 승자",
+                        "short": "CPD",
+                        "score": 0
+                      },
+                      "startRow": 1.5,
+                      "time": "10/9 06:00"
+                    },
+                    {
+                      "id": "117322971012796406",
+                      "title": "하위권 결승",
+                      "a": {
+                        "seed": "하위권 1라운드 승자"
+                      },
+                      "b": {
+                        "seed": "상위권 결승 패자",
+                        "short": "CPD",
+                        "score": 0
+                      },
+                      "startRow": 4.5,
+                      "time": "10/11 06:00"
+                    }
+                  ]
+                },
+                {
+                  "title": "",
+                  "matches": [
+                    {
+                      "id": "117322971012796412",
+                      "title": "결승",
+                      "a": {
+                        "seed": "하위권 결승 승자"
+                      },
+                      "b": {
+                        "seed": "상위권 결승 승자",
+                        "short": "MU",
+                        "score": 0
+                      },
+                      "startRow": 3,
+                      "time": "10/13 08:00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "finished": false
       }
     },
     "cblol": {
