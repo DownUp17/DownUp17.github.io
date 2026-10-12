@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-12",
   "titles": {
     "HLE": [
       {
@@ -701,6 +701,17 @@
           "tab": "cblol",
           "year": "2025",
           "sub": "Etapa 2"
+        }
+      }
+    ],
+    "LOS": [
+      {
+        "name": "CBLOL 2026 Split 2",
+        "detail": "우승",
+        "color": "#0b0718",
+        "link": {
+          "tab": "cblol",
+          "sub": "Split 2"
         }
       }
     ],

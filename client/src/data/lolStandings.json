@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-12",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -8656,12 +8656,14 @@
                       "a": {
                         "seed": "2라운드 패자",
                         "short": "DSG",
-                        "score": 1
+                        "score": 3,
+                        "win": true
                       },
                       "b": {
                         "seed": "1라운드 패자",
                         "short": "FUE",
-                        "score": 0
+                        "score": 0,
+                        "elim": true
                       },
                       "startRow": 4.5,
                       "time": "10/10 06:00"
@@ -8692,12 +8694,16 @@
                       "id": "117322971012796406",
                       "title": "하위권 결승",
                       "a": {
-                        "seed": "하위권 1라운드 승자"
+                        "seed": "하위권 1라운드 승자",
+                        "short": "DSG",
+                        "score": 3,
+                        "win": true
                       },
                       "b": {
                         "seed": "상위권 결승 패자",
                         "short": "CPD",
-                        "score": 0
+                        "score": 0,
+                        "elim": true
                       },
                       "startRow": 4.5,
                       "time": "10/11 06:00"
@@ -8711,7 +8717,9 @@
                       "id": "117322971012796412",
                       "title": "결승",
                       "a": {
-                        "seed": "하위권 결승 승자"
+                        "seed": "하위권 결승 승자",
+                        "short": "DSG",
+                        "score": 0
                       },
                       "b": {
                         "seed": "상위권 결승 승자",
@@ -9358,14 +9366,17 @@
                   "title": "결승",
                   "a": {
                     "seed": "상위권 대진 - 결승 승자",
-                    "short": "LOS"
+                    "short": "LOS",
+                    "score": 3,
+                    "msi": true
                   },
                   "b": {
                     "seed": "하위권 대진 - 결승 승자",
-                    "short": "FUR"
+                    "short": "FUR",
+                    "score": 2,
+                    "elim": true
                   },
-                  "startRow": 5,
-                  "time": "10/11 01:00"
+                  "startRow": 5
                 }
               ]
             }
@@ -9454,6 +9465,16 @@
           ]
         },
         "finalStandings": [
+          {
+            "rank": 1,
+            "team": "LOS",
+            "note": "우승"
+          },
+          {
+            "rank": 2,
+            "team": "FUR",
+            "note": "준우승"
+          },
           {
             "rank": 3,
             "team": "LOUD",
@@ -10411,10 +10432,10 @@
             },
             "a": "KT",
             "b": "VIT",
-            "scoreA": 0,
-            "scoreB": 0,
-            "winner": null,
-            "state": "scheduled",
+            "scoreA": 3,
+            "scoreB": 2,
+            "winner": "KT",
+            "state": "completed",
             "time": "15:00",
             "apiMatchId": "117133830110912099"
           },
@@ -10429,10 +10450,10 @@
             },
             "a": "BFX",
             "b": "JDG",
-            "scoreA": 0,
-            "scoreB": 0,
+            "scoreA": 2,
+            "scoreB": 2,
             "winner": null,
-            "state": "scheduled",
+            "state": "completed",
             "time": "18:00",
             "apiMatchId": "117133830110912093"
           },
@@ -10481,7 +10502,7 @@
               "a": "M21:W",
               "b": "M22:W"
             },
-            "a": null,
+            "a": "KT",
             "b": null,
             "scoreA": null,
             "scoreB": null,
@@ -10604,7 +10625,7 @@
         },
         {
           "seed": "CBLOL #1",
-          "label": "CBLOL #1",
+          "short": "LOS",
           "stage": "swiss"
         },
         {
@@ -10624,7 +10645,7 @@
         },
         {
           "seed": "CBLOL #2",
-          "label": "CBLOL #2",
+          "short": "FUR",
           "stage": "playin"
         }
       ],
@@ -10638,10 +10659,12 @@
                 "id": "115660588583040710",
                 "title": "Match 1",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "FUR"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "MVK"
                 },
                 "startRow": 0,
                 "time": "10/16 03:00"
@@ -10650,10 +10673,12 @@
                 "id": "115660588583171786",
                 "title": "Match 2",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "C9"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "KC"
                 },
                 "startRow": 2,
                 "time": "10/16 08:00"
