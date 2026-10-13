@@ -4,7 +4,11 @@ import RoleIcon from './RoleIcon';
 import stove from '../data/lckStove2027.json';
 import rosters from '../data/lolRosters.json';
 import gprTeamsData from '../data/gprTeams.json';
+import standings from '../data/lolStandings.json';
 
+// 팀 순서 = 2026 LCK 최종 순위
+const rankOf = Object.fromEntries((standings.standings?.lck?.LCK?.finalStandings || []).map((r) => [r.team, r.rank]));
+const teamsSorted = [...stove.teams].sort((a, b) => (rankOf[a.short] ?? 99) - (rankOf[b.short] ?? 99));
 const ROLES = ['top', 'jungle', 'mid', 'bottom', 'support'];
 const teamName = Object.fromEntries(gprTeamsData.teams.map((t) => [t.short, t.name]));
 // 선수 이름 → 2026 로스터 사진·ID(소문자 비교)
@@ -30,7 +34,7 @@ export default function StoveLeagueView({ logoOf, onTeamClick, onPlayerClick }) 
         <span className="text-white/35">빈칸 = 불확실</span>
       </div>
       <div className="flex flex-col gap-3">
-        {stove.teams.map((t) => (
+        {teamsSorted.map((t) => (
           <div key={t.short} className="rounded-xl bg-white/5 border border-white/10 p-3">
             <button onClick={() => onTeamClick?.(t.short)} className="flex items-center gap-2 mb-2 hover:brightness-125">
               {logoOf?.(t.short) && <img src={logoOf(t.short)} alt="" className="w-6 h-6 object-contain" />}

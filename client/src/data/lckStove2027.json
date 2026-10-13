@@ -1,62 +1,250 @@
 {
-  "updatedAt": "2026-10-13 13:00",
-  "note": "계약 정보(esportstransfer · 계약 만료일 2026.11.16)·언론 보도(쉽이스포츠 등)·커뮤니티(에펨코리아 롤 게시판) 스토브 글을 교차 검증한 예측. 공식 발표 아님. 썰끼리 엇갈리거나 근거가 하나뿐인 포지션은 공백. 사전접촉은 Worlds 종료 후라 대부분 미확정.",
+  "updatedAt": "2026-10-13 21:00",
+  "note": "근거: 공식 계약·발표, 언론 보도(쉽이스포츠 등), 커뮤니티(에펨코리아) 썰을 신빙성 등급으로 검증하고, 역대 LCK 스토브리그(2020~2025) 사례·팀 자본·선수 커리어·대체 매물·이적처를 함께 고려한 예측. 선수 실력은 소속팀 성적·수상·여론 기준(통계 평점 미사용). 공식 발표 아님. A·B급이 아니어도 모든 정황상 한쪽이 우세하면 채우고, 정말 갈리는 포지션만 공백. 신빙성 등급: A 공식 · B 언론 보도 · C 교차 일치 썰 · 정황 = 커리어·자본·대체/이적처 판단(D·패러디 기사 미반영). GEN·HLE·T1·DK는 월즈 진행 중이라 결정이 11월 이후로 미뤄질 가능성이 큼.",
   "teams": [
-    { "short": "GEN", "players": {
-      "top": { "name": "Kiin", "basis": "유력", "note": "계약 만료 · 병역 앞둔 마지막 시즌, 잔류 전망 우세" },
-      "jungle": null,
-      "mid": { "name": "Chovy", "basis": "계약", "note": "2027.11 계약" },
-      "bottom": { "name": "Ruler", "basis": "계약", "note": "2027.11 계약" },
-      "support": { "name": "Duro", "basis": "계약", "note": "2027.11 계약" } } },
-    { "short": "T1", "players": {
-      "top": null,
-      "jungle": { "name": "Oner", "basis": "계약", "note": "2028.11 계약" },
-      "mid": { "name": "Faker", "basis": "계약", "note": "2029.11 계약" },
-      "bottom": { "name": "Peyz", "basis": "계약", "note": "2028.11 계약" },
-      "support": { "name": "Keria", "basis": "계약", "note": "2029.11 계약" } } },
-    { "short": "HLE", "players": {
-      "top": null,
-      "jungle": null,
-      "mid": { "name": "Zeka", "basis": "계약", "note": "2027.11 계약" },
-      "bottom": { "name": "Gumayusi", "basis": "계약", "note": "2027.11 계약" },
-      "support": { "name": "Delight", "basis": "계약", "note": "2027.11 계약" } } },
-    { "short": "KT", "players": {
-      "top": { "name": "PerfecT", "basis": "계약", "note": "10/8 공식 재계약(2028)" },
-      "jungle": { "name": "Raptor", "basis": "루머", "note": "복수 썰쟁이 일치(랩터·켈린 세트) · 커즈 2027 계약 잔여는 변수" },
-      "mid": { "name": "Bdd", "basis": "계약", "note": "10/8 공식 재계약(2028)" },
-      "bottom": null,
-      "support": { "name": "Kellin", "basis": "루머", "note": "복수 썰쟁이 일치(랩터·켈린 세트)" } } },
-    { "short": "DK", "players": {
-      "top": { "name": "Siwoo", "basis": "계약", "note": "2027.11 계약" },
-      "jungle": { "name": "Lucid", "basis": "계약", "note": "2027.11 계약" },
-      "mid": null,
-      "bottom": null,
-      "support": { "name": "Career", "basis": "계약", "note": "2027.11 계약" } } },
-    { "short": "NS", "players": {
-      "top": null,
-      "jungle": null,
-      "mid": null,
-      "bottom": { "name": "Deft", "basis": "유력", "note": "쉽이스포츠 소식통·언론 '유력' 보도(10/10~11) · 11/18 전역 후 발표 예상 · 디아블 이적 불가피" },
-      "support": null } },
-    { "short": "KRX", "players": {
-      "top": null, "jungle": null, "mid": null, "bottom": null, "support": null } },
-    { "short": "BFX", "players": {
-      "top": null, "jungle": null, "mid": null, "bottom": null, "support": null } },
-    { "short": "DNS", "players": {
-      "top": null,
-      "jungle": null,
-      "mid": null,
-      "bottom": { "name": "deokdam", "basis": "계약", "note": "2027.11 계약" },
-      "support": null } },
-    { "short": "BRO", "players": {
-      "top": null, "jungle": null, "mid": null, "bottom": null, "support": null } }
+    {
+      "short": "GEN",
+      "players": {
+        "top": {
+          "name": "Kiin",
+          "basis": "유력",
+          "note": "계약 만료 · 99년생 병역 앞둔 마지막 시즌, 젠지 생활 만족(쵸비와 상호 잔류 조건 전례) · 탑 3강(제우스·도란) 모두 소속팀 잔류 전망이라 이적처 없음 · 변수: 샐러리 캡 성적 감면 2명 제한 · 정황"
+        },
+        "jungle": {
+          "name": "Canyon",
+          "basis": "유력",
+          "note": "계약 만료 · 서부권 정글(오너·커즈·루시드 계약, 카나비 잔류 전망) 모두 막혀 LCK 내 이적처 없음 · 젠지도 대체 S급 정글 부재 · 변수: 감면 미적용·월즈 성적(캐니언은 월즈 후 결정 패턴) · 정황"
+        },
+        "mid": {
+          "name": "Chovy",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        },
+        "bottom": {
+          "name": "Ruler",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        },
+        "support": {
+          "name": "Duro",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        }
+      }
+    },
+    {
+      "short": "T1",
+      "players": {
+        "top": {
+          "name": "Doran",
+          "basis": "유력",
+          "note": "계약 만료 · 2026 부진 여론에도 대체 탑 부재(기인·제우스 잔류 전망, 퍼펙트 재계약, 두두는 업그레이드 아님) → 2025처럼 재계약 쪽 · T1 자본 최상 · 변수: 2군 해태 콜업 · 정황"
+        },
+        "jungle": {
+          "name": "Oner",
+          "basis": "계약",
+          "note": "2028.11 계약 · A"
+        },
+        "mid": {
+          "name": "Faker",
+          "basis": "계약",
+          "note": "2029.11 계약 · A"
+        },
+        "bottom": {
+          "name": "Peyz",
+          "basis": "계약",
+          "note": "2028.11 계약 · A"
+        },
+        "support": {
+          "name": "Keria",
+          "basis": "계약",
+          "note": "2029.11 계약 · A"
+        }
+      }
+    },
+    {
+      "short": "HLE",
+      "players": {
+        "top": {
+          "name": "Zeus",
+          "basis": "유력",
+          "note": "계약 만료 · 2026 MSI 우승·LCK 준우승 팀, 대체 탑 부재 · 한화생명 자본 최상(FA 붙잡는 성향) · 이적처도 젠지(기인)·T1(관계) 모두 어려움 · 정황"
+        },
+        "jungle": {
+          "name": "Kanavi",
+          "basis": "유력",
+          "note": "계약 만료(1년) · 2026.3부터 체육요원 → 해외 출국 승인 필요로 LPL 복귀 어려움 · HLE 자본·윤성영 감독 연결 · 정황"
+        },
+        "mid": {
+          "name": "Zeka",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        },
+        "bottom": {
+          "name": "Gumayusi",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        },
+        "support": {
+          "name": "Delight",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        }
+      }
+    },
+    {
+      "short": "KT",
+      "players": {
+        "top": {
+          "name": "PerfecT",
+          "basis": "계약",
+          "note": "10/8 공식 재계약(2028) · A"
+        },
+        "jungle": {
+          "name": "Raptor",
+          "basis": "루머",
+          "note": "KT 최우선 타깃이라는 썰이 여러 썰쟁이(키움·브리온·듀 측)에서 일치, KT 오퍼 사실은 신중론 글도 인정 · 커즈 이탈도 공통 · 랩터 측은 DCGI 후 결정 보류 · 반대 썰(BFX 5년 재계약)은 단일 출처 · C"
+        },
+        "mid": {
+          "name": "Bdd",
+          "basis": "계약",
+          "note": "10/8 공식 재계약(2028) · A"
+        },
+        "bottom": null,
+        "support": {
+          "name": "Kellin",
+          "basis": "루머",
+          "note": "KT행 썰 다수(랩터와 세트) · 경쟁 팀으로 거론된 DNS는 블러핑을 채갔다는 키움 썰쟁이 발언 → KT 쪽 우세 · C"
+        }
+      }
+    },
+    {
+      "short": "DK",
+      "players": {
+        "top": {
+          "name": "Siwoo",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        },
+        "jungle": {
+          "name": "Lucid",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        },
+        "mid": {
+          "name": "ShowMaker",
+          "basis": "유력",
+          "note": "계약 만료 · 9년 차 원클럽, 재계약 안 되면 휴식·은퇴 언급 · 서부권 미드 전원 다년 계약이라 이적처 없음 · 변수: 임금체불·매각 진행 중인 구단 재정 · 정황"
+        },
+        "bottom": null,
+        "support": {
+          "name": "Career",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        }
+      }
+    },
+    {
+      "short": "NS",
+      "players": {
+        "top": {
+          "name": "Janus",
+          "basis": "루머",
+          "note": "2군에서 시즌 중 1년+2년 옵션 재계약(A, 2027 계약) · 킹겐 부진으로 콜업 전망(나무위키·커뮤니티) · C"
+        },
+        "jungle": null,
+        "mid": {
+          "name": "Calix",
+          "basis": "루머",
+          "note": "스카웃 DNS행이 우세해 칼릭스 주전 전망 · 본인이 임대 거절하고 잔류한 이력 · 중국행 썰은 약함 · 정황"
+        },
+        "bottom": {
+          "name": "Deft",
+          "basis": "유력",
+          "note": "쉽이스포츠 소식통·국내 언론 유력 보도(10/10~11) · 11/18 전역 후 발표 예상 · 디아블 이적 불가피 · B 쉽이스포츠 10/10"
+        },
+        "support": null
+      }
+    },
+    {
+      "short": "KRX",
+      "players": {
+        "top": null,
+        "jungle": null,
+        "mid": {
+          "name": "Clozer",
+          "basis": "루머",
+          "note": "적중 이력으로 신뢰받는 키움 썰쟁이 \"유칼 대신 클로저\" · DNS가 스카웃을 잡으면 클로저 FA와 정합 · C"
+        },
+        "bottom": null,
+        "support": null
+      }
+    },
+    {
+      "short": "BFX",
+      "players": {
+        "top": null,
+        "jungle": null,
+        "mid": null,
+        "bottom": null,
+        "support": null
+      }
+    },
+    {
+      "short": "DNS",
+      "players": {
+        "top": {
+          "name": "DuDu",
+          "basis": "루머",
+          "note": "두두·샤벨 재계약 썰 다수 + 주영달 감독 뉘앙스 · 구단 실탄(동부권 최상위)·성적 부진에 대한 구단주 투자 의지 · C"
+        },
+        "jungle": {
+          "name": "Sharvel",
+          "basis": "루머",
+          "note": "2년 재계약 썰(브리온 썰쟁이)·감독 언급 뉘앙스 · FA 썰은 단일 출처 · C"
+        },
+        "mid": {
+          "name": "Scout",
+          "basis": "루머",
+          "note": "DNS 썰쟁이·브리온 썰쟁이 모두 \"연봉 조율만 남음\" · 스카웃이 두두와 함께하길 원한다는 썰 · 클로저 FA 썰과 정합 · C"
+        },
+        "bottom": {
+          "name": "deokdam",
+          "basis": "계약",
+          "note": "2027.11 계약 · A"
+        },
+        "support": null
+      }
+    },
+    {
+      "short": "BRO",
+      "players": {
+        "top": null,
+        "jungle": {
+          "name": "GIDEON",
+          "basis": "루머",
+          "note": "엄걸좌 \"브리온 전원 재계약\" 발언 · 라이즈 1위 성과·한진 스폰서로 재계약 여력 · 서부급 정글이 내려오지 않는 한 기드온 정배 여론 · 정황"
+        },
+        "mid": null,
+        "bottom": {
+          "name": "Teddy",
+          "basis": "루머",
+          "note": "테디 재계약 썰(복수) + 브리온 전원 재계약 발언 · 팀 에이스, 나이상 이적처 제한 · 정황"
+        },
+        "support": null
+      }
+    }
   ],
   "rumors": [
-    "NS: 데프트 합류 유력(언론). 탑 킹겐/야누스, 미드 스카웃/칼릭스, 서폿 리헨즈/클라우드 썰 엇갈림",
-    "KT: 랩터·켈린 세트 영입 + 원딜 교체 썰(복수 출처). 지우 교체 유력",
-    "DK: 미드 클로저·스카웃 검토 썰(DK 측 썰쟁이) — 쇼메이커 거취 불투명",
-    "KRX: 기존 주전(안딜·윌러·에이밍·유칼) 대거 이탈 썰",
-    "BFX: 랩터·켈린 이탈 확실시, 다수 이탈 썰",
-    "DNS: 두두 재계약·샤벨 FA 썰 vs 샤벨 재계약 썰 대립, 감독 교체 검토"
+    "KT: 커즈 이탈(키움·든·브리온행 거론) · 원딜은 교체 썰(키움 썰쟁이) — 데프트 농심행이라 후보 불명",
+    "DNS 서폿: 블러핑 영입설(키움 썰쟁이) vs 켈린·리헨즈 경쟁설 — 공백",
+    "NS: 정글 페인터·크로코, 서폿 클라우드·리헨즈 썰 엇갈림",
+    "KRX: 정글 커즈 영입설 vs 빈센조 잔류(옵션)설, 유칼·에이밍 이탈설 · 서폿 안딜 잔류설",
+    "BFX: 랩터·켈린 KT행, 클리어 LPL행 유력설, 빅라 BRO행설 → 사실상 전원 FA 개편",
+    "BRO: 미드 로머 재계약 vs 빅라 영입설, 캐스팅 BFX행설(브리온 썰쟁이) vs 전원 재계약(엄걸좌)",
+    "DK: 스매쉬 1+1 연장은 상호 합의 필요, 구단 매각·임금체불로 불투명",
+    "T1: 도란 재계약 부정적 썰이 있었으나 작성자 닉변·뇌절로 신뢰 상실 — 대체 매물 부재로 재계약 우세",
+    "해외 한국인 FA: 탑 HOYA, 정글 Croco(BFX·KRX 거론)·Guwon, 미드 Karis·kyeahoo, 원딜 Hena",
+    "KRX 탑: 킹겐 리턴설 vs 캐스팅 영입설 갈림 — 공백"
   ]
 }
