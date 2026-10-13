@@ -1,0 +1,62 @@
+{
+  "updatedAt": "2026-10-13 13:00",
+  "note": "계약 정보(esportstransfer · 계약 만료일 2026.11.16)·언론 보도(쉽이스포츠 등)·커뮤니티(에펨코리아 롤 게시판) 스토브 글을 교차 검증한 예측. 공식 발표 아님. 썰끼리 엇갈리거나 근거가 하나뿐인 포지션은 공백. 사전접촉은 Worlds 종료 후라 대부분 미확정.",
+  "teams": [
+    { "short": "GEN", "players": {
+      "top": { "name": "Kiin", "basis": "유력", "note": "계약 만료 · 병역 앞둔 마지막 시즌, 잔류 전망 우세" },
+      "jungle": null,
+      "mid": { "name": "Chovy", "basis": "계약", "note": "2027.11 계약" },
+      "bottom": { "name": "Ruler", "basis": "계약", "note": "2027.11 계약" },
+      "support": { "name": "Duro", "basis": "계약", "note": "2027.11 계약" } } },
+    { "short": "T1", "players": {
+      "top": null,
+      "jungle": { "name": "Oner", "basis": "계약", "note": "2028.11 계약" },
+      "mid": { "name": "Faker", "basis": "계약", "note": "2029.11 계약" },
+      "bottom": { "name": "Peyz", "basis": "계약", "note": "2028.11 계약" },
+      "support": { "name": "Keria", "basis": "계약", "note": "2029.11 계약" } } },
+    { "short": "HLE", "players": {
+      "top": null,
+      "jungle": null,
+      "mid": { "name": "Zeka", "basis": "계약", "note": "2027.11 계약" },
+      "bottom": { "name": "Gumayusi", "basis": "계약", "note": "2027.11 계약" },
+      "support": { "name": "Delight", "basis": "계약", "note": "2027.11 계약" } } },
+    { "short": "KT", "players": {
+      "top": { "name": "PerfecT", "basis": "계약", "note": "10/8 공식 재계약(2028)" },
+      "jungle": { "name": "Raptor", "basis": "루머", "note": "복수 썰쟁이 일치(랩터·켈린 세트) · 커즈 2027 계약 잔여는 변수" },
+      "mid": { "name": "Bdd", "basis": "계약", "note": "10/8 공식 재계약(2028)" },
+      "bottom": null,
+      "support": { "name": "Kellin", "basis": "루머", "note": "복수 썰쟁이 일치(랩터·켈린 세트)" } } },
+    { "short": "DK", "players": {
+      "top": { "name": "Siwoo", "basis": "계약", "note": "2027.11 계약" },
+      "jungle": { "name": "Lucid", "basis": "계약", "note": "2027.11 계약" },
+      "mid": null,
+      "bottom": null,
+      "support": { "name": "Career", "basis": "계약", "note": "2027.11 계약" } } },
+    { "short": "NS", "players": {
+      "top": null,
+      "jungle": null,
+      "mid": null,
+      "bottom": { "name": "Deft", "basis": "유력", "note": "쉽이스포츠 소식통·언론 '유력' 보도(10/10~11) · 11/18 전역 후 발표 예상 · 디아블 이적 불가피" },
+      "support": null } },
+    { "short": "KRX", "players": {
+      "top": null, "jungle": null, "mid": null, "bottom": null, "support": null } },
+    { "short": "BFX", "players": {
+      "top": null, "jungle": null, "mid": null, "bottom": null, "support": null } },
+    { "short": "DNS", "players": {
+      "top": null,
+      "jungle": null,
+      "mid": null,
+      "bottom": { "name": "deokdam", "basis": "계약", "note": "2027.11 계약" },
+      "support": null } },
+    { "short": "BRO", "players": {
+      "top": null, "jungle": null, "mid": null, "bottom": null, "support": null } }
+  ],
+  "rumors": [
+    "NS: 데프트 합류 유력(언론). 탑 킹겐/야누스, 미드 스카웃/칼릭스, 서폿 리헨즈/클라우드 썰 엇갈림",
+    "KT: 랩터·켈린 세트 영입 + 원딜 교체 썰(복수 출처). 지우 교체 유력",
+    "DK: 미드 클로저·스카웃 검토 썰(DK 측 썰쟁이) — 쇼메이커 거취 불투명",
+    "KRX: 기존 주전(안딜·윌러·에이밍·유칼) 대거 이탈 썰",
+    "BFX: 랩터·켈린 이탈 확실시, 다수 이탈 썰",
+    "DNS: 두두 재계약·샤벨 FA 썰 vs 샤벨 재계약 썰 대립, 감독 교체 검토"
+  ]
+}

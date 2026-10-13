@@ -174,6 +174,7 @@ import savingOceLogo from '../assets/saving-oce.webp';
 import agalEwcLogo from '../assets/agal-ewc.webp';
 import mibrLosEwcLogo from '../assets/mibr-los-ewc.webp';
 import frkLogo from '../assets/frk.webp';
+import StoveLeagueView from '../components/StoveLeagueView';
 // 2026 LCS 승강전 2부 팀(API에서 사라질 수 있어 로컬 저장)
 import lcspMuLogo from '../assets/lcsp-mu.png';
 import lcspZ5Logo from '../assets/lcsp-z5.png';
@@ -3081,7 +3082,7 @@ const CURRENT_YEAR = 2026;
 // 과거 결과는 PAST_EDITIONS 에 등록하면 자동으로 최종 순위가 노출된다.
 // AG는 에디션별 명칭/로고가 달라 단일 연도만 두어 드롭다운을 숨긴다.
 const COMP_EDITIONS = {
-  lck: [2026, 2025],
+  lck: [2027, 2026, 2025], // 2027 = 스토브리그(예상 로스터)
   lpl: [2026, 2025],
   lec: [2026, 2025],
   lcs: [2026, 2025],
@@ -3234,7 +3235,8 @@ const PredictionPage = () => {
   const setActiveEvent = (e) => setSearchParams((p) => { const n = new URLSearchParams(p); n.set('event', e); return n; }, { replace: true });
 
   // 서브탭 — 연도별. 현재 연도는 SUBTABS, 과거 연도는 생성된 목록(없으면 단일 대회).
-  const subTabs = comp ? (isCurrentYear ? SUBTABS[comp.key] : pastSubTabs(comp.key, activeYear, activeEvent)) : null;
+  const isStove = !!(comp?.key === 'lck' && activeYear === 2027);
+  const subTabs = comp ? (isCurrentYear ? SUBTABS[comp.key] : isStove ? ['스토브리그'] : pastSubTabs(comp.key, activeYear, activeEvent)) : null;
   const subParam = searchParams.get('sub');
   const defaultSub = comp && subTabs ? (isCurrentYear ? (SUBTAB_DEFAULT[comp.key] || subTabs[0]) : subTabs[0]) : null;
   const activeSub = subTabs ? (subParam && subTabs.includes(subParam) ? subParam : defaultSub) : null;
@@ -3669,7 +3671,7 @@ const PredictionPage = () => {
   // LIVE 세트 스코어가 대진표 데이터에 반영되면 다시 그리기 위한 카운터
   const [, setLiveTick] = useState(0);
   // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
-  const stDisplay = !isCurrentYear ? statusMeta.finished : st;
+  const stDisplay = isStove ? statusMeta.upcoming : !isCurrentYear ? statusMeta.finished : st;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
@@ -3836,7 +3838,9 @@ const PredictionPage = () => {
                 </div>
               )}
 
-              {!isCurrentYear ? (
+              {isStove ? (
+                <StoveLeagueView logoOf={(s) => logoByShort[s]} onTeamClick={handleTeamClick} onPlayerClick={(id) => navigate(`/lol/prediction/player/${id}`)} />
+              ) : !isCurrentYear ? (
                 pastFull ? (
                   <PastSplitView comp={comp} data={pastData} stage={activeStage} onTeamClick={handleTeamClick} teamOverride={pastTeamOverride} />
                 ) : (

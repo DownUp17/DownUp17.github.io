@@ -3085,8 +3085,10 @@ async function syncScheduleResults(leagueId, matches, { codeMap = {}, label } = 
   const apply = (m, e) => {
     const [t1, t2] = e.match.teams || [];
     const c1 = code(t1), c2 = code(t2);
-    // 비어 있는 자리만 채움(한쪽만 있으면 나머지 팀으로)
-    if (!m.a && !m.b) { m.a = c1; m.b = c2; }
+    // 비어 있는 자리만 채움(한쪽만 있으면 나머지 팀으로).
+    //   양 팀이 모두 비어 있는 매치에 일정이 한 팀만 알려주면(상대 TBD) 슬롯 배치를 알 수 없어 채우지 않는다
+    //   (일정의 슬롯 순서가 대진 규칙과 달라 prev 승자와 같은 팀이 양쪽에 들어가는 것 방지).
+    if (!m.a && !m.b) { if (c1 && c2) { m.a = c1; m.b = c2; } }
     else if (!m.a) m.a = c1 === m.b ? c2 : c1;
     else if (!m.b) m.b = c1 === m.a ? c2 : c1;
     const sideOf = (c) => (c === m.a ? 'A' : c === m.b ? 'B' : null);
