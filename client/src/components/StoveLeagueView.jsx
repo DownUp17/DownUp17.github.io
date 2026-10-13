@@ -69,15 +69,6 @@ export default function StoveLeagueView({ logoOf, onTeamClick, onPlayerClick }) 
           </div>
         ))}
       </div>
-      {stove.rumors?.length > 0 && (
-        <div className="mt-5">
-          <h3 className="text-xs font-black text-white/40 uppercase tracking-wider mb-2">주요 썰 · 미반영(엇갈림)</h3>
-          <ul className="flex flex-col gap-1 text-xs text-white/60 list-disc pl-4">
-            {stove.rumors.map((r) => <li key={r}>{r}</li>)}
-          </ul>
-        </div>
-      )}
-      <p className="text-white/25 text-[11px] mt-3">{stove.note}</p>
     </section>
   );
 }
