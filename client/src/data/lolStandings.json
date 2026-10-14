@@ -10507,9 +10507,9 @@
             "a": "KT",
             "b": "BFX",
             "scoreA": 1,
-            "scoreB": 2,
-            "winner": null,
-            "state": "inProgress",
+            "scoreB": 3,
+            "winner": "BFX",
+            "state": "completed",
             "time": "18:00",
             "apiMatchId": "117133830110912117"
           },
@@ -10540,7 +10540,7 @@
               "a": "M25:W",
               "b": "M26:W"
             },
-            "a": null,
+            "a": "BFX",
             "b": null,
             "scoreA": null,
             "scoreB": null,
