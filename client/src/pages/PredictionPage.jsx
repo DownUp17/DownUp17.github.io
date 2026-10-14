@@ -3674,8 +3674,8 @@ const PredictionPage = () => {
   const stDisplay = isStove ? statusMeta.upcoming : !isCurrentYear ? statusMeta.finished : st;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
-      <div className="max-w-[1600px] mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-4 md:p-6 text-white">
+      <div className="w-full">
         <div className="flex items-center gap-3 mb-8">
           <div className="w-11 h-11 bg-[#C8963E] rounded-xl flex items-center justify-center shrink-0">
             <Target color="white" size={22} />
