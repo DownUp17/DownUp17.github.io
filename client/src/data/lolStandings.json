@@ -10506,10 +10506,10 @@
             },
             "a": "KT",
             "b": "BFX",
-            "scoreA": 0,
-            "scoreB": 0,
+            "scoreA": 1,
+            "scoreB": 2,
             "winner": null,
-            "state": "scheduled",
+            "state": "inProgress",
             "time": "18:00",
             "apiMatchId": "117133830110912117"
           },
