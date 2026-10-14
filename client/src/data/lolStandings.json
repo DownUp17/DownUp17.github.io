@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-14",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -8719,12 +8719,14 @@
                       "a": {
                         "seed": "하위권 결승 승자",
                         "short": "DSG",
-                        "score": 0
+                        "score": 3,
+                        "msi": true
                       },
                       "b": {
                         "seed": "상위권 결승 승자",
                         "short": "MU",
-                        "score": 0
+                        "score": 0,
+                        "elim": true
                       },
                       "startRow": 3,
                       "time": "10/13 08:00"
@@ -8735,7 +8737,7 @@
             }
           }
         ],
-        "finished": false
+        "finished": true
       }
     },
     "cblol": {
@@ -10468,10 +10470,10 @@
             },
             "a": "WE",
             "b": "FLY",
-            "scoreA": 0,
-            "scoreB": 0,
-            "winner": null,
-            "state": "scheduled",
+            "scoreA": 3,
+            "scoreB": 2,
+            "winner": "WE",
+            "state": "completed",
             "time": "15:00",
             "apiMatchId": "117133830110912105"
           },
@@ -10486,10 +10488,10 @@
             },
             "a": "BRO",
             "b": "LGD",
-            "scoreA": 0,
-            "scoreB": 0,
-            "winner": null,
-            "state": "scheduled",
+            "scoreA": 3,
+            "scoreB": 1,
+            "winner": "BRO",
+            "state": "completed",
             "time": "18:00",
             "apiMatchId": "117133830110912111"
           },
@@ -10520,10 +10522,10 @@
               "a": "M23:W",
               "b": "M24:W"
             },
-            "a": null,
-            "b": null,
-            "scoreA": null,
-            "scoreB": null,
+            "a": "BRO",
+            "b": "WE",
+            "scoreA": 0,
+            "scoreB": 0,
             "winner": null,
             "state": "scheduled",
             "time": "18:00",
@@ -10667,7 +10669,7 @@
                   "short": "MVK"
                 },
                 "startRow": 0,
-                "time": "10/16 03:00"
+                "time": "10/16 08:00"
               },
               {
                 "id": "115660588583171786",
@@ -10681,7 +10683,7 @@
                   "short": "KC"
                 },
                 "startRow": 2,
-                "time": "10/16 08:00"
+                "time": "10/16 03:00"
               }
             ]
           },
