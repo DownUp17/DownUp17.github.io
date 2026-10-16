@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-14",
+  "updatedAt": "2026-10-16",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -10524,10 +10524,10 @@
             },
             "a": "BRO",
             "b": "WE",
-            "scoreA": 0,
-            "scoreB": 0,
-            "winner": null,
-            "state": "scheduled",
+            "scoreA": 2,
+            "scoreB": 3,
+            "winner": "WE",
+            "state": "completed",
             "time": "18:00",
             "apiMatchId": "117133830110912123"
           },
@@ -10540,10 +10540,10 @@
               "a": "M25:W",
               "b": "M26:W"
             },
-            "a": "BFX",
-            "b": null,
-            "scoreA": null,
-            "scoreB": null,
+            "a": "WE",
+            "b": "BFX",
+            "scoreA": 0,
+            "scoreB": 0,
             "winner": null,
             "state": "scheduled",
             "time": "18:00",
@@ -10662,28 +10662,34 @@
                 "title": "Match 1",
                 "a": {
                   "seed": "",
-                  "short": "FUR"
+                  "short": "MVK",
+                  "score": 3,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "MVK"
+                  "short": "FUR",
+                  "score": 0
                 },
                 "startRow": 0,
-                "time": "10/16 08:00"
+                "time": "10/16"
               },
               {
                 "id": "115660588583171786",
                 "title": "Match 2",
                 "a": {
                   "seed": "",
-                  "short": "C9"
+                  "short": "KC",
+                  "score": 3,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "C9",
+                  "score": 2
                 },
                 "startRow": 2,
-                "time": "10/16 03:00"
+                "time": "10/16"
               }
             ]
           },
@@ -10694,10 +10700,12 @@
                 "id": "115660588583171790",
                 "title": "Match 3",
                 "a": {
-                  "seed": "Match 1 승자"
+                  "seed": "Match 1 승자",
+                  "short": "KC"
                 },
                 "b": {
-                  "seed": "Match 2 승자"
+                  "seed": "Match 2 승자",
+                  "short": "MVK"
                 },
                 "startRow": 1,
                 "time": "10/17 03:00"
@@ -10706,10 +10714,12 @@
                 "id": "115660588583171794",
                 "title": "Match 4",
                 "a": {
-                  "seed": "Match 1 패자"
+                  "seed": "Match 1 패자",
+                  "short": "C9"
                 },
                 "b": {
-                  "seed": "Match 2 패자"
+                  "seed": "Match 2 패자",
+                  "short": "FUR"
                 },
                 "startRow": 4,
                 "time": "10/17 08:00"
@@ -10754,7 +10764,7 @@
         "connectors": [
           [
             0,
-            0,
+            1,
             "mid",
             1,
             0,
@@ -10762,7 +10772,7 @@
           ],
           [
             0,
-            1,
+            0,
             "mid",
             1,
             0,
@@ -10770,7 +10780,7 @@
           ],
           [
             0,
-            0,
+            1,
             "mid",
             1,
             1,
@@ -10778,7 +10788,7 @@
           ],
           [
             0,
-            1,
+            0,
             "mid",
             1,
             1,
