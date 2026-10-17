@@ -10542,10 +10542,10 @@
             },
             "a": "WE",
             "b": "BFX",
-            "scoreA": 0,
-            "scoreB": 0,
-            "winner": null,
-            "state": "scheduled",
+            "scoreA": 1,
+            "scoreB": 3,
+            "winner": "BFX",
+            "state": "completed",
             "time": "18:00",
             "apiMatchId": "117133830110912129"
           }
