@@ -4,7 +4,7 @@ name: Refresh GPR & Simulate
 # main 에 커밋되면 deploy.yml 이 자동으로 사이트를 재배포한다.
 on:
   schedule:
-    - cron: '*/10 * * * *' # 10분마다 '새로 완료된 경기'만 감지 — 있을 때만 아래 갱신 단계 실행
+    - cron: '*/5 * * * *' # 5분마다 '새로 완료됐거나 승리 포인트에 도달한 경기'만 감지 — 있을 때만 아래 갱신 단계 실행
     - cron: '0 0,3,6,9,12,15,18,21 * * *' # 3시간마다: 09:00·12:00·15:00·18:00·21:00·00:00·03:00·06:00 KST (00·03·06·09·12·15·18·21 UTC)
   workflow_dispatch: {}   # 수동 실행 버튼
 
@@ -31,19 +31,19 @@ jobs:
           node-version: '22'
 
       # 추적 중인 모든 대회(LCK·LPL·LEC·LCP·LCS·CBLOL·MSI·Worlds·FST·DCGI·AG·EWC)의 공식 일정에서
-      # 새로 '완료'된 경기가 생겼는지 확인한다. 조회 실패가 정기 갱신을 막지 않도록 continue-on-error.
-      - name: Detect newly completed matches
+      # 새로 '완료'됐거나 승리 포인트(Bo1=1·Bo3=2·Bo5=3승)에 도달한 경기가 생겼는지 확인한다. 조회 실패가 정기 갱신을 막지 않도록 continue-on-error.
+      - name: Detect completed matches & match points
         id: detect
         continue-on-error: true
         run: node scripts/detectCompleted.mjs
         env:
           LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
 
-      # 10분 주기 실행은 새 경기가 있을 때만 갱신한다. 3시간 주기·수동 실행은 항상 갱신한다.
+      # 5분 주기 실행은 새 경기가 있을 때만 갱신한다. 3시간 주기·수동 실행은 항상 갱신한다.
       - name: Decide whether to refresh
         id: decide
         run: |
-          if [ "${{ github.event.schedule }}" = "*/10 * * * *" ] && [ "${{ steps.detect.outputs.changed }}" != "true" ]; then
+          if [ "${{ github.event.schedule }}" = "*/5 * * * *" ] && [ "${{ steps.detect.outputs.changed }}" != "true" ]; then
             echo "go=false" >> "$GITHUB_OUTPUT"; echo "새로 완료된 경기 없음 — 갱신 생략"
           else
             echo "go=true" >> "$GITHUB_OUTPUT"
