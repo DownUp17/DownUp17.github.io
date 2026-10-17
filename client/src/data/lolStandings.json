@@ -10741,14 +10741,18 @@
                 "title": "Match 5",
                 "a": {
                   "seed": "Match 3 패자",
-                  "short": "MVK"
+                  "short": "MVK",
+                  "score": 3,
+                  "win": true
                 },
                 "b": {
                   "seed": "Match 4 승자",
-                  "short": "FUR"
+                  "short": "FUR",
+                  "score": 1,
+                  "elim": true
                 },
                 "startRow": 4,
-                "time": "10/18 03:00"
+                "time": "10/18"
               }
             ]
           },
@@ -10759,11 +10763,12 @@
                 "id": "116299649498303884",
                 "title": "Match 6",
                 "a": {
-                  "seed": "Match 3 승자"
+                  "seed": "Match 3 승자",
+                  "short": "KC"
                 },
                 "b": {
                   "seed": "Match 5 승자",
-                  "short": "KC"
+                  "short": "MVK"
                 },
                 "startRow": 2.5,
                 "time": "10/19 03:00"
@@ -10821,7 +10826,7 @@
             "b"
           ],
           [
-            2,
+            1,
             0,
             "mid",
             3,
@@ -10829,7 +10834,7 @@
             "a"
           ],
           [
-            1,
+            2,
             0,
             "mid",
             3,
