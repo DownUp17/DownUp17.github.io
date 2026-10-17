@@ -33,9 +33,9 @@ export default function StoveLeagueView({ logoOf, onTeamClick, onPlayerClick }) 
         ))}
         <span className="text-white/35">빈칸 = 불확실</span>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 -mx-3 md:-mx-5">
         {teamsSorted.map((t) => (
-          <div key={t.short} className="rounded-xl bg-white/5 border border-white/10 p-3">
+          <div key={t.short} className="rounded-xl bg-white/5 border border-white/10 px-2 py-3 sm:px-2.5">
             <button onClick={() => onTeamClick?.(t.short)} className="flex items-center gap-2 mb-2 hover:brightness-125">
               {logoOf?.(t.short) && <img src={logoOf(t.short)} alt="" className="w-6 h-6 object-contain" />}
               <span className="font-black text-white/90 text-sm">{teamName[t.short] || t.short}</span>

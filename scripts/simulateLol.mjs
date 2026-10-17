@@ -1116,6 +1116,111 @@ if (dcgi && dcgiStandings) {
   console.log(`DCGI: 우승1위 ${top.team} ${top.champ}%`);
 }
 
+// ---- Worlds 2026: 플레이-인(4팀 더블 엘리 Bo5) → 스위스(16팀, Bo1·진출/탈락전 Bo3) → 녹아웃(8팀 Bo5) ----
+//   실제 결과가 있는 경기는 고정. POOL 1v4·2v3 1라운드, 같은 전적끼리 재대결 회피, 3-0 팀은 8강에서 3-2 팀과·브래킷 반대편.
+function simulateWorlds(w) {
+  if (!w?.qualifiers?.length) return null;
+  const T = Object.fromEntries(gpr.teams.map((t) => [t.short, t]));
+  const R = (s) => T[s]?.score ?? 1200;
+  const LEAGUE = (s) => T[s]?.league || '';
+  const POOL = { 'LCK #1': 1, 'LPL #1': 1, 'LCS #1': 1, 'LEC #1': 1, 'LCP #1': 2, 'CBLOL #1': 2, 'LCK #2': 2, 'LPL #2': 2,
+    'LCS #2': 3, 'LEC #2': 3, 'LCK #3': 3, 'LPL #3': 3, 'LCP #2': 4, 'LCK #4': 4, 'LPL #4': 4 };
+  const series = (a, b, need) => { let x = 0, y = 0; const p = gameProb(R(a), R(b)); while (x < need && y < need) (rng() < p ? x++ : y++); return x === need ? [a, b] : [b, a]; };
+  const decided = (m) => (m?.a?.short && m?.b?.short && (m.a.win || m.a.msi || m.b.win || m.b.msi)) ? ((m.a.win || m.a.msi) ? [m.a.short, m.b.short] : [m.b.short, m.a.short]) : null;
+  const pairKey = (a, b) => [a, b].sort().join('|');
+  const swissTeams0 = w.qualifiers.filter((q) => q.stage === 'swiss');
+  const piTeams = w.qualifiers.filter((q) => q.stage === 'playin').map((q) => q.short);
+  const pim = (w.playin?.rounds || []).map((r) => r.matches || []);
+  // 실제 스위스 결과: 팀 쌍 → [승, 패]
+  const swissActual = {};
+  for (const r of w.swiss?.rounds || []) for (const m of r.matches || []) { const d = decided(m); if (d) swissActual[pairKey(d[0], d[1])] = d; }
+  const koActual = {};
+  for (const r of w.knockout?.rounds || []) for (const m of r.matches || []) { const d = decided(m); if (d) koActual[pairKey(d[0], d[1])] = d; }
+  const all = [...swissTeams0.map((q) => q.short), ...piTeams];
+  const stat = Object.fromEntries(all.map((s) => [s, { pi: 0, ko: 0, sf: 0, fin: 0, champ: 0 }]));
+  const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const ITW = 20000;
+  for (let it = 0; it < ITW; it++) {
+    // 플레이-인
+    const play = (m, a, b) => decided(m) || series(a, b, 3);
+    const m1 = pim[0]?.[0], m2 = pim[0]?.[1];
+    const [w1, l1] = play(m1, m1?.a?.short || piTeams[0], m1?.b?.short || piTeams[1]);
+    const [w2, l2] = play(m2, m2?.a?.short || piTeams[2], m2?.b?.short || piTeams[3]);
+    const [w3, l3] = play(pim[1]?.[0], w1, w2);
+    const [w4] = play(pim[1]?.[1], l1, l2);
+    const [w5] = play(pim[2]?.[0], l3, w4);
+    const [piWin] = play(pim[3]?.[0], w3, w5);
+    stat[piWin].pi++;
+    // 스위스
+    const pool = (s) => (s === piWin ? 4 : POOL[swissTeams0.find((q) => q.short === s)?.seed] || 4);
+    const teams = [...swissTeams0.map((q) => q.short), piWin];
+    const rec = Object.fromEntries(teams.map((s) => [s, { w: 0, l: 0 }]));
+    const met = new Set();
+    let r1 = null;
+    for (let tries = 0; tries < 50 && !r1; tries++) {
+      const pairs = [];
+      for (const [hi, lo] of [[1, 4], [2, 3]]) {
+        const H = shuffle(teams.filter((s) => pool(s) === hi)), L = shuffle(teams.filter((s) => pool(s) === lo));
+        H.forEach((h, i) => pairs.push([h, L[i]]));
+      }
+      if (tries > 40 || pairs.every(([a, b]) => LEAGUE(a) !== LEAGUE(b))) r1 = pairs;
+    }
+    let pairs = r1;
+    const ko3 = { '0': [], '1': [], '2': [] };
+    for (let round = 0; round < 5; round++) {
+      for (const [a, b] of pairs) {
+        met.add(pairKey(a, b));
+        const bo3 = rec[a].w === 2 || rec[a].l === 2;
+        const [win, lose] = swissActual[pairKey(a, b)] || series(a, b, bo3 ? 2 : 1);
+        rec[win].w++; rec[lose].l++;
+        if (rec[win].w === 3) ko3[String(rec[win].l)].push(win);
+      }
+      const alive = teams.filter((s) => rec[s].w < 3 && rec[s].l < 3);
+      if (!alive.length) break;
+      const groups = {};
+      for (const s of alive) (groups[`${rec[s].w}-${rec[s].l}`] ||= []).push(s);
+      pairs = [];
+      for (const g of Object.values(groups)) {
+        let best = null;
+        for (let tries = 0; tries < 30 && !best; tries++) {
+          const sh = shuffle([...g]); const ps = [];
+          for (let i = 0; i + 1 < sh.length; i += 2) ps.push([sh[i], sh[i + 1]]);
+          if (tries > 25 || ps.every(([a, b]) => !met.has(pairKey(a, b)))) best = ps;
+        }
+        pairs.push(...best);
+      }
+    }
+    const adv = [...ko3['0'], ...ko3['1'], ...ko3['2']];
+    adv.forEach((s) => stat[s].ko++);
+    // 녹아웃 8강: 3-0 두 팀은 반대편, 각자 3-2 팀과
+    const s30 = shuffle([...ko3['0']]), s32 = shuffle([...ko3['2']]), rest = shuffle([...ko3['1'], ...s32.slice(2)]);
+    const qf = [[s30[0], s32[0]], [rest[0], rest[1]], [s30[1], s32[1]], [rest[2], rest[3]]];
+    const playKo = (a, b) => koActual[pairKey(a, b)] || series(a, b, 3);
+    const sf = qf.map(([a, b]) => playKo(a, b)[0]);
+    sf.forEach((s) => stat[s].sf++);
+    const f1 = playKo(sf[0], sf[1])[0], f2 = playKo(sf[2], sf[3])[0];
+    stat[f1].fin++; stat[f2].fin++;
+    stat[playKo(f1, f2)[0]].champ++;
+  }
+  return all.map((s) => ({
+    team: s,
+    playin: piTeams.includes(s) ? pct(stat[s].pi / ITW) : null,
+    knockout: pct(stat[s].ko / ITW),
+    semis: pct(stat[s].sf / ITW),
+    final: pct(stat[s].fin / ITW),
+    champ: pct(stat[s].champ / ITW),
+  }));
+}
+const worldsStandings = simulateWorlds(standingsData.standings?.worlds);
+const worldsComp = sim.competitions.find((c) => c.key === 'worlds');
+if (worldsComp && worldsStandings) {
+  worldsComp.iterations = 20000;
+  worldsComp.generatedAt = GENERATED_AT;
+  worldsComp.standings = worldsStandings;
+  const top = [...worldsStandings].sort((a, b) => b.champ - a.champ)[0];
+  console.log(`Worlds: 우승1위 ${top.team} ${top.champ}%`);
+}
+
 // ---- FST 2026 (종료) 실제 결과 ----
 const fstTeams = gpr.teams.filter((t) => t.fst).sort((a, b) => a.fst - b.fst);
 const fst = sim.competitions.find((c) => c.key === 'fst');
@@ -1204,6 +1309,7 @@ sim.bracketSigs = {
   CBLOL: JSON.stringify({
     po: standingsData.standings?.cblol?.['Split 2']?.playoffs ?? null,
   }),
+  WORLDS: JSON.stringify({ pi: standingsData.standings?.worlds?.playin ?? null, sw: standingsData.standings?.worlds?.swiss ?? null, ko: standingsData.standings?.worlds?.knockout ?? null }),
   DCGI: JSON.stringify({
     q: standingsData.standings?.demacia?.qualifiers ?? null,
     g: standingsData.standings?.demacia?.group ?? null,

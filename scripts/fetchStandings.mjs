@@ -3098,6 +3098,10 @@ async function syncScheduleResults(leagueId, matches, { codeMap = {}, label } = 
       if (e.state === 'completed' && t.result.outcome === 'win') m.winner = c;
     }
     m.state = e.state === 'completed' ? 'completed' : e.state === 'inProgress' ? 'inProgress' : (m.state || 'scheduled');
+    // 승리 포인트 달성(BoN 과반) 시 API가 아직 진행 중이어도 즉시 결과 확정
+    const need = Math.ceil((e.match.strategy?.count || { Bo1: 1, Bo3: 3, Bo5: 5 }[m.format] || 1) / 2);
+    if (!m.winner && m.scoreA >= need && m.a) { m.winner = m.a; m.state = 'completed'; }
+    else if (!m.winner && m.scoreB >= need && m.b) { m.winner = m.b; m.state = 'completed'; }
     if (!m.day) m.day = kst(e.startTime).slice(5, 10);
     if (!m.time) m.time = kst(e.startTime).slice(11, 16);
     m.apiMatchId = e.match.id;

@@ -1086,7 +1086,7 @@ const StandingsTable = ({ rows, color, hasDiff, cols, onTeamClick, teamOverride,
                   )}
                 </td>
                 {!minimal && <td className={`py-2 px-2 text-center font-mono ${elim ? 'text-white/30' : 'text-white/70'}`}>{t.games ? `${t.w}-${t.l}` : '-'}</td>}
-                {hasRemark && <td className={`py-2 px-2 text-center text-xs font-bold whitespace-nowrap ${/몰수/.test(t.remark || '') ? 'text-red-400/80' : 'text-white'}`}>{t.remark || ''}</td>}
+                {hasRemark && <td className={`py-2 px-2 text-center text-xs font-bold whitespace-nowrap ${/몰수|실격/.test(t.remark || '') ? 'text-red-400/80' : 'text-white'}`}>{t.remark || ''}</td>}
                 {showDiff && (
                   <td className="py-2 px-2 text-center font-mono"
                     style={{ color: elim ? 'rgba(255,255,255,0.3)' : (t.gd > 0 ? '#34D399' : t.gd < 0 ? '#F87171' : '#9CA3AF') }}>
@@ -1577,7 +1577,11 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           groups = [{ title: null, items: qualifiers }];
         }
         const renderCard = (q, i) => {
-          const p = q.short ? probByShort[q.short] : null;
+          const p0 = q.short ? probByShort[q.short] : null;
+          // Worlds: 단계별 '진출' = 플레이-인→스위스 / 스위스→녹아웃 / 녹아웃→4강
+          const p = p0 && isWorlds
+            ? { ...p0, advance: stage === '플레이-인' ? p0.playin : stage === '스위스 스테이지' ? p0.knockout : stage === '녹아웃 스테이지' ? p0.semis : null }
+            : p0;
           const probRow = (label, v, color, strong) => (
             <div key={label} className="flex items-center gap-2">
               <span className="text-[10px] text-white/40 w-8 shrink-0">{label}</span>

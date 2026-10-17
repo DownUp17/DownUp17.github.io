@@ -4,11 +4,17 @@ name: Refresh GPR & Simulate
 # main 에 커밋되면 deploy.yml 이 자동으로 사이트를 재배포한다.
 on:
   schedule:
+    - cron: '*/10 * * * *' # 10분마다 '새로 완료된 경기'만 감지 — 있을 때만 아래 갱신 단계 실행
     - cron: '0 0,3,6,9,12,15,18,21 * * *' # 3시간마다: 09:00·12:00·15:00·18:00·21:00·00:00·03:00·06:00 KST (00·03·06·09·12·15·18·21 UTC)
   workflow_dispatch: {}   # 수동 실행 버튼
 
 permissions:
   contents: write
+
+# 감지(10분)·정기(3시간)·수동 실행이 겹쳐도 한 번에 하나만 돌려 커밋 충돌을 막는다.
+concurrency:
+  group: refresh-gpr
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -24,30 +30,54 @@ jobs:
         with:
           node-version: '22'
 
+      # 추적 중인 모든 대회(LCK·LPL·LEC·LCP·LCS·CBLOL·MSI·Worlds·FST·DCGI·AG·EWC)의 공식 일정에서
+      # 새로 '완료'된 경기가 생겼는지 확인한다. 조회 실패가 정기 갱신을 막지 않도록 continue-on-error.
+      - name: Detect newly completed matches
+        id: detect
+        continue-on-error: true
+        run: node scripts/detectCompleted.mjs
+        env:
+          LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
+
+      # 10분 주기 실행은 새 경기가 있을 때만 갱신한다. 3시간 주기·수동 실행은 항상 갱신한다.
+      - name: Decide whether to refresh
+        id: decide
+        run: |
+          if [ "${{ github.event.schedule }}" = "*/10 * * * *" ] && [ "${{ steps.detect.outputs.changed }}" != "true" ]; then
+            echo "go=false" >> "$GITHUB_OUTPUT"; echo "새로 완료된 경기 없음 — 갱신 생략"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Fetch league standings & brackets
+        if: steps.decide.outputs.go == 'true'
         run: node scripts/fetchStandings.mjs
         env:
           LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
 
       - name: Fetch GPR scores & re-simulate
+        if: steps.decide.outputs.go == 'true'
         run: node scripts/fetchGpr.mjs
 
       - name: Fetch rosters & starters
+        if: steps.decide.outputs.go == 'true'
         run: node scripts/fetchRosters.mjs
         env:
           LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
 
       - name: Fetch player season stats (livestats)
+        if: steps.decide.outputs.go == 'true'
         run: node scripts/fetchPlayerStats.mjs
         env:
           LOLESPORTS_API_KEY: ${{ secrets.LOLESPORTS_API_KEY }}
 
       - name: Commit if changed
+        if: steps.decide.outputs.go == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           node -e "const fs=require('fs'),f='client/src/data/lolSim.json',d=JSON.parse(fs.readFileSync(f,'utf8'));d.updatedAt=new Date().toISOString();fs.writeFileSync(f,JSON.stringify(d,null,2)+'\n');"
-          git add client/src/data/gprTeams.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolGpr.json client/src/data/lolRosters.json client/src/data/lolTitles.json client/src/data/lolPastEditions.json client/src/data/lolPlayerStats.json client/src/data/lolLeagues.json scripts/data/gameStatsCache.json
+          git add client/src/data/gprTeams.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolGpr.json client/src/data/lolRosters.json client/src/data/lolTitles.json client/src/data/lolPastEditions.json client/src/data/lolPlayerStats.json client/src/data/lolLeagues.json client/src/data/lolTeamsAll.json scripts/data/gameStatsCache.json scripts/data/completedMatches.json
           git commit -m "chore: 순위표·GPR 자동 갱신 및 시뮬레이션 재계산" || echo "변경 없음 — 커밋 생략"
           # push 전 최신 커밋 통합 (동시 실행 시 충돌 방지)
           git pull --rebase origin main || (git rebase --abort && git pull --ff-only origin main)
@@ -59,6 +89,7 @@ jobs:
       #   생성 데이터 파일만 복사·커밋하는 방식으로 Contents 권한 토큰만으로 동작하게 한다.
       # MIRROR_PAT: totaldu 소유 두 저장소에 contents:write 권한이 있는 PAT (repo secret).
       - name: Mirror sim results to open beta & prod
+        if: steps.decide.outputs.go == 'true'
         env:
           MIRROR_PAT: ${{ secrets.MIRROR_PAT }}
         run: |
@@ -66,7 +97,7 @@ jobs:
             echo "::warning::MIRROR_PAT 시크릿 미설정 — 미러링 생략"
             exit 0
           fi
-          FILES="client/src/data/gprTeams.json client/src/data/lolGpr.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolRosters.json client/src/data/lolPlayerStats.json client/src/data/lolLeagues.json"
+          FILES="client/src/data/gprTeams.json client/src/data/lolGpr.json client/src/data/lolSim.json client/src/data/lolStandings.json client/src/data/lolRosters.json client/src/data/lolPlayerStats.json client/src/data/lolLeagues.json client/src/data/lolTeamsAll.json"
           for repo in "totaldu/totaldu.github.io" "totaldu/totaldu-com"; do
             tmp=$(mktemp -d)
             if ! git clone --depth 1 "https://x-access-token:${MIRROR_PAT}@github.com/${repo}.git" "$tmp" 2>/dev/null; then
