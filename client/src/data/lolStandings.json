@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-17",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -10701,28 +10701,35 @@
                 "title": "Match 3",
                 "a": {
                   "seed": "Match 1 승자",
-                  "short": "KC"
+                  "short": "KC",
+                  "score": 3,
+                  "win": true
                 },
                 "b": {
                   "seed": "Match 2 승자",
-                  "short": "MVK"
+                  "short": "MVK",
+                  "score": 0
                 },
                 "startRow": 1,
-                "time": "10/17 03:00"
+                "time": "10/17"
               },
               {
                 "id": "115660588583171794",
                 "title": "Match 4",
                 "a": {
                   "seed": "Match 1 패자",
-                  "short": "C9"
+                  "short": "FUR",
+                  "score": 3,
+                  "win": true
                 },
                 "b": {
                   "seed": "Match 2 패자",
-                  "short": "FUR"
+                  "short": "C9",
+                  "score": 1,
+                  "elim": true
                 },
                 "startRow": 4,
-                "time": "10/17 08:00"
+                "time": "10/17"
               }
             ]
           },
@@ -10733,10 +10740,12 @@
                 "id": "115660588583171798",
                 "title": "Match 5",
                 "a": {
-                  "seed": "Match 3 패자"
+                  "seed": "Match 3 패자",
+                  "short": "MVK"
                 },
                 "b": {
-                  "seed": "Match 4 승자"
+                  "seed": "Match 4 승자",
+                  "short": "FUR"
                 },
                 "startRow": 4,
                 "time": "10/18 03:00"
@@ -10753,7 +10762,8 @@
                   "seed": "Match 3 승자"
                 },
                 "b": {
-                  "seed": "Match 5 승자"
+                  "seed": "Match 5 승자",
+                  "short": "KC"
                 },
                 "startRow": 2.5,
                 "time": "10/19 03:00"
@@ -10780,7 +10790,7 @@
           ],
           [
             0,
-            1,
+            0,
             "mid",
             1,
             1,
@@ -10788,7 +10798,7 @@
           ],
           [
             0,
-            0,
+            1,
             "mid",
             1,
             1,
@@ -10811,7 +10821,7 @@
             "b"
           ],
           [
-            1,
+            2,
             0,
             "mid",
             3,
@@ -10819,7 +10829,7 @@
             "a"
           ],
           [
-            2,
+            1,
             0,
             "mid",
             3,

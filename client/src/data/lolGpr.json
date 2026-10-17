@@ -1,7 +1,7 @@
 {
   "season": "2026 Current",
   "source": "https://lolesports.com/ko-KR/gpr/2026/current",
-  "fetchedAt": "2026-10-08",
+  "fetchedAt": "2026-10-17",
   "regions": [
     {
       "key": "LCK",
@@ -21,28 +21,28 @@
       "key": "LEC",
       "name": "LEC",
       "country": "유럽",
-      "score": 1265,
+      "score": 1278,
       "color": "#00E0B0"
     },
     {
       "key": "LCS",
       "name": "LCS",
       "country": "북미",
-      "score": 1242,
+      "score": 1208,
       "color": "#eeece7"
     },
     {
       "key": "LCP",
       "name": "LCP",
       "country": "아시아·태평양",
-      "score": 1107,
+      "score": 1104,
       "color": "#F08040"
     },
     {
       "key": "CBLOL",
       "name": "CBLOL",
       "country": "브라질",
-      "score": 835,
+      "score": 859,
       "color": "#0b0718"
     }
   ]
