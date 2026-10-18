@@ -10764,14 +10764,18 @@
                 "title": "Match 6",
                 "a": {
                   "seed": "Match 3 승자",
-                  "short": "KC"
+                  "short": "KC",
+                  "score": 3,
+                  "msi": true
                 },
                 "b": {
                   "seed": "Match 5 승자",
-                  "short": "MVK"
+                  "short": "MVK",
+                  "score": 0,
+                  "elim": true
                 },
                 "startRow": 2.5,
-                "time": "10/19 03:00"
+                "time": "10/19"
               }
             ]
           }
@@ -10852,10 +10856,12 @@
                 "id": "115660540726095005",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "GEN"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "IG"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 02:00"
@@ -10864,10 +10870,12 @@
                 "id": "115660540726095007",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "TLAW"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "CFO"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 03:00"
@@ -10876,10 +10884,12 @@
                 "id": "115660540726095009",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "AL"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "KC"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 04:00"
@@ -10888,10 +10898,12 @@
                 "id": "115660540726095011",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "G2"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "DK"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 05:00"
@@ -10900,10 +10912,12 @@
                 "id": "115660540726095013",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "HLE"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "TES"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 06:00"
@@ -10912,10 +10926,12 @@
                 "id": "115660540726095015",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "LOS"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "T1"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 07:00"
@@ -10924,10 +10940,12 @@
                 "id": "115660540726095017",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "TSW"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "LYON"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 08:00"
@@ -10936,10 +10954,12 @@
                 "id": "115660540726095019",
                 "title": "0승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "BLG"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "MKOI"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 09:00"
