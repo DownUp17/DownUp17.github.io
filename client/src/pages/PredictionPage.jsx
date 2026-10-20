@@ -702,6 +702,26 @@ const computeGroupEliminated = (matches, teamMap) => {
 };
 
 // 녹아웃 완전 탈락 집합 = GF 이외 매치의 패자.
+// prev('M21:W' 등) 기준 슬롯 보정 — 이전 경기 승자/패자가 반대 칸에 들어가 있으면 a·b(점수·플래그 포함)를 맞바꾼다.
+const alignByPrev = (matches) => {
+  const byId = Object.fromEntries(matches.map((m) => [m.id, m]));
+  const resolve = (ref) => {
+    const [id, wl] = String(ref || '').split(':');
+    const s = byId[id];
+    if (!s?.winner || !s.a || !s.b) return null;
+    const w = s.winner === s.a || s.winner === s.b ? s.winner : null;
+    if (!w) return null;
+    return wl === 'L' ? (w === s.a ? s.b : s.a) : w;
+  };
+  return matches.map((m) => {
+    if (!m.prev || !m.a || !m.b) return m;
+    const ea = resolve(m.prev.a), eb = resolve(m.prev.b);
+    if ((ea && m.b === ea && m.a !== ea) || (eb && m.a === eb && m.b !== eb)) {
+      return { ...m, a: m.b, b: m.a, scoreA: m.scoreB, scoreB: m.scoreA, aFlag: m.bFlag, bFlag: m.aFlag };
+    }
+    return m;
+  });
+};
 const computeKnockoutEliminated = (matches, teamMap) => {
   const out = new Set();
   const shortOf = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
@@ -714,7 +734,47 @@ const computeKnockoutEliminated = (matches, teamMap) => {
   return out;
 };
 
-const MsiBracket = ({ rounds, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick, groupGap = false, teamOverride }) => {
+// 마지막 라운드에서 우승(msi) 팀이 나온 경기의 패자는 갈 곳이 없으므로 탈락 표기(데이터에 elim 누락 시 보정).
+const markFinalLosers = (rounds) => {
+  if (!rounds?.length) return rounds;
+  const last = rounds[rounds.length - 1];
+  let changed = false;
+  const matches = (last.matches || []).map((m) => {
+    const a = m.a, b = m.b;
+    if (!a?.short || !b?.short || !(a.msi || b.msi) || (a.msi && b.msi)) return m;
+    const k = a.msi ? 'b' : 'a';
+    if (m[k].elim || m[k].win) return m;
+    changed = true;
+    return { ...m, [k]: { ...m[k], elim: true } };
+  });
+  return changed ? [...rounds.slice(0, -1), { ...last, matches }] : rounds;
+};
+// 연결선 기준 슬롯 보정 — 이전 경기 승자(또는 '패자' 시드면 패자)가 연결선 반대쪽 칸에 들어가 있으면
+//   두 칸의 팀 정보(팀·점수·승패)를 맞바꾼다. 시드 라벨은 칸에 그대로 둔다(API 팀 순서가 대진 규칙과 다를 때).
+const alignSlotsToConnectors = (rounds, conns) => {
+  if (!rounds?.length || !conns?.length) return rounds;
+  const out = rounds.map((r) => ({ ...r, matches: (r.matches || []).map((m) => ({ ...m })) }));
+  const winOf = (m) => (m?.a?.short && m?.b?.short ? ((m.a.win || m.a.msi) ? m.a.short : (m.b.win || m.b.msi) ? m.b.short : null) : null);
+  const TEAM_KEYS = ['short', 'score', 'win', 'msi', 'elim', 'label'];
+  const done = new Set();
+  for (const [fR, fM, , tR, tM, tS] of conns) {
+    if (tS !== 'a' && tS !== 'b') continue;
+    const src = out[fR]?.matches?.[fM], dst = out[tR]?.matches?.[tM];
+    if (!src || !dst || done.has(`${tR}-${tM}`)) continue;
+    const w = winOf(src); if (!w) continue;
+    const exp = /패자/.test(dst[tS]?.seed || '') ? (w === src.a.short ? src.b.short : src.a.short) : w;
+    const other = tS === 'a' ? 'b' : 'a';
+    if (dst[tS]?.short === exp || dst[other]?.short !== exp) continue;
+    const pick = (s) => Object.fromEntries(TEAM_KEYS.filter((k) => s?.[k] !== undefined).map((k) => [k, s[k]]));
+    const strip = (s) => Object.fromEntries(Object.entries(s || {}).filter(([k]) => !TEAM_KEYS.includes(k)));
+    const ta = pick(dst.a), tb = pick(dst.b);
+    dst.a = { ...strip(dst.a), ...tb }; dst.b = { ...strip(dst.b), ...ta };
+    done.add(`${tR}-${tM}`);
+  }
+  return out;
+};
+const MsiBracket = ({ rounds: roundsIn, totalRows, connectors: connData, cardPrefix = '', wrapScroll = true, onTeamClick, groupGap = false, teamOverride }) => {
+  const rounds = useMemo(() => markFinalLosers(alignSlotsToConnectors(roundsIn, connData)), [roundsIn, connData]);
   const useGrid = !!totalRows;
   const colH = useGrid ? gridSlotTop(totalRows - 1) + 2 * ACTUAL_SLOT_H + 2 : undefined;
   const totalW = rounds.length * COL_W + (rounds.length - 1) * COL_GAP;
@@ -1797,7 +1857,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
       {(() => {
         if (comp.key !== 'demacia') return null;
         const groupMatches = official?.group?.matches || [];
-        const knockoutMatches = official?.knockout?.matches || [];
+        const knockoutMatches = alignByPrev(official?.knockout?.matches || []);
         const teamMap = Object.fromEntries((official?.teams || []).map((t) => [t.slot, t]));
         const shortOf = (v) => (v && teamMap[v]?.short) || (v && !teamMap[v] ? v : null);
         const winnerShortOf = (m) => {
@@ -1860,6 +1920,8 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
         }
         if (stage === '녹아웃 스테이지' && knockoutMatches.length > 0) {
           const elimSet = computeKnockoutEliminated(knockoutMatches, teamMap);
+          // 결승 패자도 탈락 배경(참가팀 목록과 달리 대진표에서는 준우승 팀도 탈락 표기)
+          if (gfMatch?.winner) { const ga = shortOf(gfMatch.a), gb = shortOf(gfMatch.b); const gl = championShort === ga ? gb : ga; if (gl) elimSet.add(gl); }
           const msiSet = new Set(); if (championShort) msiSet.add(championShort);
           // 싱글 엘리미네이션 라운드 정의 (라운드 순 → 매치 리스트). 각 라운드 매치는
           //   gridStart = 2^roundIdx + i * 2^(roundIdx+1) 규칙으로 상위 라운드가 중앙에 정렬.
@@ -1931,7 +1993,8 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           for (let l = 0; l < other; l++) prob += C(need - 1 + l, l) * Math.pow(p, need) * Math.pow(1 - p, l);
           return prob;
         };
-        const matchCard = (m) => {
+        // ko=true(녹아웃): 패자 = 탈락(빨강), 결승 승자 = 우승(금색)
+        const matchCard = (m, ko = false) => {
           const done = m.scoreA != null && m.scoreB != null && m.scoreA !== m.scoreB;
           const aWin = done && m.scoreA > m.scoreB;
           const bWin = done && m.scoreB > m.scoreA;
@@ -1944,8 +2007,9 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
             const g = 1 / (1 + Math.pow(10, (rb - ra) / 400));
             pA = Math.round(seriesWin(g, need) * 100); pB = 100 - pA;
           }
+          const champ = ko && m.id === 'FINAL';
           const slot = (code, score, win, pct) => (
-            <div className={`flex items-center gap-2 px-2.5 py-2 ${win ? 'bg-[rgba(96,165,250,0.14)]' : ''}`}>
+            <div className={`flex items-center gap-2 px-2.5 py-2 ${win ? (champ ? 'bg-[rgba(232,199,126,0.16)]' : 'bg-[rgba(96,165,250,0.14)]') : (ko && done ? 'bg-[rgba(248,113,113,0.18)]' : '')}`}>
               {flagOf(code)}
               <span className={`text-xs truncate flex-1 ${win ? 'font-bold text-white' : 'text-white/70'}`}>{code ? nameOf(code) : 'TBD'}</span>
               {score != null ? <span className={`font-mono tabular-nums text-sm shrink-0 ${win ? 'text-[#60A5FA] font-black' : 'text-white/45'}`}>{score}</span>
@@ -2043,13 +2107,13 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           );
         }
         if (stage === '녹아웃 스테이지') {
-          const ko = official?.knockout?.matches || [];
+          const ko = alignByPrev(official?.knockout?.matches || []);
           if (!ko.length) return wrap(<section className="rounded-xl bg-white/5 border border-white/10 p-4 text-center text-sm text-white/50">녹아웃 대진이 아직 확정되지 않았습니다.</section>);
           const byId = Object.fromEntries(ko.map((m) => [m.id, m]));
           const col = (title, ids) => (
             <div className="flex flex-col gap-4 shrink-0 justify-center" style={{ width: 220 }}>
               <div className="text-[11px] text-white/50 font-black tracking-wider px-1">{title}</div>
-              {ids.map((id) => byId[id] && matchCard(byId[id]))}
+              {ids.map((id) => byId[id] && matchCard(byId[id], true))}
             </div>
           );
           return wrap(

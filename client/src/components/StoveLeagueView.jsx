@@ -1,4 +1,4 @@
-// 2027 LCK 스토브리그 — 팀별 예상 주전 로스터(계약 정보 + 커뮤니티 썰 종합). 불확실한 포지션은 공백.
+// 2027 LCK 스토브리그 — 팀별 예상 주전 로스터(계약 정보 + 커뮤니티 썰 + 정황 종합). 근거 강도 5단계로 표기, 빈칸 없음.
 import React from 'react';
 import RoleIcon from './RoleIcon';
 import stove from '../data/lckStove2027.json';
@@ -18,6 +18,8 @@ const BASIS = {
   계약: { label: '계약', color: '#34D399' },
   유력: { label: '유력', color: '#60A5FA' },
   루머: { label: '루머', color: '#FBBF24' },
+  가능성: { label: '가능성', color: '#FB923C' },
+  예측: { label: '예측', color: '#A78BFA' },
 };
 
 export default function StoveLeagueView({ logoOf, onTeamClick, onPlayerClick }) {
@@ -31,7 +33,6 @@ export default function StoveLeagueView({ logoOf, onTeamClick, onPlayerClick }) 
         {Object.values(BASIS).map((b) => (
           <span key={b.label} className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: b.color }} />{b.label}</span>
         ))}
-        <span className="text-white/35">빈칸 = 불확실</span>
       </div>
       <div className="flex flex-col gap-3 -mx-3 md:-mx-5">
         {teamsSorted.map((t) => (
