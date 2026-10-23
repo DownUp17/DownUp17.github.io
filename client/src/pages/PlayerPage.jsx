@@ -12,6 +12,45 @@ import { PLAYER_WORLDS_TEAM } from '../utils/championBg';
 import ChampionBackground from '../components/ChampionBackground';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map((t) => [t.short, t]));
+// 같은 구단의 옛 이름은 한 팀으로 취급(예: SK Telecom T1 K·SK Telecom T1 → T1). 2군·아카데미는 별개.
+const ORG_ALIASES = [
+  [/^(SK Telecom T1( K| S| 1| 2)?|T1)$/i, 'T1'],
+  [/^(Samsung (Galaxy|White|Blue|Ozone)|KSV|Gen\.G( Esports)?)$/i, 'GEN'],
+  [/^(KOO Tigers|GE Tigers|ROX Tigers|Hanwha Life( Esports)?)$/i, 'HLE'],
+  [/^(Incredible Miracle|Longzhu( Gaming)?|Kingzone DragonX|DragonX|DRX|DRX Shinhan Bank|Kiwoom DRX)$/i, 'DRX'],
+  [/^(DAMWON( Gaming)?|DWG KIA|Dplus KIA)$/i, 'DK'],
+  [/^(KT Rolster|kt Rolster|KT Arrows|KT Bullets)$/i, 'KT'],
+  [/^(Afreeca Freecs|Kwangdong Freecs|DN Freecs|DN SOOPers)$/i, 'DNS'],
+  [/^(ESC Ever|Hyper Youth|Fredit BRION|BRION|OK BRION|OKSavingsBank BRION|HANJIN BRION)$/i, 'BRO'],
+  [/^(SANDBOX Gaming|Liiv SANDBOX|GC Busan SANDBOX|FearX|BNK FearX)$/i, 'BFX'],
+  [/^(Team Dynamics|Nongshim RedForce)$/i, 'NS'],
+  [/^(JD Gaming|JDG Intel Esports Club|Beijing JDG( Esports)?)$/i, 'JDG'],
+  [/^(Invictus Gaming( Meituan)?)$/i, 'IG'],
+  [/^(EDward Gaming|Edward Gaming)$/i, 'EDG'],
+  [/^(Royal Never Give Up|Royal Club)$/i, 'RNG'],
+  [/^(Snake Esports|LNG|LNG Esports|Suzhou LNG Esports)$/i, 'LNG'],
+];
+const orgOf = (name) => { for (const [re, k] of ORG_ALIASES) if (re.test(name.trim())) return k; return name.trim().toLowerCase(); };
+// 팀 로고 — 같은 구단(옛 이름 포함)은 현재 팀 로고, 그 외는 이름이 같은 GPR·로스터 팀 로고
+const ORG_SHORT = { T1: 'T1', GEN: 'GEN', HLE: 'HLE', DRX: 'KRX', DK: 'DK', KT: 'KT', DNS: 'DNS', BRO: 'BRO', BFX: 'BFX', NS: 'NS', JDG: 'JDG', IG: 'IG', EDG: 'EDG', LNG: 'LNG' };
+const logoByName = {};
+for (const t of gprTeamsData.teams) if (t.logo) logoByName[t.name.toLowerCase()] = t.logo;
+for (const r of Object.values(rosters.rosters || {})) if (r.team?.image && r.team?.name) logoByName[r.team.name.toLowerCase()] ??= r.team.image;
+const logoOfTeam = (name) => {
+  const k = ORG_ALIASES.find(([re]) => re.test(name.trim()))?.[1];
+  const sh = k && ORG_SHORT[k];
+  return (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()] || null;
+};
+// 연속된 같은 구단 기간을 하나로 합치고, 표시 이름은 가장 최근 이름으로.
+const mergeCareer = (list) => {
+  const out = [];
+  for (const c of list) {
+    const last = out[out.length - 1];
+    if (last && orgOf(last.team) === orgOf(c.team) && c.from <= last.to + 1) { last.to = Math.max(last.to, c.to); last.team = c.team; continue; }
+    out.push({ ...c });
+  }
+  return out;
+};
 // 활동 시즌 표기: 2015-2019 / 1시즌이면 2020
 const fmtYears = (c) => (c.from === c.to ? String(c.from) : `${c.from}-${c.to}`);
 const pct = (x) => (x == null ? '-' : `${Math.round(x * 100)}%`);
@@ -56,7 +95,7 @@ const PlayerPage = () => {
   const teamLogo = team?.logo || found?.roster?.team?.image;
   const realName = [p.lastName, p.firstName].filter(Boolean).join(' ');
   // Worlds 우승 선수 → 우승 당시 팀의 배경(팀 페이지와 같은 이미지)
-  const career = playerCareers.players?.[playerId] || [];
+  const career = mergeCareer(playerCareers.players?.[playerId] || []);
   const bgKey = PLAYER_WORLDS_TEAM[String(p.name || '').split(' ').pop().toLowerCase()];
 
   return (
@@ -89,11 +128,17 @@ const PlayerPage = () => {
             </div>
             {/* 역대 팀 — 팀 이름(입단 시즌 - 마지막 활동 시즌), 1시즌이면 팀 이름(시즌). 출처 Leaguepedia */}
             {career.length > 1 && (
-              <p className="mt-2 text-xs text-white/50 leading-relaxed">
-                {career.slice(0, -1).reverse().map((c, i) => (
-                  <React.Fragment key={i}>{i > 0 && <span className="text-white/25"> · </span>}{c.team}({fmtYears(c)})</React.Fragment>
-                ))}
-              </p>
+              <ul className="mt-2 flex flex-col gap-1 text-xs text-white/55">
+                {career.slice(0, -1).reverse().map((c, i) => {
+                  const lg = logoOfTeam(c.team);
+                  return (
+                    <li key={i} className="flex items-center gap-1.5">
+                      {lg ? <img src={lg} alt="" className="w-4 h-4 object-contain shrink-0" onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} /> : <span className="w-4 h-4 shrink-0" />}
+                      <span>{c.team}({fmtYears(c)})</span>
+                    </li>
+                  );
+                })}
+              </ul>
             )}
           </div>
         </div>
