@@ -770,6 +770,26 @@
         }
       }
     ],
+    "BFX": [
+      {
+        "name": "2026 Demacia Cup Global Invitational",
+        "detail": "우승",
+        "color": "#1826a1",
+        "link": {
+          "tab": "demacia"
+        }
+      },
+      {
+        "name": "2025 Asia Invitational",
+        "detail": "우승",
+        "color": "#7927ff",
+        "link": {
+          "tab": "demacia",
+          "year": "2025",
+          "sub": "ASI"
+        }
+      }
+    ],
     "DK": [
       {
         "name": "2026 Esports World Cup",
@@ -2602,18 +2622,6 @@
           "tab": "cblol",
           "year": "2025",
           "sub": "Etapa 3"
-        }
-      }
-    ],
-    "BFX": [
-      {
-        "name": "2025 Asia Invitational",
-        "detail": "우승",
-        "color": "#7927ff",
-        "link": {
-          "tab": "demacia",
-          "year": "2025",
-          "sub": "ASI"
         }
       }
     ],

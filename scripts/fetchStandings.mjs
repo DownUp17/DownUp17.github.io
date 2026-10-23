@@ -3167,6 +3167,9 @@ try {
         if (!s.short) { const t = resolveRef(s.from); if (t) s.short = t; }
       }
     }
+    // 결승(GF) 완료 시 우승팀 기록 → 우승 경력 자동 반영
+    const gf = dem.knockout?.matches?.find((m) => m.id === 'GF');
+    if (gf?.state === 'completed' && gf.winner) dem.champion = gf.winner; else delete dem.champion;
     const g = dem.group?.matches?.length || 0;
     const k = dem.knockout?.matches?.length || 0;
     console.log(`DEMACIA API 반영: 그룹 ${g}경기 / 녹아웃 ${k}경기`);
@@ -5500,6 +5503,7 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'worlds') return '2026 Worlds';
     if (lg === 'ewc') return '2026 Esports World Cup';
     if (lg === 'asiangames') return '2026 Asian Games';
+    if (lg === 'demacia' && !sub) return '2026 Demacia Cup Global Invitational';
     if (!sub) return null;
     if (lg === 'lck' && sub === 'LCK CUP') return '2026 LCK CUP';
     if (lg === 'lck' && sub === 'KeSPA CUP') return '2026 LoL KeSPA CUP';
@@ -5518,6 +5522,7 @@ console.log('lolStandings.json 갱신 완료');
     if (lg === 'lcp' && event === 'PCS') return { color: y === '2023' ? '#cb0004' : '#101725' }; // LCP 전신(2024) 대만/홍콩/마카오 리그
     if (lg === 'lcp' && event === 'LJL') return { color: '#ed1b30' }; // LCP 전신(2024) 일본 리그
     if (lg === 'lcp' && event === 'LCO') return { color: '#0f3341' }; // LCP 전신(2024) 오세아니아 리그
+    if (lg === 'demacia' && y === '2026') return { color: COMP_COLOR.demacia };
     if (lg === 'demacia') return (!sub || sub === 'Demacia Cup' || !['ASI'].includes(sub)) ? { color: '#446aca', gradient: 'linear-gradient(180deg, #446aca, #61a1ea)' } : (sub === 'ASI' ? { color: '#7927ff' } : { color: COMP_COLOR.demacia });
     if (lg === 'ewc') return y === '2026' ? { gradient: 'linear-gradient(90deg, #f74e16, #d1b36f)' } : { color: '#eaeaea' };
     if (lg === 'fst') return { color: y === '2025' ? '#45002c' : '#ff5500' };

@@ -7,9 +7,13 @@ import RoleIcon, { ROLE_KO } from '../components/RoleIcon';
 import rosters from '../data/lolRosters.json';
 import gprTeamsData from '../data/gprTeams.json';
 import playerStats from '../data/lolPlayerStats.json';
-import { CHAMPION_BG, CHAMPION_BG_CONTAIN, PLAYER_WORLDS_TEAM } from '../utils/championBg';
+import playerCareers from '../data/lolPlayerCareers.json';
+import { PLAYER_WORLDS_TEAM } from '../utils/championBg';
+import ChampionBackground from '../components/ChampionBackground';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map((t) => [t.short, t]));
+// 활동 시즌 표기: 2015-2019 / 1시즌이면 2020
+const fmtYears = (c) => (c.from === c.to ? String(c.from) : `${c.from}-${c.to}`);
 const pct = (x) => (x == null ? '-' : `${Math.round(x * 100)}%`);
 
 // 선수 ID → { player, teamShort }
@@ -52,24 +56,12 @@ const PlayerPage = () => {
   const teamLogo = team?.logo || found?.roster?.team?.image;
   const realName = [p.lastName, p.firstName].filter(Boolean).join(' ');
   // Worlds 우승 선수 → 우승 당시 팀의 배경(팀 페이지와 같은 이미지)
+  const career = playerCareers.players?.[playerId] || [];
   const bgKey = PLAYER_WORLDS_TEAM[String(p.name || '').split(' ').pop().toLowerCase()];
-  const bg = bgKey && CHAMPION_BG[bgKey];
 
   return (
     <div className="relative overflow-hidden min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
-      {bg && (
-        <div aria-hidden className="fixed inset-0 overflow-hidden pointer-events-none">
-          {CHAMPION_BG_CONTAIN.has(bgKey) ? (
-            <>
-              <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
-              <img src={bg} alt="" className="absolute inset-0 w-full h-full object-contain" />
-            </>
-          ) : (
-            <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover object-top" />
-          )}
-          <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
-        </div>
-      )}
+      <ChampionBackground bgKey={bgKey} resetKey={playerId} />
       <div className="relative max-w-2xl mx-auto">
         <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-white/40 hover:text-white/70 transition-colors text-sm font-bold mb-8">
           <ChevronLeft size={16} />
@@ -90,10 +82,19 @@ const PlayerPage = () => {
                 <button onClick={() => navigate(`/lol/prediction/team/${found.teamShort}`)} className="inline-flex items-center gap-1.5 font-bold text-white/80 hover:text-white">
                   {teamLogo && <img src={teamLogo} alt="" className="w-5 h-5 object-contain" />}
                   {team?.name || found.teamShort}
+                  {career.length > 0 && <span className="font-normal text-white/45">({fmtYears(career[career.length - 1])})</span>}
                 </button>
               )}
               {p.starter === false && <span className="text-[11px] font-bold text-white/40 border border-white/15 rounded px-1">후보</span>}
             </div>
+            {/* 역대 팀 — 팀 이름(입단 시즌 - 마지막 활동 시즌), 1시즌이면 팀 이름(시즌). 출처 Leaguepedia */}
+            {career.length > 1 && (
+              <p className="mt-2 text-xs text-white/50 leading-relaxed">
+                {career.slice(0, -1).reverse().map((c, i) => (
+                  <React.Fragment key={i}>{i > 0 && <span className="text-white/25"> · </span>}{c.team}({fmtYears(c)})</React.Fragment>
+                ))}
+              </p>
+            )}
           </div>
         </div>
 
