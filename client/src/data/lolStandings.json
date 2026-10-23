@@ -10874,42 +10874,48 @@
                 "title": "0승 0패",
                 "a": {
                   "seed": "",
-                  "short": "TLAW"
+                  "short": "TLAW",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "CFO"
+                  "short": "CFO",
+                  "score": 1,
+                  "win": true
                 },
-                "recordKey": "0-0",
-                "time": "10/24 07:00"
+                "recordKey": "0-0"
               },
               {
                 "id": "115660540726095009",
                 "title": "0승 0패",
                 "a": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "KC",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "AL"
+                  "short": "AL",
+                  "score": 0
                 },
-                "recordKey": "0-0",
-                "time": "10/24 05:00"
+                "recordKey": "0-0"
               },
               {
                 "id": "115660540726095011",
                 "title": "0승 0패",
                 "a": {
                   "seed": "",
-                  "short": "G2"
+                  "short": "DK",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "DK"
+                  "short": "G2",
+                  "score": 0
                 },
-                "recordKey": "0-0",
-                "time": "10/24 06:00"
+                "recordKey": "0-0"
               },
               {
                 "id": "115660540726095013",
