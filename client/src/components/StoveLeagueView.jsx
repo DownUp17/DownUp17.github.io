@@ -47,7 +47,7 @@ export default function StoveLeagueView({ logoOf, onTeamClick, onPlayerClick }) 
                 const p = s && playerByName[s.name.toLowerCase()];
                 const b = s && BASIS[s.basis];
                 return (
-                  <div key={role} title={s?.note || '불확실'}
+                  <div key={role}
                     onClick={p?.id ? () => onPlayerClick?.(p.id) : undefined}
                     className={`flex flex-col items-center text-center rounded-lg p-1.5 sm:p-2 min-h-[96px]${p?.id ? ' cursor-pointer hover:bg-white/10' : ''}`}
                     style={{ backgroundColor: 'rgba(255,255,255,0.03)', border: `1px ${s ? 'solid' : 'dashed'} ${b ? b.color + '55' : 'rgba(255,255,255,0.12)'}` }}>

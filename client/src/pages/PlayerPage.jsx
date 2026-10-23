@@ -7,6 +7,7 @@ import RoleIcon, { ROLE_KO } from '../components/RoleIcon';
 import rosters from '../data/lolRosters.json';
 import gprTeamsData from '../data/gprTeams.json';
 import playerStats from '../data/lolPlayerStats.json';
+import { CHAMPION_BG, CHAMPION_BG_CONTAIN, PLAYER_WORLDS_TEAM } from '../utils/championBg';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map((t) => [t.short, t]));
 const pct = (x) => (x == null ? '-' : `${Math.round(x * 100)}%`);
@@ -50,10 +51,26 @@ const PlayerPage = () => {
   const team = found ? gprTeamMap[found.teamShort] : null;
   const teamLogo = team?.logo || found?.roster?.team?.image;
   const realName = [p.lastName, p.firstName].filter(Boolean).join(' ');
+  // Worlds 우승 선수 → 우승 당시 팀의 배경(팀 페이지와 같은 이미지)
+  const bgKey = PLAYER_WORLDS_TEAM[String(p.name || '').split(' ').pop().toLowerCase()];
+  const bg = bgKey && CHAMPION_BG[bgKey];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
-      <div className="max-w-2xl mx-auto">
+    <div className="relative overflow-hidden min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
+      {bg && (
+        <div aria-hidden className="fixed inset-0 overflow-hidden pointer-events-none">
+          {CHAMPION_BG_CONTAIN.has(bgKey) ? (
+            <>
+              <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
+              <img src={bg} alt="" className="absolute inset-0 w-full h-full object-contain" />
+            </>
+          ) : (
+            <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover object-top" />
+          )}
+          <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
+        </div>
+      )}
+      <div className="relative max-w-2xl mx-auto">
         <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-white/40 hover:text-white/70 transition-colors text-sm font-bold mb-8">
           <ChevronLeft size={16} />
           돌아가기
@@ -104,7 +121,10 @@ const PlayerPage = () => {
                 <div className="flex flex-col gap-1.5">
                   {s.champions.map(([c, n]) => (
                     <div key={c} className="flex items-center gap-3 text-sm">
-                      <span className="w-24 font-bold text-white/85 truncate">{c}</span>
+                      {/* 챔피언 아이콘(CommunityDragon, 챔피언 alias 기준) — 로드 실패 시 이름으로 대체 */}
+                      <img src={`https://cdn.communitydragon.org/latest/champion/${c}/square`} alt={c} title={c}
+                        className="w-8 h-8 rounded-md object-cover shrink-0 bg-white/5"
+                        onError={(e) => { e.currentTarget.replaceWith(Object.assign(document.createElement('span'), { textContent: c, className: 'w-8 text-[10px] font-bold text-white/70 truncate' })); }} />
                       <div className="flex-1 h-2 rounded bg-white/5 overflow-hidden">
                         <div className="h-full bg-white/40" style={{ width: `${(n / s.games) * 100}%` }} />
                       </div>
