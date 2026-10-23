@@ -10858,14 +10858,16 @@
                 "title": "0승 0패",
                 "a": {
                   "seed": "",
-                  "short": "GEN"
+                  "short": "IG",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "IG"
+                  "short": "GEN",
+                  "score": 1,
+                  "win": true
                 },
-                "recordKey": "0-0",
-                "time": "10/24 02:00"
+                "recordKey": "0-0"
               },
               {
                 "id": "115660540726095007",
@@ -10886,11 +10888,11 @@
                 "title": "0승 0패",
                 "a": {
                   "seed": "",
-                  "short": "AL"
+                  "short": "KC"
                 },
                 "b": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "AL"
                 },
                 "recordKey": "0-0",
                 "time": "10/24 05:00"
@@ -10914,14 +10916,16 @@
                 "title": "0승 0패",
                 "a": {
                   "seed": "",
-                  "short": "HLE"
+                  "short": "TES",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "TES"
+                  "short": "HLE",
+                  "score": 1,
+                  "win": true
                 },
-                "recordKey": "0-0",
-                "time": "10/24 03:00"
+                "recordKey": "0-0"
               },
               {
                 "id": "115660540726095015",
@@ -10956,14 +10960,16 @@
                 "title": "0승 0패",
                 "a": {
                   "seed": "",
-                  "short": "BLG"
+                  "short": "MKOI",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "MKOI"
+                  "short": "BLG",
+                  "score": 0
                 },
-                "recordKey": "0-0",
-                "time": "10/24 04:00"
+                "recordKey": "0-0"
               }
             ]
           },

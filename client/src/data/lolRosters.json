@@ -1310,21 +1310,21 @@
       "id": "99566404854685458",
       "players": [
         {
-          "id": "112540645110902751",
-          "name": "ZUIAN",
-          "firstName": "\tCheng",
-          "lastName": "Zi-Hao",
-          "role": "top",
-          "image": "https://static.lolesports.com/players/1775226028458_zuian.png",
-          "starter": true
-        },
-        {
           "id": "101388912796120370",
           "name": "369",
           "firstName": "Jiahao",
           "lastName": "Bai",
           "role": "top",
           "image": "https://static.lolesports.com/players/1768347704727_369.png",
+          "starter": true
+        },
+        {
+          "id": "112540645110902751",
+          "name": "ZUIAN",
+          "firstName": "\tCheng",
+          "lastName": "Zi-Hao",
+          "role": "top",
+          "image": "https://static.lolesports.com/players/1775226028458_zuian.png",
           "starter": false
         },
         {

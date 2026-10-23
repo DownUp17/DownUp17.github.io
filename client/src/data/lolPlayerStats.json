@@ -1,7 +1,7 @@
 {
  "updatedAt": "2026-10-23",
  "season": 2026,
- "games": 2556,
+ "games": 2557,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -2391,21 +2391,21 @@
    "name": "GEN Kiin",
    "role": "top",
    "teamId": "100205573495116443",
-   "games": 115,
+   "games": 116,
    "k": 3.6,
    "d": 2.6,
-   "a": 6.6,
+   "a": 6.7,
    "kda": 3.89,
    "csm": 8.4,
    "gpm": 407,
    "dmgShare": 0.23,
    "kp": 0.58,
    "cto": {
-    "games": 115,
+    "games": 116,
     "weight": 0.9,
     "kda": 3.52,
     "csm": 7.6,
-    "gpm": 369,
+    "gpm": 368,
     "dmgShare": 0.21,
     "kp": 0.53
    },
@@ -2434,26 +2434,27 @@
    "leagues": {
     "LCK": 97,
     "EWC": 9,
-    "KeSPA Cup": 9
+    "KeSPA Cup": 9,
+    "Worlds": 1
    }
   },
   "100725844994345151": {
    "name": "GEN Canyon",
    "role": "jungle",
    "teamId": "100205573495116443",
-   "games": 115,
+   "games": 116,
    "k": 3.6,
    "d": 2.5,
    "a": 9,
-   "kda": 5.04,
-   "csm": 7.1,
-   "gpm": 400,
+   "kda": 5.09,
+   "csm": 7.2,
+   "gpm": 401,
    "dmgShare": 0.17,
    "kp": 0.72,
    "cto": {
-    "games": 115,
+    "games": 116,
     "weight": 0.9,
-    "kda": 4.54,
+    "kda": 4.58,
     "csm": 6.5,
     "gpm": 363,
     "dmgShare": 0.15,
@@ -2484,26 +2485,27 @@
    "leagues": {
     "LCK": 97,
     "EWC": 9,
-    "KeSPA Cup": 9
+    "KeSPA Cup": 9,
+    "Worlds": 1
    }
   },
   "99871276342168416": {
    "name": "GEN Chovy",
    "role": "mid",
    "teamId": "100205573495116443",
-   "games": 115,
-   "k": 4.3,
+   "games": 116,
+   "k": 4.4,
    "d": 2.1,
    "a": 7.1,
-   "kda": 5.31,
+   "kda": 5.35,
    "csm": 9.5,
    "gpm": 435,
    "dmgShare": 0.25,
-   "kp": 0.64,
+   "kp": 0.65,
    "cto": {
-    "games": 115,
+    "games": 116,
     "weight": 0.9,
-    "kda": 4.79,
+    "kda": 4.83,
     "csm": 8.6,
     "gpm": 394,
     "dmgShare": 0.23,
@@ -2527,35 +2529,36 @@
      11
     ],
     [
-     "Mel",
-     6
+     "Akali",
+     7
     ]
    ],
    "leagues": {
     "LCK": 97,
     "EWC": 9,
-    "KeSPA Cup": 9
+    "KeSPA Cup": 9,
+    "Worlds": 1
    }
   },
   "98767975906852059": {
    "name": "GEN Ruler",
    "role": "bottom",
    "teamId": "100205573495116443",
-   "games": 115,
+   "games": 116,
    "k": 5.1,
    "d": 2.3,
    "a": 6.5,
-   "kda": 5.03,
-   "csm": 10.2,
-   "gpm": 502,
+   "kda": 5.05,
+   "csm": 10.1,
+   "gpm": 501,
    "dmgShare": 0.27,
    "kp": 0.66,
    "cto": {
-    "games": 115,
+    "games": 116,
     "weight": 0.9,
-    "kda": 4.53,
+    "kda": 4.55,
     "csm": 9.2,
-    "gpm": 456,
+    "gpm": 455,
     "dmgShare": 0.25,
     "kp": 0.6
    },
@@ -2584,28 +2587,29 @@
    "leagues": {
     "LCK": 97,
     "EWC": 9,
-    "KeSPA Cup": 9
+    "KeSPA Cup": 9,
+    "Worlds": 1
    }
   },
   "107454956790371682": {
    "name": "GEN Duro",
    "role": "support",
    "teamId": "100205573495116443",
-   "games": 115,
+   "games": 116,
    "k": 0.9,
    "d": 2.6,
-   "a": 12.1,
-   "kda": 5.05,
+   "a": 12.2,
+   "kda": 5.06,
    "csm": 0.9,
    "gpm": 268,
    "dmgShare": 0.08,
    "kp": 0.75,
    "cto": {
-    "games": 115,
+    "games": 116,
     "weight": 0.9,
     "kda": 4.57,
     "csm": 0.8,
-    "gpm": 244,
+    "gpm": 243,
     "dmgShare": 0.07,
     "kp": 0.68
    },
@@ -2634,7 +2638,8 @@
    "leagues": {
     "LCK": 97,
     "EWC": 9,
-    "KeSPA Cup": 9
+    "KeSPA Cup": 9,
+    "Worlds": 1
    }
   },
   "111658291900451423": {
@@ -4752,31 +4757,31 @@
    }
   },
   "99566404810113891": {
-   "name": "IGTheShy",
+   "name": "IG TheShy",
    "role": "top",
    "teamId": "99566404848691211",
-   "games": 43,
+   "games": 44,
    "k": 2.6,
-   "d": 3.1,
+   "d": 3.2,
    "a": 5.1,
-   "kda": 2.47,
+   "kda": 2.43,
    "csm": 7.8,
-   "gpm": 376,
-   "dmgShare": 0.21,
-   "kp": 0.45,
+   "gpm": 373,
+   "dmgShare": 0.22,
+   "kp": 0.46,
    "cto": {
-    "games": 43,
+    "games": 44,
     "weight": 0.98,
-    "kda": 2.38,
+    "kda": 2.35,
     "csm": 7.6,
-    "gpm": 367,
+    "gpm": 365,
     "dmgShare": 0.21,
-    "kp": 0.44
+    "kp": 0.45
    },
    "champions": [
     [
      "Rumble",
-     6
+     7
     ],
     [
      "Olaf",
@@ -4796,30 +4801,31 @@
     ]
    ],
    "leagues": {
-    "LPL": 43
+    "LPL": 43,
+    "Worlds": 1
    }
   },
   "103461966880868232": {
-   "name": "IGWei",
+   "name": "IG Wei",
    "role": "jungle",
    "teamId": "99566404848691211",
-   "games": 122,
+   "games": 123,
    "k": 3.3,
    "d": 3.3,
    "a": 7.4,
-   "kda": 3.25,
+   "kda": 3.24,
    "csm": 6.6,
-   "gpm": 386,
+   "gpm": 385,
    "dmgShare": 0.17,
    "kp": 0.73,
    "cto": {
-    "games": 122,
+    "games": 123,
     "weight": 0.99,
     "kda": 3.19,
     "csm": 6.5,
     "gpm": 382,
     "dmgShare": 0.17,
-    "kp": 0.72
+    "kp": 0.73
    },
    "champions": [
     [
@@ -4827,11 +4833,11 @@
      16
     ],
     [
-     "Nocturne",
-     13
+     "JarvanIV",
+     14
     ],
     [
-     "JarvanIV",
+     "Nocturne",
      13
     ],
     [
@@ -4844,26 +4850,27 @@
     ]
    ],
    "leagues": {
-    "LPL": 122
+    "LPL": 122,
+    "Worlds": 1
    }
   },
   "99566404811346612": {
-   "name": "IGRookie",
+   "name": "IG Rookie",
    "role": "mid",
    "teamId": "99566404848691211",
-   "games": 85,
+   "games": 86,
    "k": 3.6,
-   "d": 2.5,
+   "d": 2.6,
    "a": 6.5,
-   "kda": 3.98,
+   "kda": 3.93,
    "csm": 8.6,
-   "gpm": 401,
+   "gpm": 400,
    "dmgShare": 0.25,
    "kp": 0.66,
    "cto": {
-    "games": 85,
+    "games": 86,
     "weight": 0.99,
-    "kda": 3.89,
+    "kda": 3.84,
     "csm": 8.5,
     "gpm": 396,
     "dmgShare": 0.25,
@@ -4883,16 +4890,17 @@
      8
     ],
     [
-     "Viktor",
-     6
+     "Aurora",
+     7
     ],
     [
-     "Aurora",
+     "Viktor",
      6
     ]
    ],
    "leagues": {
-    "LPL": 85
+    "LPL": 85,
+    "Worlds": 1
    }
   },
   "106368497875598272": {
@@ -4944,22 +4952,22 @@
    }
   },
   "98767991785832912": {
-   "name": "IGMeiko",
+   "name": "IG Meiko",
    "role": "support",
    "teamId": "99566404848691211",
-   "games": 80,
+   "games": 81,
    "k": 0.8,
    "d": 3.2,
    "a": 11,
-   "kda": 3.72,
+   "kda": 3.65,
    "csm": 1,
    "gpm": 265,
    "dmgShare": 0.08,
    "kp": 0.75,
    "cto": {
-    "games": 80,
+    "games": 81,
     "weight": 0.99,
-    "kda": 3.65,
+    "kda": 3.59,
     "csm": 1,
     "gpm": 262,
     "dmgShare": 0.08,
@@ -4984,11 +4992,12 @@
     ],
     [
      "Alistar",
-     5
+     6
     ]
    ],
    "leagues": {
-    "LPL": 80
+    "LPL": 80,
+    "Worlds": 1
    }
   },
   "115728542444828247": {
@@ -6484,22 +6493,22 @@
    }
   },
   "113662801804437510": {
-   "name": "TESJiaQi",
+   "name": "IG JiaQi",
    "role": "bottom",
-   "teamId": "99566404854685458",
-   "games": 112,
+   "teamId": "99566404848691211",
+   "games": 113,
    "k": 4.7,
    "d": 3.5,
    "a": 5.3,
-   "kda": 2.82,
+   "kda": 2.83,
    "csm": 9.8,
-   "gpm": 490,
+   "gpm": 489,
    "dmgShare": 0.28,
-   "kp": 0.65,
+   "kp": 0.66,
    "cto": {
-    "games": 112,
+    "games": 113,
     "weight": 0.99,
-    "kda": 2.79,
+    "kda": 2.8,
     "csm": 9.7,
     "gpm": 485,
     "dmgShare": 0.28,
@@ -6512,7 +6521,7 @@
     ],
     [
      "Jhin",
-     13
+     14
     ],
     [
      "Ashe",
@@ -6528,7 +6537,8 @@
     ]
    ],
    "leagues": {
-    "LPL": 112
+    "LPL": 112,
+    "Worlds": 1
    }
   },
   "103478281356330346": {
