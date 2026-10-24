@@ -1,7 +1,7 @@
 {
  "updatedAt": "2026-10-24",
  "season": 2026,
- "games": 2559,
+ "games": 2561,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -1657,23 +1657,23 @@
    "name": "BFXClear",
    "role": "top",
    "teamId": "100725845022060229",
-   "games": 125,
+   "games": 127,
    "k": 2.5,
    "d": 2.8,
    "a": 4.8,
-   "kda": 2.6,
+   "kda": 2.61,
    "csm": 8.6,
    "gpm": 388,
    "dmgShare": 0.21,
-   "kp": 0.49,
+   "kp": 0.48,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 1.05,
-    "kda": 2.69,
+    "kda": 2.7,
     "csm": 9,
     "gpm": 404,
     "dmgShare": 0.22,
-    "kp": 0.51
+    "kp": 0.5
    },
    "champions": [
     [
@@ -1700,26 +1700,26 @@
    "leagues": {
     "LCK": 109,
     "KeSPA Cup": 1,
-    "DCGI": 15
+    "DCGI": 17
    }
   },
   "107492130895812257": {
    "name": "BFXRaptor",
    "role": "jungle",
    "teamId": "100725845022060229",
-   "games": 125,
+   "games": 127,
    "k": 3.6,
    "d": 3.4,
    "a": 7.2,
-   "kda": 3.18,
-   "csm": 6.6,
-   "gpm": 392,
+   "kda": 3.19,
+   "csm": 6.7,
+   "gpm": 393,
    "dmgShare": 0.18,
    "kp": 0.74,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 1.05,
-    "kda": 3.29,
+    "kda": 3.3,
     "csm": 6.9,
     "gpm": 409,
     "dmgShare": 0.19,
@@ -1727,12 +1727,12 @@
    },
    "champions": [
     [
-     "JarvanIV",
+     "Pantheon",
      19
     ],
     [
-     "Pantheon",
-     18
+     "JarvanIV",
+     19
     ],
     [
      "LeeSin",
@@ -1750,14 +1750,14 @@
    "leagues": {
     "LCK": 109,
     "KeSPA Cup": 1,
-    "DCGI": 15
+    "DCGI": 17
    }
   },
   "105501715923396261": {
    "name": "BFXVicLa",
    "role": "mid",
    "teamId": "100725845022060229",
-   "games": 115,
+   "games": 117,
    "k": 3.4,
    "d": 3.1,
    "a": 6.1,
@@ -1767,11 +1767,11 @@
    "dmgShare": 0.25,
    "kp": 0.63,
    "cto": {
-    "games": 115,
+    "games": 117,
     "weight": 1.05,
     "kda": 3.18,
-    "csm": 9.4,
-    "gpm": 419,
+    "csm": 9.3,
+    "gpm": 418,
     "dmgShare": 0.26,
     "kp": 0.66
    },
@@ -1800,14 +1800,14 @@
    "leagues": {
     "LCK": 99,
     "KeSPA Cup": 1,
-    "DCGI": 15
+    "DCGI": 17
    }
   },
   "105501797931408936": {
    "name": "BFXTaeyoon",
    "role": "bottom",
    "teamId": "100725845022060229",
-   "games": 113,
+   "games": 115,
    "k": 4.5,
    "d": 3.1,
    "a": 5.7,
@@ -1817,8 +1817,8 @@
    "dmgShare": 0.27,
    "kp": 0.66,
    "cto": {
-    "games": 113,
-    "weight": 1.05,
+    "games": 115,
+    "weight": 1.04,
     "kda": 3.4,
     "csm": 10.4,
     "gpm": 506,
@@ -1831,12 +1831,12 @@
      21
     ],
     [
-     "Ezreal",
+     "Caitlyn",
      14
     ],
     [
-     "Caitlyn",
-     13
+     "Ezreal",
+     14
     ],
     [
      "Jhin",
@@ -1850,26 +1850,26 @@
    "leagues": {
     "LCK": 97,
     "KeSPA Cup": 1,
-    "DCGI": 15
+    "DCGI": 17
    }
   },
   "101388913291808185": {
    "name": "BFXKellin",
    "role": "support",
    "teamId": "100725845022060229",
-   "games": 125,
+   "games": 127,
    "k": 0.8,
    "d": 2.8,
    "a": 10.6,
-   "kda": 4.11,
+   "kda": 4.08,
    "csm": 0.9,
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.75,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 1.05,
-    "kda": 4.24,
+    "kda": 4.21,
     "csm": 1,
     "gpm": 275,
     "dmgShare": 0.09,
@@ -1877,11 +1877,11 @@
    },
    "champions": [
     [
-     "Lulu",
-     14
+     "Bard",
+     15
     ],
     [
-     "Bard",
+     "Lulu",
      14
     ],
     [
@@ -1900,7 +1900,7 @@
    "leagues": {
     "LCK": 109,
     "KeSPA Cup": 1,
-    "DCGI": 15
+    "DCGI": 17
    }
   },
   "111658292064356964": {
@@ -3299,28 +3299,28 @@
    "name": "WECube",
    "role": "top",
    "teamId": "98767991887166787",
-   "games": 142,
+   "games": 144,
    "k": 1.9,
    "d": 3,
    "a": 5,
-   "kda": 2.27,
+   "kda": 2.28,
    "csm": 8.2,
    "gpm": 367,
    "dmgShare": 0.21,
    "kp": 0.49,
    "cto": {
-    "games": 142,
+    "games": 144,
     "weight": 1.04,
-    "kda": 2.34,
+    "kda": 2.35,
     "csm": 8.5,
-    "gpm": 381,
+    "gpm": 380,
     "dmgShare": 0.22,
-    "kp": 0.51
+    "kp": 0.5
    },
    "champions": [
     [
      "KSante",
-     19
+     20
     ],
     [
      "Rumble",
@@ -3341,14 +3341,14 @@
    ],
    "leagues": {
     "LPL": 126,
-    "DCGI": 16
+    "DCGI": 18
    }
   },
   "110547903628049902": {
    "name": "WEMonki",
    "role": "jungle",
    "teamId": "98767991887166787",
-   "games": 138,
+   "games": 140,
    "k": 3.3,
    "d": 4.1,
    "a": 6.5,
@@ -3358,7 +3358,7 @@
    "dmgShare": 0.18,
    "kp": 0.72,
    "cto": {
-    "games": 138,
+    "games": 140,
     "weight": 1.04,
     "kda": 2.45,
     "csm": 7.1,
@@ -3390,28 +3390,28 @@
    ],
    "leagues": {
     "LPL": 122,
-    "DCGI": 16
+    "DCGI": 18
    }
   },
   "105320683858945274": {
    "name": "WEKaris",
    "role": "mid",
    "teamId": "98767991887166787",
-   "games": 142,
-   "k": 3.6,
+   "games": 144,
+   "k": 3.7,
    "d": 3,
    "a": 5.1,
-   "kda": 2.89,
+   "kda": 2.91,
    "csm": 8.7,
-   "gpm": 398,
+   "gpm": 399,
    "dmgShare": 0.24,
    "kp": 0.64,
    "cto": {
-    "games": 142,
+    "games": 144,
     "weight": 1.04,
-    "kda": 2.98,
+    "kda": 3,
     "csm": 9,
-    "gpm": 413,
+    "gpm": 414,
     "dmgShare": 0.25,
     "kp": 0.66
    },
@@ -3439,35 +3439,35 @@
    ],
    "leagues": {
     "LPL": 126,
-    "DCGI": 16
+    "DCGI": 18
    }
   },
   "113560612601130250": {
    "name": "WEAbout",
    "role": "bottom",
    "teamId": "98767991887166787",
-   "games": 142,
+   "games": 144,
    "k": 3.9,
    "d": 3.4,
    "a": 5.1,
-   "kda": 2.68,
+   "kda": 2.65,
    "csm": 9.8,
-   "gpm": 473,
+   "gpm": 472,
    "dmgShare": 0.3,
-   "kp": 0.68,
+   "kp": 0.67,
    "cto": {
-    "games": 142,
+    "games": 144,
     "weight": 1.04,
-    "kda": 2.77,
+    "kda": 2.74,
     "csm": 10.2,
-    "gpm": 491,
+    "gpm": 490,
     "dmgShare": 0.31,
     "kp": 0.7
    },
    "champions": [
     [
      "Ezreal",
-     23
+     24
     ],
     [
      "Corki",
@@ -3483,19 +3483,19 @@
     ],
     [
      "Jhin",
-     14
+     15
     ]
    ],
    "leagues": {
     "LPL": 126,
-    "DCGI": 16
+    "DCGI": 18
    }
   },
   "111726064836555178": {
    "name": "WEErha",
    "role": "support",
    "teamId": "98767991887166787",
-   "games": 151,
+   "games": 153,
    "k": 0.7,
    "d": 3.4,
    "a": 10.1,
@@ -3505,7 +3505,7 @@
    "dmgShare": 0.08,
    "kp": 0.76,
    "cto": {
-    "games": 151,
+    "games": 153,
     "weight": 1.05,
     "kda": 3.29,
     "csm": 1.1,
@@ -3537,7 +3537,7 @@
    ],
    "leagues": {
     "LPL": 135,
-    "DCGI": 16
+    "DCGI": 18
    }
   },
   "109784472606547975": {
