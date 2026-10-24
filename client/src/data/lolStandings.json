@@ -11007,14 +11007,16 @@
                 "title": "1승 0패",
                 "a": {
                   "seed": "",
-                  "short": "LYON"
+                  "short": "KC",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "LYON",
+                  "score": 1,
+                  "win": true
                 },
-                "recordKey": "1-0",
-                "time": "10/25 05:00"
+                "recordKey": "1-0"
               },
               {
                 "id": "115660540726095025",
@@ -11081,14 +11083,16 @@
                 "title": "0승 1패",
                 "a": {
                   "seed": "",
-                  "short": "TSW"
+                  "short": "TSW",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "IG"
+                  "short": "IG",
+                  "score": 1,
+                  "win": true
                 },
-                "recordKey": "0-1",
-                "time": "10/25 06:00"
+                "recordKey": "0-1"
               },
               {
                 "id": "115660540726095035",
