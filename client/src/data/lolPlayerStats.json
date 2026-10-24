@@ -1,7 +1,7 @@
 {
  "updatedAt": "2026-10-24",
  "season": 2026,
- "games": 2561,
+ "games": 2562,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -5298,19 +5298,19 @@
    "name": "TES Tian",
    "role": "jungle",
    "teamId": "99566404854685458",
-   "games": 91,
+   "games": 92,
    "k": 3.4,
-   "d": 3.4,
+   "d": 3.3,
    "a": 7.5,
-   "kda": 3.22,
+   "kda": 3.27,
    "csm": 7.2,
    "gpm": 397,
    "dmgShare": 0.17,
    "kp": 0.7,
    "cto": {
-    "games": 91,
+    "games": 92,
     "weight": 0.99,
-    "kda": 3.16,
+    "kda": 3.21,
     "csm": 7,
     "gpm": 391,
     "dmgShare": 0.16,
@@ -5340,26 +5340,27 @@
    ],
    "leagues": {
     "LPL": 82,
-    "MSI": 9
+    "MSI": 9,
+    "Worlds": 1
    }
   },
   "106368556422916908": {
    "name": "TES Creme",
    "role": "mid",
    "teamId": "99566404854685458",
-   "games": 133,
+   "games": 134,
    "k": 3.7,
    "d": 2.6,
-   "a": 6.2,
-   "kda": 3.81,
+   "a": 6.1,
+   "kda": 3.82,
    "csm": 8.7,
-   "gpm": 406,
+   "gpm": 407,
    "dmgShare": 0.26,
    "kp": 0.61,
    "cto": {
-    "games": 133,
+    "games": 134,
     "weight": 0.99,
-    "kda": 3.74,
+    "kda": 3.75,
     "csm": 8.6,
     "gpm": 401,
     "dmgShare": 0.26,
@@ -5389,26 +5390,27 @@
    ],
    "leagues": {
     "LPL": 124,
-    "MSI": 9
+    "MSI": 9,
+    "Worlds": 1
    }
   },
   "99566404823220763": {
    "name": "TES JackeyLove",
    "role": "bottom",
    "teamId": "99566404854685458",
-   "games": 91,
+   "games": 92,
    "k": 4.6,
    "d": 3.1,
    "a": 5.9,
-   "kda": 3.4,
+   "kda": 3.42,
    "csm": 9.5,
    "gpm": 463,
    "dmgShare": 0.28,
    "kp": 0.65,
    "cto": {
-    "games": 91,
+    "games": 92,
     "weight": 0.99,
-    "kda": 3.33,
+    "kda": 3.35,
     "csm": 9.4,
     "gpm": 456,
     "dmgShare": 0.27,
@@ -5438,28 +5440,29 @@
    ],
    "leagues": {
     "LPL": 82,
-    "MSI": 9
+    "MSI": 9,
+    "Worlds": 1
    }
   },
   "105516599464787723": {
-   "name": "NIPZhuo",
+   "name": "TES Zhuo",
    "role": "support",
-   "teamId": "101388912914513220",
-   "games": 103,
+   "teamId": "99566404854685458",
+   "games": 104,
    "k": 0.8,
    "d": 2.8,
    "a": 10.9,
-   "kda": 4.16,
+   "kda": 4.15,
    "csm": 1.1,
    "gpm": 263,
    "dmgShare": 0.07,
    "kp": 0.76,
    "cto": {
-    "games": 103,
+    "games": 104,
     "weight": 0.97,
-    "kda": 4.03,
+    "kda": 4.02,
     "csm": 1.1,
-    "gpm": 255,
+    "gpm": 256,
     "dmgShare": 0.07,
     "kp": 0.74
    },
@@ -5486,7 +5489,8 @@
     ]
    ],
    "leagues": {
-    "LPL": 103
+    "LPL": 103,
+    "Worlds": 1
    }
   },
   "103729432252832975": {
@@ -5926,19 +5930,19 @@
    "name": "AL Breathe",
    "role": "top",
    "teamId": "99566404856367466",
-   "games": 90,
+   "games": 91,
    "k": 2.8,
    "d": 2.6,
-   "a": 5,
-   "kda": 3.03,
+   "a": 4.9,
+   "kda": 2.99,
    "csm": 8.3,
-   "gpm": 379,
+   "gpm": 378,
    "dmgShare": 0.21,
    "kp": 0.5,
    "cto": {
-    "games": 90,
+    "games": 91,
     "weight": 0.97,
-    "kda": 2.93,
+    "kda": 2.88,
     "csm": 8,
     "gpm": 367,
     "dmgShare": 0.21,
@@ -5954,11 +5958,11 @@
      11
     ],
     [
-     "Ambessa",
-     10
+     "Rumble",
+     11
     ],
     [
-     "Rumble",
+     "Ambessa",
      10
     ],
     [
@@ -5968,26 +5972,26 @@
    ],
    "leagues": {
     "LPL": 89,
-    "Worlds": 1
+    "Worlds": 2
    }
   },
   "99871276342823057": {
    "name": "AL Tarzan",
    "role": "jungle",
    "teamId": "99566404856367466",
-   "games": 140,
+   "games": 141,
    "k": 3.4,
    "d": 2.5,
    "a": 8.2,
-   "kda": 4.69,
+   "kda": 4.67,
    "csm": 7.2,
    "gpm": 401,
    "dmgShare": 0.19,
    "kp": 0.75,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.95,
-    "kda": 4.43,
+    "kda": 4.41,
     "csm": 6.9,
     "gpm": 382,
     "dmgShare": 0.18,
@@ -6004,7 +6008,7 @@
     ],
     [
      "JarvanIV",
-     16
+     17
     ],
     [
      "Qiyana",
@@ -6018,26 +6022,26 @@
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 1
+    "Worlds": 2
    }
   },
   "104287400430814502": {
    "name": "AL Shanks",
    "role": "mid",
    "teamId": "99566404856367466",
-   "games": 140,
-   "k": 3.8,
+   "games": 141,
+   "k": 3.7,
    "d": 2.5,
    "a": 6.4,
-   "kda": 4.11,
+   "kda": 4.08,
    "csm": 8.8,
    "gpm": 400,
    "dmgShare": 0.25,
    "kp": 0.64,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.95,
-    "kda": 3.89,
+    "kda": 3.86,
     "csm": 8.3,
     "gpm": 381,
     "dmgShare": 0.24,
@@ -6061,34 +6065,34 @@
      12
     ],
     [
-     "Annie",
+     "Orianna",
      12
     ]
    ],
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 1
+    "Worlds": 2
    }
   },
   "99566404819916503": {
    "name": "AL Hope",
    "role": "bottom",
    "teamId": "99566404856367466",
-   "games": 140,
+   "games": 141,
    "k": 4.8,
    "d": 2.3,
    "a": 5.6,
-   "kda": 4.49,
+   "kda": 4.47,
    "csm": 9.6,
    "gpm": 482,
    "dmgShare": 0.28,
    "kp": 0.65,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.95,
-    "kda": 4.26,
-    "csm": 9.1,
+    "kda": 4.24,
+    "csm": 9.2,
     "gpm": 460,
     "dmgShare": 0.26,
     "kp": 0.62
@@ -6112,32 +6116,32 @@
     ],
     [
      "Lucian",
-     12
+     13
     ]
    ],
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 1
+    "Worlds": 2
    }
   },
   "105530584812980593": {
    "name": "AL Kael",
    "role": "support",
    "teamId": "99566404856367466",
-   "games": 140,
+   "games": 141,
    "k": 0.7,
    "d": 2.7,
-   "a": 11,
-   "kda": 4.28,
+   "a": 10.9,
+   "kda": 4.26,
    "csm": 1.2,
    "gpm": 261,
    "dmgShare": 0.08,
    "kp": 0.74,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.95,
-    "kda": 4.08,
+    "kda": 4.06,
     "csm": 1.1,
     "gpm": 250,
     "dmgShare": 0.08,
@@ -6158,7 +6162,7 @@
     ],
     [
      "Milio",
-     12
+     13
     ],
     [
      "Rell",
@@ -6168,7 +6172,7 @@
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 1
+    "Worlds": 2
    }
   },
   "115728508104344155": {
@@ -7368,22 +7372,22 @@
    }
   },
   "101388912796120370": {
-   "name": "TES369",
+   "name": "TES 369",
    "role": "top",
    "teamId": "99566404854685458",
-   "games": 42,
-   "k": 2.3,
+   "games": 43,
+   "k": 2.2,
    "d": 3,
-   "a": 5.2,
-   "kda": 2.46,
+   "a": 5.3,
+   "kda": 2.51,
    "csm": 8.7,
    "gpm": 391,
    "dmgShare": 0.23,
    "kp": 0.46,
    "cto": {
-    "games": 42,
+    "games": 43,
     "weight": 0.99,
-    "kda": 2.42,
+    "kda": 2.47,
     "csm": 8.6,
     "gpm": 386,
     "dmgShare": 0.23,
@@ -7392,7 +7396,7 @@
    "champions": [
     [
      "Ambessa",
-     5
+     6
     ],
     [
      "Rumble",
@@ -7412,7 +7416,8 @@
     ]
    ],
    "leagues": {
-    "LPL": 42
+    "LPL": 42,
+    "Worlds": 1
    }
   },
   "111726332971856422": {

@@ -10991,14 +10991,16 @@
                 "title": "1승 0패",
                 "a": {
                   "seed": "",
-                  "short": "CFO"
+                  "short": "MKOI",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "MKOI"
+                  "short": "CFO",
+                  "score": 0
                 },
-                "recordKey": "1-0",
-                "time": "10/25 03:00"
+                "recordKey": "1-0"
               },
               {
                 "id": "115660540726095023",
@@ -11047,28 +11049,32 @@
                 "title": "0승 1패",
                 "a": {
                   "seed": "",
-                  "short": "TES"
+                  "short": "TES",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "AL"
+                  "short": "AL",
+                  "score": 0
                 },
-                "recordKey": "0-1",
-                "time": "10/25 02:00"
+                "recordKey": "0-1"
               },
               {
                 "id": "115660540726095031",
                 "title": "0승 1패",
                 "a": {
                   "seed": "",
-                  "short": "G2"
+                  "short": "LOS",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "LOS"
+                  "short": "G2",
+                  "score": 1,
+                  "win": true
                 },
-                "recordKey": "0-1",
-                "time": "10/25 04:00"
+                "recordKey": "0-1"
               },
               {
                 "id": "115660540726095033",
