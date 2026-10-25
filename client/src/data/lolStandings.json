@@ -11168,14 +11168,16 @@
                 "title": "1승 1패",
                 "a": {
                   "seed": "",
-                  "short": "G2"
+                  "short": "TES",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "TES"
+                  "short": "G2",
+                  "score": 0
                 },
-                "recordKey": "1-1",
-                "time": "10/26 03:00"
+                "recordKey": "1-1"
               },
               {
                 "id": "115660540726095049",
