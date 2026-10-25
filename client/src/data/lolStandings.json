@@ -11124,25 +11124,27 @@
                 "title": "2승 0패",
                 "a": {
                   "seed": "",
-                  "short": "MKOI"
+                  "short": "MKOI",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "DK"
+                  "short": "DK",
+                  "score": 2,
+                  "win": true
                 },
-                "recordKey": "2-0",
-                "time": "10/26 04:00"
+                "recordKey": "2-0"
               },
               {
                 "id": "115660540726095041",
                 "title": "2승 0패",
                 "a": {
                   "seed": "",
-                  "short": "GEN"
+                  "short": "LYON"
                 },
                 "b": {
                   "seed": "",
-                  "short": "LYON"
+                  "short": "GEN"
                 },
                 "recordKey": "2-0",
                 "time": "10/26 07:00"

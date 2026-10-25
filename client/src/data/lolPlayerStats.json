@@ -1,7 +1,7 @@
 {
  "updatedAt": "2026-10-25",
  "season": 2026,
- "games": 2565,
+ "games": 2567,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -1907,19 +1907,19 @@
    "name": "DK Siwoo",
    "role": "top",
    "teamId": "100725845018863243",
-   "games": 131,
+   "games": 133,
    "k": 2.4,
    "d": 3.1,
    "a": 4.1,
-   "kda": 2.11,
+   "kda": 2.12,
    "csm": 9,
    "gpm": 392,
    "dmgShare": 0.22,
-   "kp": 0.44,
+   "kp": 0.45,
    "cto": {
-    "games": 130,
+    "games": 132,
     "weight": 0.95,
-    "kda": 2.01,
+    "kda": 2.03,
     "csm": 8.5,
     "gpm": 372,
     "dmgShare": 0.21,
@@ -1949,27 +1949,28 @@
    ],
    "leagues": {
     "LCK": 117,
-    "EWC": 14
+    "EWC": 14,
+    "Worlds": 2
    }
   },
   "106267599829820917": {
    "name": "DK Lucid",
    "role": "jungle",
    "teamId": "100725845018863243",
-   "games": 128,
+   "games": 130,
    "k": 3.1,
    "d": 3.1,
    "a": 7.4,
-   "kda": 3.33,
+   "kda": 3.38,
    "csm": 6.9,
    "gpm": 384,
    "dmgShare": 0.17,
    "kp": 0.71,
    "cto": {
-    "games": 127,
+    "games": 129,
     "weight": 0.95,
-    "kda": 3.16,
-    "csm": 6.5,
+    "kda": 3.21,
+    "csm": 6.6,
     "gpm": 365,
     "dmgShare": 0.16,
     "kp": 0.67
@@ -1977,7 +1978,7 @@
    "champions": [
     [
      "JarvanIV",
-     29
+     30
     ],
     [
      "XinZhao",
@@ -1985,7 +1986,7 @@
     ],
     [
      "LeeSin",
-     15
+     16
     ],
     [
      "Vi",
@@ -1998,26 +1999,27 @@
    ],
    "leagues": {
     "LCK": 114,
-    "EWC": 14
+    "EWC": 14,
+    "Worlds": 2
    }
   },
   "100725844988653773": {
    "name": "DK ShowMaker",
    "role": "mid",
    "teamId": "100725845018863243",
-   "games": 131,
+   "games": 133,
    "k": 3.6,
    "d": 2.4,
    "a": 5.4,
-   "kda": 3.76,
+   "kda": 3.82,
    "csm": 9,
    "gpm": 409,
-   "dmgShare": 0.24,
+   "dmgShare": 0.25,
    "kp": 0.63,
    "cto": {
-    "games": 130,
+    "games": 132,
     "weight": 0.95,
-    "kda": 3.58,
+    "kda": 3.63,
     "csm": 8.5,
     "gpm": 388,
     "dmgShare": 0.23,
@@ -2047,28 +2049,29 @@
    ],
    "leagues": {
     "LCK": 117,
-    "EWC": 14
+    "EWC": 14,
+    "Worlds": 2
    }
   },
   "108205129774185945": {
    "name": "DK Smash",
    "role": "bottom",
    "teamId": "100725845018863243",
-   "games": 131,
+   "games": 133,
    "k": 4.6,
    "d": 2.1,
    "a": 5.2,
-   "kda": 4.57,
+   "kda": 4.6,
    "csm": 10.6,
-   "gpm": 505,
+   "gpm": 506,
    "dmgShare": 0.28,
    "kp": 0.67,
    "cto": {
-    "games": 130,
+    "games": 132,
     "weight": 0.95,
-    "kda": 4.29,
+    "kda": 4.32,
     "csm": 10.1,
-    "gpm": 480,
+    "gpm": 481,
     "dmgShare": 0.26,
     "kp": 0.63
    },
@@ -2096,26 +2099,27 @@
    ],
    "leagues": {
     "LCK": 117,
-    "EWC": 14
+    "EWC": 14,
+    "Worlds": 2
    }
   },
   "108284721867904137": {
    "name": "DK Career",
    "role": "support",
    "teamId": "100725845018863243",
-   "games": 131,
+   "games": 133,
    "k": 0.8,
    "d": 2.7,
    "a": 10,
-   "kda": 4.03,
+   "kda": 4.06,
    "csm": 1.1,
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.74,
    "cto": {
-    "games": 130,
+    "games": 132,
     "weight": 0.95,
-    "kda": 3.81,
+    "kda": 3.84,
     "csm": 1.1,
     "gpm": 251,
     "dmgShare": 0.08,
@@ -2128,7 +2132,7 @@
     ],
     [
      "Bard",
-     13
+     14
     ],
     [
      "Karma",
@@ -2145,7 +2149,8 @@
    ],
    "leagues": {
     "LCK": 117,
-    "EWC": 14
+    "EWC": 14,
+    "Worlds": 2
    }
   },
   "104266795407626462": {
@@ -9721,19 +9726,19 @@
    "name": "MKOI Myrwn",
    "role": "top",
    "teamId": "103461966965149786",
-   "games": 93,
-   "k": 2.4,
+   "games": 95,
+   "k": 2.3,
    "d": 2.9,
-   "a": 5.3,
-   "kda": 2.63,
+   "a": 5.2,
+   "kda": 2.59,
    "csm": 8.1,
    "gpm": 371,
    "dmgShare": 0.21,
    "kp": 0.49,
    "cto": {
-    "games": 91,
-    "weight": 0.96,
-    "kda": 2.46,
+    "games": 93,
+    "weight": 0.97,
+    "kda": 2.42,
     "csm": 7.8,
     "gpm": 357,
     "dmgShare": 0.21,
@@ -9758,31 +9763,32 @@
     ],
     [
      "Jayce",
-     5
+     6
     ]
    ],
    "leagues": {
     "LEC": 89,
-    "EWC": 4
+    "EWC": 4,
+    "Worlds": 2
    }
   },
   "103877629120745120": {
    "name": "MKOI Elyoya",
    "role": "jungle",
    "teamId": "103461966965149786",
-   "games": 93,
-   "k": 3.2,
+   "games": 95,
+   "k": 3.1,
    "d": 2.4,
-   "a": 8.1,
-   "kda": 4.64,
+   "a": 8,
+   "kda": 4.56,
    "csm": 6.9,
-   "gpm": 389,
+   "gpm": 388,
    "dmgShare": 0.16,
    "kp": 0.74,
    "cto": {
-    "games": 91,
-    "weight": 0.96,
-    "kda": 4.37,
+    "games": 93,
+    "weight": 0.97,
+    "kda": 4.31,
     "csm": 6.7,
     "gpm": 375,
     "dmgShare": 0.16,
@@ -9791,7 +9797,7 @@
    "champions": [
     [
      "Vi",
-     12
+     13
     ],
     [
      "Pantheon",
@@ -9812,30 +9818,31 @@
    ],
    "leagues": {
     "LEC": 89,
-    "EWC": 4
+    "EWC": 4,
+    "Worlds": 2
    }
   },
   "105504920899018806": {
    "name": "MKOI Jojopyun",
    "role": "mid",
    "teamId": "103461966965149786",
-   "games": 93,
-   "k": 3.6,
-   "d": 2.8,
-   "a": 6.1,
-   "kda": 3.4,
+   "games": 95,
+   "k": 3.5,
+   "d": 2.9,
+   "a": 6,
+   "kda": 3.33,
    "csm": 9.2,
-   "gpm": 409,
+   "gpm": 408,
    "dmgShare": 0.25,
    "kp": 0.63,
    "cto": {
-    "games": 91,
-    "weight": 0.96,
-    "kda": 3.21,
+    "games": 93,
+    "weight": 0.97,
+    "kda": 3.16,
     "csm": 8.9,
     "gpm": 392,
     "dmgShare": 0.24,
-    "kp": 0.6
+    "kp": 0.61
    },
    "champions": [
     [
@@ -9848,7 +9855,7 @@
     ],
     [
      "Anivia",
-     8
+     9
     ],
     [
      "Akali",
@@ -9861,39 +9868,40 @@
    ],
    "leagues": {
     "LEC": 89,
-    "EWC": 4
+    "EWC": 4,
+    "Worlds": 2
    }
   },
   "103536968833612789": {
    "name": "MKOI Supa",
    "role": "bottom",
    "teamId": "103461966965149786",
-   "games": 93,
-   "k": 5.1,
-   "d": 2.2,
-   "a": 4.7,
-   "kda": 4.36,
+   "games": 95,
+   "k": 5,
+   "d": 2.3,
+   "a": 4.6,
+   "kda": 4.29,
    "csm": 10,
-   "gpm": 505,
+   "gpm": 504,
    "dmgShare": 0.29,
    "kp": 0.64,
    "cto": {
-    "games": 91,
-    "weight": 0.96,
-    "kda": 4.13,
+    "games": 93,
+    "weight": 0.97,
+    "kda": 4.06,
     "csm": 9.6,
-    "gpm": 486,
+    "gpm": 485,
     "dmgShare": 0.28,
     "kp": 0.62
    },
    "champions": [
     [
      "Ezreal",
-     17
+     18
     ],
     [
      "Yunara",
-     11
+     12
     ],
     [
      "Ashe",
@@ -9910,26 +9918,27 @@
    ],
    "leagues": {
     "LEC": 89,
-    "EWC": 4
+    "EWC": 4,
+    "Worlds": 2
    }
   },
   "107564404490889053": {
    "name": "MKOI Alvaro",
    "role": "support",
    "teamId": "103461966965149786",
-   "games": 93,
+   "games": 95,
    "k": 0.7,
    "d": 3,
-   "a": 10.3,
-   "kda": 3.63,
+   "a": 10.2,
+   "kda": 3.57,
    "csm": 1.1,
-   "gpm": 263,
+   "gpm": 262,
    "dmgShare": 0.08,
-   "kp": 0.74,
+   "kp": 0.73,
    "cto": {
-    "games": 91,
-    "weight": 0.96,
-    "kda": 3.42,
+    "games": 93,
+    "weight": 0.97,
+    "kda": 3.37,
     "csm": 1.1,
     "gpm": 253,
     "dmgShare": 0.08,
@@ -9941,25 +9950,26 @@
      11
     ],
     [
+     "Lulu",
+     11
+    ],
+    [
      "Seraphine",
      10
     ],
     [
-     "Lulu",
-     10
+     "Karma",
+     9
     ],
     [
      "Rakan",
-     8
-    ],
-    [
-     "Karma",
      8
     ]
    ],
    "leagues": {
     "LEC": 89,
-    "EWC": 4
+    "EWC": 4,
+    "Worlds": 2
    }
   },
   "103495716738607011": {
