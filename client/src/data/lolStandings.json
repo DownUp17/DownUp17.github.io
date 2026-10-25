@@ -11152,14 +11152,16 @@
                 "title": "1승 1패",
                 "a": {
                   "seed": "",
-                  "short": "HLE"
+                  "short": "IG",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "IG"
+                  "short": "HLE",
+                  "score": 0
                 },
-                "recordKey": "1-1",
-                "time": "10/26 02:00"
+                "recordKey": "1-1"
               },
               {
                 "id": "115660540726095047",
