@@ -14,35 +14,35 @@
       "key": "LPL",
       "name": "LPL",
       "country": "중국",
-      "score": 1310,
+      "score": 1325,
       "color": "#D32F2F"
     },
     {
       "key": "LEC",
       "name": "LEC",
       "country": "유럽",
-      "score": 1306,
+      "score": 1298,
       "color": "#00E0B0"
     },
     {
       "key": "LCS",
       "name": "LCS",
       "country": "북미",
-      "score": 1198,
+      "score": 1205,
       "color": "#eeece7"
     },
     {
       "key": "LCP",
       "name": "LCP",
       "country": "아시아·태평양",
-      "score": 1100,
+      "score": 1088,
       "color": "#F08040"
     },
     {
       "key": "CBLOL",
       "name": "CBLOL",
       "country": "브라질",
-      "score": 862,
+      "score": 860,
       "color": "#0b0718"
     }
   ]
