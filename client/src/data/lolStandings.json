@@ -11103,14 +11103,16 @@
                 "title": "0승 1패",
                 "a": {
                   "seed": "",
-                  "short": "TLAW"
+                  "short": "TLAW",
+                  "score": 0
                 },
                 "b": {
                   "seed": "",
-                  "short": "BLG"
+                  "short": "BLG",
+                  "score": 1,
+                  "win": true
                 },
-                "recordKey": "0-1",
-                "time": "10/25 09:00"
+                "recordKey": "0-1"
               }
             ]
           },
@@ -11121,10 +11123,12 @@
                 "id": "115660540726095037",
                 "title": "2승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "MKOI"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "DK"
                 },
                 "recordKey": "2-0",
                 "time": "10/26 04:00"
@@ -11133,10 +11137,12 @@
                 "id": "115660540726095041",
                 "title": "2승 0패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "GEN"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "LYON"
                 },
                 "recordKey": "2-0",
                 "time": "10/26 07:00"
@@ -11145,10 +11151,12 @@
                 "id": "115660540726095045",
                 "title": "1승 1패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "HLE"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "IG"
                 },
                 "recordKey": "1-1",
                 "time": "10/26 02:00"
@@ -11157,10 +11165,12 @@
                 "id": "115660540726095047",
                 "title": "1승 1패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "TES"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "G2"
                 },
                 "recordKey": "1-1",
                 "time": "10/26 03:00"
@@ -11169,10 +11179,12 @@
                 "id": "115660540726095049",
                 "title": "1승 1패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "CFO"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "T1"
                 },
                 "recordKey": "1-1",
                 "time": "10/27 02:00"
@@ -11181,10 +11193,12 @@
                 "id": "115660540726095051",
                 "title": "1승 1패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "BLG"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "KC"
                 },
                 "recordKey": "1-1",
                 "time": "10/27 03:00"
@@ -11193,10 +11207,12 @@
                 "id": "115660540726095053",
                 "title": "0승 2패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "LOS"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "TSW"
                 },
                 "recordKey": "0-2",
                 "time": "10/27 04:00"
@@ -11205,10 +11221,12 @@
                 "id": "115660540726095057",
                 "title": "0승 2패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "TLAW"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "AL"
                 },
                 "recordKey": "0-2",
                 "time": "10/27 07:00"
