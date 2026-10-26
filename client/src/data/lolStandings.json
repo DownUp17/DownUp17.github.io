@@ -11188,53 +11188,60 @@
                 "title": "1승 1패",
                 "a": {
                   "seed": "",
-                  "short": "CFO"
+                  "short": "T1",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "T1"
+                  "short": "CFO",
+                  "score": 0
                 },
-                "recordKey": "1-1",
-                "time": "10/27 02:00"
+                "recordKey": "1-1"
               },
               {
                 "id": "115660540726095051",
                 "title": "1승 1패",
                 "a": {
                   "seed": "",
-                  "short": "BLG"
+                  "short": "BLG",
+                  "score": 1,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "KC",
+                  "score": 0
                 },
-                "recordKey": "1-1",
-                "time": "10/27 03:00"
+                "recordKey": "1-1"
               },
               {
                 "id": "115660540726095053",
                 "title": "0승 2패",
                 "a": {
                   "seed": "",
-                  "short": "LOS"
+                  "short": "TSW",
+                  "score": 0,
+                  "elim": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "TSW"
+                  "short": "LOS",
+                  "score": 2,
+                  "win": true
                 },
-                "recordKey": "0-2",
-                "time": "10/27 04:00"
+                "recordKey": "0-2"
               },
               {
                 "id": "115660540726095057",
                 "title": "0승 2패",
                 "a": {
                   "seed": "",
-                  "short": "TLAW"
+                  "short": "AL"
                 },
                 "b": {
                   "seed": "",
-                  "short": "AL"
+                  "short": "TLAW"
                 },
                 "recordKey": "0-2",
                 "time": "10/27 07:00"
