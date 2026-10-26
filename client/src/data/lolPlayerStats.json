@@ -19,9 +19,9 @@
    "cto": {
     "games": 118,
     "weight": 0.98,
-    "kda": 2.65,
+    "kda": 2.66,
     "csm": 8.1,
-    "gpm": 364,
+    "gpm": 365,
     "dmgShare": 0.21,
     "kp": 0.49
    },
@@ -71,9 +71,9 @@
     "weight": 0.98,
     "kda": 3.28,
     "csm": 6.4,
-    "gpm": 365,
+    "gpm": 366,
     "dmgShare": 0.16,
-    "kp": 0.69
+    "kp": 0.7
    },
    "champions": [
     [
@@ -119,9 +119,9 @@
    "cto": {
     "games": 118,
     "weight": 0.98,
-    "kda": 3.9,
+    "kda": 3.91,
     "csm": 8.8,
-    "gpm": 389,
+    "gpm": 390,
     "dmgShare": 0.24,
     "kp": 0.67
    },
@@ -169,9 +169,9 @@
    "cto": {
     "games": 89,
     "weight": 0.98,
-    "kda": 4.35,
-    "csm": 10.2,
-    "gpm": 491,
+    "kda": 4.36,
+    "csm": 10.3,
+    "gpm": 492,
     "dmgShare": 0.29,
     "kp": 0.69
    },
@@ -218,9 +218,9 @@
    "cto": {
     "games": 98,
     "weight": 0.99,
-    "kda": 3.39,
+    "kda": 3.4,
     "csm": 1,
-    "gpm": 264,
+    "gpm": 265,
     "dmgShare": 0.08,
     "kp": 0.72
    },
@@ -267,10 +267,10 @@
    "kp": 0.55,
    "cto": {
     "games": 124,
-    "weight": 0.91,
-    "kda": 2.68,
-    "csm": 7.4,
-    "gpm": 357,
+    "weight": 0.92,
+    "kda": 2.69,
+    "csm": 7.5,
+    "gpm": 360,
     "dmgShare": 0.21,
     "kp": 0.51
    },
@@ -318,10 +318,10 @@
    "kp": 0.72,
    "cto": {
     "games": 124,
-    "weight": 0.91,
-    "kda": 2.62,
-    "csm": 6.4,
-    "gpm": 370,
+    "weight": 0.92,
+    "kda": 2.64,
+    "csm": 6.5,
+    "gpm": 372,
     "dmgShare": 0.17,
     "kp": 0.66
    },
@@ -369,12 +369,12 @@
    "kp": 0.68,
    "cto": {
     "games": 124,
-    "weight": 0.91,
-    "kda": 4.57,
-    "csm": 8.1,
-    "gpm": 384,
+    "weight": 0.92,
+    "kda": 4.6,
+    "csm": 8.2,
+    "gpm": 387,
     "dmgShare": 0.22,
-    "kp": 0.62
+    "kp": 0.63
    },
    "champions": [
     [
@@ -420,10 +420,10 @@
    "kp": 0.65,
    "cto": {
     "games": 124,
-    "weight": 0.91,
-    "kda": 3.08,
+    "weight": 0.92,
+    "kda": 3.1,
     "csm": 9.2,
-    "gpm": 445,
+    "gpm": 448,
     "dmgShare": 0.25,
     "kp": 0.59
    },
@@ -471,12 +471,12 @@
    "kp": 0.74,
    "cto": {
     "games": 119,
-    "weight": 0.91,
-    "kda": 3.41,
+    "weight": 0.92,
+    "kda": 3.43,
     "csm": 1.1,
-    "gpm": 251,
+    "gpm": 253,
     "dmgShare": 0.07,
-    "kp": 0.67
+    "kp": 0.68
    },
    "champions": [
     [
@@ -523,7 +523,7 @@
    "cto": {
     "games": 118,
     "weight": 1.06,
-    "kda": 3.12,
+    "kda": 3.13,
     "csm": 8.9,
     "gpm": 404,
     "dmgShare": 0.24,
@@ -623,11 +623,11 @@
    "cto": {
     "games": 101,
     "weight": 1.05,
-    "kda": 3.63,
+    "kda": 3.64,
     "csm": 9.1,
-    "gpm": 408,
-    "dmgShare": 0.25,
-    "kp": 0.69
+    "gpm": 409,
+    "dmgShare": 0.26,
+    "kp": 0.7
    },
    "champions": [
     [
@@ -675,8 +675,8 @@
     "weight": 1.06,
     "kda": 3.93,
     "csm": 11,
-    "gpm": 524,
-    "dmgShare": 0.3,
+    "gpm": 525,
+    "dmgShare": 0.31,
     "kp": 0.69
    },
    "champions": [
@@ -723,7 +723,7 @@
    "cto": {
     "games": 118,
     "weight": 1.06,
-    "kda": 3.1,
+    "kda": 3.11,
     "csm": 1.2,
     "gpm": 276,
     "dmgShare": 0.1,
@@ -772,10 +772,10 @@
    "kp": 0.51,
    "cto": {
     "games": 89,
-    "weight": 1.13,
-    "kda": 2.69,
-    "csm": 9.2,
-    "gpm": 425,
+    "weight": 1.14,
+    "kda": 2.7,
+    "csm": 9.3,
+    "gpm": 426,
     "dmgShare": 0.27,
     "kp": 0.58
    },
@@ -822,9 +822,9 @@
    "cto": {
     "games": 108,
     "weight": 1.12,
-    "kda": 3.28,
+    "kda": 3.29,
     "csm": 7.5,
-    "gpm": 420,
+    "gpm": 421,
     "dmgShare": 0.18,
     "kp": 0.79
    },
@@ -873,7 +873,7 @@
     "weight": 1.12,
     "kda": 3.99,
     "csm": 10.3,
-    "gpm": 454,
+    "gpm": 455,
     "dmgShare": 0.27,
     "kp": 0.73
    },
@@ -969,7 +969,7 @@
    "cto": {
     "games": 107,
     "weight": 1.12,
-    "kda": 2.79,
+    "kda": 2.8,
     "csm": 1,
     "gpm": 283,
     "dmgShare": 0.09,
@@ -1020,7 +1020,7 @@
     "weight": 0.96,
     "kda": 2.58,
     "csm": 8.1,
-    "gpm": 379,
+    "gpm": 380,
     "dmgShare": 0.21,
     "kp": 0.47
    },
@@ -1069,10 +1069,10 @@
    "kp": 0.68,
    "cto": {
     "games": 140,
-    "weight": 0.95,
+    "weight": 0.96,
     "kda": 3.41,
     "csm": 6.6,
-    "gpm": 380,
+    "gpm": 381,
     "dmgShare": 0.16,
     "kp": 0.65
    },
@@ -1122,7 +1122,7 @@
    "cto": {
     "games": 143,
     "weight": 0.96,
-    "kda": 2.94,
+    "kda": 2.95,
     "csm": 8.4,
     "gpm": 387,
     "dmgShare": 0.22,
@@ -1176,7 +1176,7 @@
     "weight": 0.96,
     "kda": 4.21,
     "csm": 9.8,
-    "gpm": 485,
+    "gpm": 486,
     "dmgShare": 0.28,
     "kp": 0.65
    },
@@ -1226,7 +1226,7 @@
    "cto": {
     "games": 143,
     "weight": 0.96,
-    "kda": 4.21,
+    "kda": 4.22,
     "csm": 1,
     "gpm": 259,
     "dmgShare": 0.09,
@@ -1279,7 +1279,7 @@
     "games": 92,
     "weight": 1.07,
     "kda": 2.59,
-    "csm": 8.9,
+    "csm": 9,
     "gpm": 415,
     "dmgShare": 0.25,
     "kp": 0.54
@@ -1329,7 +1329,7 @@
     "weight": 1.07,
     "kda": 3.02,
     "csm": 6.8,
-    "gpm": 402,
+    "gpm": 403,
     "dmgShare": 0.17,
     "kp": 0.77
    },
@@ -1378,7 +1378,7 @@
     "weight": 1.07,
     "kda": 3.61,
     "csm": 9.5,
-    "gpm": 447,
+    "gpm": 448,
     "dmgShare": 0.27,
     "kp": 0.73
    },
@@ -1524,7 +1524,7 @@
     "games": 15,
     "weight": 1.01,
     "kda": 2.85,
-    "csm": 9.2,
+    "csm": 9.3,
     "gpm": 458,
     "dmgShare": 0.27,
     "kp": 0.6
@@ -1619,10 +1619,10 @@
    "kp": 0.79,
    "cto": {
     "games": 13,
-    "weight": 0.85,
-    "kda": 4.08,
+    "weight": 0.86,
+    "kda": 4.11,
     "csm": 0.8,
-    "gpm": 249,
+    "gpm": 251,
     "dmgShare": 0.09,
     "kp": 0.68
    },
@@ -1671,8 +1671,8 @@
     "weight": 1.05,
     "kda": 2.7,
     "csm": 9,
-    "gpm": 404,
-    "dmgShare": 0.22,
+    "gpm": 405,
+    "dmgShare": 0.23,
     "kp": 0.51
    },
    "champions": [
@@ -1719,11 +1719,11 @@
    "cto": {
     "games": 127,
     "weight": 1.05,
-    "kda": 3.3,
-    "csm": 6.9,
-    "gpm": 409,
+    "kda": 3.31,
+    "csm": 7,
+    "gpm": 410,
     "dmgShare": 0.19,
-    "kp": 0.77
+    "kp": 0.78
    },
    "champions": [
     [
@@ -1769,9 +1769,9 @@
    "cto": {
     "games": 117,
     "weight": 1.05,
-    "kda": 3.18,
+    "kda": 3.19,
     "csm": 9.4,
-    "gpm": 419,
+    "gpm": 420,
     "dmgShare": 0.26,
     "kp": 0.66
    },
@@ -1821,7 +1821,7 @@
     "weight": 1.05,
     "kda": 3.4,
     "csm": 10.4,
-    "gpm": 506,
+    "gpm": 507,
     "dmgShare": 0.28,
     "kp": 0.69
    },
@@ -1871,7 +1871,7 @@
     "weight": 1.05,
     "kda": 4.21,
     "csm": 1,
-    "gpm": 275,
+    "gpm": 276,
     "dmgShare": 0.09,
     "kp": 0.78
    },
@@ -1918,10 +1918,10 @@
    "kp": 0.45,
    "cto": {
     "games": 132,
-    "weight": 0.95,
-    "kda": 2.03,
-    "csm": 8.5,
-    "gpm": 372,
+    "weight": 0.94,
+    "kda": 2.01,
+    "csm": 8.4,
+    "gpm": 369,
     "dmgShare": 0.21,
     "kp": 0.42
    },
@@ -1968,10 +1968,10 @@
    "kp": 0.71,
    "cto": {
     "games": 129,
-    "weight": 0.95,
-    "kda": 3.21,
-    "csm": 6.6,
-    "gpm": 365,
+    "weight": 0.94,
+    "kda": 3.17,
+    "csm": 6.5,
+    "gpm": 362,
     "dmgShare": 0.16,
     "kp": 0.67
    },
@@ -2018,10 +2018,10 @@
    "kp": 0.63,
    "cto": {
     "games": 132,
-    "weight": 0.95,
-    "kda": 3.63,
-    "csm": 8.5,
-    "gpm": 388,
+    "weight": 0.94,
+    "kda": 3.6,
+    "csm": 8.4,
+    "gpm": 385,
     "dmgShare": 0.23,
     "kp": 0.59
    },
@@ -2068,10 +2068,10 @@
    "kp": 0.67,
    "cto": {
     "games": 132,
-    "weight": 0.95,
-    "kda": 4.32,
-    "csm": 10.1,
-    "gpm": 481,
+    "weight": 0.94,
+    "kda": 4.28,
+    "csm": 10,
+    "gpm": 476,
     "dmgShare": 0.26,
     "kp": 0.63
    },
@@ -2118,10 +2118,10 @@
    "kp": 0.74,
    "cto": {
     "games": 132,
-    "weight": 0.95,
-    "kda": 3.84,
+    "weight": 0.94,
+    "kda": 3.81,
     "csm": 1.1,
-    "gpm": 251,
+    "gpm": 248,
     "dmgShare": 0.08,
     "kp": 0.7
    },
@@ -2268,7 +2268,7 @@
     "weight": 1.16,
     "kda": 3.59,
     "csm": 10.6,
-    "gpm": 455,
+    "gpm": 456,
     "dmgShare": 0.28,
     "kp": 0.73
    },
@@ -2315,9 +2315,9 @@
    "cto": {
     "games": 106,
     "weight": 1.16,
-    "kda": 3.32,
+    "kda": 3.33,
     "csm": 10.5,
-    "gpm": 528,
+    "gpm": 529,
     "dmgShare": 0.31,
     "kp": 0.73
    },
@@ -2363,8 +2363,8 @@
    "kp": 0.75,
    "cto": {
     "games": 84,
-    "weight": 1.14,
-    "kda": 3.4,
+    "weight": 1.15,
+    "kda": 3.41,
     "csm": 1.2,
     "gpm": 302,
     "dmgShare": 0.1,
@@ -2412,12 +2412,12 @@
    "kp": 0.59,
    "cto": {
     "games": 118,
-    "weight": 0.9,
-    "kda": 3.5,
+    "weight": 0.89,
+    "kda": 3.48,
     "csm": 7.5,
-    "gpm": 365,
+    "gpm": 363,
     "dmgShare": 0.21,
-    "kp": 0.53
+    "kp": 0.52
    },
    "champions": [
     [
@@ -2463,10 +2463,10 @@
    "kp": 0.72,
    "cto": {
     "games": 118,
-    "weight": 0.9,
-    "kda": 4.56,
-    "csm": 6.5,
-    "gpm": 360,
+    "weight": 0.89,
+    "kda": 4.53,
+    "csm": 6.4,
+    "gpm": 358,
     "dmgShare": 0.15,
     "kp": 0.64
    },
@@ -2514,12 +2514,12 @@
    "kp": 0.64,
    "cto": {
     "games": 118,
-    "weight": 0.9,
-    "kda": 4.72,
+    "weight": 0.89,
+    "kda": 4.69,
     "csm": 8.5,
-    "gpm": 390,
-    "dmgShare": 0.23,
-    "kp": 0.58
+    "gpm": 388,
+    "dmgShare": 0.22,
+    "kp": 0.57
    },
    "champions": [
     [
@@ -2565,10 +2565,10 @@
    "kp": 0.66,
    "cto": {
     "games": 118,
-    "weight": 0.9,
-    "kda": 4.5,
+    "weight": 0.89,
+    "kda": 4.47,
     "csm": 9.1,
-    "gpm": 451,
+    "gpm": 448,
     "dmgShare": 0.24,
     "kp": 0.59
    },
@@ -2616,10 +2616,10 @@
    "kp": 0.75,
    "cto": {
     "games": 118,
-    "weight": 0.9,
-    "kda": 4.52,
+    "weight": 0.89,
+    "kda": 4.49,
     "csm": 0.8,
-    "gpm": 241,
+    "gpm": 239,
     "dmgShare": 0.07,
     "kp": 0.67
    },
@@ -2716,12 +2716,12 @@
    "kp": 0.68,
    "cto": {
     "games": 80,
-    "weight": 1.05,
+    "weight": 1.06,
     "kda": 3.31,
     "csm": 9.9,
-    "gpm": 499,
+    "gpm": 500,
     "dmgShare": 0.3,
-    "kp": 0.71
+    "kp": 0.72
    },
    "champions": [
     [
@@ -2767,7 +2767,7 @@
    "cto": {
     "games": 58,
     "weight": 1.02,
-    "kda": 3.31,
+    "kda": 3.32,
     "csm": 8.9,
     "gpm": 398,
     "dmgShare": 0.25,
@@ -2866,7 +2866,7 @@
     "games": 13,
     "weight": 0.88,
     "kda": 2.97,
-    "csm": 5.9,
+    "csm": 5.8,
     "gpm": 334,
     "dmgShare": 0.16,
     "kp": 0.61
@@ -2948,7 +2948,7 @@
     "weight": 1.21,
     "kda": 1.39,
     "csm": 1.2,
-    "gpm": 302,
+    "gpm": 303,
     "dmgShare": 0.13,
     "kp": 0.74
    },
@@ -3042,9 +3042,9 @@
    "cto": {
     "games": 8,
     "weight": 1.22,
-    "kda": 1.67,
+    "kda": 1.68,
     "csm": 1.3,
-    "gpm": 292,
+    "gpm": 294,
     "dmgShare": 0.12,
     "kp": 0.97
    },
@@ -3090,9 +3090,9 @@
    "cto": {
     "games": 6,
     "weight": 1.04,
-    "kda": 2.27,
-    "csm": 9.5,
-    "gpm": 462,
+    "kda": 2.29,
+    "csm": 9.6,
+    "gpm": 465,
     "dmgShare": 0.31,
     "kp": 0.56
    },
@@ -3138,12 +3138,12 @@
    "kp": 0.45,
    "cto": {
     "games": 2,
-    "weight": 1.25,
-    "kda": 0.84,
-    "csm": 7.3,
-    "gpm": 380,
+    "weight": 1.27,
+    "kda": 0.85,
+    "csm": 7.4,
+    "gpm": 384,
     "dmgShare": 0.15,
-    "kp": 0.56
+    "kp": 0.57
    },
    "champions": [
     [
@@ -3175,9 +3175,9 @@
    "cto": {
     "games": 4,
     "weight": 1.16,
-    "kda": 0.99,
-    "csm": 10.5,
-    "gpm": 442,
+    "kda": 1,
+    "csm": 10.6,
+    "gpm": 444,
     "dmgShare": 0.31,
     "kp": 0.74
    },
@@ -3219,7 +3219,7 @@
    "cto": {
     "games": 11,
     "weight": 0.94,
-    "kda": 1.56,
+    "kda": 1.57,
     "csm": 0.9,
     "gpm": 244,
     "dmgShare": 0.08,
@@ -3414,7 +3414,7 @@
    "cto": {
     "games": 144,
     "weight": 1.04,
-    "kda": 3,
+    "kda": 3.01,
     "csm": 9,
     "gpm": 414,
     "dmgShare": 0.25,
@@ -3512,7 +3512,7 @@
    "cto": {
     "games": 153,
     "weight": 1.05,
-    "kda": 3.29,
+    "kda": 3.3,
     "csm": 1.1,
     "gpm": 272,
     "dmgShare": 0.08,
@@ -3560,10 +3560,10 @@
    "kp": 0.52,
    "cto": {
     "games": 154,
-    "weight": 1.03,
+    "weight": 1.04,
     "kda": 3.01,
     "csm": 9.1,
-    "gpm": 404,
+    "gpm": 405,
     "dmgShare": 0.23,
     "kp": 0.54
    },
@@ -3611,11 +3611,11 @@
    "cto": {
     "games": 137,
     "weight": 1.05,
-    "kda": 3.47,
+    "kda": 3.48,
     "csm": 7.3,
     "gpm": 405,
     "dmgShare": 0.17,
-    "kp": 0.73
+    "kp": 0.74
    },
    "champions": [
     [
@@ -3660,9 +3660,9 @@
    "cto": {
     "games": 142,
     "weight": 1.04,
-    "kda": 3.69,
+    "kda": 3.7,
     "csm": 9,
-    "gpm": 415,
+    "gpm": 416,
     "dmgShare": 0.27,
     "kp": 0.7
    },
@@ -3708,10 +3708,10 @@
    "kp": 0.64,
    "cto": {
     "games": 154,
-    "weight": 1.03,
-    "kda": 4.48,
+    "weight": 1.04,
+    "kda": 4.49,
     "csm": 10.4,
-    "gpm": 497,
+    "gpm": 498,
     "dmgShare": 0.28,
     "kp": 0.66
    },
@@ -3758,7 +3758,7 @@
    "kp": 0.74,
    "cto": {
     "games": 154,
-    "weight": 1.03,
+    "weight": 1.04,
     "kda": 3.96,
     "csm": 1.1,
     "gpm": 271,
@@ -3808,10 +3808,10 @@
    "kp": 0.44,
    "cto": {
     "games": 18,
-    "weight": 0.83,
-    "kda": 2.93,
+    "weight": 0.84,
+    "kda": 2.94,
     "csm": 6.9,
-    "gpm": 329,
+    "gpm": 330,
     "dmgShare": 0.17,
     "kp": 0.37
    },
@@ -3907,9 +3907,9 @@
    "cto": {
     "games": 154,
     "weight": 0.89,
-    "kda": 5.99,
+    "kda": 6,
     "csm": 8,
-    "gpm": 393,
+    "gpm": 394,
     "dmgShare": 0.24,
     "kp": 0.61
    },
@@ -3957,7 +3957,7 @@
    "cto": {
     "games": 154,
     "weight": 0.89,
-    "kda": 4.73,
+    "kda": 4.74,
     "csm": 8.7,
     "gpm": 435,
     "dmgShare": 0.25,
@@ -4007,7 +4007,7 @@
    "cto": {
     "games": 154,
     "weight": 0.89,
-    "kda": 3.52,
+    "kda": 3.53,
     "csm": 0.9,
     "gpm": 245,
     "dmgShare": 0.07,
@@ -4059,7 +4059,7 @@
     "weight": 1.1,
     "kda": 2.16,
     "csm": 9,
-    "gpm": 404,
+    "gpm": 405,
     "dmgShare": 0.25,
     "kp": 0.61
    },
@@ -4249,7 +4249,7 @@
    "cto": {
     "games": 46,
     "weight": 1.11,
-    "kda": 2.26,
+    "kda": 2.27,
     "csm": 1.1,
     "gpm": 273,
     "dmgShare": 0.08,
@@ -4297,7 +4297,7 @@
    "cto": {
     "games": 89,
     "weight": 1.03,
-    "kda": 2.8,
+    "kda": 2.81,
     "csm": 8.6,
     "gpm": 393,
     "dmgShare": 0.25,
@@ -4346,7 +4346,7 @@
    "cto": {
     "games": 106,
     "weight": 1.02,
-    "kda": 3.42,
+    "kda": 3.43,
     "csm": 7.1,
     "gpm": 397,
     "dmgShare": 0.18,
@@ -4395,9 +4395,9 @@
    "cto": {
     "games": 106,
     "weight": 1.02,
-    "kda": 4.3,
+    "kda": 4.31,
     "csm": 8.9,
-    "gpm": 401,
+    "gpm": 402,
     "dmgShare": 0.26,
     "kp": 0.67
    },
@@ -4444,9 +4444,9 @@
    "cto": {
     "games": 106,
     "weight": 1.02,
-    "kda": 3.01,
-    "csm": 9.2,
-    "gpm": 452,
+    "kda": 3.02,
+    "csm": 9.3,
+    "gpm": 453,
     "dmgShare": 0.27,
     "kp": 0.63
    },
@@ -4492,8 +4492,8 @@
    "kp": 0.74,
    "cto": {
     "games": 61,
-    "weight": 1.05,
-    "kda": 3.98,
+    "weight": 1.06,
+    "kda": 3.99,
     "csm": 1.2,
     "gpm": 273,
     "dmgShare": 0.07,
@@ -4542,9 +4542,9 @@
    "cto": {
     "games": 90,
     "weight": 1.04,
-    "kda": 2.74,
+    "kda": 2.75,
     "csm": 8.6,
-    "gpm": 388,
+    "gpm": 389,
     "dmgShare": 0.24,
     "kp": 0.52
    },
@@ -4590,9 +4590,9 @@
    "cto": {
     "games": 100,
     "weight": 1.06,
-    "kda": 3.59,
+    "kda": 3.6,
     "csm": 7.3,
-    "gpm": 403,
+    "gpm": 405,
     "dmgShare": 0.17,
     "kp": 0.8
    },
@@ -4638,11 +4638,11 @@
    "cto": {
     "games": 90,
     "weight": 1.04,
-    "kda": 3.44,
+    "kda": 3.46,
     "csm": 8.8,
-    "gpm": 401,
+    "gpm": 402,
     "dmgShare": 0.24,
-    "kp": 0.65
+    "kp": 0.66
    },
    "champions": [
     [
@@ -4686,10 +4686,10 @@
    "cto": {
     "games": 90,
     "weight": 1.04,
-    "kda": 3.5,
-    "csm": 9.9,
-    "gpm": 499,
-    "dmgShare": 0.3,
+    "kda": 3.51,
+    "csm": 10,
+    "gpm": 500,
+    "dmgShare": 0.31,
     "kp": 0.71
    },
    "champions": [
@@ -4734,11 +4734,11 @@
    "cto": {
     "games": 70,
     "weight": 1.02,
-    "kda": 3.01,
+    "kda": 2.99,
     "csm": 1.1,
-    "gpm": 251,
+    "gpm": 250,
     "dmgShare": 0.07,
-    "kp": 0.76
+    "kp": 0.75
    },
    "champions": [
     [
@@ -4782,11 +4782,11 @@
    "cto": {
     "games": 44,
     "weight": 0.97,
-    "kda": 2.34,
-    "csm": 7.6,
-    "gpm": 363,
+    "kda": 2.32,
+    "csm": 7.5,
+    "gpm": 360,
     "dmgShare": 0.21,
-    "kp": 0.45
+    "kp": 0.44
    },
    "champions": [
     [
@@ -4830,12 +4830,12 @@
    "kp": 0.73,
    "cto": {
     "games": 123,
-    "weight": 0.99,
-    "kda": 3.17,
-    "csm": 6.5,
-    "gpm": 379,
+    "weight": 0.98,
+    "kda": 3.14,
+    "csm": 6.4,
+    "gpm": 376,
     "dmgShare": 0.17,
-    "kp": 0.72
+    "kp": 0.71
    },
    "champions": [
     [
@@ -4880,11 +4880,11 @@
    "cto": {
     "games": 86,
     "weight": 0.98,
-    "kda": 3.82,
+    "kda": 3.79,
     "csm": 8.4,
-    "gpm": 392,
-    "dmgShare": 0.25,
-    "kp": 0.65
+    "gpm": 389,
+    "dmgShare": 0.24,
+    "kp": 0.64
    },
    "champions": [
     [
@@ -4931,8 +4931,8 @@
     "weight": 0.98,
     "kda": 3.56,
     "csm": 9.7,
-    "gpm": 484,
-    "dmgShare": 0.28,
+    "gpm": 485,
+    "dmgShare": 0.29,
     "kp": 0.64
    },
    "champions": [
@@ -4976,12 +4976,12 @@
    "kp": 0.75,
    "cto": {
     "games": 81,
-    "weight": 0.98,
-    "kda": 3.56,
+    "weight": 0.97,
+    "kda": 3.53,
     "csm": 1,
-    "gpm": 260,
+    "gpm": 258,
     "dmgShare": 0.08,
-    "kp": 0.74
+    "kp": 0.73
    },
    "champions": [
     [
@@ -5027,7 +5027,7 @@
     "games": 76,
     "weight": 1.08,
     "kda": 1.97,
-    "csm": 9.3,
+    "csm": 9.4,
     "gpm": 416,
     "dmgShare": 0.26,
     "kp": 0.57
@@ -5076,7 +5076,7 @@
     "weight": 1.08,
     "kda": 3.16,
     "csm": 7.7,
-    "gpm": 418,
+    "gpm": 419,
     "dmgShare": 0.19,
     "kp": 0.81
    },
@@ -5124,7 +5124,7 @@
     "weight": 1.08,
     "kda": 2.78,
     "csm": 8.8,
-    "gpm": 394,
+    "gpm": 395,
     "dmgShare": 0.26,
     "kp": 0.7
    },
@@ -5170,9 +5170,9 @@
    "cto": {
     "games": 61,
     "weight": 1.09,
-    "kda": 3,
+    "kda": 3.01,
     "csm": 9.7,
-    "gpm": 478,
+    "gpm": 479,
     "dmgShare": 0.29,
     "kp": 0.7
    },
@@ -5220,7 +5220,7 @@
     "weight": 1.08,
     "kda": 2.89,
     "csm": 1.1,
-    "gpm": 263,
+    "gpm": 264,
     "dmgShare": 0.08,
     "kp": 0.78
    },
@@ -5265,12 +5265,12 @@
    "kp": 0.54,
    "cto": {
     "games": 91,
-    "weight": 0.98,
-    "kda": 2.46,
-    "csm": 7.8,
-    "gpm": 372,
-    "dmgShare": 0.22,
-    "kp": 0.53
+    "weight": 0.97,
+    "kda": 2.44,
+    "csm": 7.7,
+    "gpm": 369,
+    "dmgShare": 0.21,
+    "kp": 0.52
    },
    "champions": [
     [
@@ -5314,10 +5314,10 @@
    "kp": 0.7,
    "cto": {
     "games": 92,
-    "weight": 0.98,
-    "kda": 3.18,
-    "csm": 7,
-    "gpm": 387,
+    "weight": 0.97,
+    "kda": 3.15,
+    "csm": 6.9,
+    "gpm": 384,
     "dmgShare": 0.16,
     "kp": 0.68
    },
@@ -5364,11 +5364,11 @@
    "kp": 0.61,
    "cto": {
     "games": 134,
-    "weight": 0.98,
-    "kda": 3.72,
+    "weight": 0.97,
+    "kda": 3.69,
     "csm": 8.5,
-    "gpm": 398,
-    "dmgShare": 0.26,
+    "gpm": 394,
+    "dmgShare": 0.25,
     "kp": 0.59
    },
    "champions": [
@@ -5414,12 +5414,12 @@
    "kp": 0.65,
    "cto": {
     "games": 92,
-    "weight": 0.98,
-    "kda": 3.32,
-    "csm": 9.3,
-    "gpm": 452,
+    "weight": 0.97,
+    "kda": 3.29,
+    "csm": 9.2,
+    "gpm": 448,
     "dmgShare": 0.27,
-    "kp": 0.64
+    "kp": 0.63
    },
    "champions": [
     [
@@ -5513,10 +5513,10 @@
    "kp": 0.55,
    "cto": {
     "games": 85,
-    "weight": 0.97,
-    "kda": 3.05,
+    "weight": 0.98,
+    "kda": 3.06,
     "csm": 7.7,
-    "gpm": 373,
+    "gpm": 374,
     "dmgShare": 0.23,
     "kp": 0.53
    },
@@ -5561,10 +5561,10 @@
    "kp": 0.72,
    "cto": {
     "games": 85,
-    "weight": 0.97,
-    "kda": 3.3,
+    "weight": 0.98,
+    "kda": 3.31,
     "csm": 6.7,
-    "gpm": 378,
+    "gpm": 379,
     "dmgShare": 0.15,
     "kp": 0.7
    },
@@ -5609,10 +5609,10 @@
    "kp": 0.63,
    "cto": {
     "games": 85,
-    "weight": 0.97,
-    "kda": 4.56,
-    "csm": 8.6,
-    "gpm": 400,
+    "weight": 0.98,
+    "kda": 4.57,
+    "csm": 8.7,
+    "gpm": 401,
     "dmgShare": 0.22,
     "kp": 0.62
    },
@@ -5658,11 +5658,11 @@
    "cto": {
     "games": 73,
     "weight": 0.98,
-    "kda": 3.55,
+    "kda": 3.54,
     "csm": 9.6,
-    "gpm": 461,
+    "gpm": 459,
     "dmgShare": 0.28,
-    "kp": 0.67
+    "kp": 0.66
    },
    "champions": [
     [
@@ -5705,12 +5705,12 @@
    "kp": 0.73,
    "cto": {
     "games": 115,
-    "weight": 0.98,
-    "kda": 3.08,
+    "weight": 0.97,
+    "kda": 3.06,
     "csm": 1,
-    "gpm": 258,
+    "gpm": 256,
     "dmgShare": 0.07,
-    "kp": 0.72
+    "kp": 0.71
    },
    "champions": [
     [
@@ -5803,9 +5803,9 @@
    "cto": {
     "games": 13,
     "weight": 1.1,
-    "kda": 2.59,
+    "kda": 2.6,
     "csm": 7.3,
-    "gpm": 398,
+    "gpm": 399,
     "dmgShare": 0.18,
     "kp": 0.83
    },
@@ -5851,9 +5851,9 @@
    "cto": {
     "games": 49,
     "weight": 1.02,
-    "kda": 4.42,
+    "kda": 4.43,
     "csm": 10.3,
-    "gpm": 501,
+    "gpm": 502,
     "dmgShare": 0.32,
     "kp": 0.68
    },
@@ -5899,7 +5899,7 @@
    "cto": {
     "games": 53,
     "weight": 0.98,
-    "kda": 2.78,
+    "kda": 2.79,
     "csm": 1,
     "gpm": 246,
     "dmgShare": 0.08,
@@ -5946,9 +5946,9 @@
    "kp": 0.5,
    "cto": {
     "games": 91,
-    "weight": 0.98,
-    "kda": 2.9,
-    "csm": 8.1,
+    "weight": 0.97,
+    "kda": 2.89,
+    "csm": 8,
     "gpm": 368,
     "dmgShare": 0.21,
     "kp": 0.48
@@ -5996,9 +5996,9 @@
    "cto": {
     "games": 137,
     "weight": 0.97,
-    "kda": 4.46,
+    "kda": 4.48,
     "csm": 7,
-    "gpm": 386,
+    "gpm": 388,
     "dmgShare": 0.18,
     "kp": 0.72
    },
@@ -6046,9 +6046,9 @@
    "cto": {
     "games": 137,
     "weight": 0.97,
-    "kda": 3.91,
-    "csm": 8.4,
-    "gpm": 385,
+    "kda": 3.92,
+    "csm": 8.5,
+    "gpm": 386,
     "dmgShare": 0.24,
     "kp": 0.62
    },
@@ -6096,9 +6096,9 @@
    "cto": {
     "games": 137,
     "weight": 0.97,
-    "kda": 4.3,
+    "kda": 4.31,
     "csm": 9.3,
-    "gpm": 466,
+    "gpm": 467,
     "dmgShare": 0.26,
     "kp": 0.63
    },
@@ -6146,7 +6146,7 @@
    "cto": {
     "games": 137,
     "weight": 0.97,
-    "kda": 4.12,
+    "kda": 4.13,
     "csm": 1.1,
     "gpm": 253,
     "dmgShare": 0.08,
@@ -6196,11 +6196,11 @@
    "cto": {
     "games": 26,
     "weight": 1.02,
-    "kda": 2.19,
+    "kda": 2.17,
     "csm": 8.5,
-    "gpm": 387,
+    "gpm": 385,
     "dmgShare": 0.23,
-    "kp": 0.64
+    "kp": 0.63
    },
    "champions": [
     [
@@ -6243,8 +6243,8 @@
    "kp": 0.74,
    "cto": {
     "games": 41,
-    "weight": 1,
-    "kda": 3.74,
+    "weight": 1.01,
+    "kda": 3.75,
     "csm": 1.1,
     "gpm": 271,
     "dmgShare": 0.08,
@@ -6292,9 +6292,9 @@
    "cto": {
     "games": 3,
     "weight": 0.92,
-    "kda": 2.19,
+    "kda": 2.18,
     "csm": 6.2,
-    "gpm": 340,
+    "gpm": 337,
     "dmgShare": 0.17,
     "kp": 0.61
    },
@@ -6332,8 +6332,8 @@
    "kp": 0.74,
    "cto": {
     "games": 43,
-    "weight": 1.05,
-    "kda": 3.04,
+    "weight": 1.06,
+    "kda": 3.05,
     "csm": 1.3,
     "gpm": 265,
     "dmgShare": 0.08,
@@ -6381,9 +6381,9 @@
    "cto": {
     "games": 92,
     "weight": 0.96,
-    "kda": 3.26,
+    "kda": 3.27,
     "csm": 8.2,
-    "gpm": 369,
+    "gpm": 370,
     "dmgShare": 0.2,
     "kp": 0.48
    },
@@ -6430,7 +6430,7 @@
    "cto": {
     "games": 13,
     "weight": 1.13,
-    "kda": 2.44,
+    "kda": 2.43,
     "csm": 9.4,
     "gpm": 405,
     "dmgShare": 0.26,
@@ -6477,10 +6477,10 @@
    "kp": 0.68,
    "cto": {
     "games": 17,
-    "weight": 0.95,
-    "kda": 3.28,
+    "weight": 0.94,
+    "kda": 3.27,
     "csm": 6.5,
-    "gpm": 370,
+    "gpm": 368,
     "dmgShare": 0.17,
     "kp": 0.64
    },
@@ -6527,11 +6527,11 @@
    "cto": {
     "games": 113,
     "weight": 0.98,
-    "kda": 2.78,
+    "kda": 2.76,
     "csm": 9.6,
-    "gpm": 482,
-    "dmgShare": 0.28,
-    "kp": 0.65
+    "gpm": 478,
+    "dmgShare": 0.27,
+    "kp": 0.64
    },
    "champions": [
     [
@@ -6576,9 +6576,9 @@
    "cto": {
     "games": 127,
     "weight": 0.9,
-    "kda": 3.2,
+    "kda": 3.21,
     "csm": 7.9,
-    "gpm": 359,
+    "gpm": 360,
     "dmgShare": 0.19,
     "kp": 0.44
    },
@@ -6626,7 +6626,7 @@
    "cto": {
     "games": 26,
     "weight": 1.05,
-    "kda": 3.04,
+    "kda": 3.05,
     "csm": 1.1,
     "gpm": 269,
     "dmgShare": 0.09,
@@ -6914,12 +6914,12 @@
    "kp": 0.64,
    "cto": {
     "games": 19,
-    "weight": 1,
-    "kda": 3.15,
-    "csm": 8.1,
-    "gpm": 368,
-    "dmgShare": 0.24,
-    "kp": 0.64
+    "weight": 0.99,
+    "kda": 3.12,
+    "csm": 8,
+    "gpm": 365,
+    "dmgShare": 0.23,
+    "kp": 0.63
    },
    "champions": [
     [
@@ -7013,7 +7013,7 @@
     "weight": 1.07,
     "kda": 1.15,
     "csm": 7,
-    "gpm": 369,
+    "gpm": 368,
     "dmgShare": 0.14,
     "kp": 0.65
    },
@@ -7109,7 +7109,7 @@
     "weight": 1.08,
     "kda": 2.49,
     "csm": 10.8,
-    "gpm": 503,
+    "gpm": 504,
     "dmgShare": 0.3,
     "kp": 0.81
    },
@@ -7199,11 +7199,11 @@
    "cto": {
     "games": 40,
     "weight": 1.01,
-    "kda": 4.74,
-    "csm": 9,
+    "kda": 4.73,
+    "csm": 8.9,
     "gpm": 405,
     "dmgShare": 0.27,
-    "kp": 0.72
+    "kp": 0.71
    },
    "champions": [
     [
@@ -7298,7 +7298,7 @@
     "weight": 1.08,
     "kda": 2.14,
     "csm": 7,
-    "gpm": 380,
+    "gpm": 381,
     "dmgShare": 0.16,
     "kp": 0.79
    },
@@ -7391,10 +7391,10 @@
    "kp": 0.46,
    "cto": {
     "games": 43,
-    "weight": 0.98,
-    "kda": 2.45,
+    "weight": 0.97,
+    "kda": 2.43,
     "csm": 8.5,
-    "gpm": 382,
+    "gpm": 380,
     "dmgShare": 0.22,
     "kp": 0.45
    },
@@ -7440,11 +7440,11 @@
    "kp": 0.68,
    "cto": {
     "games": 42,
-    "weight": 0.98,
-    "kda": 2.61,
+    "weight": 0.97,
+    "kda": 2.59,
     "csm": 6.8,
-    "gpm": 388,
-    "dmgShare": 0.16,
+    "gpm": 386,
+    "dmgShare": 0.15,
     "kp": 0.66
    },
    "champions": [
@@ -7491,7 +7491,7 @@
     "weight": 1.01,
     "kda": 2.38,
     "csm": 1,
-    "gpm": 248,
+    "gpm": 249,
     "dmgShare": 0.07,
     "kp": 0.73
    },
@@ -7584,11 +7584,11 @@
    "kp": 0.49,
    "cto": {
     "games": 62,
-    "weight": 1,
-    "kda": 1.88,
-    "csm": 8.1,
-    "gpm": 371,
-    "dmgShare": 0.24,
+    "weight": 0.99,
+    "kda": 1.87,
+    "csm": 8,
+    "gpm": 368,
+    "dmgShare": 0.23,
     "kp": 0.49
    },
    "champions": [
@@ -7682,9 +7682,9 @@
    "cto": {
     "games": 17,
     "weight": 1.06,
-    "kda": 3.1,
+    "kda": 3.11,
     "csm": 7.6,
-    "gpm": 407,
+    "gpm": 408,
     "dmgShare": 0.18,
     "kp": 0.82
    },
@@ -7731,7 +7731,7 @@
    "cto": {
     "games": 47,
     "weight": 1.12,
-    "kda": 1.82,
+    "kda": 1.81,
     "csm": 9.6,
     "gpm": 427,
     "dmgShare": 0.26,
@@ -7781,7 +7781,7 @@
     "weight": 1.12,
     "kda": 3.03,
     "csm": 7.2,
-    "gpm": 411,
+    "gpm": 410,
     "dmgShare": 0.19,
     "kp": 0.83
    },
@@ -7826,12 +7826,12 @@
    "kp": 0.6,
    "cto": {
     "games": 30,
-    "weight": 1.12,
+    "weight": 1.11,
     "kda": 2.12,
     "csm": 10.2,
-    "gpm": 459,
+    "gpm": 458,
     "dmgShare": 0.25,
-    "kp": 0.67
+    "kp": 0.66
    },
    "champions": [
     [
@@ -8022,9 +8022,9 @@
    "cto": {
     "games": 124,
     "weight": 0.92,
-    "kda": 3.52,
+    "kda": 3.51,
     "csm": 6.5,
-    "gpm": 373,
+    "gpm": 372,
     "dmgShare": 0.16,
     "kp": 0.63
    },
@@ -8124,8 +8124,8 @@
    "cto": {
     "games": 124,
     "weight": 0.92,
-    "kda": 4.72,
-    "csm": 9.6,
+    "kda": 4.71,
+    "csm": 9.5,
     "gpm": 467,
     "dmgShare": 0.26,
     "kp": 0.58
@@ -8175,9 +8175,9 @@
    "cto": {
     "games": 124,
     "weight": 0.92,
-    "kda": 3.61,
+    "kda": 3.6,
     "csm": 0.9,
-    "gpm": 239,
+    "gpm": 238,
     "dmgShare": 0.08,
     "kp": 0.64
    },
@@ -8225,7 +8225,7 @@
    "kp": 0.54,
    "cto": {
     "games": 51,
-    "weight": 1.12,
+    "weight": 1.11,
     "kda": 2.68,
     "csm": 9.6,
     "gpm": 435,
@@ -8321,7 +8321,7 @@
    "kp": 0.63,
    "cto": {
     "games": 51,
-    "weight": 1.12,
+    "weight": 1.11,
     "kda": 2.75,
     "csm": 9.7,
     "gpm": 435,
@@ -8369,10 +8369,10 @@
    "kp": 0.59,
    "cto": {
     "games": 51,
-    "weight": 1.12,
+    "weight": 1.11,
     "kda": 2.45,
-    "csm": 10.4,
-    "gpm": 506,
+    "csm": 10.3,
+    "gpm": 505,
     "dmgShare": 0.32,
     "kp": 0.65
    },
@@ -8418,9 +8418,9 @@
    "cto": {
     "games": 30,
     "weight": 1.11,
-    "kda": 2.81,
+    "kda": 2.8,
     "csm": 1.2,
-    "gpm": 287,
+    "gpm": 286,
     "dmgShare": 0.1,
     "kp": 0.84
    },
@@ -8468,7 +8468,7 @@
     "weight": 1.03,
     "kda": 2.35,
     "csm": 8.3,
-    "gpm": 365,
+    "gpm": 364,
     "dmgShare": 0.2,
     "kp": 0.49
    },
@@ -8514,7 +8514,7 @@
    "cto": {
     "games": 54,
     "weight": 1.02,
-    "kda": 2.55,
+    "kda": 2.54,
     "csm": 7,
     "gpm": 379,
     "dmgShare": 0.19,
@@ -8610,9 +8610,9 @@
    "cto": {
     "games": 54,
     "weight": 1.02,
-    "kda": 5.03,
+    "kda": 5.02,
     "csm": 10.4,
-    "gpm": 501,
+    "gpm": 500,
     "dmgShare": 0.3,
     "kp": 0.69
    },
@@ -8755,9 +8755,9 @@
    "cto": {
     "games": 78,
     "weight": 1.04,
-    "kda": 3.53,
+    "kda": 3.54,
     "csm": 7.5,
-    "gpm": 408,
+    "gpm": 409,
     "dmgShare": 0.19,
     "kp": 0.78
    },
@@ -8904,7 +8904,7 @@
     "weight": 1.04,
     "kda": 3.2,
     "csm": 1,
-    "gpm": 263,
+    "gpm": 264,
     "dmgShare": 0.08,
     "kp": 0.78
    },
@@ -8950,11 +8950,11 @@
    "kp": 0.48,
    "cto": {
     "games": 51,
-    "weight": 1.17,
-    "kda": 1.94,
+    "weight": 1.16,
+    "kda": 1.93,
     "csm": 10.2,
-    "gpm": 430,
-    "dmgShare": 0.26,
+    "gpm": 429,
+    "dmgShare": 0.25,
     "kp": 0.55
    },
    "champions": [
@@ -9046,7 +9046,7 @@
    "kp": 0.66,
    "cto": {
     "games": 51,
-    "weight": 1.17,
+    "weight": 1.16,
     "kda": 2.8,
     "csm": 10,
     "gpm": 426,
@@ -9097,7 +9097,7 @@
     "weight": 1.16,
     "kda": 2.67,
     "csm": 11.9,
-    "gpm": 536,
+    "gpm": 535,
     "dmgShare": 0.3,
     "kp": 0.75
    },
@@ -9193,7 +9193,7 @@
     "weight": 1.02,
     "kda": 2.73,
     "csm": 8.7,
-    "gpm": 412,
+    "gpm": 411,
     "dmgShare": 0.23,
     "kp": 0.48
    },
@@ -9291,7 +9291,7 @@
     "weight": 1.01,
     "kda": 2.91,
     "csm": 9.4,
-    "gpm": 421,
+    "gpm": 420,
     "dmgShare": 0.25,
     "kp": 0.59
    },
@@ -9439,7 +9439,7 @@
     "csm": 7.8,
     "gpm": 422,
     "dmgShare": 0.21,
-    "kp": 0.82
+    "kp": 0.81
    },
    "champions": [
     [
@@ -9482,11 +9482,11 @@
    "kp": 0.5,
    "cto": {
     "games": 102,
-    "weight": 0.88,
-    "kda": 2.78,
+    "weight": 0.89,
+    "kda": 2.79,
     "csm": 7.2,
-    "gpm": 340,
-    "dmgShare": 0.18,
+    "gpm": 342,
+    "dmgShare": 0.19,
     "kp": 0.44
    },
    "champions": [
@@ -9533,10 +9533,10 @@
    "kp": 0.7,
    "cto": {
     "games": 102,
-    "weight": 0.88,
-    "kda": 4.21,
+    "weight": 0.89,
+    "kda": 4.23,
     "csm": 6.3,
-    "gpm": 355,
+    "gpm": 356,
     "dmgShare": 0.16,
     "kp": 0.62
    },
@@ -9584,10 +9584,10 @@
    "kp": 0.64,
    "cto": {
     "games": 102,
-    "weight": 0.88,
-    "kda": 3.81,
+    "weight": 0.89,
+    "kda": 3.83,
     "csm": 7.8,
-    "gpm": 368,
+    "gpm": 370,
     "dmgShare": 0.22,
     "kp": 0.56
    },
@@ -9635,12 +9635,12 @@
    "kp": 0.58,
    "cto": {
     "games": 102,
-    "weight": 0.88,
-    "kda": 3.99,
-    "csm": 8.7,
-    "gpm": 431,
-    "dmgShare": 0.24,
-    "kp": 0.51
+    "weight": 0.89,
+    "kda": 4.01,
+    "csm": 8.8,
+    "gpm": 433,
+    "dmgShare": 0.25,
+    "kp": 0.52
    },
    "champions": [
     [
@@ -9686,10 +9686,10 @@
    "kp": 0.71,
    "cto": {
     "games": 102,
-    "weight": 0.88,
-    "kda": 3.05,
+    "weight": 0.89,
+    "kda": 3.07,
     "csm": 0.8,
-    "gpm": 235,
+    "gpm": 236,
     "dmgShare": 0.07,
     "kp": 0.63
    },
@@ -9738,11 +9738,11 @@
    "cto": {
     "games": 93,
     "weight": 0.97,
-    "kda": 2.42,
+    "kda": 2.43,
     "csm": 7.8,
-    "gpm": 357,
+    "gpm": 359,
     "dmgShare": 0.21,
-    "kp": 0.47
+    "kp": 0.48
    },
    "champions": [
     [
@@ -9788,9 +9788,9 @@
    "cto": {
     "games": 93,
     "weight": 0.97,
-    "kda": 4.31,
+    "kda": 4.32,
     "csm": 6.7,
-    "gpm": 375,
+    "gpm": 376,
     "dmgShare": 0.16,
     "kp": 0.72
    },
@@ -9838,9 +9838,9 @@
    "cto": {
     "games": 93,
     "weight": 0.97,
-    "kda": 3.16,
+    "kda": 3.17,
     "csm": 8.9,
-    "gpm": 392,
+    "gpm": 393,
     "dmgShare": 0.24,
     "kp": 0.61
    },
@@ -9888,9 +9888,9 @@
    "cto": {
     "games": 93,
     "weight": 0.97,
-    "kda": 4.06,
-    "csm": 9.6,
-    "gpm": 485,
+    "kda": 4.08,
+    "csm": 9.7,
+    "gpm": 488,
     "dmgShare": 0.28,
     "kp": 0.62
    },
@@ -9938,9 +9938,9 @@
    "cto": {
     "games": 93,
     "weight": 0.97,
-    "kda": 3.37,
+    "kda": 3.39,
     "csm": 1.1,
-    "gpm": 253,
+    "gpm": 255,
     "dmgShare": 0.08,
     "kp": 0.71
    },
@@ -9992,7 +9992,7 @@
     "csm": 8.6,
     "gpm": 381,
     "dmgShare": 0.21,
-    "kp": 0.52
+    "kp": 0.51
    },
    "champions": [
     [
@@ -10038,7 +10038,7 @@
     "weight": 1.04,
     "kda": 3.41,
     "csm": 7,
-    "gpm": 373,
+    "gpm": 372,
     "dmgShare": 0.17,
     "kp": 0.74
    },
@@ -10086,7 +10086,7 @@
     "weight": 1.04,
     "kda": 3.18,
     "csm": 9.2,
-    "gpm": 411,
+    "gpm": 410,
     "dmgShare": 0.28,
     "kp": 0.65
    },
@@ -10375,7 +10375,7 @@
     "weight": 1.04,
     "kda": 2.43,
     "csm": 8.2,
-    "gpm": 378,
+    "gpm": 377,
     "dmgShare": 0.23,
     "kp": 0.59
    },
@@ -10907,7 +10907,7 @@
     "weight": 0.96,
     "kda": 3.33,
     "csm": 8.1,
-    "gpm": 370,
+    "gpm": 371,
     "dmgShare": 0.2,
     "kp": 0.5
    },
@@ -10955,7 +10955,7 @@
     "games": 87,
     "weight": 0.96,
     "kda": 4.97,
-    "csm": 6.7,
+    "csm": 6.8,
     "gpm": 380,
     "dmgShare": 0.17,
     "kp": 0.7
@@ -11390,11 +11390,11 @@
    "cto": {
     "games": 94,
     "weight": 0.9,
-    "kda": 2.63,
+    "kda": 2.62,
     "csm": 7.2,
     "gpm": 336,
     "dmgShare": 0.2,
-    "kp": 0.49
+    "kp": 0.48
    },
    "champions": [
     [
@@ -11441,9 +11441,9 @@
    "cto": {
     "games": 89,
     "weight": 0.91,
-    "kda": 4.3,
+    "kda": 4.29,
     "csm": 6.7,
-    "gpm": 356,
+    "gpm": 355,
     "dmgShare": 0.13,
     "kp": 0.62
    },
@@ -11492,9 +11492,9 @@
    "cto": {
     "games": 97,
     "weight": 0.9,
-    "kda": 3.79,
-    "csm": 8.2,
-    "gpm": 381,
+    "kda": 3.78,
+    "csm": 8.1,
+    "gpm": 380,
     "dmgShare": 0.24,
     "kp": 0.58
    },
@@ -11543,9 +11543,9 @@
    "cto": {
     "games": 97,
     "weight": 0.9,
-    "kda": 5.13,
+    "kda": 5.12,
     "csm": 9,
-    "gpm": 438,
+    "gpm": 437,
     "dmgShare": 0.26,
     "kp": 0.59
    },
@@ -11594,7 +11594,7 @@
    "cto": {
     "games": 97,
     "weight": 0.9,
-    "kda": 4.66,
+    "kda": 4.65,
     "csm": 0.9,
     "gpm": 233,
     "dmgShare": 0.06,
@@ -12235,7 +12235,7 @@
     "weight": 0.99,
     "kda": 3.86,
     "csm": 8.7,
-    "gpm": 403,
+    "gpm": 404,
     "dmgShare": 0.24,
     "kp": 0.67
    },
@@ -12474,7 +12474,7 @@
    "cto": {
     "games": 41,
     "weight": 1.16,
-    "kda": 2.08,
+    "kda": 2.09,
     "csm": 9.3,
     "gpm": 404,
     "dmgShare": 0.27,
@@ -12618,9 +12618,9 @@
    "cto": {
     "games": 65,
     "weight": 1.09,
-    "kda": 2.19,
+    "kda": 2.2,
     "csm": 8.8,
-    "gpm": 401,
+    "gpm": 402,
     "dmgShare": 0.24,
     "kp": 0.59
    },
@@ -12718,7 +12718,7 @@
     "weight": 1.09,
     "kda": 2.29,
     "csm": 9,
-    "gpm": 401,
+    "gpm": 402,
     "dmgShare": 0.27,
     "kp": 0.69
    },
@@ -12910,10 +12910,10 @@
    "kp": 0.71,
    "cto": {
     "games": 8,
-    "weight": 0.84,
-    "kda": 4.78,
+    "weight": 0.83,
+    "kda": 4.77,
     "csm": 5.6,
-    "gpm": 320,
+    "gpm": 319,
     "dmgShare": 0.12,
     "kp": 0.59
    },
@@ -13009,7 +13009,7 @@
     "weight": 0.98,
     "kda": 3.54,
     "csm": 9.8,
-    "gpm": 462,
+    "gpm": 461,
     "dmgShare": 0.28,
     "kp": 0.54
    },
@@ -13201,9 +13201,9 @@
    "cto": {
     "games": 2,
     "weight": 1.3,
-    "kda": 1.87,
+    "kda": 1.88,
     "csm": 11.5,
-    "gpm": 624,
+    "gpm": 625,
     "dmgShare": 0.36,
     "kp": 0.77
    },
@@ -13239,7 +13239,7 @@
     "weight": 1.3,
     "kda": 2.41,
     "csm": 1.4,
-    "gpm": 320,
+    "gpm": 321,
     "dmgShare": 0.09,
     "kp": 0.77
    },
@@ -14007,7 +14007,7 @@
     "csm": 8,
     "gpm": 373,
     "dmgShare": 0.22,
-    "kp": 0.54
+    "kp": 0.55
    },
    "champions": [
     [
@@ -14156,7 +14156,7 @@
    "cto": {
     "games": 104,
     "weight": 0.98,
-    "kda": 4.59,
+    "kda": 4.6,
     "csm": 9.2,
     "gpm": 465,
     "dmgShare": 0.28,
@@ -15313,7 +15313,7 @@
     "csm": 9.6,
     "gpm": 465,
     "dmgShare": 0.3,
-    "kp": 0.66
+    "kp": 0.65
    },
    "champions": [
     [
@@ -15971,11 +15971,11 @@
    "cto": {
     "games": 34,
     "weight": 1.02,
-    "kda": 2.76,
+    "kda": 2.75,
     "csm": 0.9,
     "gpm": 243,
     "dmgShare": 0.08,
-    "kp": 0.73
+    "kp": 0.72
    },
    "champions": [
     [
@@ -16688,7 +16688,7 @@
     "games": 84,
     "weight": 0.93,
     "kda": 4.87,
-    "csm": 6.8,
+    "csm": 6.9,
     "gpm": 390,
     "dmgShare": 0.17,
     "kp": 0.67
@@ -16837,9 +16837,9 @@
    "cto": {
     "games": 84,
     "weight": 0.93,
-    "kda": 5.97,
+    "kda": 5.98,
     "csm": 1.1,
-    "gpm": 260,
+    "gpm": 261,
     "dmgShare": 0.07,
     "kp": 0.67
    },
@@ -16938,7 +16938,7 @@
     "games": 76,
     "weight": 0.98,
     "kda": 3.51,
-    "csm": 6.8,
+    "csm": 6.7,
     "gpm": 377,
     "dmgShare": 0.16,
     "kp": 0.71
@@ -16986,7 +16986,7 @@
    "cto": {
     "games": 39,
     "weight": 1,
-    "kda": 3.19,
+    "kda": 3.18,
     "csm": 8.4,
     "gpm": 389,
     "dmgShare": 0.24,
@@ -17136,11 +17136,11 @@
    "cto": {
     "games": 4,
     "weight": 0.99,
-    "kda": 2.5,
+    "kda": 2.51,
     "csm": 8.7,
-    "gpm": 410,
+    "gpm": 412,
     "dmgShare": 0.22,
-    "kp": 0.52
+    "kp": 0.53
    },
    "champions": [
     [
@@ -17180,11 +17180,11 @@
    "cto": {
     "games": 4,
     "weight": 0.99,
-    "kda": 3.7,
+    "kda": 3.72,
     "csm": 8.5,
-    "gpm": 404,
+    "gpm": 406,
     "dmgShare": 0.22,
-    "kp": 0.68
+    "kp": 0.69
    },
    "champions": [
     [
@@ -17226,7 +17226,7 @@
     "weight": 0.99,
     "kda": 1.67,
     "csm": 1,
-    "gpm": 257,
+    "gpm": 258,
     "dmgShare": 0.09,
     "kp": 0.55
    },
@@ -17268,11 +17268,11 @@
    "cto": {
     "games": 5,
     "weight": 0.94,
-    "kda": 3.58,
+    "kda": 3.59,
     "csm": 5.2,
-    "gpm": 343,
+    "gpm": 344,
     "dmgShare": 0.14,
-    "kp": 0.7
+    "kp": 0.71
    },
    "champions": [
     [
@@ -17303,10 +17303,10 @@
    "kp": 0.43,
    "cto": {
     "games": 8,
-    "weight": 0.84,
-    "kda": 2.35,
+    "weight": 0.85,
+    "kda": 2.37,
     "csm": 7.2,
-    "gpm": 355,
+    "gpm": 358,
     "dmgShare": 0.2,
     "kp": 0.38
    },
@@ -17351,10 +17351,10 @@
    "kp": 0.69,
    "cto": {
     "games": 8,
-    "weight": 0.84,
-    "kda": 3.12,
-    "csm": 5.7,
-    "gpm": 353,
+    "weight": 0.85,
+    "kda": 3.14,
+    "csm": 5.8,
+    "gpm": 356,
     "dmgShare": 0.15,
     "kp": 0.58
    },
@@ -17399,12 +17399,12 @@
    "kp": 0.61,
    "cto": {
     "games": 8,
-    "weight": 0.84,
-    "kda": 3.46,
-    "csm": 7.1,
-    "gpm": 361,
+    "weight": 0.85,
+    "kda": 3.49,
+    "csm": 7.2,
+    "gpm": 364,
     "dmgShare": 0.18,
-    "kp": 0.52
+    "kp": 0.53
    },
    "champions": [
     [
@@ -17447,12 +17447,12 @@
    "kp": 0.58,
    "cto": {
     "games": 8,
-    "weight": 0.84,
-    "kda": 3.05,
-    "csm": 7.8,
-    "gpm": 395,
+    "weight": 0.85,
+    "kda": 3.07,
+    "csm": 7.9,
+    "gpm": 398,
     "dmgShare": 0.21,
-    "kp": 0.48
+    "kp": 0.49
    },
    "champions": [
     [
@@ -17495,12 +17495,12 @@
    "kp": 0.54,
    "cto": {
     "games": 5,
-    "weight": 0.95,
-    "kda": 0.94,
-    "csm": 8.1,
-    "gpm": 359,
-    "dmgShare": 0.23,
-    "kp": 0.51
+    "weight": 0.94,
+    "kda": 0.93,
+    "csm": 8,
+    "gpm": 356,
+    "dmgShare": 0.22,
+    "kp": 0.5
    },
    "champions": [
     [
@@ -17535,12 +17535,12 @@
    "kp": 0.82,
    "cto": {
     "games": 5,
-    "weight": 0.95,
-    "kda": 1.07,
+    "weight": 0.94,
+    "kda": 1.05,
     "csm": 5.8,
-    "gpm": 336,
+    "gpm": 333,
     "dmgShare": 0.16,
-    "kp": 0.77
+    "kp": 0.76
    },
    "champions": [
     [
@@ -17579,12 +17579,12 @@
    "kp": 0.64,
    "cto": {
     "games": 5,
-    "weight": 0.95,
-    "kda": 1.42,
-    "csm": 8.8,
-    "gpm": 371,
+    "weight": 0.94,
+    "kda": 1.41,
+    "csm": 8.7,
+    "gpm": 367,
     "dmgShare": 0.29,
-    "kp": 0.61
+    "kp": 0.6
    },
    "champions": [
     [
@@ -17623,12 +17623,12 @@
    "kp": 0.41,
    "cto": {
     "games": 5,
-    "weight": 0.95,
+    "weight": 0.94,
     "kda": 0.66,
-    "csm": 8.1,
-    "gpm": 364,
+    "csm": 8,
+    "gpm": 361,
     "dmgShare": 0.19,
-    "kp": 0.39
+    "kp": 0.38
    },
    "champions": [
     [
@@ -17667,12 +17667,12 @@
    "kp": 0.69,
    "cto": {
     "games": 5,
-    "weight": 0.95,
+    "weight": 0.94,
     "kda": 0.66,
     "csm": 1.1,
-    "gpm": 247,
+    "gpm": 245,
     "dmgShare": 0.08,
-    "kp": 0.66
+    "kp": 0.65
    },
    "champions": [
     [
@@ -17715,12 +17715,12 @@
    "kp": 0.54,
    "cto": {
     "games": 5,
-    "weight": 0.96,
-    "kda": 1.72,
-    "csm": 8.7,
-    "gpm": 399,
+    "weight": 0.95,
+    "kda": 1.7,
+    "csm": 8.6,
+    "gpm": 394,
     "dmgShare": 0.22,
-    "kp": 0.52
+    "kp": 0.51
    },
    "champions": [
     [
@@ -17755,10 +17755,10 @@
    "kp": 0.56,
    "cto": {
     "games": 5,
-    "weight": 0.96,
-    "kda": 1.61,
-    "csm": 8.8,
-    "gpm": 381,
+    "weight": 0.95,
+    "kda": 1.59,
+    "csm": 8.7,
+    "gpm": 376,
     "dmgShare": 0.25,
     "kp": 0.53
    },
@@ -17795,11 +17795,11 @@
    "kp": 0.6,
    "cto": {
     "games": 5,
-    "weight": 0.96,
-    "kda": 2.05,
-    "csm": 8.5,
-    "gpm": 441,
-    "dmgShare": 0.25,
+    "weight": 0.95,
+    "kda": 2.03,
+    "csm": 8.4,
+    "gpm": 436,
+    "dmgShare": 0.24,
     "kp": 0.55
    },
    "champions": [
@@ -17843,10 +17843,10 @@
    "kp": 0.57,
    "cto": {
     "games": 5,
-    "weight": 0.96,
-    "kda": 1.32,
+    "weight": 0.95,
+    "kda": 1.3,
     "csm": 1.1,
-    "gpm": 269,
+    "gpm": 266,
     "dmgShare": 0.1,
     "kp": 0.54
    },
@@ -17884,7 +17884,7 @@
    "cto": {
     "games": 10,
     "weight": 0.82,
-    "kda": 3.08,
+    "kda": 3.09,
     "csm": 6.6,
     "gpm": 334,
     "dmgShare": 0.21,
@@ -17932,7 +17932,7 @@
    "cto": {
     "games": 10,
     "weight": 0.82,
-    "kda": 2.7,
+    "kda": 2.71,
     "csm": 6.8,
     "gpm": 322,
     "dmgShare": 0.2,
@@ -18075,12 +18075,12 @@
    "kp": 0.69,
    "cto": {
     "games": 3,
-    "weight": 0.98,
-    "kda": 1.36,
-    "csm": 6.4,
-    "gpm": 352,
+    "weight": 0.97,
+    "kda": 1.35,
+    "csm": 6.3,
+    "gpm": 347,
     "dmgShare": 0.14,
-    "kp": 0.66
+    "kp": 0.65
    },
    "champions": [
     [
@@ -18107,10 +18107,10 @@
    "kp": 0.44,
    "cto": {
     "games": 1,
-    "weight": 1.11,
-    "kda": 0.86,
+    "weight": 1.12,
+    "kda": 0.87,
     "csm": 8.5,
-    "gpm": 435,
+    "gpm": 439,
     "dmgShare": 0.27,
     "kp": 0.49
    },
@@ -18139,12 +18139,12 @@
    "kp": 0.63,
    "cto": {
     "games": 1,
-    "weight": 1.11,
-    "kda": 1.85,
+    "weight": 1.12,
+    "kda": 1.86,
     "csm": 7.4,
-    "gpm": 386,
-    "dmgShare": 0.26,
-    "kp": 0.69
+    "gpm": 389,
+    "dmgShare": 0.27,
+    "kp": 0.7
    },
    "champions": [
     [
@@ -18172,9 +18172,9 @@
    "cto": {
     "games": 7,
     "weight": 1.11,
-    "kda": 1.55,
+    "kda": 1.54,
     "csm": 6.5,
-    "gpm": 335,
+    "gpm": 334,
     "dmgShare": 0.13,
     "kp": 0.73
    },
@@ -18222,7 +18222,7 @@
     "weight": 0.99,
     "kda": 1.45,
     "csm": 5.6,
-    "gpm": 338,
+    "gpm": 337,
     "dmgShare": 0.15,
     "kp": 0.67
    },
@@ -19746,7 +19746,7 @@
     "weight": 1.02,
     "kda": 3.15,
     "csm": 1.1,
-    "gpm": 266,
+    "gpm": 265,
     "dmgShare": 0.08,
     "kp": 0.68
    },
@@ -20134,10 +20134,10 @@
     "games": 2,
     "weight": 1.12,
     "kda": 1.54,
-    "csm": 7.5,
-    "gpm": 411,
+    "csm": 7.4,
+    "gpm": 409,
     "dmgShare": 0.14,
-    "kp": 0.68
+    "kp": 0.67
    },
    "champions": [
     [
