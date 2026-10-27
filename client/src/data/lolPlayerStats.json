@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-10-26",
+ "updatedAt": "2026-10-27",
  "season": 2026,
- "games": 2572,
+ "games": 2574,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -5939,21 +5939,21 @@
    "name": "AL Breathe",
    "role": "top",
    "teamId": "99566404856367466",
-   "games": 91,
+   "games": 93,
    "k": 2.8,
    "d": 2.6,
    "a": 4.9,
-   "kda": 2.99,
+   "kda": 2.9,
    "csm": 8.3,
-   "gpm": 378,
+   "gpm": 377,
    "dmgShare": 0.21,
-   "kp": 0.5,
+   "kp": 0.49,
    "cto": {
-    "games": 91,
+    "games": 93,
     "weight": 0.97,
-    "kda": 2.89,
+    "kda": 2.8,
     "csm": 8,
-    "gpm": 368,
+    "gpm": 366,
     "dmgShare": 0.21,
     "kp": 0.48
    },
@@ -5967,12 +5967,12 @@
      11
     ],
     [
-     "Rumble",
+     "Ambessa",
      11
     ],
     [
-     "Ambessa",
-     10
+     "Rumble",
+     11
     ],
     [
      "Yorick",
@@ -5981,28 +5981,28 @@
    ],
    "leagues": {
     "LPL": 89,
-    "Worlds": 2
+    "Worlds": 4
    }
   },
   "99871276342823057": {
    "name": "AL Tarzan",
    "role": "jungle",
    "teamId": "99566404856367466",
-   "games": 141,
+   "games": 143,
    "k": 3.4,
    "d": 2.5,
    "a": 8.2,
-   "kda": 4.67,
+   "kda": 4.62,
    "csm": 7.2,
-   "gpm": 401,
+   "gpm": 399,
    "dmgShare": 0.19,
    "kp": 0.75,
    "cto": {
-    "games": 137,
+    "games": 139,
     "weight": 0.97,
-    "kda": 4.48,
+    "kda": 4.42,
     "csm": 7,
-    "gpm": 388,
+    "gpm": 386,
     "dmgShare": 0.18,
     "kp": 0.72
    },
@@ -6020,41 +6020,41 @@
      17
     ],
     [
-     "Qiyana",
+     "Skarner",
      13
     ],
     [
-     "Skarner",
-     12
+     "Qiyana",
+     13
     ]
    ],
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 4
    }
   },
   "104287400430814502": {
    "name": "AL Shanks",
    "role": "mid",
    "teamId": "99566404856367466",
-   "games": 141,
+   "games": 143,
    "k": 3.7,
    "d": 2.5,
    "a": 6.4,
-   "kda": 4.08,
-   "csm": 8.8,
-   "gpm": 400,
+   "kda": 4.07,
+   "csm": 8.7,
+   "gpm": 399,
    "dmgShare": 0.25,
-   "kp": 0.64,
+   "kp": 0.65,
    "cto": {
-    "games": 137,
+    "games": 139,
     "weight": 0.97,
-    "kda": 3.92,
+    "kda": 3.91,
     "csm": 8.5,
     "gpm": 386,
     "dmgShare": 0.24,
-    "kp": 0.62
+    "kp": 0.63
    },
    "champions": [
     [
@@ -6070,40 +6070,40 @@
      14
     ],
     [
-     "Galio",
-     12
+     "Orianna",
+     13
     ],
     [
-     "Orianna",
-     12
+     "Annie",
+     13
     ]
    ],
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 4
    }
   },
   "99566404819916503": {
    "name": "AL Hope",
    "role": "bottom",
    "teamId": "99566404856367466",
-   "games": 141,
-   "k": 4.8,
+   "games": 143,
+   "k": 4.7,
    "d": 2.3,
    "a": 5.6,
-   "kda": 4.47,
+   "kda": 4.43,
    "csm": 9.6,
-   "gpm": 482,
+   "gpm": 481,
    "dmgShare": 0.28,
    "kp": 0.65,
    "cto": {
-    "games": 137,
+    "games": 139,
     "weight": 0.97,
-    "kda": 4.31,
+    "kda": 4.27,
     "csm": 9.3,
-    "gpm": 467,
-    "dmgShare": 0.26,
+    "gpm": 466,
+    "dmgShare": 0.27,
     "kp": 0.63
    },
    "champions": [
@@ -6131,26 +6131,26 @@
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 4
    }
   },
   "105530584812980593": {
    "name": "AL Kael",
    "role": "support",
    "teamId": "99566404856367466",
-   "games": 141,
+   "games": 143,
    "k": 0.7,
    "d": 2.7,
    "a": 10.9,
-   "kda": 4.26,
+   "kda": 4.28,
    "csm": 1.2,
    "gpm": 261,
    "dmgShare": 0.08,
-   "kp": 0.74,
+   "kp": 0.75,
    "cto": {
-    "games": 137,
+    "games": 139,
     "weight": 0.97,
-    "kda": 4.13,
+    "kda": 4.15,
     "csm": 1.1,
     "gpm": 253,
     "dmgShare": 0.08,
@@ -6181,7 +6181,7 @@
    "leagues": {
     "LPL": 135,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 4
    }
   },
   "115728508104344155": {
@@ -10898,21 +10898,21 @@
    "name": "TLAW Morgan",
    "role": "top",
    "teamId": "98926509885559666",
-   "games": 87,
+   "games": 89,
    "k": 2.5,
    "d": 2.2,
    "a": 5.4,
-   "kda": 3.51,
+   "kda": 3.57,
    "csm": 8.4,
-   "gpm": 385,
+   "gpm": 387,
    "dmgShare": 0.21,
    "kp": 0.52,
    "cto": {
-    "games": 87,
+    "games": 89,
     "weight": 0.96,
-    "kda": 3.33,
+    "kda": 3.4,
     "csm": 8.1,
-    "gpm": 371,
+    "gpm": 373,
     "dmgShare": 0.2,
     "kp": 0.5
    },
@@ -10940,26 +10940,27 @@
    ],
    "leagues": {
     "LCS": 75,
-    "MSI": 12
+    "MSI": 12,
+    "Worlds": 2
    }
   },
   "99566408350815597": {
    "name": "TLAW Josedeodo",
    "role": "jungle",
    "teamId": "98926509885559666",
-   "games": 87,
+   "games": 89,
    "k": 3.7,
    "d": 2.1,
    "a": 7.4,
-   "kda": 5.25,
+   "kda": 5.22,
    "csm": 7,
-   "gpm": 396,
-   "dmgShare": 0.18,
+   "gpm": 395,
+   "dmgShare": 0.17,
    "kp": 0.73,
    "cto": {
-    "games": 87,
+    "games": 89,
     "weight": 0.96,
-    "kda": 4.97,
+    "kda": 4.96,
     "csm": 6.8,
     "gpm": 380,
     "dmgShare": 0.17,
@@ -10972,7 +10973,7 @@
     ],
     [
      "Pantheon",
-     11
+     12
     ],
     [
      "Naafiri",
@@ -10983,34 +10984,35 @@
      8
     ],
     [
-     "Vi",
-     7
+     "LeeSin",
+     8
     ]
    ],
    "leagues": {
     "LCS": 75,
-    "MSI": 12
+    "MSI": 12,
+    "Worlds": 2
    }
   },
   "107492071007218117": {
    "name": "TLAW Quid",
    "role": "mid",
    "teamId": "98926509885559666",
-   "games": 87,
-   "k": 4.2,
+   "games": 89,
+   "k": 4.1,
    "d": 2.4,
-   "a": 6.3,
-   "kda": 4.42,
-   "csm": 8.9,
-   "gpm": 412,
+   "a": 6.4,
+   "kda": 4.37,
+   "csm": 8.8,
+   "gpm": 411,
    "dmgShare": 0.26,
-   "kp": 0.7,
+   "kp": 0.69,
    "cto": {
-    "games": 87,
+    "games": 89,
     "weight": 0.96,
-    "kda": 4.21,
+    "kda": 4.18,
     "csm": 8.5,
-    "gpm": 396,
+    "gpm": 395,
     "dmgShare": 0.25,
     "kp": 0.67
    },
@@ -11032,52 +11034,53 @@
      7
     ],
     [
-     "Aurora",
-     6
+     "Galio",
+     7
     ]
    ],
    "leagues": {
     "LCS": 75,
-    "MSI": 12
+    "MSI": 12,
+    "Worlds": 2
    }
   },
   "105510944671654183": {
    "name": "TLAW Yeon",
    "role": "bottom",
    "teamId": "98926509885559666",
-   "games": 87,
+   "games": 89,
    "k": 3.9,
    "d": 2.2,
    "a": 5.9,
-   "kda": 4.46,
+   "kda": 4.5,
    "csm": 9.5,
-   "gpm": 471,
+   "gpm": 473,
    "dmgShare": 0.28,
-   "kp": 0.62,
+   "kp": 0.63,
    "cto": {
-    "games": 87,
+    "games": 89,
     "weight": 0.96,
-    "kda": 4.23,
+    "kda": 4.28,
     "csm": 9.2,
-    "gpm": 452,
+    "gpm": 455,
     "dmgShare": 0.27,
     "kp": 0.6
    },
    "champions": [
     [
      "Lucian",
-     12
+     13
     ],
     [
      "Ezreal",
      11
     ],
     [
-     "Ashe",
-     9
+     "Xayah",
+     10
     ],
     [
-     "Xayah",
+     "Ashe",
      9
     ],
     [
@@ -11087,26 +11090,27 @@
    ],
    "leagues": {
     "LCS": 75,
-    "MSI": 12
+    "MSI": 12,
+    "Worlds": 2
    }
   },
   "98767991789638893": {
    "name": "TLAW CoreJJ",
    "role": "support",
    "teamId": "98926509885559666",
-   "games": 87,
+   "games": 89,
    "k": 0.9,
    "d": 2.2,
-   "a": 10.5,
-   "kda": 5.14,
+   "a": 10.6,
+   "kda": 5.18,
    "csm": 1,
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.75,
    "cto": {
-    "games": 87,
+    "games": 89,
     "weight": 0.96,
-    "kda": 4.87,
+    "kda": 4.92,
     "csm": 1,
     "gpm": 253,
     "dmgShare": 0.08,
@@ -11115,14 +11119,14 @@
    "champions": [
     [
      "Rakan",
-     11
-    ],
-    [
-     "Neeko",
-     9
+     12
     ],
     [
      "Nami",
+     10
+    ],
+    [
+     "Neeko",
      9
     ],
     [
@@ -11136,7 +11140,8 @@
    ],
    "leagues": {
     "LCS": 75,
-    "MSI": 12
+    "MSI": 12,
+    "Worlds": 2
    }
   },
   "105501712240139757": {
