@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { computeBracketSigs } from './bracketSigs.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, '..', 'client', 'src', 'data');
@@ -1282,40 +1283,7 @@ for (const comp of sim.competitions) {
 
 // 브래킷 시그니처 저장 — fetchGpr가 "GPR 변화 없이 경기 결과만 바뀐 대회"를
 // 감지해 해당 리그만 시뮬 재실행하도록 하는 기준값. 대회별로 개별 시그니처 저장.
-sim.bracketSigs = {
-  MSI: JSON.stringify({
-    pi: standingsData.standings?.msi?.['플레이-인 스테이지']?.bracket ?? null,
-    br: standingsData.standings?.msi?.['브래킷 스테이지']?.bracket ?? null,
-  }),
-  LCK: JSON.stringify({
-    pi: standingsData.standings?.lck?.LCK?.playin ?? null,
-    po: standingsData.standings?.lck?.LCK?.playoffs ?? null,
-  }),
-  LPL: JSON.stringify({
-    po: standingsData.standings?.lpl?.['Split 3']?.playoffs ?? null,
-    rq: standingsData.standings?.lpl?.['대표 선발전']?.qualifier ?? null,
-  }),
-  LCP: JSON.stringify({
-    swiss: standingsData.standings?.lcp?.['Split 3']?.swiss ?? null,
-    pi: standingsData.standings?.lcp?.['Split 3']?.playin ?? null,
-    po: standingsData.standings?.lcp?.['Split 3']?.playoffs ?? null,
-  }),
-  LEC: JSON.stringify({
-    po: standingsData.standings?.lec?.Summer?.playoffs ?? null,
-  }),
-  LCS: JSON.stringify({
-    po: standingsData.standings?.lcs?.Summer?.playoffs ?? null,
-  }),
-  CBLOL: JSON.stringify({
-    po: standingsData.standings?.cblol?.['Split 2']?.playoffs ?? null,
-  }),
-  WORLDS: JSON.stringify({ pi: standingsData.standings?.worlds?.playin ?? null, sw: standingsData.standings?.worlds?.swiss ?? null, ko: standingsData.standings?.worlds?.knockout ?? null }),
-  DCGI: JSON.stringify({
-    q: standingsData.standings?.demacia?.qualifiers ?? null,
-    g: standingsData.standings?.demacia?.group ?? null,
-    k: standingsData.standings?.demacia?.knockout ?? null,
-  }),
-};
+sim.bracketSigs = computeBracketSigs(standingsData.standings);
 delete sim.msiBracketSig; // 이전 형식(단일 문자열) 제거
 
 sim.updatedAt = new Date().toISOString(); // 시간까지 포함(페이지에서 KST로 표시)

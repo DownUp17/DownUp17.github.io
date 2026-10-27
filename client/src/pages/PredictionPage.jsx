@@ -1640,7 +1640,7 @@ const SimulationView = ({ comp, sub, stage, finished: finishedProp, onTeamClick 
           const p0 = q.short ? probByShort[q.short] : null;
           // Worlds: 단계별 '진출' = 플레이-인→스위스 / 스위스→녹아웃 / 녹아웃→4강
           const p = p0 && isWorlds
-            ? { ...p0, advance: stage === '플레이-인' ? p0.playin : stage === '스위스 스테이지' ? p0.knockout : stage === '녹아웃 스테이지' ? p0.semis : null }
+            ? { ...p0, advance: stage === '플레이-인' ? p0.playin : stage === '스위스 스테이지' ? p0.knockout : null } // 녹아웃 탭은 우승 확률만
             : p0;
           const probRow = (label, v, color, strong) => (
             <div key={label} className="flex items-center gap-2">

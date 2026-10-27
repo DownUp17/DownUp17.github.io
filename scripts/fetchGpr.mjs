@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
+import { computeBracketSigs } from './bracketSigs.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const file = path.join(__dirname, '..', 'client', 'src', 'data', 'gprTeams.json');
@@ -109,40 +110,8 @@ try {
   const simPath = path.join(__dirname, '..', 'client', 'src', 'data', 'lolSim.json');
   const st = JSON.parse(fs.readFileSync(stPath, 'utf8'));
   const simData = JSON.parse(fs.readFileSync(simPath, 'utf8'));
-  // 대회 → 리그 매핑(시뮬 대상). Worlds는 아직 시뮬 미지원이라 제외.
-  const bracketSigs = {
-    MSI: JSON.stringify({
-      pi: st.standings?.msi?.['플레이-인 스테이지']?.bracket ?? null,
-      br: st.standings?.msi?.['브래킷 스테이지']?.bracket ?? null,
-    }),
-    LCK: JSON.stringify({
-      pi: st.standings?.lck?.LCK?.playin ?? null,
-      po: st.standings?.lck?.LCK?.playoffs ?? null,
-    }),
-    LPL: JSON.stringify({
-      po: st.standings?.lpl?.['Split 3']?.playoffs ?? null,
-      rq: st.standings?.lpl?.['대표 선발전']?.qualifier ?? null,
-    }),
-    LCP: JSON.stringify({
-      swiss: st.standings?.lcp?.['Split 3']?.swiss ?? null,
-      pi: st.standings?.lcp?.['Split 3']?.playin ?? null,
-      po: st.standings?.lcp?.['Split 3']?.playoffs ?? null,
-    }),
-    LEC: JSON.stringify({
-      po: st.standings?.lec?.Summer?.playoffs ?? null,
-    }),
-    LCS: JSON.stringify({
-      po: st.standings?.lcs?.Summer?.playoffs ?? null,
-    }),
-    CBLOL: JSON.stringify({
-      po: st.standings?.cblol?.['Split 2']?.playoffs ?? null,
-    }),
-    DCGI: JSON.stringify({
-      q: st.standings?.demacia?.qualifiers ?? null,
-      g: st.standings?.demacia?.group ?? null,
-      k: st.standings?.demacia?.knockout ?? null,
-    }),
-  };
+  // 대회별 대진·결과 시그니처 — simulateLol과 같은 정의(bracketSigs.mjs)를 공유
+  const bracketSigs = computeBracketSigs(st.standings);
   const oldSigs = simData.bracketSigs || {};
   bracketChangedLeagues = Object.keys(bracketSigs).filter((k) => oldSigs[k] !== bracketSigs[k]);
 } catch (e) {
