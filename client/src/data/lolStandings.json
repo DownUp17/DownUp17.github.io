@@ -11291,14 +11291,16 @@
                 "title": "2승 1패",
                 "a": {
                   "seed": "",
-                  "short": "BLG"
+                  "short": "BLG",
+                  "score": 1
                 },
                 "b": {
                   "seed": "",
-                  "short": "TES"
+                  "short": "TES",
+                  "score": 2,
+                  "win": true
                 },
-                "recordKey": "2-1",
-                "time": "10/30 08:00"
+                "recordKey": "2-1"
               },
               {
                 "id": "115660540726095073",
