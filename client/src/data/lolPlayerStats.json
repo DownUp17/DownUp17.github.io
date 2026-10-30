@@ -1,7 +1,7 @@
 {
  "updatedAt": "2026-10-30",
  "season": 2026,
- "games": 2582,
+ "games": 2584,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -256,19 +256,19 @@
    "name": "HLE Zeus",
    "role": "top",
    "teamId": "100205573496804586",
-   "games": 125,
+   "games": 126,
    "k": 3.1,
    "d": 3.1,
-   "a": 6.1,
-   "kda": 2.99,
+   "a": 6.2,
+   "kda": 3.04,
    "csm": 8.1,
    "gpm": 393,
    "dmgShare": 0.23,
    "kp": 0.55,
    "cto": {
-    "games": 124,
+    "games": 125,
     "weight": 0.92,
-    "kda": 2.7,
+    "kda": 2.74,
     "csm": 7.5,
     "gpm": 360,
     "dmgShare": 0.21,
@@ -281,7 +281,7 @@
     ],
     [
      "Ambessa",
-     14
+     15
     ],
     [
      "Jayce",
@@ -300,24 +300,25 @@
     "LCK": 96,
     "MSI": 17,
     "EWC": 4,
-    "KeSPA Cup": 8
+    "KeSPA Cup": 8,
+    "Worlds": 1
    }
   },
   "101671284628761661": {
    "name": "HLE Kanavi",
    "role": "jungle",
    "teamId": "100205573496804586",
-   "games": 125,
+   "games": 126,
    "k": 3.7,
    "d": 4.1,
-   "a": 8.3,
-   "kda": 2.94,
+   "a": 8.4,
+   "kda": 2.95,
    "csm": 7.1,
    "gpm": 407,
    "dmgShare": 0.18,
    "kp": 0.72,
    "cto": {
-    "games": 124,
+    "games": 125,
     "weight": 0.92,
     "kda": 2.65,
     "csm": 6.5,
@@ -351,26 +352,27 @@
     "LCK": 96,
     "MSI": 17,
     "EWC": 4,
-    "KeSPA Cup": 8
+    "KeSPA Cup": 8,
+    "Worlds": 1
    }
   },
   "103478281361900912": {
    "name": "HLE Zeka",
    "role": "mid",
    "teamId": "100205573496804586",
-   "games": 125,
-   "k": 4.8,
+   "games": 126,
+   "k": 4.9,
    "d": 2.2,
    "a": 6.6,
-   "kda": 5.08,
+   "kda": 5.14,
    "csm": 8.9,
    "gpm": 423,
    "dmgShare": 0.24,
    "kp": 0.68,
    "cto": {
-    "games": 124,
+    "games": 125,
     "weight": 0.92,
-    "kda": 4.61,
+    "kda": 4.67,
     "csm": 8.2,
     "gpm": 388,
     "dmgShare": 0.22,
@@ -402,26 +404,27 @@
     "LCK": 96,
     "MSI": 17,
     "EWC": 4,
-    "KeSPA Cup": 8
+    "KeSPA Cup": 8,
+    "Worlds": 1
    }
   },
   "103495716775975785": {
    "name": "HLE Gumayusi",
    "role": "bottom",
    "teamId": "100205573496804586",
-   "games": 125,
+   "games": 126,
    "k": 4.2,
    "d": 3.1,
-   "a": 6.8,
-   "kda": 3.49,
+   "a": 6.9,
+   "kda": 3.53,
    "csm": 10,
-   "gpm": 489,
+   "gpm": 490,
    "dmgShare": 0.27,
    "kp": 0.65,
    "cto": {
-    "games": 124,
+    "games": 125,
     "weight": 0.92,
-    "kda": 3.11,
+    "kda": 3.15,
     "csm": 9.3,
     "gpm": 449,
     "dmgShare": 0.25,
@@ -434,7 +437,7 @@
     ],
     [
      "Jhin",
-     15
+     16
     ],
     [
      "Ashe",
@@ -453,26 +456,27 @@
     "LCK": 96,
     "MSI": 17,
     "EWC": 4,
-    "KeSPA Cup": 8
+    "KeSPA Cup": 8,
+    "Worlds": 1
    }
   },
   "105501709748188393": {
    "name": "HLE Delight",
    "role": "support",
    "teamId": "100205573496804586",
-   "games": 120,
+   "games": 121,
    "k": 1,
    "d": 3.3,
    "a": 11.6,
-   "kda": 3.83,
+   "kda": 3.86,
    "csm": 1.2,
    "gpm": 276,
    "dmgShare": 0.07,
    "kp": 0.74,
    "cto": {
-    "games": 119,
+    "games": 120,
     "weight": 0.92,
-    "kda": 3.44,
+    "kda": 3.46,
     "csm": 1.1,
     "gpm": 254,
     "dmgShare": 0.07,
@@ -504,7 +508,8 @@
     "LCK": 91,
     "MSI": 17,
     "EWC": 4,
-    "KeSPA Cup": 8
+    "KeSPA Cup": 8,
+    "Worlds": 1
    }
   },
   "109549750903142546": {
@@ -3845,19 +3850,19 @@
    "name": "BLG Xun",
    "role": "jungle",
    "teamId": "99566404853854212",
-   "games": 158,
+   "games": 159,
    "k": 3.9,
    "d": 2.8,
    "a": 9.3,
-   "kda": 4.75,
-   "csm": 7,
+   "kda": 4.74,
+   "csm": 6.9,
    "gpm": 401,
    "dmgShare": 0.17,
    "kp": 0.71,
    "cto": {
-    "games": 158,
+    "games": 159,
     "weight": 0.9,
-    "kda": 4.28,
+    "kda": 4.27,
     "csm": 6.3,
     "gpm": 362,
     "dmgShare": 0.15,
@@ -3865,11 +3870,11 @@
    },
    "champions": [
     [
-     "JarvanIV",
-     23
+     "Pantheon",
+     24
     ],
     [
-     "Pantheon",
+     "JarvanIV",
      23
     ],
     [
@@ -3889,28 +3894,28 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "99566404803543690": {
    "name": "BLG Knight",
    "role": "mid",
    "teamId": "99566404853854212",
-   "games": 158,
+   "games": 159,
    "k": 6,
    "d": 1.9,
    "a": 6.8,
-   "kda": 6.73,
+   "kda": 6.68,
    "csm": 9,
    "gpm": 441,
    "dmgShare": 0.27,
    "kp": 0.69,
    "cto": {
-    "games": 158,
+    "games": 159,
     "weight": 0.9,
-    "kda": 6.07,
+    "kda": 6.03,
     "csm": 8.1,
-    "gpm": 399,
+    "gpm": 398,
     "dmgShare": 0.24,
     "kp": 0.62
    },
@@ -3924,12 +3929,12 @@
      16
     ],
     [
-     "Aurora",
+     "Akali",
      12
     ],
     [
-     "Akali",
-     11
+     "Aurora",
+     12
     ],
     [
      "Syndra",
@@ -3940,28 +3945,28 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "99871276340698623": {
    "name": "BLG Viper",
    "role": "bottom",
    "teamId": "99566404853854212",
-   "games": 158,
+   "games": 159,
    "k": 4.9,
    "d": 2.3,
-   "a": 7.3,
-   "kda": 5.26,
-   "csm": 9.8,
+   "a": 7.4,
+   "kda": 5.21,
+   "csm": 9.7,
    "gpm": 488,
    "dmgShare": 0.28,
    "kp": 0.66,
    "cto": {
-    "games": 158,
+    "games": 159,
     "weight": 0.9,
-    "kda": 4.74,
+    "kda": 4.7,
     "csm": 8.8,
-    "gpm": 441,
+    "gpm": 440,
     "dmgShare": 0.25,
     "kp": 0.59
    },
@@ -3972,7 +3977,7 @@
     ],
     [
      "Ashe",
-     16
+     17
     ],
     [
      "Yunara",
@@ -3991,26 +3996,26 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "110547957837987327": {
    "name": "BLG ON",
    "role": "support",
    "teamId": "99566404853854212",
-   "games": 158,
+   "games": 159,
    "k": 0.8,
-   "d": 3.4,
-   "a": 12.7,
-   "kda": 3.91,
+   "d": 3.5,
+   "a": 12.6,
+   "kda": 3.89,
    "csm": 1.1,
-   "gpm": 275,
+   "gpm": 274,
    "dmgShare": 0.08,
    "kp": 0.72,
    "cto": {
-    "games": 158,
+    "games": 159,
     "weight": 0.9,
-    "kda": 3.52,
+    "kda": 3.51,
     "csm": 1,
     "gpm": 248,
     "dmgShare": 0.07,
@@ -4023,7 +4028,7 @@
     ],
     [
      "Seraphine",
-     19
+     20
     ],
     [
      "Alistar",
@@ -4042,7 +4047,7 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "103103555079018097": {
@@ -5307,20 +5312,20 @@
    "name": "TES Tian",
    "role": "jungle",
    "teamId": "99566404854685458",
-   "games": 95,
+   "games": 96,
    "k": 3.4,
-   "d": 3.3,
+   "d": 3.4,
    "a": 7.5,
-   "kda": 3.26,
+   "kda": 3.22,
    "csm": 7.2,
-   "gpm": 398,
+   "gpm": 397,
    "dmgShare": 0.17,
    "kp": 0.7,
    "cto": {
-    "games": 95,
+    "games": 96,
     "weight": 0.96,
-    "kda": 3.11,
-    "csm": 6.8,
+    "kda": 3.07,
+    "csm": 6.9,
     "gpm": 380,
     "dmgShare": 0.16,
     "kp": 0.67
@@ -5339,41 +5344,41 @@
      11
     ],
     [
-     "XinZhao",
+     "LeeSin",
      11
     ],
     [
-     "LeeSin",
-     10
+     "XinZhao",
+     11
     ]
    ],
    "leagues": {
     "LPL": 82,
     "MSI": 9,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "106368556422916908": {
    "name": "TES Creme",
    "role": "mid",
    "teamId": "99566404854685458",
-   "games": 137,
+   "games": 138,
    "k": 3.7,
    "d": 2.6,
    "a": 6.1,
-   "kda": 3.8,
+   "kda": 3.78,
    "csm": 8.7,
    "gpm": 406,
    "dmgShare": 0.26,
    "kp": 0.61,
    "cto": {
-    "games": 137,
+    "games": 138,
     "weight": 0.96,
-    "kda": 3.62,
+    "kda": 3.6,
     "csm": 8.3,
     "gpm": 389,
     "dmgShare": 0.25,
-    "kp": 0.58
+    "kp": 0.59
    },
    "champions": [
     [
@@ -5390,7 +5395,7 @@
     ],
     [
      "Orianna",
-     11
+     12
     ],
     [
      "Aurora",
@@ -5400,39 +5405,39 @@
    "leagues": {
     "LPL": 124,
     "MSI": 9,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "99566404823220763": {
    "name": "TES JackeyLove",
    "role": "bottom",
    "teamId": "99566404854685458",
-   "games": 95,
+   "games": 96,
    "k": 4.5,
    "d": 3,
    "a": 5.8,
-   "kda": 3.41,
-   "csm": 9.6,
-   "gpm": 463,
+   "kda": 3.37,
+   "csm": 9.5,
+   "gpm": 462,
    "dmgShare": 0.28,
    "kp": 0.65,
    "cto": {
-    "games": 95,
+    "games": 96,
     "weight": 0.96,
-    "kda": 3.25,
+    "kda": 3.21,
     "csm": 9.1,
-    "gpm": 443,
+    "gpm": 442,
     "dmgShare": 0.27,
     "kp": 0.62
    },
    "champions": [
     [
-     "Jhin",
+     "Ezreal",
      13
     ],
     [
-     "Ezreal",
-     12
+     "Jhin",
+     13
     ],
     [
      "Ashe",
@@ -5450,30 +5455,30 @@
    "leagues": {
     "LPL": 82,
     "MSI": 9,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "105516599464787723": {
    "name": "TES Zhuo",
    "role": "support",
    "teamId": "99566404854685458",
-   "games": 107,
+   "games": 108,
    "k": 0.7,
    "d": 2.8,
    "a": 10.8,
-   "kda": 4.14,
+   "kda": 4.11,
    "csm": 1.1,
    "gpm": 263,
    "dmgShare": 0.07,
    "kp": 0.76,
    "cto": {
-    "games": 107,
+    "games": 108,
     "weight": 0.97,
-    "kda": 3.99,
+    "kda": 3.97,
     "csm": 1.1,
     "gpm": 255,
     "dmgShare": 0.07,
-    "kp": 0.74
+    "kp": 0.73
    },
    "champions": [
     [
@@ -5499,7 +5504,7 @@
    ],
    "leagues": {
     "LPL": 103,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "103729432252832975": {
@@ -6568,19 +6573,19 @@
    "name": "BLG Bin",
    "role": "top",
    "teamId": "99566404853854212",
-   "games": 131,
-   "k": 2.9,
-   "d": 2.5,
+   "games": 132,
+   "k": 2.8,
+   "d": 2.4,
    "a": 5.9,
-   "kda": 3.57,
+   "kda": 3.58,
    "csm": 8.8,
-   "gpm": 399,
+   "gpm": 398,
    "dmgShare": 0.21,
    "kp": 0.49,
    "cto": {
-    "games": 131,
+    "games": 132,
     "weight": 0.91,
-    "kda": 3.26,
+    "kda": 3.27,
     "csm": 8,
     "gpm": 364,
     "dmgShare": 0.19,
@@ -6593,7 +6598,7 @@
     ],
     [
      "Ambessa",
-     14
+     15
     ],
     [
      "Jayce",
@@ -6612,7 +6617,7 @@
     "LPL": 105,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "103817065229388803": {
@@ -7385,21 +7390,21 @@
    "name": "TES 369",
    "role": "top",
    "teamId": "99566404854685458",
-   "games": 46,
-   "k": 2.3,
-   "d": 2.9,
-   "a": 5.3,
-   "kda": 2.6,
-   "csm": 8.8,
-   "gpm": 393,
+   "games": 47,
+   "k": 2.2,
+   "d": 3,
+   "a": 5.2,
+   "kda": 2.5,
+   "csm": 8.7,
+   "gpm": 392,
    "dmgShare": 0.23,
-   "kp": 0.48,
+   "kp": 0.47,
    "cto": {
-    "games": 46,
+    "games": 47,
     "weight": 0.97,
-    "kda": 2.5,
-    "csm": 8.5,
-    "gpm": 379,
+    "kda": 2.41,
+    "csm": 8.4,
+    "gpm": 378,
     "dmgShare": 0.22,
     "kp": 0.46
    },
@@ -7407,6 +7412,10 @@
     [
      "Ambessa",
      6
+    ],
+    [
+     "KSante",
+     5
     ],
     [
      "Renekton",
@@ -7419,15 +7428,11 @@
     [
      "Sion",
      4
-    ],
-    [
-     "Aatrox",
-     4
     ]
    ],
    "leagues": {
     "LPL": 42,
-    "Worlds": 4
+    "Worlds": 5
    }
   },
   "111726332971856422": {
@@ -9731,21 +9736,21 @@
    "name": "MKOI Myrwn",
    "role": "top",
    "teamId": "103461966965149786",
-   "games": 95,
+   "games": 96,
    "k": 2.3,
    "d": 2.9,
-   "a": 5.2,
-   "kda": 2.59,
+   "a": 5.3,
+   "kda": 2.57,
    "csm": 8.1,
-   "gpm": 371,
+   "gpm": 370,
    "dmgShare": 0.21,
    "kp": 0.49,
    "cto": {
-    "games": 93,
+    "games": 94,
     "weight": 0.98,
-    "kda": 2.45,
+    "kda": 2.44,
     "csm": 7.9,
-    "gpm": 361,
+    "gpm": 362,
     "dmgShare": 0.21,
     "kp": 0.48
    },
@@ -9760,7 +9765,7 @@
     ],
     [
      "Renekton",
-     9
+     10
     ],
     [
      "KSante",
@@ -9774,28 +9779,28 @@
    "leagues": {
     "LEC": 89,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 3
    }
   },
   "103877629120745120": {
    "name": "MKOI Elyoya",
    "role": "jungle",
    "teamId": "103461966965149786",
-   "games": 95,
+   "games": 96,
    "k": 3.1,
    "d": 2.4,
-   "a": 8,
-   "kda": 4.56,
+   "a": 8.1,
+   "kda": 4.57,
    "csm": 6.9,
    "gpm": 388,
    "dmgShare": 0.16,
-   "kp": 0.74,
+   "kp": 0.75,
    "cto": {
-    "games": 93,
+    "games": 94,
     "weight": 0.98,
-    "kda": 4.35,
-    "csm": 6.7,
-    "gpm": 379,
+    "kda": 4.37,
+    "csm": 6.8,
+    "gpm": 380,
     "dmgShare": 0.16,
     "kp": 0.73
    },
@@ -9805,12 +9810,12 @@
      13
     ],
     [
-     "Pantheon",
+     "JarvanIV",
      12
     ],
     [
-     "JarvanIV",
-     11
+     "Pantheon",
+     12
     ],
     [
      "XinZhao",
@@ -9824,28 +9829,28 @@
    "leagues": {
     "LEC": 89,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 3
    }
   },
   "105504920899018806": {
    "name": "MKOI Jojopyun",
    "role": "mid",
    "teamId": "103461966965149786",
-   "games": 95,
-   "k": 3.5,
+   "games": 96,
+   "k": 3.6,
    "d": 2.9,
    "a": 6,
-   "kda": 3.33,
+   "kda": 3.35,
    "csm": 9.2,
    "gpm": 408,
    "dmgShare": 0.25,
    "kp": 0.63,
    "cto": {
-    "games": 93,
+    "games": 94,
     "weight": 0.98,
-    "kda": 3.19,
+    "kda": 3.21,
     "csm": 9,
-    "gpm": 396,
+    "gpm": 397,
     "dmgShare": 0.25,
     "kp": 0.61
    },
@@ -9874,35 +9879,35 @@
    "leagues": {
     "LEC": 89,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 3
    }
   },
   "103536968833612789": {
    "name": "MKOI Supa",
    "role": "bottom",
    "teamId": "103461966965149786",
-   "games": 95,
+   "games": 96,
    "k": 5,
    "d": 2.3,
-   "a": 4.6,
-   "kda": 4.29,
+   "a": 4.7,
+   "kda": 4.31,
    "csm": 10,
    "gpm": 504,
    "dmgShare": 0.29,
    "kp": 0.64,
    "cto": {
-    "games": 93,
+    "games": 94,
     "weight": 0.98,
-    "kda": 4.11,
+    "kda": 4.13,
     "csm": 9.8,
-    "gpm": 491,
+    "gpm": 492,
     "dmgShare": 0.28,
     "kp": 0.63
    },
    "champions": [
     [
      "Ezreal",
-     18
+     19
     ],
     [
      "Yunara",
@@ -9924,28 +9929,28 @@
    "leagues": {
     "LEC": 89,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 3
    }
   },
   "107564404490889053": {
    "name": "MKOI Alvaro",
    "role": "support",
    "teamId": "103461966965149786",
-   "games": 95,
+   "games": 96,
    "k": 0.7,
    "d": 3,
-   "a": 10.2,
-   "kda": 3.57,
+   "a": 10.3,
+   "kda": 3.62,
    "csm": 1.1,
-   "gpm": 262,
+   "gpm": 263,
    "dmgShare": 0.08,
-   "kp": 0.73,
+   "kp": 0.74,
    "cto": {
-    "games": 93,
+    "games": 94,
     "weight": 0.98,
-    "kda": 3.41,
+    "kda": 3.47,
     "csm": 1.1,
-    "gpm": 256,
+    "gpm": 257,
     "dmgShare": 0.08,
     "kp": 0.72
    },
@@ -9964,7 +9969,7 @@
     ],
     [
      "Karma",
-     9
+     10
     ],
     [
      "Rakan",
@@ -9974,7 +9979,7 @@
    "leagues": {
     "LEC": 89,
     "EWC": 4,
-    "Worlds": 2
+    "Worlds": 3
    }
   },
   "103495716738607011": {
