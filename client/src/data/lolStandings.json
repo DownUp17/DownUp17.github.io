@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-10-30",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -11305,14 +11305,17 @@
                 "title": "1승 2패",
                 "a": {
                   "seed": "",
-                  "short": "CFO"
+                  "short": "KC",
+                  "score": 2,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "CFO",
+                  "score": 0,
+                  "elim": true
                 },
-                "recordKey": "1-2",
-                "time": "10/30 05:00"
+                "recordKey": "1-2"
               },
               {
                 "id": "115660540726095077",

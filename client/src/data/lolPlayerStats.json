@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-10-29",
+ "updatedAt": "2026-10-30",
  "season": 2026,
- "games": 2577,
+ "games": 2579,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -7964,21 +7964,21 @@
    "name": "KC Canna",
    "role": "top",
    "teamId": "111692118851466302",
-   "games": 132,
+   "games": 134,
    "k": 2.9,
    "d": 2.5,
    "a": 5.2,
-   "kda": 3.19,
-   "csm": 8.4,
-   "gpm": 397,
+   "kda": 3.22,
+   "csm": 8.3,
+   "gpm": 394,
    "dmgShare": 0.23,
    "kp": 0.5,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 0.93,
-    "kda": 2.86,
+    "kda": 2.89,
     "csm": 7.8,
-    "gpm": 369,
+    "gpm": 366,
     "dmgShare": 0.21,
     "kp": 0.46
    },
@@ -8008,28 +8008,28 @@
     "LEC": 97,
     "MSI": 9,
     "EWC": 13,
-    "Worlds": 13
+    "Worlds": 15
    }
   },
   "105537190986692036": {
    "name": "KC Yike",
    "role": "jungle",
    "teamId": "111692118851466302",
-   "games": 132,
+   "games": 134,
    "k": 4.1,
    "d": 2.8,
    "a": 6.8,
-   "kda": 3.88,
+   "kda": 3.95,
    "csm": 7,
-   "gpm": 401,
+   "gpm": 398,
    "dmgShare": 0.17,
    "kp": 0.69,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 0.93,
-    "kda": 3.51,
+    "kda": 3.57,
     "csm": 6.5,
-    "gpm": 374,
+    "gpm": 371,
     "dmgShare": 0.16,
     "kp": 0.64
    },
@@ -8040,7 +8040,7 @@
     ],
     [
      "MonkeyKing",
-     16
+     17
     ],
     [
      "JarvanIV",
@@ -8059,28 +8059,28 @@
     "LEC": 97,
     "MSI": 9,
     "EWC": 13,
-    "Worlds": 13
+    "Worlds": 15
    }
   },
   "108205130709313212": {
    "name": "KC kyeahoo",
    "role": "mid",
    "teamId": "111692118851466302",
-   "games": 132,
-   "k": 2.9,
+   "games": 134,
+   "k": 3,
    "d": 2.3,
    "a": 6.6,
-   "kda": 4.11,
+   "kda": 4.2,
    "csm": 8.7,
-   "gpm": 397,
+   "gpm": 395,
    "dmgShare": 0.24,
    "kp": 0.61,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 0.93,
-    "kda": 3.75,
+    "kda": 3.84,
     "csm": 8.1,
-    "gpm": 370,
+    "gpm": 368,
     "dmgShare": 0.22,
     "kp": 0.57
    },
@@ -8098,11 +8098,11 @@
      14
     ],
     [
-     "Anivia",
-     12
+     "Cassiopeia",
+     13
     ],
     [
-     "Cassiopeia",
+     "Anivia",
      12
     ]
    ],
@@ -8110,28 +8110,28 @@
     "LEC": 97,
     "MSI": 9,
     "EWC": 13,
-    "Worlds": 13
+    "Worlds": 15
    }
   },
   "109461265532592848": {
    "name": "KC Caliste",
    "role": "bottom",
    "teamId": "111692118851466302",
-   "games": 132,
+   "games": 134,
    "k": 4.7,
    "d": 1.9,
    "a": 5.4,
-   "kda": 5.4,
-   "csm": 10.3,
-   "gpm": 505,
+   "kda": 5.43,
+   "csm": 10.2,
+   "gpm": 501,
    "dmgShare": 0.28,
    "kp": 0.64,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 0.93,
-    "kda": 4.75,
-    "csm": 9.6,
-    "gpm": 469,
+    "kda": 4.77,
+    "csm": 9.5,
+    "gpm": 466,
     "dmgShare": 0.26,
     "kp": 0.59
    },
@@ -8153,7 +8153,7 @@
      11
     ],
     [
-     "Corki",
+     "Yunara",
      11
     ]
    ],
@@ -8161,28 +8161,28 @@
     "LEC": 97,
     "MSI": 9,
     "EWC": 13,
-    "Worlds": 13
+    "Worlds": 15
    }
   },
   "106625308523122120": {
    "name": "KC Busio",
    "role": "support",
    "teamId": "111692118851466302",
-   "games": 132,
+   "games": 134,
    "k": 1,
    "d": 2.9,
    "a": 10.3,
-   "kda": 3.93,
+   "kda": 3.96,
    "csm": 0.9,
-   "gpm": 257,
+   "gpm": 255,
    "dmgShare": 0.08,
    "kp": 0.7,
    "cto": {
-    "games": 125,
+    "games": 127,
     "weight": 0.93,
-    "kda": 3.61,
+    "kda": 3.64,
     "csm": 0.9,
-    "gpm": 239,
+    "gpm": 238,
     "dmgShare": 0.08,
     "kp": 0.65
    },
@@ -8196,11 +8196,11 @@
      12
     ],
     [
-     "Bard",
-     11
+     "Lulu",
+     12
     ],
     [
-     "Lulu",
+     "Bard",
      11
     ],
     [
@@ -8212,7 +8212,7 @@
     "LEC": 97,
     "MSI": 9,
     "EWC": 13,
-    "Worlds": 13
+    "Worlds": 15
    }
   },
   "107767810249714879": {
@@ -19265,28 +19265,28 @@
    "name": "CFO Rest",
    "role": "top",
    "teamId": "107700199633958891",
-   "games": 78,
+   "games": 80,
    "k": 2.5,
    "d": 2.8,
-   "a": 5.9,
-   "kda": 3.01,
-   "csm": 7.9,
-   "gpm": 373,
-   "dmgShare": 0.22,
-   "kp": 0.49,
+   "a": 5.8,
+   "kda": 2.94,
+   "csm": 7.8,
+   "gpm": 367,
+   "dmgShare": 0.21,
+   "kp": 0.48,
    "cto": {
-    "games": 78,
+    "games": 80,
     "weight": 0.95,
-    "kda": 2.83,
-    "csm": 7.5,
-    "gpm": 353,
+    "kda": 2.76,
+    "csm": 7.4,
+    "gpm": 348,
     "dmgShare": 0.2,
     "kp": 0.46
    },
    "champions": [
     [
      "Rumble",
-     16
+     17
     ],
     [
      "Renekton",
@@ -19307,35 +19307,35 @@
    ],
    "leagues": {
     "LCP": 77,
-    "Worlds": 1
+    "Worlds": 3
    }
   },
   "102808727762706248": {
    "name": "CFO Shad0w",
    "role": "jungle",
    "teamId": "107700199633958891",
-   "games": 78,
-   "k": 3.8,
+   "games": 80,
+   "k": 3.7,
    "d": 3.4,
-   "a": 8.1,
-   "kda": 3.51,
+   "a": 7.9,
+   "kda": 3.43,
    "csm": 6.9,
-   "gpm": 399,
+   "gpm": 393,
    "dmgShare": 0.19,
    "kp": 0.72,
    "cto": {
-    "games": 78,
+    "games": 80,
     "weight": 0.95,
-    "kda": 3.29,
-    "csm": 6.6,
-    "gpm": 377,
+    "kda": 3.23,
+    "csm": 6.5,
+    "gpm": 373,
     "dmgShare": 0.18,
-    "kp": 0.68
+    "kp": 0.69
    },
    "champions": [
     [
      "JarvanIV",
-     10
+     11
     ],
     [
      "Pantheon",
@@ -19356,7 +19356,7 @@
    ],
    "leagues": {
     "LCP": 77,
-    "Worlds": 1
+    "Worlds": 3
    }
   },
   "111521549237485643": {
@@ -19411,23 +19411,23 @@
    "name": "CFO Doggo",
    "role": "bottom",
    "teamId": "107700199633958891",
-   "games": 78,
-   "k": 5.4,
+   "games": 80,
+   "k": 5.3,
    "d": 3,
    "a": 5.1,
-   "kda": 3.55,
-   "csm": 9.8,
-   "gpm": 499,
+   "kda": 3.46,
+   "csm": 9.6,
+   "gpm": 491,
    "dmgShare": 0.29,
-   "kp": 0.64,
+   "kp": 0.63,
    "cto": {
-    "games": 78,
+    "games": 80,
     "weight": 0.95,
-    "kda": 3.35,
+    "kda": 3.26,
     "csm": 9.2,
-    "gpm": 472,
+    "gpm": 465,
     "dmgShare": 0.27,
-    "kp": 0.61
+    "kp": 0.6
    },
    "champions": [
     [
@@ -19436,7 +19436,7 @@
     ],
     [
      "Kaisa",
-     9
+     10
     ],
     [
      "Yunara",
@@ -19448,12 +19448,12 @@
     ],
     [
      "Caitlyn",
-     6
+     7
     ]
    ],
    "leagues": {
     "LCP": 77,
-    "Worlds": 1
+    "Worlds": 3
    }
   },
   "113951627488570916": {
@@ -19799,23 +19799,23 @@
    "name": "CFO POUT",
    "role": "mid",
    "teamId": "107700199633958891",
-   "games": 52,
-   "k": 4.2,
+   "games": 54,
+   "k": 4.1,
    "d": 2.7,
-   "a": 6.1,
-   "kda": 3.77,
-   "csm": 8.7,
-   "gpm": 404,
+   "a": 5.9,
+   "kda": 3.68,
+   "csm": 8.6,
+   "gpm": 394,
    "dmgShare": 0.25,
-   "kp": 0.6,
+   "kp": 0.61,
    "cto": {
-    "games": 52,
+    "games": 54,
     "weight": 0.97,
-    "kda": 3.62,
-    "csm": 8.5,
-    "gpm": 391,
+    "kda": 3.54,
+    "csm": 8.3,
+    "gpm": 383,
     "dmgShare": 0.24,
-    "kp": 0.58
+    "kp": 0.59
    },
    "champions": [
     [
@@ -19824,11 +19824,11 @@
     ],
     [
      "Syndra",
-     6
+     7
     ],
     [
      "Ryze",
-     6
+     7
     ],
     [
      "Aurora",
@@ -19841,28 +19841,28 @@
    ],
    "leagues": {
     "LCP": 51,
-    "Worlds": 1
+    "Worlds": 3
    }
   },
   "100668757020706361": {
    "name": "CFO Kino",
    "role": "support",
    "teamId": "107700199633958891",
-   "games": 52,
-   "k": 0.7,
+   "games": 54,
+   "k": 0.6,
    "d": 3.5,
-   "a": 10.7,
-   "kda": 3.24,
+   "a": 10.5,
+   "kda": 3.17,
    "csm": 1,
-   "gpm": 262,
+   "gpm": 256,
    "dmgShare": 0.06,
    "kp": 0.68,
    "cto": {
-    "games": 52,
+    "games": 54,
     "weight": 0.97,
-    "kda": 3.11,
-    "csm": 1,
-    "gpm": 253,
+    "kda": 3.05,
+    "csm": 0.9,
+    "gpm": 249,
     "dmgShare": 0.06,
     "kp": 0.66
    },
@@ -19881,16 +19881,16 @@
     ],
     [
      "Alistar",
-     5
+     6
     ],
     [
      "Karma",
-     5
+     6
     ]
    ],
    "leagues": {
     "LCP": 51,
-    "Worlds": 1
+    "Worlds": 3
    }
   },
   "103817013605434023": {
