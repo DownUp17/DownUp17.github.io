@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30",
+  "updatedAt": "2026-10-31",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -11324,28 +11324,34 @@
                 "title": "1승 2패",
                 "a": {
                   "seed": "",
-                  "short": "LOS"
+                  "short": "LOS",
+                  "score": 2,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "TLAW"
+                  "short": "TLAW",
+                  "score": 1,
+                  "elim": true
                 },
-                "recordKey": "1-2",
-                "time": "10/31 05:00"
+                "recordKey": "1-2"
               },
               {
                 "id": "115660540726095081",
                 "title": "1승 2패",
                 "a": {
                   "seed": "",
-                  "short": "G2"
+                  "short": "G2",
+                  "score": 0,
+                  "elim": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "HLE"
+                  "short": "HLE",
+                  "score": 2,
+                  "win": true
                 },
-                "recordKey": "1-2",
-                "time": "10/31 08:00"
+                "recordKey": "1-2"
               }
             ]
           },
@@ -11356,10 +11362,12 @@
                 "id": "115660540726095085",
                 "title": "2승 2패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "MKOI"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "KC"
                 },
                 "recordKey": "2-2",
                 "time": "11/1 02:00"
@@ -11368,10 +11376,12 @@
                 "id": "115660540726095089",
                 "title": "2승 2패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "LOS"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "LYON"
                 },
                 "recordKey": "2-2",
                 "time": "11/1 05:00"
@@ -11380,10 +11390,12 @@
                 "id": "115660540726095093",
                 "title": "2승 2패",
                 "a": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "HLE"
                 },
                 "b": {
-                  "seed": ""
+                  "seed": "",
+                  "short": "BLG"
                 },
                 "recordKey": "2-2",
                 "time": "11/1 08:00"
