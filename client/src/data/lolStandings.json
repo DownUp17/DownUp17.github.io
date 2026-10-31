@@ -11363,14 +11363,17 @@
                 "title": "2승 2패",
                 "a": {
                   "seed": "",
-                  "short": "MKOI"
+                  "short": "KC",
+                  "score": 2,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "MKOI",
+                  "score": 0,
+                  "elim": true
                 },
-                "recordKey": "2-2",
-                "time": "11/1 02:00"
+                "recordKey": "2-2"
               },
               {
                 "id": "115660540726095089",
