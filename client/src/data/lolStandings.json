@@ -11380,28 +11380,34 @@
                 "title": "2승 2패",
                 "a": {
                   "seed": "",
-                  "short": "LYON"
+                  "short": "LYON",
+                  "score": 2,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "LOS"
+                  "short": "LOS",
+                  "score": 1,
+                  "elim": true
                 },
-                "recordKey": "2-2",
-                "time": "11/1 05:00"
+                "recordKey": "2-2"
               },
               {
                 "id": "115660540726095093",
                 "title": "2승 2패",
                 "a": {
                   "seed": "",
-                  "short": "HLE"
+                  "short": "BLG",
+                  "score": 2,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "BLG"
+                  "short": "HLE",
+                  "score": 0,
+                  "elim": true
                 },
-                "recordKey": "2-2",
-                "time": "11/1 08:00"
+                "recordKey": "2-2"
               }
             ]
           }
