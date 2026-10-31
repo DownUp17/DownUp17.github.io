@@ -7,7 +7,7 @@
       "key": "LCK",
       "name": "LCK",
       "country": "대한민국",
-      "score": 1439,
+      "score": 1453,
       "color": "#1c192a"
     },
     {
@@ -21,14 +21,14 @@
       "key": "LEC",
       "name": "LEC",
       "country": "유럽",
-      "score": 1258,
+      "score": 1244,
       "color": "#00E0B0"
     },
     {
       "key": "LCS",
       "name": "LCS",
       "country": "북미",
-      "score": 1236,
+      "score": 1186,
       "color": "#eeece7"
     },
     {
@@ -42,7 +42,7 @@
       "key": "CBLOL",
       "name": "CBLOL",
       "country": "브라질",
-      "score": 897,
+      "score": 947,
       "color": "#0b0718"
     }
   ]
