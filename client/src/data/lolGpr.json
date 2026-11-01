@@ -7,14 +7,14 @@
       "key": "LCK",
       "name": "LCK",
       "country": "대한민국",
-      "score": 1453,
+      "score": 1419,
       "color": "#1c192a"
     },
     {
       "key": "LPL",
       "name": "LPL",
       "country": "중국",
-      "score": 1334,
+      "score": 1368,
       "color": "#D32F2F"
     },
     {
@@ -28,7 +28,7 @@
       "key": "LCS",
       "name": "LCS",
       "country": "북미",
-      "score": 1186,
+      "score": 1174,
       "color": "#eeece7"
     },
     {
@@ -42,7 +42,7 @@
       "key": "CBLOL",
       "name": "CBLOL",
       "country": "브라질",
-      "score": 947,
+      "score": 959,
       "color": "#0b0718"
     }
   ]
