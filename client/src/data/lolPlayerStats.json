@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-11-02",
+ "updatedAt": "2026-11-03",
  "season": 2026,
- "games": 2603,
+ "games": 2604,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -13564,21 +13564,21 @@
    "name": "LOS Curse",
    "role": "jungle",
    "teamId": "109480204628225868",
-   "games": 88,
+   "games": 89,
    "k": 2.7,
-   "d": 3.1,
-   "a": 7.5,
-   "kda": 3.34,
+   "d": 3,
+   "a": 7.6,
+   "kda": 3.39,
    "csm": 6.3,
-   "gpm": 359,
+   "gpm": 360,
    "dmgShare": 0.16,
    "kp": 0.68,
    "cto": {
-    "games": 83,
+    "games": 84,
     "weight": 0.96,
-    "kda": 3.29,
+    "kda": 3.34,
     "csm": 6,
-    "gpm": 346,
+    "gpm": 347,
     "dmgShare": 0.15,
     "kp": 0.66
    },
@@ -13607,7 +13607,7 @@
    "leagues": {
     "CBLOL": 74,
     "EWC": 5,
-    "Worlds": 9
+    "Worlds": 10
    }
   },
   "109656280616610105": {
@@ -13758,21 +13758,21 @@
    "name": "LOS Zest",
    "role": "top",
    "teamId": "109480204628225868",
-   "games": 96,
+   "games": 97,
    "k": 3.2,
    "d": 2.6,
    "a": 4.7,
-   "kda": 3.04,
+   "kda": 3.07,
    "csm": 9.1,
-   "gpm": 415,
+   "gpm": 416,
    "dmgShare": 0.26,
    "kp": 0.54,
    "cto": {
-    "games": 91,
+    "games": 92,
     "weight": 0.94,
-    "kda": 2.93,
+    "kda": 2.97,
     "csm": 8.6,
-    "gpm": 391,
+    "gpm": 393,
     "dmgShare": 0.25,
     "kp": 0.51
    },
@@ -13791,7 +13791,7 @@
     ],
     [
      "Kennen",
-     7
+     8
     ],
     [
      "Ambessa",
@@ -13801,7 +13801,7 @@
    "leagues": {
     "CBLOL": 82,
     "EWC": 5,
-    "Worlds": 9
+    "Worlds": 10
    }
   },
   "109519057410044019": {
@@ -13856,23 +13856,23 @@
    "name": "LOS Feisty",
    "role": "mid",
    "teamId": "109480204628225868",
-   "games": 96,
+   "games": 97,
    "k": 3.1,
    "d": 2.3,
-   "a": 6,
-   "kda": 3.94,
+   "a": 6.1,
+   "kda": 3.96,
    "csm": 8.5,
    "gpm": 388,
    "dmgShare": 0.24,
    "kp": 0.65,
    "cto": {
-    "games": 91,
+    "games": 92,
     "weight": 0.94,
-    "kda": 3.83,
+    "kda": 3.86,
     "csm": 8,
     "gpm": 364,
     "dmgShare": 0.22,
-    "kp": 0.61
+    "kp": 0.62
    },
    "champions": [
     [
@@ -13899,28 +13899,28 @@
    "leagues": {
     "CBLOL": 82,
     "EWC": 5,
-    "Worlds": 9
+    "Worlds": 10
    }
   },
   "112462169706118570": {
    "name": "LOS Duduhh",
    "role": "bottom",
    "teamId": "109480204628225868",
-   "games": 96,
+   "games": 97,
    "k": 4.6,
    "d": 2.7,
-   "a": 4.6,
-   "kda": 3.43,
+   "a": 4.7,
+   "kda": 3.44,
    "csm": 9.4,
    "gpm": 475,
    "dmgShare": 0.26,
    "kp": 0.64,
    "cto": {
-    "games": 91,
+    "games": 92,
     "weight": 0.94,
-    "kda": 3.27,
-    "csm": 8.8,
-    "gpm": 449,
+    "kda": 3.29,
+    "csm": 8.9,
+    "gpm": 450,
     "dmgShare": 0.25,
     "kp": 0.6
    },
@@ -13949,26 +13949,26 @@
    "leagues": {
     "CBLOL": 82,
     "EWC": 5,
-    "Worlds": 9
+    "Worlds": 10
    }
   },
   "105506922297942200": {
    "name": "LOS Ackerman",
    "role": "support",
    "teamId": "109480204628225868",
-   "games": 96,
+   "games": 97,
    "k": 0.9,
    "d": 2,
    "a": 9.9,
-   "kda": 5.42,
+   "kda": 5.43,
    "csm": 1.2,
    "gpm": 264,
    "dmgShare": 0.09,
    "kp": 0.74,
    "cto": {
-    "games": 91,
+    "games": 92,
     "weight": 0.94,
-    "kda": 5.26,
+    "kda": 5.28,
     "csm": 1.1,
     "gpm": 249,
     "dmgShare": 0.08,
@@ -13999,7 +13999,7 @@
    "leagues": {
     "CBLOL": 82,
     "EWC": 5,
-    "Worlds": 9
+    "Worlds": 10
    }
   },
   "100131733430915231": {
@@ -16640,23 +16640,23 @@
    "name": "TSW Pun",
    "role": "top",
    "teamId": "113661839307879869",
-   "games": 90,
-   "k": 3.2,
+   "games": 91,
+   "k": 3.1,
    "d": 3.3,
    "a": 6.8,
-   "kda": 3.08,
+   "kda": 3.04,
    "csm": 7.9,
    "gpm": 389,
    "dmgShare": 0.23,
    "kp": 0.58,
    "cto": {
-    "games": 86,
+    "games": 87,
     "weight": 0.94,
-    "kda": 2.99,
+    "kda": 2.96,
     "csm": 7.5,
     "gpm": 369,
     "dmgShare": 0.22,
-    "kp": 0.55
+    "kp": 0.54
    },
    "champions": [
     [
@@ -16669,7 +16669,7 @@
     ],
     [
      "Jax",
-     7
+     8
     ],
     [
      "Renekton",
@@ -16684,28 +16684,28 @@
     "MSI": 9,
     "EWC": 4,
     "LCP": 74,
-    "Worlds": 3
+    "Worlds": 4
    }
   },
   "113662600335177587": {
    "name": "TSW Hizto",
    "role": "jungle",
    "teamId": "113661839307879869",
-   "games": 91,
+   "games": 92,
    "k": 4.3,
    "d": 2.6,
    "a": 8.5,
-   "kda": 4.99,
+   "kda": 4.94,
    "csm": 7.4,
    "gpm": 414,
    "dmgShare": 0.18,
    "kp": 0.71,
    "cto": {
-    "games": 87,
+    "games": 88,
     "weight": 0.94,
-    "kda": 4.75,
+    "kda": 4.7,
     "csm": 6.9,
-    "gpm": 393,
+    "gpm": 392,
     "dmgShare": 0.17,
     "kp": 0.67
    },
@@ -16724,7 +16724,7 @@
     ],
     [
      "Vi",
-     10
+     11
     ],
     [
      "Naafiri",
@@ -16735,30 +16735,30 @@
     "MSI": 9,
     "EWC": 4,
     "LCP": 75,
-    "Worlds": 3
+    "Worlds": 4
    }
   },
   "113661875306288886": {
    "name": "TSW Dire",
    "role": "mid",
    "teamId": "113661839307879869",
-   "games": 91,
+   "games": 92,
    "k": 4.4,
    "d": 2.4,
-   "a": 7.3,
-   "kda": 4.81,
+   "a": 7.2,
+   "kda": 4.78,
    "csm": 8.6,
-   "gpm": 408,
+   "gpm": 407,
    "dmgShare": 0.23,
    "kp": 0.64,
    "cto": {
-    "games": 87,
+    "games": 88,
     "weight": 0.94,
-    "kda": 4.57,
+    "kda": 4.53,
     "csm": 8.2,
-    "gpm": 388,
+    "gpm": 387,
     "dmgShare": 0.22,
-    "kp": 0.61
+    "kp": 0.6
    },
    "champions": [
     [
@@ -16786,26 +16786,26 @@
     "MSI": 9,
     "EWC": 4,
     "LCP": 75,
-    "Worlds": 3
+    "Worlds": 4
    }
   },
   "107251694749147163": {
    "name": "TSW Eddie",
    "role": "bottom",
    "teamId": "113661839307879869",
-   "games": 91,
+   "games": 92,
    "k": 5.2,
-   "d": 2,
+   "d": 2.1,
    "a": 6.8,
-   "kda": 5.87,
+   "kda": 5.8,
    "csm": 9.9,
    "gpm": 512,
    "dmgShare": 0.28,
    "kp": 0.65,
    "cto": {
-    "games": 87,
+    "games": 88,
     "weight": 0.94,
-    "kda": 5.61,
+    "kda": 5.55,
     "csm": 9.4,
     "gpm": 483,
     "dmgShare": 0.26,
@@ -16837,35 +16837,35 @@
     "MSI": 9,
     "EWC": 4,
     "LCP": 75,
-    "Worlds": 3
+    "Worlds": 4
    }
   },
   "107251574398720447": {
    "name": "TSW Bie",
    "role": "support",
    "teamId": "113661839307879869",
-   "games": 91,
+   "games": 92,
    "k": 1.1,
    "d": 2.3,
    "a": 12.1,
-   "kda": 5.83,
+   "kda": 5.71,
    "csm": 1.2,
-   "gpm": 278,
+   "gpm": 277,
    "dmgShare": 0.08,
    "kp": 0.72,
    "cto": {
-    "games": 87,
+    "games": 88,
     "weight": 0.94,
-    "kda": 5.7,
+    "kda": 5.57,
     "csm": 1.1,
-    "gpm": 263,
-    "dmgShare": 0.08,
+    "gpm": 262,
+    "dmgShare": 0.07,
     "kp": 0.68
    },
    "champions": [
     [
      "Nautilus",
-     18
+     19
     ],
     [
      "Bard",
@@ -16888,7 +16888,7 @@
     "MSI": 9,
     "EWC": 4,
     "LCP": 75,
-    "Worlds": 3
+    "Worlds": 4
    }
   },
   "107330029738468255": {
