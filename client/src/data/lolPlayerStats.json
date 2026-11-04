@@ -1,7 +1,7 @@
 {
  "updatedAt": "2026-11-04",
  "season": 2026,
- "games": 2604,
+ "games": 2608,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -372,7 +372,7 @@
    "cto": {
     "games": 128,
     "weight": 0.92,
-    "kda": 4.6,
+    "kda": 4.59,
     "csm": 8.2,
     "gpm": 388,
     "dmgShare": 0.22,
@@ -424,7 +424,7 @@
    "cto": {
     "games": 128,
     "weight": 0.92,
-    "kda": 3.12,
+    "kda": 3.11,
     "csm": 9.2,
     "gpm": 447,
     "dmgShare": 0.25,
@@ -2571,7 +2571,7 @@
    "cto": {
     "games": 120,
     "weight": 0.9,
-    "kda": 4.53,
+    "kda": 4.54,
     "csm": 9.1,
     "gpm": 451,
     "dmgShare": 0.24,
@@ -3321,9 +3321,9 @@
    "cto": {
     "games": 144,
     "weight": 1.04,
-    "kda": 2.36,
+    "kda": 2.35,
     "csm": 8.5,
-    "gpm": 382,
+    "gpm": 381,
     "dmgShare": 0.22,
     "kp": 0.5
    },
@@ -3371,9 +3371,9 @@
     "games": 140,
     "weight": 1.04,
     "kda": 2.46,
-    "csm": 7.2,
-    "gpm": 404,
-    "dmgShare": 0.19,
+    "csm": 7.1,
+    "gpm": 403,
+    "dmgShare": 0.18,
     "kp": 0.74
    },
    "champions": [
@@ -3421,9 +3421,9 @@
     "weight": 1.04,
     "kda": 3.01,
     "csm": 9,
-    "gpm": 415,
+    "gpm": 414,
     "dmgShare": 0.25,
-    "kp": 0.67
+    "kp": 0.66
    },
    "champions": [
     [
@@ -3470,7 +3470,7 @@
     "weight": 1.04,
     "kda": 2.75,
     "csm": 10.2,
-    "gpm": 492,
+    "gpm": 491,
     "dmgShare": 0.31,
     "kp": 0.7
    },
@@ -3665,9 +3665,9 @@
    "cto": {
     "games": 142,
     "weight": 1.05,
-    "kda": 3.72,
+    "kda": 3.71,
     "csm": 9,
-    "gpm": 418,
+    "gpm": 417,
     "dmgShare": 0.28,
     "kp": 0.7
    },
@@ -3714,9 +3714,9 @@
    "cto": {
     "games": 154,
     "weight": 1.04,
-    "kda": 4.51,
+    "kda": 4.5,
     "csm": 10.5,
-    "gpm": 500,
+    "gpm": 499,
     "dmgShare": 0.28,
     "kp": 0.66
    },
@@ -3816,7 +3816,7 @@
     "weight": 0.83,
     "kda": 2.92,
     "csm": 6.8,
-    "gpm": 328,
+    "gpm": 327,
     "dmgShare": 0.17,
     "kp": 0.37
    },
@@ -3862,9 +3862,9 @@
    "cto": {
     "games": 160,
     "weight": 0.89,
-    "kda": 4.22,
+    "kda": 4.21,
     "csm": 6.2,
-    "gpm": 356,
+    "gpm": 355,
     "dmgShare": 0.15,
     "kp": 0.63
    },
@@ -3913,7 +3913,7 @@
    "cto": {
     "games": 160,
     "weight": 0.89,
-    "kda": 5.97,
+    "kda": 5.96,
     "csm": 8,
     "gpm": 392,
     "dmgShare": 0.24,
@@ -3964,9 +3964,9 @@
    "cto": {
     "games": 160,
     "weight": 0.89,
-    "kda": 4.65,
+    "kda": 4.64,
     "csm": 8.7,
-    "gpm": 433,
+    "gpm": 432,
     "dmgShare": 0.25,
     "kp": 0.58
    },
@@ -4015,9 +4015,9 @@
    "cto": {
     "games": 160,
     "weight": 0.89,
-    "kda": 3.47,
+    "kda": 3.46,
     "csm": 0.9,
-    "gpm": 244,
+    "gpm": 243,
     "dmgShare": 0.07,
     "kp": 0.64
    },
@@ -4066,7 +4066,7 @@
    "cto": {
     "games": 69,
     "weight": 1.1,
-    "kda": 2.16,
+    "kda": 2.15,
     "csm": 9,
     "gpm": 404,
     "dmgShare": 0.25,
@@ -4116,7 +4116,7 @@
     "weight": 1.07,
     "kda": 3.67,
     "csm": 7.1,
-    "gpm": 394,
+    "gpm": 395,
     "dmgShare": 0.16,
     "kp": 0.8
    },
@@ -4164,7 +4164,7 @@
     "weight": 1.06,
     "kda": 3.57,
     "csm": 9.3,
-    "gpm": 416,
+    "gpm": 415,
     "dmgShare": 0.25,
     "kp": 0.64
    },
@@ -4212,7 +4212,7 @@
     "weight": 1.1,
     "kda": 3.02,
     "csm": 10.6,
-    "gpm": 507,
+    "gpm": 506,
     "dmgShare": 0.33,
     "kp": 0.74
    },
@@ -4258,9 +4258,9 @@
    "cto": {
     "games": 46,
     "weight": 1.11,
-    "kda": 2.27,
+    "kda": 2.26,
     "csm": 1.1,
-    "gpm": 273,
+    "gpm": 272,
     "dmgShare": 0.08,
     "kp": 0.74
    },
@@ -4305,10 +4305,10 @@
    "kp": 0.51,
    "cto": {
     "games": 89,
-    "weight": 1.04,
-    "kda": 2.81,
+    "weight": 1.03,
+    "kda": 2.8,
     "csm": 8.6,
-    "gpm": 394,
+    "gpm": 393,
     "dmgShare": 0.25,
     "kp": 0.53
    },
@@ -4355,9 +4355,9 @@
    "cto": {
     "games": 106,
     "weight": 1.02,
-    "kda": 3.43,
+    "kda": 3.42,
     "csm": 7.1,
-    "gpm": 398,
+    "gpm": 397,
     "dmgShare": 0.18,
     "kp": 0.73
    },
@@ -4404,9 +4404,9 @@
    "cto": {
     "games": 106,
     "weight": 1.02,
-    "kda": 4.31,
+    "kda": 4.3,
     "csm": 8.9,
-    "gpm": 402,
+    "gpm": 401,
     "dmgShare": 0.26,
     "kp": 0.67
    },
@@ -4453,9 +4453,9 @@
    "cto": {
     "games": 106,
     "weight": 1.02,
-    "kda": 3.02,
-    "csm": 9.3,
-    "gpm": 453,
+    "kda": 3.01,
+    "csm": 9.2,
+    "gpm": 452,
     "dmgShare": 0.27,
     "kp": 0.63
    },
@@ -4501,10 +4501,10 @@
    "kp": 0.74,
    "cto": {
     "games": 61,
-    "weight": 1.06,
-    "kda": 4,
+    "weight": 1.05,
+    "kda": 3.98,
     "csm": 1.2,
-    "gpm": 273,
+    "gpm": 272,
     "dmgShare": 0.07,
     "kp": 0.78
    },
@@ -4553,9 +4553,9 @@
     "weight": 1.05,
     "kda": 2.78,
     "csm": 8.7,
-    "gpm": 391,
+    "gpm": 392,
     "dmgShare": 0.24,
-    "kp": 0.52
+    "kp": 0.53
    },
    "champions": [
     [
@@ -4647,9 +4647,9 @@
    "cto": {
     "games": 90,
     "weight": 1.05,
-    "kda": 3.48,
+    "kda": 3.49,
     "csm": 8.9,
-    "gpm": 405,
+    "gpm": 406,
     "dmgShare": 0.24,
     "kp": 0.66
    },
@@ -4696,8 +4696,8 @@
     "games": 90,
     "weight": 1.05,
     "kda": 3.54,
-    "csm": 10,
-    "gpm": 504,
+    "csm": 10.1,
+    "gpm": 505,
     "dmgShare": 0.31,
     "kp": 0.72
    },
@@ -4742,12 +4742,12 @@
    "kp": 0.74,
    "cto": {
     "games": 70,
-    "weight": 1.01,
-    "kda": 2.97,
+    "weight": 0.99,
+    "kda": 2.91,
     "csm": 1.1,
-    "gpm": 247,
+    "gpm": 243,
     "dmgShare": 0.07,
-    "kp": 0.74
+    "kp": 0.73
    },
    "champions": [
     [
@@ -4779,28 +4779,36 @@
    "name": "IG TheShy",
    "role": "top",
    "teamId": "99566404848691211",
-   "games": 49,
+   "games": 53,
    "k": 2.6,
    "d": 3.1,
-   "a": 5.3,
-   "kda": 2.56,
+   "a": 5.4,
+   "kda": 2.6,
    "csm": 7.8,
-   "gpm": 373,
-   "dmgShare": 0.22,
-   "kp": 0.47,
+   "gpm": 372,
+   "dmgShare": 0.21,
+   "kp": 0.46,
    "cto": {
-    "games": 49,
-    "weight": 0.96,
-    "kda": 2.43,
-    "csm": 7.5,
-    "gpm": 357,
-    "dmgShare": 0.21,
-    "kp": 0.45
+    "games": 53,
+    "weight": 0.93,
+    "kda": 2.4,
+    "csm": 7.2,
+    "gpm": 345,
+    "dmgShare": 0.2,
+    "kp": 0.43
    },
    "champions": [
     [
      "Rumble",
      7
+    ],
+    [
+     "Gnar",
+     5
+    ],
+    [
+     "KSante",
+     5
     ],
     [
      "Olaf",
@@ -4809,42 +4817,34 @@
     [
      "Yorick",
      4
-    ],
-    [
-     "Jayce",
-     4
-    ],
-    [
-     "Gnar",
-     4
     ]
    ],
    "leagues": {
     "LPL": 43,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "103461966880868232": {
    "name": "IG Wei",
    "role": "jungle",
    "teamId": "99566404848691211",
-   "games": 128,
+   "games": 132,
    "k": 3.3,
    "d": 3.2,
    "a": 7.5,
-   "kda": 3.34,
+   "kda": 3.39,
    "csm": 6.6,
-   "gpm": 385,
+   "gpm": 387,
    "dmgShare": 0.17,
    "kp": 0.73,
    "cto": {
-    "games": 128,
-    "weight": 0.96,
-    "kda": 3.19,
-    "csm": 6.4,
-    "gpm": 371,
+    "games": 132,
+    "weight": 0.94,
+    "kda": 3.14,
+    "csm": 6.2,
+    "gpm": 361,
     "dmgShare": 0.16,
-    "kp": 0.7
+    "kp": 0.68
    },
    "champions": [
     [
@@ -4861,41 +4861,45 @@
     ],
     [
      "MonkeyKing",
-     12
+     13
     ],
     [
-     "Pantheon",
+     "Naafiri",
      12
     ]
    ],
    "leagues": {
     "LPL": 122,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "99566404811346612": {
    "name": "IG Rookie",
    "role": "mid",
    "teamId": "99566404848691211",
-   "games": 91,
-   "k": 3.6,
+   "games": 95,
+   "k": 3.7,
    "d": 2.5,
-   "a": 6.5,
-   "kda": 4,
-   "csm": 8.6,
+   "a": 6.6,
+   "kda": 4.09,
+   "csm": 8.5,
    "gpm": 399,
    "dmgShare": 0.25,
-   "kp": 0.66,
+   "kp": 0.67,
    "cto": {
-    "games": 91,
-    "weight": 0.96,
-    "kda": 3.82,
-    "csm": 8.2,
-    "gpm": 383,
-    "dmgShare": 0.24,
-    "kp": 0.64
+    "games": 95,
+    "weight": 0.93,
+    "kda": 3.79,
+    "csm": 8,
+    "gpm": 372,
+    "dmgShare": 0.23,
+    "kp": 0.62
    },
    "champions": [
+    [
+     "Syndra",
+     11
+    ],
     [
      "Ryze",
      10
@@ -4905,21 +4909,17 @@
      10
     ],
     [
-     "Syndra",
-     10
-    ],
-    [
      "Aurora",
      8
     ],
     [
      "Viktor",
-     6
+     7
     ]
    ],
    "leagues": {
     "LPL": 85,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "106368497875598272": {
@@ -4938,7 +4938,7 @@
    "cto": {
     "games": 71,
     "weight": 0.98,
-    "kda": 3.57,
+    "kda": 3.56,
     "csm": 9.7,
     "gpm": 486,
     "dmgShare": 0.29,
@@ -4974,28 +4974,28 @@
    "name": "IG Meiko",
    "role": "support",
    "teamId": "99566404848691211",
-   "games": 86,
+   "games": 90,
    "k": 0.8,
    "d": 3.1,
-   "a": 11.1,
-   "kda": 3.81,
-   "csm": 1.1,
+   "a": 11.2,
+   "kda": 3.83,
+   "csm": 1,
    "gpm": 265,
    "dmgShare": 0.08,
    "kp": 0.75,
    "cto": {
-    "games": 86,
-    "weight": 0.96,
-    "kda": 3.65,
+    "games": 90,
+    "weight": 0.93,
+    "kda": 3.56,
     "csm": 1,
-    "gpm": 255,
+    "gpm": 248,
     "dmgShare": 0.08,
-    "kp": 0.72
+    "kp": 0.7
    },
    "champions": [
     [
      "Lulu",
-     17
+     18
     ],
     [
      "Seraphine",
@@ -5011,12 +5011,12 @@
     ],
     [
      "Alistar",
-     6
+     7
     ]
    ],
    "leagues": {
     "LPL": 80,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "115728542444828247": {
@@ -5087,7 +5087,7 @@
     "csm": 7.7,
     "gpm": 420,
     "dmgShare": 0.19,
-    "kp": 0.81
+    "kp": 0.82
    },
    "champions": [
     [
@@ -5274,12 +5274,12 @@
    "kp": 0.54,
    "cto": {
     "games": 91,
-    "weight": 0.95,
-    "kda": 2.41,
-    "csm": 7.6,
-    "gpm": 364,
-    "dmgShare": 0.21,
-    "kp": 0.51
+    "weight": 0.99,
+    "kda": 2.48,
+    "csm": 7.8,
+    "gpm": 376,
+    "dmgShare": 0.22,
+    "kp": 0.53
    },
    "champions": [
     [
@@ -5312,23 +5312,23 @@
    "name": "TES Tian",
    "role": "jungle",
    "teamId": "99566404854685458",
-   "games": 97,
-   "k": 3.4,
-   "d": 3.3,
-   "a": 7.5,
-   "kda": 3.25,
+   "games": 101,
+   "k": 3.3,
+   "d": 3.4,
+   "a": 7.4,
+   "kda": 3.17,
    "csm": 7.2,
-   "gpm": 397,
+   "gpm": 396,
    "dmgShare": 0.17,
    "kp": 0.7,
    "cto": {
-    "games": 97,
-    "weight": 0.96,
-    "kda": 3.11,
-    "csm": 6.9,
-    "gpm": 382,
-    "dmgShare": 0.16,
-    "kp": 0.67
+    "games": 101,
+    "weight": 0.99,
+    "kda": 3.14,
+    "csm": 7.1,
+    "gpm": 394,
+    "dmgShare": 0.17,
+    "kp": 0.69
    },
    "champions": [
     [
@@ -5336,49 +5336,49 @@
      14
     ],
     [
+     "Vi",
+     12
+    ],
+    [
      "Pantheon",
      12
     ],
     [
-     "Vi",
-     11
+     "XinZhao",
+     12
     ],
     [
      "LeeSin",
-     11
-    ],
-    [
-     "XinZhao",
      11
     ]
    ],
    "leagues": {
     "LPL": 82,
     "MSI": 9,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "106368556422916908": {
    "name": "TES Creme",
    "role": "mid",
    "teamId": "99566404854685458",
-   "games": 139,
+   "games": 143,
    "k": 3.7,
    "d": 2.6,
    "a": 6.1,
-   "kda": 3.81,
+   "kda": 3.8,
    "csm": 8.7,
-   "gpm": 406,
+   "gpm": 405,
    "dmgShare": 0.26,
    "kp": 0.61,
    "cto": {
-    "games": 139,
-    "weight": 0.96,
-    "kda": 3.65,
-    "csm": 8.4,
-    "gpm": 390,
-    "dmgShare": 0.25,
-    "kp": 0.59
+    "games": 143,
+    "weight": 0.99,
+    "kda": 3.76,
+    "csm": 8.6,
+    "gpm": 402,
+    "dmgShare": 0.26,
+    "kp": 0.61
    },
    "champions": [
     [
@@ -5390,50 +5390,50 @@
      16
     ],
     [
+     "Orianna",
+     14
+    ],
+    [
      "Ahri",
      13
     ],
     [
-     "Orianna",
-     13
-    ],
-    [
      "Aurora",
-     11
+     12
     ]
    ],
    "leagues": {
     "LPL": 124,
     "MSI": 9,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "99566404823220763": {
    "name": "TES JackeyLove",
    "role": "bottom",
    "teamId": "99566404854685458",
-   "games": 97,
+   "games": 101,
    "k": 4.5,
-   "d": 3,
+   "d": 3.1,
    "a": 5.8,
-   "kda": 3.4,
-   "csm": 9.5,
-   "gpm": 463,
+   "kda": 3.33,
+   "csm": 9.6,
+   "gpm": 462,
    "dmgShare": 0.28,
    "kp": 0.65,
    "cto": {
-    "games": 97,
-    "weight": 0.96,
-    "kda": 3.24,
-    "csm": 9.2,
-    "gpm": 444,
-    "dmgShare": 0.27,
-    "kp": 0.62
+    "games": 101,
+    "weight": 0.99,
+    "kda": 3.29,
+    "csm": 9.5,
+    "gpm": 458,
+    "dmgShare": 0.28,
+    "kp": 0.65
    },
    "champions": [
     [
      "Ezreal",
-     13
+     14
     ],
     [
      "Jhin",
@@ -5441,11 +5441,11 @@
     ],
     [
      "Ashe",
-     12
+     13
     ],
     [
      "Lucian",
-     11
+     12
     ],
     [
      "Corki",
@@ -5455,46 +5455,46 @@
    "leagues": {
     "LPL": 82,
     "MSI": 9,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "105516599464787723": {
    "name": "TES Zhuo",
    "role": "support",
    "teamId": "99566404854685458",
-   "games": 109,
-   "k": 0.8,
+   "games": 113,
+   "k": 0.7,
    "d": 2.8,
    "a": 10.8,
-   "kda": 4.14,
+   "kda": 4.07,
    "csm": 1.1,
-   "gpm": 263,
+   "gpm": 262,
    "dmgShare": 0.07,
    "kp": 0.76,
    "cto": {
-    "games": 109,
-    "weight": 0.97,
+    "games": 113,
+    "weight": 0.99,
     "kda": 4.01,
     "csm": 1.1,
-    "gpm": 256,
+    "gpm": 260,
     "dmgShare": 0.07,
-    "kp": 0.74
+    "kp": 0.75
    },
    "champions": [
     [
      "Milio",
-     14
+     15
     ],
     [
      "Lulu",
      14
     ],
     [
-     "Nautilus",
-     10
+     "Seraphine",
+     11
     ],
     [
-     "Seraphine",
+     "Nautilus",
      10
     ],
     [
@@ -5504,7 +5504,7 @@
    ],
    "leagues": {
     "LPL": 103,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "103729432252832975": {
@@ -5522,12 +5522,12 @@
    "kp": 0.55,
    "cto": {
     "games": 85,
-    "weight": 0.98,
-    "kda": 3.07,
+    "weight": 0.99,
+    "kda": 3.09,
     "csm": 7.8,
-    "gpm": 376,
+    "gpm": 378,
     "dmgShare": 0.23,
-    "kp": 0.53
+    "kp": 0.54
    },
    "champions": [
     [
@@ -5570,10 +5570,10 @@
    "kp": 0.72,
    "cto": {
     "games": 85,
-    "weight": 0.98,
-    "kda": 3.32,
-    "csm": 6.7,
-    "gpm": 381,
+    "weight": 0.99,
+    "kda": 3.34,
+    "csm": 6.8,
+    "gpm": 383,
     "dmgShare": 0.15,
     "kp": 0.71
    },
@@ -5618,10 +5618,10 @@
    "kp": 0.63,
    "cto": {
     "games": 85,
-    "weight": 0.98,
-    "kda": 4.59,
+    "weight": 0.99,
+    "kda": 4.61,
     "csm": 8.7,
-    "gpm": 404,
+    "gpm": 406,
     "dmgShare": 0.23,
     "kp": 0.62
    },
@@ -5666,12 +5666,12 @@
    "kp": 0.68,
    "cto": {
     "games": 73,
-    "weight": 0.97,
-    "kda": 3.51,
-    "csm": 9.5,
-    "gpm": 455,
+    "weight": 0.96,
+    "kda": 3.46,
+    "csm": 9.3,
+    "gpm": 448,
     "dmgShare": 0.28,
-    "kp": 0.66
+    "kp": 0.65
    },
    "champions": [
     [
@@ -5714,12 +5714,12 @@
    "kp": 0.73,
    "cto": {
     "games": 115,
-    "weight": 0.96,
-    "kda": 3.03,
+    "weight": 0.99,
+    "kda": 3.11,
     "csm": 1,
-    "gpm": 253,
-    "dmgShare": 0.07,
-    "kp": 0.71
+    "gpm": 260,
+    "dmgShare": 0.08,
+    "kp": 0.72
    },
    "champions": [
     [
@@ -5764,9 +5764,9 @@
    "cto": {
     "games": 49,
     "weight": 1.02,
-    "kda": 3.39,
+    "kda": 3.4,
     "csm": 8.8,
-    "gpm": 397,
+    "gpm": 398,
     "dmgShare": 0.22,
     "kp": 0.54
    },
@@ -5811,10 +5811,10 @@
    "kp": 0.76,
    "cto": {
     "games": 13,
-    "weight": 1.11,
-    "kda": 2.61,
+    "weight": 1.12,
+    "kda": 2.63,
     "csm": 7.4,
-    "gpm": 401,
+    "gpm": 405,
     "dmgShare": 0.18,
     "kp": 0.84
    },
@@ -5860,11 +5860,11 @@
    "cto": {
     "games": 49,
     "weight": 1.02,
-    "kda": 4.43,
-    "csm": 10.3,
-    "gpm": 503,
+    "kda": 4.44,
+    "csm": 10.4,
+    "gpm": 504,
     "dmgShare": 0.32,
-    "kp": 0.68
+    "kp": 0.69
    },
    "champions": [
     [
@@ -5910,7 +5910,7 @@
     "weight": 0.98,
     "kda": 2.78,
     "csm": 1,
-    "gpm": 246,
+    "gpm": 245,
     "dmgShare": 0.08,
     "kp": 0.7
    },
@@ -5955,10 +5955,10 @@
    "kp": 0.49,
    "cto": {
     "games": 93,
-    "weight": 0.97,
-    "kda": 2.81,
-    "csm": 8,
-    "gpm": 367,
+    "weight": 0.96,
+    "kda": 2.78,
+    "csm": 7.9,
+    "gpm": 363,
     "dmgShare": 0.21,
     "kp": 0.48
    },
@@ -6007,7 +6007,7 @@
     "weight": 0.98,
     "kda": 4.48,
     "csm": 7.1,
-    "gpm": 391,
+    "gpm": 392,
     "dmgShare": 0.18,
     "kp": 0.73
    },
@@ -6107,7 +6107,7 @@
     "weight": 0.98,
     "kda": 4.33,
     "csm": 9.4,
-    "gpm": 472,
+    "gpm": 473,
     "dmgShare": 0.27,
     "kp": 0.64
    },
@@ -6157,7 +6157,7 @@
     "weight": 0.98,
     "kda": 4.21,
     "csm": 1.1,
-    "gpm": 256,
+    "gpm": 257,
     "dmgShare": 0.08,
     "kp": 0.73
    },
@@ -6204,12 +6204,12 @@
    "kp": 0.62,
    "cto": {
     "games": 26,
-    "weight": 1.01,
-    "kda": 2.15,
-    "csm": 8.4,
-    "gpm": 381,
+    "weight": 1,
+    "kda": 2.12,
+    "csm": 8.3,
+    "gpm": 376,
     "dmgShare": 0.23,
-    "kp": 0.63
+    "kp": 0.62
    },
    "champions": [
     [
@@ -6253,7 +6253,7 @@
    "cto": {
     "games": 41,
     "weight": 1.01,
-    "kda": 3.75,
+    "kda": 3.76,
     "csm": 1.1,
     "gpm": 272,
     "dmgShare": 0.08,
@@ -6342,9 +6342,9 @@
    "cto": {
     "games": 43,
     "weight": 1.06,
-    "kda": 3.06,
+    "kda": 3.08,
     "csm": 1.3,
-    "gpm": 266,
+    "gpm": 267,
     "dmgShare": 0.08,
     "kp": 0.79
    },
@@ -6524,32 +6524,32 @@
    "name": "IG JiaQi",
    "role": "bottom",
    "teamId": "99566404848691211",
-   "games": 118,
-   "k": 4.7,
-   "d": 3.5,
-   "a": 5.2,
-   "kda": 2.88,
+   "games": 122,
+   "k": 4.8,
+   "d": 3.4,
+   "a": 5.3,
+   "kda": 2.95,
    "csm": 9.8,
    "gpm": 490,
    "dmgShare": 0.28,
    "kp": 0.66,
    "cto": {
-    "games": 118,
-    "weight": 0.97,
-    "kda": 2.77,
-    "csm": 9.5,
-    "gpm": 473,
+    "games": 122,
+    "weight": 0.96,
+    "kda": 2.81,
+    "csm": 9.4,
+    "gpm": 469,
     "dmgShare": 0.27,
-    "kp": 0.64
+    "kp": 0.63
    },
    "champions": [
     [
      "Yunara",
-     20
+     21
     ],
     [
      "Jhin",
-     15
+     16
     ],
     [
      "Ashe",
@@ -6566,7 +6566,7 @@
    ],
    "leagues": {
     "LPL": 112,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "103478281356330346": {
@@ -6585,7 +6585,7 @@
    "cto": {
     "games": 133,
     "weight": 0.9,
-    "kda": 3.23,
+    "kda": 3.22,
     "csm": 7.9,
     "gpm": 358,
     "dmgShare": 0.19,
@@ -6636,11 +6636,11 @@
    "cto": {
     "games": 26,
     "weight": 1.06,
-    "kda": 3.07,
+    "kda": 3.08,
     "csm": 1.1,
-    "gpm": 271,
+    "gpm": 272,
     "dmgShare": 0.09,
-    "kp": 0.81
+    "kp": 0.82
    },
    "champions": [
     [
@@ -6924,12 +6924,12 @@
    "kp": 0.64,
    "cto": {
     "games": 19,
-    "weight": 0.98,
-    "kda": 3.08,
-    "csm": 7.9,
-    "gpm": 360,
-    "dmgShare": 0.23,
-    "kp": 0.62
+    "weight": 0.95,
+    "kda": 2.97,
+    "csm": 7.7,
+    "gpm": 348,
+    "dmgShare": 0.22,
+    "kp": 0.6
    },
    "champions": [
     [
@@ -6973,9 +6973,9 @@
    "cto": {
     "games": 33,
     "weight": 1.08,
-    "kda": 1.66,
-    "csm": 9.2,
-    "gpm": 394,
+    "kda": 1.67,
+    "csm": 9.3,
+    "gpm": 396,
     "dmgShare": 0.26,
     "kp": 0.46
    },
@@ -7069,9 +7069,9 @@
    "cto": {
     "games": 33,
     "weight": 1.08,
-    "kda": 3.51,
-    "csm": 10.1,
-    "gpm": 433,
+    "kda": 3.52,
+    "csm": 10.2,
+    "gpm": 435,
     "dmgShare": 0.27,
     "kp": 0.72
    },
@@ -7117,9 +7117,9 @@
    "cto": {
     "games": 26,
     "weight": 1.09,
-    "kda": 2.49,
-    "csm": 10.8,
-    "gpm": 505,
+    "kda": 2.5,
+    "csm": 10.9,
+    "gpm": 507,
     "dmgShare": 0.3,
     "kp": 0.81
    },
@@ -7305,12 +7305,12 @@
    "kp": 0.73,
    "cto": {
     "games": 20,
-    "weight": 1.08,
-    "kda": 2.15,
-    "csm": 7,
-    "gpm": 382,
+    "weight": 1.09,
+    "kda": 2.16,
+    "csm": 7.1,
+    "gpm": 384,
     "dmgShare": 0.16,
-    "kp": 0.79
+    "kp": 0.8
    },
    "champions": [
     [
@@ -7390,49 +7390,49 @@
    "name": "TES 369",
    "role": "top",
    "teamId": "99566404854685458",
-   "games": 48,
-   "k": 2.2,
-   "d": 2.9,
-   "a": 5.2,
-   "kda": 2.55,
+   "games": 52,
+   "k": 2.3,
+   "d": 3,
+   "a": 5.1,
+   "kda": 2.46,
    "csm": 8.7,
-   "gpm": 392,
-   "dmgShare": 0.23,
-   "kp": 0.47,
+   "gpm": 390,
+   "dmgShare": 0.22,
+   "kp": 0.48,
    "cto": {
-    "games": 48,
-    "weight": 0.97,
+    "games": 52,
+    "weight": 1.01,
     "kda": 2.46,
-    "csm": 8.5,
-    "gpm": 380,
-    "dmgShare": 0.22,
-    "kp": 0.46
+    "csm": 8.7,
+    "gpm": 392,
+    "dmgShare": 0.23,
+    "kp": 0.48
    },
    "champions": [
     [
      "Ambessa",
-     7
+     8
+    ],
+    [
+     "Renekton",
+     5
+    ],
+    [
+     "Rumble",
+     5
+    ],
+    [
+     "Aatrox",
+     5
     ],
     [
      "KSante",
      5
-    ],
-    [
-     "Renekton",
-     4
-    ],
-    [
-     "Rumble",
-     4
-    ],
-    [
-     "Sion",
-     4
     ]
    ],
    "leagues": {
     "LPL": 42,
-    "Worlds": 6
+    "Worlds": 10
    }
   },
   "111726332971856422": {
@@ -7450,12 +7450,12 @@
    "kp": 0.68,
    "cto": {
     "games": 42,
-    "weight": 0.96,
-    "kda": 2.56,
-    "csm": 6.7,
-    "gpm": 380,
-    "dmgShare": 0.15,
-    "kp": 0.65
+    "weight": 0.99,
+    "kda": 2.64,
+    "csm": 6.9,
+    "gpm": 393,
+    "dmgShare": 0.16,
+    "kp": 0.67
    },
    "champions": [
     [
@@ -7498,10 +7498,10 @@
    "kp": 0.73,
    "cto": {
     "games": 29,
-    "weight": 1.02,
-    "kda": 2.39,
+    "weight": 1.01,
+    "kda": 2.37,
     "csm": 1,
-    "gpm": 250,
+    "gpm": 248,
     "dmgShare": 0.07,
     "kp": 0.73
    },
@@ -7594,12 +7594,12 @@
    "kp": 0.49,
    "cto": {
     "games": 62,
-    "weight": 0.98,
-    "kda": 1.85,
-    "csm": 7.9,
-    "gpm": 364,
+    "weight": 0.96,
+    "kda": 1.81,
+    "csm": 7.8,
+    "gpm": 356,
     "dmgShare": 0.23,
-    "kp": 0.49
+    "kp": 0.48
    },
    "champions": [
     [
@@ -9493,7 +9493,7 @@
    "cto": {
     "games": 105,
     "weight": 0.9,
-    "kda": 2.76,
+    "kda": 2.75,
     "csm": 7.3,
     "gpm": 345,
     "dmgShare": 0.19,
@@ -9544,7 +9544,7 @@
    "cto": {
     "games": 105,
     "weight": 0.9,
-    "kda": 4.23,
+    "kda": 4.22,
     "csm": 6.4,
     "gpm": 361,
     "dmgShare": 0.17,
@@ -9597,7 +9597,7 @@
     "weight": 0.9,
     "kda": 3.78,
     "csm": 7.9,
-    "gpm": 373,
+    "gpm": 372,
     "dmgShare": 0.22,
     "kp": 0.57
    },
@@ -9646,7 +9646,7 @@
    "cto": {
     "games": 105,
     "weight": 0.9,
-    "kda": 3.96,
+    "kda": 3.95,
     "csm": 8.9,
     "gpm": 437,
     "dmgShare": 0.25,
@@ -9697,7 +9697,7 @@
    "cto": {
     "games": 105,
     "weight": 0.9,
-    "kda": 3.08,
+    "kda": 3.07,
     "csm": 0.8,
     "gpm": 239,
     "dmgShare": 0.07,
@@ -11511,7 +11511,7 @@
     "csm": 8.2,
     "gpm": 381,
     "dmgShare": 0.24,
-    "kp": 0.57
+    "kp": 0.58
    },
    "champions": [
     [
@@ -11560,7 +11560,7 @@
     "weight": 0.91,
     "kda": 4.9,
     "csm": 9.1,
-    "gpm": 439,
+    "gpm": 440,
     "dmgShare": 0.27,
     "kp": 0.59
    },
@@ -16805,9 +16805,9 @@
    "cto": {
     "games": 88,
     "weight": 0.94,
-    "kda": 5.55,
+    "kda": 5.54,
     "csm": 9.4,
-    "gpm": 483,
+    "gpm": 482,
     "dmgShare": 0.26,
     "kp": 0.61
    },
@@ -16856,7 +16856,7 @@
    "cto": {
     "games": 88,
     "weight": 0.94,
-    "kda": 5.57,
+    "kda": 5.56,
     "csm": 1.1,
     "gpm": 262,
     "dmgShare": 0.07,
