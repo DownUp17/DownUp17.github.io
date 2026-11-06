@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-06",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -11425,14 +11425,17 @@
                 "title": "8강",
                 "a": {
                   "seed": "",
-                  "short": "DK"
+                  "short": "BLG",
+                  "score": 3,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "BLG"
+                  "short": "DK",
+                  "score": 0,
+                  "elim": true
                 },
-                "startRow": 0,
-                "time": "11/6 07:00"
+                "startRow": 0
               },
               {
                 "id": "115660540726095103",
@@ -11494,7 +11497,8 @@
                   "seed": "8강 승자"
                 },
                 "b": {
-                  "seed": "8강 승자"
+                  "seed": "8강 승자",
+                  "short": "BLG"
                 },
                 "startRow": 1,
                 "time": "11/9 07:00"
@@ -11536,7 +11540,7 @@
         "connectors": [
           [
             0,
-            0,
+            1,
             "mid",
             1,
             0,
@@ -11544,7 +11548,7 @@
           ],
           [
             0,
-            1,
+            0,
             "mid",
             1,
             0,
