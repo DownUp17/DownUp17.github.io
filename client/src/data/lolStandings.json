@@ -11442,14 +11442,17 @@
                 "title": "8강",
                 "a": {
                   "seed": "",
-                  "short": "T1"
+                  "short": "T1",
+                  "score": 3,
+                  "win": true
                 },
                 "b": {
                   "seed": "",
-                  "short": "KC"
+                  "short": "KC",
+                  "score": 1,
+                  "elim": true
                 },
-                "startRow": 2,
-                "time": "11/7 07:00"
+                "startRow": 2
               },
               {
                 "id": "115660540726095109",
@@ -11494,7 +11497,8 @@
                 "id": "115660540726095121",
                 "title": "4강",
                 "a": {
-                  "seed": "8강 승자"
+                  "seed": "8강 승자",
+                  "short": "T1"
                 },
                 "b": {
                   "seed": "8강 승자",
