@@ -3128,7 +3128,7 @@ const stageMatchesDone = (data) => {
     }
   };
   walk(data);
-  return ms.length > 0 && ms.every((m) => m.winner || m.a?.win || m.b?.win);
+  return ms.length > 0 && ms.every((m) => m.winner || m.a?.win || m.b?.win || m.a?.msi || m.b?.msi);
 };const STAGE_DEFAULT = {
   'lck|LCK CUP': '최종 순위',
   'lck|LCK': '최종 순위',

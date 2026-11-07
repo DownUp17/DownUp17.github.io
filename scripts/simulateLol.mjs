@@ -1166,7 +1166,15 @@ function simulateWorlds(w) {
       }
       if (tries > 40 || pairs.every(([a, b]) => LEAGUE(a) !== LEAGUE(b))) r1 = pairs;
     }
-    let pairs = r1;
+    // 실제 대진이 나온 라운드는 그 대진을 그대로 쓰고, 대진이 없는 팀만 무작위로 짝짓는다.
+    const swissRounds = (w.swiss?.rounds || []).map((r) => (r.matches || []).filter((m) => m.a?.short && m.b?.short).map((m) => [m.a.short, m.b.short]));
+    const withActual = (round, randomPairs) => {
+      const act = (swissRounds[round] || []).filter(([a, b]) => rec[a] && rec[b]);
+      if (!act.length) return randomPairs;
+      const used = new Set(act.flat());
+      return [...act, ...randomPairs.filter(([a, b]) => !used.has(a) && !used.has(b))];
+    };
+    let pairs = withActual(0, r1);
     const ko3 = { '0': [], '1': [], '2': [] };
     for (let round = 0; round < 5; round++) {
       for (const [a, b] of pairs) {
@@ -1190,12 +1198,14 @@ function simulateWorlds(w) {
         }
         pairs.push(...best);
       }
+      pairs = withActual(round + 1, pairs);
     }
     const adv = [...ko3['0'], ...ko3['1'], ...ko3['2']];
     adv.forEach((s) => stat[s].ko++);
     // 녹아웃 8강: 3-0 두 팀은 반대편, 각자 3-2 팀과
     const s30 = shuffle([...ko3['0']]), s32 = shuffle([...ko3['2']]), rest = shuffle([...ko3['1'], ...s32.slice(2)]);
-    const qf = [[s30[0], s32[0]], [rest[0], rest[1]], [s30[1], s32[1]], [rest[2], rest[3]]];
+    const koQf = (w.knockout?.rounds?.[0]?.matches || []).filter((m) => m.a?.short && m.b?.short).map((m) => [m.a.short, m.b.short]);
+    const qf = koQf.length === 4 ? koQf : [[s30[0], s32[0]], [rest[0], rest[1]], [s30[1], s32[1]], [rest[2], rest[3]]];
     const playKo = (a, b) => koActual[pairKey(a, b)] || series(a, b, 3);
     const sf = qf.map(([a, b]) => playKo(a, b)[0]);
     sf.forEach((s) => stat[s].sf++);
