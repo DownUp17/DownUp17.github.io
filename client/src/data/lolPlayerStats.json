@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-11-11",
+ "updatedAt": "2026-11-12",
  "season": 2026,
- "games": 2629,
+ "games": 2630,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -2406,19 +2406,19 @@
    "name": "GEN Kiin",
    "role": "top",
    "teamId": "100205573495116443",
-   "games": 125,
-   "k": 3.7,
-   "d": 2.6,
+   "games": 126,
+   "k": 3.6,
+   "d": 2.5,
    "a": 6.7,
-   "kda": 4.06,
+   "kda": 4.08,
    "csm": 8.4,
    "gpm": 407,
    "dmgShare": 0.23,
    "kp": 0.59,
    "cto": {
-    "games": 125,
+    "games": 126,
     "weight": 0.86,
-    "kda": 3.5,
+    "kda": 3.52,
     "csm": 7.2,
     "gpm": 352,
     "dmgShare": 0.2,
@@ -2450,14 +2450,14 @@
     "LCK": 97,
     "EWC": 9,
     "KeSPA Cup": 9,
-    "Worlds": 10
+    "Worlds": 11
    }
   },
   "100725844994345151": {
    "name": "GEN Canyon",
    "role": "jungle",
    "teamId": "100205573495116443",
-   "games": 125,
+   "games": 126,
    "k": 3.6,
    "d": 2.4,
    "a": 9.1,
@@ -2467,9 +2467,9 @@
    "dmgShare": 0.17,
    "kp": 0.72,
    "cto": {
-    "games": 125,
+    "games": 126,
     "weight": 0.86,
-    "kda": 4.53,
+    "kda": 4.54,
     "csm": 6.3,
     "gpm": 350,
     "dmgShare": 0.15,
@@ -2477,15 +2477,15 @@
    },
    "champions": [
     [
+     "Pantheon",
+     15
+    ],
+    [
      "LeeSin",
      14
     ],
     [
      "XinZhao",
-     14
-    ],
-    [
-     "Pantheon",
      14
     ],
     [
@@ -2501,26 +2501,26 @@
     "LCK": 97,
     "EWC": 9,
     "KeSPA Cup": 9,
-    "Worlds": 10
+    "Worlds": 11
    }
   },
   "99871276342168416": {
    "name": "GEN Chovy",
    "role": "mid",
    "teamId": "100205573495116443",
-   "games": 125,
+   "games": 126,
    "k": 4.3,
    "d": 2.1,
    "a": 7.2,
-   "kda": 5.39,
-   "csm": 9.5,
+   "kda": 5.4,
+   "csm": 9.4,
    "gpm": 433,
    "dmgShare": 0.25,
    "kp": 0.64,
    "cto": {
-    "games": 125,
+    "games": 126,
     "weight": 0.86,
-    "kda": 4.63,
+    "kda": 4.64,
     "csm": 8.2,
     "gpm": 374,
     "dmgShare": 0.22,
@@ -2552,14 +2552,14 @@
     "LCK": 97,
     "EWC": 9,
     "KeSPA Cup": 9,
-    "Worlds": 10
+    "Worlds": 11
    }
   },
   "98767975906852059": {
    "name": "GEN Ruler",
    "role": "bottom",
    "teamId": "100205573495116443",
-   "games": 125,
+   "games": 126,
    "k": 5.2,
    "d": 2.3,
    "a": 6.6,
@@ -2567,13 +2567,13 @@
    "csm": 10.1,
    "gpm": 504,
    "dmgShare": 0.27,
-   "kp": 0.67,
+   "kp": 0.66,
    "cto": {
-    "games": 125,
+    "games": 126,
     "weight": 0.86,
     "kda": 4.48,
     "csm": 8.8,
-    "gpm": 435,
+    "gpm": 436,
     "dmgShare": 0.23,
     "kp": 0.57
    },
@@ -2603,26 +2603,26 @@
     "LCK": 97,
     "EWC": 9,
     "KeSPA Cup": 9,
-    "Worlds": 10
+    "Worlds": 11
    }
   },
   "107454956790371682": {
    "name": "GEN Duro",
    "role": "support",
    "teamId": "100205573495116443",
-   "games": 125,
-   "k": 1,
+   "games": 126,
+   "k": 0.9,
    "d": 2.6,
    "a": 12.1,
-   "kda": 5.07,
+   "kda": 5.05,
    "csm": 0.9,
    "gpm": 268,
    "dmgShare": 0.08,
    "kp": 0.74,
    "cto": {
-    "games": 125,
+    "games": 126,
     "weight": 0.86,
-    "kda": 4.36,
+    "kda": 4.35,
     "csm": 0.8,
     "gpm": 232,
     "dmgShare": 0.07,
@@ -2646,7 +2646,7 @@
      11
     ],
     [
-     "Nautilus",
+     "Rakan",
      8
     ]
    ],
@@ -2654,7 +2654,7 @@
     "LCK": 97,
     "EWC": 9,
     "KeSPA Cup": 9,
-    "Worlds": 10
+    "Worlds": 11
    }
   },
   "111658291900451423": {
@@ -11393,21 +11393,21 @@
    "name": "LYON Dhokla",
    "role": "top",
    "teamId": "99566405941863385",
-   "games": 107,
-   "k": 2.4,
+   "games": 108,
+   "k": 2.5,
    "d": 2.8,
    "a": 5.4,
-   "kda": 2.79,
+   "kda": 2.76,
    "csm": 7.9,
    "gpm": 370,
-   "dmgShare": 0.22,
-   "kp": 0.53,
+   "dmgShare": 0.23,
+   "kp": 0.54,
    "cto": {
-    "games": 105,
+    "games": 106,
     "weight": 0.93,
-    "kda": 2.63,
-    "csm": 7.3,
-    "gpm": 343,
+    "kda": 2.61,
+    "csm": 7.4,
+    "gpm": 344,
     "dmgShare": 0.21,
     "kp": 0.5
    },
@@ -11437,28 +11437,28 @@
     "LCS": 76,
     "MSI": 15,
     "EWC": 3,
-    "Worlds": 13
+    "Worlds": 14
    }
   },
   "101389713966873995": {
    "name": "LYON Inspired",
    "role": "jungle",
    "teamId": "99566405941863385",
-   "games": 102,
+   "games": 103,
    "k": 2.8,
    "d": 2.2,
    "a": 6.7,
-   "kda": 4.33,
-   "csm": 7.4,
+   "kda": 4.3,
+   "csm": 7.3,
    "gpm": 391,
    "dmgShare": 0.15,
    "kp": 0.68,
    "cto": {
-    "games": 100,
-    "weight": 0.93,
-    "kda": 4.16,
+    "games": 101,
+    "weight": 0.94,
+    "kda": 4.15,
     "csm": 6.9,
-    "gpm": 364,
+    "gpm": 365,
     "dmgShare": 0.14,
     "kp": 0.64
    },
@@ -11480,7 +11480,7 @@
      10
     ],
     [
-     "Vi",
+     "Trundle",
      8
     ]
    ],
@@ -11488,14 +11488,14 @@
     "LCS": 71,
     "MSI": 15,
     "EWC": 3,
-    "Worlds": 13
+    "Worlds": 14
    }
   },
   "107492059066783320": {
    "name": "LYON Saint",
    "role": "mid",
    "teamId": "99566405941863385",
-   "games": 110,
+   "games": 111,
    "k": 4,
    "d": 2.4,
    "a": 5.5,
@@ -11505,11 +11505,11 @@
    "dmgShare": 0.26,
    "kp": 0.63,
    "cto": {
-    "games": 108,
+    "games": 109,
     "weight": 0.93,
     "kda": 3.77,
     "csm": 8.4,
-    "gpm": 387,
+    "gpm": 388,
     "dmgShare": 0.24,
     "kp": 0.58
    },
@@ -11539,26 +11539,26 @@
     "LCS": 79,
     "MSI": 15,
     "EWC": 3,
-    "Worlds": 13
+    "Worlds": 14
    }
   },
   "105388936922706146": {
    "name": "LYON Berserker",
    "role": "bottom",
    "teamId": "99566405941863385",
-   "games": 110,
-   "k": 4.7,
+   "games": 111,
+   "k": 4.6,
    "d": 1.8,
-   "a": 5.1,
-   "kda": 5.29,
+   "a": 5,
+   "kda": 5.25,
    "csm": 10,
-   "gpm": 483,
-   "dmgShare": 0.3,
+   "gpm": 482,
+   "dmgShare": 0.29,
    "kp": 0.65,
    "cto": {
-    "games": 108,
+    "games": 109,
     "weight": 0.93,
-    "kda": 4.88,
+    "kda": 4.85,
     "csm": 9.3,
     "gpm": 447,
     "dmgShare": 0.27,
@@ -11590,29 +11590,29 @@
     "LCS": 79,
     "MSI": 15,
     "EWC": 3,
-    "Worlds": 13
+    "Worlds": 14
    }
   },
   "103103578076943629": {
    "name": "LYON Isles",
    "role": "support",
    "teamId": "99566405941863385",
-   "games": 110,
+   "games": 111,
    "k": 0.6,
    "d": 2.3,
    "a": 10.1,
-   "kda": 4.71,
+   "kda": 4.69,
    "csm": 1,
-   "gpm": 257,
+   "gpm": 256,
    "dmgShare": 0.07,
    "kp": 0.72,
    "cto": {
-    "games": 108,
+    "games": 109,
     "weight": 0.93,
-    "kda": 4.49,
+    "kda": 4.48,
     "csm": 0.9,
     "gpm": 238,
-    "dmgShare": 0.07,
+    "dmgShare": 0.06,
     "kp": 0.67
    },
    "champions": [
@@ -11626,7 +11626,7 @@
     ],
     [
      "Alistar",
-     12
+     13
     ],
     [
      "Karma",
@@ -11641,7 +11641,7 @@
     "LCS": 79,
     "MSI": 15,
     "EWC": 3,
-    "Worlds": 13
+    "Worlds": 14
    }
   },
   "111686531260879329": {
