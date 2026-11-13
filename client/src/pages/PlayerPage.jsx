@@ -10,23 +10,24 @@ import playerStats from '../data/lolPlayerStats.json';
 import playerCareers from '../data/lolPlayerCareers.json';
 import { PLAYER_WORLDS_TEAM } from '../utils/championBg';
 import ChampionBackground from '../components/ChampionBackground';
+import { eraLogo } from '../utils/eraLogos';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map((t) => [t.short, t]));
 // 같은 구단의 옛 이름은 한 팀으로 취급(예: SK Telecom T1 K·SK Telecom T1 → T1). 2군·아카데미는 별개.
 const ORG_ALIASES = [
   [/^(SK Telecom T1( K| S| 1| 2)?|T1)$/i, 'T1'],
-  [/^(Samsung (Galaxy|White|Blue|Ozone)|KSV|Gen\.G( Esports)?)$/i, 'GEN'],
-  [/^(KOO Tigers|GE Tigers|ROX Tigers|Hanwha Life( Esports)?)$/i, 'HLE'],
+  [/^(Samsung (Galaxy|White|Blue|Ozone)|KSV|GEN|Gen\.G( Esports)?)$/i, 'GEN'],
+  [/^(KOO Tigers|GE Tigers|ROX Tigers|HLE|Hanwha Life( Esports)?)$/i, 'HLE'],
   [/^(Incredible Miracle|Longzhu( Gaming)?|Kingzone DragonX|DragonX|DRX|DRX Shinhan Bank|Kiwoom DRX)$/i, 'DRX'],
-  [/^(DAMWON( Gaming)?|DWG KIA|Dplus KIA)$/i, 'DK'],
+  [/^(DAMWON( Gaming)?|DWG KIA|DK|Dplus KIA)$/i, 'DK'],
   [/^(KT Rolster|kt Rolster|KT Arrows|KT Bullets)$/i, 'KT'],
-  [/^(Afreeca Freecs|Kwangdong Freecs|DN Freecs|DN SOOPers)$/i, 'DNS'],
-  [/^(ESC Ever|Hyper Youth|Fredit BRION|BRION|OK BRION|OKSavingsBank BRION|HANJIN BRION)$/i, 'BRO'],
-  [/^(SANDBOX Gaming|Liiv SANDBOX|GC Busan SANDBOX|FearX|BNK FearX)$/i, 'BFX'],
-  [/^(Team Dynamics|Nongshim RedForce)$/i, 'NS'],
+  [/^(Afreeca Freecs|Kwangdong Freecs|KDF|AF|DN Freecs|DN SOOPers)$/i, 'DNS'],
+  [/^(ESC Ever|Hyper Youth|Fredit BRION|BRION|BRO|OK BRION|OKSavingsBank BRION|HANJIN BRION)$/i, 'BRO'],
+  [/^(SANDBOX Gaming|Liiv SANDBOX|LSB|FearX|BNK FearX)$/i, 'BFX'],
+  [/^(Team Dynamics|Dynamics|NS|Nongshim|NS RedForce|Nongshim RedForce)$/i, 'NS'],
   [/^(JD Gaming|JDG Intel Esports Club|Beijing JDG( Esports)?)$/i, 'JDG'],
   [/^(Invictus Gaming( Meituan)?)$/i, 'IG'],
-  [/^(EDward Gaming|Edward Gaming)$/i, 'EDG'],
+  [/^(EDG|EDward Gaming|Edward Gaming)$/i, 'EDG'],
   [/^(Royal Never Give Up|Royal Club)$/i, 'RNG'],
   [/^(Snake Esports|LNG|LNG Esports|Suzhou LNG Esports)$/i, 'LNG'],
 ];
@@ -36,13 +37,67 @@ const ORG_SHORT = { T1: 'T1', GEN: 'GEN', HLE: 'HLE', DRX: 'KRX', DK: 'DK', KT: 
 const logoByName = {};
 for (const t of gprTeamsData.teams) if (t.logo) logoByName[t.name.toLowerCase()] = t.logo;
 for (const r of Object.values(rosters.rosters || {})) if (r.team?.image && r.team?.name) logoByName[r.team.name.toLowerCase()] ??= r.team.image;
-const logoOfTeam = (name) => {
+const logoOfTeam = (name, year) => {
   const k = ORG_ALIASES.find(([re]) => re.test(name.trim()))?.[1];
+  const era = k && year && eraLogo(k, year);
+  if (era) return era;
   const sh = k && ORG_SHORT[k];
-  return (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()] || null;
+  // 그 당시 팀 이름의 로고(Leaguepedia) 우선, 없으면 현재 구단 로고
+  return playerCareers.logos?.[name.trim()] || (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()] || null;
+};
+// 2·3군 → 1군: 같은 구단 2·3군(Academy·Rookies·Youth·Challengers 등)에서 곧바로 1군으로 올라온 경우만 1군 경력에 포함.
+const ACADEMY_RE = /(\s+|\.)(E\.A\. Rookies|Esports Academy|Global Academy|Youth Team|Academy|Rookies|Youth|Challengers?|Chall\.|Scholars|Young|Junior|Trainee)$/i;
+// 접미사로 알 수 없는 2·3군(아카데미) → 1군 이름
+const ACADEMY_OF = {
+  'INTZ Blue': 'INTZ', 'UOL Sexy Edition': 'Unicorns of Love', 'GIANTX PRIDE': 'GIANTX', 'Karmine Corp Blue': 'Karmine Corp',
+  'SK Gaming Prime': 'SK Gaming', 'G2 Arctic': 'G2 Esports', 'Fnatic TQ': 'Fnatic', 'Movistar KOI Fénix': 'Movistar KOI',
+  'Misfits Premier': 'Misfits Gaming', '100 Next': '100 Thieves', 'C9 Amateur': 'Cloud9', 'EG Prodigies': 'Evil Geniuses',
+  'VG Potential': 'Vici Gaming', 'ahq Fighter': 'ahq eSports Club', 'FunPlus Blaze': 'FunPlus Phoenix',
+  'SuperMassive Blaze': 'Papara SuperMassive', 'Schalke Evolution': 'Schalke 04', 'GC Busan SANDBOX': 'Liiv SANDBOX',
+};
+// 2·3군 이름의 약칭 → 1군 이름(1군 경력과 같은 구단인지 비교용)
+const ACADEMY_BASE = {
+  C9: 'Cloud9', EG: 'Evil Geniuses', TL: 'Team Liquid', FLY: 'FlyQuest', DIG: 'Dignitas', IMT: 'Immortals', GG: 'Golden Guardians',
+  '100': '100 Thieves', iG: 'Invictus Gaming', WE: 'Team WE', OMG: 'Oh My God', UP: 'Ultra Prime', BLG: 'Bilibili Gaming',
+  WBG: 'Weibo Gaming', TT: 'TT Gaming', TES: 'Top Esports', AL: "Anyone's Legend", 'SUP Blaze': 'Papara SuperMassive', SUP: 'Papara SuperMassive',
+  paiN: 'paiN Gaming', RED: 'RED Canids', 'KaBuM!': 'KaBuM! Esports', Fluxo: 'Fluxo W7M', MVK: 'MVK Esports', CFO: 'CTBC Flying Oyster',
+  DFM: 'DetonatioN FM', CGA: 'Crest Gaming Act', FENNEL: 'FENNEL', 'Team BDS': 'Team BDS', V3: 'V3 Esports', 'MGN Vikings': 'MGN Vikings Esports',
+  'Team Heretics': 'Team Heretics', DCG: 'Deep Cross Gaming', 'PSG Talon': 'PSG Talon', NASR: 'NASR', R7: 'Rainbow7', Rensga: 'Rensga Esports',
+  'LØS': 'LØS', LOUD: 'LOUD', FURIA: 'FURIA', INTZ: 'INTZ', 'Beşiktaş': 'Beşiktaş Esports', 'Fenerbahçe': 'Fenerbahçe', S2V: 'S2V Esports',
+};
+const isAcademy = (name) => ACADEMY_RE.test(name) || name in ACADEMY_OF;
+const baseOrg = (name) => {
+  if (name in ACADEMY_OF) return orgOf(ACADEMY_OF[name]);
+  const b = name.replace(ACADEMY_RE, '').trim();
+  return orgOf(ACADEMY_BASE[b] || b);
+};
+// 같은 구단의 1군·2·3군이 끊김 없이 이어진 구간에 1군 경력이 하나라도 있으면 전부 1군 경력 하나로 합친다
+//   (2군→1군 콜업, 1군→2군 강등 후 재콜업 모두). 이름·로고는 그 구간 마지막 1군 이름. 1군이 없는 2군 구간은 그대로.
+const foldAcademy = (list) => {
+  const out = [];
+  let run = [];
+  let side = [];
+  const flush = () => {
+    out.push(...side); // 겹친 팀은 구간보다 앞(오래된 쪽)에 둔다
+    const main = run.filter((c) => !isAcademy(c.team));
+    const name = (main.length ? main : run)[(main.length ? main : run).length - 1].team;
+    out.push({ team: name, from: Math.min(...run.map((c) => c.from)), to: Math.max(...run.map((c) => c.to)) });
+    run = []; side = [];
+  };
+  for (const c of list) {
+    const prev = run[run.length - 1];
+    const runTo = run.length ? Math.max(...run.map((x) => x.to)) : -1;
+    if (prev && baseOrg(prev.team) === baseOrg(c.team) && c.from <= runTo + 1) run.push(c);
+    // 같은 기간에 겹친 다른 팀(지역·아마추어 팀 등)은 구간을 끊지 않고 따로 둔다
+    else if (prev && c.to <= runTo) side.push(c);
+    else { if (run.length) flush(); run = [c]; }
+  }
+  if (run.length) flush();
+  return out;
 };
 // 연속된 같은 구단 기간을 하나로 합치고, 표시 이름은 가장 최근 이름으로.
-const mergeCareer = (list) => {
+const mergeCareer = (list0) => {
+  const list = foldAcademy(list0.map((c) => ({ ...c })));
   const out = [];
   for (const c of list) {
     const last = out[out.length - 1];
@@ -130,7 +185,7 @@ const PlayerPage = () => {
             {career.length > 1 && (
               <ul className="mt-2 flex flex-col gap-1 text-xs text-white/55">
                 {career.slice(0, -1).reverse().map((c, i) => {
-                  const lg = logoOfTeam(c.team);
+                  const lg = logoOfTeam(c.team, c.to);
                   return (
                     <li key={i} className="flex items-center gap-1.5">
                       {lg ? <img src={lg} alt="" className="w-4 h-4 object-contain shrink-0" onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} /> : <span className="w-4 h-4 shrink-0" />}
