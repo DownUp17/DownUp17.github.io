@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-11-12",
+ "updatedAt": "2026-11-13",
  "season": 2026,
- "games": 2630,
+ "games": 2631,
  "players": {
   "107492121209956865": {
    "name": "KTPerfecT",
@@ -1912,19 +1912,19 @@
    "name": "DK Siwoo",
    "role": "top",
    "teamId": "100725845018863243",
-   "games": 137,
+   "games": 138,
    "k": 2.3,
-   "d": 3,
+   "d": 3.1,
    "a": 4.1,
-   "kda": 2.12,
+   "kda": 2.1,
    "csm": 9,
    "gpm": 392,
    "dmgShare": 0.22,
    "kp": 0.45,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.97,
-    "kda": 2.07,
+    "kda": 2.05,
     "csm": 8.7,
     "gpm": 381,
     "dmgShare": 0.21,
@@ -1955,28 +1955,28 @@
    "leagues": {
     "LCK": 117,
     "EWC": 14,
-    "Worlds": 6
+    "Worlds": 7
    }
   },
   "106267599829820917": {
    "name": "DK Lucid",
    "role": "jungle",
    "teamId": "100725845018863243",
-   "games": 134,
+   "games": 135,
    "k": 3.1,
    "d": 3.1,
    "a": 7.3,
-   "kda": 3.32,
+   "kda": 3.3,
    "csm": 6.9,
-   "gpm": 385,
+   "gpm": 384,
    "dmgShare": 0.17,
    "kp": 0.71,
    "cto": {
-    "games": 133,
+    "games": 134,
     "weight": 0.97,
-    "kda": 3.21,
+    "kda": 3.19,
     "csm": 6.7,
-    "gpm": 374,
+    "gpm": 375,
     "dmgShare": 0.17,
     "kp": 0.69
    },
@@ -2005,26 +2005,26 @@
    "leagues": {
     "LCK": 114,
     "EWC": 14,
-    "Worlds": 6
+    "Worlds": 7
    }
   },
   "100725844988653773": {
    "name": "DK ShowMaker",
    "role": "mid",
    "teamId": "100725845018863243",
-   "games": 137,
+   "games": 138,
    "k": 3.6,
    "d": 2.4,
-   "a": 5.4,
-   "kda": 3.78,
+   "a": 5.3,
+   "kda": 3.76,
    "csm": 9,
-   "gpm": 409,
+   "gpm": 408,
    "dmgShare": 0.25,
    "kp": 0.63,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.97,
-    "kda": 3.66,
+    "kda": 3.65,
     "csm": 8.7,
     "gpm": 396,
     "dmgShare": 0.24,
@@ -2037,7 +2037,7 @@
     ],
     [
      "Viktor",
-     13
+     14
     ],
     [
      "Annie",
@@ -2055,26 +2055,26 @@
    "leagues": {
     "LCK": 117,
     "EWC": 14,
-    "Worlds": 6
+    "Worlds": 7
    }
   },
   "108205129774185945": {
    "name": "DK Smash",
    "role": "bottom",
    "teamId": "100725845018863243",
-   "games": 137,
+   "games": 138,
    "k": 4.5,
-   "d": 2.1,
+   "d": 2.2,
    "a": 5.2,
-   "kda": 4.54,
+   "kda": 4.45,
    "csm": 10.6,
    "gpm": 504,
    "dmgShare": 0.28,
    "kp": 0.67,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.97,
-    "kda": 4.35,
+    "kda": 4.27,
     "csm": 10.3,
     "gpm": 490,
     "dmgShare": 0.27,
@@ -2105,26 +2105,26 @@
    "leagues": {
     "LCK": 117,
     "EWC": 14,
-    "Worlds": 6
+    "Worlds": 7
    }
   },
   "108284721867904137": {
    "name": "DK Career",
    "role": "support",
    "teamId": "100725845018863243",
-   "games": 137,
+   "games": 138,
    "k": 0.8,
-   "d": 2.6,
+   "d": 2.7,
    "a": 9.9,
-   "kda": 4.04,
+   "kda": 4.03,
    "csm": 1.1,
    "gpm": 264,
    "dmgShare": 0.08,
    "kp": 0.75,
    "cto": {
-    "games": 136,
+    "games": 137,
     "weight": 0.97,
-    "kda": 3.9,
+    "kda": 3.89,
     "csm": 1.1,
     "gpm": 256,
     "dmgShare": 0.08,
@@ -2155,7 +2155,7 @@
    "leagues": {
     "LCK": 117,
     "EWC": 14,
-    "Worlds": 6
+    "Worlds": 7
    }
   },
   "104266795407626462": {
@@ -3850,19 +3850,19 @@
    "name": "BLG Xun",
    "role": "jungle",
    "teamId": "99566404853854212",
-   "games": 168,
+   "games": 169,
    "k": 3.9,
    "d": 2.7,
    "a": 9.2,
-   "kda": 4.8,
+   "kda": 4.82,
    "csm": 7,
    "gpm": 401,
    "dmgShare": 0.17,
    "kp": 0.71,
    "cto": {
-    "games": 168,
+    "games": 169,
     "weight": 0.85,
-    "kda": 4.06,
+    "kda": 4.08,
     "csm": 5.9,
     "gpm": 340,
     "dmgShare": 0.14,
@@ -3894,14 +3894,14 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 14
+    "Worlds": 15
    }
   },
   "99566404803543690": {
    "name": "BLG Knight",
    "role": "mid",
    "teamId": "99566404853854212",
-   "games": 168,
+   "games": 169,
    "k": 5.9,
    "d": 1.9,
    "a": 6.9,
@@ -3911,9 +3911,9 @@
    "dmgShare": 0.27,
    "kp": 0.69,
    "cto": {
-    "games": 168,
+    "games": 169,
     "weight": 0.85,
-    "kda": 5.83,
+    "kda": 5.84,
     "csm": 7.6,
     "gpm": 375,
     "dmgShare": 0.23,
@@ -3945,26 +3945,26 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 14
+    "Worlds": 15
    }
   },
   "99871276340698623": {
    "name": "BLG Viper",
    "role": "bottom",
    "teamId": "99566404853854212",
-   "games": 168,
+   "games": 169,
    "k": 4.9,
    "d": 2.3,
    "a": 7.4,
-   "kda": 5.25,
-   "csm": 9.7,
+   "kda": 5.27,
+   "csm": 9.8,
    "gpm": 488,
    "dmgShare": 0.28,
    "kp": 0.66,
    "cto": {
-    "games": 168,
+    "games": 169,
     "weight": 0.85,
-    "kda": 4.44,
+    "kda": 4.46,
     "csm": 8.3,
     "gpm": 414,
     "dmgShare": 0.24,
@@ -3996,26 +3996,26 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 14
+    "Worlds": 15
    }
   },
   "110547957837987327": {
    "name": "BLG ON",
    "role": "support",
    "teamId": "99566404853854212",
-   "games": 168,
+   "games": 169,
    "k": 0.8,
    "d": 3.4,
    "a": 12.6,
-   "kda": 3.91,
+   "kda": 3.93,
    "csm": 1.1,
    "gpm": 274,
    "dmgShare": 0.08,
    "kp": 0.72,
    "cto": {
-    "games": 168,
+    "games": 169,
     "weight": 0.85,
-    "kda": 3.31,
+    "kda": 3.33,
     "csm": 0.9,
     "gpm": 232,
     "dmgShare": 0.07,
@@ -4047,7 +4047,7 @@
     "LPL": 132,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 14
+    "Worlds": 15
    }
   },
   "103103555079018097": {
@@ -6573,21 +6573,21 @@
    "name": "BLG Bin",
    "role": "top",
    "teamId": "99566404853854212",
-   "games": 141,
-   "k": 2.9,
+   "games": 142,
+   "k": 3,
    "d": 2.4,
-   "a": 5.9,
-   "kda": 3.6,
+   "a": 5.8,
+   "kda": 3.61,
    "csm": 8.7,
-   "gpm": 398,
+   "gpm": 399,
    "dmgShare": 0.21,
    "kp": 0.49,
    "cto": {
-    "games": 141,
+    "games": 142,
     "weight": 0.86,
-    "kda": 3.09,
+    "kda": 3.1,
     "csm": 7.5,
-    "gpm": 341,
+    "gpm": 342,
     "dmgShare": 0.18,
     "kp": 0.42
    },
@@ -6617,7 +6617,7 @@
     "LPL": 105,
     "MSI": 17,
     "EWC": 5,
-    "Worlds": 14
+    "Worlds": 15
    }
   },
   "103817065229388803": {
