@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-15",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -11537,14 +11537,17 @@
                 "title": "결승",
                 "a": {
                   "seed": "4강 승자",
-                  "short": "GEN"
+                  "short": "GEN",
+                  "score": 1,
+                  "elim": true
                 },
                 "b": {
                   "seed": "4강 승자",
-                  "short": "BLG"
+                  "short": "BLG",
+                  "score": 3,
+                  "msi": true
                 },
-                "startRow": 3,
-                "time": "11/15 04:00"
+                "startRow": 3
               }
             ]
           }
