@@ -230,6 +230,14 @@
     ],
     "BLG": [
       {
+        "name": "2026 Worlds",
+        "detail": "우승",
+        "color": "#c7ae93",
+        "link": {
+          "tab": "worlds"
+        }
+      },
+      {
         "name": "2026 LPL Split 2",
         "detail": "우승",
         "color": "#D32F2F",

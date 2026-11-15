@@ -5586,9 +5586,9 @@ console.log('lolStandings.json 갱신 완료');
     if (typeof obj.champion === 'string') add(obj.champion, titleFor(segs), stl, liveLink(segs));
     // MSI/Worlds는 최종 순위 대신 결승 대진 결과로 우승자 판정 (플레이-인·스위스 제외).
     const seg = segs[segs.length - 1];
-    if ((segs[0] === 'msi' && seg === '브래킷 스테이지') || (segs[0] === 'worlds' && seg === '녹아웃 스테이지')) {
-      add(bracketChampion(obj.bracket), titleFor(segs), stl, liveLink(segs));
-    }
+    if (segs[0] === 'msi' && seg === '브래킷 스테이지') add(bracketChampion(obj.bracket), titleFor(segs), stl, liveLink(segs));
+    // Worlds 녹아웃은 standings.worlds.knockout(rounds)에 있고 'knockout'은 SKIP_KEYS라 하위로 내려가지 않음 → 여기서 직접 판정
+    if (segs.length === 1 && segs[0] === 'worlds') add(bracketChampion(obj.knockout), titleFor(segs), stl, liveLink(segs));
     for (const k of Object.keys(obj)) {
       if (SKIP_KEYS.includes(k)) continue;
       if (obj[k] && typeof obj[k] === 'object' && !Array.isArray(obj[k])) walk(obj[k], segs.concat(k));
