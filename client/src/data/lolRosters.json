@@ -905,21 +905,21 @@
           "starter": true
         },
         {
-          "id": "108284732073917232",
-          "name": "Tempester",
-          "firstName": "Yeongwoong",
-          "lastName": "Oh",
-          "role": "mid",
-          "image": "https://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
-          "starter": false
-        },
-        {
           "id": "111521549237485643",
           "name": "Pungyeon",
           "firstName": "Lee",
           "lastName": "Jonghyuk",
           "role": "mid",
           "image": "https://static.lolesports.com/players/1769232251135_Pungyeon.png",
+          "starter": false
+        },
+        {
+          "id": "108284732073917232",
+          "name": "Tempester",
+          "firstName": "Yeongwoong",
+          "lastName": "Oh",
+          "role": "mid",
+          "image": "https://static.lolesports.com/players/1769089985671_image6-2026-01-22T145216.586.png",
           "starter": false
         },
         {
@@ -1193,21 +1193,21 @@
           "starter": true
         },
         {
-          "id": "111521915459246530",
-          "name": "Quantum ",
-          "firstName": "Son",
-          "lastName": "Junghwan",
-          "role": "support",
-          "image": "https://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
-          "starter": false
-        },
-        {
           "id": "100205573444701958",
           "name": "Life",
           "firstName": "Jeongmin",
           "lastName": "Kim",
           "role": "support",
           "image": "https://static.lolesports.com/players/1769090753765_LCK_DNS_Life_F.PNG",
+          "starter": false
+        },
+        {
+          "id": "111521915459246530",
+          "name": "Quantum ",
+          "firstName": "Son",
+          "lastName": "Junghwan",
+          "role": "support",
+          "image": "https://static.lolesports.com/players/1769088918397_image6-2026-01-22T143449.651.png",
           "starter": false
         }
       ],
