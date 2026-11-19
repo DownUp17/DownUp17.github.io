@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18",
+  "updatedAt": "2026-11-19",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -671,21 +671,21 @@
           "starter": true
         },
         {
-          "id": "116884207599398316",
-          "name": "MG",
-          "firstName": "Jihoon",
-          "lastName": "Lee",
-          "role": "mid",
-          "image": "https://static.lolesports.com/players/default-headshot.png",
-          "starter": false
-        },
-        {
           "id": "109675673940491206",
           "name": "Daystar",
           "firstName": "Ji-Myeong",
           "lastName": "Yoo",
           "role": "mid",
           "image": "https://static.lolesports.com/players/1769091448891_LCK_BFX_Daystar_F.PNG",
+          "starter": false
+        },
+        {
+          "id": "116884207599398316",
+          "name": "MG",
+          "firstName": "Jihoon",
+          "lastName": "Lee",
+          "role": "mid",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
