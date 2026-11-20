@@ -86,21 +86,21 @@
           "starter": true
         },
         {
-          "id": "115740899326939236",
-          "name": "Lumos",
-          "firstName": "JAEMIN",
-          "lastName": "KIM",
-          "role": "support",
-          "image": "https://static.lolesports.com/players/1769088159344_image6-2026-01-22T142218.990.png",
-          "starter": false
-        },
-        {
           "id": "113740943728096233",
           "name": "SIRIUSS",
           "firstName": "Kun",
           "lastName": "Ko",
           "role": "support",
           "image": "https://static.lolesports.com/players/1769087912320_image6-2026-01-22T141807.421.png",
+          "starter": false
+        },
+        {
+          "id": "115740899326939236",
+          "name": "Lumos",
+          "firstName": "JAEMIN",
+          "lastName": "KIM",
+          "role": "support",
+          "image": "https://static.lolesports.com/players/1769088159344_image6-2026-01-22T142218.990.png",
           "starter": false
         }
       ],
