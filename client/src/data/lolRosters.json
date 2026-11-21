@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-21",
   "rosters": {
     "GEN": {
       "id": "100205573495116443",
@@ -203,6 +203,15 @@
           "starter": true
         },
         {
+          "id": "111658292000001586",
+          "name": "Jinbeom",
+          "firstName": "Jinbeom",
+          "lastName": "Cheon",
+          "role": "bottom",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
           "id": "108205155000821521",
           "name": "Cypher",
           "firstName": "Yoojun",
@@ -216,15 +225,6 @@
           "name": "Eclipse",
           "firstName": "Minjun",
           "lastName": "Kim",
-          "role": "bottom",
-          "image": "https://static.lolesports.com/players/default-headshot.png",
-          "starter": false
-        },
-        {
-          "id": "111658292000001586",
-          "name": "Jinbeom",
-          "firstName": "Jinbeom",
-          "lastName": "Cheon",
           "role": "bottom",
           "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
@@ -1238,21 +1238,21 @@
           "starter": true
         },
         {
-          "id": "99566404812254466",
-          "name": "Flandre",
-          "firstName": "Xuan-jun",
-          "lastName": "Li",
-          "role": "top",
-          "image": "https://static.lolesports.com/players/1768348080942_flandre.png",
-          "starter": false
-        },
-        {
           "id": "99566404805093717",
           "name": "Wenbo",
           "firstName": "Wenbo",
           "lastName": "Yang",
           "role": "top",
           "image": "https://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "id": "99566404812254466",
+          "name": "Flandre",
+          "firstName": "Xuan-jun",
+          "lastName": "Li",
+          "role": "top",
+          "image": "https://static.lolesports.com/players/1768348080942_flandre.png",
           "starter": false
         },
         {

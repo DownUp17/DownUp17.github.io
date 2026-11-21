@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-21",
   "note": "리그별 → 세부대회별 공식 현재 순위표(정규시즌만, 토너먼트/플레이오프 제외). 있으면 우선 사용, 없으면 GPR 전적으로 대체. gw/gl은 세트(게임) 승-패.",
   "source": {
     "lck": "https://lolesports.com/ko-KR/leagues/lck",
@@ -12196,12 +12196,7 @@
               "b": "TPE",
               "format": "Bo1",
               "scoreA": 1,
-              "scoreB": 0,
-              "winner": "KOR",
-              "state": "completed",
-              "day": "09-30",
-              "time": "09:00",
-              "apiMatchId": "117229242613241581"
+              "scoreB": 0
             },
             {
               "id": "B3",
@@ -12222,12 +12217,7 @@
               "b": "TPE",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1,
-              "winner": "TPE",
-              "state": "completed",
-              "day": "09-30",
-              "time": "11:30",
-              "apiMatchId": "117229242613241583"
+              "scoreB": 1
             },
             {
               "id": "B5",
@@ -12235,12 +12225,7 @@
               "b": "TPE",
               "format": "Bo1",
               "scoreA": 0,
-              "scoreB": 1,
-              "winner": "TPE",
-              "state": "completed",
-              "day": "09-30",
-              "time": "14:00",
-              "apiMatchId": "117229242613241577"
+              "scoreB": 1
             },
             {
               "id": "B6",
@@ -12315,10 +12300,8 @@
             "winner": "TPE",
             "scoreA": 0,
             "scoreB": 2,
-            "state": "completed",
             "day": "10-01",
-            "time": "09:00",
-            "apiMatchId": "117229302393058344"
+            "time": "09:00"
           },
           {
             "id": "SF2",
@@ -12349,10 +12332,8 @@
             "winner": "KOR",
             "scoreA": 0,
             "scoreB": 3,
-            "state": "completed",
             "day": "10-02",
-            "time": "12:00",
-            "apiMatchId": "117229302393058352"
+            "time": "12:00"
           }
         ]
       },
