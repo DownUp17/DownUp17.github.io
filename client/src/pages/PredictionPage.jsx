@@ -3840,7 +3840,7 @@ const PredictionPage = () => {
                 </div>
               </div>
               {isTpr
-                ? <TprTable logoOf={(s) => logoByShort[s]} onTeamClick={handleTeamClick} />
+                ? <TprTable logoOf={(s) => logoByShort[s]} selectedTeam={selectedTeam} onTeamClick={handleTeamClick} />
                 : <GprTable selectedTeam={selectedTeam} onTeamClick={handleTeamClick} />}
             </>
           ) : (

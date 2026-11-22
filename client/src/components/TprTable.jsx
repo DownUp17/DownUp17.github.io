@@ -1,36 +1,86 @@
 // TPR(TotalDU 자체 레이팅) — 2027 로스터가 확정된 팀만, 선수별 이전 팀 GPR(월즈 종료 시점) 평균. 데이터: scripts/buildTpr.mjs → lolTpr.json
-import React from 'react';
+//   UI는 GprTable과 같은 표(리그 필터·점수 막대).
+import React, { useState } from 'react';
 import tpr from '../data/lolTpr.json';
+import gpr from '../data/lolGpr.json';
 import { TeamLogo } from './GprTable';
+import { textOn, lighten } from '../utils/colorContrast';
 
 const ROLE_KO = { Top: '탑', Jungle: '정글', Mid: '미드', Bot: '원딜', Support: '서폿' };
+const leagueColor = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
+const ranked = [...(tpr.teams || [])].sort((a, b) => b.tpr - a.tpr);
+const maxScore = Math.max(...ranked.map((t) => t.tpr));
+const rankOf = {};
+ranked.forEach((t, i) => { rankOf[t.short] = i > 0 && ranked[i - 1].tpr === t.tpr ? rankOf[ranked[i - 1].short] : i + 1; });
+const leagues = gpr.regions.filter((r) => ranked.some((t) => t.league === r.key));
+const rosterText = (t) => t.players.map((p) => `${ROLE_KO[p.role] || p.role} ${p.name}${p.prevGpr != null ? ` (${p.prevTeam} ${p.prevYear} ${p.prevGpr})` : ' (GPR 없음)'}`).join('\n');
 
-export default function TprTable({ logoOf, onTeamClick }) {
-  const teams = [...(tpr.teams || [])].sort((a, b) => b.tpr - a.tpr);
+export default function TprTable({ logoOf, selectedTeam, onTeamClick }) {
+  const [selected, setSelected] = useState([]);
+  const toggle = (k) => setSelected((p) => (p.includes(k) ? p.filter((x) => x !== k) : [...p, k]));
+  const visible = selected.length ? ranked.filter((t) => selected.includes(t.league)) : ranked;
   return (
-    <div className="flex flex-col gap-3">
-      {teams.map((t, i) => (
-        <div key={t.short} className="rounded-xl bg-white/5 border border-white/10 p-3">
-          <button onClick={() => onTeamClick?.(t.short)} className="w-full flex items-center gap-3 hover:brightness-125">
-            <span className="w-6 text-white/40 font-black text-sm">{i + 1}</span>
-            <TeamLogo src={logoOf?.(t.short)} size={24} />
-            <span className="font-black text-white/90 text-sm truncate">{t.name}</span>
-            <span className="text-[10px] text-white/40 font-bold">{t.league}</span>
-            <span className="ml-auto font-mono font-black text-lg text-[#E8C77E]">{t.tpr}</span>
-          </button>
-          <div className="mt-2 pl-9 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-white/50">
-            {t.players.map((p) => (
-              <span key={p.name}>
-                <span className="text-white/35">{ROLE_KO[p.role] || p.role}</span> {p.name}
-                {p.prevGpr != null ? <span className="font-mono text-white/40"> {p.prevTeam} {p.prevYear} {p.prevGpr}</span> : <span className="text-white/30"> (GPR 없음)</span>}
-              </span>
-            ))}
-            <span className="text-white/30">반영 {t.coverage}</span>
-          </div>
-        </div>
-      ))}
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap gap-2">
+        {leagues.map((r) => {
+          const on = selected.includes(r.key);
+          return (
+            <button key={r.key} onClick={() => toggle(r.key)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-black border transition-all ${on ? '' : 'text-white/45 border-white/10 hover:border-white/30 hover:text-white/70 bg-transparent'}`}
+              style={on ? { backgroundColor: r.color, borderColor: r.color, color: textOn(r.color) } : {}}>
+              {r.name}
+            </button>
+          );
+        })}
+        {selected.length > 0 && (
+          <button onClick={() => setSelected([])} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white/45 border border-white/10 hover:border-white/30 hover:text-white/70 bg-transparent">전체 보기</button>
+        )}
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="text-white/40 text-xs border-b border-white/10">
+              <th className="text-center font-bold py-2 px-2 w-10">#</th>
+              <th className="text-left font-bold py-2 pr-2">팀</th>
+              <th className="text-center font-bold py-2 px-2">리그</th>
+              <th className="text-center font-bold py-2 px-3 w-1/3">TPR 점수</th>
+              <th className="text-center font-bold py-2 px-2">반영</th>
+            </tr>
+          </thead>
+          <tbody>
+            {visible.map((t) => {
+              const col = leagueColor[t.league] || '#888';
+              return (
+                <tr key={t.short} title={rosterText(t)} onClick={() => onTeamClick?.(t.short)}
+                  className={`border-b border-white/5 cursor-pointer transition-colors ${selectedTeam === t.short ? 'bg-white/10' : 'hover:bg-white/5'}`}>
+                  <td className="py-2 px-2 text-center text-white/40 font-mono">{rankOf[t.short]}</td>
+                  <td className="py-2 pr-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <TeamLogo src={logoOf?.(t.short)} />
+                      <span className="font-bold text-white/90 truncate">{t.name}</span>
+                      <span className="text-white/40 text-xs shrink-0">{t.short}</span>
+                    </div>
+                  </td>
+                  <td className="py-2 px-2 text-center">
+                    <span className="text-xs font-black px-2 py-0.5 rounded" style={{ color: textOn(col), backgroundColor: col }}>{t.league}</span>
+                  </td>
+                  <td className="py-2 px-3">
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 h-3.5 bg-white/5 rounded-full overflow-hidden min-w-[60px]">
+                        <div className="h-full rounded-full" style={{ width: `${(t.tpr / maxScore) * 100}%`, backgroundColor: col }} />
+                      </div>
+                      <span className="font-mono font-black tabular-nums w-10 text-right" style={{ color: lighten(col) }}>{t.tpr}</span>
+                    </div>
+                  </td>
+                  <td className="py-2 px-2 text-center text-white/50 font-mono whitespace-nowrap">{t.coverage}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       <p className="text-[11px] text-white/30">
-        2027 로스터가 확정된 팀만 표시(현재 {teams.length}팀, 미확정 {tpr.pending?.length ?? 0}팀). 선수별 이전 팀의 월즈 종료 시점 GPR 평균 · 기준일 {tpr.refDate} · 출처 {tpr.source} / {tpr.gprBase}
+        2027 로스터가 확정된 팀만 표시(현재 {ranked.length}팀, 미확정 {tpr.pending?.length ?? 0}팀). 선수별 이전 팀의 월즈 종료 시점 GPR 평균 · 행에 마우스를 올리면 선수별 반영값 · 기준일 {tpr.refDate} · 출처 {tpr.source} / {tpr.gprBase}
       </p>
     </div>
   );

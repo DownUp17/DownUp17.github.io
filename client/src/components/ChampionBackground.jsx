@@ -40,7 +40,9 @@ export default function ChampionBackground({ bgKey, resetKey }) {
   return (
     <div aria-hidden className="fixed inset-x-0 overflow-hidden pointer-events-none" style={{ top: headerH, bottom: footerGap }}>
       <div className="absolute inset-0">
-        {CHAMPION_BG_CONTAIN.has(bgKey) ? (
+        {/\.mp4$/.test(bg) ? (
+          <video src={bg} autoPlay muted loop playsInline className="absolute inset-x-0 block w-full object-cover" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)` }} />
+        ) : CHAMPION_BG_CONTAIN.has(bgKey) ? (
           <>
             <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
             {/* 메인 이미지 — (화면 - 메뉴) 높이로 고정, 흰색 바가 보이는 동안엔 바와 함께 위로 밀림. */}

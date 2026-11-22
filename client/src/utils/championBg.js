@@ -10,7 +10,9 @@ import fpx2019Bg from '../assets/champion-bg/fpx2019.webp';
 
 export const CHAMPION_BG = { T1: t1Bg, KRX: krxBg, EDG: edgBg, DK: dkBg, IG: igBg, GEN: genBg, FNC: fncBg,
   // 선수 페이지 전용(팀 약칭과 겹치지 않는 키 → 팀 페이지에는 적용되지 않음)
-  FPX2019: fpx2019Bg };
+  FPX2019: fpx2019Bg,
+  // 영상 배경(.mp4) — public에 두어 번들에 넣지 않음
+  CAPS: `${import.meta.env.BASE_URL}champion-bg/caps.mp4` };
 // 세로로 긴 이미지 — 그림 전체를 가운데에 표시하고 양옆은 같은 이미지를 흐리게 채운다.
 export const CHAMPION_BG_CONTAIN = new Set(['IG']);
 
@@ -23,5 +25,6 @@ export const PLAYER_WORLDS_TEAM = {
   showmaker: 'DK', canyon: 'DK', ghost: 'DK',
   rookie: 'IG', jackeylove: 'IG', theshy: 'IG', ning: 'IG', baolan: 'IG',
   tian: 'FPX2019', crisp: 'FPX2019', doinb: 'FPX2019', lwx: 'FPX2019', gimgoon: 'FPX2019', // FPX 2019
+  caps: 'CAPS', // 우승 배경이 아닌 선수 전용 영상
   ruler: 'GEN', corejj: 'GEN', crown: 'GEN', cuvee: 'GEN', ambition: 'GEN',
 };
