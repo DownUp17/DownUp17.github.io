@@ -97,15 +97,20 @@ const foldAcademy = (list) => {
     const runTo = run.length ? Math.max(...run.map((x) => x.to)) : -1;
     if (prev && baseOrg(prev.team) === baseOrg(c.team) && c.from <= runTo + 1) run.push(c);
     // 같은 기간에 겹친 다른 팀(지역·아마추어 팀 등)은 구간을 끊지 않고 따로 둔다
-    else if (prev && c.to <= runTo) side.push(c);
+    //   구간 마지막 시즌까지 이어진 팀은 시즌 중 이적이므로 새 구간으로(예: Diable BFX→NS 2026)
+    else if (prev && c.to < runTo) side.push(c);
     else { if (run.length) flush(); run = [c]; }
   }
   if (run.length) flush();
   return out;
 };
 // 연속된 같은 구단 기간을 하나로 합치고, 표시 이름은 가장 최근 이름으로.
+// 한글 이름 팀(아마추어 대회 팀) 제외 — LCK·LCK CL·KeSPA CUP·KeG 참가 팀이면 아래 목록에 넣어 남긴다.
+//   (현재 경력 데이터의 한글 팀명은 모두 아마추어 대회 팀이라 비어 있음)
+const KOREAN_NAME_KEEP = new Set([]);
+const isAmateurKorean = (name) => /[가-힣]/.test(name) && !KOREAN_NAME_KEEP.has(name);
 const mergeCareer = (list0) => {
-  const list = foldAcademy(list0.map((c) => ({ ...c })));
+  const list = foldAcademy(list0.filter((c) => !isAmateurKorean(c.team)).map((c) => ({ ...c })));
   const out = [];
   for (const c of list) {
     const last = out[out.length - 1];
