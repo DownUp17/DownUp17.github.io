@@ -11,6 +11,8 @@ import playerCareers from '../data/lolPlayerCareers.json';
 import { PLAYER_WORLDS_TEAM } from '../utils/championBg';
 import ChampionBackground from '../components/ChampionBackground';
 import { eraLogo } from '../utils/eraLogos';
+import { eraLogoByName, finalTeamName } from '../utils/teamEra';
+import stove2027 from '../data/lckStove2027.json';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map((t) => [t.short, t]));
 // 같은 구단의 옛 이름은 한 팀으로 취급(예: SK Telecom T1 K·SK Telecom T1 → T1). 2군·아카데미는 별개.
@@ -31,7 +33,11 @@ const ORG_ALIASES = [
   [/^(Royal Never Give Up|Royal Club)$/i, 'RNG'],
   [/^(Snake Esports|LNG|LNG Esports|Suzhou LNG Esports)$/i, 'LNG'],
 ];
-const orgOf = (name) => { for (const [re, k] of ORG_ALIASES) if (re.test(name.trim())) return k; return name.trim().toLowerCase(); };
+const orgOf = (name) => {
+  const n = finalTeamName(name) || name.trim();
+  for (const [re, k] of ORG_ALIASES) if (re.test(n) || re.test(name.trim())) return k;
+  return n.toLowerCase();
+};
 // 팀 로고 — 같은 구단(옛 이름 포함)은 현재 팀 로고, 그 외는 이름이 같은 GPR·로스터 팀 로고
 const ORG_SHORT = { T1: 'T1', GEN: 'GEN', HLE: 'HLE', DRX: 'KRX', DK: 'DK', KT: 'KT', DNS: 'DNS', BRO: 'BRO', BFX: 'BFX', NS: 'NS', JDG: 'JDG', IG: 'IG', EDG: 'EDG', LNG: 'LNG' };
 const logoByName = {};
@@ -43,7 +49,7 @@ const logoOfTeam = (name, year) => {
   if (era) return era;
   const sh = k && ORG_SHORT[k];
   // 그 당시 팀 이름의 로고(Leaguepedia) 우선, 없으면 현재 구단 로고
-  return playerCareers.logos?.[name.trim()] || (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()] || null;
+  return eraLogoByName(name, year) || (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()] || null;
 };
 // 2·3군 → 1군: 같은 구단 2·3군(Academy·Rookies·Youth·Challengers 등)에서 곧바로 1군으로 올라온 경우만 1군 경력에 포함.
 const ACADEMY_RE = /(\s+|\.)(E\.A\. Rookies|Esports Academy|Global Academy|Youth Team|Academy|Rookies|Youth|Challengers?|Chall\.|Scholars|Young|Junior|Trainee)$/i;
@@ -110,6 +116,9 @@ const mergeCareer = (list0) => {
 const fmtYears = (c) => (c.from === c.to ? String(c.from) : `${c.from}-${c.to}`);
 const pct = (x) => (x == null ? '-' : `${Math.round(x * 100)}%`);
 
+// 2027 계약 확정(basis '계약') 선수 → 팀 약칭 (스토브리그 데이터, LCK만)
+const CONTRACT_2027 = {};
+for (const tm of stove2027.teams || []) for (const pl of Object.values(tm.players || {})) if (pl?.basis === '계약' && pl.name) CONTRACT_2027[pl.name.toLowerCase()] = tm.short;
 // 선수 ID → { player, teamShort }
 const findPlayer = (id) => {
   for (const [short, r] of Object.entries(rosters.rosters || {})) {
@@ -151,6 +160,12 @@ const PlayerPage = () => {
   const realName = [p.lastName, p.firstName].filter(Boolean).join(' ');
   // Worlds 우승 선수 → 우승 당시 팀의 배경(팀 페이지와 같은 이미지)
   const career = mergeCareer(playerCareers.players?.[playerId] || []);
+  // 2027 소속 확정: 같은 팀이면 현재 팀 기간을 2027까지, 다른 팀이면 별도 표시
+  const t27 = CONTRACT_2027[String(p.name || '').toLowerCase()];
+  const stay27 = t27 && found && t27 === found.teamShort;
+  if (stay27 && career.length) career[career.length - 1] = { ...career[career.length - 1], to: 2027 };
+  // 다른 팀과 2027 계약이 확정됐으면 그 팀(2027)을 이적 목록 맨 위에 둔다
+  const next27 = t27 && !stay27 && found ? { team: gprTeamMap[t27]?.name || t27, from: 2027, to: 2027 } : null;
   const bgKey = PLAYER_WORLDS_TEAM[String(p.name || '').split(' ').pop().toLowerCase()];
 
   return (
@@ -173,18 +188,18 @@ const PlayerPage = () => {
             <div className="flex items-center gap-3 mt-2 text-sm text-white/60 flex-wrap">
               <span className="inline-flex items-center gap-1"><RoleIcon role={p.role} size={16} />{ROLE_KO[p.role] ?? p.role}</span>
               {found && (
-                <button onClick={() => navigate(`/lol/prediction/team/${found.teamShort}`)} className="inline-flex items-center gap-1.5 font-bold text-white/80 hover:text-white">
-                  {teamLogo && <img src={teamLogo} alt="" className="w-5 h-5 object-contain" />}
-                  {team?.name || found.teamShort}
-                  {career.length > 0 && <span className="font-normal text-white/45">({fmtYears(career[career.length - 1])})</span>}
+                <button onClick={() => navigate(`/lol/prediction/team/${next27 ? t27 : found.teamShort}`)} className="inline-flex items-center gap-1.5 font-bold text-white/80 hover:text-white">
+                  {(next27 ? gprTeamMap[t27]?.logo : teamLogo) && <img src={next27 ? gprTeamMap[t27]?.logo : teamLogo} alt="" className="w-5 h-5 object-contain" />}
+                  {next27 ? next27.team : (team?.name || found.teamShort)}
+                  {next27 ? <span className="font-normal text-white/45">(2027)</span> : career.length > 0 && <span className="font-normal text-white/45">({fmtYears(career[career.length - 1])})</span>}
                 </button>
               )}
               {p.starter === false && <span className="text-[11px] font-bold text-white/40 border border-white/15 rounded px-1">후보</span>}
             </div>
             {/* 역대 팀 — 팀 이름(입단 시즌 - 마지막 활동 시즌), 1시즌이면 팀 이름(시즌). 출처 Leaguepedia */}
-            {career.length > 1 && (
+            {(career.length > 1 || next27) && (
               <ul className="mt-2 flex flex-col gap-1 text-xs text-white/55">
-                {career.slice(0, -1).reverse().map((c, i) => {
+                {(next27 ? career.slice() : career.slice(0, -1)).reverse().map((c, i) => {
                   const lg = logoOfTeam(c.team, c.to);
                   return (
                     <li key={i} className="flex items-center gap-1.5">

@@ -175,6 +175,7 @@ import agalEwcLogo from '../assets/agal-ewc.webp';
 import mibrLosEwcLogo from '../assets/mibr-los-ewc.webp';
 import frkLogo from '../assets/frk.webp';
 import StoveLeagueView from '../components/StoveLeagueView';
+import { eraLogoByName, splitOf } from '../utils/teamEra';
 // 2026 LCS 승강전 2부 팀(API에서 사라질 수 있어 로컬 저장)
 import lcspMuLogo from '../assets/lcsp-mu.png';
 import lcspZ5Logo from '../assets/lcsp-z5.png';
@@ -3643,6 +3644,12 @@ const PredictionPage = () => {
     ov.INTZ = { ...(ov.INTZ || {}), tag: 'ITZ' };
     // ANCX: 2024 LCP(PCS)에서 약칭 ANC로 표기.
     if (comp?.key === 'lcp' && activeYear === 2024) ov.ANCX = { tag: 'ANC', name: 'Antic Esports', logo: anticEsportsLogo };
+    // 위 수기 규칙에 로고가 없는 팀은 Leaguepedia 로고 이력에서 그 해의 옛 로고를 찾아 적용(현재와 같은 로고면 그대로 둔다)
+    for (const sh of Object.keys(nameByShort)) {
+      if (ov[sh]?.logo) continue;
+      const lg = eraLogoByName(ov[sh]?.name || nameByShort[sh], activeYear, { split: splitOf(activeSub), latest: false });
+      if (lg) ov[sh] = { ...(ov[sh] || {}), logo: lg };
+    }
     return ov;
   })();
 
