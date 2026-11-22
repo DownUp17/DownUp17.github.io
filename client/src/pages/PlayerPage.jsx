@@ -58,9 +58,9 @@ const ACADEMY_RE = /(\s+|\.)(E\.A\. Rookies|Esports Academy|Global Academy|Youth
 const ACADEMY_OF = {
   'INTZ Blue': 'INTZ', 'UOL Sexy Edition': 'Unicorns of Love', 'GIANTX PRIDE': 'GIANTX', 'Karmine Corp Blue': 'Karmine Corp',
   'SK Gaming Prime': 'SK Gaming', 'G2 Arctic': 'G2 Esports', 'Fnatic TQ': 'Fnatic', 'Movistar KOI Fénix': 'Movistar KOI',
-  'Misfits Premier': 'Misfits Gaming', '100 Next': '100 Thieves', 'C9 Amateur': 'Cloud9', 'EG Prodigies': 'Evil Geniuses',
+  'Misfits Premier': 'Misfits Gaming', '100 Next': '100 Thieves', 'C9 Amateur': 'Cloud9', 'Cloud9 Amateur': 'Cloud9', 'EG Prodigies': 'Evil Geniuses',
   'VG Potential': 'Vici Gaming', 'ahq Fighter': 'ahq eSports Club', 'FunPlus Blaze': 'FunPlus Phoenix',
-  'SuperMassive Blaze': 'Papara SuperMassive', 'Schalke Evolution': 'Schalke 04', 'GC Busan SANDBOX': 'Liiv SANDBOX',
+  'SuperMassive Blaze': 'Papara SuperMassive', 'Schalke Evolution': 'Schalke 04', 'FC Schalke 04 Evolution': 'FC Schalke 04 Esports', 'GC Busan SANDBOX': 'Liiv SANDBOX',
 };
 // 2·3군 이름의 약칭 → 1군 이름(1군 경력과 같은 구단인지 비교용)
 const ACADEMY_BASE = {
