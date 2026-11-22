@@ -175,6 +175,7 @@ import agalEwcLogo from '../assets/agal-ewc.webp';
 import mibrLosEwcLogo from '../assets/mibr-los-ewc.webp';
 import frkLogo from '../assets/frk.webp';
 import StoveLeagueView from '../components/StoveLeagueView';
+import TprTable from '../components/TprTable';
 import { eraLogoByName, splitOf } from '../utils/teamEra';
 // 2026 LCS 승강전 2부 팀(API에서 사라질 수 있어 로컬 저장)
 import lcspMuLogo from '../assets/lcsp-mu.png';
@@ -3278,6 +3279,7 @@ const PredictionPage = () => {
   const setActiveKey = (key) => navigate(`/lol/prediction/${key}`);
 
   const isGpr = activeKey === 'gpr';
+  const isTpr = isGpr && searchParams.get('rank') === 'tpr';
   const comp = useMemo(() => comps.find((c) => c.key === activeKey), [comps, activeKey]);
   // 대회 연도(에디션) 선택 — 서브탭/데이터 해석보다 먼저 필요. `?year=` 로 유지(현재 연도는 생략)
   const years = comp ? editionYears(comp.key) : [CURRENT_YEAR];
@@ -3826,11 +3828,20 @@ const PredictionPage = () => {
                   <img src={LOLESPORTS_LOGO} alt="GPR" width={24} height={24} className="object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
                 </div>
                 <div>
-                  <h2 className="text-xl font-black text-white">GPR 팀 랭킹</h2>
-                  <p className="text-xs text-white/40">Global Power Rankings · {gprTeams.teams.length}팀 · 갱신 {gprTeams.updatedAt}</p>
+                  <h2 className="text-xl font-black text-white">{isTpr ? 'TPR 팀 랭킹' : 'GPR 팀 랭킹'}</h2>
+                  <p className="text-xs text-white/40">{isTpr ? 'TotalDU Power Rating · 2027 확정 로스터 기준' : `Global Power Rankings · ${gprTeams.teams.length}팀 · 갱신 ${gprTeams.updatedAt}`}</p>
+                </div>
+                {/* GPR ↔ TPR 전환 — ?rank=tpr 로 유지 */}
+                <div className="ml-auto flex rounded-lg bg-white/5 border border-white/10 p-0.5 text-xs font-black">
+                  {['gpr', 'tpr'].map((m) => (
+                    <button key={m} onClick={() => setSearchParams((p) => { const q = new URLSearchParams(p); if (m === 'tpr') q.set('rank', 'tpr'); else q.delete('rank'); return q; }, { replace: true })}
+                      className={`px-3 py-1 rounded-md ${(m === 'tpr') === isTpr ? 'bg-[#C8963E] text-[#1e2328]' : 'text-white/60 hover:text-white'}`}>{m.toUpperCase()}</button>
+                  ))}
                 </div>
               </div>
-              <GprTable selectedTeam={selectedTeam} onTeamClick={handleTeamClick} />
+              {isTpr
+                ? <TprTable logoOf={(s) => logoByShort[s]} onTeamClick={handleTeamClick} />
+                : <GprTable selectedTeam={selectedTeam} onTeamClick={handleTeamClick} />}
             </>
           ) : (
             <>

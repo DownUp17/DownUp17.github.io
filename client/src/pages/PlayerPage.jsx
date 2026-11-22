@@ -10,6 +10,7 @@ import playerStats from '../data/lolPlayerStats.json';
 import playerCareers from '../data/lolPlayerCareers.json';
 import { PLAYER_WORLDS_TEAM } from '../utils/championBg';
 import ChampionBackground from '../components/ChampionBackground';
+import AutoContrastLogo from '../components/AutoContrastLogo';
 import { eraLogo } from '../utils/eraLogos';
 import { eraLogoByName, finalTeamName } from '../utils/teamEra';
 import stove2027 from '../data/lckStove2027.json';
@@ -87,7 +88,8 @@ const foldAcademy = (list) => {
     out.push(...side); // 겹친 팀은 구간보다 앞(오래된 쪽)에 둔다
     const main = run.filter((c) => !isAcademy(c.team));
     const name = (main.length ? main : run)[(main.length ? main : run).length - 1].team;
-    out.push({ team: name, from: Math.min(...run.map((c) => c.from)), to: Math.max(...run.map((c) => c.to)) });
+    // nameTo: 그 이름을 마지막으로 쓴 시즌 — 로고를 표시 이름과 같은 시기로 맞춘다
+    out.push({ team: name, from: Math.min(...run.map((c) => c.from)), to: Math.max(...run.map((c) => c.to)), nameTo: Math.max(...run.filter((c) => c.team === name).map((c) => c.to)) });
     run = []; side = [];
   };
   for (const c of list) {
@@ -107,7 +109,7 @@ const mergeCareer = (list0) => {
   const out = [];
   for (const c of list) {
     const last = out[out.length - 1];
-    if (last && orgOf(last.team) === orgOf(c.team) && c.from <= last.to + 1) { last.to = Math.max(last.to, c.to); last.team = c.team; continue; }
+    if (last && orgOf(last.team) === orgOf(c.team) && c.from <= last.to + 1) { last.to = Math.max(last.to, c.to); last.team = c.team; last.nameTo = c.nameTo ?? c.to; continue; }
     out.push({ ...c });
   }
   return out;
@@ -189,7 +191,7 @@ const PlayerPage = () => {
               <span className="inline-flex items-center gap-1"><RoleIcon role={p.role} size={16} />{ROLE_KO[p.role] ?? p.role}</span>
               {found && (
                 <button onClick={() => navigate(`/lol/prediction/team/${next27 ? t27 : found.teamShort}`)} className="inline-flex items-center gap-1.5 font-bold text-white/80 hover:text-white">
-                  {(next27 ? gprTeamMap[t27]?.logo : teamLogo) && <img src={next27 ? gprTeamMap[t27]?.logo : teamLogo} alt="" className="w-5 h-5 object-contain" />}
+                  <AutoContrastLogo src={next27 ? gprTeamMap[t27]?.logo : teamLogo} className="w-5 h-5 object-contain" />
                   {next27 ? next27.team : (team?.name || found.teamShort)}
                   {next27 ? <span className="font-normal text-white/45">(2027)</span> : career.length > 0 && <span className="font-normal text-white/45">({fmtYears(career[career.length - 1])})</span>}
                 </button>
@@ -200,10 +202,10 @@ const PlayerPage = () => {
             {(career.length > 1 || next27) && (
               <ul className="mt-2 flex flex-col gap-1 text-xs text-white/55">
                 {(next27 ? career.slice() : career.slice(0, -1)).reverse().map((c, i) => {
-                  const lg = logoOfTeam(c.team, c.to);
+                  const lg = logoOfTeam(c.team, c.nameTo ?? c.to);
                   return (
                     <li key={i} className="flex items-center gap-1.5">
-                      {lg ? <img src={lg} alt="" className="w-4 h-4 object-contain shrink-0" onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} /> : <span className="w-4 h-4 shrink-0" />}
+                      {lg ? <AutoContrastLogo src={lg} className="w-4 h-4 object-contain shrink-0" onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} /> : <span className="w-4 h-4 shrink-0" />}
                       <span>{c.team}({fmtYears(c)})</span>
                     </li>
                   );
