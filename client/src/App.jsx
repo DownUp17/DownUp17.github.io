@@ -574,6 +574,9 @@ const App = () => {
             </a>
           </div>
           <p className="text-gray-400 text-sm font-medium">2026 TotalDU</p>
+          <p className="mt-3 px-4 text-gray-400 text-[11px] leading-relaxed max-w-2xl mx-auto">
+            TotalDU은 라이엇 게임즈의 "지식재산 이용 정책"에 따라 라이엇 게임즈 소유의 자산을 이용하여 제작되었습니다. 라이엇 게임즈는 이 프로젝트를 지지하거나 후원하지 않습니다.
+          </p>
         </footer>
       </div>
     </BrowserRouter>
