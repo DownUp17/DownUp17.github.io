@@ -3153,16 +3153,16 @@ const CURRENT_YEAR = 2026;
 // AG는 에디션별 명칭/로고가 달라 단일 연도만 두어 드롭다운을 숨긴다.
 const COMP_EDITIONS = {
   lck: [2027, 2026, 2025], // 2027 = 스토브리그(예상 로스터)
-  lpl: [2026, 2025],
-  lec: [2026, 2025],
-  lcs: [2026, 2025],
-  lcp: [2026, 2025, 2024, 2023, 2022, 2021],
-  cblol: [2026, 2025],
-  fst: [2026, 2025],
-  msi: [2026, 2025],
-  demacia: [2026, 2025, 2024, 2023, 2022],
-  worlds: [2026, 2025],
-  ewc: [2026, 2025, 2024],
+  lpl: [2027, 2026, 2025],
+  lec: [2027, 2026, 2025],
+  lcs: [2027, 2026, 2025],
+  lcp: [2027, 2026, 2025, 2024, 2023, 2022, 2021],
+  cblol: [2027, 2026, 2025],
+  fst: [2027, 2026, 2025],
+  msi: [2027, 2026, 2025],
+  demacia: [2027, 2026, 2025, 2024, 2023, 2022],
+  worlds: [2027, 2026, 2025],
+  ewc: [2027, 2026, 2025, 2024],
   asiangames: [2026, 2023], // 2022 항저우 AG는 코로나로 2023년 개최 → 연도 선택은 2023(대회명은 2022 유지)
 };
 // 선택 가능한 연도 = 수기 기준(COMP_EDITIONS: demacia/fst 등 특수 2025) + 생성된 과거 데이터의 모든 연도.
@@ -3754,7 +3754,7 @@ const PredictionPage = () => {
   // LIVE 세트 스코어가 대진표 데이터에 반영되면 다시 그리기 위한 카운터
   const [, setLiveTick] = useState(0);
   // 과거 연도는 이미 종료된 대회이므로 상태 배지를 '종료'로 표기
-  const stDisplay = isStove ? statusMeta.upcoming : !isCurrentYear ? statusMeta.finished : st;
+  const stDisplay = isStove || activeYear > CURRENT_YEAR ? statusMeta.upcoming : !isCurrentYear ? statusMeta.finished : st;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-4 md:p-6 text-white">
@@ -3938,8 +3938,8 @@ const PredictionPage = () => {
                 ) : (
                   <div className="py-16 text-center border-2 border-dashed border-white/10 rounded-3xl">
                     <Hourglass size={28} className="mx-auto text-white/30 mb-3" />
-                    <p className="text-white/50 font-bold mb-1">{activeYear} 결과 준비 중</p>
-                    <p className="text-white/30 text-sm">이전 연도 대회 결과를 곧 게재합니다.</p>
+                    <p className="text-white/50 font-bold mb-1">{activeYear > CURRENT_YEAR ? `${activeYear} 시즌 예정` : `${activeYear} 결과 준비 중`}</p>
+                    <p className="text-white/30 text-sm">{activeYear > CURRENT_YEAR ? '대진·일정이 확정되면 게재합니다.' : '이전 연도 대회 결과를 곧 게재합니다.'}</p>
                   </div>
                 )
               ) : isPastSplit ? (

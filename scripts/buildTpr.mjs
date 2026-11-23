@@ -6,6 +6,7 @@
 //   계약 확정 선수 = Leaguepedia 해당 팀 소속 비교체 선수 중 월즈 이후 입단·재계약 발표됐거나 2027 시즌까지 계약이 남은 선수.
 //   complete = 5포지션 모두 채워지고 소속 선수 전원이 계약 확정(로스터 확정 팀). 아니면 확정 선수만으로 산출한 잠정값.
 //   한 포지션에 2명 이상이면(예: BRO 미드 2명) 주전을 임의로 고르지 않고 소속 선수 전원을 평균한다.
+//   가중 평균: 쉰 시즌 1개당 반영 비율 ×0.5 (2026 소속=1, 2025=0.5, 2024=0.25).
 //   대상 팀: gprTeams.json의 전 팀(LCK·LPL·LEC·LCS·LCP·CBLOL).
 //
 // 실행: node scripts/buildTpr.mjs  → client/src/data/lolTpr.json
@@ -131,11 +132,14 @@ for (const t of gpr) {
     const prev = prevTeam(p.OverviewPage);
     // shortcut: 이전 팀 매핑은 현 GPR 58팀 이름 기준 — 해체·리그 이탈 팀(예: 2024 FPX) 출신은 GPR 없음 처리
     const score = prev.team && prev.year ? (await gprAt(prev.year))[prev.team.short] ?? null : null;
-    ps.push({ role, name: p.ID, prevTeam: prev.team?.short ?? prev.name, prevYear: prev.year, prevGpr: score });
+    // 쉰 시즌 1개당 반영 비율 50% (사용자 지정: 2024 KT→2시즌 공백인 Deft는 25%)
+    const weight = prev.year ? 0.5 ** (Number(REF_DATE.slice(0, 4)) - prev.year) : 1;
+    ps.push({ role, name: p.ID, prevTeam: prev.team?.short ?? prev.name, prevYear: prev.year, prevGpr: score, weight });
   }
   const known = ps.filter((p) => p.prevGpr != null);
   // shortcut: GPR 없는 이전 팀(2군·ERL·무소속) 선수는 평균에서 제외, coverage로 표기 — 보정 규칙이 정해지면 교체
-  const tpr = known.length ? Math.round(known.reduce((s, p) => s + p.prevGpr, 0) / known.length) : null;
+  const wSum = known.reduce((s, p) => s + p.weight, 0);
+  const tpr = known.length ? Math.round(known.reduce((s, p) => s + p.prevGpr * p.weight, 0) / wSum) : null;
   if (tpr == null) continue; // 계약 확정 선수가 없거나 전원 GPR 없음 → pending
   const roles = ROLES.filter((role) => ps.some((p) => p.role === role)).length;
   teams.push({ short: t.short, name: t.name, league: t.league, tpr, complete: confirmed.includes(t), roles, coverage: `${known.length}/${ps.length}`, players: ps });

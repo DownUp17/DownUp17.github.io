@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T04:05:33.171Z",
+  "generatedAt": "2026-11-23T04:24:22.788Z",
   "source": "Leaguepedia (lol.fandom.com) Players·Tenures·RosterChanges",
   "gprBase": "lolesports.com/gpr/{연도}/worlds (시즌별 월즈 종료 스냅샷)",
   "refDate": "2026-11-08",
@@ -18,21 +18,24 @@
           "name": "Xun",
           "prevTeam": "BLG",
           "prevYear": 2026,
-          "prevGpr": 1611
+          "prevGpr": 1611,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Knight",
           "prevTeam": "BLG",
           "prevYear": 2026,
-          "prevGpr": 1611
+          "prevGpr": 1611,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "ON",
           "prevTeam": "BLG",
           "prevYear": 2026,
-          "prevGpr": 1611
+          "prevGpr": 1611,
+          "weight": 1
         }
       ]
     },
@@ -50,21 +53,24 @@
           "name": "Chovy",
           "prevTeam": "GEN",
           "prevYear": 2026,
-          "prevGpr": 1610
+          "prevGpr": 1610,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Ruler",
           "prevTeam": "GEN",
           "prevYear": 2026,
-          "prevGpr": 1610
+          "prevGpr": 1610,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Duro",
           "prevTeam": "GEN",
           "prevYear": 2026,
-          "prevGpr": 1610
+          "prevGpr": 1610,
+          "weight": 1
         }
       ]
     },
@@ -82,21 +88,24 @@
           "name": "Zeka",
           "prevTeam": "HLE",
           "prevYear": 2026,
-          "prevGpr": 1536
+          "prevGpr": 1536,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Gumayusi",
           "prevTeam": "HLE",
           "prevYear": 2026,
-          "prevGpr": 1536
+          "prevGpr": 1536,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Delight",
           "prevTeam": "HLE",
           "prevYear": 2026,
-          "prevGpr": 1536
+          "prevGpr": 1536,
+          "weight": 1
         }
       ]
     },
@@ -114,28 +123,32 @@
           "name": "Oner",
           "prevTeam": "T1",
           "prevYear": 2026,
-          "prevGpr": 1514
+          "prevGpr": 1514,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Faker",
           "prevTeam": "T1",
           "prevYear": 2026,
-          "prevGpr": 1514
+          "prevGpr": 1514,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Peyz",
           "prevTeam": "T1",
           "prevYear": 2026,
-          "prevGpr": 1514
+          "prevGpr": 1514,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Keria",
           "prevTeam": "T1",
           "prevYear": 2026,
-          "prevGpr": 1514
+          "prevGpr": 1514,
+          "weight": 1
         }
       ]
     },
@@ -153,42 +166,48 @@
           "name": "Doran",
           "prevTeam": "T1",
           "prevYear": 2026,
-          "prevGpr": 1514
+          "prevGpr": 1514,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Kanavi",
           "prevTeam": "HLE",
           "prevYear": 2026,
-          "prevGpr": 1536
+          "prevGpr": 1536,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Lucid",
           "prevTeam": "DK",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "ShowMaker",
           "prevTeam": "DK",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Smash",
           "prevTeam": "DK",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Career",
           "prevTeam": "DK",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         }
       ]
     },
@@ -206,21 +225,24 @@
           "name": "SkewMond",
           "prevTeam": "G2",
           "prevYear": 2026,
-          "prevGpr": 1451
+          "prevGpr": 1451,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Caps",
           "prevTeam": "G2",
           "prevYear": 2026,
-          "prevGpr": 1451
+          "prevGpr": 1451,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Hans Sama",
           "prevTeam": "G2",
           "prevYear": 2026,
-          "prevGpr": 1451
+          "prevGpr": 1451,
+          "weight": 1
         }
       ]
     },
@@ -238,7 +260,8 @@
           "name": "Rookie",
           "prevTeam": "IG",
           "prevYear": 2026,
-          "prevGpr": 1434
+          "prevGpr": 1434,
+          "weight": 1
         }
       ]
     },
@@ -256,28 +279,32 @@
           "name": "Canna",
           "prevTeam": "KC",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "kyeahoo",
           "prevTeam": "KC",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Caliste",
           "prevTeam": "KC",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Busio",
           "prevTeam": "KC",
           "prevYear": 2026,
-          "prevGpr": 1427
+          "prevGpr": 1427,
+          "weight": 1
         }
       ]
     },
@@ -295,28 +322,32 @@
           "name": "Breathe",
           "prevTeam": "AL",
           "prevYear": 2026,
-          "prevGpr": 1395
+          "prevGpr": 1395,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Tarzan",
           "prevTeam": "AL",
           "prevYear": 2026,
-          "prevGpr": 1395
+          "prevGpr": 1395,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Hope",
           "prevTeam": "AL",
           "prevYear": 2026,
-          "prevGpr": 1395
+          "prevGpr": 1395,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Kael",
           "prevTeam": "AL",
           "prevYear": 2026,
-          "prevGpr": 1395
+          "prevGpr": 1395,
+          "weight": 1
         }
       ]
     },
@@ -334,7 +365,8 @@
           "name": "ZUIAN",
           "prevTeam": "TES",
           "prevYear": 2026,
-          "prevGpr": 1383
+          "prevGpr": 1383,
+          "weight": 1
         }
       ]
     },
@@ -352,21 +384,24 @@
           "name": "Morgan",
           "prevTeam": "TLAW",
           "prevYear": 2026,
-          "prevGpr": 1357
+          "prevGpr": 1357,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Josedeodo",
           "prevTeam": "TLAW",
           "prevYear": 2026,
-          "prevGpr": 1357
+          "prevGpr": 1357,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Quid",
           "prevTeam": "TLAW",
           "prevYear": 2026,
-          "prevGpr": 1357
+          "prevGpr": 1357,
+          "weight": 1
         }
       ]
     },
@@ -384,21 +419,24 @@
           "name": "Pun",
           "prevTeam": "TSW",
           "prevYear": 2026,
-          "prevGpr": 1334
+          "prevGpr": 1334,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Hizto",
           "prevTeam": "TSW",
           "prevYear": 2026,
-          "prevGpr": 1334
+          "prevGpr": 1334,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Eddie",
           "prevTeam": "TSW",
           "prevYear": 2026,
-          "prevGpr": 1334
+          "prevGpr": 1334,
+          "weight": 1
         }
       ]
     },
@@ -416,7 +454,8 @@
           "name": "Vampire",
           "prevTeam": "JDG",
           "prevYear": 2026,
-          "prevGpr": 1325
+          "prevGpr": 1325,
+          "weight": 1
         }
       ]
     },
@@ -434,28 +473,32 @@
           "name": "PerfecT",
           "prevTeam": "KT",
           "prevYear": 2026,
-          "prevGpr": 1382
+          "prevGpr": 1382,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Raptor",
           "prevTeam": "BFX",
           "prevYear": 2026,
-          "prevGpr": 1255
+          "prevGpr": 1255,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Bdd",
           "prevTeam": "KT",
           "prevYear": 2026,
-          "prevGpr": 1382
+          "prevGpr": 1382,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Kellin",
           "prevTeam": "BFX",
           "prevYear": 2026,
-          "prevGpr": 1255
+          "prevGpr": 1255,
+          "weight": 1
         }
       ]
     },
@@ -473,35 +516,40 @@
           "name": "Thanatos",
           "prevTeam": "C9",
           "prevYear": 2026,
-          "prevGpr": 1315
+          "prevGpr": 1315,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Blaber",
           "prevTeam": "C9",
           "prevYear": 2026,
-          "prevGpr": 1315
+          "prevGpr": 1315,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Loki",
           "prevTeam": "C9",
           "prevYear": 2026,
-          "prevGpr": 1315
+          "prevGpr": 1315,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Tactical",
           "prevTeam": "C9",
           "prevYear": 2026,
-          "prevGpr": 1315
+          "prevGpr": 1315,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Vulcan",
           "prevTeam": "C9",
           "prevYear": 2026,
-          "prevGpr": 1315
+          "prevGpr": 1315,
+          "weight": 1
         }
       ]
     },
@@ -519,21 +567,24 @@
           "name": "Gakgos",
           "prevTeam": "FLY",
           "prevYear": 2026,
-          "prevGpr": 1307
+          "prevGpr": 1307,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Gryffinn",
           "prevTeam": "FLY",
           "prevYear": 2026,
-          "prevGpr": 1307
+          "prevGpr": 1307,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Cryogen",
           "prevTeam": "FLY",
           "prevYear": 2026,
-          "prevGpr": 1307
+          "prevGpr": 1307,
+          "weight": 1
         }
       ]
     },
@@ -551,14 +602,16 @@
           "name": "Elyoya",
           "prevTeam": "MKOI",
           "prevYear": 2026,
-          "prevGpr": 1303
+          "prevGpr": 1303,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Alvaro",
           "prevTeam": "MKOI",
           "prevYear": 2026,
-          "prevGpr": 1303
+          "prevGpr": 1303,
+          "weight": 1
         }
       ]
     },
@@ -576,21 +629,24 @@
           "name": "Cube",
           "prevTeam": "WE",
           "prevYear": 2026,
-          "prevGpr": 1297
+          "prevGpr": 1297,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Tyrion",
           "prevTeam": "WE",
           "prevYear": 2026,
-          "prevGpr": 1297
+          "prevGpr": 1297,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "About",
           "prevTeam": "WE",
           "prevYear": 2026,
-          "prevGpr": 1297
+          "prevGpr": 1297,
+          "weight": 1
         }
       ]
     },
@@ -608,14 +664,16 @@
           "name": "Burdol",
           "prevTeam": "LGD",
           "prevYear": 2026,
-          "prevGpr": 1274
+          "prevGpr": 1274,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Tangyuan",
           "prevTeam": "LGD",
           "prevYear": 2026,
-          "prevGpr": 1274
+          "prevGpr": 1274,
+          "weight": 1
         }
       ]
     },
@@ -633,14 +691,16 @@
           "name": "Curse",
           "prevTeam": "LOS",
           "prevYear": 2026,
-          "prevGpr": 1273
+          "prevGpr": 1273,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Duduhh",
           "prevTeam": "LOS",
           "prevYear": 2026,
-          "prevGpr": 1273
+          "prevGpr": 1273,
+          "weight": 1
         }
       ]
     },
@@ -658,14 +718,16 @@
           "name": "Gloryy",
           "prevTeam": "GAM",
           "prevYear": 2026,
-          "prevGpr": 1258
+          "prevGpr": 1258,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Taki",
           "prevTeam": "GAM",
           "prevYear": 2026,
-          "prevGpr": 1258
+          "prevGpr": 1258,
+          "weight": 1
         }
       ]
     },
@@ -683,35 +745,40 @@
           "name": "Kratos",
           "prevTeam": "MVK",
           "prevYear": 2026,
-          "prevGpr": 1250
+          "prevGpr": 1250,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "SanSan",
           "prevTeam": "MVK",
           "prevYear": 2026,
-          "prevGpr": 1250
+          "prevGpr": 1250,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Chika",
           "prevTeam": "MVK",
           "prevYear": 2026,
-          "prevGpr": 1250
+          "prevGpr": 1250,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Harky",
           "prevTeam": "MVK",
           "prevYear": 2026,
-          "prevGpr": 1250
+          "prevGpr": 1250,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "SiuLoong",
           "prevTeam": "MVK",
           "prevYear": 2026,
-          "prevGpr": 1250
+          "prevGpr": 1250,
+          "weight": 1
         }
       ]
     },
@@ -729,7 +796,8 @@
           "name": "Naak Nako",
           "prevTeam": "VIT",
           "prevYear": 2026,
-          "prevGpr": 1250
+          "prevGpr": 1250,
+          "weight": 1
         }
       ]
     },
@@ -747,14 +815,16 @@
           "name": "Tatu",
           "prevTeam": "FUR",
           "prevYear": 2026,
-          "prevGpr": 1239
+          "prevGpr": 1239,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Tutsz",
           "prevTeam": "FUR",
           "prevYear": 2026,
-          "prevGpr": 1239
+          "prevGpr": 1239,
+          "weight": 1
         }
       ]
     },
@@ -772,60 +842,16 @@
           "name": "sheer",
           "prevTeam": "LNG",
           "prevYear": 2026,
-          "prevGpr": 1236
+          "prevGpr": 1236,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Nia",
           "prevTeam": "LNG",
           "prevYear": 2026,
-          "prevGpr": 1236
-        }
-      ]
-    },
-    {
-      "short": "NS",
-      "name": "Nongshim RedForce",
-      "league": "LCK",
-      "tpr": 1226,
-      "complete": true,
-      "roles": 5,
-      "coverage": "5/5",
-      "players": [
-        {
-          "role": "Top",
-          "name": "Kingen",
-          "prevTeam": "NS",
-          "prevYear": 2026,
-          "prevGpr": 1216
-        },
-        {
-          "role": "Jungle",
-          "name": "Pyosik",
-          "prevTeam": "DNS",
-          "prevYear": 2026,
-          "prevGpr": 1140
-        },
-        {
-          "role": "Mid",
-          "name": "Calix",
-          "prevTeam": "NS",
-          "prevYear": 2026,
-          "prevGpr": 1216
-        },
-        {
-          "role": "Bot",
-          "name": "Deft",
-          "prevTeam": "KT",
-          "prevYear": 2024,
-          "prevGpr": 1395
-        },
-        {
-          "role": "Support",
-          "name": "Andil",
-          "prevTeam": "KRX",
-          "prevYear": 2026,
-          "prevGpr": 1164
+          "prevGpr": 1236,
+          "weight": 1
         }
       ]
     },
@@ -843,42 +869,48 @@
           "name": "Casting",
           "prevTeam": "BRO",
           "prevYear": 2026,
-          "prevGpr": 1210
+          "prevGpr": 1210,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "GIDEON",
           "prevTeam": "BRO",
           "prevYear": 2026,
-          "prevGpr": 1210
+          "prevGpr": 1210,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Roamer",
           "prevTeam": "BRO",
           "prevYear": 2026,
-          "prevGpr": 1210
+          "prevGpr": 1210,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "SeTab",
           "prevTeam": "Nongshim Esports Academy",
           "prevYear": 2026,
-          "prevGpr": null
+          "prevGpr": null,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Teddy",
           "prevTeam": "BRO",
           "prevYear": 2026,
-          "prevGpr": 1210
+          "prevGpr": 1210,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Namgung",
           "prevTeam": "BRO",
           "prevYear": 2026,
-          "prevGpr": 1210
+          "prevGpr": 1210,
+          "weight": 1
         }
       ]
     },
@@ -896,21 +928,24 @@
           "name": "Vincenzo",
           "prevTeam": "KRX",
           "prevYear": 2026,
-          "prevGpr": 1164
+          "prevGpr": 1164,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "VicLa",
           "prevTeam": "BFX",
           "prevYear": 2026,
-          "prevGpr": 1255
+          "prevGpr": 1255,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Noah",
           "prevTeam": "GX",
           "prevYear": 2026,
-          "prevGpr": 1204
+          "prevGpr": 1204,
+          "weight": 1
         }
       ]
     },
@@ -928,7 +963,8 @@
           "name": "Feather",
           "prevTeam": "TT",
           "prevYear": 2026,
-          "prevGpr": 1208
+          "prevGpr": 1208,
+          "weight": 1
         }
       ]
     },
@@ -946,35 +982,40 @@
           "name": "DuDu",
           "prevTeam": "DNS",
           "prevYear": 2026,
-          "prevGpr": 1140
+          "prevGpr": 1140,
+          "weight": 1
         },
         {
           "role": "Jungle",
           "name": "Cuzz",
           "prevTeam": "KT",
           "prevYear": 2026,
-          "prevGpr": 1382
+          "prevGpr": 1382,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Ucal",
           "prevTeam": "KRX",
           "prevYear": 2026,
-          "prevGpr": 1164
+          "prevGpr": 1164,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "deokdam",
           "prevTeam": "DNS",
           "prevYear": 2026,
-          "prevGpr": 1140
+          "prevGpr": 1140,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Bluffing",
           "prevTeam": "Hanwha Life Esports Challengers",
           "prevYear": 2026,
-          "prevGpr": null
+          "prevGpr": null,
+          "weight": 1
         }
       ]
     },
@@ -992,28 +1033,83 @@
           "name": "Rhilech",
           "prevTeam": "NAVI",
           "prevYear": 2026,
-          "prevGpr": 1198
+          "prevGpr": 1198,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Larssen",
           "prevTeam": "NAVI",
           "prevYear": 2026,
-          "prevGpr": 1198
+          "prevGpr": 1198,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Poby",
           "prevTeam": "NAVI",
           "prevYear": 2026,
-          "prevGpr": 1198
+          "prevGpr": 1198,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Parus",
           "prevTeam": "NAVI",
           "prevYear": 2026,
-          "prevGpr": 1198
+          "prevGpr": 1198,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "short": "NS",
+      "name": "Nongshim RedForce",
+      "league": "LCK",
+      "tpr": 1196,
+      "complete": true,
+      "roles": 5,
+      "coverage": "5/5",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Kingen",
+          "prevTeam": "NS",
+          "prevYear": 2026,
+          "prevGpr": 1216,
+          "weight": 1
+        },
+        {
+          "role": "Jungle",
+          "name": "Pyosik",
+          "prevTeam": "DNS",
+          "prevYear": 2026,
+          "prevGpr": 1140,
+          "weight": 1
+        },
+        {
+          "role": "Mid",
+          "name": "Calix",
+          "prevTeam": "NS",
+          "prevYear": 2026,
+          "prevGpr": 1216,
+          "weight": 1
+        },
+        {
+          "role": "Bot",
+          "name": "Deft",
+          "prevTeam": "KT",
+          "prevYear": 2024,
+          "prevGpr": 1395,
+          "weight": 0.25
+        },
+        {
+          "role": "Support",
+          "name": "Andil",
+          "prevTeam": "KRX",
+          "prevYear": 2026,
+          "prevGpr": 1164,
+          "weight": 1
         }
       ]
     },
@@ -1031,14 +1127,16 @@
           "name": "Leave",
           "prevTeam": "EDG",
           "prevYear": 2026,
-          "prevGpr": 1194
+          "prevGpr": 1194,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Parukia",
           "prevTeam": "EDG",
           "prevYear": 2026,
-          "prevGpr": 1194
+          "prevGpr": 1194,
+          "weight": 1
         }
       ]
     },
@@ -1056,14 +1154,16 @@
           "name": "STEPZ",
           "prevTeam": "RED",
           "prevYear": 2026,
-          "prevGpr": 1193
+          "prevGpr": 1193,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "frosty",
           "prevTeam": "RED",
           "prevYear": 2026,
-          "prevGpr": 1193
+          "prevGpr": 1193,
+          "weight": 1
         }
       ]
     },
@@ -1081,28 +1181,32 @@
           "name": "Impact",
           "prevTeam": "SEN",
           "prevYear": 2026,
-          "prevGpr": 1191
+          "prevGpr": 1191,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "DARKWINGS",
           "prevTeam": "SEN",
           "prevYear": 2026,
-          "prevGpr": 1191
+          "prevGpr": 1191,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Rahel",
           "prevTeam": "SEN",
           "prevYear": 2026,
-          "prevGpr": 1191
+          "prevGpr": 1191,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "huhi",
           "prevTeam": "SEN",
           "prevYear": 2026,
-          "prevGpr": 1191
+          "prevGpr": 1191,
+          "weight": 1
         }
       ]
     },
@@ -1120,28 +1224,32 @@
           "name": "Sinatra",
           "prevTeam": "LOUD",
           "prevYear": 2026,
-          "prevGpr": 1189
+          "prevGpr": 1189,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Kaze",
           "prevTeam": "LOUD",
           "prevYear": 2026,
-          "prevGpr": 1189
+          "prevGpr": 1189,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Rabelo",
           "prevTeam": "LOUD",
           "prevYear": 2026,
-          "prevGpr": 1189
+          "prevGpr": 1189,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "uZent",
           "prevTeam": "LOUD",
           "prevYear": 2026,
-          "prevGpr": 1189
+          "prevGpr": 1189,
+          "weight": 1
         }
       ]
     },
@@ -1159,14 +1267,16 @@
           "name": "Disamis",
           "prevTeam": "VKS",
           "prevYear": 2026,
-          "prevGpr": 1171
+          "prevGpr": 1171,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Morttheus",
           "prevTeam": "RED",
           "prevYear": 2026,
-          "prevGpr": 1193
+          "prevGpr": 1193,
+          "weight": 1
         }
       ]
     },
@@ -1184,7 +1294,8 @@
           "name": "Marble",
           "prevTeam": "SHG",
           "prevYear": 2026,
-          "prevGpr": 1157
+          "prevGpr": 1157,
+          "weight": 1
         }
       ]
     },
@@ -1202,14 +1313,16 @@
           "name": "Boal",
           "prevTeam": "PAIN",
           "prevYear": 2026,
-          "prevGpr": 1149
+          "prevGpr": 1149,
+          "weight": 1
         },
         {
           "role": "Mid",
           "name": "Namiru",
           "prevTeam": "PAIN",
           "prevYear": 2026,
-          "prevGpr": 1149
+          "prevGpr": 1149,
+          "weight": 1
         }
       ]
     },
@@ -1227,7 +1340,8 @@
           "name": "re0",
           "prevTeam": "OMG",
           "prevYear": 2026,
-          "prevGpr": 1147
+          "prevGpr": 1147,
+          "weight": 1
         }
       ]
     },
@@ -1245,14 +1359,16 @@
           "name": "Saber",
           "prevTeam": "UP",
           "prevYear": 2026,
-          "prevGpr": 1137
+          "prevGpr": 1137,
+          "weight": 1
         },
         {
           "role": "Support",
           "name": "Xiaoxia",
           "prevTeam": "UP",
           "prevYear": 2026,
-          "prevGpr": 1137
+          "prevGpr": 1137,
+          "weight": 1
         }
       ]
     },
@@ -1270,7 +1386,8 @@
           "name": "SlowQ",
           "prevTeam": "SK",
           "prevYear": 2026,
-          "prevGpr": 1115
+          "prevGpr": 1115,
+          "weight": 1
         }
       ]
     },
@@ -1288,14 +1405,16 @@
           "name": "Tracyn",
           "prevTeam": "TH",
           "prevYear": 2026,
-          "prevGpr": 1080
+          "prevGpr": 1080,
+          "weight": 1
         },
         {
           "role": "Bot",
           "name": "Hype",
           "prevTeam": "TH",
           "prevYear": 2026,
-          "prevGpr": 1080
+          "prevGpr": 1080,
+          "weight": 1
         }
       ]
     }

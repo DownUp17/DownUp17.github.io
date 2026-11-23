@@ -14,7 +14,7 @@ const minScore = Math.min(...ranked.map((t) => t.tpr)); // 최저 팀 = 막대 0
 const rankOf = {};
 ranked.forEach((t, i) => { rankOf[t.short] = i > 0 && ranked[i - 1].tpr === t.tpr ? rankOf[ranked[i - 1].short] : i + 1; });
 const leagues = [...gpr.regions].sort((a, b) => b.score - a.score).filter((r) => ranked.some((t) => t.league === r.key));
-const rosterText = (t) => t.players.map((p) => `${ROLE_KO[p.role] || p.role} ${p.name}${p.prevGpr != null ? ` (${p.prevTeam} ${p.prevYear} ${p.prevGpr})` : ' (GPR 없음)'}`).join('\n');
+const rosterText = (t) => t.players.map((p) => `${ROLE_KO[p.role] || p.role} ${p.name}${p.prevGpr != null ? ` (${p.prevTeam} ${p.prevYear} ${p.prevGpr}${p.weight < 1 ? ` ×${p.weight * 100}%` : ''})` : ' (GPR 없음)'}`).join('\n');
 
 export default function TprTable({ logoOf, selectedTeam, onTeamClick }) {
   const [selected, setSelected] = useState([]);
@@ -83,7 +83,7 @@ export default function TprTable({ logoOf, selectedTeam, onTeamClick }) {
         </table>
       </div>
       <p className="text-[11px] text-white/30">
-        2027 계약 확정 선수만 반영(산출 {ranked.length}팀 중 로스터 확정 {ranked.filter((t) => t.complete).length}팀, '잠정 n/5'는 확정된 포지션 수 · 산출 불가 {tpr.pending?.length ?? 0}팀). 선수별 이전 팀의 월즈 종료 시점 GPR 평균 · 행에 마우스를 올리면 선수별 반영값 · 기준일 {tpr.refDate} · 출처 {tpr.source} / {tpr.gprBase}
+        2027 계약 확정 선수만 반영(산출 {ranked.length}팀 중 로스터 확정 {ranked.filter((t) => t.complete).length}팀, '잠정 n/5'는 확정된 포지션 수 · 산출 불가 {tpr.pending?.length ?? 0}팀). 선수별 이전 팀의 월즈 종료 시점 GPR 평균(쉰 시즌 1개당 반영 50%) · 행에 마우스를 올리면 선수별 반영값 · 기준일 {tpr.refDate} · 출처 {tpr.source} / {tpr.gprBase}
       </p>
     </div>
   );
