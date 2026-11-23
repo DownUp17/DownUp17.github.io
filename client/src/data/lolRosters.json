@@ -644,21 +644,21 @@
           "starter": true
         },
         {
-          "id": "109523141015834041",
-          "name": "Grizzly",
-          "firstName": "Seunghoon",
-          "lastName": "Jo",
-          "role": "jungle",
-          "image": "https://static.lolesports.com/players/default-headshot.png",
-          "starter": false
-        },
-        {
           "id": "112489761307532435",
           "name": "Zephyr",
           "firstName": "Hyeoksu",
           "lastName": "Hwang",
           "role": "jungle",
           "image": "https://static.lolesports.com/players/1769090492602_image6-2026-01-22T150110.156.png",
+          "starter": false
+        },
+        {
+          "id": "109523141015834041",
+          "name": "Grizzly",
+          "firstName": "Seunghoon",
+          "lastName": "Jo",
+          "role": "jungle",
+          "image": "https://static.lolesports.com/players/default-headshot.png",
           "starter": false
         },
         {
@@ -1238,21 +1238,21 @@
           "starter": true
         },
         {
-          "id": "99566404812254466",
-          "name": "Flandre",
-          "firstName": "Xuan-jun",
-          "lastName": "Li",
-          "role": "top",
-          "image": "https://static.lolesports.com/players/1768348080942_flandre.png",
-          "starter": false
-        },
-        {
           "id": "99566404805093717",
           "name": "Wenbo",
           "firstName": "Wenbo",
           "lastName": "Yang",
           "role": "top",
           "image": "https://static.lolesports.com/players/default-headshot.png",
+          "starter": false
+        },
+        {
+          "id": "99566404812254466",
+          "name": "Flandre",
+          "firstName": "Xuan-jun",
+          "lastName": "Li",
+          "role": "top",
+          "image": "https://static.lolesports.com/players/1768348080942_flandre.png",
           "starter": false
         },
         {
