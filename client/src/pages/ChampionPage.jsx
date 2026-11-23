@@ -13,7 +13,9 @@ import { YEARS, koName, pct, ChampImg, champPath } from './LibraryPage';
 import { YearDropdown } from './PredictionPage';
 
 // 패치 정렬: 26.1 > 25.24 > 25.3 (숫자 비교)
-const patchCmp = (a, b) => { const [x, y] = [a, b].map((s) => String(s).split('.').map(Number)); return (y[0] - x[0]) || ((y[1] || 0) - (x[1] || 0)); };
+// 2025 시즌 초 패치는 25.S1.1~25.S1.3(= 25.01~25.03) 표기 → S1.n을 n번째 패치로 보고 정렬
+const patchKey = (s) => { const m = String(s).match(/^(\d+)\.(?:S\d+\.)?(\d+)/); return m ? [+m[1], +m[2]] : [0, 0]; };
+const patchCmp = (a, b) => { const [x, y] = [a, b].map(patchKey); return (y[0] - x[0]) || (y[1] - x[1]); };
 // 리그·패치별 표 — [이름, 경기, 승률, 밴, 밴률]
 const BreakTable = ({ title, rows }) => rows.length > 0 && (
   <div>
@@ -119,6 +121,7 @@ export default function ChampionPage() {
   if (dy) {
     e = { n: 0, w: 0, r: {} }; bans = 0; games = 0; pairs = {};
     const pP = {}, bP = {}, gP = {}, lgP = {};
+    // 국제 로고용: 예선을 뺀 본선 기준(iP). 고른 리그만
     // 같은 패치가 '26.05'·'26.5'로 섞여 기록됨 → 숫자로 맞춰 합침
     const np = (p) => (/^\d+\.\d+/.test(p) ? p.split('.').slice(0, 2).map(Number).join('.') : p);
     for (const l of Object.keys(dy.gLP)) {
@@ -126,9 +129,10 @@ export default function ChampionPage() {
       const c = dc[l];
       if (c) { e.n += c.n; e.w += c.w; for (const [r, v] of Object.entries(c.r)) sum(e.r, r, v); for (const [p, v] of Object.entries(c.p)) sum(pP, np(p), v); }
       for (const [p0, b] of Object.entries(db[l] || {})) { const p = np(p0); bans += b; bP[p] = (bP[p] || 0) + b; }
-      for (const [p0, g] of Object.entries(dy.gLP[l])) { const p = np(p0); games += g; gP[p] = (gP[p] || 0) + g; if (!(lgP[p] ??= []).includes(l)) lgP[p].push(l); }
+      for (const [p0, g] of Object.entries(dy.gLP[l])) { const p = np(p0); games += g; gP[p] = (gP[p] || 0) + g; if (!dy.iP && !(lgP[p] ??= []).includes(l)) lgP[p].push(l); }
       for (const [k, v] of Object.entries(dy.pairs?.[l] || {})) sum(pairs, k, v);
     }
+    for (const [p0, ls] of Object.entries(dy.iP || {})) for (const l of ls) { const p = np(p0); if (on(l) && !(lgP[p] ??= []).includes(l)) lgP[p].push(l); }
     byPatch = [...new Set([...Object.keys(pP), ...Object.keys(bP)])].map((p) => [p, pP[p]?.[0] || 0, pP[p]?.[1] || 0, bP[p] || 0, gP[p] || 0, lgP[p] || []]).sort((a, b) => patchCmp(b[0], a[0])); // 오래된 패치부터
     byLeague = leagues.filter(on).map((l) => { const b = Object.values(db[l] || {}).reduce((a, x) => a + x, 0); const g = Object.values(dy.gLP[l]).reduce((a, x) => a + x, 0); return [l, dc[l]?.n || 0, dc[l]?.w || 0, b, g]; });
   }
@@ -171,10 +175,10 @@ export default function ChampionPage() {
               <p className="mt-1 text-xs text-white/45">{[picked.length ? picked.join('·') : '전체 대회', curPatch && `패치 ${curPatch}`].filter(Boolean).join(' · ')}</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              {[['경기', view.n], ['승률', pct(view.w, view.n)], ['밴', view.b], ['밴률', pct(view.b, view.g)], ['픽률', pct(view.n, view.g)], ['픽·밴률', pct(view.n + view.b, view.g)]].map(([k, v]) => (
-                <div key={k} className="rounded-xl bg-white/5 px-3 py-2">
+              {[['경기', view.n], ['승률', pct(view.w, view.n)], ['픽률', pct(view.n, view.g), view.n], ['밴률', pct(view.b, view.g), view.b], ['픽·밴률', pct(view.n + view.b, view.g)]].map(([k, v, cnt]) => (
+                <div key={k} className={`rounded-xl bg-white/5 px-3 py-2 ${k === '픽·밴률' ? 'col-span-2' : ''}`}>
                   <div className="text-[11px] font-bold text-white/40">{k}</div>
-                  <div className="font-mono font-black text-lg text-white/90">{v}</div>
+                  <div className="font-mono font-black text-lg text-white/90">{v}{cnt != null && <span className="ml-1 text-xs font-bold text-white/40">({cnt})</span>}</div>
                 </div>
               ))}
             </div>

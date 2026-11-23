@@ -44,7 +44,9 @@ export default function LibraryPage() {
   const players = useMemo(() => (k ? Object.entries(data.players).filter(([n]) => norm(n).includes(k)).sort((a, b) => b[1].n - a[1].n) : []), [k, data]);
   const teams = useMemo(() => (k ? Object.entries(data.teams).filter(([n]) => norm(n).includes(k) || norm(TEAM_BY_NAME[norm(n)]?.short) === k).sort((a, b) => b[1][0] - a[1][0]) : []), [k, data]);
   // 밴만 되고 픽되지 않은 챔피언도 목록에 포함
-  const champs = useMemo(() => [...Object.entries(data.champs), ...Object.keys(data.bans || {}).filter((c) => !data.champs[c]).map((c) => [c, { n: 0, w: 0, r: {} }])].filter(([n]) => !k || champMatch(n, k)).sort((a, b) => b[1].n - a[1].n), [k, data]);
+  const champs = useMemo(() => [...Object.entries(data.champs), ...Object.keys(data.bans || {}).filter((c) => !data.champs[c]).map((c) => [c, { n: 0, w: 0, r: {} }]),
+    // 그 해 픽·밴이 한 번도 없던 챔피언도 전체 목록(koNames, Data Dragon 기준)에 0으로 포함
+    ...Object.keys(stats.koNames || {}).filter((k) => !Object.keys(data.champs).concat(Object.keys(data.bans || {})).some((c) => norm(c) === k)).map((k) => [k, { n: 0, w: 0, r: {} }])].filter(([n]) => !k || champMatch(n, k)).sort((a, b) => b[1].n - a[1].n), [k, data]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-4 md:p-6 text-white">

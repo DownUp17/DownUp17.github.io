@@ -2,7 +2,7 @@
 //   사용: 이 파일 내용을 fandom 페이지 콘솔/javascript_tool에서 실행 → window._st가 'done …'이 되면
 //   sessionStorage.gzLP(gzip+base64)를 로컬 수신기(scripts/leaguepedia/recv.cjs)로 넘긴 뒤 applyChampStats.cjs로 적용.
 //   YEARS 기본값 = 올해만(지난 시즌 기록은 바뀌지 않음).
-(async (YEARS = [new Date().getFullYear()]) => {
+(async (YEARS = window.LP_YEARS || [new Date().getFullYear()]) => { // 전 연도 재수집: window.LP_YEARS = [2011, …] 먼저 지정
   window._st = 'run';
   try {
     const sl = (ms) => new Promise((s) => setTimeout(s, ms));
@@ -18,11 +18,21 @@
     const W = (Y) => `T.Year="${Y}" AND T.TournamentLevel="Primary" AND T.League<>"Esports Nations Cup"`;
     const OUT = {};
     for (const Y of YEARS) {
-      const gr = await all({ tables: 'ScoreboardGames=SG,Tournaments=T', join_on: 'SG.OverviewPage=T.OverviewPage', fields: 'SG.GameId=g,SG.Patch=p,T.League=l,SG.Team1Bans=a,SG.Team2Bans=b', where: W(Y), order_by: 'SG.GameId' });
-      const GI = {}, gLP = {}, B = {}, bans = {};
+      const gr = await all({ tables: 'ScoreboardGames=SG,Tournaments=T', join_on: 'SG.OverviewPage=T.OverviewPage', fields: 'SG.GameId=g,T.League=l,T.Name=n,T.IsQualifier=q,SG.Team1Bans=a,SG.Team2Bans=b', where: W(Y), order_by: 'SG.GameId' });
+      // 패치는 CSV로 따로 받음 — JSON은 숫자로 바꿔 14.10→14.1, 26.20→26.2처럼 다른 패치와 합쳐 버림
+      const PT = {};
+      for (let off = 0; ; off += 5000) {
+        const csv = await fetch('/index.php?title=Special:CargoExport&format=csv&limit=5000&' + new URLSearchParams({ tables: 'ScoreboardGames=SG,Tournaments=T', join_on: 'SG.OverviewPage=T.OverviewPage', fields: 'SG.GameId=g,SG.Patch=p', where: W(Y), order_by: 'SG.GameId', offset: off })).then((r) => r.text());
+        const lines = csv.split(/\r?\n/).slice(1).filter(Boolean);
+        for (const ln of lines) { const m = ln.match(/^("(?:[^"]|"")*"|[^,]*),(.*)$/); if (m) PT[m[1].replace(/^"|"$/g, '').replace(/""/g, '"')] = m[2].replace(/^"|"$/g, ''); }
+        if (lines.length < 5000) break; await sl(400);
+      }
+      const GI = {}, gLP = {}, B = {}, bans = {}, iP = {}; // iP: 패치 → 그 패치로 치른 대회(예선 제외, 패치 아래 국제 로고용)
       for (const x of gr) {
-        const l = LG[x.l] || x.l || '?', p = String(x.p || '?'); GI[x.g] = { l, p };
+        const l = LG[x.l] || x.l || '?', p = PT[x.g] || '?'; GI[x.g] = { l, p };
         const o = (gLP[l] ??= {}); o[p] = (o[p] || 0) + 1;
+        // 예선 제외 — 옛 Worlds 지역 선발전은 IsQualifier 표시 없이 'NA Regional Finals 2018'처럼 이름으로만 구분됨
+        if (String(x.q) !== '1' && !/Regional Finals|Qualifier|Gauntlet/i.test(x.n || '') && !(iP[p] ??= []).includes(l)) iP[p].push(l);
         for (const s of [x.a, x.b]) for (const c0 of (Array.isArray(s) ? s : String(s || '').split(','))) {
           const c = fix(c0); if (!c || c === 'None') continue;
           const bl = ((B[c] ??= {})[l] ??= {}); bl[p] = (bl[p] || 0) + 1; bans[c] = (bans[c] || 0) + 1;
@@ -43,7 +53,7 @@
         if (v.Bot && v.Support) { const key = v.Bot + '|' + v.Support; for (const P of [(PR[key] ??= [0, 0]), ((PRL[v.l] ??= {})[key] ??= [0, 0])]) { P[0]++; P[1] += v.w; } }
       }
       for (const p of Object.values(PL)) p.c = Object.entries(p.c).sort((a, b) => b[1] - a[1]).slice(0, 5);
-      OUT[Y] = { summary: { games: gr.length, champs: C, bans, pairs: PR, players: PL, teams: TM }, detail: { gLP, champs: CL, bans: B, pairs: PRL } };
+      OUT[Y] = { summary: { games: gr.length, champs: C, bans, pairs: PR, players: PL, teams: TM }, detail: { gLP, iP, champs: CL, bans: B, pairs: PRL } };
       window._st = 'Y' + Y + ' g' + gr.length;
     }
     const buf = new Uint8Array(await new Response(new Blob([JSON.stringify(OUT)]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer());
