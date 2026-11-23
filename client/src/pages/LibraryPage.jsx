@@ -20,6 +20,9 @@ const TEAM_BY_NAME = Object.fromEntries(gprTeams.teams.map((t) => [norm(t.name),
 // Leaguepedia 챔피언 이름 → CommunityDragon 키
 const CD_KEY = { nunuwillump: 'nunu', wukong: 'monkeyking', renataglasc: 'renata' };
 const champIcon = (c) => `https://cdn.communitydragon.org/latest/champion/${CD_KEY[norm(c)] || norm(c)}/square`;
+// 챔피언 한글 이름(Data Dragon ko_KR) — 한글 검색·표시용
+const koName = (c) => stats.koNames?.[norm(c)] || '';
+const champMatch = (c, k) => norm(c).includes(k) || norm(koName(c)).includes(k);
 const pct = (w, n) => (n ? `${Math.round((w / n) * 100)}%` : '-');
 
 const ChampImg = ({ c, size = 28 }) => (
@@ -39,7 +42,7 @@ function ChampDetail({ name, data }) {
     <div className="rounded-xl bg-white/5 border border-white/10 p-4 flex flex-col gap-4">
       <div className="flex items-center gap-3">
         <ChampImg c={name} size={40} />
-        <span className="font-black text-lg text-white">{name}</span>
+        <span className="font-black text-lg text-white">{koName(name) || name}</span><span className="text-xs text-white/40">{name}</span>
         <span className="ml-auto text-sm text-white/60">{e.n}경기 · 승률 {pct(e.w, e.n)} · 밴 {data.bans?.[name] || 0} ({pct(data.bans?.[name] || 0, data.games)})</span>
       </div>
       <div className="flex flex-wrap gap-2 text-xs">
@@ -78,7 +81,7 @@ export default function LibraryPage() {
   const players = useMemo(() => (k ? Object.entries(data.players).filter(([n]) => norm(n).includes(k)).sort((a, b) => b[1].n - a[1].n) : []), [k, data]);
   const teams = useMemo(() => (k ? Object.entries(data.teams).filter(([n]) => norm(n).includes(k) || norm(TEAM_BY_NAME[norm(n)]?.short) === k).sort((a, b) => b[1][0] - a[1][0]) : []), [k, data]);
   // 밴만 되고 픽되지 않은 챔피언도 목록에 포함
-  const champs = useMemo(() => [...Object.entries(data.champs), ...Object.keys(data.bans || {}).filter((c) => !data.champs[c]).map((c) => [c, { n: 0, w: 0, r: {} }])].filter(([n]) => !k || norm(n).includes(k)).sort((a, b) => b[1].n - a[1].n), [k, data]);
+  const champs = useMemo(() => [...Object.entries(data.champs), ...Object.keys(data.bans || {}).filter((c) => !data.champs[c]).map((c) => [c, { n: 0, w: 0, r: {} }])].filter(([n]) => !k || champMatch(n, k)).sort((a, b) => b[1].n - a[1].n), [k, data]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-4 md:p-6 text-white">
@@ -96,14 +99,27 @@ export default function LibraryPage() {
         </div>
         <label className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3 focus-within:border-[#C8963E]">
           <Search size={18} className="text-white/40" />
-          <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={tab === 'champ' ? '챔피언 이름 검색 (예: Ashe)' : '선수 또는 팀 이름 검색 (예: Faker, T1)'}
+          <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={tab === 'champ' ? '챔피언 이름 검색 (예: 애쉬, Ashe)' : '선수·팀·챔피언 검색 (예: Faker, T1, 애쉬)'}
             className="flex-1 bg-transparent outline-none text-white placeholder:text-white/30" />
         </label>
 
         {tab === 'search' && (
           <>
             {!k && <p className="text-sm text-white/40">{year}년 경기 기록이 있는 선수 {Object.keys(data.players).length}명 · 팀 {Object.keys(data.teams).length}개를 검색할 수 있습니다.</p>}
-            {k && !players.length && !teams.length && <p className="text-sm text-white/40">검색 결과가 없습니다.</p>}
+            {k && champs.length > 0 && (
+              <section>
+                <h2 className="text-sm font-black text-white/50 mb-2">챔피언 {champs.length}</h2>
+                {champs.slice(0, 10).map(([n, e]) => (
+                  <Row key={n} onClick={() => { setTab('champ'); setChamp(n); }}>
+                    <ChampImg c={n} />
+                    <span className="font-bold text-white/90">{koName(n) || n}</span>
+                    <span className="text-xs text-white/40">{n}</span>
+                    <span className="ml-auto text-xs text-white/60 font-mono">{e.n} · {pct(e.w, e.n)} · {data.bans?.[n] || 0}</span>
+                  </Row>
+                ))}
+              </section>
+            )}
+            {k && !players.length && !teams.length && !champs.length && <p className="text-sm text-white/40">검색 결과가 없습니다.</p>}
             {teams.length > 0 && (
               <section>
                 <h2 className="text-sm font-black text-white/50 mb-2">팀 {teams.length}</h2>
@@ -150,7 +166,7 @@ export default function LibraryPage() {
               return (
                 <Row key={n} onClick={() => { setChamp(n); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   <ChampImg c={n} />
-                  <span className={`font-bold ${champ === n ? 'text-[#E8C77E]' : 'text-white/90'}`}>{n}</span>
+                  <span className={`font-bold ${champ === n ? 'text-[#E8C77E]' : 'text-white/90'}`}>{koName(n) || n}</span>
                   <RoleIcon role={main} size={14} className="opacity-60" />
                   <span className="ml-auto text-xs text-white/60 font-mono">{e.n} · {pct(e.w, e.n)} · {data.bans?.[n] || 0}</span>
                 </Row>
