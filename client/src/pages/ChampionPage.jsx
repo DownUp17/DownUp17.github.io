@@ -6,6 +6,7 @@ import { ChevronLeft } from 'lucide-react';
 import stats from '../data/lolChampStats.json';
 import RoleIcon from '../components/RoleIcon';
 import gpr from '../data/lolGpr.json';
+import leaguesData from '../data/lolLeagues.json';
 import { textOn } from '../utils/colorContrast';
 import { YEARS, koName, pct, ChampImg, champPath } from './LibraryPage';
 
@@ -29,8 +30,8 @@ const PatchChart = ({ rows }) => {
   const byMajor = {};
   for (const r of rows) if (/^\d+\./.test(r[0])) byMajor[r[0].split('.')[0]] = (byMajor[r[0].split('.')[0]] || 0) + r[4];
   const major = Object.entries(byMajor).sort((a, b) => b[1] - a[1])[0]?.[0];
-  const pts = rows.filter((r) => r[4] > 0 && r[0].split('.')[0] === major).map(([k, n, , b, g]) => [k, n / g, b / g, n, b, g]);
-  const max = Math.max(0.01, ...pts.flatMap((p) => [p[1], p[2]]));
+  const pts = rows.filter((r) => r[4] > 0 && r[0].split('.')[0] === major).map(([k, n, , b, g, lgs]) => [k, n / g, b / g, n, b, g, lgs]);
+  const max = 1; // 막대 최대 길이 = 100% (데이터 오류로 100% 넘는 값은 아래에서 잘림)
   const [hover, setHover] = useState(null);
   return pts.length > 0 && (
     <div>
@@ -39,8 +40,8 @@ const PatchChart = ({ rows }) => {
         <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-sm bg-[#E8615A]" />밴</span>
       </h3>
       {/* 패치 수와 상관없이 가로 폭을 꽉 채움. 막대 칸에 커서를 올리면 그 패치 수치 표시 */}
-      <div className="flex items-end h-36 w-full" onMouseLeave={() => setHover(null)}>
-        {pts.map(([k, pr, br, n, b, g], i) => (
+      <div className="flex items-start w-full" onMouseLeave={() => setHover(null)}>
+        {pts.map(([k, pr, br, n, b, g, lgs], i) => (
           <div key={k} className={`relative flex-1 min-w-0 flex flex-col items-center rounded ${hover === i ? 'bg-white/5' : ''}`}
             onMouseEnter={() => setHover(i)} onTouchStart={() => setHover(i)}>
             {hover === i && (
@@ -51,16 +52,30 @@ const PatchChart = ({ rows }) => {
               </div>
             )}
             <div className="flex items-end justify-center gap-0.5 h-28 w-full">
-              <div className="w-1/3 max-w-[10px] rounded-t bg-[#5B8DEF]" style={{ height: `${(pr / max) * 100}%` }} />
-              <div className="w-1/3 max-w-[10px] rounded-t bg-[#E8615A]" style={{ height: `${(br / max) * 100}%` }} />
+              <div className="w-1/3 max-w-[10px] rounded-t bg-[#5B8DEF]" style={{ height: `${Math.min(1, pr / max) * 100}%` }} />
+              <div className="w-1/3 max-w-[10px] rounded-t bg-[#E8615A]" style={{ height: `${Math.min(1, br / max) * 100}%` }} />
             </div>
             <span className="mt-1 text-[9px] text-white/40 font-mono truncate max-w-full">{k}</span>
+            {/* 이 패치로 경기가 치러진 국제 대회 */}
+            <div className="mt-1 flex flex-col items-center gap-0.5">
+              {lgs.filter(isIntl).map((l) => (leagueLogo(l)
+                ? <img key={l} src={leagueLogo(l)} alt={l} title={l} className="w-3.5 h-3.5 object-contain opacity-80" />
+                : <span key={l} title={l} className="text-[7px] leading-none text-white/35 font-bold max-w-full truncate">{l}</span>))}
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
-};const LEAGUE_COLOR = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
+};// 대회 약칭(Leaguepedia) → lolesports 리그 로고. 없는 옛 대회는 글자로 표시
+const LG_BY_SLUG = Object.fromEntries((leaguesData.leagues || []).map((l) => [l.slug, l.image]));
+const LG_BY_NAME = Object.fromEntries((leaguesData.leagues || []).map((l) => [l.name.toUpperCase(), l.image]));
+const LG_SLUG = { Worlds: 'worlds', FST: 'first_stand', EWC: 'ewc_lol', DC: 'demacia_cup', 'LTA N': 'lta_n', 'LTA S': 'lta_s', LTA: 'lta_cross', AG: 'asian_games' };
+// 국제 대회(패치 아래 로고 표시 대상)
+const INTL = new Set(['Worlds', 'MSI', 'FST', 'EWC', 'MSC', 'IEM', 'RR', 'AG', 'IWCQ', 'Masters']);
+const isIntl = (l) => INTL.has(l) || /Rift Rivals|Wildcard|IWC/.test(l);
+const leagueLogo = (l) => LG_BY_SLUG[LG_SLUG[l]] || LG_BY_NAME[l.toUpperCase()];
+const LEAGUE_COLOR = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
 const mainRole = (e) => Object.entries(e?.r || {}).sort((a, b) => b[1][0] - a[1][0])[0]?.[0];
 
 export default function ChampionPage() {
@@ -97,16 +112,16 @@ export default function ChampionPage() {
   let e = data.champs[name] || { n: 0, w: 0, r: {} }, bans = data.bans?.[name] || 0, games = data.games, byPatch = [], byLeague = [], pairs = data.pairs;
   if (dy) {
     e = { n: 0, w: 0, r: {} }; bans = 0; games = 0; pairs = {};
-    const pP = {}, bP = {}, gP = {};
+    const pP = {}, bP = {}, gP = {}, lgP = {};
     for (const l of Object.keys(dy.gLP)) {
       if (!on(l)) continue;
       const c = dc[l];
       if (c) { e.n += c.n; e.w += c.w; for (const [r, v] of Object.entries(c.r)) sum(e.r, r, v); for (const [p, v] of Object.entries(c.p)) sum(pP, p, v); }
       for (const [p, b] of Object.entries(db[l] || {})) { bans += b; bP[p] = (bP[p] || 0) + b; }
-      for (const [p, g] of Object.entries(dy.gLP[l])) { games += g; gP[p] = (gP[p] || 0) + g; }
+      for (const [p, g] of Object.entries(dy.gLP[l])) { games += g; gP[p] = (gP[p] || 0) + g; (lgP[p] ??= []).push(l); }
       for (const [k, v] of Object.entries(dy.pairs?.[l] || {})) sum(pairs, k, v);
     }
-    byPatch = [...new Set([...Object.keys(pP), ...Object.keys(bP)])].map((p) => [p, pP[p]?.[0] || 0, pP[p]?.[1] || 0, bP[p] || 0, gP[p] || 0]).sort((a, b) => patchCmp(b[0], a[0])); // 오래된 패치부터
+    byPatch = [...new Set([...Object.keys(pP), ...Object.keys(bP)])].map((p) => [p, pP[p]?.[0] || 0, pP[p]?.[1] || 0, bP[p] || 0, gP[p] || 0, lgP[p] || []]).sort((a, b) => patchCmp(b[0], a[0])); // 오래된 패치부터
     byLeague = leagues.filter(on).map((l) => { const b = Object.values(db[l] || {}).reduce((a, x) => a + x, 0); const g = Object.values(dy.gLP[l]).reduce((a, x) => a + x, 0); return [l, dc[l]?.n || 0, dc[l]?.w || 0, b, g]; });
   }
   const role = mainRole(e);
