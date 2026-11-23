@@ -12,7 +12,9 @@ import AbilityDetailPage from './pages/AbilityDetailPage';
 import PredictionPage from './pages/PredictionPage';
 import TeamPage from './pages/TeamPage';
 import PlayerPage from './pages/PlayerPage';
-import LibraryPage from './pages/LibraryPage';
+// 자료실·챔피언 페이지는 기록 데이터(수 MB)가 커서 들어갈 때만 불러옴
+const LibraryPage = React.lazy(() => import('./pages/LibraryPage'));
+const ChampionPage = React.lazy(() => import('./pages/ChampionPage'));
 import { API_BASE } from './utils/apiBase';
 
 const HOST = typeof window !== 'undefined' ? window.location.hostname : '';
@@ -549,7 +551,8 @@ const App = () => {
 
           <Route path="/lol/prediction/team/:teamShort" element={<TeamPage />} />
           <Route path="/lol/prediction/player/:playerId" element={<PlayerPage />} />
-          <Route path="/lol/library" element={<LibraryPage />} />
+          <Route path="/lol/library" element={<React.Suspense fallback={null}><LibraryPage /></React.Suspense>} />
+          <Route path="/lol/library/champion/:name" element={<React.Suspense fallback={null}><ChampionPage /></React.Suspense>} />
           <Route path="/lol/prediction" element={<PredictionPage />} />
           <Route path="/lol/prediction/:tab" element={<PredictionPage />} />
         </Routes>

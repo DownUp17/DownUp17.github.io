@@ -11,6 +11,8 @@ import playerStats from '../data/lolPlayerStats.json';
 import leaguesData from '../data/lolLeagues.json';
 import { textOn } from '../utils/colorContrast';
 import ChampionBackground from '../components/ChampionBackground';
+import tpr from '../data/lolTpr.json';
+import extraPlayers from '../data/lolExtraPlayers.json';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
@@ -21,6 +23,21 @@ const ROLE_ORDER = ['top', 'jungle', 'mid', 'bottom', 'support'];
 const leagueLogo = Object.fromEntries((leaguesData.leagues || []).map((l) => [l.name.toUpperCase(), l.image]));
 // 시즌 기록(lolPlayerStats.json, livestats 집계) — esports 선수 ID로 연결
 const statOf = (p) => (p?.id ? playerStats.players?.[p.id] : null);
+// 2027 시즌 시작 전까지는 TPR 산출에 쓰는 2027 계약 확정 선수만 로스터에 표시(전 리그). 다른 팀에서 온 선수도 포함, 빈 포지션 허용.
+// shortcut: 시작일 수기 지정 — 2027 첫 대회 일정이 나오면 맞춰 수정
+const STOVE_UNTIL = '2027-01-14';
+const ALL_PLAYERS = [...Object.values(rosters.rosters).flatMap((r) => r.players || []), ...Object.entries(extraPlayers.players).map(([id, p]) => ({ ...p, id }))];
+const TPR_ROLE = { Top: 'top', Jungle: 'jungle', Mid: 'mid', Bot: 'bottom', Support: 'support' };
+const contracted2027 = (short) => {
+  if (new Date().toISOString().slice(0, 10) >= STOVE_UNTIL) return null;
+  // TPR 대상 팀이 아니면(계약 확정 선수 0명 등) 빈 로스터
+  const tm = tpr.teams?.find((t) => t.short === short);
+  return (tm?.players || []).map((s) => {
+    const own = rosters.rosters[short]?.players?.find((p) => p.name.trim().toLowerCase() === s.name.toLowerCase());
+    const p = own || ALL_PLAYERS.find((x) => x.name.trim().toLowerCase() === s.name.toLowerCase());
+    return { ...(p || { name: s.name }), role: TPR_ROLE[s.role] || s.role, starter: true };
+  });
+};
 
 const TeamPage = () => {
   const { teamShort } = useParams();
@@ -41,10 +58,11 @@ const TeamPage = () => {
     );
   }
 
-  // 주전(스타터)만, 역할 순서대로 한 명씩 — 가로 일렬 배치용.
-  const starters = ROLE_ORDER
-    .map((role) => (roster?.players ?? []).find((p) => p.role === role && p.starter !== false))
-    .filter(Boolean);
+  // 포지션별 열 — 한 포지션에 여러 명이면 주전 먼저, 후보까지 모두.
+  const c27 = contracted2027(teamShort);
+  const columns = ROLE_ORDER.map((role) => (c27 || roster?.players || [])
+    .filter((p) => p.role === role).sort((x, y) => (x.starter === false) - (y.starter === false)));
+  const starters = columns.flat();
   // 우승 경력 — API에 없어 수기 관리(lolTitles.json). 팀 약칭 → [{ name, detail }].
   const titles = teamTitles.titles?.[teamShort] || [];
 
@@ -89,9 +107,9 @@ const TeamPage = () => {
         {/* 주전 선수 — 역할 순서대로 가로 일렬 배치 */}
         {starters.length > 0 ? (
           <div>
-            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">주전 로스터</h2>
-            <div className="grid grid-cols-5 gap-2 sm:gap-3">
-              {starters.map(p => (
+            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">{c27 ? '2027 계약 확정 로스터' : '로스터'}</h2>
+            <div className="grid grid-cols-5 gap-2 sm:gap-3 items-start">
+              {columns.map((col, ci) => (<div key={ci} className="flex flex-col gap-2 sm:gap-3">{col.map(p => (
                 <div
                   key={p.name}
                   onClick={p.id ? () => navigate(`/lol/prediction/player/${p.id}`) : undefined}
@@ -129,12 +147,13 @@ const TeamPage = () => {
                       )}
                     </div>
                   )}
+                  {p.starter === false && <span className="mt-1 text-[10px] font-bold text-white/40 border border-white/15 rounded px-1">후보</span>}
                 </div>
-              ))}
+              ))}</div>))}
             </div>
           </div>
         ) : (
-          <p className="text-white/30 text-sm text-center py-16">선수 정보 없음</p>
+          <p className="text-white/30 text-sm text-center py-16">{c27 ? '2027 계약 확정 선수 없음' : '선수 정보 없음'}</p>
         )}
 
         {/* 우승 경력 */}
