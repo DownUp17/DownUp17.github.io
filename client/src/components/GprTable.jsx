@@ -8,6 +8,7 @@ import { textOn, lighten } from '../utils/colorContrast';
 const leagueColor = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
 const gprRanked = [...gprTeams.teams].sort((a, b) => b.score - a.score);
 const gprMaxScore = Math.max(...gprRanked.map((t) => t.score));
+const gprMinScore = Math.min(...gprRanked.map((t) => t.score)); // 최저 팀 = 막대 0%
 // 동점 팀은 같은 순위 (standard competition ranking, 1224 방식).
 const gprRankByShort = {};
 gprRanked.forEach((t, i) => {
@@ -46,7 +47,7 @@ const GprTable = ({ showIntro = true, selectedTeam, onTeamClick }) => {
       </p>
     )}
     <div className="flex flex-wrap gap-2">
-      {gpr.regions.map((r) => {
+      {[...gpr.regions].sort((a, b) => b.score - a.score).map((r) => {
         const on = selected.includes(r.key);
         return (
           <button
@@ -112,7 +113,7 @@ const GprTable = ({ showIntro = true, selectedTeam, onTeamClick }) => {
                     <div className="flex-1 h-3.5 bg-white/5 rounded-full overflow-hidden min-w-[60px]">
                       <div
                         className="h-full rounded-full"
-                        style={{ width: `${(t.score / gprMaxScore) * 100}%`, backgroundColor: barCol }}
+                        style={{ width: `${((t.score - gprMinScore) / (gprMaxScore - gprMinScore || 1)) * 100}%`, backgroundColor: barCol }}
                       />
                     </div>
                     <span className="font-mono font-black tabular-nums w-10 text-right" style={{ color: lighten(barCol) }}>

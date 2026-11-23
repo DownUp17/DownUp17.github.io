@@ -1,4 +1,4 @@
-// TPR(TotalDU 자체 레이팅) — 2027 로스터가 확정된 팀만, 선수별 이전 팀 GPR(월즈 종료 시점) 평균. 데이터: scripts/buildTpr.mjs → lolTpr.json
+// TPR(TotalDU 자체 레이팅) — 팀별 2027 계약 확정 선수만, 선수별 이전 팀 GPR(월즈 종료 시점) 평균. 데이터: scripts/buildTpr.mjs → lolTpr.json
 //   UI는 GprTable과 같은 표(리그 필터·점수 막대).
 import React, { useState } from 'react';
 import tpr from '../data/lolTpr.json';
@@ -10,9 +10,10 @@ const ROLE_KO = { Top: '탑', Jungle: '정글', Mid: '미드', Bot: '원딜', Su
 const leagueColor = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
 const ranked = [...(tpr.teams || [])].sort((a, b) => b.tpr - a.tpr);
 const maxScore = Math.max(...ranked.map((t) => t.tpr));
+const minScore = Math.min(...ranked.map((t) => t.tpr)); // 최저 팀 = 막대 0%
 const rankOf = {};
 ranked.forEach((t, i) => { rankOf[t.short] = i > 0 && ranked[i - 1].tpr === t.tpr ? rankOf[ranked[i - 1].short] : i + 1; });
-const leagues = gpr.regions.filter((r) => ranked.some((t) => t.league === r.key));
+const leagues = [...gpr.regions].sort((a, b) => b.score - a.score).filter((r) => ranked.some((t) => t.league === r.key));
 const rosterText = (t) => t.players.map((p) => `${ROLE_KO[p.role] || p.role} ${p.name}${p.prevGpr != null ? ` (${p.prevTeam} ${p.prevYear} ${p.prevGpr})` : ' (GPR 없음)'}`).join('\n');
 
 export default function TprTable({ logoOf, selectedTeam, onTeamClick }) {
@@ -67,12 +68,14 @@ export default function TprTable({ logoOf, selectedTeam, onTeamClick }) {
                   <td className="py-2 px-3">
                     <div className="flex items-center gap-2">
                       <div className="flex-1 h-3.5 bg-white/5 rounded-full overflow-hidden min-w-[60px]">
-                        <div className="h-full rounded-full" style={{ width: `${(t.tpr / maxScore) * 100}%`, backgroundColor: col }} />
+                        <div className="h-full rounded-full" style={{ width: `${((t.tpr - minScore) / (maxScore - minScore || 1)) * 100}%`, backgroundColor: col }} />
                       </div>
                       <span className="font-mono font-black tabular-nums w-10 text-right" style={{ color: lighten(col) }}>{t.tpr}</span>
                     </div>
                   </td>
-                  <td className="py-2 px-2 text-center text-white/50 font-mono whitespace-nowrap">{t.coverage}</td>
+                  <td className="py-2 px-2 text-center text-white/50 font-mono whitespace-nowrap">
+                    {t.coverage}{!t.complete && <span className="ml-1.5 text-[10px] font-sans font-bold text-amber-300/70" title="로스터 미확정 — 계약 확정 선수만 반영한 잠정값">잠정 {t.roles}/5</span>}
+                  </td>
                 </tr>
               );
             })}
@@ -80,7 +83,7 @@ export default function TprTable({ logoOf, selectedTeam, onTeamClick }) {
         </table>
       </div>
       <p className="text-[11px] text-white/30">
-        2027 로스터가 확정된 팀만 표시(현재 {ranked.length}팀, 미확정 {tpr.pending?.length ?? 0}팀). 선수별 이전 팀의 월즈 종료 시점 GPR 평균 · 행에 마우스를 올리면 선수별 반영값 · 기준일 {tpr.refDate} · 출처 {tpr.source} / {tpr.gprBase}
+        2027 계약 확정 선수만 반영(산출 {ranked.length}팀 중 로스터 확정 {ranked.filter((t) => t.complete).length}팀, '잠정 n/5'는 확정된 포지션 수 · 산출 불가 {tpr.pending?.length ?? 0}팀). 선수별 이전 팀의 월즈 종료 시점 GPR 평균 · 행에 마우스를 올리면 선수별 반영값 · 기준일 {tpr.refDate} · 출처 {tpr.source} / {tpr.gprBase}
       </p>
     </div>
   );

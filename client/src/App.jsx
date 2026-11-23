@@ -12,6 +12,7 @@ import AbilityDetailPage from './pages/AbilityDetailPage';
 import PredictionPage from './pages/PredictionPage';
 import TeamPage from './pages/TeamPage';
 import PlayerPage from './pages/PlayerPage';
+import LibraryPage from './pages/LibraryPage';
 import { API_BASE } from './utils/apiBase';
 
 const HOST = typeof window !== 'undefined' ? window.location.hostname : '';
@@ -504,7 +505,7 @@ const App = () => {
                   <Link to="/community" className="hover:text-[#005596] transition-colors">커뮤니티</Link>
                 </>
               ) : (
-                <Link to="/lol/prediction" className="hover:text-[#C8963E] transition-colors">승부예측</Link>
+                <><Link to="/lol/prediction" className="hover:text-[#C8963E] transition-colors">대회진행</Link><Link to="/lol/library" className="hover:text-[#C8963E] transition-colors">자료실</Link></>
               )}
             </nav>
             <div className="flex items-center gap-3">
@@ -548,6 +549,7 @@ const App = () => {
 
           <Route path="/lol/prediction/team/:teamShort" element={<TeamPage />} />
           <Route path="/lol/prediction/player/:playerId" element={<PlayerPage />} />
+          <Route path="/lol/library" element={<LibraryPage />} />
           <Route path="/lol/prediction" element={<PredictionPage />} />
           <Route path="/lol/prediction/:tab" element={<PredictionPage />} />
         </Routes>
@@ -573,11 +575,7 @@ const App = () => {
               total_du
             </a>
           </div>
-          <p className="text-gray-400 text-sm font-medium">2026 TotalDU</p>
-          <p className="mt-3 px-4 text-center text-gray-400 text-[11px] leading-relaxed max-w-2xl mx-auto">
-            TotalDU은 라이엇 게임즈의 "지식재산 이용 정책"에 따라 라이엇 게임즈 소유의 자산을 이용하여 제작되었습니다. 라이엇 게임즈는 이 프로젝트를 지지하거나 후원하지 않습니다.
-          </p>
-        </footer>
+          <p className="text-gray-400 text-sm font-medium">2026 TotalDU</p>        </footer>
       </div>
     </BrowserRouter>
   );

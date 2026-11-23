@@ -1,0 +1,8 @@
+{
+  "source": "Leaguepedia Players·Tenures (2026-11-23)",
+  "rule": "현재 로스터에 없지만 복귀가 확정·유력한 선수(스토브리그 2027 계약/가능성) + 로스터에 없는 명예의 전당 선수",
+  "players": {
+    "deft": { "name": "Deft", "firstName": "Hyuk-kyu", "lastName": "Kim", "role": "bottom", "note": "군 전역 후 복귀" },
+    "uzi": { "name": "Uzi", "firstName": "Zi-Hao", "lastName": "Jian", "role": "bottom", "note": "은퇴" }
+  }
+}

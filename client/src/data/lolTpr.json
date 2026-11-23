@@ -1,14 +1,151 @@
 {
-  "generatedAt": "2026-11-22T13:54:21.584Z",
+  "generatedAt": "2026-11-23T04:05:33.171Z",
   "source": "Leaguepedia (lol.fandom.com) Players·Tenures·RosterChanges",
   "gprBase": "lolesports.com/gpr/{연도}/worlds (시즌별 월즈 종료 스냅샷)",
   "refDate": "2026-11-08",
   "teams": [
     {
+      "short": "BLG",
+      "name": "Bilibili Gaming",
+      "league": "LPL",
+      "tpr": 1611,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Xun",
+          "prevTeam": "BLG",
+          "prevYear": 2026,
+          "prevGpr": 1611
+        },
+        {
+          "role": "Mid",
+          "name": "Knight",
+          "prevTeam": "BLG",
+          "prevYear": 2026,
+          "prevGpr": 1611
+        },
+        {
+          "role": "Support",
+          "name": "ON",
+          "prevTeam": "BLG",
+          "prevYear": 2026,
+          "prevGpr": 1611
+        }
+      ]
+    },
+    {
+      "short": "GEN",
+      "name": "Gen.G Esports",
+      "league": "LCK",
+      "tpr": 1610,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Mid",
+          "name": "Chovy",
+          "prevTeam": "GEN",
+          "prevYear": 2026,
+          "prevGpr": 1610
+        },
+        {
+          "role": "Bot",
+          "name": "Ruler",
+          "prevTeam": "GEN",
+          "prevYear": 2026,
+          "prevGpr": 1610
+        },
+        {
+          "role": "Support",
+          "name": "Duro",
+          "prevTeam": "GEN",
+          "prevYear": 2026,
+          "prevGpr": 1610
+        }
+      ]
+    },
+    {
+      "short": "HLE",
+      "name": "Hanwha Life Esports",
+      "league": "LCK",
+      "tpr": 1536,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Mid",
+          "name": "Zeka",
+          "prevTeam": "HLE",
+          "prevYear": 2026,
+          "prevGpr": 1536
+        },
+        {
+          "role": "Bot",
+          "name": "Gumayusi",
+          "prevTeam": "HLE",
+          "prevYear": 2026,
+          "prevGpr": 1536
+        },
+        {
+          "role": "Support",
+          "name": "Delight",
+          "prevTeam": "HLE",
+          "prevYear": 2026,
+          "prevGpr": 1536
+        }
+      ]
+    },
+    {
+      "short": "T1",
+      "name": "T1",
+      "league": "LCK",
+      "tpr": 1514,
+      "complete": false,
+      "roles": 4,
+      "coverage": "4/4",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Oner",
+          "prevTeam": "T1",
+          "prevYear": 2026,
+          "prevGpr": 1514
+        },
+        {
+          "role": "Mid",
+          "name": "Faker",
+          "prevTeam": "T1",
+          "prevYear": 2026,
+          "prevGpr": 1514
+        },
+        {
+          "role": "Bot",
+          "name": "Peyz",
+          "prevTeam": "T1",
+          "prevYear": 2026,
+          "prevGpr": 1514
+        },
+        {
+          "role": "Support",
+          "name": "Keria",
+          "prevTeam": "T1",
+          "prevYear": 2026,
+          "prevGpr": 1514
+        }
+      ]
+    },
+    {
       "short": "DK",
       "name": "Dplus KIA",
       "league": "LCK",
       "tpr": 1460,
+      "complete": true,
+      "roles": 5,
       "coverage": "6/6",
       "players": [
         {
@@ -56,10 +193,279 @@
       ]
     },
     {
+      "short": "G2",
+      "name": "G2 Esports",
+      "league": "LEC",
+      "tpr": 1451,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "SkewMond",
+          "prevTeam": "G2",
+          "prevYear": 2026,
+          "prevGpr": 1451
+        },
+        {
+          "role": "Mid",
+          "name": "Caps",
+          "prevTeam": "G2",
+          "prevYear": 2026,
+          "prevGpr": 1451
+        },
+        {
+          "role": "Bot",
+          "name": "Hans Sama",
+          "prevTeam": "G2",
+          "prevYear": 2026,
+          "prevGpr": 1451
+        }
+      ]
+    },
+    {
+      "short": "IG",
+      "name": "Invictus Gaming Meituan",
+      "league": "LPL",
+      "tpr": 1434,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Mid",
+          "name": "Rookie",
+          "prevTeam": "IG",
+          "prevYear": 2026,
+          "prevGpr": 1434
+        }
+      ]
+    },
+    {
+      "short": "KC",
+      "name": "Karmine Corp",
+      "league": "LEC",
+      "tpr": 1427,
+      "complete": false,
+      "roles": 4,
+      "coverage": "4/4",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Canna",
+          "prevTeam": "KC",
+          "prevYear": 2026,
+          "prevGpr": 1427
+        },
+        {
+          "role": "Mid",
+          "name": "kyeahoo",
+          "prevTeam": "KC",
+          "prevYear": 2026,
+          "prevGpr": 1427
+        },
+        {
+          "role": "Bot",
+          "name": "Caliste",
+          "prevTeam": "KC",
+          "prevYear": 2026,
+          "prevGpr": 1427
+        },
+        {
+          "role": "Support",
+          "name": "Busio",
+          "prevTeam": "KC",
+          "prevYear": 2026,
+          "prevGpr": 1427
+        }
+      ]
+    },
+    {
+      "short": "AL",
+      "name": "Anyone's Legend",
+      "league": "LPL",
+      "tpr": 1395,
+      "complete": false,
+      "roles": 4,
+      "coverage": "4/4",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Breathe",
+          "prevTeam": "AL",
+          "prevYear": 2026,
+          "prevGpr": 1395
+        },
+        {
+          "role": "Jungle",
+          "name": "Tarzan",
+          "prevTeam": "AL",
+          "prevYear": 2026,
+          "prevGpr": 1395
+        },
+        {
+          "role": "Bot",
+          "name": "Hope",
+          "prevTeam": "AL",
+          "prevYear": 2026,
+          "prevGpr": 1395
+        },
+        {
+          "role": "Support",
+          "name": "Kael",
+          "prevTeam": "AL",
+          "prevYear": 2026,
+          "prevGpr": 1395
+        }
+      ]
+    },
+    {
+      "short": "TES",
+      "name": "Top Esports",
+      "league": "LPL",
+      "tpr": 1383,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Top",
+          "name": "ZUIAN",
+          "prevTeam": "TES",
+          "prevYear": 2026,
+          "prevGpr": 1383
+        }
+      ]
+    },
+    {
+      "short": "TLAW",
+      "name": "Team Liquid Alienware",
+      "league": "LCS",
+      "tpr": 1357,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Morgan",
+          "prevTeam": "TLAW",
+          "prevYear": 2026,
+          "prevGpr": 1357
+        },
+        {
+          "role": "Jungle",
+          "name": "Josedeodo",
+          "prevTeam": "TLAW",
+          "prevYear": 2026,
+          "prevGpr": 1357
+        },
+        {
+          "role": "Mid",
+          "name": "Quid",
+          "prevTeam": "TLAW",
+          "prevYear": 2026,
+          "prevGpr": 1357
+        }
+      ]
+    },
+    {
+      "short": "TSW",
+      "name": "Team Secret Whales",
+      "league": "LCP",
+      "tpr": 1334,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Pun",
+          "prevTeam": "TSW",
+          "prevYear": 2026,
+          "prevGpr": 1334
+        },
+        {
+          "role": "Jungle",
+          "name": "Hizto",
+          "prevTeam": "TSW",
+          "prevYear": 2026,
+          "prevGpr": 1334
+        },
+        {
+          "role": "Bot",
+          "name": "Eddie",
+          "prevTeam": "TSW",
+          "prevYear": 2026,
+          "prevGpr": 1334
+        }
+      ]
+    },
+    {
+      "short": "JDG",
+      "name": "Beijing JDG Esports",
+      "league": "LPL",
+      "tpr": 1325,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Support",
+          "name": "Vampire",
+          "prevTeam": "JDG",
+          "prevYear": 2026,
+          "prevGpr": 1325
+        }
+      ]
+    },
+    {
+      "short": "KT",
+      "name": "kt Rolster",
+      "league": "LCK",
+      "tpr": 1319,
+      "complete": false,
+      "roles": 4,
+      "coverage": "4/4",
+      "players": [
+        {
+          "role": "Top",
+          "name": "PerfecT",
+          "prevTeam": "KT",
+          "prevYear": 2026,
+          "prevGpr": 1382
+        },
+        {
+          "role": "Jungle",
+          "name": "Raptor",
+          "prevTeam": "BFX",
+          "prevYear": 2026,
+          "prevGpr": 1255
+        },
+        {
+          "role": "Mid",
+          "name": "Bdd",
+          "prevTeam": "KT",
+          "prevYear": 2026,
+          "prevGpr": 1382
+        },
+        {
+          "role": "Support",
+          "name": "Kellin",
+          "prevTeam": "BFX",
+          "prevYear": 2026,
+          "prevGpr": 1255
+        }
+      ]
+    },
+    {
       "short": "C9",
       "name": "Cloud9 Kia",
       "league": "LCS",
       "tpr": 1315,
+      "complete": true,
+      "roles": 5,
       "coverage": "5/5",
       "players": [
         {
@@ -100,10 +506,290 @@
       ]
     },
     {
+      "short": "FLY",
+      "name": "FlyQuest",
+      "league": "LCS",
+      "tpr": 1307,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Gakgos",
+          "prevTeam": "FLY",
+          "prevYear": 2026,
+          "prevGpr": 1307
+        },
+        {
+          "role": "Jungle",
+          "name": "Gryffinn",
+          "prevTeam": "FLY",
+          "prevYear": 2026,
+          "prevGpr": 1307
+        },
+        {
+          "role": "Support",
+          "name": "Cryogen",
+          "prevTeam": "FLY",
+          "prevYear": 2026,
+          "prevGpr": 1307
+        }
+      ]
+    },
+    {
+      "short": "MKOI",
+      "name": "Movistar KOI",
+      "league": "LEC",
+      "tpr": 1303,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Elyoya",
+          "prevTeam": "MKOI",
+          "prevYear": 2026,
+          "prevGpr": 1303
+        },
+        {
+          "role": "Support",
+          "name": "Alvaro",
+          "prevTeam": "MKOI",
+          "prevYear": 2026,
+          "prevGpr": 1303
+        }
+      ]
+    },
+    {
+      "short": "WE",
+      "name": "Xi'an Team WE",
+      "league": "LPL",
+      "tpr": 1297,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Cube",
+          "prevTeam": "WE",
+          "prevYear": 2026,
+          "prevGpr": 1297
+        },
+        {
+          "role": "Jungle",
+          "name": "Tyrion",
+          "prevTeam": "WE",
+          "prevYear": 2026,
+          "prevGpr": 1297
+        },
+        {
+          "role": "Bot",
+          "name": "About",
+          "prevTeam": "WE",
+          "prevYear": 2026,
+          "prevGpr": 1297
+        }
+      ]
+    },
+    {
+      "short": "LGD",
+      "name": "LGD Gaming",
+      "league": "LPL",
+      "tpr": 1274,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Burdol",
+          "prevTeam": "LGD",
+          "prevYear": 2026,
+          "prevGpr": 1274
+        },
+        {
+          "role": "Mid",
+          "name": "Tangyuan",
+          "prevTeam": "LGD",
+          "prevYear": 2026,
+          "prevGpr": 1274
+        }
+      ]
+    },
+    {
+      "short": "LOS",
+      "name": "LOS",
+      "league": "CBLOL",
+      "tpr": 1273,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Curse",
+          "prevTeam": "LOS",
+          "prevYear": 2026,
+          "prevGpr": 1273
+        },
+        {
+          "role": "Bot",
+          "name": "Duduhh",
+          "prevTeam": "LOS",
+          "prevYear": 2026,
+          "prevGpr": 1273
+        }
+      ]
+    },
+    {
+      "short": "GAM",
+      "name": "GAM Esports",
+      "league": "LCP",
+      "tpr": 1258,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Mid",
+          "name": "Gloryy",
+          "prevTeam": "GAM",
+          "prevYear": 2026,
+          "prevGpr": 1258
+        },
+        {
+          "role": "Support",
+          "name": "Taki",
+          "prevTeam": "GAM",
+          "prevYear": 2026,
+          "prevGpr": 1258
+        }
+      ]
+    },
+    {
+      "short": "MVK",
+      "name": "MVK Esports",
+      "league": "LCP",
+      "tpr": 1250,
+      "complete": false,
+      "roles": 5,
+      "coverage": "5/5",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Kratos",
+          "prevTeam": "MVK",
+          "prevYear": 2026,
+          "prevGpr": 1250
+        },
+        {
+          "role": "Jungle",
+          "name": "SanSan",
+          "prevTeam": "MVK",
+          "prevYear": 2026,
+          "prevGpr": 1250
+        },
+        {
+          "role": "Mid",
+          "name": "Chika",
+          "prevTeam": "MVK",
+          "prevYear": 2026,
+          "prevGpr": 1250
+        },
+        {
+          "role": "Bot",
+          "name": "Harky",
+          "prevTeam": "MVK",
+          "prevYear": 2026,
+          "prevGpr": 1250
+        },
+        {
+          "role": "Support",
+          "name": "SiuLoong",
+          "prevTeam": "MVK",
+          "prevYear": 2026,
+          "prevGpr": 1250
+        }
+      ]
+    },
+    {
+      "short": "VIT",
+      "name": "Team Vitality",
+      "league": "LEC",
+      "tpr": 1250,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Naak Nako",
+          "prevTeam": "VIT",
+          "prevYear": 2026,
+          "prevGpr": 1250
+        }
+      ]
+    },
+    {
+      "short": "FUR",
+      "name": "FURIA",
+      "league": "CBLOL",
+      "tpr": 1239,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Tatu",
+          "prevTeam": "FUR",
+          "prevYear": 2026,
+          "prevGpr": 1239
+        },
+        {
+          "role": "Mid",
+          "name": "Tutsz",
+          "prevTeam": "FUR",
+          "prevYear": 2026,
+          "prevGpr": 1239
+        }
+      ]
+    },
+    {
+      "short": "LNG",
+      "name": "Suzhou LNG Esports",
+      "league": "LPL",
+      "tpr": 1236,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Top",
+          "name": "sheer",
+          "prevTeam": "LNG",
+          "prevYear": 2026,
+          "prevGpr": 1236
+        },
+        {
+          "role": "Mid",
+          "name": "Nia",
+          "prevTeam": "LNG",
+          "prevYear": 2026,
+          "prevGpr": 1236
+        }
+      ]
+    },
+    {
       "short": "NS",
       "name": "Nongshim RedForce",
       "league": "LCK",
       "tpr": 1226,
+      "complete": true,
+      "roles": 5,
       "coverage": "5/5",
       "players": [
         {
@@ -148,6 +834,8 @@
       "name": "Hanjin BRION",
       "league": "LCK",
       "tpr": 1210,
+      "complete": true,
+      "roles": 5,
       "coverage": "5/6",
       "players": [
         {
@@ -195,10 +883,62 @@
       ]
     },
     {
+      "short": "BFX",
+      "name": "BNK FEARX",
+      "league": "LCK",
+      "tpr": 1208,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Vincenzo",
+          "prevTeam": "KRX",
+          "prevYear": 2026,
+          "prevGpr": 1164
+        },
+        {
+          "role": "Mid",
+          "name": "VicLa",
+          "prevTeam": "BFX",
+          "prevYear": 2026,
+          "prevGpr": 1255
+        },
+        {
+          "role": "Bot",
+          "name": "Noah",
+          "prevTeam": "GX",
+          "prevYear": 2026,
+          "prevGpr": 1204
+        }
+      ]
+    },
+    {
+      "short": "TT",
+      "name": "ThunderTalk Gaming",
+      "league": "LPL",
+      "tpr": 1208,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Support",
+          "name": "Feather",
+          "prevTeam": "TT",
+          "prevYear": 2026,
+          "prevGpr": 1208
+        }
+      ]
+    },
+    {
       "short": "DNS",
       "name": "DN SOOPers",
       "league": "LCK",
       "tpr": 1207,
+      "complete": true,
+      "roles": 5,
       "coverage": "4/5",
       "players": [
         {
@@ -237,82 +977,330 @@
           "prevGpr": null
         }
       ]
+    },
+    {
+      "short": "NAVI",
+      "name": "Natus Vincere",
+      "league": "LEC",
+      "tpr": 1198,
+      "complete": false,
+      "roles": 3,
+      "coverage": "4/4",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Rhilech",
+          "prevTeam": "NAVI",
+          "prevYear": 2026,
+          "prevGpr": 1198
+        },
+        {
+          "role": "Mid",
+          "name": "Larssen",
+          "prevTeam": "NAVI",
+          "prevYear": 2026,
+          "prevGpr": 1198
+        },
+        {
+          "role": "Mid",
+          "name": "Poby",
+          "prevTeam": "NAVI",
+          "prevYear": 2026,
+          "prevGpr": 1198
+        },
+        {
+          "role": "Support",
+          "name": "Parus",
+          "prevTeam": "NAVI",
+          "prevYear": 2026,
+          "prevGpr": 1198
+        }
+      ]
+    },
+    {
+      "short": "EDG",
+      "name": "Edward Gaming",
+      "league": "LPL",
+      "tpr": 1194,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Bot",
+          "name": "Leave",
+          "prevTeam": "EDG",
+          "prevYear": 2026,
+          "prevGpr": 1194
+        },
+        {
+          "role": "Support",
+          "name": "Parukia",
+          "prevTeam": "EDG",
+          "prevYear": 2026,
+          "prevGpr": 1194
+        }
+      ]
+    },
+    {
+      "short": "RED",
+      "name": "RED Canids Kalunga",
+      "league": "CBLOL",
+      "tpr": 1193,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "STEPZ",
+          "prevTeam": "RED",
+          "prevYear": 2026,
+          "prevGpr": 1193
+        },
+        {
+          "role": "Support",
+          "name": "frosty",
+          "prevTeam": "RED",
+          "prevYear": 2026,
+          "prevGpr": 1193
+        }
+      ]
+    },
+    {
+      "short": "SEN",
+      "name": "Sentinels",
+      "league": "LCS",
+      "tpr": 1191,
+      "complete": false,
+      "roles": 4,
+      "coverage": "4/4",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Impact",
+          "prevTeam": "SEN",
+          "prevYear": 2026,
+          "prevGpr": 1191
+        },
+        {
+          "role": "Mid",
+          "name": "DARKWINGS",
+          "prevTeam": "SEN",
+          "prevYear": 2026,
+          "prevGpr": 1191
+        },
+        {
+          "role": "Bot",
+          "name": "Rahel",
+          "prevTeam": "SEN",
+          "prevYear": 2026,
+          "prevGpr": 1191
+        },
+        {
+          "role": "Support",
+          "name": "huhi",
+          "prevTeam": "SEN",
+          "prevYear": 2026,
+          "prevGpr": 1191
+        }
+      ]
+    },
+    {
+      "short": "LOUD",
+      "name": "LOUD",
+      "league": "CBLOL",
+      "tpr": 1189,
+      "complete": false,
+      "roles": 4,
+      "coverage": "4/4",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Sinatra",
+          "prevTeam": "LOUD",
+          "prevYear": 2026,
+          "prevGpr": 1189
+        },
+        {
+          "role": "Mid",
+          "name": "Kaze",
+          "prevTeam": "LOUD",
+          "prevYear": 2026,
+          "prevGpr": 1189
+        },
+        {
+          "role": "Bot",
+          "name": "Rabelo",
+          "prevTeam": "LOUD",
+          "prevYear": 2026,
+          "prevGpr": 1189
+        },
+        {
+          "role": "Support",
+          "name": "uZent",
+          "prevTeam": "LOUD",
+          "prevYear": 2026,
+          "prevGpr": 1189
+        }
+      ]
+    },
+    {
+      "short": "VKS",
+      "name": "Vivo Keyd Stars",
+      "league": "CBLOL",
+      "tpr": 1182,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Disamis",
+          "prevTeam": "VKS",
+          "prevYear": 2026,
+          "prevGpr": 1171
+        },
+        {
+          "role": "Bot",
+          "name": "Morttheus",
+          "prevTeam": "RED",
+          "prevYear": 2026,
+          "prevGpr": 1193
+        }
+      ]
+    },
+    {
+      "short": "SHG",
+      "name": "Fukuoka SoftBank HAWKS",
+      "league": "LCP",
+      "tpr": 1157,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Bot",
+          "name": "Marble",
+          "prevTeam": "SHG",
+          "prevYear": 2026,
+          "prevGpr": 1157
+        }
+      ]
+    },
+    {
+      "short": "PAIN",
+      "name": "paiN Gaming",
+      "league": "CBLOL",
+      "tpr": 1149,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Boal",
+          "prevTeam": "PAIN",
+          "prevYear": 2026,
+          "prevGpr": 1149
+        },
+        {
+          "role": "Mid",
+          "name": "Namiru",
+          "prevTeam": "PAIN",
+          "prevYear": 2026,
+          "prevGpr": 1149
+        }
+      ]
+    },
+    {
+      "short": "OMG",
+      "name": "Oh My God",
+      "league": "LPL",
+      "tpr": 1147,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "re0",
+          "prevTeam": "OMG",
+          "prevYear": 2026,
+          "prevGpr": 1147
+        }
+      ]
+    },
+    {
+      "short": "UP",
+      "name": "Ultra Prime",
+      "league": "LPL",
+      "tpr": 1137,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Mid",
+          "name": "Saber",
+          "prevTeam": "UP",
+          "prevYear": 2026,
+          "prevGpr": 1137
+        },
+        {
+          "role": "Support",
+          "name": "Xiaoxia",
+          "prevTeam": "UP",
+          "prevYear": 2026,
+          "prevGpr": 1137
+        }
+      ]
+    },
+    {
+      "short": "SK",
+      "name": "SK Gaming",
+      "league": "LEC",
+      "tpr": 1115,
+      "complete": false,
+      "roles": 1,
+      "coverage": "1/1",
+      "players": [
+        {
+          "role": "Mid",
+          "name": "SlowQ",
+          "prevTeam": "SK",
+          "prevYear": 2026,
+          "prevGpr": 1115
+        }
+      ]
+    },
+    {
+      "short": "TH",
+      "name": "Team Heretics",
+      "league": "LEC",
+      "tpr": 1080,
+      "complete": false,
+      "roles": 2,
+      "coverage": "2/2",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Tracyn",
+          "prevTeam": "TH",
+          "prevYear": 2026,
+          "prevGpr": 1080
+        },
+        {
+          "role": "Bot",
+          "name": "Hype",
+          "prevTeam": "TH",
+          "prevYear": 2026,
+          "prevGpr": 1080
+        }
+      ]
     }
   ],
   "pending": [
-    {
-      "short": "BLG",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Bin",
-        "Flandre",
-        "Wenbo",
-        "Viper"
-      ]
-    },
-    {
-      "short": "GEN",
-      "league": "LCK",
-      "filled": 3
-    },
-    {
-      "short": "T1",
-      "league": "LCK",
-      "filled": 4
-    },
-    {
-      "short": "G2",
-      "league": "LEC",
-      "filled": 4
-    },
-    {
-      "short": "HLE",
-      "league": "LCK",
-      "filled": 3
-    },
-    {
-      "short": "TES",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "369",
-        "Tian",
-        "Creme",
-        "JackeyLove",
-        "Zhuo"
-      ]
-    },
-    {
-      "short": "KT",
-      "league": "LCK",
-      "filled": 4
-    },
-    {
-      "short": "JDG",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Xiaoxu",
-        "JunJia",
-        "xiaofang",
-        "HongQ",
-        "GALA"
-      ]
-    },
-    {
-      "short": "AL",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Shanks"
-      ]
-    },
-    {
-      "short": "KC",
-      "league": "LEC",
-      "filled": 4
-    },
     {
       "short": "WBG",
       "league": "LPL",
@@ -336,40 +1324,9 @@
       "filled": 0
     },
     {
-      "short": "FLY",
-      "league": "LCS",
-      "filled": 5,
-      "unannounced": [
-        "Quad",
-        "Massu"
-      ]
-    },
-    {
-      "short": "MKOI",
-      "league": "LEC",
-      "filled": 3
-    },
-    {
-      "short": "TSW",
-      "league": "LCP",
-      "filled": 4
-    },
-    {
       "short": "NIP",
       "league": "LPL",
       "filled": 0
-    },
-    {
-      "short": "IG",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "TheShy",
-        "Wei",
-        "Assum",
-        "JiaQi",
-        "Meiko"
-      ]
     },
     {
       "short": "DCG",
@@ -377,63 +1334,9 @@
       "filled": 3
     },
     {
-      "short": "GAM",
-      "league": "LCP",
-      "filled": 2
-    },
-    {
-      "short": "WE",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Monki",
-        "Karis",
-        "Erha"
-      ]
-    },
-    {
-      "short": "BFX",
-      "league": "LCK",
-      "filled": 3
-    },
-    {
-      "short": "TLAW",
-      "league": "LCS",
-      "filled": 5,
-      "unannounced": [
-        "Yeon",
-        "CoreJJ"
-      ]
-    },
-    {
-      "short": "LNG",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "5t5",
-        "Weiwei",
-        "1xn",
-        "MISSING",
-        "Ycx"
-      ]
-    },
-    {
       "short": "LYON",
       "league": "LCS",
       "filled": 0
-    },
-    {
-      "short": "MVK",
-      "league": "LCP",
-      "filled": 5,
-      "unannounced": [
-        "Gury"
-      ]
-    },
-    {
-      "short": "VIT",
-      "league": "LEC",
-      "filled": 1
     },
     {
       "short": "FNC",
@@ -451,54 +1354,6 @@
       "filled": 0
     },
     {
-      "short": "FUR",
-      "league": "CBLOL",
-      "filled": 4
-    },
-    {
-      "short": "EDG",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Zdz",
-        "Jiejie",
-        "BuLLDoG"
-      ]
-    },
-    {
-      "short": "SHG",
-      "league": "LCP",
-      "filled": 4
-    },
-    {
-      "short": "LGD",
-      "league": "LPL",
-      "filled": 4
-    },
-    {
-      "short": "TT",
-      "league": "LPL",
-      "filled": 1
-    },
-    {
-      "short": "RED",
-      "league": "CBLOL",
-      "filled": 4
-    },
-    {
-      "short": "NAVI",
-      "league": "LEC",
-      "filled": 3
-    },
-    {
-      "short": "SEN",
-      "league": "LCS",
-      "filled": 5,
-      "unannounced": [
-        "HamBak"
-      ]
-    },
-    {
       "short": "SHFT",
       "league": "LEC",
       "filled": 5,
@@ -511,50 +1366,14 @@
       ]
     },
     {
-      "short": "VKS",
-      "league": "CBLOL",
-      "filled": 2
-    },
-    {
-      "short": "LOUD",
-      "league": "CBLOL",
-      "filled": 5,
-      "unannounced": [
-        "curty",
-        "xyno"
-      ]
-    },
-    {
       "short": "SR",
       "league": "LCS",
       "filled": 0
     },
     {
-      "short": "OMG",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Alley",
-        "Linfeng",
-        "banye",
-        "Starry",
-        "Dorian"
-      ]
-    },
-    {
       "short": "DSG",
       "league": "LCS",
       "filled": 0
-    },
-    {
-      "short": "LOS",
-      "league": "CBLOL",
-      "filled": 5,
-      "unannounced": [
-        "Zest",
-        "Feisty",
-        "Ackerman"
-      ]
     },
     {
       "short": "GZ",
@@ -567,31 +1386,6 @@
         "Betty",
         "Kaiwing"
       ]
-    },
-    {
-      "short": "PAIN",
-      "league": "CBLOL",
-      "filled": 3
-    },
-    {
-      "short": "UP",
-      "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Hery",
-        "climber",
-        "LP"
-      ]
-    },
-    {
-      "short": "SK",
-      "league": "LEC",
-      "filled": 1
-    },
-    {
-      "short": "TH",
-      "league": "LEC",
-      "filled": 2
     },
     {
       "short": "DFM",

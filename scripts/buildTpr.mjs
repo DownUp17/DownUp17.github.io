@@ -1,10 +1,10 @@
 // scripts/buildTpr.mjs
-// TotalDU GPR(TPR) — 2027 시즌 로스터가 5포지션 모두 확정된 팀만, 각 선수의 "이전 팀"
+// TotalDU GPR(TPR) — 각 팀의 2027 시즌 계약이 확정된 선수만, 각 선수의 "이전 팀"
 // (2026 월즈 결승일 기준 소속, 없으면 직전 소속)의 GPR을 평균낸 레이팅.
 //   GPR: lolesports 공식 시즌별 "Worlds 종료" 스냅샷(/gpr/{연도}/worlds) — 이전 팀 시즌 연도의 값을 쓴다.
 //   로스터·이적 이력: Leaguepedia Cargo API (Players·Tenures) — 공식 발표 기반으로 갱신됨.
-//   확정 = Leaguepedia에서 해당 팀 소속 비교체 선수가 Top/Jungle/Mid/Bot/Support 모두 1명 이상이고,
-//          전원이 월즈 이후 입단·재계약 발표됐거나 2027 시즌까지 계약이 남아 있음.
+//   계약 확정 선수 = Leaguepedia 해당 팀 소속 비교체 선수 중 월즈 이후 입단·재계약 발표됐거나 2027 시즌까지 계약이 남은 선수.
+//   complete = 5포지션 모두 채워지고 소속 선수 전원이 계약 확정(로스터 확정 팀). 아니면 확정 선수만으로 산출한 잠정값.
 //   한 포지션에 2명 이상이면(예: BRO 미드 2명) 주전을 임의로 고르지 않고 소속 선수 전원을 평균한다.
 //   대상 팀: gprTeams.json의 전 팀(LCK·LPL·LEC·LCS·LCP·CBLOL).
 //
@@ -89,8 +89,8 @@ for (const p of players) {
 }
 const filled = gpr.filter((t) => ROLES.every((role) => roster.get(t.short)?.[role]?.length >= 1));
 
-// 3) 5포지션이 찬 팀 선수들의 이적 이력(Tenures)·이적 기록(RosterChanges) — 행 수 제한 때문에 나눠서 조회
-const pages = filled.flatMap((t) => ROLES.flatMap((role) => roster.get(t.short)[role].map((p) => p.OverviewPage)));
+// 3) 전 팀 소속 선수들의 이적 이력(Tenures)·이적 기록(RosterChanges) — 행 수 제한 때문에 나눠서 조회
+const pages = gpr.filter((t) => roster.has(t.short)).flatMap((t) => ROLES.flatMap((role) => (roster.get(t.short)[role] || []).map((p) => p.OverviewPage)));
 async function cargoBatched(params, field, values, size = 25) {
   const out = [];
   for (let i = 0; i < values.length; i += size) {
@@ -125,9 +125,9 @@ const prevTeam = (page) => {
 };
 
 const teams = [];
-for (const t of confirmed) {
+for (const t of gpr) {
   const ps = [];
-  for (const role of ROLES) for (const p of roster.get(t.short)[role]) {
+  for (const role of ROLES) for (const p of (roster.get(t.short)?.[role] || []).filter(committed)) {
     const prev = prevTeam(p.OverviewPage);
     // shortcut: 이전 팀 매핑은 현 GPR 58팀 이름 기준 — 해체·리그 이탈 팀(예: 2024 FPX) 출신은 GPR 없음 처리
     const score = prev.team && prev.year ? (await gprAt(prev.year))[prev.team.short] ?? null : null;
@@ -136,13 +136,15 @@ for (const t of confirmed) {
   const known = ps.filter((p) => p.prevGpr != null);
   // shortcut: GPR 없는 이전 팀(2군·ERL·무소속) 선수는 평균에서 제외, coverage로 표기 — 보정 규칙이 정해지면 교체
   const tpr = known.length ? Math.round(known.reduce((s, p) => s + p.prevGpr, 0) / known.length) : null;
-  teams.push({ short: t.short, name: t.name, league: t.league, tpr, coverage: `${known.length}/${ps.length}`, players: ps });
+  if (tpr == null) continue; // 계약 확정 선수가 없거나 전원 GPR 없음 → pending
+  const roles = ROLES.filter((role) => ps.some((p) => p.role === role)).length;
+  teams.push({ short: t.short, name: t.name, league: t.league, tpr, complete: confirmed.includes(t), roles, coverage: `${known.length}/${ps.length}`, players: ps });
 }
 teams.sort((a, b) => (b.tpr ?? -1) - (a.tpr ?? -1));
 
-for (const t of teams) console.assert(ROLES.every((role) => t.players.some((p) => p.role === role)), `TPR 자체검사 실패: ${t.short} 포지션 누락`);
+for (const t of teams) console.assert(!t.complete || t.roles === 5, `TPR 자체검사 실패: ${t.short} 확정 팀인데 포지션 누락`);
 
-const pending = gpr.filter((t) => !confirmed.includes(t)).map((t) => {
+const pending = gpr.filter((t) => !teams.some((x) => x.short === t.short)).map((t) => {
   const ps = ROLES.flatMap((role) => roster.get(t.short)?.[role] || []);
   return {
     short: t.short, league: t.league, filled: ROLES.filter((role) => roster.get(t.short)?.[role]?.length >= 1).length,
@@ -158,5 +160,5 @@ fs.writeFileSync(outFile, JSON.stringify({
   refDate: REF_DATE,
   teams, pending,
 }, null, 2) + '\n');
-console.log(`TPR: 확정 ${teams.length}팀 / 미확정 ${pending.length}팀 → lolTpr.json`);
-for (const t of teams) console.log(`${t.league.padEnd(5)} ${t.short.padEnd(5)} TPR ${t.tpr} (${t.coverage}) ${t.players.map((p) => `${p.name}←${p.prevYear ?? ''}${p.prevTeam ?? '?'}:${p.prevGpr ?? '-'}`).join(' ')}`);
+console.log(`TPR: 산출 ${teams.length}팀(로스터 확정 ${teams.filter((t) => t.complete).length}) / 산출 불가 ${pending.length}팀 → lolTpr.json`);
+for (const t of teams) console.log(`${t.league.padEnd(5)} ${t.short.padEnd(5)} TPR ${t.tpr} ${t.complete ? '확정' : `잠정 ${t.roles}/5`} (${t.coverage}) ${t.players.map((p) => `${p.name}←${p.prevYear ?? ''}${p.prevTeam ?? '?'}:${p.prevGpr ?? '-'}`).join(' ')}`);

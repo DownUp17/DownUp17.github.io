@@ -849,7 +849,7 @@ const MsiBracket = ({ rounds: roundsIn, totalRows, connectors: connData, cardPre
       const fx = fRect.right - wRect.left;
       const tx = tRect.left - wRect.left;
       const fy = slotCenterY(fromEl, fS);
-      const ty = slotCenterY(toEl, tS);
+      const ty = slotCenterY(toEl); // 진출선은 다음 대진 카드의 세로 가운데로 모음 — 슬롯별로 꽂으면 선이 교차함
       const flat = Math.abs(fy - ty) <= 2;
       if (flat) return `M ${fx} ${fy} L ${tx} ${ty}`;
 
@@ -3248,8 +3248,14 @@ const YearDropdown = ({ years, value, onChange, ariaLabel = '대회 연도 선�
   );
 };
 
+// 지역 GPR 점수 내림차순 (국내리그 탭·지역 점수 그래프 공용)
+const REGIONS_BY_SCORE = [...gpr.regions].sort((a, b) => b.score - a.score);
+const REGION_RANK = Object.fromEntries(REGIONS_BY_SCORE.map((r, i) => [r.key.toLowerCase(), i]));
+// 국내리그 탭만 지역 점수 순으로, 국제대회 탭은 제자리
+const sortLeagues = (cs) => { const lg = cs.filter((c) => c.key in REGION_RANK).sort((x, y) => REGION_RANK[x.key] - REGION_RANK[y.key]); let i = 0; return cs.map((c) => (c.key in REGION_RANK ? lg[i++] : c)); };
+
 const PredictionPage = () => {
-  const comps = sim.competitions;
+  const comps = useMemo(() => sortLeagues(sim.competitions), []);
   const tabs = [GPR_TAB, ...comps];
   const validKeys = useMemo(() => [GPR_TAB.key, ...comps.map((c) => c.key)], [comps]);
 
@@ -3757,7 +3763,7 @@ const PredictionPage = () => {
           <div className="w-11 h-11 bg-[#C8963E] rounded-xl flex items-center justify-center shrink-0">
             <Target color="white" size={22} />
           </div>
-          <h1 className="text-3xl md:text-4xl font-black text-white">LoL 승부예측</h1>
+          <h1 className="text-3xl md:text-4xl font-black text-white">LoL 대회 진행</h1>
         </div>
 
         {/* 진행 중 경기(LIVE) — 백엔드 경유 30초 갱신, 없으면 숨김 */}
@@ -3967,17 +3973,15 @@ const PredictionPage = () => {
         <section className="mt-8 p-5 rounded-2xl bg-white/5 border border-white/10">
           <h2 className="text-sm font-black text-[#E8C77E] mb-4 uppercase tracking-wider">참고 · 지역별 GPR 점수</h2>
           <div className="flex flex-col gap-2">
-            {gpr.regions.map((r) => {
-              const max = Math.max(...gpr.regions.map((x) => x.score));
+            {REGIONS_BY_SCORE.map((r) => {
+              const max = REGIONS_BY_SCORE[0].score, min = REGIONS_BY_SCORE[REGIONS_BY_SCORE.length - 1].score; // 최저 지역 = 막대 0%
               return (
                 <div key={r.key} className="flex items-center gap-3">
                   <span className="w-14 text-sm font-black shrink-0" style={{ color: lighten(r.color) }}>{r.name}</span>
                   <div className="flex-1 h-4 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full flex items-center justify-end pr-2 text-[10px] font-black text-white/90"
-                      style={{ width: `${(r.score / max) * 100}%`, backgroundColor: r.color }}>
-                      {r.score}
-                    </div>
+                    <div className="h-full rounded-full" style={{ width: `${((r.score - min) / (max - min || 1)) * 100}%`, backgroundColor: r.color }} />
                   </div>
+                  <span className="w-10 text-right font-mono text-xs font-black tabular-nums" style={{ color: lighten(r.color) }}>{r.score}</span>
                 </div>
               );
             })}
@@ -3995,9 +3999,7 @@ const PredictionPage = () => {
             레이팅 출처: lolesports.com Global Power Rankings <ExternalLink size={11} /> · 갱신 {fmtUpdated(sim.updatedAt)}
           </a>
           <p className="text-white/30 text-[11px] mt-2">
-            TotalDU는 Riot Games의 서비스가 아닌 개인의 비공식 서비스이며 Riot Games 또는 리그 오브 레전드의 공개 데이터를 활용합니다. 리그 오브 레전드 및 Riot Games는 Riot Games, Inc.의 상표 또는 등록 상표입니다.
-            <br />
-            League of Legends © Riot Games, Inc.
+            TotalDU은 라이엇 게임즈의 "지식재산 이용 정책"에 따라 라이엇 게임즈 소유의 자산을 이용하여 제작되었습니다. 라이엇 게임즈는 이 프로젝트를 지지하거나 후원하지 않습니다.
           </p>
         </div>
       </div>
