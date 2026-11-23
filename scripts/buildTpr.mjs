@@ -6,7 +6,7 @@
 //   계약 확정 선수 = Leaguepedia 해당 팀 소속 비교체 선수 중 월즈 이후 입단·재계약 발표됐거나 2027 시즌까지 계약이 남은 선수.
 //   complete = 5포지션 모두 채워지고 소속 선수 전원이 계약 확정(로스터 확정 팀). 아니면 확정 선수만으로 산출한 잠정값.
 //   한 포지션에 2명 이상이면(예: BRO 미드 2명) 주전을 임의로 고르지 않고 소속 선수 전원을 평균한다.
-//   가중 평균: 쉰 시즌 1개당 반영 비율 ×0.5 (2026 소속=1, 2025=0.5, 2024=0.25).
+//   가중 평균: 쉰 시즌 1개당 반영 비율 ×0.5 (2026 소속=1, 2025=0.5, 2024=0.25) × 이전 팀 그 시즌 출전 게임/팀 전체 게임.
 //   대상 팀: gprTeams.json의 전 팀(LCK·LPL·LEC·LCS·LCP·CBLOL).
 //
 // 실행: node scripts/buildTpr.mjs  → client/src/data/lolTpr.json
@@ -125,7 +125,7 @@ const prevTeam = (page) => {
   return { team: team || null, name: pick?.Team ?? null, year };
 };
 
-const teams = [];
+const drafts = [];
 for (const t of gpr) {
   const ps = [];
   for (const role of ROLES) for (const p of (roster.get(t.short)?.[role] || []).filter(committed)) {
@@ -133,14 +133,66 @@ for (const t of gpr) {
     // shortcut: 이전 팀 매핑은 현 GPR 58팀 이름 기준 — 해체·리그 이탈 팀(예: 2024 FPX) 출신은 GPR 없음 처리
     const score = prev.team && prev.year ? (await gprAt(prev.year))[prev.team.short] ?? null : null;
     // 쉰 시즌 1개당 반영 비율 50% (사용자 지정: 2024 KT→2시즌 공백인 Deft는 25%)
-    const weight = prev.year ? 0.5 ** (Number(REF_DATE.slice(0, 4)) - prev.year) : 1;
-    ps.push({ role, name: p.ID, prevTeam: prev.team?.short ?? prev.name, prevYear: prev.year, prevGpr: score, weight });
+    const rest = prev.year ? 0.5 ** (Number(REF_DATE.slice(0, 4)) - prev.year) : 1;
+    ps.push({ role, name: p.ID, page: p.OverviewPage, lpTeam: prev.name, prevTeam: prev.team?.short ?? prev.name, prevYear: prev.year, prevGpr: score, rest });
   }
-  const known = ps.filter((p) => p.prevGpr != null);
+  drafts.push({ t, ps });
+}
+
+// 출전 비율 = 이전 팀 그 시즌(1~12월) 공식 경기 중 선수 출전 게임 / 팀 전체 게임 (Leaguepedia ScoreboardPlayers)
+// KeSPA Cup(2군 기용 잦은 비시즌 컵)은 출전·팀 경기 수에서 제외 (사용자 지정)
+const noCup = (a = '') => ` AND ${a}OverviewPage NOT LIKE "%KeSPA Cup%"`;
+const played = {}; // `${year}|${team}` → { total, [link]: games }
+const lc = (x) => (x || '').toLowerCase();
+const wanted = {};
+for (const { ps } of drafts) for (const p of ps) if (p.prevGpr != null) (wanted[p.prevYear] ||= new Set()).add(p.lpTeam);
+for (const [year, set] of Object.entries(wanted)) {
+  const span = `DateTime_UTC >= "${year}-01-01" AND DateTime_UTC < "${+year + 1}-01-01"`;
+  const names = [...set];
+  for (const r of await cargoBatched({ tables: 'ScoreboardPlayers', fields: 'Team,COUNT(DISTINCT GameId)=N', where: span + noCup(), group_by: 'Team' }, 'Team', names))
+    (played[`${year}|${lc(r.Team)}`] ||= {}).total = +r.N;
+  // 경기 기록의 Link는 당시 표기(예: Thanatos (Park Seung-kyu)) → PlayerRedirects로 현 선수 페이지에 맞춤
+  for (const r of await cargoBatched({ tables: 'ScoreboardPlayers=SP,PlayerRedirects=PR', join_on: 'SP.Link=PR.AllName', fields: 'PR.OverviewPage=OP,SP.Team=Team,COUNT(*)=N', where: span.replaceAll('DateTime_UTC', 'SP.DateTime_UTC') + noCup('SP.'), group_by: 'PR.OverviewPage,SP.Team' }, 'SP.Team', names, 20))
+    (played[`${year}|${lc(r.Team)}`] ||= {})[lc(r.OP)] = +r.N;
+}
+
+for (const { ps } of drafts) for (const p of ps) {
+  const g = played[`${p.prevYear}|${lc(p.lpTeam)}`];
+  p.games = g?.[lc(p.page)] ?? 0;
+  p.teamGames = g?.total ?? 0;
+}
+
+// 이전 팀에서 0경기(벤치·2군)면 마지막으로 출전한 시즌의 GPR 팀으로 대체 — 쉰 시즌 감쇠 동일 적용 (사용자: Calix는 2025 출전분 50%)
+const FIRST_GPR_YEAR = 2024; // lolesports /gpr/{연도}/worlds 존재 최초 연도
+const benched = drafts.flatMap((d) => d.ps).filter((p) => p.teamGames && !p.games);
+if (benched.length) {
+  const hist = await cargoBatched({ tables: 'ScoreboardPlayers=SP,PlayerRedirects=PR', join_on: 'SP.Link=PR.AllName',
+    fields: 'PR.OverviewPage=OP,SP.Team=Team,YEAR(SP.DateTime_UTC)=Y,COUNT(*)=N', where: `SP.DateTime_UTC >= "${FIRST_GPR_YEAR}-01-01"` + noCup('SP.'),
+    group_by: 'PR.OverviewPage,SP.Team,YEAR(SP.DateTime_UTC)' }, 'PR.OverviewPage', [...new Set(benched.map((p) => p.page))]);
+  for (const p of benched) {
+    const last = hist.filter((h) => same(h.OP, p.page) && +h.Y < p.prevYear && byLp.has(lc(h.Team)))
+      .sort((a, b) => b.Y - a.Y || b.N - a.N)[0];
+    if (!last) continue;
+    const [tot] = await cargo({ tables: 'ScoreboardPlayers', fields: 'COUNT(DISTINCT GameId)=N', where: `Team="${last.Team}" AND DateTime_UTC >= "${last.Y}-01-01" AND DateTime_UTC < "${+last.Y + 1}-01-01"` + noCup() });
+    Object.assign(p, { lpTeam: last.Team, prevTeam: byLp.get(lc(last.Team)).short, prevYear: +last.Y, prevGpr: (await gprAt(+last.Y))[byLp.get(lc(last.Team)).short] ?? null,
+      games: +last.N, teamGames: +tot.N, rest: 0.5 ** (Number(REF_DATE.slice(0, 4)) - +last.Y) });
+  }
+}
+
+const teams = [];
+for (const { t, ps } of drafts) {
+  for (const p of ps) {
+    // shortcut: 팀 경기 기록이 없으면(이름 불일치 등) 출전 비율 1로 둠 — 발생 시 콘솔 경고 확인
+    const share = p.teamGames ? p.games / p.teamGames : 1;
+    if (!p.teamGames && p.prevGpr != null) console.warn(`경기 기록 없음: ${p.prevYear} ${p.lpTeam} (${p.name})`);
+    p.weight = Math.round(p.rest * share * 1000) / 1000;
+    delete p.page; delete p.lpTeam; delete p.rest;
+  }
+  const known = ps.filter((p) => p.prevGpr != null && p.weight > 0);
   // shortcut: GPR 없는 이전 팀(2군·ERL·무소속) 선수는 평균에서 제외, coverage로 표기 — 보정 규칙이 정해지면 교체
   const wSum = known.reduce((s, p) => s + p.weight, 0);
   const tpr = known.length ? Math.round(known.reduce((s, p) => s + p.prevGpr * p.weight, 0) / wSum) : null;
-  if (tpr == null) continue; // 계약 확정 선수가 없거나 전원 GPR 없음 → pending
+  if (tpr == null) continue; // 계약 확정 선수가 없거나 전원 GPR 없음·미출전 → pending
   const roles = ROLES.filter((role) => ps.some((p) => p.role === role)).length;
   teams.push({ short: t.short, name: t.name, league: t.league, tpr, complete: confirmed.includes(t), roles, coverage: `${known.length}/${ps.length}`, players: ps });
 }
@@ -165,4 +217,4 @@ fs.writeFileSync(outFile, JSON.stringify({
   teams, pending,
 }, null, 2) + '\n');
 console.log(`TPR: 산출 ${teams.length}팀(로스터 확정 ${teams.filter((t) => t.complete).length}) / 산출 불가 ${pending.length}팀 → lolTpr.json`);
-for (const t of teams) console.log(`${t.league.padEnd(5)} ${t.short.padEnd(5)} TPR ${t.tpr} ${t.complete ? '확정' : `잠정 ${t.roles}/5`} (${t.coverage}) ${t.players.map((p) => `${p.name}←${p.prevYear ?? ''}${p.prevTeam ?? '?'}:${p.prevGpr ?? '-'}`).join(' ')}`);
+for (const t of teams) console.log(`${t.league.padEnd(5)} ${t.short.padEnd(5)} TPR ${t.tpr} ${t.complete ? '확정' : `잠정 ${t.roles}/5`} (${t.coverage}) ${t.players.map((p) => `${p.name}←${p.prevYear ?? ''}${p.prevTeam ?? '?'}:${p.prevGpr ?? '-'}×${p.weight}`).join(' ')}`);

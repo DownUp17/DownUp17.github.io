@@ -50,6 +50,9 @@ const logoOfTeam = (name, year) => {
   const era = k && year && eraLogo(k, year);
   if (era) return era;
   const sh = k && ORG_SHORT[k];
+  const current = (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()];
+  // 올해까지 이어진 경력은 사이트의 현재 로고 — Leaguepedia 파일 이력이 옛 그림에 머문 팀이 있음(예: BNK FEARX)
+  if (year >= 2026 && current) return current;
   // 그 당시 팀 이름의 로고(Leaguepedia) 우선, 없으면 현재 구단 로고
   return eraLogoByName(name, year) || (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()] || null;
 };
@@ -198,7 +201,7 @@ const PlayerPage = () => {
             <h1 className="text-2xl md:text-3xl font-black text-white truncate">{p.name}</h1>
             {realName && <p className="text-white/50 text-sm mt-0.5">{realName}</p>}
             <div className="flex items-center gap-3 mt-2 text-sm text-white/60 flex-wrap">
-              <span className="inline-flex items-center gap-1"><RoleIcon role={p.role} size={16} />{ROLE_KO[p.role] ?? p.role}</span>
+              <span className="inline-flex items-center gap-1"><RoleIcon role={p.role} size={16} /></span>
               {HALL_OF_LEGENDS.has(String(p.name || '').trim().toLowerCase()) && <span className="text-[11px] font-black text-[#E8C77E] border border-[#E8C77E]/40 rounded px-1.5">명예의 전당</span>}
               {extra && !next27 && <span className="text-[11px] font-bold text-white/40">{extra.note}</span>}
               {(found || next27) && (

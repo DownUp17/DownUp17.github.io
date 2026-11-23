@@ -3740,6 +3740,7 @@ const PredictionPage = () => {
   const displayTitle = (() => {
     if (isCurrentYear) return title;
     if (pcsPoView) return `${activeYear} PCS ${({ 'Split 1': 'Spring', 'Split 2': 'Summer' })[activeSub] || activeSub} Playoffs`;
+    if (comp?.key === 'fst' && activeYear === 2027) return '2027 First Stand: All In'; // 2027만 대회명이 다름
     if (comp?.key === 'asiangames' && activeYear === 2023) return '19th Asian Games Hangzhou 2022 Esports League of Legends'; // 2023년 개최, 대회명은 2022
     if (activeEvent) return `${activeYear} ${SUBEVENT_NAMES[activeEvent] || activeEvent}${activeSub ? ` ${activeSub}` : ''}`;
     const subMap = SUB_TITLE_NAME[`${comp?.key}|${activeYear}`];
