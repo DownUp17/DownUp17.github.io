@@ -10,6 +10,7 @@ import extraPlayers from '../data/lolExtraPlayers.json';
 import stats from '../data/lolChampStats.json';
 import { TeamLogo } from '../components/GprTable';
 import RoleIcon from '../components/RoleIcon';
+import { YearDropdown } from './PredictionPage';
 
 export const YEARS = Object.keys(stats.years).sort((a, b) => b - a);
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9가-힣]/g, '');
@@ -50,10 +51,7 @@ export default function LibraryPage() {
       <div className="max-w-3xl mx-auto flex flex-col gap-5">
         <h1 className="text-3xl md:text-4xl font-black text-white">LoL 자료실</h1>
         <div className="flex flex-wrap items-center gap-2">
-          <select value={year} onChange={(e) => setYear(e.target.value)} aria-label="연도"
-            className="ml-auto bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm font-bold text-white">
-            {YEARS.map((y) => <option key={y} value={y} className="text-black">{y}</option>)}
-          </select>
+          <div className="ml-auto"><YearDropdown years={YEARS} value={year} onChange={setYear} ariaLabel="연도 선택" /></div>
         </div>
         <label className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3 focus-within:border-[#C8963E]">
           <Search size={18} className="text-white/40" />

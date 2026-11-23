@@ -3201,7 +3201,7 @@ const SUBEVENT_NAMES = { ASI: 'Asia Invitational', 'Demacia Cup': 'Demacia Cup' 
 
 // 연도 선택 드롭다운 — 네이티브 select는 항목이 많으면 브라우저가 위로 펼쳐서, 항상 아래로 펼치는 커스텀 구현.
 // 연도·세부 대회 선택에 공용 사용(ariaLabel로 구분).
-const YearDropdown = ({ years, value, onChange, ariaLabel = '대회 연도 선택' }) => {
+export const YearDropdown = ({ years, value, onChange, ariaLabel = '대회 연도 선택' }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   useEffect(() => {

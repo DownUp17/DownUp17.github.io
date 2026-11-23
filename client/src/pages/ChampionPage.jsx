@@ -9,6 +9,8 @@ import gpr from '../data/lolGpr.json';
 import leaguesData from '../data/lolLeagues.json';
 import { textOn } from '../utils/colorContrast';
 import { YEARS, koName, pct, ChampImg, champPath } from './LibraryPage';
+// 리그 페이지와 같은 연도 선택 UI
+import { YearDropdown } from './PredictionPage';
 
 // 패치 정렬: 26.1 > 25.24 > 25.3 (숫자 비교)
 const patchCmp = (a, b) => { const [x, y] = [a, b].map((s) => String(s).split('.').map(Number)); return (y[0] - x[0]) || ((y[1] || 0) - (x[1] || 0)); };
@@ -25,7 +27,7 @@ const BreakTable = ({ title, rows }) => rows.length > 0 && (
   </div>
 );
 // 패치별 픽률·밴률 막대 — 패치 순서대로(왼쪽 = 시즌 초), 그 패치 전체 경기 대비
-const PatchChart = ({ rows }) => {
+const PatchChart = ({ rows, selected, onSelect }) => {
   // 그 해 주 패치(경기 수가 가장 많은 메이저 버전)만 — 이전 시즌 패치로 치른 대회·패치 미상('?') 제외
   const byMajor = {};
   for (const r of rows) if (/^\d+\./.test(r[0])) byMajor[r[0].split('.')[0]] = (byMajor[r[0].split('.')[0]] || 0) + r[4];
@@ -35,15 +37,15 @@ const PatchChart = ({ rows }) => {
   const [hover, setHover] = useState(null);
   return pts.length > 0 && (
     <div>
-      <h3 className="flex items-center gap-3 text-xs font-black text-white/40 mb-2">패치별 픽·밴률
+      <h3 className="flex items-center gap-3 text-xs font-black text-white/40 mb-2">패치별 픽·밴률 <span className="font-normal text-white/30">(막대를 누르면 왼쪽이 그 패치 기준)</span>
         <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-sm bg-[#5B8DEF]" />픽</span>
         <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-sm bg-[#E8615A]" />밴</span>
       </h3>
       {/* 패치 수와 상관없이 가로 폭을 꽉 채움. 막대 칸에 커서를 올리면 그 패치 수치 표시 */}
       <div className="flex items-start w-full" onMouseLeave={() => setHover(null)}>
         {pts.map(([k, pr, br, n, b, g, lgs], i) => (
-          <div key={k} className={`relative flex-1 min-w-0 flex flex-col items-center rounded ${hover === i ? 'bg-white/5' : ''}`}
-            onMouseEnter={() => setHover(i)} onTouchStart={() => setHover(i)}>
+          <div key={k} className={`relative flex-1 min-w-0 flex flex-col items-center rounded cursor-pointer ${selected === k ? 'bg-white/15 ring-1 ring-[#E8C77E]/60' : hover === i ? 'bg-white/5' : ''}`}
+            onMouseEnter={() => setHover(i)} onTouchStart={() => setHover(i)} onClick={() => onSelect?.(k)}>
             {hover === i && (
               <div className={`absolute bottom-full mb-1 z-10 whitespace-nowrap rounded-lg bg-black/75 backdrop-blur-sm border border-white/10 px-3 py-2 text-[11px] font-mono text-white/85 shadow-lg ${i < pts.length / 2 ? 'left-0' : 'right-0'}`}>
                 <div className="font-black text-white">패치 {k} <span className="font-normal text-white/40">· {g}경기</span></div>
@@ -75,6 +77,9 @@ const LG_SLUG = { Worlds: 'worlds', FST: 'first_stand', EWC: 'ewc_lol', DC: 'dem
 const INTL = new Set(['Worlds', 'MSI', 'FST', 'EWC', 'MSC', 'IEM', 'RR', 'AG', 'IWCQ', 'Masters']);
 const isIntl = (l) => INTL.has(l) || /Rift Rivals|Wildcard|IWC/.test(l);
 const leagueLogo = (l) => LG_BY_SLUG[LG_SLUG[l]] || LG_BY_NAME[l.toUpperCase()];
+// 리그 버튼 줄 순서 — 대회진행 탭과 같게(국내: 지역 GPR 내림차순, 국제: 탭 순서)
+const DOMESTIC = [...gpr.regions].sort((a, b) => b.score - a.score).map((r) => r.key);
+const INTL_ORDER = ['FST', 'MSI', 'EWC', 'AG', 'DC', 'Worlds'];
 const LEAGUE_COLOR = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
 const mainRole = (e) => Object.entries(e?.r || {}).sort((a, b) => b[1][0] - a[1][0])[0]?.[0];
 
@@ -87,6 +92,7 @@ export default function ChampionPage() {
   // 리그·패치별 기록은 용량이 커서 이 페이지에서만 따로 불러옴
   const [detail, setDetail] = useState(null);
   const [sel, setSel] = useState([]);
+  const [patch, setPatch] = useState(null); // 패치 막대를 눌러 고른 패치(다시 누르면 해제)
   useEffect(() => { import('../data/lolChampDetail.json').then((m) => setDetail(m.default)); }, []);
   // 시즌별 기록 — 픽·밴이 하나라도 있는 연도만
   const seasons = YEARS.map((y) => [y, stats.years[y]]).filter(([, d]) => d.champs[name] || d.bans?.[name]);
@@ -113,18 +119,24 @@ export default function ChampionPage() {
   if (dy) {
     e = { n: 0, w: 0, r: {} }; bans = 0; games = 0; pairs = {};
     const pP = {}, bP = {}, gP = {}, lgP = {};
+    // 같은 패치가 '26.05'·'26.5'로 섞여 기록됨 → 숫자로 맞춰 합침
+    const np = (p) => (/^\d+\.\d+/.test(p) ? p.split('.').slice(0, 2).map(Number).join('.') : p);
     for (const l of Object.keys(dy.gLP)) {
       if (!on(l)) continue;
       const c = dc[l];
-      if (c) { e.n += c.n; e.w += c.w; for (const [r, v] of Object.entries(c.r)) sum(e.r, r, v); for (const [p, v] of Object.entries(c.p)) sum(pP, p, v); }
-      for (const [p, b] of Object.entries(db[l] || {})) { bans += b; bP[p] = (bP[p] || 0) + b; }
-      for (const [p, g] of Object.entries(dy.gLP[l])) { games += g; gP[p] = (gP[p] || 0) + g; (lgP[p] ??= []).push(l); }
+      if (c) { e.n += c.n; e.w += c.w; for (const [r, v] of Object.entries(c.r)) sum(e.r, r, v); for (const [p, v] of Object.entries(c.p)) sum(pP, np(p), v); }
+      for (const [p0, b] of Object.entries(db[l] || {})) { const p = np(p0); bans += b; bP[p] = (bP[p] || 0) + b; }
+      for (const [p0, g] of Object.entries(dy.gLP[l])) { const p = np(p0); games += g; gP[p] = (gP[p] || 0) + g; if (!(lgP[p] ??= []).includes(l)) lgP[p].push(l); }
       for (const [k, v] of Object.entries(dy.pairs?.[l] || {})) sum(pairs, k, v);
     }
     byPatch = [...new Set([...Object.keys(pP), ...Object.keys(bP)])].map((p) => [p, pP[p]?.[0] || 0, pP[p]?.[1] || 0, bP[p] || 0, gP[p] || 0, lgP[p] || []]).sort((a, b) => patchCmp(b[0], a[0])); // 오래된 패치부터
     byLeague = leagues.filter(on).map((l) => { const b = Object.values(db[l] || {}).reduce((a, x) => a + x, 0); const g = Object.values(dy.gLP[l]).reduce((a, x) => a + x, 0); return [l, dc[l]?.n || 0, dc[l]?.w || 0, b, g]; });
   }
   const role = mainRole(e);
+  // 왼쪽 요약 — 고른 패치가 있으면 그 패치, 없으면 (고른 리그의) 시즌 전체
+  const pRow = patch && byPatch.find((r) => r[0] === patch);
+  const curPatch = pRow ? patch : null;
+  const view = pRow ? { n: pRow[1], w: pRow[2], b: pRow[3], g: pRow[4] } : { n: e.n, w: e.w, b: bans, g: games };
   // 주 포지션이 원딜이면 같이 쓰인 서포터, 서포터면 같이 쓰인 원딜
   const partners = role === 'Bot' || role === 'Support'
     ? Object.entries(pairs).map(([k, v]) => { const [bot, sup] = k.split('|'); return role === 'Bot' && bot === name ? [sup, v] : role === 'Support' && sup === name ? [bot, v] : null; })
@@ -132,69 +144,82 @@ export default function ChampionPage() {
     : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-6 md:p-12 text-white">
-      <div className="max-w-2xl mx-auto flex flex-col gap-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] px-4 py-6 md:px-8 md:py-8 text-white">
+      <div className="w-full flex flex-col gap-6">
         <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-white/40 hover:text-white/70 transition-colors text-sm font-bold self-start">
           <ChevronLeft size={16} /> 돌아가기
         </button>
 
-        <div className="flex items-center gap-5 pb-8" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-          <ChampImg c={name} size={96} />
+        {/* 챔피언 + 시즌 선택(오른쪽) — 아래 내용 전체가 선택한 연도 기준 */}
+        <div className="flex items-center gap-5 flex-wrap pb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <ChampImg c={name} size={80} />
           <div className="min-w-0">
             <h1 className="text-2xl md:text-3xl font-black text-white truncate">{koName(name) || name}</h1>
             <p className="text-white/50 text-sm mt-0.5">{name}</p>
-            {role && <div className="mt-2"><RoleIcon role={role} size={18} /></div>}
+          </div>
+          <div className="ml-auto flex items-center gap-3">
+            <span className="text-xs font-black text-white/40">시즌</span>
+            <YearDropdown years={seasons.map(([y]) => y)} value={year} onChange={(y) => setSp({ year: y }, { replace: true })} ariaLabel="시즌 선택" />
           </div>
         </div>
 
-        {/* 연도 선택 — 아래 블록 전체가 그 연도 기준 */}
-        <div className="flex items-center gap-3">
-          <span className="text-xs font-black text-white/40">시즌</span>
-          <select value={year} onChange={(ev) => setSp({ year: ev.target.value }, { replace: true })} aria-label="연도"
-            className="bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm font-bold text-white">
-            {seasons.map(([y]) => <option key={y} value={y} className="text-black">{y}</option>)}
-          </select>
-        </div>
-
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 md:p-5 flex flex-col gap-8">
-          <div className="flex items-baseline gap-3 flex-wrap">
-            <h2 className="text-xl font-black text-[#E8C77E]">{year} 시즌</h2>
-            <span className="text-sm text-white/60 font-mono">{picked.length ? `${picked.join('·')} · ` : ''}{e.n}경기 · 승률 {pct(e.w, e.n)} · 밴 {bans} ({pct(bans, games)})</span>
-          </div>
-          {leagues.length > 1 && (
-            <div className="flex flex-wrap gap-2">
-              {leagues.map((l) => {
-                const act = picked.includes(l), col = LEAGUE_COLOR[l] || '#C8963E';
-                return (
-                  <button key={l} onClick={() => setSel((s) => (s.includes(l) ? s.filter((x) => x !== l) : [...s, l]))}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-black border transition-all ${act ? '' : 'text-white/45 border-white/10 hover:border-white/30 hover:text-white/70 bg-transparent'}`}
-                    style={act ? { backgroundColor: col, borderColor: col, color: textOn(col) } : {}}>{l}</button>
-                );
-              })}
-              {picked.length > 0 && <button onClick={() => setSel([])} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white/45 border border-white/10 hover:border-white/30 hover:text-white/70">전체 보기</button>}
-            </div>
-          )}
-          {/* 맨 위: 패치별 픽·밴률 + 포지션 비율 */}
-          <section className="flex flex-col gap-5">
-            {!detail ? <p className="text-xs text-white/40">불러오는 중…</p> : <PatchChart rows={byPatch} />}
+        {/* 넓은 화면: 왼쪽 요약(기본 = 그 해 전체, 리그·패치를 고르면 그 기준으로 갱신) · 오른쪽 선택·그래프·표 */}
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 items-start">
+          <aside className="lg:sticky lg:top-24 flex flex-col gap-4">
             <div>
-              <h3 className="text-xs font-black text-white/40 mb-2">포지션 비율</h3>
+              <h2 className="text-xl font-black text-[#E8C77E] flex items-center gap-2">{year} 시즌 {role && <RoleIcon role={role} size={18} />}</h2>
+              <p className="mt-1 text-xs text-white/45">{[picked.length ? picked.join('·') : '전체 대회', curPatch && `패치 ${curPatch}`].filter(Boolean).join(' · ')}</p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {[['경기', view.n], ['승률', pct(view.w, view.n)], ['밴', view.b], ['밴률', pct(view.b, view.g)], ['픽률', pct(view.n, view.g)], ['픽·밴률', pct(view.n + view.b, view.g)]].map(([k, v]) => (
+                <div key={k} className="rounded-xl bg-white/5 px-3 py-2">
+                  <div className="text-[11px] font-bold text-white/40">{k}</div>
+                  <div className="font-mono font-black text-lg text-white/90">{v}</div>
+                </div>
+              ))}
+            </div>
+            <div>
+              <h3 className="text-xs font-black text-white/40 mb-2">포지션 비율{curPatch && <span className="font-normal text-white/30"> (시즌 기준)</span>}</h3>
               <div className="flex flex-wrap gap-2 text-xs">
-                {Object.entries(e.r).sort((a, b) => b[1][0] - a[1][0]).map(([r, [n, w]]) => (
+                {Object.entries(e.r).sort((a, b) => b[1][0] - a[1][0]).map(([r, [n]]) => (
                   <span key={r} className="inline-flex items-center gap-1 px-2 py-1 rounded bg-white/5 text-white/70"><RoleIcon role={r} size={14} /> <b className="text-white/90">{pct(n, e.n)}</b> <span className="text-white/45">({n}경기)</span></span>
                 ))}
                 {!e.n && <span className="text-white/40">픽 기록 없음</span>}
               </div>
             </div>
-          </section>
+            {(picked.length > 0 || curPatch) && <button onClick={() => { setSel([]); setPatch(null); }} className="self-start px-3 py-1.5 rounded-lg text-xs font-bold text-white/50 border border-white/10 hover:border-white/30 hover:text-white/80">시즌 전체로 보기</button>}
+          </aside>
 
-          {detail && <BreakTable title="리그(대회)별" rows={byLeague} />}
+          <div className="flex flex-col gap-8 min-w-0">
+        {leagues.length > 1 && (
+          // 대회진행 탭 순서대로: 1줄 국내 리그(지역 GPR 순) · 2줄 국제 대회 · 3줄 그 외
+          <div className="flex flex-col gap-2">
+            {[DOMESTIC.filter((l) => leagues.includes(l)), INTL_ORDER.filter((l) => leagues.includes(l)), leagues.filter((l) => !DOMESTIC.includes(l) && !INTL_ORDER.includes(l))]
+              .filter((row) => row.length).map((row, ri) => (
+                <div key={ri} className="flex flex-wrap gap-2">
+                  {row.map((l) => {
+                    const act = picked.includes(l), col = LEAGUE_COLOR[l] || '#C8963E';
+                    return (
+                      <button key={l} onClick={() => setSel((s) => (s.includes(l) ? s.filter((x) => x !== l) : [...s, l]))}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-black border transition-all ${act ? '' : 'text-white/45 border-white/10 hover:border-white/30 hover:text-white/70 bg-transparent'}`}
+                        style={act ? { backgroundColor: col, borderColor: col, color: textOn(col) } : {}}>{l}</button>
+                    );
+                  })}
+                  {ri === 0 && picked.length > 0 && <button onClick={() => setSel([])} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white/45 border border-white/10 hover:border-white/30 hover:text-white/70">전체 보기</button>}
+                </div>
+              ))}
+          </div>
+        )}
+            {!detail ? <p className="text-xs text-white/40">불러오는 중…</p> : <PatchChart rows={byPatch} selected={curPatch} onSelect={(k) => setPatch((p) => (p === k ? null : k))} />}
+            {detail && <BreakTable title="리그(대회)별" rows={byLeague} />}
+          </div>
+        </div>
 
           {partners.length > 0 && (
             <section>
               <h2 className="flex items-center gap-1 text-xs font-black text-white/30 uppercase tracking-widest mb-3">같이 쓰인 <RoleIcon role={role === 'Bot' ? 'support' : 'bottom'} size={14} /></h2>
               {/* 왼쪽 1–5위, 오른쪽 6–10위. 채용률 = 이 챔피언이 주 포지션으로 나온 경기 중 그 챔피언과 함께한 비율 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
                 {[partners.slice(0, 5), partners.slice(5, 10)].filter((col) => col.length).map((col, ci) => (
                   <div key={ci}>
                     <div className="flex items-center gap-2 px-2 pb-1 mb-1 text-[11px] font-bold text-white/35 border-b border-white/10">
@@ -214,41 +239,6 @@ export default function ChampionPage() {
               </div>
             </section>
           )}
-        </div>
-
-        <section>
-          <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">전체 시즌 요약</h2>
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr className="text-white/40 text-xs border-b border-white/10">
-                <th className="text-left font-bold py-2 px-2">시즌</th>
-                <th className="text-center font-bold py-2 px-2">포지션</th>
-                <th className="text-right font-bold py-2 px-2">경기</th>
-                <th className="text-right font-bold py-2 px-2">승률</th>
-                <th className="text-right font-bold py-2 px-2">밴</th>
-                <th className="text-right font-bold py-2 px-2">밴률</th>
-              </tr>
-            </thead>
-            <tbody>
-              {seasons.map(([y, d]) => {
-                const s = d.champs[name] || { n: 0, w: 0 };
-                const b = d.bans?.[name] || 0;
-                return (
-                  <tr key={y} onClick={() => setSp({ year: y }, { replace: true })}
-                    className={`border-b border-white/5 cursor-pointer ${y === year ? 'bg-white/10' : 'hover:bg-white/5'}`}>
-                    <td className="py-2 px-2 font-bold">{y}</td>
-                    <td className="py-2 px-2 text-center">{mainRole(s) && <RoleIcon role={mainRole(s)} size={14} className="opacity-70" />}</td>
-                    <td className="py-2 px-2 text-right font-mono">{s.n}</td>
-                    <td className="py-2 px-2 text-right font-mono">{pct(s.w, s.n)}</td>
-                    <td className="py-2 px-2 text-right font-mono">{b}</td>
-                    <td className="py-2 px-2 text-right font-mono text-white/60">{pct(b, d.games)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <p className="mt-2 text-[11px] text-white/30">행을 누르면 위 시즌이 그 연도로 바뀝니다.</p>
-        </section>
         <p className="text-[11px] text-white/30">출처 {stats.source} · 갱신 {stats.updatedAt}</p>
       </div>
     </div>
