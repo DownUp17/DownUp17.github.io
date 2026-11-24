@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T11:58:33.990Z",
+  "generatedAt": "2026-11-24T14:44:24.064Z",
   "source": "Leaguepedia (lol.fandom.com) Players·Tenures·RosterChanges",
   "gprBase": "lolesports.com/gpr/{연도}/worlds (시즌별 월즈 종료 스냅샷)",
   "refDate": "2026-11-08",
@@ -46,14 +46,75 @@
       ]
     },
     {
-      "short": "GEN",
-      "name": "Gen.G Esports",
+      "short": "HLE",
+      "name": "Hanwha Life Esports",
       "league": "LCK",
-      "tpr": 1610,
+      "tpr": 1561,
       "complete": false,
       "roles": 3,
       "coverage": "3/3",
       "players": [
+        {
+          "role": "Jungle",
+          "name": "Canyon",
+          "prevTeam": "GEN",
+          "prevYear": 2026,
+          "prevGpr": 1610,
+          "games": 134,
+          "teamGames": 134,
+          "weight": 1
+        },
+        {
+          "role": "Mid",
+          "name": "Zeka",
+          "prevTeam": "HLE",
+          "prevYear": 2026,
+          "prevGpr": 1536,
+          "games": 142,
+          "teamGames": 142,
+          "weight": 1
+        },
+        {
+          "role": "Bot",
+          "name": "Gumayusi",
+          "prevTeam": "HLE",
+          "prevYear": 2026,
+          "prevGpr": 1536,
+          "games": 142,
+          "teamGames": 142,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "short": "GEN",
+      "name": "Gen.G Esports",
+      "league": "LCK",
+      "tpr": 1525,
+      "complete": true,
+      "roles": 5,
+      "coverage": "4/5",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Siwoo",
+          "prevTeam": "DK",
+          "prevYear": 2026,
+          "prevGpr": 1427,
+          "games": 153,
+          "teamGames": 153,
+          "weight": 1
+        },
+        {
+          "role": "Jungle",
+          "name": "Sharvel",
+          "prevTeam": "DNS",
+          "prevYear": 2026,
+          "prevGpr": 1140,
+          "games": 18,
+          "teamGames": 95,
+          "weight": 0.189
+        },
         {
           "role": "Mid",
           "name": "Chovy",
@@ -76,43 +137,12 @@
         },
         {
           "role": "Support",
-          "name": "Duro",
-          "prevTeam": "GEN",
+          "name": "Cloud",
+          "prevTeam": "T1 Esports Academy",
           "prevYear": 2026,
-          "prevGpr": 1610,
-          "games": 134,
-          "teamGames": 134,
-          "weight": 1
-        }
-      ]
-    },
-    {
-      "short": "HLE",
-      "name": "Hanwha Life Esports",
-      "league": "LCK",
-      "tpr": 1536,
-      "complete": false,
-      "roles": 2,
-      "coverage": "2/2",
-      "players": [
-        {
-          "role": "Mid",
-          "name": "Zeka",
-          "prevTeam": "HLE",
-          "prevYear": 2026,
-          "prevGpr": 1536,
-          "games": 142,
-          "teamGames": 142,
-          "weight": 1
-        },
-        {
-          "role": "Bot",
-          "name": "Gumayusi",
-          "prevTeam": "HLE",
-          "prevYear": 2026,
-          "prevGpr": 1536,
-          "games": 142,
-          "teamGames": 142,
+          "prevGpr": null,
+          "games": 0,
+          "teamGames": 0,
           "weight": 1
         }
       ]
@@ -245,19 +275,9 @@
       "league": "LEC",
       "tpr": 1451,
       "complete": false,
-      "roles": 3,
-      "coverage": "3/3",
+      "roles": 2,
+      "coverage": "2/2",
       "players": [
-        {
-          "role": "Jungle",
-          "name": "SkewMond",
-          "prevTeam": "G2",
-          "prevYear": 2026,
-          "prevGpr": 1451,
-          "games": 136,
-          "teamGames": 136,
-          "weight": 1
-        },
         {
           "role": "Mid",
           "name": "Caps",
@@ -305,10 +325,10 @@
       "short": "KC",
       "name": "Karmine Corp",
       "league": "LEC",
-      "tpr": 1427,
-      "complete": false,
-      "roles": 4,
-      "coverage": "4/4",
+      "tpr": 1432,
+      "complete": true,
+      "roles": 5,
+      "coverage": "5/5",
       "players": [
         {
           "role": "Top",
@@ -318,6 +338,16 @@
           "prevGpr": 1427,
           "games": 160,
           "teamGames": 160,
+          "weight": 1
+        },
+        {
+          "role": "Jungle",
+          "name": "SkewMond",
+          "prevTeam": "G2",
+          "prevYear": 2026,
+          "prevGpr": 1451,
+          "games": 136,
+          "teamGames": 136,
           "weight": 1
         },
         {
@@ -583,20 +613,10 @@
       "name": "Cloud9 Kia",
       "league": "LCS",
       "tpr": 1315,
-      "complete": true,
-      "roles": 5,
-      "coverage": "5/5",
+      "complete": false,
+      "roles": 4,
+      "coverage": "4/4",
       "players": [
-        {
-          "role": "Top",
-          "name": "Thanatos",
-          "prevTeam": "C9",
-          "prevYear": 2026,
-          "prevGpr": 1315,
-          "games": 107,
-          "teamGames": 107,
-          "weight": 1
-        },
         {
           "role": "Jungle",
           "name": "Blaber",
@@ -1363,19 +1383,9 @@
       "league": "LCS",
       "tpr": 1191,
       "complete": false,
-      "roles": 4,
-      "coverage": "4/4",
+      "roles": 3,
+      "coverage": "3/3",
       "players": [
-        {
-          "role": "Top",
-          "name": "Impact",
-          "prevTeam": "SEN",
-          "prevYear": 2026,
-          "prevGpr": 1191,
-          "games": 90,
-          "teamGames": 90,
-          "weight": 1
-        },
         {
           "role": "Mid",
           "name": "DARKWINGS",
@@ -1703,14 +1713,7 @@
     {
       "short": "SHFT",
       "league": "LEC",
-      "filled": 5,
-      "unannounced": [
-        "Rooster",
-        "Sheo",
-        "nuc",
-        "Paduck",
-        "Trymbi"
-      ]
+      "filled": 4
     },
     {
       "short": "SR",
