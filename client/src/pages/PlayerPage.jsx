@@ -24,7 +24,7 @@ const ORG_ALIASES = [
   [/^(Samsung (Galaxy|White|Blue|Ozone)|KSV|GEN|Gen\.G( Esports)?)$/i, 'GEN'],
   [/^(KOO Tigers|GE Tigers|ROX Tigers|HLE|Hanwha Life( Esports)?)$/i, 'HLE'],
   [/^(Incredible Miracle|Longzhu( Gaming)?|Kingzone DragonX|DragonX|DRX|DRX Shinhan Bank|Kiwoom DRX)$/i, 'DRX'],
-  [/^(DAMWON( Gaming)?|DWG KIA|DK|Dplus KIA)$/i, 'DK'],
+  [/^(DAMWON( Gaming| Game)?|DWG KIA|DK|Dplus KIA)$/i, 'DK'], // 'DAMWON Game Academy'(2021 2군) 표기 포함
   [/^(KT Rolster|kt Rolster|KT Arrows|KT Bullets)$/i, 'KT'],
   [/^(Afreeca Freecs|Kwangdong Freecs|KDF|AF|DN Freecs|DN SOOPers)$/i, 'DNS'],
   [/^(ESC Ever|Hyper Youth|Fredit BRION|BRION|BRO|OK BRION|OKSavingsBank BRION|HANJIN BRION)$/i, 'BRO'],
@@ -178,18 +178,19 @@ const PlayerPage = () => {
       </div>
     );
   }
-  const p = found?.player || extra || { name: s.name, role: s.role };
+  // 로스터 밖 선수(2군 등)는 경기 데이터 이름에 팀 약칭이 붙어 있음("T1A Cloud") → 닉네임만
+  const p = found?.player || extra || { name: s.name.split(' ').pop(), role: s.role };
   const team = found ? gprTeamMap[found.teamShort] : null;
   const teamLogo = team?.logo || found?.roster?.team?.image;
   const realName = [p.lastName, p.firstName].filter(Boolean).join(' ');
   // Worlds 우승 선수 → 우승 당시 팀의 배경(팀 페이지와 같은 이미지)
   const career = mergeCareer(playerCareers.players?.[playerId] || []);
   // 2027 소속 확정: 같은 팀이면 현재 팀 기간을 2027까지, 다른 팀이면 별도 표시
-  const t27 = CONTRACT_2027[String(p.name || '').toLowerCase()];
+  const t27 = CONTRACT_2027[String(p.name || '').trim().toLowerCase()]; // 로스터 이름 끝 공백("Cloud ") 있음
   const stay27 = t27 && found && t27 === found.teamShort;
   if (stay27 && career.length) career[career.length - 1] = { ...career[career.length - 1], to: 2027 };
   // 다른 팀과 2027 계약이 확정됐으면 그 팀(2027)을 이적 목록 맨 위에 둔다
-  const next27 = t27 && !stay27 && (found || extra) ? { team: gprTeamMap[t27]?.name || t27, from: 2027, to: 2027 } : null;
+  const next27 = t27 && !stay27 && (found || extra || s) ? { team: gprTeamMap[t27]?.name || t27, from: 2027, to: 2027 } : null;
   // 연도별 기록: 올해는 lolesports(CtO 포함), 지난 시즌은 Leaguepedia. 동명이인은 그 해 경력 팀(같은 구단)으로 구분
   const rawCareer = playerCareers.players?.[playerId] || [];
   const pastOf = (y) => {
@@ -269,8 +270,8 @@ const PlayerPage = () => {
               <Stat label="KDA" value={st.kda} sub={`${st.k} / ${st.d} / ${st.a}`} cto={st.cto?.kda} />
               <Stat label="CS/분" value={st.csm} cto={st.cto?.csm} />
               <Stat label="골드/분" value={st.gpm} cto={st.cto?.gpm} />
-              <Stat label="DMG 비중" value={pct(st.dmgShare)} cto={st.cto ? pct(st.cto.dmgShare) : null} />
-              <Stat label="킬 관여" value={pct(st.kp)} cto={st.cto ? pct(st.cto.kp) : null} />
+              <Stat label="DMG 비중" value={pct(st.dmgShare)} />
+              <Stat label="킬 관여" value={pct(st.kp)} />
             </div>
 
             {st.cto && (
