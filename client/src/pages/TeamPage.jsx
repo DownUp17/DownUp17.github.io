@@ -28,7 +28,7 @@ const statOf = (p) => (p?.id ? playerStats.players?.[p.id] : null);
 const STOVE_UNTIL = '2027-01-14';
 const ALL_PLAYERS = [...Object.values(rosters.rosters).flatMap((r) => r.players || []), ...Object.entries(extraPlayers.players).map(([id, p]) => ({ ...p, id }))];
 const TPR_ROLE = { Top: 'top', Jungle: 'jungle', Mid: 'mid', Bot: 'bottom', Support: 'support' };
-const contracted2027 = (short) => {
+export const contracted2027 = (short) => {
   if (new Date().toISOString().slice(0, 10) >= STOVE_UNTIL) return null;
   // TPR 대상 팀이 아니면(계약 확정 선수 0명 등) 빈 로스터
   const tm = tpr.teams?.find((t) => t.short === short);

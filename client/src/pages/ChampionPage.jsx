@@ -5,8 +5,11 @@ import { useParams, useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { ChevronLeft } from 'lucide-react';
 import stats from '../data/lolChampStats.json';
 import RoleIcon from '../components/RoleIcon';
+import ChampSkills from '../components/ChampSkills';
+import patchChanges from '../data/lolPatchChanges.json';
 import gpr from '../data/lolGpr.json';
 import leaguesData from '../data/lolLeagues.json';
+import ewcLogo from '../assets/ewc.svg'; // 대회진행 EWC 탭과 같은 삼각형 로고
 import { textOn } from '../utils/colorContrast';
 import { YEARS, koName, pct, ChampImg, champPath } from './LibraryPage';
 // 리그 페이지와 같은 연도 선택 UI
@@ -23,36 +26,41 @@ const BreakTable = ({ title, rows }) => rows.length > 0 && (
     <table className="w-full text-sm border-collapse">
       <thead><tr className="text-white/40 text-xs border-b border-white/10"><th className="text-left font-bold py-1.5 px-2"></th><th className="text-right font-bold py-1.5 px-2">경기</th><th className="text-right font-bold py-1.5 px-2">승률</th><th className="text-right font-bold py-1.5 px-2">밴</th><th className="text-right font-bold py-1.5 px-2">밴률</th></tr></thead>
       <tbody>{rows.map(([k, n, w, b, g]) => (
-        <tr key={k} className="border-b border-white/5"><td className="py-1.5 px-2 font-bold text-white/80">{k}</td><td className="py-1.5 px-2 text-right font-mono">{n}</td><td className="py-1.5 px-2 text-right font-mono">{pct(w, n)}</td><td className="py-1.5 px-2 text-right font-mono">{b}</td><td className="py-1.5 px-2 text-right font-mono text-white/60">{pct(b, g)}</td></tr>
+        <tr key={k} className="border-b border-white/5"><td className="py-1.5 px-2 font-bold text-white/80">{lgName(k)}</td><td className="py-1.5 px-2 text-right font-mono">{n}</td><td className="py-1.5 px-2 text-right font-mono">{pct(w, n)}</td><td className="py-1.5 px-2 text-right font-mono">{b}</td><td className="py-1.5 px-2 text-right font-mono text-white/60">{pct(b, g)}</td></tr>
       ))}</tbody>
     </table>
   </div>
 );
 // 패치별 픽률·밴률 막대 — 패치 순서대로(왼쪽 = 시즌 초), 그 패치 전체 경기 대비
-const PatchChart = ({ rows, selected, onSelect }) => {
+// 패치노트 상향·하향·조정 표시(Riot 공식 패치 하이라이트 기준)
+const CHANGE = { buff: ['▲', '상향', 'text-[#4ADE80]'], nerf: ['▼', '하향', 'text-[#F87171]'], adjust: ['↻', '조정', 'text-[#E8C77E]'] };
+const PatchChart = ({ rows, selected, onSelect, champ }) => {
+  const ck = String(champ || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   // 그 해 주 패치(경기 수가 가장 많은 메이저 버전)만 — 이전 시즌 패치로 치른 대회·패치 미상('?') 제외
   const byMajor = {};
   for (const r of rows) if (/^\d+\./.test(r[0])) byMajor[r[0].split('.')[0]] = (byMajor[r[0].split('.')[0]] || 0) + r[4];
   const major = Object.entries(byMajor).sort((a, b) => b[1] - a[1])[0]?.[0];
-  const pts = rows.filter((r) => r[4] > 0 && r[0].split('.')[0] === major).map(([k, n, , b, g, lgs]) => [k, n / g, b / g, n, b, g, lgs]);
+  const pts = rows.filter((r) => r[4] > 0 && r[0].split('.')[0] === major).map(([k, n, w, b, g, lgs]) => [k, n / g, b / g, n, b, g, lgs, w]);
   const max = 1; // 막대 최대 길이 = 100% (데이터 오류로 100% 넘는 값은 아래에서 잘림)
   const [hover, setHover] = useState(null);
   return pts.length > 0 && (
     <div>
-      <h3 className="flex items-center gap-3 text-xs font-black text-white/40 mb-2">패치별 픽·밴률 <span className="font-normal text-white/30">(막대를 누르면 왼쪽이 그 패치 기준)</span>
+      <h3 className="flex items-center gap-3 text-xs font-black text-white/40 mb-2">패치별 픽·밴률 <span className="font-normal text-white/30">(막대를 누르면 왼쪽이 그 패치 기준, 여러 개 선택 가능)</span>
         <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-sm bg-[#5B8DEF]" />픽</span>
         <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-sm bg-[#E8615A]" />밴</span>
+        <span className="font-bold text-[#4ADE80]">▲상향</span><span className="font-bold text-[#F87171]">▼하향</span><span className="font-bold text-[#E8C77E]">↻조정</span>
       </h3>
       {/* 패치 수와 상관없이 가로 폭을 꽉 채움. 막대 칸에 커서를 올리면 그 패치 수치 표시 */}
       <div className="flex items-start w-full" onMouseLeave={() => setHover(null)}>
-        {pts.map(([k, pr, br, n, b, g, lgs], i) => (
-          <div key={k} className={`relative flex-1 min-w-0 flex flex-col items-center rounded cursor-pointer ${selected === k ? 'bg-white/15 ring-1 ring-[#E8C77E]/60' : hover === i ? 'bg-white/5' : ''}`}
+        {pts.map(([k, pr, br, n, b, g, lgs, w], i) => (
+          <div key={k} className={`relative flex-1 min-w-0 flex flex-col items-center rounded cursor-pointer ${selected?.includes(k) ? 'bg-white/15 ring-1 ring-[#E8C77E]/60' : hover === i ? 'bg-white/5' : ''}`}
             onMouseEnter={() => setHover(i)} onTouchStart={() => setHover(i)} onClick={() => onSelect?.(k)}>
             {hover === i && (
               <div className={`absolute bottom-full mb-1 z-10 whitespace-nowrap rounded-lg bg-black/75 backdrop-blur-sm border border-white/10 px-3 py-2 text-[11px] font-mono text-white/85 shadow-lg ${i < pts.length / 2 ? 'left-0' : 'right-0'}`}>
                 <div className="font-black text-white">패치 {k} <span className="font-normal text-white/40">· {g}경기</span></div>
                 <div className="mt-1 pl-2 flex items-center gap-1.5"><i className="w-2 h-2 rounded-full bg-[#5B8DEF]" />픽 <b className="text-white">{pct(n, g)}</b> <span className="text-white/45">({n})</span></div>
                 <div className="pl-2 flex items-center gap-1.5"><i className="w-2 h-2 rounded-full bg-[#E8615A]" />밴 <b className="text-white">{pct(b, g)}</b> <span className="text-white/45">({b})</span></div>
+                <div className="pl-2 flex items-center gap-1.5"><i className="w-2 h-2 rounded-full bg-[#E8C77E]" />승률 <b className="text-white">{pct(w, n)}</b></div>
               </div>
             )}
             <div className="flex items-end justify-center gap-0.5 h-28 w-full">
@@ -60,6 +68,7 @@ const PatchChart = ({ rows, selected, onSelect }) => {
               <div className="w-1/3 max-w-[10px] rounded-t bg-[#E8615A]" style={{ height: `${Math.min(1, br / max) * 100}%` }} />
             </div>
             <span className="mt-1 text-[9px] text-white/40 font-mono truncate max-w-full">{k}</span>
+            {CHANGE[patchChanges.patches[k]?.[ck]] && (() => { const [s, label, cls] = CHANGE[patchChanges.patches[k][ck]]; return <span title={`패치 ${k} ${label}`} className={`text-[10px] font-black leading-none mt-0.5 ${cls}`}>{s}</span>; })()}
             {/* 이 패치로 경기가 치러진 국제 대회 */}
             <div className="mt-1 flex flex-col items-center gap-0.5">
               {lgs.filter(isIntl).map((l) => (leagueLogo(l)
@@ -69,19 +78,40 @@ const PatchChart = ({ rows, selected, onSelect }) => {
           </div>
         ))}
       </div>
+      {/* 패치별 승률 꺾은선 — 막대와 같은 칸 위치. 픽이 없는 패치는 건너뜀, 점선 = 50% */}
+      <h3 className="mt-5 flex items-center gap-2 text-xs font-black text-white/40 mb-2">패치별 승률 <i className="w-2.5 h-2.5 rounded-full bg-[#E8C77E]" /></h3>
+      <div className="relative h-24 w-full">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full overflow-visible">
+          <line x1="0" x2="100" y1="50" y2="50" stroke="rgba(255,255,255,0.15)" strokeDasharray="2 2" vectorEffect="non-scaling-stroke" />
+          <polyline fill="none" stroke="#E8C77E" strokeWidth="2" vectorEffect="non-scaling-stroke"
+            points={pts.map((p, i) => (p[3] ? `${((i + 0.5) / pts.length) * 100},${100 - (p[7] / p[3]) * 100}` : null)).filter(Boolean).join(' ')} />
+        </svg>
+        {pts.map((p, i) => p[3] > 0 && (
+          <span key={p[0]} title={`패치 ${p[0]} · 승률 ${pct(p[7], p[3])} (${p[3]}경기)`}
+            className={`absolute w-2 h-2 -ml-1 -mt-1 rounded-full ${hover === i ? 'bg-white' : 'bg-[#E8C77E]'}`}
+            style={{ left: `${((i + 0.5) / pts.length) * 100}%`, top: `${100 - (p[7] / p[3]) * 100}%` }} />
+        ))}
+        <span className="absolute -left-1 top-1/2 -translate-x-full -translate-y-1/2 text-[9px] text-white/30 font-mono">50%</span>
+      </div>
     </div>
   );
-};// 대회 약칭(Leaguepedia) → lolesports 리그 로고. 없는 옛 대회는 글자로 표시
+};
+// 대회 약칭(Leaguepedia) → lolesports 리그 로고. 없는 옛 대회는 글자로 표시
 const LG_BY_SLUG = Object.fromEntries((leaguesData.leagues || []).map((l) => [l.slug, l.image]));
 const LG_BY_NAME = Object.fromEntries((leaguesData.leagues || []).map((l) => [l.name.toUpperCase(), l.image]));
 const LG_SLUG = { Worlds: 'worlds', FST: 'first_stand', EWC: 'ewc_lol', DC: 'demacia_cup', 'LTA N': 'lta_n', 'LTA S': 'lta_s', LTA: 'lta_cross', AG: 'asian_games' };
 // 국제 대회(패치 아래 로고 표시 대상)
 const INTL = new Set(['Worlds', 'MSI', 'FST', 'EWC', 'MSC', 'IEM', 'RR', 'AG', 'IWCQ', 'Masters']);
-const isIntl = (l) => INTL.has(l) || /Rift Rivals|Wildcard|IWC/.test(l);
-const leagueLogo = (l) => LG_BY_SLUG[LG_SLUG[l]] || LG_BY_NAME[l.toUpperCase()];
+const isIntl = (l) => ['FST', 'MSI', 'EWC', 'Worlds'].includes(l); // 패치 아래 로고는 이 4개 국제전만
+const leagueLogo = (l) => (l === 'EWC' ? ewcLogo : null) || LG_BY_SLUG[LG_SLUG[l]] || LG_BY_NAME[l.toUpperCase()];
 // 리그 버튼 줄 순서 — 대회진행 탭과 같게(국내: 지역 GPR 내림차순, 국제: 탭 순서)
-const DOMESTIC = [...gpr.regions].sort((a, b) => b.score - a.score).map((r) => r.key);
-const INTL_ORDER = ['FST', 'MSI', 'EWC', 'AG', 'DC', 'Worlds'];
+// 현재 6개 리그(지역 GPR 순) 뒤에 과거·지역 1부 리그도 첫 줄에(그 해 기록이 있을 때만 나옴)
+const DOMESTIC = [...[...gpr.regions].sort((a, b) => b.score - a.score).map((r) => r.key),
+  'LTA', 'LTA N', 'LTA S', 'NA LCS', 'EU LCS', 'LMS', 'PCS', 'VCS', 'LJL', 'LCO', 'OPL', 'LLA', 'LLN', 'CLS', 'TCL', 'LCL', 'GPL', 'LST', 'SEA Tour', 'LoL Championship Malaysia', 'OGN', 'LTC'];
+const INTL_ORDER = ['FST', 'MSI', 'EWC', 'AG', 'Worlds'];
+// 리그 표시 이름(Leaguepedia 약칭과 다르게 보일 것) — DC = Demacia Cup(중국 국내 컵, 셋째 줄)
+const LG_LABEL = { DC: 'Demacia Cup' };
+const lgName = (l) => LG_LABEL[l] || l;
 const LEAGUE_COLOR = Object.fromEntries(gpr.regions.map((r) => [r.key, r.color]));
 const mainRole = (e) => Object.entries(e?.r || {}).sort((a, b) => b[1][0] - a[1][0])[0]?.[0];
 
@@ -94,7 +124,7 @@ export default function ChampionPage() {
   // 리그·패치별 기록은 용량이 커서 이 페이지에서만 따로 불러옴
   const [detail, setDetail] = useState(null);
   const [sel, setSel] = useState([]);
-  const [patch, setPatch] = useState(null); // 패치 막대를 눌러 고른 패치(다시 누르면 해제)
+  const [patch, setPatch] = useState([]); // 패치 막대를 눌러 고른 패치들(여러 개, 다시 누르면 해제)
   useEffect(() => { import('../data/lolChampDetail.json').then((m) => setDetail(m.default)); }, []);
   // 시즌별 기록 — 픽·밴이 하나라도 있는 연도만
   const seasons = YEARS.map((y) => [y, stats.years[y]]).filter(([, d]) => d.champs[name] || d.bans?.[name]);
@@ -138,11 +168,15 @@ export default function ChampionPage() {
   }
   const role = mainRole(e);
   // 왼쪽 요약 — 고른 패치가 있으면 그 패치, 없으면 (고른 리그의) 시즌 전체
-  const pRow = patch && byPatch.find((r) => r[0] === patch);
-  const curPatch = pRow ? patch : null;
-  const view = pRow ? { n: pRow[1], w: pRow[2], b: pRow[3], g: pRow[4] } : { n: e.n, w: e.w, b: bans, g: games };
+  const pRows = byPatch.filter((r) => patch.includes(r[0]));
+  const curPatch = pRows.length ? pRows.map((r) => r[0]).join('·') : null;
+  const view = pRows.length ? pRows.reduce((s, r) => ({ n: s.n + r[1], w: s.w + r[2], b: s.b + r[3], g: s.g + r[4] }), { n: 0, w: 0, b: 0, g: 0 }) : { n: e.n, w: e.w, b: bans, g: games };
   // 주 포지션이 원딜이면 같이 쓰인 서포터, 서포터면 같이 쓰인 원딜
-  const partners = role === 'Bot' || role === 'Support'
+  // 탑·정글·미드: 같은 팀에서 함께 쓰인 챔피언(포지션 무관) 상위 10
+  const mates = {};
+  if (dy) for (const l of Object.keys(dy.mates || {})) if (on(l)) for (const [k, v] of Object.entries(dy.mates[l][name] || {})) sum(mates, k, v);
+  const bottom = role === 'Bot' || role === 'Support';
+  const partners = !bottom ? Object.entries(mates).sort((a, b) => b[1][0] - a[1][0]).slice(0, 10) : role === 'Bot' || role === 'Support'
     ? Object.entries(pairs).map(([k, v]) => { const [bot, sup] = k.split('|'); return role === 'Bot' && bot === name ? [sup, v] : role === 'Support' && sup === name ? [bot, v] : null; })
       .filter(Boolean).sort((a, b) => b[1][0] - a[1][0]).slice(0, 10)
     : [];
@@ -161,6 +195,7 @@ export default function ChampionPage() {
             <h1 className="text-2xl md:text-3xl font-black text-white truncate">{koName(name) || name}</h1>
             <p className="text-white/50 text-sm mt-0.5">{name}</p>
           </div>
+          <ChampSkills name={name} />
           <div className="ml-auto flex items-center gap-3">
             <span className="text-xs font-black text-white/40">시즌</span>
             <YearDropdown years={seasons.map(([y]) => y)} value={year} onChange={(y) => setSp({ year: y }, { replace: true })} ariaLabel="시즌 선택" />
@@ -172,7 +207,7 @@ export default function ChampionPage() {
           <aside className="lg:sticky lg:top-24 flex flex-col gap-4">
             <div>
               <h2 className="text-xl font-black text-[#E8C77E] flex items-center gap-2">{year} 시즌 {role && <RoleIcon role={role} size={18} />}</h2>
-              <p className="mt-1 text-xs text-white/45">{[picked.length ? picked.join('·') : '전체 대회', curPatch && `패치 ${curPatch}`].filter(Boolean).join(' · ')}</p>
+              <p className="mt-1 text-xs text-white/45">{[picked.length ? picked.map(lgName).join('·') : '전체 대회', curPatch && `패치 ${curPatch}`].filter(Boolean).join(' · ')}</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
               {[['경기', view.n], ['승률', pct(view.w, view.n)], ['픽률', pct(view.n, view.g), view.n], ['밴률', pct(view.b, view.g), view.b], ['픽·밴률', pct(view.n + view.b, view.g)]].map(([k, v, cnt]) => (
@@ -191,7 +226,7 @@ export default function ChampionPage() {
                 {!e.n && <span className="text-white/40">픽 기록 없음</span>}
               </div>
             </div>
-            {(picked.length > 0 || curPatch) && <button onClick={() => { setSel([]); setPatch(null); }} className="self-start px-3 py-1.5 rounded-lg text-xs font-bold text-white/50 border border-white/10 hover:border-white/30 hover:text-white/80">시즌 전체로 보기</button>}
+            {(picked.length > 0 || curPatch) && <button onClick={() => { setSel([]); setPatch([]); }} className="self-start px-3 py-1.5 rounded-lg text-xs font-bold text-white/50 border border-white/10 hover:border-white/30 hover:text-white/80">시즌 전체로 보기</button>}
           </aside>
 
           <div className="flex flex-col gap-8 min-w-0">
@@ -206,7 +241,7 @@ export default function ChampionPage() {
                     return (
                       <button key={l} onClick={() => setSel((s) => (s.includes(l) ? s.filter((x) => x !== l) : [...s, l]))}
                         className={`px-3 py-1.5 rounded-lg text-xs font-black border transition-all ${act ? '' : 'text-white/45 border-white/10 hover:border-white/30 hover:text-white/70 bg-transparent'}`}
-                        style={act ? { backgroundColor: col, borderColor: col, color: textOn(col) } : {}}>{l}</button>
+                        style={act ? { backgroundColor: col, borderColor: col, color: textOn(col) } : {}}>{lgName(l)}</button>
                     );
                   })}
                   {ri === 0 && picked.length > 0 && <button onClick={() => setSel([])} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white/45 border border-white/10 hover:border-white/30 hover:text-white/70">전체 보기</button>}
@@ -214,14 +249,14 @@ export default function ChampionPage() {
               ))}
           </div>
         )}
-            {!detail ? <p className="text-xs text-white/40">불러오는 중…</p> : <PatchChart rows={byPatch} selected={curPatch} onSelect={(k) => setPatch((p) => (p === k ? null : k))} />}
+            {!detail ? <p className="text-xs text-white/40">불러오는 중…</p> : <PatchChart champ={name} rows={byPatch} selected={patch} onSelect={(k) => setPatch((p) => (p.includes(k) ? p.filter((x) => x !== k) : [...p, k]))} />}
             {detail && <BreakTable title="리그(대회)별" rows={byLeague} />}
           </div>
         </div>
 
           {partners.length > 0 && (
             <section>
-              <h2 className="flex items-center gap-1 text-xs font-black text-white/30 uppercase tracking-widest mb-3">같이 쓰인 <RoleIcon role={role === 'Bot' ? 'support' : 'bottom'} size={14} /></h2>
+              <h2 className="flex items-center gap-1 text-xs font-black text-white/30 uppercase tracking-widest mb-3">같이 쓰인 {bottom ? <RoleIcon role={role === 'Bot' ? 'support' : 'bottom'} size={14} /> : '챔피언'}</h2>
               {/* 왼쪽 1–5위, 오른쪽 6–10위. 채용률 = 이 챔피언이 주 포지션으로 나온 경기 중 그 챔피언과 함께한 비율 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
                 {[partners.slice(0, 5), partners.slice(5, 10)].filter((col) => col.length).map((col, ci) => (
@@ -234,7 +269,7 @@ export default function ChampionPage() {
                         <span className="w-5 text-center text-xs text-white/40 font-mono">{ci * 5 + i + 1}</span>
                         <ChampImg c={c} size={24} />
                         <span className="flex-1 truncate">{koName(c) || c}</span>
-                        <span className="w-24 text-right text-xs font-mono">{pct(n, e.r[role]?.[0] || 0)} <span className="text-white/40">({n})</span></span>
+                        <span className="w-24 text-right text-xs font-mono">{pct(n, bottom ? e.r[role]?.[0] || 0 : e.n)} <span className="text-white/40">({n})</span></span>
                         <span className="w-10 text-right text-xs font-mono text-white/60">{pct(w, n)}</span>
                       </Link>
                     ))}

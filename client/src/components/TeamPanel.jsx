@@ -2,10 +2,13 @@
 import React, { useEffect } from 'react';
 import RoleIcon from './RoleIcon';
 import { X, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import rosters from '../data/lolRosters.json';
 import gprTeamsData from '../data/gprTeams.json';
 import gpr from '../data/lolGpr.json';
 import { textOn } from '../utils/colorContrast';
+// 팀 상세 페이지와 같은 로스터(2027 시즌 전에는 계약 확정 선수만)
+import { contracted2027 } from '../pages/TeamPage';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
@@ -16,6 +19,7 @@ const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
   const team = gprTeamMap[teamShort];
   const roster = rosters.rosters[teamShort];
   const leagueColor = leagueColorMap[team?.league?.toLowerCase()] || '#888';
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handler = e => { if (e.key === 'Escape') onClose(); };
@@ -25,8 +29,10 @@ const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
 
   if (!team) return null;
 
+  const c27 = contracted2027(teamShort);
+  const list = c27 || roster?.players || [];
   const playersByRole = {};
-  for (const p of roster?.players ?? []) {
+  for (const p of list) {
     if (!playersByRole[p.role]) playersByRole[p.role] = [];
     playersByRole[p.role].push(p);
   }
@@ -72,8 +78,9 @@ const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
 
         {/* 선수 목록 */}
         <div className="flex-1 overflow-y-auto p-4">
-          {roster?.players?.length > 0 ? (
+          {list.length > 0 ? (
             <div className="flex flex-col gap-4">
+              {c27 && <p className="text-[11px] font-black text-white/40 text-center">2027 계약 확정 로스터</p>}
               {ROLE_ORDER.map(role => {
                 const players = playersByRole[role];
                 if (!players?.length) return null;
@@ -82,7 +89,8 @@ const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
                     <div className="mb-2 flex justify-center opacity-50"><RoleIcon role={role} size={18} /></div>
                     <div className="flex flex-col gap-1.5">
                       {players.map(p => (
-                        <div key={p.name} className="flex items-center gap-3 p-2.5 rounded-xl"
+                        <div key={p.name} onClick={p.id ? () => navigate(`/lol/prediction/player/${p.id}`) : undefined}
+                          className={`flex items-center gap-3 p-2.5 rounded-xl${p.id ? ' cursor-pointer hover:bg-white/10' : ''}`}
                           style={{
                             backgroundColor: 'rgba(255,255,255,0.04)',
                             border: '1px solid rgba(255,255,255,0.06)',
@@ -113,7 +121,7 @@ const TeamPanel = ({ teamShort, onClose, onNavigate }) => {
               })}
             </div>
           ) : (
-            <p className="text-white/30 text-sm text-center py-12">선수 정보 없음</p>
+            <p className="text-white/30 text-sm text-center py-12">{c27 ? '2027 계약 확정 선수 없음' : '선수 정보 없음'}</p>
           )}
         </div>
 

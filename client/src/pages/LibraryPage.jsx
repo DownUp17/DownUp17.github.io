@@ -46,7 +46,9 @@ export default function LibraryPage() {
   // 밴만 되고 픽되지 않은 챔피언도 목록에 포함
   const champs = useMemo(() => [...Object.entries(data.champs), ...Object.keys(data.bans || {}).filter((c) => !data.champs[c]).map((c) => [c, { n: 0, w: 0, r: {} }]),
     // 그 해 픽·밴이 한 번도 없던 챔피언도 전체 목록(koNames, Data Dragon 기준)에 0으로 포함
-    ...Object.keys(stats.koNames || {}).filter((k) => !Object.keys(data.champs).concat(Object.keys(data.bans || {})).some((c) => norm(c) === k)).map((k) => [k, { n: 0, w: 0, r: {} }])].filter(([n]) => !k || champMatch(n, k)).sort((a, b) => b[1].n - a[1].n), [k, data]);
+    ...Object.keys(stats.koNames || {}).filter((k) => !Object.keys(data.champs).concat(Object.keys(data.bans || {})).some((c) => norm(c) === k)).map((k) => [k, { n: 0, w: 0, r: {} }])].filter(([n]) => !k || champMatch(n, k))
+    // 밴픽률(픽+밴 ÷ 그 해 경기) 높은 순, 같으면 경기 수
+    .sort((a, b) => (b[1].n + (data.bans?.[b[0]] || 0)) - (a[1].n + (data.bans?.[a[0]] || 0)) || b[1].n - a[1].n), [k, data]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a1428] via-[#1e2328] to-[#0a1428] p-4 md:p-6 text-white">
@@ -99,7 +101,7 @@ export default function LibraryPage() {
             )}
         {champs.length > 0 && (
           <section className="flex flex-col gap-1">
-            <div className="text-xs text-white/40 flex px-3 mb-1"><span className="font-black text-sm text-white/50">챔피언 {champs.length}</span><span className="ml-auto">경기 · 승률 · 밴</span></div>
+            <div className="text-xs text-white/40 flex px-3 mb-1"><span className="font-black text-sm text-white/50">챔피언 {champs.length}</span><span className="ml-auto">승률 · 밴픽률 · 경기</span></div>
             {champs.map(([n, e]) => {
               const main = Object.entries(e.r).sort((a, b) => b[1][0] - a[1][0])[0]?.[0];
               return (
@@ -107,7 +109,7 @@ export default function LibraryPage() {
                   <ChampImg c={n} />
                   <span className="font-bold text-white/90">{koName(n) || n}</span>
                   <RoleIcon role={main} size={14} className="opacity-60" />
-                  <span className="ml-auto text-xs text-white/60 font-mono">{e.n} · {pct(e.w, e.n)} · {data.bans?.[n] || 0}</span>
+                  <span className="ml-auto text-xs text-white/60 font-mono">{pct(e.w, e.n)} · {pct(e.n + (data.bans?.[n] || 0), data.games)} · {e.n}</span>
                 </Row>
               );
             })}
