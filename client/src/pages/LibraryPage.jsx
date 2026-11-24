@@ -85,11 +85,13 @@ export default function LibraryPage() {
               <section>
                 <h2 className="text-sm font-black text-white/50 mb-2">선수 {players.length}</h2>
                 {players.map(([n, p]) => {
-                  const info = PLAYER_INFO[norm(n)];
+                  // Leaguepedia 동명이인 표기 "Doran (Choi Hyeon-joon)" → 닉네임만
+                  const nick = n.replace(/\s*\(.*\)$/, '');
+                  const info = PLAYER_INFO[norm(nick)];
                   return (
                     <Row key={n} to={info?.id && `/lol/prediction/player/${info.id}`}>
                       {info?.image ? <img src={info.image} alt="" className="w-8 h-8 rounded-full object-cover bg-white/10 shrink-0" /> : <span className="w-8 h-8 rounded-full bg-white/10 shrink-0" />}
-                      <span className="font-bold text-white/90">{n}</span>
+                      <span className="font-bold text-white/90">{nick}</span>
                       {info?.role && <RoleIcon role={info.role} size={14} className="opacity-60" />}
                       <span className="text-xs text-white/40 truncate">{p.t}</span>
                       <span className="ml-auto flex items-center gap-1">{p.c.slice(0, 3).map(([c]) => <ChampImg key={c} c={c} size={20} />)}</span>

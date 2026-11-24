@@ -36,12 +36,29 @@ export default function ChampionBackground({ bgKey, resetKey }) {
     ro?.observe(document.body);
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); window.removeEventListener('load', onScroll); ro?.disconnect(); };
   }, [resetKey]);
+  // 화면(메뉴 아래 영역)이 그림보다 세로로 길면 cover로는 좌우가 잘림 → 그때는 그림 전체 + 양옆 흐린 채움(세로 이미지와 같은 방식)
+  const [ratio, setRatio] = useState(0);
+  const [areaRatio, setAreaRatio] = useState(1);
+  useEffect(() => {
+    const m = () => setAreaRatio(window.innerWidth / Math.max(1, window.innerHeight - headerH));
+    m(); window.addEventListener('resize', m); return () => window.removeEventListener('resize', m);
+  }, [headerH]);
   if (!bg) return null;
+  const isVideo = /\.mp4$/.test(bg);
+  const contain = CHAMPION_BG_CONTAIN.has(bgKey) || (ratio && areaRatio < ratio);
+  const media = (cls, style) => (isVideo
+    ? <video src={bg} autoPlay muted loop playsInline className={cls} style={style} onLoadedMetadata={(e) => setRatio(e.currentTarget.videoWidth / e.currentTarget.videoHeight)} />
+    : <img src={bg} alt="" className={cls} style={style} onLoad={(e) => setRatio(e.currentTarget.naturalWidth / e.currentTarget.naturalHeight)} />);
   return (
     <div aria-hidden className="fixed inset-x-0 overflow-hidden pointer-events-none" style={{ top: headerH, bottom: footerGap }}>
       <div className="absolute inset-0">
-        {/\.mp4$/.test(bg) ? (
-          <video src={bg} autoPlay muted loop playsInline className="absolute inset-x-0 block w-full object-cover" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: `center ${scrollPct}%` }} />
+        {contain ? (
+          <>
+            {!isVideo && <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />}
+            {media('absolute inset-x-0 block w-full object-contain', { top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: 'center top' })}
+          </>
+        ) : isVideo ? (
+          media('absolute inset-x-0 block w-full object-cover', { top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: `center ${scrollPct}%` })
         ) : CHAMPION_BG_CONTAIN.has(bgKey) ? (
           <>
             <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
@@ -49,7 +66,7 @@ export default function ChampionBackground({ bgKey, resetKey }) {
             <img src={bg} alt="" className="absolute inset-x-0 block w-full object-contain" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: 'center top' }} />
           </>
         ) : (
-          <img src={bg} alt="" className="absolute inset-x-0 block w-full object-cover" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: `center ${scrollPct}%` }} />
+          media('absolute inset-x-0 block w-full object-cover', { top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: `center ${scrollPct}%` })
         )}
         <div className="absolute inset-0" style={{ background: 'rgba(10,20,40,0.7)' }} />
       </div>
