@@ -41,7 +41,7 @@ export default function ChampionBackground({ bgKey, resetKey }) {
     <div aria-hidden className="fixed inset-x-0 overflow-hidden pointer-events-none" style={{ top: headerH, bottom: footerGap }}>
       <div className="absolute inset-0">
         {/\.mp4$/.test(bg) ? (
-          <video src={bg} autoPlay muted loop playsInline className="absolute inset-x-0 block w-full object-cover" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)` }} />
+          <video src={bg} autoPlay muted loop playsInline className="absolute inset-x-0 block w-full object-cover" style={{ top: -footerGap, height: `calc(100vh - ${headerH}px)`, objectPosition: `center ${scrollPct}%` }} />
         ) : CHAMPION_BG_CONTAIN.has(bgKey) ? (
           <>
             <img src={bg} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'blur(24px)', transform: 'scale(1.1)' }} />
