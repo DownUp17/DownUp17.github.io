@@ -3146,21 +3146,21 @@
       "id": "98926509883054987",
       "players": [
         {
-          "id": "108577048167390593",
-          "name": "Denathor",
-          "firstName": "Noah",
-          "lastName": "Erikson",
-          "role": "top",
-          "image": "https://static.lolesports.com/players/1790204881186_edna.png",
-          "starter": true
-        },
-        {
           "id": "105732582273104165",
           "name": "Photon",
           "firstName": "Gyutae",
           "lastName": "Kyeong",
           "role": "top",
           "image": "https://static.lolesports.com/players/1769149727754_AME_LCS26S1_DIG_PHOTON.png",
+          "starter": true
+        },
+        {
+          "id": "108577048167390593",
+          "name": "Denathor",
+          "firstName": "Noah",
+          "lastName": "Erikson",
+          "role": "top",
+          "image": "https://static.lolesports.com/players/1790204881186_edna.png",
           "starter": false
         },
         {
