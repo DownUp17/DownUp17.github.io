@@ -13,6 +13,7 @@ import { textOn } from '../utils/colorContrast';
 import ChampionBackground from '../components/ChampionBackground';
 import tpr from '../data/lolTpr.json';
 import extraPlayers from '../data/lolExtraPlayers.json';
+import stove from '../data/lckStove2027.json';
 
 const gprTeamMap = Object.fromEntries(gprTeamsData.teams.map(t => [t.short, t]));
 const leagueColorMap = Object.fromEntries(gpr.regions.map(r => [r.key, r.color]));
@@ -32,7 +33,15 @@ export const contracted2027 = (short) => {
   if (new Date().toISOString().slice(0, 10) >= STOVE_UNTIL) return null;
   // TPR 대상 팀이 아니면(계약 확정 선수 0명 등) 빈 로스터
   const tm = tpr.teams?.find((t) => t.short === short);
-  return (tm?.players || []).map((s) => {
+  // 스토브리그 '계약'(공식 발표) 선수도 포함 — 다른 팀과 '계약'이 확정된 선수는 TPR 명단에서 제외
+  const lc = (n) => n.toLowerCase();
+  const signed = stove.teams.flatMap((t) => Object.entries(t.players).flatMap(([role, p]) => [].concat(p).filter((x) => x.basis === '계약').map((x) => ({ team: t.short, role, name: x.name }))));
+  const mine = signed.filter((x) => x.team === short);
+  const list = [
+    ...(tm?.players || []).filter((s) => !signed.some((x) => x.team !== short && lc(x.name) === lc(s.name))),
+    ...mine.filter((x) => !tm?.players?.some((s) => lc(s.name) === lc(x.name))),
+  ];
+  return list.map((s) => {
     const own = rosters.rosters[short]?.players?.find((p) => p.name.trim().toLowerCase() === s.name.toLowerCase());
     const p = own || ALL_PLAYERS.find((x) => x.name.trim().toLowerCase() === s.name.toLowerCase());
     return { ...(p || { name: s.name }), role: TPR_ROLE[s.role] || s.role, starter: true };
@@ -107,7 +116,7 @@ const TeamPage = () => {
         {/* 주전 선수 — 역할 순서대로 가로 일렬 배치 */}
         {starters.length > 0 ? (
           <div>
-            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">{c27 ? '2027 계약 확정 로스터' : '로스터'}</h2>
+            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">{c27 ? '선수' : '로스터'}</h2>
             <div className="grid grid-cols-5 gap-2 sm:gap-3 items-start">
               {columns.map((col, ci) => (<div key={ci} className="flex flex-col gap-2 sm:gap-3">{col.map(p => (
                 <div

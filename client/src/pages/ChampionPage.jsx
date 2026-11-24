@@ -48,10 +48,11 @@ const PatchChart = ({ rows, selected, onSelect, champ }) => {
       <h3 className="flex items-center gap-3 text-xs font-black text-white/40 mb-2">패치별 픽·밴률 <span className="font-normal text-white/30">(막대를 누르면 왼쪽이 그 패치 기준, 여러 개 선택 가능)</span>
         <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-sm bg-[#5B8DEF]" />픽</span>
         <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-sm bg-[#E8615A]" />밴</span>
+        <span className="inline-flex items-center gap-1 font-bold"><i className="w-2.5 h-2.5 rounded-full bg-[#E8C77E]" />승률</span>
         <span className="font-bold text-[#4ADE80]">▲상향</span><span className="font-bold text-[#F87171]">▼하향</span><span className="font-bold text-[#E8C77E]">↻조정</span>
       </h3>
       {/* 패치 수와 상관없이 가로 폭을 꽉 채움. 막대 칸에 커서를 올리면 그 패치 수치 표시 */}
-      <div className="flex items-start w-full" onMouseLeave={() => setHover(null)}>
+      <div className="relative flex items-start w-full" onMouseLeave={() => setHover(null)}>
         {pts.map(([k, pr, br, n, b, g, lgs, w], i) => (
           <div key={k} className={`relative flex-1 min-w-0 flex flex-col items-center rounded cursor-pointer ${selected?.includes(k) ? 'bg-white/15 ring-1 ring-[#E8C77E]/60' : hover === i ? 'bg-white/5' : ''}`}
             onMouseEnter={() => setHover(i)} onTouchStart={() => setHover(i)} onClick={() => onSelect?.(k)}>
@@ -72,15 +73,13 @@ const PatchChart = ({ rows, selected, onSelect, champ }) => {
             {/* 이 패치로 경기가 치러진 국제 대회 */}
             <div className="mt-1 flex flex-col items-center gap-0.5">
               {lgs.filter(isIntl).map((l) => (leagueLogo(l)
-                ? <img key={l} src={leagueLogo(l)} alt={l} title={l} className="w-3.5 h-3.5 object-contain opacity-80" />
+                ? <img key={l} src={leagueLogo(l)} alt={l} title={l} className={`w-3.5 h-3.5 object-contain opacity-80${l === 'EWC' ? ' brightness-0 invert' : ''}`} />
                 : <span key={l} title={l} className="text-[7px] leading-none text-white/35 font-bold max-w-full truncate">{l}</span>))}
             </div>
           </div>
         ))}
-      </div>
-      {/* 패치별 승률 꺾은선 — 막대와 같은 칸 위치. 픽이 없는 패치는 건너뜀, 점선 = 50% */}
-      <h3 className="mt-5 flex items-center gap-2 text-xs font-black text-white/40 mb-2">패치별 승률 <i className="w-2.5 h-2.5 rounded-full bg-[#E8C77E]" /></h3>
-      <div className="relative h-24 w-full">
+        {/* 패치별 승률 꺾은선 — 막대 영역(h-28, 0~100%)에 겹쳐 그림. 픽이 없는 패치는 건너뜀, 점선 = 50% */}
+        <div className="absolute left-0 right-0 top-0 h-28 pointer-events-none">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full overflow-visible">
           <line x1="0" x2="100" y1="50" y2="50" stroke="rgba(255,255,255,0.15)" strokeDasharray="2 2" vectorEffect="non-scaling-stroke" />
           <polyline fill="none" stroke="#E8C77E" strokeWidth="2" vectorEffect="non-scaling-stroke"
@@ -92,6 +91,7 @@ const PatchChart = ({ rows, selected, onSelect, champ }) => {
             style={{ left: `${((i + 0.5) / pts.length) * 100}%`, top: `${100 - (p[7] / p[3]) * 100}%` }} />
         ))}
         <span className="absolute -left-1 top-1/2 -translate-x-full -translate-y-1/2 text-[9px] text-white/30 font-mono">50%</span>
+        </div>
       </div>
     </div>
   );
@@ -195,7 +195,7 @@ export default function ChampionPage() {
             <h1 className="text-2xl md:text-3xl font-black text-white truncate">{koName(name) || name}</h1>
             <p className="text-white/50 text-sm mt-0.5">{name}</p>
           </div>
-          <ChampSkills name={name} />
+          <ChampSkills name={name} year={year} />
           <div className="ml-auto flex items-center gap-3">
             <span className="text-xs font-black text-white/40">시즌</span>
             <YearDropdown years={seasons.map(([y]) => y)} value={year} onChange={(y) => setSp({ year: y }, { replace: true })} ariaLabel="시즌 선택" />

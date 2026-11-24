@@ -8,8 +8,10 @@ const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 // shortcut: 사용자 검토 전 초안 — 사이온 Q·라칸 W·갈리오 E는 불가로 확인돼 제외, 틀리거나 빠진 항목은 여기서 고침
 export const FLASH_SKILLS = {
   Ahri: ['E'], LeeSin: ['R'], Gragas: ['E'], Rell: ['W'], Sejuani: ['Q'], JarvanIV: ['Q'],
-  Shen: ['E'], Vi: ['Q'], Riven: ['E'], Varus: ['Q'],
+  Shen: ['E'], Vi: ['Q'], Riven: ['E'], Varus: ['Q'], Yasuo: ['Q'], Kennen: ['R'],
+  Galio: [['W', 2019]], // [키, 마지막 가능 연도] — 9.14(2019.7) 패치에서 W 충전 중 점멸 삭제
 };
+const canFlash = (id, key, year) => (FLASH_SKILLS[id] || []).some((s) => (Array.isArray(s) ? s[0] === key && !(year > s[1]) : s === key));
 let base; // 버전·이름→id 목록은 한 번만 받음
 const loadBase = () => (base ??= (async () => {
   const ver = (await fetch(`${DD}/api/versions.json`).then((r) => r.json()))[0];
@@ -19,7 +21,7 @@ const loadBase = () => (base ??= (async () => {
   return { ver, ids };
 })());
 
-export default function ChampSkills({ name, size = 28 }) {
+export default function ChampSkills({ name, year, size = 28 }) {
   const [sk, setSk] = useState(null);
   useEffect(() => {
     let alive = true; setSk(null);
@@ -29,11 +31,11 @@ export default function ChampSkills({ name, size = 28 }) {
       const c = (await fetch(`${DD}/cdn/${ver}/data/ko_KR/champion/${id}.json`).then((r) => r.json())).data[id];
       if (alive) setSk([
         { key: 'P', name: c.passive.name, src: `${DD}/cdn/${ver}/img/passive/${c.passive.image.full}` },
-        ...c.spells.map((s, i) => ({ key: 'QWER'[i], name: s.name, src: `${DD}/cdn/${ver}/img/spell/${s.image.full}`, flash: FLASH_SKILLS[id]?.includes('QWER'[i]) })),
+        ...c.spells.map((s, i) => ({ key: 'QWER'[i], name: s.name, src: `${DD}/cdn/${ver}/img/spell/${s.image.full}`, flash: canFlash(id, 'QWER'[i], +year) })),
       ].map((s) => ({ ...s, flashSrc: `${DD}/cdn/${ver}/img/spell/SummonerFlash.png` })));
     }).catch(() => {}); // 네트워크 실패 시 아이콘만 생략
     return () => { alive = false; };
-  }, [name]);
+  }, [name, year]);
   if (!sk) return null;
   return (
     <div className="flex items-end gap-1.5">

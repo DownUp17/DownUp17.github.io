@@ -1,6 +1,7 @@
 // client/src/pages/PlayerPage.jsx
 // 선수 상세 — 로스터(lolRosters.json)와 시즌 기록(lolPlayerStats.json)을 esports 선수 ID로 연결해 표시.
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { YearDropdown } from './PredictionPage';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import RoleIcon, { ROLE_KO } from '../components/RoleIcon';
@@ -53,6 +54,9 @@ const logoOfTeam = (name, year) => {
   const current = (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()];
   // 올해까지 이어진 경력은 사이트의 현재 로고 — Leaguepedia 파일 이력이 옛 그림에 머문 팀이 있음(예: BNK FEARX)
   if (year >= 2026 && current) return current;
+  // 2·3군은 1군 로고 — Leaguepedia 2군 로고 파일이 옛 그림(BNK FEARX Youth)이거나 삭제(Nongshim RedForce Academy, 404)된 경우가 있음
+  const base = name.trim().replace(ACADEMY_RE, '');
+  if (base !== name.trim()) { const r = logoOfTeam(base, year); if (r) return r; }
   // 그 당시 팀 이름의 로고(Leaguepedia) 우선, 없으면 현재 구단 로고
   return eraLogoByName(name, year) || (sh && (gprTeamMap[sh]?.logo || rosters.rosters?.[sh]?.team?.image)) || logoByName[name.trim().toLowerCase()] || null;
 };
@@ -154,6 +158,11 @@ const PlayerPage = () => {
   const { playerId } = useParams();
   const navigate = useNavigate();
   useEffect(() => { window.scrollTo(0, 0); }, [playerId]);
+  // 지난 시즌 기록(Leaguepedia, 2011~) — 용량이 커서 따로 불러옴
+  const [py, setPy] = useState(null);
+  const [year, setYear] = useState(null);
+  useEffect(() => { import('../data/lolPlayerYears.json').then((m) => setPy(m.default)).catch(() => {}); }, []);
+  useEffect(() => { setYear(null); }, [playerId]);
 
   const found = findPlayer(playerId);
   const s = playerStats.players?.[playerId];
@@ -181,6 +190,26 @@ const PlayerPage = () => {
   if (stay27 && career.length) career[career.length - 1] = { ...career[career.length - 1], to: 2027 };
   // 다른 팀과 2027 계약이 확정됐으면 그 팀(2027)을 이적 목록 맨 위에 둔다
   const next27 = t27 && !stay27 && (found || extra) ? { team: gprTeamMap[t27]?.name || t27, from: 2027, to: 2027 } : null;
+  // 연도별 기록: 올해는 lolesports(CtO 포함), 지난 시즌은 Leaguepedia. 동명이인은 그 해 경력 팀(같은 구단)으로 구분
+  const rawCareer = playerCareers.players?.[playerId] || [];
+  const pastOf = (y) => {
+    const list = py?.years?.[y]?.[String(p.name || '').trim().toLowerCase()];
+    if (!list) return null;
+    const teams = rawCareer.filter((c) => c.from <= y && y <= c.to).map((c) => orgOf(c.team.replace(ACADEMY_RE, '')));
+    const mine = rawCareer.length ? list.filter((e) => teams.includes(orgOf(e[0].replace(ACADEMY_RE, '')))) : [list.slice().sort((a, b) => b[2] - a[2])[0]];
+    if (!mine.length) return null;
+    const v = Array(11).fill(0); const ch = {};
+    for (const e of mine) { e.slice(2, 13).forEach((x, i) => (v[i] += x)); for (const [c, n] of e[13]) ch[c] = (ch[c] || 0) + n; }
+    const [g, , K, D, A, cs, go, min, dm, tdm, tk] = v;
+    const r1 = (x) => Math.round(x * 10) / 10;
+    return { games: g, k: r1(K / g), d: r1(D / g), a: r1(A / g), kda: Math.round(((K + A) / Math.max(D, 1)) * 100) / 100,
+      csm: min ? r1(cs / min) : '-', gpm: min && go / g > 8000 ? Math.round(go / min) : '-', // shortcut: 옛 경기는 골드 기록이 일부 빠져 있음(경기당 8천 미만이면 미표시), 정확히 하려면 골드 있는 경기 시간만 따로 수집 dmgShare: tdm ? dm / tdm : null, kp: tk ? (K + A) / tk : null,
+      champions: Object.entries(ch).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([c, n]) => [c.replace(/^Wukong$/, 'MonkeyKing').replace(/ &.*$/, '').replace(/^Renata Glasc$/, 'Renata').replace(/[^A-Za-z]/g, ''), n]) };
+  };
+  const cur = String(playerStats.season);
+  const years = [...(s ? [cur] : []), ...Object.keys(py?.years || {}).filter((y) => y !== cur && pastOf(+y)).sort((a, b) => b - a)];
+  const sel = year && years.includes(year) ? year : years[0];
+  const st = sel === cur ? s : sel && pastOf(+sel);
   const bgKey = PLAYER_WORLDS_TEAM[String(p.name || '').split(' ').pop().toLowerCase()];
 
   return (
@@ -230,36 +259,38 @@ const PlayerPage = () => {
           </div>
         </div>
 
-        {s ? (
+        {st ? (
           <div>
-            <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">{playerStats.season} 시즌 기록</h2>
+            <h2 className="flex items-center text-xs font-black text-white/30 uppercase tracking-widest mb-3">
+              {years.length > 1 ? <YearDropdown years={years} value={sel} onChange={(y) => setYear(String(y))} ariaLabel="시즌 선택" /> : sel} <span className="ml-1">시즌 기록</span>
+            </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
-              <Stat label="경기" value={s.games} />
-              <Stat label="KDA" value={s.kda} sub={`${s.k} / ${s.d} / ${s.a}`} cto={s.cto?.kda} />
-              <Stat label="CS/분" value={s.csm} cto={s.cto?.csm} />
-              <Stat label="골드/분" value={s.gpm} cto={s.cto?.gpm} />
-              <Stat label="DMG 비중" value={pct(s.dmgShare)} cto={s.cto ? pct(s.cto.dmgShare) : null} />
-              <Stat label="킬 관여" value={pct(s.kp)} cto={s.cto ? pct(s.cto.kp) : null} />
+              <Stat label="경기" value={st.games} />
+              <Stat label="KDA" value={st.kda} sub={`${st.k} / ${st.d} / ${st.a}`} cto={st.cto?.kda} />
+              <Stat label="CS/분" value={st.csm} cto={st.cto?.csm} />
+              <Stat label="골드/분" value={st.gpm} cto={st.cto?.gpm} />
+              <Stat label="DMG 비중" value={pct(st.dmgShare)} cto={st.cto ? pct(st.cto.dmgShare) : null} />
+              <Stat label="킬 관여" value={pct(st.kp)} cto={st.cto ? pct(st.cto.kp) : null} />
             </div>
 
-            {s.cto && (
+            {st.cto && (
               <p className="text-[11px] text-white/30 mt-2">
-                CtO(상대 대비): 게임마다 (상대 팀 GPR ÷ 우리 팀 GPR)를 곱한 기록 · 평균 상대 강도 {s.cto.weight} ({s.cto.games}경기 기준)
+                CtO(상대 대비): 게임마다 (상대 팀 GPR ÷ 우리 팀 GPR)를 곱한 기록 · 평균 상대 강도 {st.cto.weight} ({st.cto.games}경기 기준)
               </p>
             )}
 
-            {s.champions?.length > 0 && (
+            {st.champions?.length > 0 && (
               <div className="mt-8">
                 <h2 className="text-xs font-black text-white/30 uppercase tracking-widest mb-3">주 챔피언</h2>
                 <div className="flex flex-col gap-1.5">
-                  {s.champions.map(([c, n]) => (
+                  {st.champions.map(([c, n]) => (
                     <div key={c} className="flex items-center gap-3 text-sm">
                       {/* 챔피언 아이콘(CommunityDragon, 챔피언 alias 기준) — 로드 실패 시 이름으로 대체 */}
                       <img src={`https://cdn.communitydragon.org/latest/champion/${c}/square`} alt={c} title={c}
                         className="w-8 h-8 rounded-md object-cover shrink-0 bg-white/5"
                         onError={(e) => { e.currentTarget.replaceWith(Object.assign(document.createElement('span'), { textContent: c, className: 'w-8 text-[10px] font-bold text-white/70 truncate' })); }} />
                       <div className="flex-1 h-2 rounded bg-white/5 overflow-hidden">
-                        <div className="h-full bg-white/40" style={{ width: `${(n / s.games) * 100}%` }} />
+                        <div className="h-full bg-white/40" style={{ width: `${(n / st.games) * 100}%` }} />
                       </div>
                       <span className="w-10 text-right font-mono text-white/60">{n}</span>
                     </div>
@@ -267,7 +298,7 @@ const PlayerPage = () => {
                 </div>
               </div>
             )}
-            <p className="text-white/25 text-[11px] mt-6">경기당 평균 · 출처 lolesports 경기 데이터</p>
+            <p className="text-white/25 text-[11px] mt-6">경기당 평균 · 출처 {sel === cur ? 'lolesports' : 'Leaguepedia'} 경기 데이터</p>
           </div>
         ) : (
           <p className="text-white/30 text-sm text-center py-16">시즌 기록 없음</p>
