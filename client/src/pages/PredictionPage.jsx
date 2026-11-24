@@ -3839,12 +3839,11 @@ const PredictionPage = () => {
                   <p className="text-xs text-white/40">{isTpr ? 'TotalDU Power Rating · 2027 확정 로스터 기준' : `Global Power Rankings · ${gprTeams.teams.length}팀 · 갱신 ${gprTeams.updatedAt}`}</p>
                 </div>
                 {/* GPR ↔ TPR 전환 — ?rank=tpr 로 유지 */}
-                <div className="ml-auto flex rounded-lg bg-white/5 border border-white/10 p-0.5 text-xs font-black">
-                  {['gpr', 'tpr'].map((m) => (
-                    <button key={m} onClick={() => setSearchParams((p) => { const q = new URLSearchParams(p); if (m === 'tpr') q.set('rank', 'tpr'); else q.delete('rank'); return q; }, { replace: true })}
-                      className={`px-3 py-1 rounded-md ${(m === 'tpr') === isTpr ? 'bg-[#C8963E] text-[#1e2328]' : 'text-white/60 hover:text-white'}`}>{m.toUpperCase()}</button>
-                  ))}
-                </div>
+                <button onClick={() => setSearchParams((p) => { const q = new URLSearchParams(p); if (isTpr) q.delete('rank'); else q.set('rank', 'tpr'); return q; }, { replace: true })}
+                  title={`${isTpr ? 'GPR' : 'TPR'}로 전환`}
+                  className="ml-auto px-3 py-1 rounded-lg bg-[#C8963E] text-[#1e2328] text-xs font-black hover:opacity-85">
+                  {isTpr ? 'TPR' : 'GPR'} ⇄
+                </button>
               </div>
               {isTpr
                 ? <TprTable logoOf={(s) => logoByShort[s]} selectedTeam={selectedTeam} onTeamClick={handleTeamClick} />
