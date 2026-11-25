@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T14:44:24.064Z",
+  "generatedAt": "2026-11-25T10:30:19.174Z",
   "source": "Leaguepedia (lol.fandom.com) Players·Tenures·RosterChanges",
   "gprBase": "lolesports.com/gpr/{연도}/worlds (시즌별 월즈 종료 스냅샷)",
   "refDate": "2026-11-08",
@@ -151,11 +151,21 @@
       "short": "T1",
       "name": "T1",
       "league": "LCK",
-      "tpr": 1514,
-      "complete": false,
-      "roles": 4,
-      "coverage": "4/4",
+      "tpr": 1518,
+      "complete": true,
+      "roles": 5,
+      "coverage": "5/5",
       "players": [
+        {
+          "role": "Top",
+          "name": "Zeus",
+          "prevTeam": "HLE",
+          "prevYear": 2026,
+          "prevGpr": 1536,
+          "games": 142,
+          "teamGames": 142,
+          "weight": 1
+        },
         {
           "role": "Jungle",
           "name": "Oner",
@@ -558,13 +568,54 @@
       ]
     },
     {
+      "short": "C9",
+      "name": "Cloud9 Kia",
+      "league": "LCS",
+      "tpr": 1315,
+      "complete": false,
+      "roles": 3,
+      "coverage": "3/3",
+      "players": [
+        {
+          "role": "Jungle",
+          "name": "Blaber",
+          "prevTeam": "C9",
+          "prevYear": 2026,
+          "prevGpr": 1315,
+          "games": 107,
+          "teamGames": 107,
+          "weight": 1
+        },
+        {
+          "role": "Mid",
+          "name": "Loki",
+          "prevTeam": "C9",
+          "prevYear": 2026,
+          "prevGpr": 1315,
+          "games": 41,
+          "teamGames": 107,
+          "weight": 0.383
+        },
+        {
+          "role": "Support",
+          "name": "Vulcan",
+          "prevTeam": "C9",
+          "prevYear": 2026,
+          "prevGpr": 1315,
+          "games": 107,
+          "teamGames": 107,
+          "weight": 1
+        }
+      ]
+    },
+    {
       "short": "KT",
       "name": "kt Rolster",
       "league": "LCK",
-      "tpr": 1319,
-      "complete": false,
-      "roles": 4,
-      "coverage": "4/4",
+      "tpr": 1311,
+      "complete": true,
+      "roles": 5,
+      "coverage": "5/5",
       "players": [
         {
           "role": "Top",
@@ -597,6 +648,16 @@
           "weight": 1
         },
         {
+          "role": "Bot",
+          "name": "Taeyoon",
+          "prevTeam": "BFX",
+          "prevYear": 2026,
+          "prevGpr": 1255,
+          "games": 83,
+          "teamGames": 146,
+          "weight": 0.568
+        },
+        {
           "role": "Support",
           "name": "Kellin",
           "prevTeam": "BFX",
@@ -609,75 +670,14 @@
       ]
     },
     {
-      "short": "C9",
-      "name": "Cloud9 Kia",
-      "league": "LCS",
-      "tpr": 1315,
-      "complete": false,
-      "roles": 4,
-      "coverage": "4/4",
-      "players": [
-        {
-          "role": "Jungle",
-          "name": "Blaber",
-          "prevTeam": "C9",
-          "prevYear": 2026,
-          "prevGpr": 1315,
-          "games": 107,
-          "teamGames": 107,
-          "weight": 1
-        },
-        {
-          "role": "Mid",
-          "name": "Loki",
-          "prevTeam": "C9",
-          "prevYear": 2026,
-          "prevGpr": 1315,
-          "games": 41,
-          "teamGames": 107,
-          "weight": 0.383
-        },
-        {
-          "role": "Bot",
-          "name": "Tactical",
-          "prevTeam": "C9",
-          "prevYear": 2026,
-          "prevGpr": 1315,
-          "games": 41,
-          "teamGames": 107,
-          "weight": 0.383
-        },
-        {
-          "role": "Support",
-          "name": "Vulcan",
-          "prevTeam": "C9",
-          "prevYear": 2026,
-          "prevGpr": 1315,
-          "games": 107,
-          "teamGames": 107,
-          "weight": 1
-        }
-      ]
-    },
-    {
       "short": "FLY",
       "name": "FlyQuest",
       "league": "LCS",
       "tpr": 1307,
       "complete": false,
-      "roles": 3,
-      "coverage": "3/3",
+      "roles": 2,
+      "coverage": "2/2",
       "players": [
-        {
-          "role": "Top",
-          "name": "Gakgos",
-          "prevTeam": "FLY",
-          "prevYear": 2026,
-          "prevGpr": 1307,
-          "games": 100,
-          "teamGames": 100,
-          "weight": 1
-        },
         {
           "role": "Jungle",
           "name": "Gryffinn",
@@ -831,6 +831,57 @@
           "games": 120,
           "teamGames": 120,
           "weight": 1
+        }
+      ]
+    },
+    {
+      "short": "BFX",
+      "name": "BNK FEARX",
+      "league": "LCK",
+      "tpr": 1266,
+      "complete": false,
+      "roles": 4,
+      "coverage": "3/4",
+      "players": [
+        {
+          "role": "Top",
+          "name": "Thanatos",
+          "prevTeam": "C9",
+          "prevYear": 2026,
+          "prevGpr": 1315,
+          "games": 107,
+          "teamGames": 107,
+          "weight": 1
+        },
+        {
+          "role": "Jungle",
+          "name": "Vincenzo",
+          "prevTeam": "KRX",
+          "prevYear": 2026,
+          "prevGpr": 1164,
+          "games": 0,
+          "teamGames": 66,
+          "weight": 0
+        },
+        {
+          "role": "Mid",
+          "name": "VicLa",
+          "prevTeam": "BFX",
+          "prevYear": 2026,
+          "prevGpr": 1255,
+          "games": 136,
+          "teamGames": 146,
+          "weight": 0.932
+        },
+        {
+          "role": "Bot",
+          "name": "Noah",
+          "prevTeam": "GX",
+          "prevYear": 2026,
+          "prevGpr": 1204,
+          "games": 58,
+          "teamGames": 91,
+          "weight": 0.637
         }
       ]
     },
@@ -1006,47 +1057,6 @@
           "games": 14,
           "teamGames": 56,
           "weight": 0.25
-        }
-      ]
-    },
-    {
-      "short": "BFX",
-      "name": "BNK FEARX",
-      "league": "LCK",
-      "tpr": 1234,
-      "complete": false,
-      "roles": 3,
-      "coverage": "2/3",
-      "players": [
-        {
-          "role": "Jungle",
-          "name": "Vincenzo",
-          "prevTeam": "KRX",
-          "prevYear": 2026,
-          "prevGpr": 1164,
-          "games": 0,
-          "teamGames": 66,
-          "weight": 0
-        },
-        {
-          "role": "Mid",
-          "name": "VicLa",
-          "prevTeam": "BFX",
-          "prevYear": 2026,
-          "prevGpr": 1255,
-          "games": 136,
-          "teamGames": 146,
-          "weight": 0.932
-        },
-        {
-          "role": "Bot",
-          "name": "Noah",
-          "prevTeam": "GX",
-          "prevYear": 2026,
-          "prevGpr": 1204,
-          "games": 58,
-          "teamGames": 91,
-          "weight": 0.637
         }
       ]
     },
@@ -1383,9 +1393,19 @@
       "league": "LCS",
       "tpr": 1191,
       "complete": false,
-      "roles": 3,
-      "coverage": "3/3",
+      "roles": 4,
+      "coverage": "4/4",
       "players": [
+        {
+          "role": "Jungle",
+          "name": "HamBak",
+          "prevTeam": "SEN",
+          "prevYear": 2026,
+          "prevGpr": 1191,
+          "games": 90,
+          "teamGames": 90,
+          "weight": 1
+        },
         {
           "role": "Mid",
           "name": "DARKWINGS",
