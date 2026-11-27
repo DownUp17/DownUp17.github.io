@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T10:30:19.174Z",
+  "generatedAt": "2026-11-27T15:19:57.262Z",
   "source": "Leaguepedia (lol.fandom.com) Players·Tenures·RosterChanges",
   "gprBase": "lolesports.com/gpr/{연도}/worlds (시즌별 월즈 종료 스냅샷)",
   "refDate": "2026-11-08",
@@ -49,11 +49,21 @@
       "short": "HLE",
       "name": "Hanwha Life Esports",
       "league": "LCK",
-      "tpr": 1561,
+      "tpr": 1573,
       "complete": false,
-      "roles": 3,
-      "coverage": "3/3",
+      "roles": 4,
+      "coverage": "4/4",
       "players": [
+        {
+          "role": "Top",
+          "name": "Kiin",
+          "prevTeam": "GEN",
+          "prevYear": 2026,
+          "prevGpr": 1610,
+          "games": 134,
+          "teamGames": 134,
+          "weight": 1
+        },
         {
           "role": "Jungle",
           "name": "Canyon",
@@ -1681,19 +1691,7 @@
     {
       "short": "WBG",
       "league": "LPL",
-      "filled": 5,
-      "unannounced": [
-        "Ale",
-        "Zika",
-        "H4cker",
-        "Xiaohao",
-        "Xiaohu",
-        "Elk",
-        "zhiqiuyi",
-        "Jwei",
-        "Ke",
-        "Moham"
-      ]
+      "filled": 1
     },
     {
       "short": "CFO",
@@ -1733,7 +1731,7 @@
     {
       "short": "SHFT",
       "league": "LEC",
-      "filled": 4
+      "filled": 2
     },
     {
       "short": "SR",
